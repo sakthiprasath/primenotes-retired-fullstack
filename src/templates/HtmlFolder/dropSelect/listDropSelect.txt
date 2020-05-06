@@ -1,0 +1,2 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<my-list-drpdown id='drop_down_for_search_box' list='nation' class="dropdown drop_down_for_search_box" functionName="myFunc" servletName="ServiceSearchBox" tableName="test_rankings_key916" key="nation"></my-list-drpdown>

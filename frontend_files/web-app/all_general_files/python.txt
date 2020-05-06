@@ -1,0 +1,41 @@
+<p><strong>Variable args :</strong></p>
+
+<pre>
+def func(a=0,b=0,c=0):
+
+&nbsp;&nbsp;&nbsp; print(c)
+
+
+if __name__== &quot;__main__&quot;:
+
+&nbsp;&nbsp;&nbsp; list1 = [1,2,3]
+
+&nbsp;&nbsp;&nbsp; map1 = {&quot;a&quot; : 1,
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;b&quot; : 2,
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;c&quot; : {&quot;x&quot;:5,
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;y&quot;: 6
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp; 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; func(*list1)
+
+&nbsp;&nbsp;&nbsp; func(*map1.values())
+
+&nbsp;&nbsp;&nbsp; func(**map1)</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>IF statements :</strong></p>
+
+<p>Self.auth_url = auth_url if auth_url is not None else <a href="http://dummy_url">http://dummy_url</a></p>
+
+<p>&nbsp;</p>
+
+<p><strong>Common python packages :</strong></p>
+
+<p>Requests</p>

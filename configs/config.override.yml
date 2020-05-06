@@ -1,0 +1,4 @@
+DB_PORT: 5433
+ASSETS_DB_NAME: testing_db
+TENANT_DB_NAME: testing_db
+TEST_TENANT: 'testing_db,public,test-tenant-id,test-tenant'

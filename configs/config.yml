@@ -1,0 +1,36 @@
+DB_HOST: localhost
+DB_PORT: 5432
+DB_USER: postgres
+DB_PASSWORD: siaipass123
+
+ASSETS_DB_NAME: test_assets_db
+TENANT_DB_NAME: test_assets_db
+TENANT_DB_SCHEMA: xyz
+TENANT_DB_MAX_CONNECTIONS: 40
+DB_CONNECTION_TIMEOUT: 10
+
+CACHE_TIMEOUT: 36000
+
+QUEUE_STORAGE_ACCOUNT_CONNECTION_STRING: 'BlobEndpoint\=https://siaitesting.blob.core.windows.net/\\;QueueEndpoint\=https://siaitesting.queue.core.windows.net/\\;FileEndpoint\=https://siaitesting.file.core.windows.net/\\;TableEndpoint\=https://siaitesting.table.core.windows.net/\\;SharedAccessSignature\=sv\=2018-03-28&ss\=q&srt\=sco&sp\=rwdlacup&se\=2019-12-31T13:16:58Z&st\=2019-06-06T05:16:58Z&spr\=https&sig\=%2BYNTq14l8UZxAY2kW%2Bx1ZEL5tTm0ovFRWz9mcVg%2Fu1U%3D;AUTH_HOST=http://auth.symphonyindai.com'
+SCHEDULER_MESSAGE_QUEUE_NAME: 'scheduler-test'
+ANALYTIC_JOBS_MESSAGE_QUEUE_NAME: 'analytic-jobs-test'
+ALERTING_METRICS_MESSAGE_QUEUE_NAME: 'ingested-measurements-test'
+ALERTING_RULES_MESSAGE_QUEUE_NAME: 'alert-rules-test'
+DERIVED_MESSAGE_QUEUE_NAME: 'derived-test'
+SKIP_POST_TO_ALERT_QUEUE: 'true'
+
+AUTH_HOST: ''
+TOKEN_VALIDATION_URL: '/api/auth/jwt/validate'
+CREDENTIALS: ''
+
+REDIS_HOST: localhost
+REDIS_PORT: 6379
+
+CSV_EXPORT_ROW_LIMIT: 10000
+CSV_EXPORT_ASSET_LIMIT: 3
+
+TEST_TENANT: 'test_assets_db,public,test-tenant-id,test-tenant'
+
+LOGGING_LEVEL: '10'
+
+MEASUREMENTS_QUERY_LIMIT: 30000

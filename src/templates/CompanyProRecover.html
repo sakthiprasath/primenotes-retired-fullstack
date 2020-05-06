@@ -1,0 +1,957 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+-->
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>Layout Test Page</title> 
+		<script 	src="{{ url_for('static', filename='js/lib/jquery.min.js') }}">
+</script>
+		<script type="text/javascript" src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+		<script type="text/javascript"
+			src="{{ url_for('static', filename='/js/lib/jquery-ui/jquery-latest.js') }}"></script>
+		<script type="text/javascript"
+			src="{{ url_for('static', filename='/js/lib/jquery-ui/jquery-ui-latest.js') }}"></script>
+		<script type="text/javascript"
+			src="{{ url_for('static', filename='/js/lib/jquery-ui/jquery-ui-latest.js') }}"></script>
+
+
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/ComponentEditor.css') }}" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/ResultIframe.css') }}" />
+	 <link rel="stylesheet" href="{{ url_for('static', filename='/css/ComponentEditor.css') }}">
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/button.css') }}" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/NavigationBar.css') }}" />
+
+		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/treeView.css') }}" />
+		<link href='https://fonts.googleapis.com/css?family=Source Code Pro'
+			rel='stylesheet' />
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+
+		<link rel='stylesheet'
+			href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.css'>
+			<link rel='stylesheet'
+				href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/theme/material.css'>
+				<link rel="stylesheet"
+					href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+					<script type="text/javascript" src="{{ url_for('static', filename='js/treeview.js') }}"></script>
+					<script src="https://www.w3schools.com/lib/codemirror_jsx.js"></script>
+
+
+
+					<script type='module'>
+import loadComponentsContainer from './js/ComponentsContainer.js';
+import IndividualComponentEditor from './js/IndividualComponentEditor.js';
+
+window.loadComponentsContainer=loadComponentsContainer;
+window.IndividualComponenrtEditor=IndividualComponentEditor;
+</script>
+
+					<script
+						src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+	<div id="destination-container" ondrop="drop(event)"
+		ondragover="allowDrop(event)">
+		<div class='background-img-class' alt='plastation' />
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- result iframe  -->
+
+	<div class="overlay">
+		<div id='up-missile' onclick="closeNav()" class='up-missile'></div>
+		<div id='down-missile' onclick="openNav()" class='up-missile'></div>
+		<div id='hider-for-resize'></div>
+		<iframe id='result-iframe' src='https://codepen.io/'></iframe>
+		<div id='iframe-dragger-button'></div>
+	</div>
+
+	<script>
+function openNav() {
+  //document.getElementById("myNav").style.height = "99%";
+  $('#result-iframe').css('height',$(document).height()-100);
+  
+}
+function closeNav() {
+  //document.getElementById("myNav").style.height = "3%";
+  document.getElementById("result-iframe").style.height = "20px";
+  
+}
+
+$(document).ready(function(){
+
+$('#iframe-dragger-button').on('mousedown',function(e1){
+		$(this).css('cursor','grabbing');
+        e1.preventDefault();
+      	$('#result-iframe').css('transition','none');
+		$(document).on('mousemove',function(e){
+      	   e.preventDefault();  	  
+           console.log(e.clientX+"  "+e.clientY);
+    	   let height=e.clientY;
+   	       if(height>10){
+                $('#result-iframe').css('height',height+15);
+                $('#hider-for-resize').css('height',height+15);
+        		//$('#hider-for-resize').css('background-color','red');
+           }
+		});
+});
+     
+	$('#iframe-dragger-button').on('mouseup',function(e1){
+      e1.preventDefault();
+      $('#result-iframe').css('transition','0.5s');
+      $(this).css('cursor','grab');
+      $('#hider-for-resize').css('height',0);
+	  $('#hider-for-resize').css('background-color','none');
+      $(document).unbind('mousemove');
+    });
+});
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div id='pane'>
+		<div class='resizable'>
+			<div class='resizers'>
+				<div class='resizer top-left'></div>
+				<div class='resizer top-right'></div>
+				<div class='resizer bottom-left'></div>
+				<div class='resizer bottom-right'></div>
+				<div id='component-factory-header-icons'>
+					<div id='maximize-component-factory'>
+						<input id='maximize-input-toggle' type='checkbox'
+							style='display: none'> <img for='maximize-input-toggle'
+							class='maximize-icon'
+							src="https://img.icons8.com/material/64/000000/full-screen.png"></img>
+					</div>
+					<div id='close-component-results-container'>
+						<img class='close-component-results-container-icon'
+							src="https://img.icons8.com/color/48/000000/close-window.png">
+					</div>
+
+				</div>
+				<div id="component-factory-title">Component Factory</div>
+				<div id='components-search-container'>
+					<div id='left-and-middle-section'>
+						<div class="left-corner">
+							<div class='left-corner-sub-div'>
+								<div class='component-factory-left-icons'>
+									<img src="https://img.icons8.com/ios/50/000000/select-all.png"
+										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">
+								</div>
+								<div class='component-factory-left-icons'>
+									<img src="https://img.icons8.com/ios/50/000000/select-all.png"
+										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">
+								</div>
+								<div class='component-factory-left-icons'>
+									<img src="https://img.icons8.com/ios/50/000000/select-all.png"
+										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">
+								</div>
+								<div class='component-factory-left-icons'>
+									<img src="https://img.icons8.com/ios/50/000000/select-all.png"
+										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">
+								</div>
+								<div class='component-factory-left-icons'>
+									<img src="https://img.icons8.com/ios/50/000000/select-all.png"
+										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">
+								</div>
+
+							</div>
+						</div>
+
+						<div class='middle-section'>
+							<!-- <div class='search-icon'>
+									<img class='search-img'
+										src="https://img.icons8.com/nolan/64/000000/google-web-search.png">
+								</div> -->
+							<div class="search-container">
+								<input id='search-box' placeholder='search component..'
+									type='text' /> <img src="https://img.icons8.com/color/48/000000/search.png">
+									</button>
+							</div>
+
+							<div class='search-results'></div>
+							<div id='search-results-close-button'>
+								<img id='compo-search-navigation' class="minimize-middle-section" src="https://www.animatedimages.org/data/media/111/animated-arrow-image-0104.gif" border="0" alt="animated-arrow-image-0104" />
+							</div>
+						</div>
+					</div>
+					<div id='right-side-components'>
+						<div id='right-side-components-container'>
+
+						<button id="editor1-save-button">save</button>
+
+<!--https://codepen.io/edsonperotoni/pen/OJJZzZq?editors=1010-->
+						<textarea id='editor1' contenteditable>
+						  <h1>A Heading.</h1>
+						  <p>Some text that you can format. Try inserting an image or a link.</p>
+						</textarea>
+
+						</div>
+						<div class='corner'></div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div id='individual-component-editor-section'></div>
+
+
+
+	<!-- <iframe style='width:100%;height:10%;position:fixed;top:0px' src='http://s.cssdeck.com/labs/full/pa0yqlki/noframe'></iframe>
+ -->
+	<div id="container">
+		<div id="paddingWrapper" class="pane ui-layout-center"></div>
+		<div class="pane ui-layout-north sakthi">North</div>
+		<div class="pane ui-layout-south sakthi">South</div>
+		<div class="pane ui-layout-east sakthi">East</div>
+		<div class="pane ui-layout-center">center</div>
+		<div class="pane ui-layout-west sakthi">West</div>
+	</div>
+
+	<div id="iframecontainer">
+		<div id="iframe">
+			<div id="iframewrapper"></div>
+		</div>
+	</div>
+
+	<form id="codeForm" autocomplete="off"
+		style="margin: 0px; display: none;">
+		<input type="hidden" name="code" id="code" />
+	</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div id='navigation-bar'>
+		<div class="sidenav">
+			<a href="javascript:void(0)" class="closebtn">&times;</a>
+			<div class='source-code-tab-content'>
+				<div class="dTree">
+					<ul>
+						<li><a href="#" class='file-click'>Site</a></li>
+						<li><a href="#" class='file-click'>About the Web Site</a></li>
+						<li><a href="#" class='file-click'>Contact Us</a></li>
+						<li><a href="#" class='file-click'>Cars</a>
+							<ul>
+								<li><a href="#" class='file-click'>Add New Brand</a></li>
+								<li><a href="#" class='file-click'>List All Brand</a></li>
+								<li><a href="#" class='file-click'>Mercedes - Benz</a>
+									<ul>
+										<li><a href="#">About the Mercedes - Benz</a></li>
+										<li><a href="#">History</a></li>
+										<li><a href="#">Series</a>
+											<ul>
+												<li><a href="#">A Series</a>
+													<ul>
+														<li><a href="#">A 140</a></li>
+														<li><a href="#">A 150</a></li>
+														<li><a href="#">A 180 CDI</a></li>
+														<li><a href="#">A 200 CDI</a></li>
+													</ul></li>
+												<li><a href="#">B Series</a>
+													<ul>
+														<li><a href="#">B 140</a></li>
+														<li><a href="#">B 150</a></li>
+														<li><a href="#">B 180 CDI</a></li>
+														<li><a href="#">B Special Series</a>
+															<ul>
+																<li><a href="#">B Extreme</a></li>
+																<li><a href="#">B Jumper</a></li>
+																<li><a href="#">B Raiden</a></li>
+																<li><a href="#">B Subzero</a></li>
+															</ul></li>
+													</ul></li>
+												<li><a href="#">Concept Cars</a></li>
+												<li><a href="#">Best Prototypes</a></li>
+												<li><a href="#">List all other categories</a></li>
+											</ul></li>
+										<li><a href="#">Custom Series</a></li>
+										<li><a href="#">A+ Series for children</a></li>
+										<li><a href="#">B+ Series for women</a></li>
+									</ul></li>
+								<li><a href="#">Chevrolet</a></li>
+								<li><a href="#">Saab Custom models</a></li>
+								<li><a href="#">Fiat</a>
+									<ul>
+										<li><a href="#">Kartal SLX</a></li>
+										<li><a href="#">Dogan 1.6 Turbo</a></li>
+										<li><a href="#">Sahin</a></li>
+										<li><a href="#">Dogan Gorunumlu Sahin</a>
+											<ul>
+												<li><a href="#">1.3 Motor</a></li>
+												<li><a href="#">1.6 Motor</a></li>
+												<li><a href="#">1.8 Motor</a></li>
+												<li><a href="#">2.0 Motor</a></li>
+											</ul></li>
+										<li><a href="#">Serce</a></li>
+										<li><a href="#">Murat 131</a></li>
+									</ul></li>
+							</ul></li>
+						<li><a href="#">Electronic Models</a></li>
+						<li><a href="#">Real Estate</a></li>
+						<li><a href="#">Bruce Lee</a></li>
+						<li><a href="#">Graphics</a></li>
+						<li><a href="#">Smart Phones</a>
+							<ul>
+								<li><a href="#">Apple</a></li>
+								<li><a href="#">Samsung</a></li>
+								<li><a href="#">LG</a></li>
+								<li><a href="#">Sony</a></li>
+								<li><a href="#">HTC</a></li>
+								<li><a href="#">Samsung</a></li>
+								<li><a href="#">Samsung</a></li>
+								<li><a href="#">Other Models</a>
+									<ul>
+										<li><a href="#">First other model</a></li>
+										<li><a href="#">Second other model</a></li>
+									</ul></li>
+								<li><a href="#">Add New Model</a></li>
+							</ul></li>
+					</ul>
+				</div>
+			</div>
+
+
+
+
+
+		</div>
+
+		<div id='sidenav-button-id' class='sidenav-button-class'>
+			<span class='sidenav-button-content-class'>>></span></span>
+		</div>
+	</div>
+
+	<script src="{{ url_for('static', filename='js/SourceCodeSection.js') }}"></script>
+
+
+
+
+
+
+
+	<div id='source-code-main-div'>
+		<div class='source-code-sub-divs'>
+			<div id="close-editor-button">
+			<img style='height:100%;width:100%;' src="https://img.icons8.com/color/48/000000/suitcase.png">
+			</div>
+			<div id='tabs-list-drop-down' class="dropdown">
+				<button  class="dropbtn">CDD</button>
+				<div id="myDropdown" class="dropdown-content">
+				</div>
+			</div>
+
+			<div class='tab-container'>
+
+
+<script>
+
+var tabsDropDownClickflag=0;
+$('#tabs-list-drop-down').on('click',function(){
+	if(tabsDropDownClickflag==0){
+		tabsDropDownClickflag=1;
+		document.getElementById("myDropdown").classList.toggle("show");
+
+		var tabArr=$('.tab');
+		let len=tabArr.length;
+		for(let i=0;i<len;i++){
+			var resultHtml="<div class='tab'>";
+	        resultHtml+="javascript";//$(this).text();
+			resultHtml+="<div class='close-tab' onclick='removeCurrentTab(this)'> </div></div>";
+	        $('#myDropdown').append($(resultHtml));
+		}
+	}
+	else{
+		tabsDropDownClickflag=0;
+		$('#myDropdown').empty();
+		var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (let i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+
+	}
+
+});
+
+
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+}
+
+</script>
+			</div>
+		</div>
+		<link rel='stylesheet'
+			href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.css'>
+		<link href='https://fonts.googleapis.com/css?family=Dosis|Candal' rel='stylesheet' type='text/css'>
+		<link href='https://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.css' rel="stylesheet" type="text/css">
+
+			<link rel='stylesheet'
+				href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/theme/material.css'>
+				<div id='code-editor'>
+					<textarea id="js">
+/**
+ *
+ * <3 ECMAScript 6
+ * http://es6-features.org/
+ *
+ */
+
+class Canvas {
+	constructor() {
+		// create canvas element and 2d context
+		this.el  = document.createElement('canvas')
+		this.ctx = this.el.getContext("2d")
+
+		// resize to fit screen
+		this.resize()
+
+		// select the element where to place the canvas in and place it
+		this.parentEl = document.getElementById('game')
+		this.parentEl.appendChild(this.el)
+
+		// set up frames and a framerate counter
+		this.frameCount = 0
+		this.framerate()
+
+		// update drawings
+		this.update()
+	}
+
+	resize() {
+		// resize to fit screen
+		this.width  = window.innerWidth
+		this.height = window.innerHeight
+		this.el.width  = this.width
+		this.el.height = this.height
+	}
+
+	draw() {
+		// clear screen
+		this.ctx.clearRect(0, 0, this.width, this.height)
+		this.ctx.imageSmoothingEnabled = false
+	}
+
+	update(c = null) {
+		if(c == null) {
+			c = this
+		}
+
+		// everything here will happen every frame
+		c.draw()
+
+		// thanks to the requestionAnimationFrame( this.update ) loop
+		c.frameCount++
+		c.animationFrame = requestAnimationFrame( () => {
+			c.update(c)
+		})
+	}
+
+	pause() {
+		// pause all frames, so pause all drawings on the canvas
+		cancelAnimationFrame(this.animationFrame)
+	}
+
+	framerate() {
+		// calculte framerate every second
+		let c = this
+		setTimeout(function() {
+			c.frameCount = 0
+			c.framerate()
+		}, 998, c)
+	}
+}
+
+function init() {
+	canvas = new Canvas()
+}
+
+window.onload = () => {
+	init()
+}
+			</textarea>
+				</div>
+				<script
+					src='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.js'></script>
+				<script
+					src='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/xml/xml.js'></script>
+				<script
+					src='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/css/css.js'></script>
+				<script
+					src='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/javascript/javascript.js'></script>
+				<script
+					src='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/htmlmixed/htmlmixed.js'></script>
+				<script id="rendered-js">
+      /**
+ *
+ * In this pen:
+ * added scripts with CDN:
+ *   -  //cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.js
+ *   -  //cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/xml/xml.js
+ *   -  //cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/css/css.js
+ *   -  //cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/javascript/javascript.js
+ *   -  //cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/htmlmixed/htmlmixed.js
+ *
+ */
+
+
+// var htmlEditor = CodeMirror.fromTextArea(document.getElementById("html"), {
+// 	lineNumbers: true,
+// 	mode: 'htmlmixed',
+// 	theme: 'material',
+// });
+
+// var cssEditor = CodeMirror.fromTextArea(document.getElementById("css"), {
+// 	lineNumbers: true,
+// 	mode: 'css',
+// 	theme: 'material',
+// });
+
+var jsEditor = CodeMirror.fromTextArea(document.getElementById('js'), {
+	lineNumbers: true,
+	mode: 'javascript',
+	theme: 'material',
+
+});
+$('.CodeMirror').css('height','100%');
+
+    </script>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<form id="individualComponenetCodeCodeForm" autocomplete="off"
+		style="margin: 0px; display: none;">
+		<input type="hidden" name="code" id="individualComponenetCode" />
+	</form>
+
+	<div id='iframewrapperForIndividualComponent'></div>
+	<!--  template area for cmpnent editor -->
+
+	</body>
+
+
+<script type="text/javascript" src="{{ url_for('static', filename='/js/CodeEditor.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='/js/ComponentsContainer.js') }}"></script>
+
+<script type='text/javascript'>
+
+
+
+$(document).ready(function(){
+
+var sourceCodeFilesMap={};
+var tabIdArr=[];
+
+
+
+
+
+
+
+var children='';
+var cloningcontent="<div contenteditable='true' class='source-code-content' style='display:block;'></div>";
+var cloningTabAndBottomContent="<div class='tabs' style='display:block'>";
+    cloningTabAndBottomContent+="<div class='close-btn-class-for-sourcecode'></div>";
+    cloningTabAndBottomContent+="<div  class='tab-bottom' style='display:block;'></div>";
+    cloningTabAndBottomContent+="</div>";
+/* 
+$('.file-click').click(function(){
+
+    $('.tab-bottom').css('display','none');
+
+    var fileName=$(this).text();
+    var filNameWithMinus=fileName.split(' ').join('-');
+
+
+    $('#source-code-main-div').css('display','block');
+
+
+    if(sourceCodeFilesMap[fileName]===1){
+        alert(typeof(sourceCodeFilesMap[fileName]));
+        $('.source-code-content').css('display','none');
+        alert('#source-code-content-'+filNameWithMinus);    
+        $('#source-code-content-'+filNameWithMinus).css('display','block');
+        $('.tab-bottom').css('display','none');
+        var temp='#tab-'+filNameWithMinus;
+        $('#tab-bottom-'+filNameWithMinus).css('display','block');
+    }
+    else
+    {
+        var obj=$(cloningcontent);
+        // make all the other source code contents hide
+        $('.source-code-content').css('display','none');
+        obj.attr('id','source-code-content-'+(filNameWithMinus));
+        obj.css('display','block');
+        $('.source-code-sub-divs').append(obj);
+
+
+
+        sourceCodeFilesMap[fileName]=1;
+        var mapLen=JSON.stringify(Object.keys(sourceCodeFilesMap).length);
+        var left=(mapLen*parseInt($('.tabs').css('width')))+(mapLen * 10);
+        //alert(filNameWithMinus);
+        
+        var tabObj=$(cloningTabAndBottomContent);
+        tabObj.attr('id','tab-'+filNameWithMinus);
+        tabIdArr.push('tab-'+filNameWithMinus);
+        
+        tabObj.css('left',left);
+        tabObj.find('.tab-bottom').attr('id','tab-bottom-'+filNameWithMinus);
+
+        tabObj.find('.close-btn-class-for-sourcecode').attr('id',('close-btn-id-for-sourcecode$'+filNameWithMinus));
+        
+        $('.tabs-container').append(tabObj);
+    if(mapLen !==0){
+        //first time initialisation of bind events with the id s
+        $('.close-btn-class-for-sourcecode').click(function(event){
+            var closeBtnId=this.id;
+            let idForFileName=closeBtnId.split('$');
+            let fileNameWithMinus=idForFileName[1];
+            let fileName=fileNameWithMinus.split('-').join(' ');
+            $('#tab-'+fileNameWithMinus).remove();
+            $('#source-code-content-'+fileNameWithMinus).remove();
+            sourceCodeFilesMap[fileName]=0;
+            var tabId='tab-'+(idForFileName[1]);
+            var indexOf=tabIdArr.indexOf(tabId);
+            tabIdArr.splice(indexOf+1,1);
+
+            //for displaing the next source code content if previous is closed
+            if(indexOf===0){
+                alert(indexOf);
+                alert(tabIdArr[indexOf]);
+            $('#source-code-content'+tabIdArr[indexOf].replace('tab-','')).css('display','block');
+            alert('#source-code-content-'+tabIdArr[indexOf].replace('tab-',''));
+            
+            }
+        });
+      }   
+    }
+});
+ */
+$(".dTree").dTree();
+    
+    
+	/*beginning of navigation  bar */
+ 		var kojinFlag=1;
+        
+        $('.sidenav-button-class , .closebtn').click( function(){
+			if(kojinFlag==0){
+				var sideNavWidth='40%';
+				var sideNavLeft=0;
+				$('#navigation-bar').css('left','0px');
+				kojinFlag=1;
+			}
+			else {
+				var sideNavWidth=10;
+				$('#navigation-bar').css('left','-35%');
+				kojinFlag=0;
+			}		
+		});
+	/*end   navigation bar */
+	/*
+    var tabsEleArr=document.getElementsByClassName('tabs');
+    tabsEleArr[0].addEventListener('click',function(){
+    document.getElementsByClassName('tab-bottom')[0].style.display="block";
+    document.getElementsByClassName('tab-bottom')[1].style.display="none";
+    document.getElementsByClassName('tab-bottom')[2].style.display="none";
+    //document.getElementById('source-code-tab-content').style.display="block";    
+    });
+    
+    
+    tabsEleArr[1].addEventListener('click',function(){
+    document.getElementsByClassName('tab-bottom')[0].style.display="none";
+    document.getElementsByClassName('tab-bottom')[1].style.display="block";
+    document.getElementsByClassName('tab-bottom')[2].style.display="none";
+    
+    });
+    
+    tabsEleArr[2].addEventListener('click',function(){
+    document.getElementsByClassName('tab-bottom')[0].style.display="none";
+    document.getElementsByClassName('tab-bottom')[1].style.display="none";
+    document.getElementsByClassName('tab-bottom')[2].style.display="block";
+    });
+ */    
+    
+    
+});
+
+
+
+
+
+
+</script>
+
+</html>
