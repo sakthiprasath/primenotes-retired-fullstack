@@ -1,0 +1,83 @@
+<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">
+<pre>
+<strong><span dir="rtl"><cite>                                                                                   WOE - AZIMA INTEGRATION</cite></span>
+</strong></pre>
+</div>
+
+<h2><strong>Ondemand :</strong></h2>
+
+<p><strong><a href="https://imgbb.com/"><img alt="WIN-20200508-16-11-02-Pro-2" src="https://i.ibb.co/pZ7jtCY/WIN-20200508-16-11-02-Pro-2.jpg" style="height:218px; width:411px" /></a></strong></p>
+
+<p>The endpoint in ondemand&nbsp; gets the asset details from tsdb apm and with that fetches azima data azima api then return back&nbsp;<br />
+&nbsp;</p>
+
+<hr />
+<hr />
+<h2><strong>Auth Server Project :</strong><br />
+&nbsp;</h2>
+
+<p>Auth server project is a medium&nbsp;to connect to the fusion auth server running at localhost:16000<br />
+for managing&nbsp; <strong><em>tenants,</em></strong> <strong><em>applications,</em></strong> <strong><em>users,&nbsp;super user</em></strong></p>
+
+<pre>
+&quot;&quot;&quot; use
+docker-compose down
+and 
+docker-compose up 
+for restarting the fusion auth
+donot terminate it &quot;&quot;&quot;
+
+
+current  <strong>master-api-key </strong>:   KLLT2NA9QzH4kwnt_KMYTLg4CKl9LiFTc6XixK5S31w
+
+
+these are the credentials used in <big><strong>src/rest/config.py to connect to fusion auth
+</strong></big>
+AUTH_HOST_INTERNAL=http://localhost:19011            #host:port of fusion auth
+AUTH_HOST_EXTERNAL=http://localhost:19011
+AUTH_SERVER_APP_ID=Nothing                           #if we wanto connect to an application inside fusion auth               
+AUTH_API_KEY=master-api-key                          #master_api_key for generated in each time we start the fusion auth server</pre>
+
+<p>STATIC_PATH = os.environ.get(&quot;STATIC_PATH&quot;, &quot;/app&quot;)<br />
+&nbsp;</p>
+
+<hr />
+<hr />
+<h2><strong>Log Channels :</strong></h2>
+
+<hr />
+<hr />
+<h2><strong>Sdks :</strong></h2>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>credentials for connectinfg to auth server :&nbsp;</p>
+
+<p>AuthRequest:<br />
+&nbsp; auth_url: &quot;https://auth.symphonyindai.com&quot;<br />
+&nbsp; resource_url: &quot;http://localhost:16000&quot;<br />
+&nbsp; client_id: &quot;eac39deb-b436-4b07-9a39-b414853bd224&quot;<br />
+&nbsp; client_secret: &quot;DnX9eQiNINPJo6MdLOJX29NqHGbdwH1T&quot;<br />
+&nbsp; username: &quot;azima&quot;<br />
+&nbsp; password: &quot;siai1234&quot;<br />
+&nbsp; redirect_url: &#39;&#39;</p>
+
+<p>MasterApiKey:<br />
+&nbsp; key: &quot;qsy7monu8secD7kPzV4ZEvgkbDLyAEjS6Q8n9pS3gLM&quot;</p>
+
+<hr />
+<hr />
+<h2>WOE :</h2>
+
+<hr />
+<hr />
+<h2>Tsdb-apm :</h2>
+
+<p>&nbsp;</p>
+
+<hr />
+<hr />
+<h2><br />
+&nbsp;</h2>

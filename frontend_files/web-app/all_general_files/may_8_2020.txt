@@ -1,0 +1,151 @@
+<h3><a href="https://timeli.atlassian.net/browse/WOE-345" target="_blank">WOE-345</a>&nbsp; &nbsp;Extend&nbsp;timeli sdk to create and manage tenant&nbsp; &nbsp;---------&gt;&nbsp; Raised PR</h3>
+
+<p><strong>{<br />
+&nbsp;&nbsp; &nbsp;&quot;tenant_name&quot; : &quot;Default&quot;,<br />
+&nbsp; &nbsp; &quot;user_name&quot; : &nbsp;&quot;sakthi&quot;,<br />
+&nbsp;&nbsp; &nbsp;&quot;domain&quot; : &quot;None&quot;,<br />
+&nbsp;&nbsp; &nbsp;&quot;email&quot; : &quot;sakthi@symphonyai.com&quot;,<br />
+&nbsp; &nbsp; &quot;password&quot; : &quot;sakthics25&quot;,<br />
+&nbsp; &nbsp; &quot;data_base&quot; : &quot;None&quot;,<br />
+&nbsp; &nbsp; &quot;schema_name&quot; : &nbsp;&quot;None&quot;,<br />
+&nbsp; &nbsp; &quot;application_name&quot; : &quot;FusionAuth&quot;<br />
+&nbsp;&nbsp; &nbsp;<br />
+}</strong></p>
+
+<h3><a href="https://timeli.atlassian.net/browse/WOE-346" target="_blank">WOE-346</a>&nbsp; Extend timeli sdk to create and manage tenant-application&nbsp;---------&gt; Raised PR</h3>
+
+<h3>Ask deepak about WOE ondemand</h3>
+
+<hr />
+<hr />
+<h2><strong>Further details from deepak after converation :&nbsp;</strong></h2>
+
+<ul>
+	<li>portal user id&nbsp; from request as query paramete</li>
+	<li>based on category diff uri is used in azima calls</li>
+	<li>business&nbsp; group</li>
+	<li>plant</li>
+	<li>area</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p><strong>tenant_id</strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>
+
+<pre>
+7dc071e1-3fd5-4620-8f73-099a59e40281</pre>
+
+<p><strong>portal_user_id</strong></p>
+
+<p>185</p>
+
+<p>&nbsp;</p>
+
+<p><strong>plant_id</strong>&nbsp;(asset_alternate-id)</p>
+
+<p>&quot;plantID&quot;: 1,</p>
+
+<p>&quot;plantUUID&quot;: &quot;cd2b9225-a625-4373-9386-bcac9984ca20&quot;,</p>
+
+<p>&quot;plantName&quot;: &quot;Blackstone&quot;,</p>
+
+<p>&nbsp;</p>
+
+<p><strong>area_id (</strong>asset_alternate-id)</p>
+
+<pre>
+&quot;areaID&quot;: 15,
+&quot;areaUUID&quot;: &quot;2e616882-91f2-48d9-9bab-40e1e308bf57&quot;,
+&quot;areaName&quot;: &quot;Dana Replication Test Area&quot;</pre>
+
+<p>&nbsp;</p>
+
+<p><a href="https://devweb.wptss.com/saaidi/swagger/index.html" target="_blank">https://devweb.wptss.com/saaidi/swagger/index.html</a></p>
+
+<p>user_id : dba</p>
+
+<p>password :&nbsp; vibration</p>
+
+<p>&nbsp;</p>
+
+<p><strong>Program View Routes</strong></p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; # make request to SAAIDI with asset.alternate_id and return the response<br />
+&nbsp; &nbsp; &nbsp; &nbsp; # / azima / {customerId} / {portalUserId} / programView<br />
+&nbsp; &nbsp; &nbsp; &nbsp; # / azima / {customerId} / {portalUserId} / {plantId} / plantView<br />
+&nbsp; &nbsp; &nbsp; &nbsp; # / azima / {customerId} / {portalUserId} / {areaId} / areaView</p>
+
+<p>&nbsp;</p>
+
+<p>current changes&nbsp; :</p>
+
+<p>config-manifest.yaml changes&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>things to do tomorrow:</p>
+
+<p>send to vijay&nbsp;</p>
+
+<p>PR changes</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<hr />
+<hr />
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<h2><strong>Things to learn :</strong></h2>
+
+<ul>
+	<li>
+	<h3><strong>Exception </strong>and errors in python</h3>
+	</li>
+	<li>
+	<h3>resp = requests.get(url, headers={&#39;Authorization&#39;: AzimaAuth.get_token()})</h3>
+	</li>
+	<li><strong>schemas</strong></li>
+	<li>
+	<h3>Fusion auth</h3>
+	</li>
+	<li><strong>bearer token</strong></li>
+	<li>&nbsp;</li>
+	<li>requestiong headers content</li>
+	<li>&nbsp;</li>
+	<li><strong>microservices </strong>- why log--channels is a micro service<br />
+	&nbsp;</li>
+	<li>PEP8 convention</li>
+</ul>
+
+<hr />
+<hr />
+<p>notes :&nbsp;<br />
+&nbsp;</p>
+
+<p><br />
+<br />
+def authRequestFromConfig(configYml):<br />
+&nbsp; &nbsp; stream = open(configYml, &#39;r&#39;, encoding=&quot;utf-8&quot;)<br />
+&nbsp; &nbsp; try:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; cfgDict = load(stream, yaml.FullLoader)<br />
+&nbsp; &nbsp; &nbsp; &nbsp; ar = cfgDict[&#39;AuthRequest&#39;]<br />
+<br />
+<br />
+<br />
+&nbsp;</p>

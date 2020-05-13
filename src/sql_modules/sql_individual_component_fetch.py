@@ -1,4 +1,4 @@
-from src.utils.database_connection_manager import DatabaseConnectionManager
+# from src.utils.database_connection_manager import DatabaseConnectionManager
 import json
 import os
 
@@ -41,14 +41,20 @@ class SQLIndividualComponent():
         return read_file_contents
 
     def result_write(self, file_name, file_content):
-        file_path = '/home/sakthi/custom/sakthi/pro1000_backend/frontend_files/web-app/all_general_files/' + file_name + '.txt'
-        fp = open(file_path,'w')
+        if 'separate_project' in file_name:
+            name_list = file_name.split('-')
+            file_name = name_list[0] + '\\' + name_list[1]
+
+        file_path = 'C:\\Users\\Sakthi\\PycharmProjects\\pro1000_backend\\frontend_files\\web-app\\all_general_files\\' + file_name + '.txt'
+        fp = open(file_path, 'w')
         fp.write(file_content)
 
     def get_file_data(self, file_name):
         read_file_contents = {}
-
-        file_path = '/home/sakthi/custom/sakthi/pro1000_backend/frontend_files/web-app/all_general_files/' + file_name + '.txt'
+        if 'separate_project' in file_name:
+            name_list = file_name.split('-')
+            file_name = name_list[0] + '\\' + name_list[1]
+        file_path = 'C:\\Users\\Sakthi\\PycharmProjects\\pro1000_backend\\frontend_files\\web-app\\all_general_files\\' + file_name + '.txt'
 
         fp = open(file_path, 'r')
         fp_content = fp.read()

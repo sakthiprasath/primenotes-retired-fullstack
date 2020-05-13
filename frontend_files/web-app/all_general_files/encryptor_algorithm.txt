@@ -1,0 +1,33 @@
+<pre>
+import base64
+
+&quot;&quot;&quot;
+keep this algorithm very safe 
+&quot;&quot;&quot;
+
+def func_encode():
+    fp_read = open(&#39;C:\\Users\\Sakthi\\PycharmProjects\\MyProject\\MyFolder\\passwords.txt&#39;,&#39;r&#39;)
+    fp_content = fp_read.read()
+    lines_list = []
+    fp_write = open(&#39;C:\\Users\\Sakthi\\PycharmProjects\\MyProject\\MyFolder\\passwords_encoded.txt&#39;, &#39;w&#39;)
+    for line in fp_content.split(&#39;\n&#39;):
+        b = str(line).lstrip(&#39; &#39;).rstrip(&#39; &#39;).encode(&quot;UTF-8&quot;)
+        encodedString = base64.b64encode(b)
+        fp_write.write(encodedString.decode())
+        fp_write.write(&quot;\n&quot;)
+
+    fp_write.close()
+    fp_read.close()
+
+def func_decode():
+    fp_read = open(&#39;C:\\Users\\Sakthi\\PycharmProjects\\MyProject\\MyFolder\\passwords_encoded.txt&#39;, &#39;r&#39;)
+    lines_list = fp_read.read()
+    for line in lines_list.split(&#39;\n&#39;):
+        print(base64.b64decode(line).decode(&#39;UTF-8&#39;))
+
+    fp_read.close()
+
+
+
+# func_encode()
+func_decode()</pre>

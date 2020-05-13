@@ -260,12 +260,12 @@ static init(){
 	var defStart=$.Deferred();
 	/*map for storing labels of the corresponding id*/
 	self.labelMap={
-			'passwords':['passwords'],
+			'passwords':['passwords','secrets'],
 			'python':['python'],
-			'may_5_2020':['may_5_2020'],
-			'components-table':['Grid','table'],
-			'drop_down':['Dropdown','select'],
-			'filter':['Check Box','filter']
+			'may_8_2020':['may_8_2020'],
+			'encryptor_algorithm':['algorithm.py'],
+			'filter':['Check Box'],
+			'WOE_project':['woe project']
 	};
 	
 	$.Deferred().resolve().then(function(){
@@ -487,11 +487,10 @@ CKEDITOR.instances.editor1.setData(general_text_data);
 },500);
 
 $('#editor1-save-button').attr('main-class',mainClass);
+$('#editor1-save-button').text('save -> '+mainClass);
 
 /*setting eventlistner for save button*/
 //var mainClassName = mainClass;
-
-
 };
 //static _appendHtmlAndEventListner(htmlCode,cssCode,jsCode,headerScriptsCode,mainClass,subClass){
 //	let tempMap={};

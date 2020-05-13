@@ -234,7 +234,7 @@ position: fixed;
     position: relative;
     color: white;
     }
-.tab:active{
+.tab-active{
 border-bottom-color: white;
     border-bottom-style: solid;
 }

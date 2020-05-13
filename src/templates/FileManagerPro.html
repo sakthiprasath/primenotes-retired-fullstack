@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+-->
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>Layout Test Page</title>
+		<script 	src="{{ url_for('static', filename='js/lib/jquery.min.js') }}">
+</script>
+		<script type="text/javascript" src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+		<script type="text/javascript"
+			src="{{ url_for('static', filename='/js/lib/jquery-ui/jquery-latest.js') }}"></script>
+		<script type="text/javascript"
+			src="{{ url_for('static', filename='/js/lib/jquery-ui/jquery-ui-latest.js') }}"></script>
+		<script type="text/javascript"
+			src="{{ url_for('static', filename='/js/lib/jquery-ui/jquery-ui-latest.js') }}"></script>
+
+
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/ComponentEditor.css') }}" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/ResultIframe.css') }}" />
+	 <link rel="stylesheet" href="{{ url_for('static', filename='/css/ComponentEditor.css') }}">
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/button.css') }}" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/NavigationBar.css') }}" />
+
+		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/treeView.css') }}" />
+		<link href='https://fonts.googleapis.com/css?family=Source Code Pro'
+			rel='stylesheet' />
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+
+		<link rel='stylesheet'
+			href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.css'>
+			<link rel='stylesheet'
+				href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/theme/material.css'>
+				<link rel="stylesheet"
+					href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+					<script type="text/javascript" src="{{ url_for('static', filename='js/treeview.js') }}"></script>
+					<script src="https://www.w3schools.com/lib/codemirror_jsx.js"></script>
+
+
+
+					<script type='module'>
+import loadComponentsContainer from './js/ComponentsContainer.js';
+import IndividualComponentEditor from './js/IndividualComponentEditor.js';
+
+window.loadComponentsContainer=loadComponentsContainer;
+window.IndividualComponenrtEditor=IndividualComponentEditor;
+</script>
+
+					<script
+						src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+</head>
+<body>
+
+
+
+
+
+
+		<div class='source-code-sub-divs'>
+			<div id="close-editor-button">
+			<img style='height:100%;width:100%;' src="https://img.icons8.com/color/48/000000/suitcase.png">
+			</div>
+
+			<div class='tab-container'>
+			</div>
+
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+	<div id='pane'>
+		<div class='resizable'>
+			<div class='resizers'>
+				<div class='resizer top-left'></div>
+				<div class='resizer top-right'></div>
+				<div class='resizer bottom-left'></div>
+				<div class='resizer bottom-right'></div>
+				<div id='component-factory-header-icons'>
+					<div id='maximize-component-factory'>
+						<input id='maximize-input-toggle' type='checkbox'
+							style='display: none'> <img for='maximize-input-toggle'
+							class='maximize-icon'
+							src="https://img.icons8.com/material/64/000000/full-screen.png"></img>
+					</div>
+					<div id='close-component-results-container'>
+						<img class='close-component-results-container-icon'
+							src="https://img.icons8.com/color/48/000000/close-window.png">
+					</div>
+
+				</div>
+				<div id="component-factory-title">Component Factory</div>
+				<div id='components-search-container'>
+					<div id='left-and-middle-section'>
+						<div class="left-corner">
+							<div class='left-corner-sub-div'>
+								<div class='component-factory-left-icons'>
+									<img src="https://img.icons8.com/ios/50/000000/select-all.png"
+										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">
+								</div>
+								<div class='component-factory-left-icons'>
+									<img src="https://img.icons8.com/ios/50/000000/select-all.png"
+										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">
+								</div>
+								<div class='component-factory-left-icons'>
+									<img src="https://img.icons8.com/ios/50/000000/select-all.png"
+										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">
+								</div>
+								<div class='component-factory-left-icons'>
+									<img src="https://img.icons8.com/ios/50/000000/select-all.png"
+										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">
+								</div>
+								<div class='component-factory-left-icons'>
+									<img src="https://img.icons8.com/ios/50/000000/select-all.png"
+										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">
+								</div>
+
+							</div>
+						</div>
+
+						<div class='middle-section'>
+							<!-- <div class='search-icon'>
+									<img class='search-img'
+										src="https://img.icons8.com/nolan/64/000000/google-web-search.png">
+								</div> -->
+							<div class="search-container">
+								<input id='search-box' placeholder='search component..'
+									type='text' /> <img src="https://img.icons8.com/color/48/000000/search.png">
+									</button>
+							</div>
+
+							<div class='search-results'></div>
+							<div id='search-results-close-button'>
+								<img id='compo-search-navigation' class="minimize-middle-section" src="https://www.animatedimages.org/data/media/111/animated-arrow-image-0104.gif" border="0" alt="animated-arrow-image-0104" />
+							</div>
+						</div>
+					</div>
+
+					<div id='right-side-components'>
+						<div id='right-side-components-container'>
+
+						<button id="editor1-save-button" class="button">save
+						</button>
+
+
+<!--https://codepen.io/edsonperotoni/pen/OJJZzZq?editors=1010-->
+						<textarea id='editor1' contenteditable>
+						  <h1>A Heading.</h1>
+						  <p>Some text that you can format. Try inserting an image or a link.</p>
+						</textarea>
+
+						</div>
+						<div class='corner'></div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+<script type="text/javascript" src="{{ url_for('static', filename='/js/CodeEditor.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='/js/ComponentsContainer.js') }}"></script>
+
+</html>

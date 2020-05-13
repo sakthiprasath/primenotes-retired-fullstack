@@ -110,7 +110,7 @@ window.IndividualComponenrtEditor=IndividualComponentEditor;
 		<div id='up-missile' onclick="closeNav()" class='up-missile'></div>
 		<div id='down-missile' onclick="openNav()" class='up-missile'></div>
 		<div id='hider-for-resize'></div>
-		<iframe id='result-iframe' src='https://codepen.io/'></iframe>
+<!--		<iframe id='result-iframe' src=''></iframe>-->
 		<div id='iframe-dragger-button'></div>
 	</div>
 
@@ -239,10 +239,13 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
 							</div>
 						</div>
 					</div>
+
 					<div id='right-side-components'>
 						<div id='right-side-components-container'>
 
-						<button id="editor1-save-button">save</button>
+						<button id="editor1-save-button" class="button">save
+						</button>
+
 
 <!--https://codepen.io/edsonperotoni/pen/OJJZzZq?editors=1010-->
 						<textarea id='editor1' contenteditable>
@@ -396,10 +399,15 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
 		<div class="sidenav">
 			<a href="javascript:void(0)" class="closebtn">&times;</a>
 			<div class='source-code-tab-content'>
+
+
+
+
+				<!-- tree part starts here -->
 				<div class="dTree">
 					<ul>
-						<li><a href="#" class='file-click'>Site</a></li>
-						<li><a href="#" class='file-click'>About the Web Site</a></li>
+						<li><a href="#" class='file-click' filename="site123" >Site</a></li>
+						<li><a href="#" class='file-click' filename="about123">About the Web Site</a></li>
 						<li><a href="#" class='file-click'>Contact Us</a></li>
 						<li><a href="#" class='file-click'>Cars</a>
 							<ul>
@@ -479,6 +487,8 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
 							</ul></li>
 					</ul>
 				</div>
+				<!-- tree part ends here -->
+
 			</div>
 
 
@@ -564,86 +574,11 @@ function myFunction() {
 				href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/theme/material.css'>
 				<div id='code-editor'>
 					<textarea id="js">
-/**
- *
- * <3 ECMAScript 6
- * http://es6-features.org/
- *
- */
 
-class Canvas {
-	constructor() {
-		// create canvas element and 2d context
-		this.el  = document.createElement('canvas')
-		this.ctx = this.el.getContext("2d")
 
-		// resize to fit screen
-		this.resize()
 
-		// select the element where to place the canvas in and place it
-		this.parentEl = document.getElementById('game')
-		this.parentEl.appendChild(this.el)
 
-		// set up frames and a framerate counter
-		this.frameCount = 0
-		this.framerate()
-
-		// update drawings
-		this.update()
-	}
-
-	resize() {
-		// resize to fit screen
-		this.width  = window.innerWidth
-		this.height = window.innerHeight
-		this.el.width  = this.width
-		this.el.height = this.height
-	}
-
-	draw() {
-		// clear screen
-		this.ctx.clearRect(0, 0, this.width, this.height)
-		this.ctx.imageSmoothingEnabled = false
-	}
-
-	update(c = null) {
-		if(c == null) {
-			c = this
-		}
-
-		// everything here will happen every frame
-		c.draw()
-
-		// thanks to the requestionAnimationFrame( this.update ) loop
-		c.frameCount++
-		c.animationFrame = requestAnimationFrame( () => {
-			c.update(c)
-		})
-	}
-
-	pause() {
-		// pause all frames, so pause all drawings on the canvas
-		cancelAnimationFrame(this.animationFrame)
-	}
-
-	framerate() {
-		// calculte framerate every second
-		let c = this
-		setTimeout(function() {
-			c.frameCount = 0
-			c.framerate()
-		}, 998, c)
-	}
-}
-
-function init() {
-	canvas = new Canvas()
-}
-
-window.onload = () => {
-	init()
-}
-			</textarea>
+					</textarea>
 				</div>
 				<script
 					src='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.js'></script>
@@ -681,12 +616,12 @@ window.onload = () => {
 // 	theme: 'material',
 // });
 
-var jsEditor = CodeMirror.fromTextArea(document.getElementById('js'), {
-	lineNumbers: true,
-	mode: 'javascript',
-	theme: 'material',
+<!--var jsEditor = CodeMirror.fromTextArea(document.getElementById('js'), {-->
+<!--	lineNumbers: true,-->
+<!--	mode: 'javascript',-->
+<!--	theme: 'material',-->
 
-});
+<!--});-->
 $('.CodeMirror').css('height','100%');
 
     </script>

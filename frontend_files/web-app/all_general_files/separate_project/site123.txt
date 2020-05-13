@@ -1,0 +1,150 @@
+
+
+
+WOE-345   Extend timeli sdk to create and manage tenant   --------->  Raised PR
+{
+    "tenant_name" : "Default",
+    "user_name" :  "sakthi",
+    "domain" : "None",
+    "email" : "sakthi@symphonyai.com",
+    "password" : "sakthics25",
+    "data_base" : "None",
+    "schema_name" :  "None",
+    "application_name" : "FusionAuth"
+    
+}
+
+WOE-346  Extend timeli sdk to create and manage tenant-application ---------> Raised PR
+Ask deepak about WOE ondemand
+Further details from deepak after converation : 
+portal user id  from request as query paramete
+based on category diff uri is used in azima calls
+business  group
+plant
+area
+
+
+tenant_id                    
+
+7dc071e1-3fd5-4620-8f73-099a59e40281
+portal_user_id
+
+185
+
+
+
+plant_id (asset_alternate-id)
+
+"plantID": 1,
+
+"plantUUID": "cd2b9225-a625-4373-9386-bcac9984ca20",
+
+"plantName": "Blackstone",
+
+
+
+area_id (asset_alternate-id)
+
+"areaID": 15,
+"areaUUID": "2e616882-91f2-48d9-9bab-40e1e308bf57",
+"areaName": "Dana Replication Test Area"
+
+
+https://devweb.wptss.com/saaidi/swagger/index.html
+
+user_id : dba
+
+password :  vibration
+
+
+
+Program View Routes
+
+        # make request to SAAIDI with asset.alternate_id and return the response
+        # / azima / {customerId} / {portalUserId} / programView
+        # / azima / {customerId} / {portalUserId} / {plantId} / plantView
+        # / azima / {customerId} / {portalUserId} / {areaId} / areaView
+
+
+
+current changes  :
+
+config-manifest.yaml changes 
+
+
+
+things to do tomorrow:
+
+send to vijay 
+
+PR changes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Things to learn :
+Exception and errors in python
+resp = requests.get(url, headers={'Authorization': AzimaAuth.get_token()})
+schemas
+Fusion auth
+bearer token
+
+requestiong headers content
+
+microservices - why log--channels is a micro service
+
+PEP8 convention
+notes : 
+
+
+
+
+def authRequestFromConfig(configYml):
+    stream = open(configYml, 'r', encoding="utf-8")
+    try:
+        cfgDict = load(stream, yaml.FullLoader)
+        ar = cfgDict['AuthRequest']
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

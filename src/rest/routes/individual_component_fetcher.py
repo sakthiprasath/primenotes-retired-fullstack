@@ -4,7 +4,7 @@ from flask import jsonify , after_this_request
 from flask import request
 import json
 from src.sql_modules.sql_individual_component_fetch import  SQLIndividualComponent
-from src.utils.database_connection_manager import get_test_tenant_details
+# from src.utils.database_connection_manager import get_test_tenant_details
 
 
 individual_component_fetcher_routes = Blueprint('individual_component_fetcher', __name__, url_prefix='/api/individual-component-fetch')
@@ -38,6 +38,7 @@ def save_file(file_name):
     try:
         data = request.get_json()
         SQLIndividualComponent().result_write(file_name,data)
+        return jsonify('save_success')
     except Exception as e:
         return print(e)
 
