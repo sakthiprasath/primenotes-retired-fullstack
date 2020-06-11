@@ -1,0 +1,10 @@
+<p><strong>Postgres sql :&nbsp;</strong></p>
+
+<p>command for importing db sql file to local database</p>
+
+<div style="background:#eeeeee;border:1px solid #cccccc;padding:5px 10px;">psql -h localhost -p 5433 --username=postgres <strong>&lt;kbr_db&gt;</strong>&nbsp; &lt;&nbsp; file_path&nbsp;</div>
+
+<p><strong>note:&nbsp; &lt;kbr_db&gt;&nbsp;&nbsp;&nbsp;must be created previously</strong></p>
+
+<hr />
+<p>&nbsp;</p>

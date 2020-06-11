@@ -18,6 +18,11 @@ function get_editor_file(curr){
 }
 
 function save_editor_file(curr){
+        class_list = $(curr).parent().children().attr('class').split(' ')
+        if (class_list.indexOf('tab-active') < 0){
+            return
+        }
+
         file_name = 'separate_project-'+ $(curr).parent().text();
         savable_data = code_mirror_editor.getValue();
         var defObj=$.Deferred();
@@ -76,19 +81,22 @@ var defObj=$.Deferred();
 };
 $(document).ready(function(){
 
-//	for(let i=0;i<1;i++){
-//	    alert();
-//	   buildTab('summa_for_creating_eventlistner');
-//	}
-
-
-
-	
-
 	$('.file-click').on('click',function(){
 	file_name = $(this).attr('filename');
 	buildTab(file_name);
 
 	});
+
+
+
+
+
+
+
+
+
+
+
+
 	
 });

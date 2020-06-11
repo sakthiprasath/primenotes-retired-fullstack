@@ -1,0 +1,38 @@
+<h2><ins>Types of data :&nbsp;</ins></h2>
+
+<p>Numerical&nbsp; &nbsp; &nbsp;integer values,some numbers,</p>
+
+<p>categorial&nbsp; &nbsp; &nbsp;tomato old,&nbsp; potato medium , onion new ,<br />
+Note here&nbsp; only category is given</p>
+
+<p>ordinal&nbsp; &nbsp; &nbsp;<strong>[</strong> both numerical and categorial <strong>]&nbsp;</strong>&nbsp;&nbsp;tomato old 10 kg,&nbsp; potato medium 5kg, onion new 11kg</p>
+
+<p>&nbsp;</p>
+
+<h2><strong>Mean,Median,Mode :&nbsp;</strong></h2>
+
+<h3>Mean :<br />
+0,4,2,3</h3>
+
+<p>average of all : (0+2+3+4)/4</p>
+
+<p>Median :<br />
+Sort and takes the middle value</p>
+
+<p>0,2,3,4<br />
+if even number of values is found then take average of two and use as median<br />
+2+3/2 = 2.5 as median<br />
+<br />
+Mode:<br />
+maximum count of each&nbsp;</p>
+
+<p>input : 0,4,2,3,4<br />
+0:1 ,&nbsp; 4:2,&nbsp; 2:1,&nbsp; 3:1<br />
+mode is 0</p>
+
+<p><br />
+<br />
+<br />
+&nbsp;</p>
+
+<p>&nbsp;</p>

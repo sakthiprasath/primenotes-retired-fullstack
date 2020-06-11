@@ -1,0 +1,59 @@
+<p>sakthi prsaath<br />
+----------------------------------------------------------------------------<br />
+complete docker video :&nbsp;<br />
+----------------------------------------------------------------------------<br />
+https://www.youtube.com/watch?v=rq2aKItyeqo</p>
+
+<p><br />
+docker exec -it gateway_nginx /bin/bash</p>
+
+<p><br />
+docker container run&nbsp;<br />
+always create new instance</p>
+
+<p>docker container start<br />
+always create starts existing instance</p>
+
+<p>docker container logs container_id</p>
+
+<p>docker container rm container_id<br />
+for removing a container</p>
+
+<p>docker container ls -a<br />
+for listing all containers running and not running</p>
+
+<p>docker build -t sp-python-project .<br />
+for building docker image for the project sp-python-project<br />
+Note : it finds the docker file in the project and builds it</p>
+
+<p>&nbsp;docker container stop &lt;container-id&gt;</p>
+
+<p>&nbsp;docker container start &lt;container-id&gt;</p>
+
+<p><br />
+docker run -d --name sp-python-project -p 80:80 -p 443:443 &nbsp;sp-python-project<br />
+for running docker-image and linking a specific port&nbsp;</p>
+
+<p>./../nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf</p>
+
+<p><br />
+This includes the&nbsp;</p>
+
+<p>exported ports,&nbsp;<br />
+the networks they belong to,&nbsp;<br />
+the volumes mapped to it,&nbsp;<br />
+the environment variables,&nbsp;</p>
+
+<p>and everything else that can be configured with the docker run command.</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>for viewing logs :</p>
+
+<p>docker logs -f &lt;docker_name&gt;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>

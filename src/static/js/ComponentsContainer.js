@@ -259,13 +259,20 @@ static init(){
 	self.testArr=['drop_down','input','components-table','split-bar','filter'];
 	var defStart=$.Deferred();
 	/*map for storing labels of the corresponding id*/
+
 	self.labelMap={
+	        /*file_name : ['display_name']*/
 			'passwords':['passwords','secrets'],
 			'python':['python'],
-			'may_8_2020':['may_8_2020'],
-			'encryptor_algorithm':['algorithm.py'],
-			'filter':['Check Box'],
-			'WOE_project':['woe project']
+			'ML':['ML','ai','deep learning'],
+			'notes':['notes'],
+			'git':['git commands','bitbucket commands'],
+			'encryptor_algorithm':['algorithm'],
+			'docker':['docker'],
+			'postgres':['postgres sql'],
+			'WOE_project':['azima integration(woe)'],
+			'personal':['personal','plan'],
+			'partner_in_crime':['partner_in_crime']
 	};
 	
 	$.Deferred().resolve().then(function(){
@@ -349,7 +356,7 @@ static init(){
                         data: JSON.stringify(savable_data),
                         type : "POST",
                         contentType: 'application/json;charset=UTF-8',
-                        success : function(response){
+                        success : function(response){``
                             return defObj.resolve(response);
                         }
                     });

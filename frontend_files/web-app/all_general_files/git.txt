@@ -1,0 +1,10 @@
+<p>&nbsp;</p>
+
+<h2><strong>creating branch locally and pushing to remote</strong> :&nbsp;</h2>
+
+<ul>
+	<li>git checkout -b&nbsp;branch_name</li>
+	<li>git add -u</li>
+	<li>git commit -m &quot;some message&quot;</li>
+	<li>git push --set-upstream origin branch_name</li>
+</ul>

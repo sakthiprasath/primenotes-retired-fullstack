@@ -1,15 +1,47 @@
-<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">
+<div data-darkreader-inline-bgcolor="" data-darkreader-inline-bgimage="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-darkreader-inline-border-right="" data-darkreader-inline-border-top="" style="background: rgb(238, 238, 238); border: 1px solid rgb(204, 204, 204); padding: 5px 10px; --darkreader-inline-bgimage: initial; --darkreader-inline-bgcolor:#2a2825; --darkreader-inline-border-top:#46433d; --darkreader-inline-border-right:#46433d; --darkreader-inline-border-bottom:#46433d; --darkreader-inline-border-left:#46433d;">
 <pre>
 <strong><span dir="rtl"><cite>                                                                                   WOE - AZIMA INTEGRATION</cite></span>
 </strong></pre>
 </div>
 
+<h2><strong>WOE </strong></h2>
+
 <h2><strong>Ondemand :</strong></h2>
 
 <p><strong><a href="https://imgbb.com/"><img alt="WIN-20200508-16-11-02-Pro-2" src="https://i.ibb.co/pZ7jtCY/WIN-20200508-16-11-02-Pro-2.jpg" style="height:218px; width:411px" /></a></strong></p>
 
-<p>The endpoint in ondemand&nbsp; gets the asset details from tsdb apm and with that fetches azima data azima api then return back&nbsp;<br />
+<p>The endpoint in ondemand&nbsp; gets the asset details from tsdb apm and with that fetches azima data&nbsp; from azima api then return back&nbsp;</p>
+
+<p><big><strong>CREDENTIALS (for connecting with azima)&nbsp;: </strong></big></p>
+
+<p>SAAIDI_URI&nbsp; :&nbsp; &nbsp;<a href="https://devweb.wptss.com/saaidi/swagger/index.html" target="_blank">https://devweb.wptss.com/saaidi/swagger/index.html</a><br />
+SAAIDI_USER: dba&nbsp;&nbsp;<br />
+SAAIDI_PASSWORD: vibration</p>
+
+<p>EUREKA_SDK_CREDENTIALS: &#39;eydBdXRoUmVxdWVzdCc6IHsnYXV0aF91cmwnOiAnaHR0cHM6Ly9hdXRoLnN5bXBob255aW5kYWkuY29tJywgJ3Jlc291cmNlX3VybCc6ICdodHRwOi8vbG9jYWxob3N0OjE2MDAwLycsICdjbGllbnRfaWQnOiAnZWFjMzlkZWItYjQzNi00YjA3LTlhMzktYjQxNDg1M2JkMjI0JywgJ2NsaWVudF9zZWNyZXQnOiAnRG5YOWVRaU5JTlBKbzZNZExPSlgyOU5xSEdiZHdIMVQnLCAndXNlcm5hbWUnOiAnYXppbWEnLCAncGFzc3dvcmQnOiAnc2lhaTEyMzQnLCAncmVkaXJlY3RfdXJsJzogJyd9fQ==&#39;<br />
 &nbsp;</p>
+
+<p>temporary :&nbsp;</p>
+
+<p>tenant_id for customer_id 100 is</p>
+
+<pre>
+7dc071e1-3fd5-4620-8f73-099a59e40281</pre>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><strong>docker-compose :</strong></p>
+
+<p>current master key :</p>
+
+<p>a3X1TG-RY3A21IEDNhmPDCHPgtkaiEOiTAxzs9sU6qw</p>
+
+<p>lambda :<br />
+1ddd396e-1e6f-4dc8-bc98-b08325f53aa6</p>
+
+<p>&nbsp;</p>
 
 <hr />
 <hr />
@@ -31,19 +63,27 @@ donot terminate it &quot;&quot;&quot;
 current  <strong>master-api-key </strong>:   KLLT2NA9QzH4kwnt_KMYTLg4CKl9LiFTc6XixK5S31w
 
 
-these are the credentials used in <big><strong>src/rest/config.py to connect to fusion auth
-</strong></big>
+These are the credentials used in <big><strong>src/rest/config.py to connect to fusion auth</strong></big>
 AUTH_HOST_INTERNAL=http://localhost:19011            #host:port of fusion auth
 AUTH_HOST_EXTERNAL=http://localhost:19011
 AUTH_SERVER_APP_ID=Nothing                           #if we wanto connect to an application inside fusion auth               
 AUTH_API_KEY=master-api-key                          #master_api_key for generated in each time we start the fusion auth server</pre>
 
-<p>STATIC_PATH = os.environ.get(&quot;STATIC_PATH&quot;, &quot;/app&quot;)<br />
-&nbsp;</p>
+<p>STATIC_PATH = os.environ.get(&quot;STATIC_PATH&quot;, &quot;/app&quot;)</p>
+
+<p>&nbsp;</p>
+
+<p><strong>current Docker image:</strong></p>
+
+<p>image: timeli/auth-server:20-0501-0328</p>
 
 <hr />
 <hr />
-<h2><strong>Log Channels :</strong></h2>
+<h2><strong>Log Channels :</strong><br />
+<br />
+<br />
+<br />
+&nbsp;</h2>
 
 <hr />
 <hr />
@@ -69,15 +109,166 @@ AUTH_API_KEY=master-api-key                          #master_api_key for generat
 
 <hr />
 <hr />
-<h2>WOE :</h2>
+<h2>Tsdb-apm :</h2>
+
+<ul>
+	<li>Used for asset operations</li>
+	<li>Ingesting measurements</li>
+</ul>
+
+<p><big><strong>DB-Connection :</strong></big></p>
+
+<p>currently db_config.yaml value is taken for active db as of may 13,2020<br />
+previously config.override.yaml value is taken</p>
+
+<p>docker-compose up -d timescale-db</p>
+
+<p><br />
+<big><strong>Redis cache :</strong></big></p>
+
+<p>docker-compose up -d redis<br />
+&nbsp;</p>
+
+<h3><strong><big>Note :&nbsp;(problems faced previously)</big></strong></h3>
+
+<p>if the tsdb-server does not start&nbsp;<br />
+do docker-compose down for timescale-db and up .</p>
+
+<p>if tsdb-server not started then delete the existing tsdb compose data in volume list.[warning if deleted all previous dbs will be&nbsp;deleted]<br />
+&nbsp;</p>
 
 <hr />
 <hr />
-<h2>Tsdb-apm :</h2>
+<h2><strong>Data-store-connectors:&nbsp;</strong></h2>
 
 <p>&nbsp;</p>
 
+<p>send connection string :</p>
+
+<p>&nbsp;&quot;Endpoint=sb://siai-eventhubs-test.servicebus.windows.net/;SharedAccessKeyName=send;SharedAccessKey=+6fBVaxz/1WLEeeg/5bTZCWUxXrDWnwfiGIb+glraqc=;EntityPath=topic-sakthi&quot;<br />
+<br />
+receive connection string:&nbsp;</p>
+
+<p>Endpoint=sb://siai-eventhubs-test.servicebus.windows.net/;SharedAccessKeyName=listen;SharedAccessKey=MtibW/kUwOit3VwLxZ916ZTmpB/yBAXGvy4o4z7xem8=;EntityPath=topic-sakthi</p>
+
 <hr />
 <hr />
-<h2><br />
-&nbsp;</h2>
+<h3><strong>WOE docker-compose :</strong><br />
+create super user :</h3>
+
+<h3><strong>PUT :&nbsp; &nbsp;http://localhost:16000/api/auth/tenant/user/create-super-user</strong></h3>
+
+<p>{<br />
+&nbsp; &nbsp; &quot;email&quot;: &quot;prasath@symphonyai.com&quot;,<br />
+&nbsp; &nbsp; &quot;password&quot;: &quot;siaipass1234&quot;<br />
+}</p>
+
+<h2>output :&nbsp;</h2>
+
+<h2><strong>user &#39;s credentials :&nbsp;</strong></h2>
+
+<p>{</p>
+
+<p>&nbsp;&nbsp;&quot;internal_app&quot;:&nbsp;{</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;client_id&quot;:&nbsp;&quot;42078fcd-919e-4c34-8fac-93adf6309a41&quot;,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;client_secret&quot;:&nbsp;&quot;SDHYgwXv1hB8YRrbHWErwLS_ZML56ohU1QYVipItJXY&quot;,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;domain&quot;:&nbsp;&quot;auth.symphonyindai.com&quot;,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;id&quot;:&nbsp;&quot;42078fcd-919e-4c34-8fac-93adf6309a41&quot;,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;name&quot;:&nbsp;&quot;APM&nbsp;Internal&nbsp;Apps&quot;,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;redirect_urls&quot;:&nbsp;[</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;https://auth.symphonyindai.com/redirect&quot;</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;],</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;tenant_id&quot;:&nbsp;&quot;e2718dfe-b5ae-459a-b2e0-355bd4916343&quot;</p>
+
+<p>&nbsp;&nbsp;},</p>
+
+<p>&nbsp;&nbsp;&quot;super_user&quot;:&nbsp;{</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;email&quot;:&nbsp;&quot;prasath@symphonyai.com&quot;,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;id&quot;:&nbsp;&quot;2ee176bc-b82c-402c-b343-98c37c5e68d8&quot;,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;name&quot;:&nbsp;null,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;password&quot;:&nbsp;null,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;super_user&quot;:&nbsp;false,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;tenant_id&quot;:&nbsp;&quot;e2718dfe-b5ae-459a-b2e0-355bd4916343&quot;,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;user_name&quot;:&nbsp;&quot;super-user&quot;</p>
+
+<p>&nbsp;&nbsp;}</p>
+
+<p>}</p>
+
+<hr />
+<h2>tenants credentials :&nbsp;</h2>
+
+<p>{</p>
+
+<p>&nbsp;&nbsp;&quot;application&quot;:&nbsp;{</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;client_id&quot;:&nbsp;&quot;7e20a1f2-b493-4d55-ab79-10fb041a6f97&quot;,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;client_secret&quot;:&nbsp;&quot;DdFU0_Vrzjw0INzc9glh0d3O4qzk3oGoIKmL7GR2v8A&quot;,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;domain&quot;:&nbsp;&quot;localhost.azima&quot;,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;id&quot;:&nbsp;&quot;7e20a1f2-b493-4d55-ab79-10fb041a6f97&quot;,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;name&quot;:&nbsp;&quot;azima-apm&quot;,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;redirect_urls&quot;:&nbsp;[</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;https://localhost.azima/api/auth/redirect&quot;</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;],</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;tenant_id&quot;:&nbsp;&quot;b49a1fa4-c4a9-4509-b3e1-e0a3f0757b60&quot;</p>
+
+<p>&nbsp;&nbsp;},</p>
+
+<p>&nbsp;&nbsp;&quot;tenant&quot;:&nbsp;{</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;data_base&quot;:&nbsp;&quot;azima_db&quot;,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;id&quot;:&nbsp;&quot;b49a1fa4-c4a9-4509-b3e1-e0a3f0757b60&quot;,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;name&quot;:&nbsp;&quot;azima&quot;,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;schema_name&quot;:&nbsp;&quot;azima&quot;</p>
+
+<p>&nbsp;&nbsp;},</p>
+
+<p>&nbsp;&nbsp;&quot;user&quot;:&nbsp;{</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;email&quot;:&nbsp;&quot;prasath@symphonyai.com&quot;,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;id&quot;:&nbsp;&quot;6acba23b-fce9-40f1-9a08-6cb39c6942ae&quot;,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;name&quot;:&nbsp;null,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;password&quot;:&nbsp;null,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;super_user&quot;:&nbsp;false,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;tenant_id&quot;:&nbsp;&quot;b49a1fa4-c4a9-4509-b3e1-e0a3f0757b60&quot;,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;user_name&quot;:&nbsp;&quot;super-user&quot;</p>
+
+<p>&nbsp;&nbsp;}</p>
+
+<p>}</p>
+
+<hr />
+<p>&nbsp;</p>

@@ -536,8 +536,8 @@ $('#tabs-list-drop-down').on('click',function(){
 		let len=tabArr.length;
 		for(let i=0;i<len;i++){
 			var resultHtml="<div class='tab'>";
-	        resultHtml+="javascript";//$(this).text();
-			resultHtml+="<div class='close-tab' onclick='removeCurrentTab(this)'> </div></div>";
+	        resultHtml+= $(tabArr[i]).text();
+			resultHtml+= "<div class='close-tab' onclick='removeCurrentTab(this)'> </div></div>";
 	        $('#myDropdown').append($(resultHtml));
 		}
 	}

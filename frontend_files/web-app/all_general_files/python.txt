@@ -36,13 +36,154 @@ if __name__== &quot;__main__&quot;:
 
 <p>&nbsp;</p>
 
-<p><strong>Common python packages :</strong></p>
+<p><strong>Common python packages,modules, libraries :</strong></p>
 
-<p>Requests</p>
+<ul>
+	<li>Requests</li>
+	<li>yaml</li>
+	<li>json</li>
+	<li>math</li>
+</ul>
 
-<h2><br />
-<br />
-Response Codes:</h2>
+<h2><strong>Python data types :</strong></h2>
+
+<table>
+	<tbody>
+		<tr>
+			<td>Text Type:</td>
+			<td><code>str</code></td>
+		</tr>
+		<tr>
+			<td>Numeric Types:</td>
+			<td><code>int</code>,&nbsp;<code>float</code>,&nbsp;<code>complex</code></td>
+		</tr>
+		<tr>
+			<td>Sequence Types:</td>
+			<td><code>list</code>,&nbsp;<code>tuple</code>,&nbsp;<code>range</code></td>
+		</tr>
+		<tr>
+			<td>Mapping Type:</td>
+			<td><code>dict</code></td>
+		</tr>
+		<tr>
+			<td>Set Types:</td>
+			<td><code>set</code>,&nbsp;<code>frozenset</code></td>
+		</tr>
+		<tr>
+			<td>Boolean Type:</td>
+			<td><code>bool</code></td>
+		</tr>
+		<tr>
+			<td>Binary Types:</td>
+			<td><code>bytes</code>,&nbsp;<code>bytearray</code>,&nbsp;<code>memoryview</code></td>
+		</tr>
+	</tbody>
+</table>
+
+<h2><strong>Printitng the list :</strong></h2>
+
+<pre>
+#!/usr/bin/python
+
+list = [ &#39;abcd&#39;, 786 , 2.23, &#39;john&#39;, 70.2 ]
+tinylist = [123, &#39;john&#39;]
+
+print   (list)          # Prints complete list
+print (list[0])       # Prints first element of the list
+print (list[1:3])     # Prints elements starting from 2nd till 3rd
+print (list[2:])      # Prints elements starting from 3rd element
+print (tinylist * 2)  # Prints list two times
+print (list + tinylist) # Prints concatenated lists</pre>
+
+<p>Note :</p>
+
+<p>The same can be used for tuples&nbsp;with&nbsp;</p>
+
+<p>list = (&nbsp;&#39;abcd&#39;, 786 , 2.23, &#39;john&#39;, 70.2 )</p>
+
+<p>tinylist = (123, &#39;john&#39;)</p>
+
+<p>list is mutable but tuples are not</p>
+
+<hr />
+<hr />
+<h2>Types of printing string :</h2>
+
+<pre>
+<code>print(&quot;Total score for %s is %s&quot; % (name, score))</code></pre>
+
+<p>&nbsp;</p>
+
+<pre>
+<code>print(&quot;Total score for %(n)s is %(s)s&quot; % {&#39;n&#39;: name, &#39;s&#39;: score})</code>
+</pre>
+
+<pre>
+<code>print(&quot;Total score for {} is {}&quot;.format(name, score))</code>
+</pre>
+
+<pre>
+<code>print(&quot;Total score for {0} is {1}&quot;.format(name, score))</code>
+</pre>
+
+<pre>
+<code>print(&quot;Total score for {n} is {s}&quot;.format(n=name, s=score))</code>
+</pre>
+
+<pre>
+<code>print(&quot;Total score for &quot; + str(name) + &quot; is &quot; + str(score))</code>
+</pre>
+
+<pre>
+<code>print(&quot;Total score for&quot;, name, &quot;is&quot;, score)
+print(f&#39;Total score for {name} is {score}&#39;)</code></pre>
+
+<p><code>print(&quot;Total score for &quot;, name, &quot; is &quot;, score, sep=&#39;&#39;)</code></p>
+
+<hr />
+<hr />
+<p>Print the data type of the variable x:</p>
+
+<h3><strong>type()</strong></h3>
+
+<p>math library :&nbsp;</p>
+
+<p>math.floor(25/3)&nbsp; &nbsp;or&nbsp; 25//3&nbsp;</p>
+
+<p>math.ceil(25/3)</p>
+
+<hr />
+<h2>repr():</h2>
+
+<h3>app_logger.debug(&quot;Eureka request successful for tenantId {}, message: {}&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.format(tenant_id, repr(message_copy)[:200]))</h3>
+
+<hr />
+<h3>#Rest of the args<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if message:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; func_args.extend(list(message.values()))</h3>
+
+<p>&nbsp;</p>
+
+<hr />
+<h3>Converting List contents to dict :</h3>
+
+<ul>
+	<li>
+	<pre>
+<code>data = {smallItem:smallItem for smallItem in bigList}</code></pre>
+	</li>
+	<li>
+	<pre>
+<code>data = dict((smallItem, smallItem) for smallItem in bigList)</code></pre>
+	</li>
+	<li><code>&gt;&gt;&gt; bigList = [1, 2, 3, 4, 5]<br />
+	&gt;&gt;&gt; dict(zip(bigList, bigList))<br />
+	{1: 1, 2: 2, 3: 3, 4: 4, 5: 5}</code></li>
+</ul>
+
+<hr />
+<h2>Response Codes:</h2>
 
 <h3>200 - for get&nbsp; requests - OK&nbsp;</h3>
 
@@ -51,10 +192,27 @@ Response Codes:</h2>
 <p>401 - unauthorised - user credentials in autherisation header is wrong</p>
 
 <p>400 - Bad request Error<br />
-&nbsp;</p>
+404 - the requested url&nbsp; not found on the server</p>
 
-<p>&nbsp;</p>
+<hr />
+<h2><strong>Things to learn :</strong></h2>
 
-<h2><br />
-<br />
-&nbsp;</h2>
+<ul>
+	<li>
+	<h3><strong>Exception </strong>an d errors in python</h3>
+	</li>
+	<li>
+	<h3>resp = requests.get(url, headers={&#39;Authorization&#39;: AzimaAuth.get_token()})</h3>
+	</li>
+	<li><strong>schemas</strong></li>
+	<li>
+	<h3>Fusion auth</h3>
+	</li>
+	<li><strong>bearer token</strong></li>
+	<li>&nbsp;</li>
+	<li>requestiong headers content</li>
+	<li>&nbsp;</li>
+	<li><strong>microservices </strong>- why log--channels is a micro service<br />
+	&nbsp;</li>
+	<li>PEP8 convention</li>
+</ul>
