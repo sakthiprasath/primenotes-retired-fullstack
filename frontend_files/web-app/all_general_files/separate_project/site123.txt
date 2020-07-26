@@ -1,69 +1,165 @@
-version: '3
+more tickets in review/merged other than jiira board
+woe-746
+woe-747
+-----------------------------------------------------------
+user import form watchman end validate access token error
+-----------------------------------------------------------
 
-services:
-  elasticsearch:
-    build:
-      context: elasticsearch/
-      args:
-        ELK_VERSION: 7.6.2
-    volumes:
-      - type: bind
-        source: ./elasticsearch/config/elasticsearch.yml
-        target: /usr/share/elasticsearch/config/elasticsearch.yml
-        read_only: true
-      - type: volume
-        source: ./es_data
-        target: /usr/share/elasticsearch/data
-    ports:
-      - "9200:9200"
-      - "9300:9300"
-    environment:
-      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
-      ELASTIC_PASSWORD: changeme
-      # Use single node discovery in order to disable production mode and avoid bootstrap checks
-	  # see https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
-      discovery.type: single-node
-    networks:
-      - elk
+  
+currently fusion auth setup
+---
+Verification of user-emails
 
-# elasticsearch:
-#    image: elasticsearch:7.6.0
-#    container_name: es01
-#    environment:
-#      - node.name=elastic
-#      - cluster.name=docker-cluster
-#      - discovery.type=single-node
-#      - bootstrap.memory_lock=true
-#      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
-#    volumes:
-#      - type: volume
-#        source: ./es_data
-#        target: /usr/share/elasticsearch/data
-#    ports:
-#      - 9200:9200
-#    networks:
-#    - elk
-kibana:
-    build:
-      context: kibana/
-      args:
-        ELK_VERSION: 7.6.2
-    volumes:
-      - type: bind
-        source: ./kibana/config/kibana.yml
-        target: /usr/share/kibana/config/kibana.yml
-        read_only: true
-    ports:
-      - "5601:5601"
-    networks:
-      - elk
-    depends_on:
-      - elasticsearch
+Let the user set the password - rather than admin or system
 
-networks:
-  elk:
-    driver: bridge
+Reset password by Admin results in a password reset email or a verifications mail
 
-volumes:
-  es_data:
+Forgot password
+
+Two factor Authentication - this is a stretch goal
+
+linear-gradient(270deg, #d2ea97 ,#a8d02f ,#d2ea97)
+
+
+.resizable .resizers {
+    width: 100%;
+    height: 100%;
+    border: 3px;
+    box-sizing: border-box;
+    border-top: 1px solid #d8d6d6;
+}
+
+.left-corner {
+    position: absolute;
+    top: 0%;
+    left: 0px;
+    height: 101.15%;
+    width: 35px;
+    background-color: transparent;
+}
+
+#component-factory-title {
+    font-family: monospace;
+    background: #eae3ea;
+    color: #efe8e8;
+    font-size: 18px;
+    height: 35px;
+    text-align: center;
+    top: 100px;
+    left: 100px;
+    background: transparent;
+    padding: 4px;
+    font-size: larger;
+}
+
+
+
+
+
+-----------------------------------------------------------
+-----------------------------------------------------------
+-----------------------------------------------------------
+
+  
+
+
+
+
+
+
+prometheous :
+
+expression alert object (from eureka side)
+
+
+event alert : 
+    manually create
+    no notificaton system
+
+CQRS system 
+see confluence for more details.
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>form</title>
+  <link rel="stylesheet" href="styles.css">
+  
+  
+  <style>
+  .signup-form {
+  background-color: #efefef;
+  width: 50%;
+}
+
+.signup-form form {
+  padding: 20px 10px
+}
+
+.signup-form input[type=text], select {
+  border: none;
+  border-bottom: 2px solid darkgrey;
+  background-color: inherit;
+  display: block;
+  width: 100%;
+  margin: none;
+}
+
+.signup-form input[type=text]:focus, select:focus {
+  outline: none;
+}
+
+.form-group {
+  text-align: center;
+}
+
+.form-group .line {
+  height: 3px;
+  width: 0px;
+  position: absolute;
+  background-color: darkgrey;
+  display: inline-block;
+  transition: .3s width ease-in-out;
+  position: relative;
+  top: -14px;
+}
+
+.signup-form input[type=text]:focus+.line, select:focus+.line {
+  width: 100%;
+  background-color: #02add7;
+}
+  </style>
+  
+</head>
+
+<body>
+  <div class="signup-form">
+    <form>
+    
+      <div class="form-group">
+      <input type="text" name="firstname" class="line-animation" placeholder="firstname">
+      <div class="line"></div>
+      </div>
+      
+    </form>
+  </div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
 

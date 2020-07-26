@@ -2,9 +2,29 @@
 
 <p>command for importing db sql file to local database</p>
 
-<div style="background:#eeeeee;border:1px solid #cccccc;padding:5px 10px;">psql -h localhost -p 5433 --username=postgres <strong>&lt;kbr_db&gt;</strong>&nbsp; &lt;&nbsp; file_path&nbsp;</div>
+<div data-darkreader-inline-bgcolor="" data-darkreader-inline-bgimage="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-darkreader-inline-border-right="" data-darkreader-inline-border-top="" style="background: rgb(238, 238, 238); border: 1px solid rgb(204, 204, 204); padding: 5px 10px; --darkreader-inline-bgimage: initial; --darkreader-inline-bgcolor:#2e2d2a; --darkreader-inline-border-top:#494843; --darkreader-inline-border-right:#494843; --darkreader-inline-border-bottom:#494843; --darkreader-inline-border-left:#494843;">psql -h localhost -p 5433 --username=postgres <strong>&lt;kbr_db&gt;</strong>&nbsp; &lt;&nbsp; file_path&nbsp;</div>
 
-<p><strong>note:&nbsp; &lt;kbr_db&gt;&nbsp;&nbsp;&nbsp;must be created previously</strong></p>
+<p><strong>note:&nbsp; &lt;kbr_db&gt;&nbsp;&nbsp;&nbsp;must be created previously<br />
+<br />
+eg:<br />
+psql -h localhost -p 5433 --username=postgres kbr_db &lt; /home/sakthi/Downloads/kbr_db.sql</strong></p>
 
 <hr />
-<p>&nbsp;</p>
+<p><br />
+postgresql commands :<br />
+&nbsp;&nbsp; &nbsp;\l &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; - to list all the databases<br />
+&nbsp;&nbsp; &nbsp;\c database name - to connect to the database<br />
+&nbsp;&nbsp; &nbsp;\dt &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; - to list the database contents<br />
+&nbsp;&nbsp; &nbsp;create database databaseName&nbsp;<br />
+&nbsp;&nbsp; &nbsp;</p>
+
+<hr />
+<hr />
+<p>In the Terminal :&nbsp;<br />
+copy kbr_db.sql to kbr_db database<br />
+psql -h localhost -p 5432 -U postgres -d kbr_db -f /home/sakthi/Downloads/kbr_db.sql D<br />
+&nbsp;</p>
+
+<hr />
+<hr />
+<p>sudo apt-get install postgresql-client</p>

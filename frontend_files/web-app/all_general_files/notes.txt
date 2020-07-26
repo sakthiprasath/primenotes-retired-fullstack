@@ -1,273 +1,7 @@
-<h3><a href="https://timeli.atlassian.net/browse/WOE-345" target="_blank">WOE-345</a>&nbsp; &nbsp;Extend&nbsp;timeli sdk to create and manage tenant&nbsp; &nbsp;---------&gt;&nbsp; VERIFIED</h3>
-
-<h3><a href="https://timeli.atlassian.net/browse/WOE-346" target="_blank">WOE-346</a>&nbsp; Extend timeli sdk to create and manage tenant-application&nbsp;---------&gt; VERIFIED</h3>
+<h2>&nbsp;</h2>
 
 <hr />
-<hr />
-<h3>&nbsp;</h3>
-
-<h3><em><strong>WOE - 321</strong></em>&nbsp;Eureka API(GET) for program view&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;----------&gt;&nbsp;VERIFIED</h3>
-
-<p><strong>PROJECT :&nbsp; &nbsp; &nbsp;&nbsp;</strong>WOE project</p>
-
-<h3><strong>Further details from deepak after converation :&nbsp;</strong></h3>
-
-<ul>
-	<li>portal user id&nbsp; from request as query paramete</li>
-	<li>based on category diff uri is used in azima calls</li>
-	<li>business&nbsp; group</li>
-	<li>plant</li>
-	<li>area</li>
-</ul>
-
-<p>&nbsp;</p>
-
-<h3><strong>Things needed for get requests&nbsp;:</strong></h3>
-
-<ul>
-	<li><strong>tenant_id</strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;7dc071e1-3fd5-4620-8f73-099a59e40281</li>
-	<li><strong>portal_user_id</strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;185</li>
-</ul>
-
-<p>&nbsp;</p>
-
-<p><strong>PROJECT :&nbsp; &nbsp; &nbsp;&nbsp;</strong>WOE project</p>
-
-<p><strong>CREDENTIALS :</strong></p>
-
-<p><a href="https://devweb.wptss.com/saaidi/swagger/index.html" target="_blank">https://devweb.wptss.com/saaidi/swagger/index.html</a></p>
-
-<p>user_id : dba</p>
-
-<p>password :&nbsp; vibration</p>
-
-<hr />
-<hr />
-<p>notes :&nbsp;<br />
-sakthi@symphonyai.com<br />
-setup passwor for every where<br />
-dylbpblmhvwbylzz</p>
-
-<p>&nbsp;</p>
-
-<h2><strong>Friday&nbsp;completed Tasks :</strong>&nbsp;</h2>
-
-<p>&nbsp;</p>
-
-<p>no ticket created</p>
-
-<p><strong>symphonyai-sdk&nbsp;</strong> :&nbsp; &nbsp; &nbsp; &nbsp;origin/openapi-creation-for-woe</p>
-
-<ul>
-	<li>schema for asset status update&nbsp;</li>
-	<li>tsdb-previous version devs</li>
-	<li>and merging with current version&nbsp;</li>
-</ul>
-
-<p>&nbsp;</p>
-
-<p><strong>tsdg-apm</strong> :&nbsp; &nbsp; &nbsp;backed up routes and sql_asset_manager in VM backup</p>
-
-<p>how to connect from woe to symphonyai-sdk</p>
-
-<hr />
-<h2>Thursday :</h2>
-
-<p>no ticket created</p>
-
-<p>asset_update with properties&nbsp;</p>
-
-<hr />
-<h2>Monday raised PRs&nbsp;</h2>
-
-<h2><a href="https://bitbucket.org/timeli/tsdb-apm/pull-requests/268/st-upsert-properties-of-asset">https://bitbucket.org/timeli/tsdb-apm/pull-requests/268/st-upsert-properties-of-asset</a></h2>
-
-<p><a href="https://bitbucket.org/timeli/symphonyai-sdk/pull-requests/1">https://bitbucket.org/timeli/symphonyai-sdk/pull-requests/1</a></p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>Etoro shares buying app</p>
-
-<p>types of data :&nbsp;</p>
-
-<p>Numerical&nbsp; &nbsp; &nbsp;integer values,some numbers,</p>
-
-<p>categorial&nbsp; &nbsp; &nbsp;tomato old,&nbsp; potato medium , onion new ,<br />
-Note here&nbsp; only category is given</p>
-
-<p>ordinal&nbsp; &nbsp; &nbsp;<strong>[</strong> both numerical and categorial <strong>]&nbsp;</strong>&nbsp;&nbsp;tomato old 10 kg,&nbsp; potato medium 5kg, onion new 11kg</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>microsercviece archirtexture :<br />
-maintainability,flexibility, agility</p>
-
-<p>&nbsp;</p>
-
-<p>Notable thing :&nbsp;</p>
-
-<p>__init__ in sink</p>
-
-<p>&nbsp;</p>
-
-<p>__init__</p>
-
-<p>public methods</p>
-
-<p>private methods</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>registeR_user.py</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>user_created --------[ok]</p>
-
-<p>duplicte users --------[ok]</p>
-
-<p>user_details_obj modified&nbsp; -------[ok]</p>
-
-<p>user_got_deleted_From the tenant</p>
-
-<p>userss pasword change ---- [ next sprint ]</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>1)auth_Server has get_all_users() irespective of tenant...</p>
-
-<p>&nbsp; cannt the same user email be present in two different tenant<br />
-&nbsp;&nbsp;</p>
-
-<p>2) update not working propertly in upsert user<br />
-&nbsp;we may write update_user separately in auth_server</p>
-
-<p>3)separate password update api is not present</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp; &nbsp; &nbsp;dd66724a-41bb-4443-926b-bbae24eb45a0</p>
-
-<p>nkakubal@symphonyazimaai.com</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>azima.py<br />
-remove __init__() ok</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>single user details :&nbsp;</p>
-
-<p>{&#39;userID&#39;: 195, &#39;userUUID&#39;: &#39;b28df01d-c13a-40cf-a259-4c910d69534e&#39;, &#39;portalUserID&#39;: 185, &#39;userType&#39;: 2, &#39;userTypeDescription&#39;: &#39;Analyst&#39;, &#39;vacationMode&#39;: 0, &#39;userStatusFlag&#39;: 1, &#39;userStatus&#39;: &#39;Active&#39;, &#39;notes&#39;: &#39;&#39;, &#39;password&#39;: &#39;&#39;, &#39;accessLevel&#39;: &#39;&#39;, &#39;name&#39;: &#39;pfrederickson&#39;, &#39;initials&#39;: &#39;&#39;, &#39;street&#39;: &#39;&#39;, &#39;city&#39;: &#39;&#39;, &#39;country&#39;: &#39;&#39;, &#39;zip&#39;: &#39;&#39;, &#39;state&#39;: &#39;&#39;, &#39;email&#39;: &#39;pfrederickson@azimadli.com&#39;, &#39;phone&#39;: &#39;&#39;, &#39;fax&#39;: &#39;&#39;, &#39;userName&#39;: &#39;pfrederickson&#39;, &#39;userInfo&#39;: &#39;&#39;, &#39;userPrivileges&#39;: {&#39;deleteData&#39;: &#39;42.172&#39;, &#39;deleteDatabaseHierarchy&#39;: &#39;42.172&#39;, &#39;deleteExpertSetup&#39;: &#39;42.172&#39;, &#39;deleteNotes&#39;: &#39;42.172&#39;, &#39;actAsAnalyst&#39;: &#39;42.172&#39;, &#39;modifyDatabaseHierarchy&#39;: &#39;42.172&#39;, &#39;modifyExpertSetup&#39;: &#39;42.172&#39;, &#39;addNotes&#39;: &#39;42.172&#39;, &#39;lockMID&#39;: None, &#39;addSurveyPeriod&#39;: None}, &#39;inTraySorting&#39;: 1, &#39;inTrayUpdating&#39;: 0, &#39;testedSinceDate&#39;: &#39;2003-10-01T22:22:49&#39;, &#39;testedSinceDays&#39;: 30, &#39;testedType&#39;: 1, &#39;userPreferences&#39;: {&#39;alarmReportType&#39;: &#39;2&#39;, &#39;alarmSeverity&#39;: &#39;2&#39;, &#39;alarmSortBy&#39;: &#39;1&#39;, &#39;needsExpertOption&#39;: &#39;1&#39;, &#39;needsExpertStartDate&#39;: &#39;06/23/2018 6:15:55 PM&#39;, &#39;needsExpertEndDate&#39;: &#39;07/23/2018 6:15:55 PM&#39;, &#39;needsExpertLastXDays&#39;: &#39;30&#39;, &#39;needsReviewOption&#39;: &#39;1&#39;, &#39;needsReviewStartDate&#39;: &#39;06/23/2018 6:15:55 PM&#39;, &#39;needsReviewEndDate&#39;: &#39;07/23/2018 6:15:55 PM&#39;, &#39;needsReviewLastXDays&#39;: &#39;30&#39;, &#39;needsReviewSeverity&#39;: &#39;2&#39;, &#39;needsPeerOption&#39;: &#39;1&#39;, &#39;needsPeerStartDate&#39;: &#39;06/23/2018 6:15:55 PM&#39;, &#39;needsPeerEndDate&#39;: &#39;07/23/2018 6:15:55 PM&#39;, &#39;needsPeerLastXDays&#39;: &#39;30&#39;, &#39;needsPeerSeverity&#39;: &#39;4&#39;, &#39;needsFinalOption&#39;: &#39;1&#39;, &#39;needsFinalStartDate&#39;: &#39;06/23/2018 6:15:55 PM&#39;, &#39;needsFinalEndDate&#39;: &#39;07/23/2018 6:15:55 PM&#39;, &#39;needsFinalLastXDays&#39;: &#39;30&#39;, &#39;needsFinalSeverity&#39;: &#39;2&#39;, &#39;masterListTreeLevels&#39;: &#39;1&#39;, &#39;testingInDays&#39;: &#39;7&#39;, &#39;testingRangeFrom&#39;: &#39;07/16/2018&#39;, &#39;testingRangeTo&#39;: &#39;07/23/2018 11:59:59 PM&#39;}, &#39;machinePreferences&#39;: {&#39;speedType&#39;: None, &#39;nominalSpeed&#39;: &#39;1785&#39;, &#39;nominalSpeedUnit&#39;: None, &#39;rollDiameter&#39;: None, &#39;speedVariation&#39;: &#39;4&#39;, &#39;measureSpeed&#39;: None, &#39;tachSpeedRatio&#39;: None, &#39;acceptableSpeedRange&#39;: None, &#39;lowerSpeed&#39;: None, &#39;upperSpeed&#39;: None, &#39;tachMovesWithLocation&#39;: None, &#39;secondarySpeedRatio&#39;: None, &#39;testConditions&#39;: &#39;Test online after sufficient warmup.&#39;, &#39;machineVibrationCategory&#39;: None, &#39;operationalSignificance&#39;: None, &#39;className&#39;: None, &#39;driverInfo&#39;: None, &#39;machineIsActive&#39;: None, &#39;displayInWebPortal&#39;: None, &#39;displayInDataCollector&#39;: None, &#39;testTimeWindow&#39;: None, &#39;collectionPeriod&#39;: &#39;60&#39;}, &#39;locationPreferences&#39;: {&#39;orientationID&#39;: &#39;1&#39;, &#39;lowRangeSetupID&#39;: &#39;51&#39;, &#39;highRangeSetupID&#39;: &#39;51&#39;, &#39;demodLowRangeSetupID&#39;: &#39;50&#39;, &#39;lowRange&#39;: &#39;300&#39;, &#39;highRange&#39;: &#39;3000&#39;, &#39;demodLowRange&#39;: &#39;600&#39;, &#39;frequencyRangeUnitID&#39;: &#39;1&#39;, &#39;collectSpectra&#39;: &#39;1111100000&#39;, &#39;collectDemod&#39;: &#39;1001000000&#39;, &#39;collectOveralls&#39;: &#39;000&#39;, &#39;collectPhase&#39;: &#39;000&#39;, &#39;phaseRelation&#39;: &#39;000&#39;, &#39;highAlertActive&#39;: &#39;0&#39;, &#39;highAlert&#39;: &#39;0&#39;, &#39;highCriticalActive&#39;: &#39;0&#39;, &#39;highCritical&#39;: &#39;0&#39;, &#39;highAlertActive1&#39;: None, &#39;highAlert1&#39;: None, &#39;highCriticalActive1&#39;: None, &#39;highCritical1&#39;: None, &#39;highAlertActive2&#39;: None, &#39;highAlert2&#39;: None, &#39;highCriticalActive2&#39;: None, &#39;highCritical2&#39;: None, &#39;amplitudeAlarmActive&#39;: &#39;0&#39;, &#39;amplitudeAlarm&#39;: &#39;0&#39;, &#39;phaseAlarmActive&#39;: &#39;0&#39;, &#39;phaseAlarm&#39;: &#39;0&#39;, &#39;bearingSource&#39;: None, &#39;collectTachWaveform&#39;: None, &#39;tachPowered&#39;: None, &#39;tachAngle&#39;: None, &#39;xProbeAngle&#39;: None, &#39;yProbeAngle&#39;: None}, &#39;graphicPreferences&#39;: {&#39;legendStyle&#39;: &#39;2&#39;, &#39;fillOptions&#39;: &#39;3&#39;, &#39;exceedanceDelta&#39;: &#39;3&#39;, &#39;exceedanceThreshold&#39;: &#39;80&#39;, &#39;showExceedanceBackground&#39;: &#39;0&#39;, &#39;showExceedanceBar&#39;: &#39;0&#39;, &#39;graphicsAddMode&#39;: &#39;1&#39;, &#39;graphicsFormat&#39;: &#39;1&#39;, &#39;graphicsAverage&#39;: &#39;0&#39;, &#39;defaultVerticalOffset&#39;: &#39;0.8&#39;, &#39;defaultHorizontalOffset&#39;: &#39;0.8&#39;, &#39;graphicsYAxisUseDefaultUnit0&#39;: &#39;1&#39;, &#39;graphicsAlternativeUnitLabel0&#39;: None, &#39;graphicsXScaleOption0&#39;: &#39;2&#39;, &#39;xScaleMin0&#39;: &#39;0&#39;, &#39;xScaleMax0&#39;: &#39;1&#39;, &#39;graphicsYScaleOption0&#39;: &#39;3&#39;, &#39;yScaleMin0&#39;: &#39;0&#39;, &#39;yScaleMax0&#39;: &#39;120&#39;, &#39;graphicsLinear0&#39;: &#39;1&#39;, &#39;graphicsOrderNormalize0&#39;: &#39;1&#39;, &#39;graphicsXAxisHz0&#39;: &#39;0&#39;, &#39;graphSize0&#39;: &#39;0&#39;, &#39;graphFormat0&#39;: &#39;0&#39;, &#39;overlayAverageSpectrum0&#39;: &#39;False&#39;, &#39;overlaySigmaSpectrum0&#39;: &#39;False&#39;, &#39;cursorStyle0&#39;: &#39;2&#39;, &#39;cursorMultiplier0&#39;: &#39;1&#39;, &#39;graphicsYAxisUseDefaultUnit1&#39;: &#39;1&#39;, &#39;graphicsXScaleOption1&#39;: &#39;2&#39;, &#39;xScaleMin1&#39;: &#39;0&#39;, &#39;xScaleMax1&#39;: &#39;0&#39;, &#39;graphicsYScaleOption1&#39;: &#39;2&#39;, &#39;yScaleMin1&#39;: &#39;0&#39;, &#39;yScaleMax1&#39;: &#39;0&#39;, &#39;graphicsLinear1&#39;: &#39;0&#39;, &#39;graphicsOrderNormalize1&#39;: &#39;1&#39;, &#39;graphicsXAxisHz1&#39;: &#39;0&#39;, &#39;graphSize1&#39;: &#39;1&#39;, &#39;graphFormat1&#39;: &#39;0&#39;, &#39;cursorStyle1&#39;: &#39;2&#39;, &#39;cursorMultiplier1&#39;: &#39;1&#39;, &#39;graphicsYAxisUseDefaultUnit2&#39;: &#39;1&#39;, &#39;graphicsXScaleOption2&#39;: &#39;2&#39;, &#39;xScaleMin2&#39;: &#39;0&#39;, &#39;xScaleMax2&#39;: &#39;0&#39;, &#39;graphicsYScaleOption2&#39;: &#39;2&#39;, &#39;yScaleMin2&#39;: &#39;0&#39;, &#39;yScaleMax2&#39;: &#39;0&#39;, &#39;graphicsLinear2&#39;: &#39;0&#39;, &#39;graphicsOrderNormalize2&#39;: &#39;1&#39;, &#39;graphicsXAxisHz2&#39;: &#39;0&#39;, &#39;graphSize2&#39;: &#39;1&#39;, &#39;graphFormat2&#39;: &#39;0&#39;, &#39;overlayAverageSpectrum2&#39;: &#39;False&#39;, &#39;overlaySigmaSpectrum2&#39;: &#39;False&#39;, &#39;cursorStyle2&#39;: &#39;2&#39;, &#39;cursorMultiplier2&#39;: &#39;1&#39;, &#39;graphicsYAxisUseDefaultUnit3&#39;: &#39;1&#39;, &#39;graphicsXScaleOption3&#39;: &#39;2&#39;, &#39;xScaleMin3&#39;: &#39;0&#39;, &#39;xScaleMax3&#39;: &#39;0&#39;, &#39;graphicsYScaleOption3&#39;: &#39;2&#39;, &#39;yScaleMin3&#39;: &#39;0&#39;, &#39;yScaleMax3&#39;: &#39;0&#39;, &#39;graphicsLinear3&#39;: &#39;0&#39;, &#39;graphicsOrderNormalize3&#39;: &#39;1&#39;, &#39;graphicsXAxisHz3&#39;: &#39;0&#39;, &#39;dateAsXAxis3&#39;: &#39;1&#39;, &#39;customDateRange3&#39;: &#39;0&#39;, &#39;startDate3&#39;: &#39;1980-01-01 00:00:00&#39;, &#39;endDate3&#39;: &#39;2008-11-12 14:10:19&#39;, &#39;limitDataPoints3&#39;: &#39;0&#39;, &#39;maxDataPoints3&#39;: &#39;50&#39;, &#39;everyNthPoint3&#39;: &#39;10&#39;, &#39;whichPoints3&#39;: &#39;0&#39;, &#39;timeSegment3&#39;: &#39;2&#39;, &#39;graphSize3&#39;: &#39;1&#39;, &#39;graphFormat3&#39;: &#39;0&#39;, &#39;cursorStyle3&#39;: &#39;2&#39;, &#39;cursorMultiplier3&#39;: &#39;1&#39;, &#39;graphicsYAxisUseDefaultUnit4&#39;: &#39;1&#39;, &#39;graphicsXScaleOption4&#39;: &#39;2&#39;, &#39;xScaleMin4&#39;: &#39;0&#39;, &#39;xScaleMax4&#39;: &#39;0&#39;, &#39;graphicsYScaleOption4&#39;: &#39;2&#39;, &#39;yScaleMin4&#39;: &#39;0&#39;, &#39;yScaleMax4&#39;: &#39;0&#39;, &#39;graphicsLinear4&#39;: &#39;0&#39;, &#39;graphicsOrderNormalize4&#39;: &#39;1&#39;, &#39;graphicsXAxisHz4&#39;: &#39;0&#39;, &#39;dateAsXAxis4&#39;: &#39;1&#39;, &#39;customDateRange4&#39;: &#39;0&#39;, &#39;startDate4&#39;: &#39;1980-01-01 00:00:00&#39;, &#39;endDate4&#39;: &#39;2008-11-12 14:10:19&#39;, &#39;limitDataPoints4&#39;: &#39;0&#39;, &#39;maxDataPoints4&#39;: &#39;50&#39;, &#39;everyNthPoint4&#39;: &#39;10&#39;, &#39;whichPoints4&#39;: &#39;0&#39;, &#39;timeSegment4&#39;: &#39;2&#39;, &#39;graphSize4&#39;: &#39;1&#39;, &#39;graphFormat4&#39;: &#39;0&#39;, &#39;cursorStyle4&#39;: &#39;2&#39;, &#39;cursorMultiplier4&#39;: &#39;1&#39;, &#39;graphicsYAxisUseDefaultUnit5&#39;: &#39;1&#39;, &#39;graphicsXScaleOption5&#39;: &#39;2&#39;, &#39;xScaleMin5&#39;: &#39;0&#39;, &#39;xScaleMax5&#39;: &#39;0&#39;, &#39;graphicsYScaleOption5&#39;: &#39;2&#39;, &#39;yScaleMin5&#39;: &#39;0&#39;, &#39;yScaleMax5&#39;: &#39;0&#39;, &#39;graphicsLinear5&#39;: &#39;0&#39;, &#39;graphicsOrderNormalize5&#39;: &#39;1&#39;, &#39;graphicsXAxisHz5&#39;: &#39;0&#39;, &#39;dateAsXAxis5&#39;: &#39;1&#39;, &#39;customDateRange5&#39;: &#39;0&#39;, &#39;startDate5&#39;: &#39;1980-01-01 00:00:00&#39;, &#39;endDate5&#39;: &#39;2008-11-12 14:10:19&#39;, &#39;limitDataPoints5&#39;: &#39;0&#39;, &#39;maxDataPoints5&#39;: &#39;50&#39;, &#39;everyNthPoint5&#39;: &#39;10&#39;, &#39;whichPoints5&#39;: &#39;0&#39;, &#39;timeSegment5&#39;: &#39;2&#39;, &#39;graphSize5&#39;: &#39;1&#39;, &#39;graphFormat5&#39;: &#39;0&#39;, &#39;cursorStyle5&#39;: &#39;2&#39;, &#39;cursorMultiplier5&#39;: &#39;1&#39;, &#39;graphicsYAxisUseDefaultUnit6&#39;: &#39;1&#39;, &#39;graphicsXScaleOption6&#39;: &#39;2&#39;, &#39;xScaleMin6&#39;: &#39;0&#39;, &#39;xScaleMax6&#39;: &#39;0&#39;, &#39;graphicsYScaleOption6&#39;: &#39;2&#39;, &#39;yScaleMin6&#39;: &#39;0&#39;, &#39;yScaleMax6&#39;: &#39;0&#39;, &#39;graphicsLinear6&#39;: &#39;0&#39;, &#39;graphicsOrderNormalize6&#39;: &#39;1&#39;, &#39;graphicsXAxisHz6&#39;: &#39;0&#39;, &#39;graphSize6&#39;: &#39;1&#39;, &#39;graphFormat6&#39;: &#39;0&#39;, &#39;overlayAverageSpectrum6&#39;: &#39;False&#39;, &#39;overlaySigmaSpectrum6&#39;: &#39;False&#39;, &#39;cursorStyle6&#39;: &#39;2&#39;, &#39;cursorMultiplier6&#39;: &#39;1&#39;, &#39;graphicsYAxisUseDefaultUnit7&#39;: &#39;1&#39;, &#39;graphicsXScaleOption7&#39;: &#39;2&#39;, &#39;xScaleMin7&#39;: &#39;0&#39;, &#39;xScaleMax7&#39;: &#39;0&#39;, &#39;graphicsYScaleOption7&#39;: &#39;2&#39;, &#39;yScaleMin7&#39;: &#39;0&#39;, &#39;yScaleMax7&#39;: &#39;0&#39;, &#39;graphicsLinear7&#39;: &#39;0&#39;, &#39;graphicsOrderNormalize7&#39;: &#39;1&#39;, &#39;graphicsXAxisHz7&#39;: &#39;0&#39;, &#39;graphSize7&#39;: &#39;1&#39;, &#39;graphFormat7&#39;: &#39;0&#39;, &#39;cursorStyle7&#39;: &#39;2&#39;, &#39;cursorMultiplier7&#39;: &#39;1&#39;, &#39;graphicsYAxisUseDefaultUnit8&#39;: &#39;1&#39;, &#39;graphicsXScaleOption8&#39;: &#39;2&#39;, &#39;xScaleMin8&#39;: &#39;0&#39;, &#39;xScaleMax8&#39;: &#39;0&#39;, &#39;graphicsYScaleOption8&#39;: &#39;2&#39;, &#39;yScaleMin8&#39;: &#39;0&#39;, &#39;yScaleMax8&#39;: &#39;0&#39;, &#39;graphicsLinear8&#39;: &#39;0&#39;, &#39;graphicsOrderNormalize8&#39;: &#39;1&#39;, &#39;graphicsXAxisHz8&#39;: &#39;0&#39;, &#39;graphSize8&#39;: &#39;1&#39;, &#39;graphFormat8&#39;: &#39;0&#39;, &#39;cursorStyle8&#39;: &#39;2&#39;, &#39;cursorMultiplier8&#39;: &#39;1&#39;, &#39;graphicsYAxisUseDefaultUnit9&#39;: &#39;1&#39;, &#39;graphicsXScaleOption9&#39;: &#39;2&#39;, &#39;xScaleMin9&#39;: &#39;0&#39;, &#39;xScaleMax9&#39;: &#39;0&#39;, &#39;graphicsYScaleOption9&#39;: &#39;2&#39;, &#39;yScaleMin9&#39;: &#39;0&#39;, &#39;yScaleMax9&#39;: &#39;0&#39;, &#39;graphicsLinear9&#39;: &#39;0&#39;, &#39;graphicsOrderNormalize9&#39;: &#39;1&#39;, &#39;graphicsXAxisHz9&#39;: &#39;0&#39;, &#39;customDateRange9&#39;: &#39;0&#39;, &#39;startDate9&#39;: &#39;1980-01-01 00:00:00&#39;, &#39;endDate9&#39;: &#39;2008-11-12 14:10:19&#39;, &#39;limitDataPoints9&#39;: &#39;0&#39;, &#39;maxDataPoints9&#39;: &#39;50&#39;, &#39;everyNthPoint9&#39;: &#39;10&#39;, &#39;whichPoints9&#39;: &#39;0&#39;, &#39;timeSegment9&#39;: &#39;2&#39;, &#39;graphSize9&#39;: &#39;1&#39;, &#39;graphFormat9&#39;: &#39;0&#39;, &#39;faultTrendResultsType&#39;: &#39;0&#39;, &#39;limitFaults&#39;: &#39;0&#39;, &#39;maxFaults&#39;: &#39;5&#39;, &#39;cursorStyle9&#39;: &#39;2&#39;, &#39;cursorMultiplier9&#39;: &#39;1&#39;, &#39;graphicsYAxisUseDefaultUnit10&#39;: &#39;1&#39;, &#39;graphicsXScaleOption10&#39;: &#39;2&#39;, &#39;xScaleMin10&#39;: &#39;0&#39;, &#39;xScaleMax10&#39;: &#39;0&#39;, &#39;graphicsYScaleOption10&#39;: &#39;2&#39;, &#39;yScaleMin10&#39;: &#39;0&#39;, &#39;yScaleMax10&#39;: &#39;0&#39;, &#39;graphicsLinear10&#39;: &#39;0&#39;, &#39;graphicsOrderNormalize10&#39;: &#39;1&#39;, &#39;graphicsXAxisHz10&#39;: &#39;0&#39;, &#39;graphSize10&#39;: &#39;1&#39;, &#39;graphFormat10&#39;: &#39;0&#39;, &#39;overlayAverageSpectrum10&#39;: &#39;False&#39;, &#39;overlaySigmaSpectrum10&#39;: &#39;False&#39;, &#39;cursorStyle10&#39;: &#39;2&#39;, &#39;cursorMultiplier10&#39;: &#39;1&#39;, &#39;graphicsYAxisUseDefaultUnit11&#39;: &#39;1&#39;, &#39;graphicsXScaleOption11&#39;: &#39;2&#39;, &#39;xScaleMin11&#39;: &#39;0&#39;, &#39;xScaleMax11&#39;: &#39;0&#39;, &#39;graphicsYScaleOption11&#39;: &#39;2&#39;, &#39;yScaleMin11&#39;: &#39;0&#39;, &#39;yScaleMax11&#39;: &#39;0&#39;, &#39;graphicsLinear11&#39;: &#39;0&#39;, &#39;graphicsOrderNormalize11&#39;: &#39;1&#39;, &#39;graphicsXAxisHz11&#39;: &#39;0&#39;, &#39;graphSize11&#39;: &#39;1&#39;, &#39;graphFormat11&#39;: &#39;0&#39;, &#39;cursorStyle11&#39;: &#39;2&#39;, &#39;cursorMultiplier11&#39;: &#39;1&#39;, &#39;graphicsLineColor1&#39;: &#39;8388608&#39;, &#39;graphicsLineStyle1&#39;: &#39;2&#39;, &#39;graphicsSymbolColor1&#39;: &#39;16711680&#39;, &#39;graphicsSymbolStyle1&#39;: &#39;4&#39;, &#39;graphicsLineColor2&#39;: &#39;32768&#39;, &#39;graphicsLineStyle2&#39;: &#39;2&#39;, &#39;graphicsSymbolColor2&#39;: &#39;16777215&#39;, &#39;graphicsSymbolStyle2&#39;: &#39;4&#39;, &#39;graphicsLineColor3&#39;: &#39;16711680&#39;, &#39;graphicsLineStyle3&#39;: &#39;2&#39;, &#39;graphicsSymbolColor3&#39;: &#39;255&#39;, &#39;graphicsSymbolStyle3&#39;: &#39;4&#39;, &#39;graphicsLineColor4&#39;: &#39;4194432&#39;, &#39;graphicsLineStyle4&#39;: &#39;2&#39;, &#39;graphicsSymbolColor4&#39;: &#39;65280&#39;, &#39;graphicsSymbolStyle4&#39;: &#39;4&#39;, &#39;graphicsLineColor5&#39;: &#39;16384&#39;, &#39;graphicsLineStyle5&#39;: &#39;2&#39;, &#39;graphicsSymbolColor5&#39;: &#39;65535&#39;, &#39;graphicsSymbolStyle5&#39;: &#39;4&#39;, &#39;graphicsLineColor6&#39;: &#39;12615680&#39;, &#39;graphicsLineStyle6&#39;: &#39;2&#39;, &#39;graphicsSymbolColor6&#39;: &#39;16711680&#39;, &#39;graphicsSymbolStyle6&#39;: &#39;4&#39;, &#39;graphicsLineColor7&#39;: &#39;12615808&#39;, &#39;graphicsLineStyle7&#39;: &#39;2&#39;, &#39;graphicsSymbolColor7&#39;: &#39;16777215&#39;, &#39;graphicsSymbolStyle7&#39;: &#39;4&#39;, &#39;graphicsLineColor8&#39;: &#39;64&#39;, &#39;graphicsLineStyle8&#39;: &#39;2&#39;, &#39;graphicsSymbolColor8&#39;: &#39;255&#39;, &#39;graphicsSymbolStyle8&#39;: &#39;4&#39;, &#39;graphicsLineColor9&#39;: &#39;8388672&#39;, &#39;graphicsLineStyle9&#39;: &#39;2&#39;, &#39;graphicsSymbolColor9&#39;: &#39;65280&#39;, &#39;graphicsSymbolStyle9&#39;: &#39;4&#39;, &#39;graphicsLineColor10&#39;: &#39;16711808&#39;, &#39;graphicsLineStyle10&#39;: &#39;2&#39;, &#39;graphicsSymbolColor10&#39;: &#39;65535&#39;, &#39;graphicsSymbolStyle10&#39;: &#39;4&#39;, &#39;graphicsAverageColor&#39;: &#39;255&#39;, &#39;graphicsSigmaColor&#39;: &#39;16711935&#39;, &#39;graphicsAverageStyle&#39;: &#39;2&#39;, &#39;graphicsSigmaStyle&#39;: &#39;2&#39;, &#39;colorCursor&#39;: &#39;4194432&#39;, &#39;colorReference&#39;: &#39;255&#39;, &#39;colorHarmonics&#39;: &#39;255&#39;, &#39;colorCenter&#39;: &#39;65280&#39;, &#39;colorSidebands&#39;: &#39;16711680&#39;, &#39;colorFaultLines&#39;: &#39;11513775&#39;, &#39;colorFaultLabels&#39;: &#39;8404992&#39;, &#39;displayGrid&#39;: &#39;1&#39;, &#39;gridColor&#39;: &#39;11513775&#39;, &#39;gridXStyle&#39;: &#39;4&#39;, &#39;colorAnnotation&#39;: &#39;8388608&#39;, &#39;colorBackground&#39;: &#39;16777215&#39;, &#39;colorAxisLabel&#39;: &#39;8388608&#39;, &#39;colorRangeLabel&#39;: &#39;8388608&#39;, &#39;colorUnitLabel&#39;: &#39;8388608&#39;, &#39;limitTrendDataPoints&#39;: None, &#39;trendMaxDataPoints&#39;: None, &#39;viewFaults&#39;: &#39;1&#39;, &#39;viewBearings&#39;: &#39;0&#39;, &#39;bearingsVisible1&#39;: None, &#39;bearingsVisible2&#39;: None, &#39;bearingsVisible3&#39;: None, &#39;bearingsVisible4&#39;: None, &#39;viewHarmonics&#39;: &#39;1&#39;, &#39;harmonicTracking&#39;: &#39;1&#39;, &#39;harmonicNoTracking&#39;: &#39;0&#39;, &#39;viewSidebands&#39;: &#39;0&#39;, &#39;centerTracking&#39;: &#39;0&#39;, &#39;sidebandTracking&#39;: &#39;1&#39;, &#39;sidebandNoTracking&#39;: &#39;0&#39;, &#39;sidebandCenter&#39;: None, &#39;sidebandCenterUnit&#39;: None, &#39;sidebandDelta&#39;: None, &#39;sidebandDeltaUnit&#39;: None, &#39;speedCursorOrder&#39;: None, &#39;speedRunExpertSystem&#39;: None, &#39;speedWhichSpectra&#39;: None, &#39;speedStayInGraphView&#39;: None, &#39;speedbLowRange&#39;: None, &#39;speedbHighRange&#39;: None, &#39;speedbDemodRange&#39;: None}, &#39;dataCollectionPreferences&#39;: {&#39;defaultCollector&#39;: None, &#39;clearUnloadList&#39;: None, &#39;eraseData&#39;: None, &#39;runExpertSystem&#39;: None, &#39;option&#39;: None, &#39;trioPrefix&#39;: None, &#39;trioName&#39;: None, &#39;trioViaUSBDrive&#39;: None, &#39;trioUSBDriveLetter&#39;: None, &#39;trioDatabaseName&#39;: None, &#39;trioUnloadSourcePath&#39;: None}, &#39;processMachinePreferences&#39;: {&#39;printAllGraphs&#39;: &#39;0&#39;, &#39;printSpectra&#39;: &#39;1&#39;, &#39;printWaveform&#39;: &#39;0&#39;, &#39;printDemod&#39;: &#39;0&#39;, &#39;printOverall&#39;: &#39;0&#39;, &#39;printPhase&#39;: &#39;0&#39;, &#39;printFullSpectra&#39;: &#39;0&#39;, &#39;printFullSpectraWaveform&#39;: &#39;0&#39;, &#39;printProcessData&#39;: &#39;0&#39;, &#39;printOrbit&#39;: &#39;0&#39;, &#39;printFaultTrend&#39;: &#39;0&#39;, &#39;printCepstrum&#39;: &#39;0&#39;, &#39;printFullCepstrum&#39;: &#39;0&#39;, &#39;printBode&#39;: &#39;0&#39;, &#39;printDemodWaveform&#39;: &#39;0&#39;, &#39;blackNWhite&#39;: &#39;0&#39;, &#39;useThickLine&#39;: &#39;0&#39;, &#39;keepAspectRatio&#39;: &#39;1&#39;, &#39;printDevice&#39;: &#39;0&#39;, &#39;printPath&#39;: &#39;&#39;, &#39;normalizeOption&#39;: &#39;0&#39;, &#39;printReportAutomatically&#39;: &#39;0&#39;, &#39;lineFrequency&#39;: &#39;1&#39;, &#39;pathToExport&#39;: &#39;C:||Program Files||DevStudio||VB||Projects||Alert||&#39;, &#39;zipExport&#39;: &#39;0&#39;, &#39;exportSpectra&#39;: &#39;1&#39;, &#39;exportWaveforms&#39;: &#39;1&#39;, &#39;exportDemodSpectra&#39;: &#39;1&#39;, &#39;exportOverall&#39;: &#39;1&#39;, &#39;exportPhase&#39;: &#39;1&#39;, &#39;exportExpertResults&#39;: &#39;1&#39;, &#39;exportNotecodes&#39;: &#39;1&#39;, &#39;exportNotes&#39;: &#39;1&#39;, &#39;exportRepairHistory&#39;: &#39;1&#39;, &#39;exportProcessData&#39;: &#39;1&#39;, &#39;exportFullSpectra&#39;: &#39;1&#39;, &#39;exportDemodWaveforms&#39;: &#39;1&#39;, &#39;exportFullWaveforms&#39;: &#39;1&#39;, &#39;exportReviewedResults&#39;: &#39;1&#39;, &#39;printPreview&#39;: &#39;1&#39;, &#39;confirmDelete&#39;: &#39;0&#39;, &#39;deleteSpectra&#39;: &#39;0&#39;, &#39;deleteWaveforms&#39;: &#39;0&#39;, &#39;deleteDemodSpectra&#39;: &#39;0&#39;, &#39;deleteOverall&#39;: &#39;0&#39;, &#39;deletePhase&#39;: &#39;0&#39;, &#39;deleteExpertResults&#39;: &#39;0&#39;, &#39;deleteNotecodes&#39;: &#39;0&#39;, &#39;deleteNotes&#39;: &#39;0&#39;, &#39;deleteRepairHistory&#39;: &#39;0&#39;, &#39;deleteProcessData&#39;: &#39;0&#39;, &#39;deleteFullSpectra&#39;: &#39;0&#39;, &#39;deleteDemodWaveforms&#39;: &#39;0&#39;, &#39;deleteFullWaveforms&#39;: &#39;0&#39;, &#39;deleteReviewedResults&#39;: &#39;0&#39;, &#39;includeAnalystComments&#39;: &#39;1&#39;, &#39;includeCitedPeaks&#39;: &#39;1&#39;, &#39;addPageBreaks&#39;: &#39;0&#39;, &#39;replaceReportWithComments&#39;: &#39;0&#39;, &#39;whichExpertReport&#39;: &#39;0&#39;, &#39;reportPath&#39;: &#39;C:||Program Files (x86)||Azima DLI||ALERT3.21&#39;, &#39;mcReportPath&#39;: &#39;||ExpertALERT||Report&#39;, &#39;reviewMachineList&#39;: &#39;0&#39;, &#39;historyRptCover&#39;: &#39;1&#39;, &#39;historyRptDetails&#39;: &#39;1&#39;, &#39;historyRptTrend&#39;: &#39;1&#39;, &#39;historyRptFinal&#39;: &#39;0&#39;, &#39;reviewSeverity&#39;: &#39;0&#39;, &#39;reviewType&#39;: &#39;0&#39;, &#39;unprocessedDataOnly&#39;: &#39;0&#39;, &#39;noDemod&#39;: None, &#39;noWaveforms&#39;: None, &#39;notesCriteria&#39;: None, &#39;sortNotesLatestFirst&#39;: None, &#39;includeMachinesWithoutNotes&#39;: None, &#39;excludePhotoImage&#39;: None, &#39;notesDateOption&#39;: None, &#39;noteDateStart&#39;: None, &#39;noteDateEnd&#39;: None, &#39;useGlobalPreferences&#39;: None}, &#39;treePreferences&#39;: {&#39;treeSorting&#39;: &#39;2&#39;, &#39;routeTreeSorting&#39;: &#39;2&#39;, &#39;midTreeSorting&#39;: &#39;2&#39;, &#39;filterOnMachineName&#39;: &#39;0&#39;, &#39;machineFilter&#39;: &#39;&#39;, &#39;filterOnPlant&#39;: &#39;0&#39;, &#39;filterPlantID&#39;: &#39;2&#39;, &#39;filterOnArea&#39;: &#39;0&#39;, &#39;filterAreaID&#39;: &#39;5&#39;, &#39;filterOnClassName&#39;: &#39;0&#39;, &#39;filterClassName&#39;: &#39;&#39;, &#39;filterOnDate&#39;: &#39;0&#39;, &#39;filterDate&#39;: &#39;12/8/1998&#39;, &#39;filterOnSeverity&#39;: &#39;0&#39;, &#39;minimumSeverity&#39;: &#39;2&#39;, &#39;filterOnPriority&#39;: &#39;0&#39;, &#39;minimumPriority&#39;: &#39;6&#39;, &#39;filterOnDiagnosis&#39;: &#39;0&#39;, &#39;diagnosisFilter&#39;: &#39;*&#39;, &#39;diagnosisExpertFilter&#39;: &#39;1&#39;, &#39;filterOnComponentCode&#39;: &#39;0&#39;, &#39;componentCodeFilter&#39;: &#39;0.0&#39;, &#39;nodeCount&#39;: &#39;2&#39;}, &#39;otherPreferences&#39;: {&#39;pagerCommand&#39;: &#39;&#39;, &#39;usePager&#39;: &#39;0&#39;, &#39;dcxCollectorMode&#39;: &#39;0&#39;, &#39;menuStyle&#39;: None, &#39;rangeCalcLowRange&#39;: None, &#39;rangeCalcHighRange&#39;: None, &#39;rangeCalcDemodRange&#39;: None, &#39;liveModeTestRange&#39;: None, &#39;liveModeTestHighPassFilter&#39;: None, &#39;liveModeTestResolution&#39;: None, &#39;liveModeTestAverageType&#39;: None, &#39;liveModeTestNumberofAverages&#39;: None, &#39;liveModeTestWindowType&#39;: None, &#39;liveModeTestICPPower&#39;: None, &#39;liveModeTestBodeICPPower&#39;: None, &#39;liveModeTestIntegrator&#39;: None, &#39;liveModeTestSampleRate&#39;: None, &#39;liveModeTestLowSpeedLimit&#39;: None, &#39;liveModeTestHighSpeedLimit&#39;: None, &#39;liveModeTestTimeLimit&#39;: None, &#39;liveModeTestDemod&#39;: None, &#39;liveModeTestAverageMode&#39;: None, &#39;pgmStartupMachineID&#39;: None, &#39;limitDataDisplay&#39;: &#39;0&#39;, &#39;dataDisplayNumTests&#39;: &#39;50&#39;, &#39;whichTimeZone&#39;: &#39;1&#39;, &#39;userTimeZone&#39;: &#39;Eastern Standard Time&#39;, &#39;computerTimeZone&#39;: &#39;UTC&#39;, &#39;filePathRulebase&#39;: None, &#39;filePathDatabaseReports&#39;: None, &#39;filePathConditionReports&#39;: None, &#39;importPath&#39;: None, &#39;importClearUnloadedList&#39;: None, &#39;showCitedPeaks&#39;: &#39;0&#39;, &#39;problemCaseLatestPriorityVisible&#39;: None, &#39;problemCaseInsertPriorityVisible&#39;: None, &#39;problemCaseLatestDateVisible&#39;: None, &#39;problemCaseInsertDateVisible&#39;: None, &#39;problemCaseMachineNameVisible&#39;: None, &#39;problemCasePlantNameVisible&#39;: None, &#39;problemCaseAreaNameVisible&#39;: None, &#39;problemCaseProblemDescriptionVisible&#39;: None, &#39;problemCaseRecommendedActionVisible&#39;: None, &#39;problemCaseWorkOrderNoVisible&#39;: None, &#39;problemCaseWOStatusVisible&#39;: None, &#39;problemCaseWODateVisible&#39;: None, &#39;problemCaseDateWOAssignedVisible&#39;: None, &#39;problemCaseDateWOCompletedVisible&#39;: None, &#39;problemCaseDaysWOOpenVisible&#39;: None, &#39;problemCaseFindingsConfirmedVisible&#39;: None, &#39;problemCaseRootCausePerformedVisible&#39;: None, &#39;problemCaseRootCauseFindingVisible&#39;: None, &#39;problemCaseAdditionalFindingsVisible&#39;: None, &#39;problemCaseFinancialImpact&#39;: None, &#39;problemCaseAttachments&#39;: None, &#39;analystPriorityViewPlantOrAreaNameVisible&#39;: None, &#39;analystPriorityViewMandatoryVisible&#39;: None, &#39;analystPriorityViewImportantVisible&#39;: None, &#39;analystPriorityViewDesirableVisible&#39;: None, &#39;analystPriorityViewNoRecsVisible&#39;: None, &#39;analystPriorityViewNeverTestedVisible&#39;: None, &#39;analystPriorityViewTotalMachinesVisible&#39;: None, &#39;analystSeverityViewPlantOrAreaNameVisible&#39;: None, &#39;analystSeverityViewExtremeVisible&#39;: None, &#39;analystSeverityViewSeriousVisible&#39;: None, &#39;analystSeverityViewModerateVisible&#39;: None, &#39;analystSeverityViewSlightVisiblee&#39;: None, &#39;analystSeverityViewNoFaultsDetectedVisible&#39;: None, &#39;analystSeverityViewNeverTestedVisible&#39;: None, &#39;analystSeverityViewNeedsReviewVisible&#39;: None, &#39;analystSeverityViewTotalMachinesVisible&#39;: None}, &#39;reportPreferences&#39;: {&#39;cover&#39;: &#39;1&#39;, &#39;intro&#39;: &#39;1&#39;, &#39;summary&#39;: &#39;1&#39;, &#39;machinelist&#39;: &#39;1&#39;, &#39;vibtestproc&#39;: &#39;1&#39;, &#39;expert&#39;: &#39;1&#39;, &#39;graph&#39;: &#39;1&#39;, &#39;etype&#39;: &#39;1&#39;, &#39;rec&#39;: &#39;1&#39;, &#39;fault&#39;: &#39;1&#39;, &#39;peak&#39;: &#39;1&#39;, &#39;comment&#39;: &#39;1&#39;}, &#39;createdBySiteID&#39;: 1, &#39;modifiedBySiteID&#39;: 1, &#39;recordLastUpdated&#39;: &#39;2019-07-29T16:14:34.399&#39;}<br />
-&nbsp;</p>
-
-<hr />
-<hr />
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>(500, &#39;INTERNAL SERVER ERROR&#39;, &#39;{\n &nbsp;&quot;reason&quot;: &quot;Server Error&quot;, \n &nbsp;&quot;status_code&quot;: 500, \n &nbsp;&quot;text&quot;: &quot;{\&#39;fieldErrors\&#39;: {\&#39;user.email\&#39;: [{\&#39;code\&#39;: \&#39;[duplicate]user.email\&#39;, \&#39;message\&#39;: \&#39;A User with email = [sakthi2525@symphonyai.com] already exists.\&#39;}], \&#39;user.username\&#39;: [{\&#39;code\&#39;: \&#39;[duplicate]user.username\&#39;, \&#39;message\&#39;: \&#39;A User with username = [sakthi_user_name23] already exists.\&#39;}]}}&quot;, \n &nbsp;&quot;trace&quot;: &quot;Traceback (most recent call last):\\n &nbsp;File \\&quot;/home/sakthi/.local/lib/python3.6/site-packages/flask/app.py\\&quot;, line 1949, in full_dispatch_request\\n &nbsp; &nbsp;rv = self.dispatch_request()\\n &nbsp;File \\&quot;/home/sakthi/.local/lib/python3.6/site-packages/flask/app.py\\&quot;, line 1935, in dispatch_request\\n &nbsp; &nbsp;return self.view_functions[rule.endpoint](**req.view_args)\\n &nbsp;File \\&quot;/home/sakthi/custom/projects/auth-server/auth-server/src/rest/routes/user.py\\&quot;, line 44, in upsert_user\\n &nbsp; &nbsp;inserted_user = user_manager.upsert_user(user)\\n &nbsp;File \\&quot;/home/sakthi/custom/projects/auth-server/auth-server/src/auth/user_manager.py\\&quot;, line 33, in upsert_user\\n &nbsp; &nbsp;raise ValueError(resp.json())\\nValueError: {\&#39;fieldErrors\&#39;: {\&#39;user.email\&#39;: [{\&#39;code\&#39;: \&#39;[duplicate]user.email\&#39;, \&#39;message\&#39;: \&#39;A User with email = [sakthi2525@symphonyai.com] already exists.\&#39;}], \&#39;user.username\&#39;: [{\&#39;code\&#39;: \&#39;[duplicate]user.username\&#39;, \&#39;message\&#39;: \&#39;A User with username = [sakthi_user_name23] already exists.\&#39;}]}}\\n&quot;\n}\n&#39;)hahahaha<br />
-&nbsp;</p>
-
-<hr />
-<hr />
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>{&#39;email&#39;: &#39;&#39;, &#39;name&#39;: None, &#39;password&#39;: None, &#39;super_user&#39;: False, &#39;tenant_id&#39;: &#39;2d6ee51c-e9cd-4d73-8ab9-6bda10a7b542&#39;, &#39;user_id&#39;: None, &#39;user_name&#39;: &#39;KELLI&#39;}<br />
-{&#39;email&#39;: &#39;&#39;, &#39;name&#39;: None, &#39;password&#39;: None, &#39;super_user&#39;: False, &#39;tenant_id&#39;: &#39;e2718dfe-b5ae-459a-b2e0-355bd4916343&#39;, &#39;user_id&#39;: None, &#39;user_name&#39;: &#39;KELLI&#39;}<br />
-{&#39;email&#39;: &#39;sakthi@symphonyai.com&#39;, &#39;name&#39;: None, &#39;password&#39;: None, &#39;super_user&#39;: False, &#39;tenant_id&#39;: &#39;9bc3acd2-3b87-c314-abb3-e4bcd90cd559&#39;, &#39;user_id&#39;: None, &#39;user_name&#39;: &#39;sakthi25&#39;}<br />
-{&#39;email&#39;: &#39;vdavis@azimadli.com&#39;, &#39;name&#39;: None, &#39;password&#39;: None, &#39;super_user&#39;: False, &#39;tenant_id&#39;: &#39;e2718dfe-b5ae-459a-b2e0-355bd4916343&#39;, &#39;user_id&#39;: None, &#39;user_name&#39;: &#39;Vtest&#39;}<br />
-{&#39;email&#39;: &#39;vdavis@azimadli.com&#39;, &#39;name&#39;: None, &#39;password&#39;: None, &#39;super_user&#39;: False, &#39;tenant_id&#39;: &#39;2d6ee51c-e9cd-4d73-8ab9-6bda10a7b542&#39;, &#39;user_id&#39;: None, &#39;user_name&#39;: &#39;Vtest&#39;}<br />
-{&#39;email&#39;: &#39;trickett@azimadli.com&#39;, &#39;name&#39;: None, &#39;password&#39;: None, &#39;super_user&#39;: False, &#39;tenant_id&#39;: &#39;e2718dfe-b5ae-459a-b2e0-355bd4916343&#39;, &#39;user_id&#39;: None, &#39;user_name&#39;: &#39;trickett&#39;}<br />
-{&#39;email&#39;: &#39;trickett@azimadli.com&#39;, &#39;name&#39;: None, &#39;password&#39;: None, &#39;super_user&#39;: False, &#39;tenant_id&#39;: &#39;2d6ee51c-e9cd-4d73-8ab9-6bda10a7b542&#39;, &#39;user_id&#39;: None, &#39;user_name&#39;: &#39;trickett&#39;}<br />
-{&#39;email&#39;: &#39;tkelley@azimadli.com&#39;, &#39;name&#39;: None, &#39;password&#39;: None, &#39;super_user&#39;: False, &#39;tenant_id&#39;: &#39;2d6ee51c-e9cd-4d73-8ab9-6bda10a7b542&#39;, &#39;user_id&#39;: None, &#39;user_name&#39;: &#39;TKELLEY&#39;}<br />
-{&#39;email&#39;: &#39;tkelley@azimadli.com&#39;, &#39;name&#39;: None, &#39;password&#39;: None, &#39;super_user&#39;: False, &#39;tenant_id&#39;: &#39;e2718dfe-b5ae-459a-b2e0-355bd4916343&#39;, &#39;user_id&#39;: None, &#39;user_name&#39;: &#39;TKELLEY&#39;}<br />
-{&#39;email&#39;: &#39;tgarrity@azimadli.com&#39;, &#39;name&#39;: None, &#39;password&#39;: None, &#39;super_user&#39;: False, &#39;tenant_id&#39;: &#39;2d6ee51c-e9cd-4d73-8ab9-6bda10a7b542&#39;, &#39;user_id&#39;: None, &#39;user_name&#39;: &#39;tgarrity&#39;}<br />
-{&#39;email&#39;: &#39;testc@azimadli.com&#39;, &#39;name&#39;: None, &#39;password&#39;: None, &#39;super_user&#39;: False, &#39;tenant_id&#39;: &#39;2d6ee51c-e9cd-4d73-8ab9-6bda10a7b542&#39;, &#39;user_id&#39;: None, &#39;user_name&#39;: &#39;Contractor&#39;}<br />
-{&#39;email&#39;: &#39;tcullen@azimadli.com&#39;, &#39;name&#39;: None, &#39;password&#39;: None, &#39;super_user&#39;: False, &#39;tenant_id&#39;: &#39;e2718dfe-b5ae-459a-b2e0-355bd4916343&#39;, &#39;user_id&#39;: None, &#39;user_name&#39;: &#39;TCULLEN&#39;}<br />
-{&#39;email&#39;: &#39;tcullen@azimadli.com&#39;, &#39;name&#39;: None, &#39;password&#39;: None, &#39;super_user&#39;: False, &#39;tenant_id&#39;: &#39;2d6ee51c-e9cd-4d73-8ab9-6bda10a7b542&#39;, &#39;user_id&#39;: None, &#39;user_name&#39;: &#39;TCULLEN&#39;}<br />
-{&#39;email&#39;: &#39;tadkins@azimadli.com&#39;, &#39;name&#39;: None, &#39;password&#39;: None, &#39;super_user&#39;: False, &#39;tenant_id&#39;: &#39;2d6ee51c-e9cd-4d73-8ab9-6bda10a7b542&#39;, &#39;user_id&#39;: None, &#39;user_name&#39;: &#39;tadkins&#39;}<br />
-{&#39;email&#39;: &#39;sakthi25@symphonyai.com&#39;, &#39;name&#39;: None, &#39;password&#39;: None, &#39;super_user&#39;: False, &#39;tenant_id&#39;: &#39;e2718dfe-b5ae-459a-b2e0-355bd4916343&#39;, &#39;user_id&#39;: None, &#39;user_name&#39;: &#39;sakthi_user_name&#39;}<br />
-{&#39;email&#39;: &#39;sakthi2527@symphonyai.com&#39;, &#39;name&#39;: None, &#39;password&#39;: None, &#39;super_user&#39;: False, &#39;tenant_id&#39;: &#39;e2718dfe-b5ae-459a-b2e0-355bd4916343&#39;, &#39;user_id&#39;: None, &#39;user_name&#39;: &#39;sakthi_user_name28&#39;}<br />
-{&#39;email&#39;: &#39;sakthi2526@symphonyai.com&#39;, &#39;name&#39;: None, &#39;password&#39;: None, &#39;super_user&#39;: False, &#39;tenant_id&#39;: &#39;e2718dfe-b5ae-459a-b2e0-355bd4916343&#39;, &#39;user_id&#39;: None, &#39;user_name&#39;: &#39;sakthi_user_name26&#39;}<br />
-{&#39;email&#39;: &#39;sakthi2525@symphonyai.com&#39;, &#39;name&#39;: None, &#39;password&#39;: None, &#39;super_user&#39;: False, &#39;tenant_id&#39;: &#39;e2718dfe-b5ae-459a-b2e0-355bd4916343&#39;, &#39;user_id&#39;: None, &#39;user_name&#39;: &#39;sakthi_user_name23&#39;}<br />
-{&#39;email&#39;: &#39;rlynn@azimadli.com&#39;, &#39;name&#39;: None, &#39;password&#39;: None, &#39;super_user&#39;: False, &#39;tenant_id&#39;: &#39;2d6ee51c-e9cd-4d73-8ab9-6bda10a7b542&#39;, &#39;user_id&#39;: None, &#39;user_name&#39;: &#39;rlynn&#39;}<br />
-{&#39;email&#39;: &#39;rlynn@azimadli.com&#39;, &#39;name&#39;: None, &#39;password&#39;: None, &#39;super_user&#39;: False, &#39;tenant_id&#39;: &#39;e2718dfe-b5ae-459a-b2e0-355bd4916343&#39;, &#39;user_id&#39;: None, &#39;user_name&#39;: &#39;rlynn&#39;}<br />
-{&#39;email&#39;: &#39;pshaffett@azimadli.com&#39;, &#39;name&#39;: None, &#39;password&#39;: None, &#39;super_user&#39;: False, &#39;tenant_id&#39;: &#39;e2718dfe-b5ae-459a-b2e0-355bd4916343&#39;, &#39;user_id&#39;: None, &#39;user_name&#39;: &#39;pshaffett&#39;}<br />
-{&#39;email&#39;: &#39;pshaffett@azimadli.com&#39;, &#39;name&#39;: None, &#39;password&#39;: None, &#39;super_user&#39;: False, &#39;tenant_id&#39;: &#39;2d6ee51c-e9cd-4d73-8ab9-6bda10a7b542&#39;, &#39;user_id&#39;: None, &#39;user_name&#39;: &#39;pshaffett&#39;}<br />
-{&#39;email&#39;: &#39;prasath@symphonyai.com&#39;, &#39;name&#39;: None, &#39;password&#39;: None, &#39;super_user&#39;: False, &#39;tenant_id&#39;: &#39;2d6ee51c-e9cd-4d73-8ab9-6bda10a7b542&#39;, &#39;user_id&#39;: None, &#39;user_name&#39;: &#39;super-user&#39;}<br />
-{&#39;email&#39;: &#39;prasath@symphonyai.com&#39;, &#39;name&#39;: None, &#39;password&#39;: None, &#39;super_user&#39;: True, &#39;tenant_id&#39;: &#39;e2718dfe-b5ae-459a-b2e0-355bd4916343&#39;, &#39;user_id&#39;: None, &#39;user_name&#39;: &#39;super-user&#39;}<br />
-{&#39;email&#39;: &#39;pfrederickson@azimadli.com&#39;, &#39;name&#39;: None, &#39;password&#39;: None, &#39;super_user&#39;: False, &#39;tenant_id&#39;: &#39;2d6ee51c-e9cd-4d73-8ab9-6bda10a7b542&#39;, &#39;user_id&#39;: None, &#39;user_name&#39;: &#39;pfrederickson&#39;}<br />
----------------------------</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>class UserRepository:<br />
-&nbsp; &nbsp; @staticmethod</p>
-
-<p>&nbsp; &nbsp; def get_all_users(customer_id):</p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp; url = azima_uri + &#39;azima/{}/users&#39;.format(customer_id)</p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp; resp = requests.get(url, headers={&#39;Authorization&#39;: AzimaAuth.get_token()})</p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp; return resp<br />
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br />
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br />
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br />
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br />
-1)fix the merge conflicts<br />
-2)pull the recent docker image for auth_server&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>1) noneed of checking duplicate users during upsert in bulk import&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
+<p>for new land buying :</p>
 
 <p>&nbsp;</p>
 
@@ -306,6 +40,49 @@ remove __init__() ok</p>
 <p>&nbsp;</p>
 
 <p>east and northfacing&nbsp;</p>
+
+<hr />
+<hr />
+<p><strong>Find the docker image id for the projects :</strong></p>
+
+<p>helm charts - eureka-platform-setup/helm-charts/auth-solution in values.yml - applies to each released product(s)</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<hr />
+<hr />
+<p>swagger docs :<br />
+notes:</p>
+
+<p>&nbsp;</p>
+
+<p>using multiple messages for a response&nbsp;</p>
+
+<p><a href="https://stackoverflow.com/questions/53509806/swagger-oas3-0-multiple-responses-in-the-same-response-code">https://stackoverflow.com/questions/53509806/swagger-oas3-0-multiple-responses-in-the-same-response-code</a></p>
+
+<p>&nbsp;</p>
+
+<p>Sakthi prasath is a most successful Entrepreneur. I want to tell the world that I will become one of the greatest .man in the history</p>
+
+<p>&nbsp;</p>
+
+<h1>Romesh wadhwani :&nbsp;</h1>
+
+<p><a href="https://www.forbes.com/sites/tommybeer/2020/07/10/fauci-pushes-back-on-trumps-false-claims-says-he-hasnt-briefed-president-in-2-months/#55274d7c79d0">https://www.forbes.com/sites/tommybeer/2020/07/10/fauci-pushes-back-on-trumps-false-claims-says-he-hasnt-briefed-president-in-2-months/#55274d7c79d0</a></p>
+
+<hr />
+<hr />
+<h1>PR s yeat to accepted :</h1>
+
+<p>PR yet to get accected&nbsp; :&nbsp;<a href="https://symphonytimeli.slack.com/team/USH45QLSK">@Deepak S</a>&nbsp;<a href="https://symphonytimeli.slack.com/team/UAG2JMT6Z">@venki</a>&nbsp;<br />
+1 . WOE :&nbsp;&nbsp;&nbsp;&nbsp; Error handler for get asset in program view<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://bitbucket.org/timeli/woe/pull-requests/49" target="_blank">https://bitbucket.org/timeli/woe/pull-requests/49</a><br />
+2 . tsdb-apm :&nbsp;&nbsp;&nbsp; all properties fetch from DB and getting only required ones,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://bitbucket.org/timeli/tsdb-apm/pull-requests/292" target="_blank">https://bitbucket.org/timeli/tsdb-apm/pull-requests/292</a>&nbsp;(edited)&nbsp;</p>
+
+<p>&nbsp;</p>
 
 <p>&nbsp;</p>
 

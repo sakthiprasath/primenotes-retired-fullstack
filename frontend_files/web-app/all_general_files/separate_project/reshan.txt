@@ -1,0 +1,55 @@
+https://kbr.symphonyindai.com/wrp/pages/asset/1?navbar=false
+
+        try:
+            ret_asset = self.asset_client.get(asset_id)
+        except ResponseError as e:
+            app_logger.exception(e)
+            return json.loads(e.message), e.status
+
+    app_logger.debug(resp.text)
+
+
+ambrane power bank : 
+https://www.amazon.in/Ambrane-Li-Polymer-Smartphones-PP-30-Pro/dp/B083DX7PJF/ref=pd_sbs_23_16?_encoding=UTF8&pd_rd_i=B083DX7PJF&pd_rd_r=d50e9b8a-bc42-42d0-ab56-a2a284f03a69&pd_rd_w=c1i9R&pd_rd_wg=ZdNzF&pf_rd_p=00b53f5d-d1f8-4708-89df-2987ccce05ce&pf_rd_r=Z6EKKZAQSHMSHEZKG0DN&psc=1&refRID=Z6EKKZAQSHMSHEZKG0DN
+
+lapgaurd :
+https://www.amazon.in/Lapguard-LG805-20800mAH-Lithium-ion-Power/dp/B01N2U5GIF/ref=pd_sbs_23_6/260-4583490-9531210?_encoding=UTF8&pd_rd_i=B01N2U5GIF&pd_rd_r=d50e9b8a-bc42-42d0-ab56-a2a284f03a69&pd_rd_w=c1i9R&pd_rd_wg=ZdNzF&pf_rd_p=00b53f5d-d1f8-4708-89df-2987ccce05ce&pf_rd_r=Z6EKKZAQSHMSHEZKG0DN&psc=1&refRID=Z6EKKZAQSHMSHEZKG0DN
+
+lenova bank, wifi, 1 TB storage:
+https://www.amazon.in/Lenovo-Multi-Mode-Storage-Power-888016171/dp/B00PGAT3J8/ref=pd_sbs_353_3/260-4583490-9531210?_encoding=UTF8&pd_rd_i=B00PGAT3J8&pd_rd_r=c24d5269-7610-4400-a6af-2717e6559dd2&pd_rd_w=qDJMD&pd_rd_wg=b7CKY&pf_rd_p=00b53f5d-d1f8-4708-89df-2987ccce05ce&pf_rd_r=K96WPJFTZFB17BMN4PJE&psc=1&refRID=K96WPJFTZFB17BMN4PJE
+
+
+
+pc monitor :
+LG : 80 % we can buy
+https://www.amazon.in/LG-inch-46-99-LED-Monitor/dp/B06VX4VQCP/ref=pd_di_v2_sccai_3/260-4583490-9531210?_encoding=UTF8&pd_rd_i=B06VX4VQCP&pd_rd_r=0fc3aa6b-dc92-4c0d-9369-7b1ae1c5c577&pd_rd_w=JGv48&pd_rd_wg=CfbhL&pf_rd_p=632cc854-67e6-4b83-a571-177a9f2135db&pf_rd_r=SZFZHYNQQPE0V4CCFXQT&psc=1&refRID=SZFZHYNQQPE0V4CCFXQT
+
+Lenova : 20 % we can buy
+https://www.amazon.in/Lenovo-18-5-inch-Monitor-Response-time/dp/B07XX24XWD/ref=sr_1_1_sspa?dchild=1&pf_rd_i=1375425031&pf_rd_m=A1K21FY43GMZF8&pf_rd_p=ab6388eb-6583-4abc-a20b-95d0201735b6&pf_rd_r=JE006ZKQ7CYWEKB98MD4&pf_rd_s=merchandised-search-9&pf_rd_t=101&qid=1594614563&refinements=p_36%3A200000-500000&rnid=1318502031&s=computers&sr=1-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEzOUI0QU1JWDBOOFRTJmVuY3J5cHRlZElkPUEwMTgzNjYyMVJRSVUySzc5TVpIUSZlbmNyeXB0ZWRBZElkPUEwMjU1MTQxMkNOMTlKRkRESDgxSCZ3aWRnZXROYW1lPXNwX2F0Zl9icm93c2UmYWN0aW9uPWNsaWNrUmVkaXJlY3QmZG9Ob3RMb2dDbGljaz10cnVl
+
+
+HARD DISK :
+https://www.amazon.in/Seagate-Backup-Desktop-External-Drive/dp/B06Y45CCHR/ref=sr_1_21?crid=2VYIIXKFQJGAN&dchild=1&keywords=1+tb+hardisk&qid=1594648020&s=computers&sprefix=1+tb+%2Ccomputers%2C656&sr=1-21
+
+should have 
+LED screen,
+
+Router :
+https://www.amazon.in/TP-Link-TL-WR841N-300Mbps-Wireless-N-Router/dp/B001FWYGJS
+  
+5300
+3500
+2000
+
+
+
+
+
+
+
+
+
+
+
+
+

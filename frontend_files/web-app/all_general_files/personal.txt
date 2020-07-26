@@ -18,46 +18,77 @@
 <table cellspacing="0" style="border-collapse:collapse; width:384px">
 	<tbody>
 		<tr>
-			<td style="border-bottom:none; border-left:none; border-right:none; border-top:none; height:17px; vertical-align:bottom; white-space:nowrap; width:224px">Marrige cost</td>
-			<td style="border-bottom:none; border-left:none; border-right:none; border-top:none; vertical-align:bottom; white-space:nowrap; width:80px">700000</td>
-			<td style="border-bottom:none; border-left:none; border-right:none; border-top:none; vertical-align:bottom; white-space:nowrap; width:80px">500000</td>
+			<td style="border-color:initial; border-style:none; border-width:initial; height:17px; vertical-align:bottom; white-space:nowrap; width:224px">Marrige cost</td>
+			<td style="border-color:initial; border-style:none; border-width:initial; vertical-align:bottom; white-space:nowrap; width:80px">700000</td>
+			<td style="border-color:initial; border-style:none; border-width:initial; vertical-align:bottom; white-space:nowrap; width:80px">500000</td>
 		</tr>
 		<tr>
-			<td style="border-bottom:none; border-left:none; border-right:none; border-top:none; height:17px; vertical-align:bottom; white-space:nowrap">Ponnuku nagai thaalichain + necklace</td>
-			<td style="border-bottom:none; border-left:none; border-right:none; border-top:none; vertical-align:bottom; white-space:nowrap">12 poun</td>
-			<td style="border-bottom:none; border-left:none; border-right:none; border-top:none; vertical-align:bottom; white-space:nowrap">432000</td>
+			<td style="border-color:initial; border-style:none; border-width:initial; height:17px; vertical-align:bottom; white-space:nowrap">Ponnuku nagai thaalichain + necklace</td>
+			<td style="border-color:initial; border-style:none; border-width:initial; vertical-align:bottom; white-space:nowrap">12 poun</td>
+			<td style="border-color:initial; border-style:none; border-width:initial; vertical-align:bottom; white-space:nowrap">432000</td>
 		</tr>
 		<tr>
-			<td style="border-bottom:none; border-left:none; border-right:none; border-top:none; height:17px; vertical-align:bottom; white-space:nowrap">Total</td>
-			<td style="border-bottom:none; border-left:none; border-right:none; border-top:none; vertical-align:bottom; white-space:nowrap">&nbsp;</td>
-			<td style="border-bottom:none; border-left:none; border-right:none; border-top:none; vertical-align:bottom; white-space:nowrap"><strong>932000</strong></td>
+			<td style="border-color:initial; border-style:none; border-width:initial; height:17px; vertical-align:bottom; white-space:nowrap">Total</td>
+			<td style="border-color:initial; border-style:none; border-width:initial; vertical-align:bottom; white-space:nowrap">&nbsp;</td>
+			<td style="border-color:initial; border-style:none; border-width:initial; vertical-align:bottom; white-space:nowrap"><strong>932000</strong></td>
 		</tr>
 	</tbody>
 </table>
 
 <p>&nbsp;</p>
 
-<hr />
-<hr />
-<p>talk to mamas<br />
-ask katchan for 4000</p>
-
-<p>ask dinesh for 4000</p>
-
-<p>prasanna</p>
-
-<p><a href="https://www.amazon.in/SKMEI-Sports-Analog-Digital-Blue-Watch-SkmeiMW56A/dp/B078F1F4BV/ref=sr_1_9?crid=1Y10DY1ZC3ODC&amp;dchild=1&amp;keywords=watch+for+man&amp;qid=1589814773&amp;sprefix=watch%2Caps%2C385&amp;sr=8-9">https://www.amazon.in/SKMEI-Sports-Analog-Digital-Blue-Watch-SkmeiMW56A/dp/B078F1F4BV/ref=sr_1_9?crid=1Y10DY1ZC3ODC&amp;dchild=1&amp;keywords=watch+for+man&amp;qid=1589814773&amp;sprefix=watch%2Caps%2C385&amp;sr=8-9</a></p>
-
-<p>&nbsp;</p>
-
-<p>dharani Prasath</p>
-
-<p><a href="https://www.amazon.in/Eddy-Hager-Black-Watch-EH-226-BK/dp/B07G77V41Q/ref=sr_1_56?crid=1Y10DY1ZC3ODC&amp;dchild=1&amp;keywords=watch+for+man&amp;qid=1589814773&amp;sprefix=watch%2Caps%2C385&amp;sr=8-56">https://www.amazon.in/Eddy-Hager-Black-Watch-EH-226-BK/dp/B07G77V41Q/ref=sr_1_56?crid=1Y10DY1ZC3ODC&amp;dchild=1&amp;keywords=watch+for+man&amp;qid=1589814773&amp;sprefix=watch%2Caps%2C385&amp;sr=8-56</a></p>
-
-<p><a href="https://www.amazon.in/Eddy-Hager-Brown-Watch-EH-153-BR/dp/B07M6FZG68?ref_=ast_sto_dp">https://www.amazon.in/Eddy-Hager-Brown-Watch-EH-153-BR/dp/B07M6FZG68?ref_=ast_sto_dp</a></p>
-
 <p>&nbsp;</p>
 
 <hr />
 <hr />
+<p>excited states :&nbsp;<br />
+murunga keerai,<br />
+Tea</p>
+
+<p>mango</p>
+
+<p>chicken<br />
+mutton</p>
+
+<p><br />
+&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>image collections:<br />
+<img alt="" src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ" style="height:333px; width:500px" /></p>
+
+<p>&nbsp;</p>
+
+<p>buy public static ip address</p>
+
+<p>tech stack:<br />
+python updated version</p>
+
+<p>docker&nbsp;</p>
+
+<p>ML data science</p>
+
+<p>&nbsp;</p>
+
+<h1>&nbsp;</h1>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
 <p>&nbsp;</p>

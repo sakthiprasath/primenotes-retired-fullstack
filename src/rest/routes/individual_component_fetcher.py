@@ -10,6 +10,24 @@ from src.sql_modules.sql_individual_component_fetch import  SQLIndividualCompone
 individual_component_fetcher_routes = Blueprint('individual_component_fetcher', __name__, url_prefix='/api/individual-component-fetch')
 
 
+@individual_component_fetcher_routes.route('screen-recorder', methods=['GET'])
+def return_index_html():
+    try:
+       return  flask.render_template('ScreenSharing.html')
+    except Exception as e:
+        return print(e)
+
+
+@individual_component_fetcher_routes.route('', methods=['GET'])
+def return_index_html():
+    try:
+       return  flask.render_template('CompanyProRecover.html')
+    except Exception as e:
+        return print(e)
+
+
+
+
 @individual_component_fetcher_routes.route('<component_key>', methods=['GET'])
 # @tenant_config_routes.response(TenantConfigSchema(many=True), code=200)
 @individual_component_fetcher_routes.doc(summary='Get all settings for the Tenant',
@@ -26,12 +44,9 @@ def fetch_individual_component_codes(component_key):
     except Exception as e:
         return print(e)
 
-@individual_component_fetcher_routes.route('', methods=['GET'])
-def return_index_html():
-    try:
-       return  flask.render_template('CompanyProRecover.html')
-    except Exception as e:
-        return print(e)
+
+
+
 
 @individual_component_fetcher_routes.route('save-file/<file_name>', methods=['POST'])
 def save_file(file_name):
@@ -54,5 +69,28 @@ def get_data_by_name(file_name):
         return file_data
     except Exception as e:
         return print(e)
+
+@individual_component_fetcher_routes.route('download-youtube-video', methods=['POST'])
+def download_youtube_video():
+    try:
+        json_inputs = request.get_json(force=True)
+        link = json_inputs['link']
+        name = json_inputs['name']
+
+        SQLIndividualComponent().download_youtube_videos(link, name)
+        return jsonify('download_success')
+    except Exception as e:
+        return print(e)
+
+
+@individual_component_fetcher_routes.route('get-all-videos', methods=['GET'])
+def get_all_video_files():
+    try:
+
+        files = SQLIndividualComponent().all_video_files()
+        return jsonify(files), 200
+    except Exception as e:
+        return print(e)
+
 
 

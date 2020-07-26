@@ -13,7 +13,7 @@
 		<title>Layout Test Page</title> 
 		<script 	src="{{ url_for('static', filename='js/lib/jquery.min.js') }}">
 </script>
-		<script type="text/javascript" src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+		<script src="https://cdn.ckeditor.com/4.11.2/full-all/ckeditor.js"></script>
 		<script type="text/javascript"
 			src="{{ url_for('static', filename='/js/lib/jquery-ui/jquery-latest.js') }}"></script>
 		<script type="text/javascript"
@@ -21,7 +21,9 @@
 		<script type="text/javascript"
 			src="{{ url_for('static', filename='/js/lib/jquery-ui/jquery-ui-latest.js') }}"></script>
 
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js">/</script>
 
+		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/ComponentEditor.css') }}" />
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/ResultIframe.css') }}" />
 	 <link rel="stylesheet" href="{{ url_for('static', filename='/css/ComponentEditor.css') }}">
@@ -37,7 +39,7 @@
 
 
 
-
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/button.css') }}" />
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/NavigationBar.css') }}" />
@@ -58,13 +60,13 @@
 
 
 
-					<script type='module'>
-import loadComponentsContainer from './js/ComponentsContainer.js';
-import IndividualComponentEditor from './js/IndividualComponentEditor.js';
+<!--					<script type='module'>-->
+<!--import loadComponentsContainer from './js/ComponentsContainer.js';-->
+<!--import IndividualComponentEditor from './js/DomEvents.js';-->
 
-window.loadComponentsContainer=loadComponentsContainer;
-window.IndividualComponenrtEditor=IndividualComponentEditor;
-</script>
+<!--window.loadComponentsContainer=loadComponentsContainer;-->
+<!--window.IndividualComponenrtEditor=IndividualComponentEditor;-->
+<!--</script>-->
 
 					<script
 						src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
@@ -81,8 +83,7 @@ window.IndividualComponenrtEditor=IndividualComponentEditor;
 
 
 
-	<div id="destination-container" ondrop="drop(event)"
-		ondragover="allowDrop(event)">
+	<div id="destination-container" >
 		<div class='background-img-class' alt='plastation' />
 	</div>
 
@@ -107,23 +108,102 @@ window.IndividualComponenrtEditor=IndividualComponentEditor;
 	<!-- result iframe  -->
 
 	<div class="overlay">
-		<div id='up-missile' onclick="closeNav()" class='up-missile'></div>
-		<div id='down-missile' onclick="openNav()" class='up-missile'></div>
+		<button id='up-missile' class="button" onclick="closeNav()" class='up-missile'>
+			<span style="padding:3px">close</span>
+		</button>
+		<button id='down-missile' class="button" onclick="openNav()" class='up-missile'>
+			<span style="padding:3px">open</span>
+		</button>
 		<div id='hider-for-resize'></div>
-<!--		<iframe id='result-iframe' src=''></iframe>-->
-		<div id='iframe-dragger-button'></div>
+		<div id='result-iframe'  style="background-color:black;">
+
+			<!-- tab-section with contents -->
+
+			<div class="tabset">
+			  <!-- Tab 1 -->
+			  <input type="radio" name="tabset" id="tab1" aria-controls="videos-tab-section" checked>
+			  <label for="tab1">Videos</label>
+			  <!-- Tab 2 -->
+			  <input type="radio" name="tabset" id="tab2" aria-controls="clock-tab-section">
+			  <label for="tab2">Clocks</label>
+			  <!-- Tab 3 -->
+			  <input type="radio" name="tabset" id="tab3" aria-controls="dunkles">
+			  <label for="tab3">Not Occupied</label>
+
+
+				<!-- tab-pannels begins -->
+			  <div class="tab-panels">
+				<section id="videos-tab-section" class="tab-panel">
+				  <h2></h2>
+
+							<div id="video-download-section>" style="
+								margin-left: 30px;
+							">
+							<input type="text" id="video-link" placeholder="video-link" style="
+								padding: 4px 40px;
+								margin: 8px 0;
+								box-sizing: border-box;
+							">
+							<input type="text" id="video-name" placeholder="video-name" style="
+								padding: 4px 40px;
+								margin: 8px 0;
+								box-sizing: border-box;
+							">
+							<button id="download-video-button" class="button">download</button>
+							</div>
+							<div id='video-section' style="height: 500px;
+    														overflow-y: scroll;
+    														width: 101%;">
+								<video width="400" controls>
+								</video>
+							</div>
+
+				</section>
+
+
+
+				  <section id="clock-tab-section" class="tab-panel">
+				  <h2></h2>
+					<iframe src="https://vclock.com/timer/" style="
+									width: 1345px;
+									height: 550px;
+									top: -52px;
+									position: relative">
+							  </iframe>
+					</section>
+
+
+
+				<section id="dunkles" class="tab-panel">
+				  <h2>Other Things</h2>
+				  <a href="https://chemours.symphonyindai.com/wrp/pages/loggedout" target="_blank">
+								chemours tenant  </a>
+				  <button class="button" onclick="window.open('http://localhost:5000/api/individual-component-fetch/screen-recorder');">Screen Recorder</button>
+				</section>
+			  </div>
+
+			</div>
+
+
+		</div>
+
+
+		<div id='iframe-dragger-button' style="background-color:orange;">
+		</div>
+
+
 	</div>
 
 	<script>
 function openNav() {
   //document.getElementById("myNav").style.height = "99%";
-  $('#result-iframe').css('height',$(document).height()-100);
-  
+  $('#result-iframe').css('height',$(document).height() + 10);
+
 }
 function closeNav() {
   //document.getElementById("myNav").style.height = "3%";
   document.getElementById("result-iframe").style.height = "20px";
-  
+
 }
 
 $(document).ready(function(){
@@ -133,7 +213,7 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
         e1.preventDefault();
       	$('#result-iframe').css('transition','none');
 		$(document).on('mousemove',function(e){
-      	   e.preventDefault();  	  
+      	   e.preventDefault();
            console.log(e.clientX+"  "+e.clientY);
     	   let height=e.clientY;
    	       if(height>10){
@@ -143,7 +223,7 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
            }
 		});
 });
-     
+
 	$('#iframe-dragger-button').on('mouseup',function(e1){
       e1.preventDefault();
       $('#result-iframe').css('transition','0.5s');
@@ -195,14 +275,14 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
 				</div>
 				<div id="component-factory-title">Component Factory</div>
 				<div id='components-search-container'>
-					<div id='left-and-middle-section'>
+						<div id='left-and-middle-section'>
 						<div class="left-corner">
 							<div class='left-corner-sub-div'>
-								<div class='component-factory-left-icons'>
+								<div id='file-switch' class='component-factory-left-icons'>
 									<img src="https://img.icons8.com/ios/50/000000/select-all.png"
 										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">
 								</div>
-								<div class='component-factory-left-icons'>
+								<div id='chat-switch' class='component-factory-left-icons'>
 									<img src="https://img.icons8.com/ios/50/000000/select-all.png"
 										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">
 								</div>
@@ -222,28 +302,109 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
 							</div>
 						</div>
 
-						<div class='middle-section'>
-							<!-- <div class='search-icon'>
-									<img class='search-img'
-										src="https://img.icons8.com/nolan/64/000000/google-web-search.png">
-								</div> -->
-							<div class="search-container">
-								<input id='search-box' placeholder='search component..'
-									type='text' /> <img src="https://img.icons8.com/color/48/000000/search.png">
-									</button>
+						<div id='middle-section'>
+							<div id='search-container-section' style="width: 10px;height: 10px;">
+								<div class="search-container">
+
+
+									<div class="search-box">
+									  <div class="form-group">
+										<input type="text" id='search-box' name="firstname" class="line-animation" placeholder="search...">
+											<div class="line">
+											</div>
+									  </div>
+  									</div>
+
+
+
+									<img  src="https://img.icons8.com/color/48/000000/search.png">
+								</div>
+
+								<div id='chat-file-icon-section' style="
+									position: absolute;
+									right: -85px;
+									width: 138px;
+									top : 15px">
+									<img id='create-new-file' src="https://cdn2.iconfinder.com/data/icons/explore-and-analysis-2/64/76-512.png"
+										 style="
+									    width: 27px;
+										height: 27px;
+										display: block;
+										left: -20px;
+										position: absolute;">
+									<img id='single-chat' src="https://cdn2.iconfinder.com/data/icons/explore-and-analysis-2/64/76-512.png" style="
+									    width: 27px;
+										height: 27px;
+										display: block;
+										position: absolute;
+										left: -76px;">
+									<img id='group-chat' src="https://cdn2.iconfinder.com/data/icons/explore-and-analysis-2/64/76-512.png" style="
+									    width: 27px;
+										height: 27px;
+										display: block;
+										position: absolute;
+										left: -40px;
+									}">
+
+
+								</div>
+
+
+
+
+								<img id ="search-results-close-button" class="close-component-results-container-icon" src="https://img.icons8.com/color/48/000000/close-window.png" style="
+									position: absolute;
+									background: #06d6a0;
+									margin-top: 5px;
+									margin-right: 5px;
+									right: 5px;
+								">
 							</div>
 
-							<div class='search-results'></div>
-							<div id='search-results-close-button'>
-								<img id='compo-search-navigation' class="minimize-middle-section" src="https://www.animatedimages.org/data/media/111/animated-arrow-image-0104.gif" border="0" alt="animated-arrow-image-0104" />
+							<div class='search-results'>
+
+
+							<div id="file-middle-section">
 							</div>
+							<div id="chat-middle-section">
+								<div style="position: relative;" class="list-section">
+									<div class="individual-search" id="hrithik" style="
+											position: relative;
+											left: 0px;	">
+
+									<div style="
+											width: 45px;
+											height: 45px;">
+										<img src="https://img.etimg.com/thumb/msid-67467301,width-650,imgsize-575034,,resizemode-4,quality-100/hrithik-roshan.jpg" alt="sakthiprasath.jpg" style="
+											width: 100%;
+											height: 100%;
+											border-radius: 100%;">
+
+									<div class="search-result-item" style="
+											position: absolute;
+											top: 24px;
+											left: 58px;
+											font-family: cursive;
+											height:20px;
+											">Hrithik</div>
+									</div>
+									<div style="
+											    position: absolute;
+										right: 20px;
+										bottom: 10px;
+										font: small-caption;">online</div>
+									</div></div>
+									</div>
+							</div>
+
+
 						</div>
 					</div>
 
 					<div id='right-side-components'>
 						<div id='right-side-components-container'>
-
-						<button id="editor1-save-button" class="button">save
+						<div id="file-name" class="button" >Dummy file name</div>
+						<button class="button" id="editor1-save-button" class="button">save
 						</button>
 
 
@@ -385,8 +546,13 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
 
 
 
-
-
+<!-- password validation for drowssap file opening -->
+	<div id="password-validate-dialog" title="Title of dialog">
+  		<div id='password-for-drowssap'>
+   			<input id='password-content-for-drowssap' type='password' placeholder='password'/>
+  			<button class="button" id='password-validate'>check password</button>
+  		</div>
+	</div>
 
 
 
@@ -397,6 +563,11 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
 
 	<div id='navigation-bar'>
 		<div class="sidenav">
+			<div id="close-editor-button" style="display: block;">
+				<button class="button" style="
+						width: 100%;
+				">click to view componentFactory</button>
+			</div>
 			<a href="javascript:void(0)" class="closebtn">&times;</a>
 			<div class='source-code-tab-content'>
 
@@ -408,7 +579,10 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
 					<ul>
 						<li><a href="#" class='file-click' filename="site123" >Site</a></li>
 						<li><a href="#" class='file-click' filename="about123">About the Web Site</a></li>
-						<li><a href="#" class='file-click'>Contact Us</a></li>
+						<li><a href="#" class='file-click' filename="hrithik">Hrithik</a></li>
+						<li><a href="#" class='file-click' filename="Roshan">Roshan</a></li>
+						<li><a href="#" class='file-click' filename="reshan">Reshan</a></li>
+
 						<li><a href="#" class='file-click'>Cars</a>
 							<ul>
 								<li><a href="#" class='file-click'>Add New Brand</a></li>
@@ -512,11 +686,12 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
 
 	<div id='source-code-main-div'>
 		<div class='source-code-sub-divs'>
-			<div id="close-editor-button">
-			<img style='height:100%;width:100%;' src="https://img.icons8.com/color/48/000000/suitcase.png">
-			</div>
+<!--			<div id="close-editor-button">-->
+<!--			<img style='height:100%;width:100%;' src="https://img.icons8.com/color/48/000000/suitcase.png">-->
+<!--			</div>-->
+
 			<div id='tabs-list-drop-down' class="dropdown">
-				<button  class="dropbtn">CDD</button>
+				<button  class="button dropbtn">CDD</button>
 				<div id="myDropdown" class="dropdown-content">
 				</div>
 			</div>
@@ -738,7 +913,7 @@ $('.CodeMirror').css('height','100%');
 
 
 <script type="text/javascript" src="{{ url_for('static', filename='/js/CodeEditor.js') }}"></script>
-<script type="module" src="{{ url_for('static', filename='/js/ComponentsContainer.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='/js/main.js') }}"></script>
 
 <script type='text/javascript'>
 

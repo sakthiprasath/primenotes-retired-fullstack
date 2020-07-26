@@ -1,4 +1,4 @@
-<div data-darkreader-inline-bgcolor="" data-darkreader-inline-bgimage="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-darkreader-inline-border-right="" data-darkreader-inline-border-top="" style="background: rgb(238, 238, 238); border: 1px solid rgb(204, 204, 204); padding: 5px 10px; --darkreader-inline-bgimage: initial; --darkreader-inline-bgcolor:#2a2825; --darkreader-inline-border-top:#46433d; --darkreader-inline-border-right:#46433d; --darkreader-inline-border-bottom:#46433d; --darkreader-inline-border-left:#46433d;">
+<div data-darkreader-inline-bgcolor="" data-darkreader-inline-bgimage="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-darkreader-inline-border-right="" data-darkreader-inline-border-top="" style="background: rgb(238, 238, 238); border: 1px solid rgb(204, 204, 204); padding: 5px 10px; --darkreader-inline-bgimage: initial; --darkreader-inline-bgcolor:#2e2d2a; --darkreader-inline-border-top:#494843; --darkreader-inline-border-right:#494843; --darkreader-inline-border-bottom:#494843; --darkreader-inline-border-left:#494843;">
 <pre>
 <strong><span dir="rtl"><cite>                                                                                   WOE - AZIMA INTEGRATION</cite></span>
 </strong></pre>
@@ -15,6 +15,7 @@
 <p><big><strong>CREDENTIALS (for connecting with azima)&nbsp;: </strong></big></p>
 
 <p>SAAIDI_URI&nbsp; :&nbsp; &nbsp;<a href="https://devweb.wptss.com/saaidi/swagger/index.html" target="_blank">https://devweb.wptss.com/saaidi/swagger/index.html</a><br />
+<a href="https://azdevweb.wptss.com/saaidi/swagger/index.html">https://azdevweb.wptss.com/saaidi/swagger/index.html</a><br />
 SAAIDI_USER: dba&nbsp;&nbsp;<br />
 SAAIDI_PASSWORD: vibration</p>
 
@@ -34,12 +35,30 @@ SAAIDI_PASSWORD: vibration</p>
 
 <p><strong>docker-compose :</strong></p>
 
-<p>current master key :</p>
+<p>MASTER_API_KEY:</p>
 
-<p>a3X1TG-RY3A21IEDNhmPDCHPgtkaiEOiTAxzs9sU6qw</p>
+<p>hnryPlKZv9itGFxAtNmlw6yzWm2bkSz1-zSZ44QDUZs</p>
+
+<p>&nbsp;</p>
 
 <p>lambda :<br />
 1ddd396e-1e6f-4dc8-bc98-b08325f53aa6</p>
+
+<p>&nbsp;</p>
+
+<h1>GET watchman users inside Eureka&nbsp;platform :</h1>
+
+<p>1 ) put the connection string in&nbsp; config.yaml<br />
+TASK_QUEUE_SEND_CONNECTION_STRING: &quot;Endpoint=sb://siai-eventhubs-test.servicebus.windows.net/;SharedAccessKeyName=send_listen;SharedAccessKey=52eMK+9/DcZifdgZhWcW5HxkY1fJFjMJqlt0AVkJKZQ=;EntityPath=topic-test&quot;<br />
+TASK_QUEUE_LISTEN_CONNECTION_STRING: &quot;Endpoint=sb://siai-eventhubs-test.servicebus.windows.net/;SharedAccessKeyName=send_listen;SharedAccessKey=52eMK+9/DcZifdgZhWcW5HxkY1fJFjMJqlt0AVkJKZQ=;EntityPath=topic-test&quot;</p>
+
+<p>2) change the config_file_path to the required pipline yaml file in <strong>main.py</strong></p>
+
+<p>3 )&nbsp; run server.py&nbsp;<br />
+4) run task_executor.py<br />
+5 ) insert a user or initiate bulk import from postman only<br />
+<br />
+&nbsp;</p>
 
 <p>&nbsp;</p>
 
@@ -48,8 +67,24 @@ SAAIDI_PASSWORD: vibration</p>
 <h2><strong>Auth Server Project :</strong><br />
 &nbsp;</h2>
 
-<p>Auth server project is a medium&nbsp;to connect to the fusion auth server running at localhost:16000<br />
-for managing&nbsp; <strong><em>tenants,</em></strong> <strong><em>applications,</em></strong> <strong><em>users,&nbsp;super user</em></strong></p>
+<h3>Auth server project is a medium&nbsp;to connect to the fusion auth server running at localhost:16000<br />
+for managing&nbsp; <strong><em>tenants,</em></strong> <strong><em>applications,</em></strong> <strong><em>users,&nbsp;super user, generatng access tokens<br />
+<br />
+Example:<br />
+To generate logn token&nbsp;</em></strong></h3>
+
+<p><em>URL:</em></p>
+
+<p>http://localhost/api/auth/token<br />
+<strong>REQUEST BODY:&nbsp;</strong><br />
+<strong>{<br />
+&nbsp;&nbsp; &nbsp;&quot;grant_type&quot;:&quot;password&quot;,<br />
+&nbsp;&nbsp; &nbsp;&quot;username&quot;:&quot;super-user&quot;,<br />
+&nbsp;&nbsp; &nbsp;&quot;password&quot;:&quot;siaipass1234&quot;,<br />
+&nbsp; &nbsp; &quot;client_id&quot;:&quot;b4ea82d9-caf1-4e38-b24b-04650875d78f&quot;,<br />
+&nbsp;&nbsp; &nbsp;&quot;client_secret&quot;:&quot;r5Lc6czwNliI00TyEiz8EycPLLYUjN6vH_Ak420HE9Q&quot;<br />
+}</strong><br />
+<strong><em>------------------------------------------------------</em></strong></p>
 
 <pre>
 &quot;&quot;&quot; use
@@ -89,7 +124,7 @@ AUTH_API_KEY=master-api-key                          #master_api_key for generat
 <hr />
 <h2><strong>Sdks :</strong></h2>
 
-<p>&nbsp;</p>
+<p>its a set of library modules for calling different MS routes</p>
 
 <p>&nbsp;</p>
 
@@ -171,13 +206,13 @@ create super user :</h3>
 
 <p>&nbsp;&nbsp;&quot;internal_app&quot;:&nbsp;{</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;client_id&quot;:&nbsp;&quot;42078fcd-919e-4c34-8fac-93adf6309a41&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;client_id&quot;:&nbsp;&quot;b4ea82d9-caf1-4e38-b24b-04650875d78f&quot;,</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;client_secret&quot;:&nbsp;&quot;SDHYgwXv1hB8YRrbHWErwLS_ZML56ohU1QYVipItJXY&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;client_secret&quot;:&nbsp;&quot;r5Lc6czwNliI00TyEiz8EycPLLYUjN6vH_Ak420HE9Q&quot;,</p>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;domain&quot;:&nbsp;&quot;auth.symphonyindai.com&quot;,</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;id&quot;:&nbsp;&quot;42078fcd-919e-4c34-8fac-93adf6309a41&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;id&quot;:&nbsp;&quot;b4ea82d9-caf1-4e38-b24b-04650875d78f&quot;,</p>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;name&quot;:&nbsp;&quot;APM&nbsp;Internal&nbsp;Apps&quot;,</p>
 
@@ -187,7 +222,7 @@ create super user :</h3>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;],</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;tenant_id&quot;:&nbsp;&quot;e2718dfe-b5ae-459a-b2e0-355bd4916343&quot;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;tenant_id&quot;:&nbsp;&quot;adc6c8c2-be14-4482-9b79-d5c4e562c48b&quot;</p>
 
 <p>&nbsp;&nbsp;},</p>
 
@@ -195,7 +230,7 @@ create super user :</h3>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;email&quot;:&nbsp;&quot;prasath@symphonyai.com&quot;,</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;id&quot;:&nbsp;&quot;2ee176bc-b82c-402c-b343-98c37c5e68d8&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;id&quot;:&nbsp;&quot;beca98ed-975d-4ff7-80cf-43547f9fff7d&quot;,</p>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;name&quot;:&nbsp;null,</p>
 
@@ -203,7 +238,7 @@ create super user :</h3>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;super_user&quot;:&nbsp;false,</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;tenant_id&quot;:&nbsp;&quot;e2718dfe-b5ae-459a-b2e0-355bd4916343&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;tenant_id&quot;:&nbsp;&quot;adc6c8c2-be14-4482-9b79-d5c4e562c48b&quot;,</p>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;user_name&quot;:&nbsp;&quot;super-user&quot;</p>
 
@@ -218,13 +253,13 @@ create super user :</h3>
 
 <p>&nbsp;&nbsp;&quot;application&quot;:&nbsp;{</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;client_id&quot;:&nbsp;&quot;7e20a1f2-b493-4d55-ab79-10fb041a6f97&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;client_id&quot;:&nbsp;&quot;92eba166-c6e1-4d4b-9a34-0c7750a6c0f6&quot;,</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;client_secret&quot;:&nbsp;&quot;DdFU0_Vrzjw0INzc9glh0d3O4qzk3oGoIKmL7GR2v8A&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;client_secret&quot;:&nbsp;&quot;CkHMcf-2A_u01viArVlkggydqG9Vimk5AotL425iuI4&quot;,</p>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;domain&quot;:&nbsp;&quot;localhost.azima&quot;,</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;id&quot;:&nbsp;&quot;7e20a1f2-b493-4d55-ab79-10fb041a6f97&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;id&quot;:&nbsp;&quot;92eba166-c6e1-4d4b-9a34-0c7750a6c0f6&quot;,</p>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;name&quot;:&nbsp;&quot;azima-apm&quot;,</p>
 
@@ -234,7 +269,7 @@ create super user :</h3>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;],</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;tenant_id&quot;:&nbsp;&quot;b49a1fa4-c4a9-4509-b3e1-e0a3f0757b60&quot;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;tenant_id&quot;:&nbsp;&quot;83849e93-922a-4f2f-82b0-aecf90c8348d&quot;</p>
 
 <p>&nbsp;&nbsp;},</p>
 
@@ -242,7 +277,7 @@ create super user :</h3>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;data_base&quot;:&nbsp;&quot;azima_db&quot;,</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;id&quot;:&nbsp;&quot;b49a1fa4-c4a9-4509-b3e1-e0a3f0757b60&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;id&quot;:&nbsp;&quot;83849e93-922a-4f2f-82b0-aecf90c8348d&quot;,</p>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;name&quot;:&nbsp;&quot;azima&quot;,</p>
 
@@ -254,7 +289,7 @@ create super user :</h3>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;email&quot;:&nbsp;&quot;prasath@symphonyai.com&quot;,</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;id&quot;:&nbsp;&quot;6acba23b-fce9-40f1-9a08-6cb39c6942ae&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;id&quot;:&nbsp;&quot;a2527b31-6fbe-4ffd-89d5-d984af29a98f&quot;,</p>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;name&quot;:&nbsp;null,</p>
 
@@ -262,7 +297,7 @@ create super user :</h3>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;super_user&quot;:&nbsp;false,</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;tenant_id&quot;:&nbsp;&quot;b49a1fa4-c4a9-4509-b3e1-e0a3f0757b60&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;tenant_id&quot;:&nbsp;&quot;83849e93-922a-4f2f-82b0-aecf90c8348d&quot;,</p>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;user_name&quot;:&nbsp;&quot;super-user&quot;</p>
 
@@ -270,5 +305,60 @@ create super user :</h3>
 
 <p>}</p>
 
+<hr />
+<hr />
+<h2>GET Authentication bearer token :&nbsp;</h2>
+
+<p>http://localhost/api/auth/token</p>
+
+<p>{<br />
+&nbsp;&nbsp; &nbsp;&quot;grant_type&quot;:&quot;password&quot;,<br />
+&nbsp;&nbsp; &nbsp;&quot;username&quot;:&quot;super-user&quot;,<br />
+&nbsp;&nbsp; &nbsp;&quot;password&quot;:&quot;siaipass1234&quot;,<br />
+&nbsp; &nbsp; &quot;client_id&quot;:&quot;b4ea82d9-caf1-4e38-b24b-04650875d78f&quot;,<br />
+&nbsp;&nbsp; &nbsp;&quot;client_secret&quot;:&quot;r5Lc6czwNliI00TyEiz8EycPLLYUjN6vH_Ak420HE9Q&quot;<br />
+}<br />
+<br />
+&nbsp;</p>
+
+<hr />
+<hr />
+<h2><strong>common set up :</strong></h2>
+
+<p>for the first time downloadig the dependencies (only in virtual environment)</p>
+
+<p>sudo pip3 install virtualenvwrapper</p>
+
+<p>open the .bashrc file and insert the below two linea at last<br />
+&nbsp;&nbsp; &nbsp;export WORKON_HOME=~/virtualenvs<br />
+&nbsp;&nbsp; &nbsp;source /usr/local/bin/virtualenvwrapper.sh</p>
+
+<p>create the virtual environement<br />
+mkvirtualenv -p /usr/local/bin/python3.6 tsdb-apm(name of the virtual environment)</p>
+
+<p><br />
+switch to the required virtual environment<br />
+workon tsdb-apm</p>
+
+<p>to exit from the current virtual environment<br />
+deactivate</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><br />
+create a file name pip.conf in tsdb-apm and paste the following&nbsp;</p>
+
+<p>[global]<br />
+index-url = https://keshav:Pa55word@123@symphonyai.jfrog.io/symphonyai/api/pypi/timeli-python/simple/</p>
+
+<p>execute the commands&nbsp;<br />
+&nbsp; &nbsp; export PIP_CONFIG_FILE=pip.conf<br />
+&nbsp; &nbsp; pip install -r requirements.txt --extra-index-url https://pypi.python.org/simple</p>
+
+<p>&nbsp;</p>
+
+<hr />
 <hr />
 <p>&nbsp;</p>

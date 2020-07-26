@@ -1,3 +1,44 @@
+<p><img alt="" src="https://cdn.pixabay.com/photo/2017/10/31/07/49/horses-2904536_960_720.jpg" style="height:720px; width:960px" /></p>
+
+<p><img alt="" src="https://cdn.pixabay.com/photo/2016/06/21/23/05/girl-1472185_960_720.jpg" /></p>
+
+<p>&nbsp;</p>
+
+<hr />
+<hr />
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>python strings :&nbsp;<br />
+&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<hr />
+<hr />
 <p><strong>Variable :</strong></p>
 
 <pre>
@@ -105,6 +146,401 @@ print (list + tinylist) # Prints concatenated lists</pre>
 
 <p>list is mutable but tuples are not</p>
 
+<h2><strong>append:</strong></h2>
+
+<p>append can be used to</p>
+
+<p>1.add a single element &nbsp;</p>
+
+<p>2.add a new entire list to existing list</p>
+
+<p>code :</p>
+
+<p>l1 = [1,2,3]</p>
+
+<p>l2=[4,5]</p>
+
+<p>l3 = l1.append(l2)&nbsp;</p>
+
+<p>print(l3)</p>
+
+<p>l3.append(6)</p>
+
+<p>print(l3)</p>
+
+<p>&nbsp;</p>
+
+<p>output:&nbsp;</p>
+
+<p>1 2 3 4 5</p>
+
+<p>1 2 3 4 5 6</p>
+
+<p>&nbsp;</p>
+
+<h2><strong>insert :</strong></h2>
+
+<p>To insert an element anywhere in the list.</p>
+
+<p>l1 =[&#39;s&#39;&nbsp; ,&nbsp; &#39;a&#39;&nbsp; &nbsp;,&nbsp; &nbsp;&#39;k&#39;] &nbsp;</p>
+
+<p>l1.insert(2, &#39;t&#39;)</p>
+
+<p>print(l1)</p>
+
+<p>&nbsp;</p>
+
+<p>output :&nbsp;</p>
+
+<p>s a t k</p>
+
+<p>&nbsp;</p>
+
+<p>len:</p>
+
+<p>l1 = [1, 2, 3, 4]</p>
+
+<p>size = len(l1)</p>
+
+<p>print(size)</p>
+
+<p>output :&nbsp;</p>
+
+<p>4</p>
+
+<p>&nbsp;</p>
+
+<p><strong><a href="https://www.geeksforgeeks.org/list-methods-python/">extend()</a>:</strong>&nbsp;</p>
+
+<p>Iterates over its argument and adding each element to the list and extending the list. The length of the list increases by number of elements in it&rsquo;s argument.</p>
+
+<p><code>List</code> <code>=</code> <code>[</code><code>1</code><code>,</code><code>2</code><code>,</code><code>3</code><code>,</code><code>4</code><code>] </code></p>
+
+<p><code>print</code><code>(</code><code>&quot;Initial List: &quot;</code><code>) </code></p>
+
+<p><code>print</code><code>(</code><code>List</code><code>) </code></p>
+
+<p><code>&nbsp;</code>&nbsp;</p>
+
+<p><code># Addition of multiple elements </code></p>
+
+<p><code># to the List at the end </code></p>
+
+<p><code># (using Extend Method) </code></p>
+
+<p><code>List</code><code>.extend([</code><code>8</code><code>, </code><code>&#39;Geeks&#39;</code><code>, </code><code>&#39;Always&#39;</code><code>]) </code></p>
+
+<p><code>print</code><code>(</code><code>&quot;\nList after performing Extend Operation: &quot;</code><code>) </code></p>
+
+<p><code>print</code><code>(</code><code>List</code><code>) </code></p>
+
+<p>&nbsp;</p>
+
+<p>output:&nbsp;</p>
+
+<pre>
+Initial List: 
+[1, 2, 3, 4]
+
+List after performing Extend Operation: 
+[1, 2, 3, 4, 8, &#39;Geeks&#39;, &#39;Always&#39;]</pre>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<h2><strong>deleting elements in the list:</strong></h2>
+
+<p><code>list1 </code><code>=</code> <code>[</code><code>1</code><code>, </code><code>2</code><code>, </code><code>3</code><code>, </code><code>4</code><code>, </code><code>5</code><code>] </code></p>
+
+<p><code>print</code><code>(list1) </code></p>
+
+<p><code>&nbsp;</code>&nbsp;</p>
+
+<p><code># deleting element </code></p>
+
+<p><code>del</code> <code>list1[</code><code>2</code><code>] </code></p>
+
+<p><code>print</code><code>(list1) </code></p>
+
+<p>output:</p>
+
+<pre>
+[1, 2, 3, 4, 5]
+[1, 2, 4, 5]</pre>
+
+<p>&nbsp;</p>
+
+<h2><strong>Negative indexing :</strong><br />
+List can be indexed from the end</h2>
+
+<p>Lets say we have<br />
+List_1 = [ &#39;sakthi&#39;, &#39;prasath&#39;, &#39;sundhar&#39;, &#39;reshan&#39;]</p>
+
+<p>print(List_1[-1])</p>
+
+<p>&nbsp;</p>
+
+<p>output:&nbsp;</p>
+
+<p>reshan</p>
+
+<p>this is because python lists can be negative indexed and&nbsp;</p>
+
+<p>strategy used is&nbsp;</p>
+
+<p>(n-1)-n will index last element</p>
+
+<p>(n-2)- n will index second last element</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<h2>pop():&nbsp;</h2>
+
+<p>pop()&nbsp; is an in-built function.</p>
+
+<p>if no values is passed as argument to the function pop() removes the last element in the list.<br />
+if the index is passed as argument to the pop() function it deletes the element at the&nbsp;index.</p>
+
+<p>code :</p>
+
+<pre>
+List_1 = [&#39;sakthi&#39;,&#39;prasath&#39;,&#39;sundhar&#39;,&#39;reshan&#39;]
+
+print(&quot;Initial List_1 : &quot;)
+print(List_1)
+
+List_1.pop()
+print(&quot;List_1 after poping last element: &quot;)
+print(List_1)
+
+List_1.pop(1)
+print(&quot;List_1 after poping element at index 1 :&quot;)
+print(List_1)
+
+</pre>
+
+<h2>output :&nbsp;</h2>
+
+<p>Initial List_1 :&nbsp;<br />
+[&#39;sakthi&#39;, &#39;prasath&#39;, &#39;sundhar&#39;, &#39;reshan&#39;]<br />
+List_1 after poping last element:&nbsp;<br />
+[&#39;sakthi&#39;, &#39;prasath&#39;, &#39;sundhar&#39;]<br />
+List_1 after poping element at index 1 :<br />
+[&#39;sakthi&#39;, &#39;sundhar&#39;]</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<h2><strong>remove():</strong></h2>
+
+<h3><br />
+remove method is used for removing only one element at a time.<br />
+For removing multiple elements at a time we need iterators like range</h3>
+
+<pre>
+List_1 = [1,2,3,3,3,4,5]
+
+print(&quot;Initial List_1 : &quot;)
+print(List_1)
+
+List_1.remove(3)
+print(&quot;List_1 after deleting first 3 : &quot;)
+print(List_1)
+
+for i in range(1,5):
+    List_1.remove(i)
+print(&quot;List_1 after deleting second 3 : &quot;)
+print(List_1)
+</pre>
+
+<h2>output :&nbsp;</h2>
+
+<p>Initial List_1 :&nbsp;<br />
+[1, 2, 3, 3, 3, 4, 5]<br />
+List_1 after deleting first 3 :&nbsp;<br />
+[1, 2, 3, 3, 4, 5]<br />
+List_1 after deleting second 3 :&nbsp;<br />
+[3, 5]</p>
+
+<p>&nbsp;</p>
+
+<h1><strong>slicing in list:</strong></h1>
+
+<pre>
+List_1 = [&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;e&#39;,&#39;f&#39;]
+
+print(&quot;elements from beginning to a range use [:Index]&quot;)
+print(List_1[:2])
+
+print(&quot;elements from end use [:-Index]&quot;)
+print(List_1[:-1])
+
+print(&quot;elements from specific Index till the end use [Index:]&quot;)
+print(List_1[1:])
+
+print(&quot;elements within a range use [Start Index:End Index]&quot;)
+n =len(List_1)
+print(List_1[0:n])
+
+print (&quot;whole List in reverse order use [::-1]&quot;)
+print(List_1[::-1])</pre>
+
+<h2><strong>output:&nbsp;</strong></h2>
+
+<p><br />
+elements from beginning to a range use [:Index]<br />
+[&#39;a&#39;, &#39;b&#39;]<br />
+elements from end use [:-Index]<br />
+[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;]<br />
+elements from specific Index till the end use [Index:]<br />
+[&#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;]<br />
+elements within a range use [Start Index:End Index]<br />
+[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;]<br />
+whole List in reverse order use [::-1]<br />
+[&#39;f&#39;, &#39;e&#39;, &#39;d&#39;, &#39;c&#39;, &#39;b&#39;, &#39;a&#39;]</p>
+
+<p>&nbsp;</p>
+
+<p>more functions:</p>
+
+<p>1.<code>del</code>&nbsp;List_1[ startindex: endindex]&nbsp; to delete sequence of elements in a list</p>
+
+<p>2.List_1.sort()&nbsp; &nbsp;sorts the elements in List_1</p>
+
+<p>3.List_1.reverse()&nbsp; reverses the elements in the List_1&nbsp;</p>
+
+<p>4.List_1.clear()&nbsp; deletes all the elements in List_1</p>
+
+<p>5.List_1.index(&#39;s&#39;) will return the index of s in the list from let to right , throws value error if not present</p>
+
+<p>6.List_1.index(&#39;s&#39; ,3,6) will return the index of s within the range 3 and 6</p>
+
+<p>7. list.count method to find how many time an item appears in the list.</p>
+
+<p>8. min,max value</p>
+
+<p>9. List_1[0:5:2]&nbsp; &nbsp; 5,6,7,8,9,21,22&nbsp;<br />
+&nbsp; &nbsp; &nbsp;it will skip and print one element between indexes 0 and 5</p>
+
+<p>10. List_1[5:0:-2]&nbsp; 5,6,7,8,9,21,22&nbsp;</p>
+
+<p>&nbsp; &nbsp; &nbsp;it will skip and print one element between indexes 5&nbsp;and 0 in reverse order&nbsp;</p>
+
+<p>11. b = a<br />
+&nbsp;copies reference&nbsp;<br />
+&nbsp;whereas,</p>
+
+<p>b= list(a)</p>
+
+<p>creates new list object&nbsp;</p>
+
+<p>note: import copy</p>
+
+<p>copy.deepcopy(a) does this</p>
+
+<p>&nbsp;</p>
+
+<p>12. for loop in lists</p>
+
+<p>13. .split(&#39;&#39;) returns list</p>
+
+<p>14. &quot; &quot;.join(List_1)</p>
+
+<p>15. converting list of lists to flat list</p>
+
+<p>import itertools</p>
+
+<p>list(itertools.chain(*List_1))</p>
+
+<p>16. to find duplicate elements:</p>
+
+<p>code :</p>
+
+<div data-darkreader-inline-bgcolor="" data-darkreader-inline-bgimage="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-darkreader-inline-border-right="" data-darkreader-inline-border-top="" style="background: rgb(238, 238, 238); border: 1px solid rgb(204, 204, 204); padding: 5px 10px; --darkreader-inline-bgimage: initial; --darkreader-inline-bgcolor:#2e2d2a; --darkreader-inline-border-top:#494843; --darkreader-inline-border-right:#494843; --darkreader-inline-border-bottom:#494843; --darkreader-inline-border-left:#494843;">List_1 = [1,2,3,3,4,5,6,6,7,7,7,8]<br />
+duplicate_elements&nbsp; =&nbsp; [ i for i in List_! if List_1.count(i)&nbsp; &gt;&nbsp; 1]<br />
+print(duplicate_elements)</div>
+
+<p>&nbsp;output:</p>
+
+<div data-darkreader-inline-bgcolor="" data-darkreader-inline-bgimage="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-darkreader-inline-border-right="" data-darkreader-inline-border-top="" style="background: rgb(238, 238, 238); border: 1px solid rgb(204, 204, 204); padding: 5px 10px; --darkreader-inline-bgimage: initial; --darkreader-inline-bgcolor:#2e2d2a; --darkreader-inline-border-top:#494843; --darkreader-inline-border-right:#494843; --darkreader-inline-border-bottom:#494843; --darkreader-inline-border-left:#494843;">3,3,6,6,7,7,7</div>
+
+<p>17. to find the unique elements</p>
+
+<p>unique_elements = set(duplicate_elements )</p>
+
+<p>print(unique_elements)</p>
+
+<div data-darkreader-inline-bgcolor="" data-darkreader-inline-bgimage="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-darkreader-inline-border-right="" data-darkreader-inline-border-top="" style="background: rgb(238, 238, 238); border: 1px solid rgb(204, 204, 204); padding: 5px 10px; --darkreader-inline-bgimage: initial; --darkreader-inline-bgcolor:#2e2d2a; --darkreader-inline-border-top:#494843; --darkreader-inline-border-right:#494843; --darkreader-inline-border-bottom:#494843; --darkreader-inline-border-left:#494843;">3, 6, 7</div>
+
+<p>&nbsp;</p>
+
+<p>18.from colletions import dequeue</p>
+
+<p>code :</p>
+
+<div data-darkreader-inline-bgcolor="" data-darkreader-inline-bgimage="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-darkreader-inline-border-right="" data-darkreader-inline-border-top="" style="background: rgb(238, 238, 238); border: 1px solid rgb(204, 204, 204); padding: 5px 10px; --darkreader-inline-bgimage: initial; --darkreader-inline-bgcolor:#2e2d2a; --darkreader-inline-border-top:#494843; --darkreader-inline-border-right:#494843; --darkreader-inline-border-bottom:#494843; --darkreader-inline-border-left:#494843;"><br />
+from collections import deque<br />
+List_1 = [1,2,3]<br />
+List_1 = deque(List_1)<br />
+List_1.rotate(1)&nbsp; #will rotate one element from the list in clockwise direction&nbsp;<br />
+print(List_1)</div>
+
+<p>output:&nbsp;</p>
+
+<div data-darkreader-inline-bgcolor="" data-darkreader-inline-bgimage="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-darkreader-inline-border-right="" data-darkreader-inline-border-top="" style="background: rgb(238, 238, 238); border: 1px solid rgb(204, 204, 204); padding: 5px 10px; --darkreader-inline-bgimage: initial; --darkreader-inline-bgcolor:#2e2d2a; --darkreader-inline-border-top:#494843; --darkreader-inline-border-right:#494843; --darkreader-inline-border-bottom:#494843; --darkreader-inline-border-left:#494843;">deque([3, 1, 2])</div>
+
+<p>&nbsp;</p>
+
+<p>Time complexities of List operation in python:</p>
+
+<table>
+	<tbody>
+		<tr>
+			<td>
+			<p><a href="https://wiki.python.org/moin/TimeComplexity">https://wiki.python.org/moin/TimeComplexity</a></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<h2><strong>Main aim for starting pythondevtips:</strong></h2>
+
+<ol>
+	<li>Trial run for attracting user base</li>
+	<li>learning Python and Machine learning concepts indepth</li>
+	<li>how my product out fits others</li>
+	<li>descipline&nbsp;</li>
+	<li>time and energy management</li>
+	<li>cannot eexpect money in returns.</li>
+	<li>it adds value to my career ( senior python engineer)</li>
+</ol>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
 <hr />
 <hr />
 <h2>Types of printing string :</h2>
@@ -185,6 +621,7 @@ print(f&#39;Total score for {name} is {score}&#39;)</code></pre>
 <hr />
 <h2>Response Codes:</h2>
 
+<hr />
 <h3>200 - for get&nbsp; requests - OK&nbsp;</h3>
 
 <p>500 - server error - error occured in server while&nbsp;&nbsp;processing this request&nbsp;</p>
@@ -216,3 +653,12 @@ print(f&#39;Total score for {name} is {score}&#39;)</code></pre>
 	&nbsp;</li>
 	<li>PEP8 convention</li>
 </ul>
+
+<hr />
+<hr />
+<p>Types of arguments :&nbsp;<br />
+positional arguments</p>
+
+<p>keyword argument</p>
+
+<p>&nbsp;</p>

@@ -57,7 +57,7 @@
     position: fixed;
     z-index: 1;
     bottom: 100px;
-    background-color: #26162d;
+    background: linear-gradient(25deg, #5ad2a2 -5%, #1ba1bf 80%);
     overflow-x: hidden;
     transition: 0.3s;
     padding-top: 60px;
@@ -70,12 +70,10 @@ div {
     display: block;
 }
 .sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 15px;
-    color: white;
-    display: block;
-    transition: 0.3s;
+    color: #26162d;
+    font-size: 14px;
+    font-family: fantasy;
+    font-weight: 100;
 }
 
 
@@ -152,12 +150,13 @@ left:170px;
 }
 
 
+
 #source-code-main-div{
 	position: fixed;
     height: 100%;
     width: 75%;
     left: 25%;
-    background-color: #26162d;
+    background: linear-gradient(270deg, #60D69F 0%, #19A0C0 100%);
     display: block;
     top: 40px;
 }
@@ -168,7 +167,6 @@ left:170px;
     height: 40px;
     overflow-x: hidden;
     top: 33px;
-    border: 1px solid #cdd4d8;
 }
 }
 
@@ -187,8 +185,7 @@ position: fixed;
     margin-top: 10px;
     margin-bottom: 10px;
     height: 83%;
-    width: 98%;
-    border: 1px solid white;
+    width: 78%;
 }
 
 /* @media screen and (min-width: 390px) {
@@ -216,7 +213,6 @@ position: fixed;
     position: absolute;
     top: 0%;
     margin-right: 22px;
-    left: 60px;
 }
 
 .tab-container .tab{
@@ -224,15 +220,19 @@ position: fixed;
 }
 
 .tab{
-  width: 129px;
+    width: 129px;
     height: 32px;
-    padding: 5px;
+    padding-top: -1px;
     margin: 1px;
-    background-color: #984797;
-    b: ;
-    display: inline-block;
+    font-size: 20px;
+    font-family: fantasy;
+    font-weight: 100;
+    color: #26162d;
     position: relative;
-    color: white;
+    border: 1px solid #5ed59f;
+    background-color: #5fd5a0;
+    font-variant-caps: all-small-caps;
+    padding-left: 6px;
     }
 .tab-active{
 border-bottom-color: white;
@@ -251,7 +251,7 @@ border-bottom-color: white;
 }
 
 .dropbtn {
-  background-color: #3498DB;
+  background-color: #48c4aa;
     color: white;
     padding: 6px;
     font-size: 15px;
@@ -270,7 +270,7 @@ border-bottom-color: white;
 
 .dropdown-content {
 	position: absolute;
-    background-color: #f1f;
+    background-color: #48c3a9;
     min-width: 118px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;

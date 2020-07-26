@@ -3,6 +3,7 @@ class global{
 		var editorMap={};
 		this.jsPath="";
 		this.cssPath="";
+		this.cssPath="";
 		this.HtmlPath="";
 		//editorMap.
 	}

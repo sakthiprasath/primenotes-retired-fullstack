@@ -54,6 +54,52 @@ the environment variables,&nbsp;</p>
 
 <p>docker logs -f &lt;docker_name&gt;</p>
 
+<hr />
+<hr />
+<h1><strong>linux commands :&nbsp;</strong></h1>
+
+<p>sudo lsof -i -P -n | grep LISTEN</p>
+
+<hr />
+<h1><strong>Swaager Docker run</strong> :</h1>
+
+<pre>
+docker run -d -p 80:8080 swaggerapi/swagger-editor
+</pre>
+
+<hr />
+<h2><strong>Docker :&nbsp;</strong></h2>
+
+<p>sudo apt install docker-compose<br />
+docker-compose up<br />
+docker-compose down<br />
+docker ps &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;[to list the docker processes]<br />
+docker stop psId &nbsp; [to stop the particular docker process with its id]</p>
+
+<p><br />
+docker run -d -p 5432:5432 -e POSTGRES_PASSWORD=password timescale/timescaledb:latest-pg9.6</p>
+
+<p>docker exec -ti keen_diffie bash</p>
+
+<hr />
+<hr />
+<p><br />
+&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<h1><strong>Python docker for bloging :</strong></h1>
+
+<p>docker-compose up -d &#39;image-name&#39;</p>
+
+<p><a href="https://www.letuspublish.com/top-10-internet-trends-during-lockdown/">https://www.letuspublish.com/top-10-internet-trends-during-lockdown/</a></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>

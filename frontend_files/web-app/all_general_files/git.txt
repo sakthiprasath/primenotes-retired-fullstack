@@ -1,3 +1,6 @@
+<p>list all the listening port :<br />
+sudo lsof -i -P -n &nbsp;</p>
+
 <p>&nbsp;</p>
 
 <h2><strong>creating branch locally and pushing to remote</strong> :&nbsp;</h2>

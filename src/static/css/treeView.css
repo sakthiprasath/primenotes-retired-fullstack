@@ -125,7 +125,7 @@ li.folder-group
 
 .minus
 {
-    background: url('../images/misc.png') -18px -59px no-repeat #fff;
+    background: url('../images/misc.png') -18px -59px no-repeat;
     padding-left: 20px;
     display: inline-block;
     height: 18px;

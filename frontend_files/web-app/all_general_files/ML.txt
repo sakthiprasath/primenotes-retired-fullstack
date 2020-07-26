@@ -9,7 +9,9 @@ Note here&nbsp; only category is given</p>
 
 <p>&nbsp;</p>
 
-<h2><strong>Mean,Median,Mode :&nbsp;</strong></h2>
+<h2><strong>Mean,</strong></h2>
+
+<h2><strong>Median,Mode :&nbsp;</strong></h2>
 
 <h3>Mean :<br />
 0,4,2,3</h3>
@@ -28,11 +30,24 @@ maximum count of each&nbsp;</p>
 
 <p>input : 0,4,2,3,4<br />
 0:1 ,&nbsp; 4:2,&nbsp; 2:1,&nbsp; 3:1<br />
-mode is 0</p>
+mode is 4</p>
 
-<p><br />
+<hr />
+<h2>variance:<br />
+average of the squared differences from the mean</h2>
+
+<h2>&nbsp;</h2>
+
+<h2>standard deviation :</h2>
+
+<h2>std deviation = square root of variance</h2>
+
+<h2>&nbsp;</h2>
+
+<h2>&nbsp;</h2>
+
+<h2><br />
 <br />
-<br />
-&nbsp;</p>
+&nbsp;</h2>
 
 <p>&nbsp;</p>
