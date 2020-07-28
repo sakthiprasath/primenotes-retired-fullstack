@@ -20,11 +20,9 @@ color:white;
 }
 
 .resizable .resizers .resizer{
- width: 15px;
+    width: 15px;
     height: 7px;
     border-radius: 16%;
-    background: #f1e8e8;
-    border: 1px solid #161719;
     position: absolute;
     z-index: 10;
 }
@@ -153,7 +151,7 @@ color:white;
 	position: absolute;
     height: calc(100% - 36px);
     width: 100%;
-    background: linear-gradient(270deg, #206e83  5%, #60D69F 80%);
+    background: linear-gradient(270deg, #206e83  100%, #60D69F 80%);
 }
 #left-and-middle-section{
      position: absolute;
@@ -181,13 +179,14 @@ color:white;
 	position: relative; 
 	margin-top: 10px;
 	margin-left:6px;
+	cursor:pointer;
 }
 #middle-section {
 	position: absolute;
     height: 99.5%;
     width: 210px;
     left: 35px;
-    background: linear-gradient(45deg, #26547c 5%, #06d6a0 50%);
+    background: linear-gradient(45deg, #26547c 5%, #46ac93 50%);
     color: black;
     }
 
@@ -296,7 +295,7 @@ box-sizing: content-box;
 font-variant-caps: small-caps;
 }
 .individual-search:hover {
-	background-color: #4bb496;
+	background-color: #3e948d;
 	cursor:pointer;
 }
 
@@ -426,7 +425,9 @@ font-variant-caps: small-caps;
     margin-top: 15px;
     margin-left: 10px;
     font-family: cursive;
-    width: 100%;
+    width: 96%;
+    left: -1%;
+    top: inherit;
 }
 .img-icon{
       width: 100%;
@@ -547,7 +548,7 @@ footer {
 }
 
 #pane {
-	position: absolute;
+	position: fixed;
     margin: 0;
     padding: 0;
     z-index: 99;
@@ -567,7 +568,7 @@ footer {
     text-align: center;
     top: 100px;
     left: 100px;
-    background-image:linear-gradient(270deg, #206e83  5%, #60D69F 80%);
+    background-image : linear-gradient(270deg, #206e83  5%, #54c39a 80%);
     padding: 4px;
     font-size: larger;
  }
@@ -786,13 +787,13 @@ body {
 .form-group .line {
     height: 4px;
     width: 0px;
-    background-color: darkgrey;
+    background-color: #178f8c;
     display: inline-block;
     transition: .3s width ease-in-out;
     position: relative;
     top: -3px;
-}
-
+    left: 0px;
+    }
 .search-box input[type=text]:focus+.line, select:focus+.line {
     border: none;
     background-color: #06d6a0;

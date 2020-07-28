@@ -60,20 +60,20 @@ export default class DomActions{
             let prev_width = self.prev_width;
             let curr_container_width = parseInt($('.resizable').css('width'));
             let curr_container_height = parseInt($('.resizable').css('height'));
-            let screenWidth = parseInt(window.innerWidth);
-            let screenHeight = parseInt(window.innerHeight);
+            let screenWidth = parseInt(window.innerWidth) + 1;
+            let screenHeight = parseInt(window.innerHeight) + 1;
 
 
 
     		if(curr_container_width === screenWidth && curr_container_height === screenHeight){
     		    if(prev_height != 0 && prev_width != 0){
-    			    $('#pane').css({'width':prev_width,'height':prev_height,'top':'10px','left':'0px'});
+    			    $('#pane').css({'width':prev_width,'height':prev_height,'top':'0px','left':'0px'});
     			    $('.resizable').css({'width':prev_width,'height':prev_height,'top':'0px','left':'0px'});
     		    }
-    		    else{
-    		        $('#pane').css({'width':'50%','height':'50%','top':'10px','left':'0px'});
-    			    $('.resizable').css({'width':'100%','height':'100%','top':'0px','left':'0px'});
-    			}
+//    		    else{
+//    		        $('#pane').css({'width':'50%','height':'50%','top':'10px','left':'0px'});
+//    			    $('.resizable').css({'width':'100%','height':'100%','top':'0px','left':'0px'});
+//    			}
     		}
     		else{
     		    if(prev_height != 0 && prev_width != 0){
@@ -81,7 +81,7 @@ export default class DomActions{
     			    $('.resizable').css({'width':prev_width,'height':prev_height,'top':'0px','left':'0px'});
     		    }
     		    else{
-    		        $('#pane').css({'width':screenWidth,'height':screenHeight,'top':'10px','left':'0px'});
+    		        $('#pane').css({'width':screenWidth,'height':screenHeight,'top':'0px','left':'0px'});
     			    $('.resizable').css({'width':screenWidth,'height':screenHeight,'top':'0px','left':'0px'});
     			    self.prev_height = curr_container_height;
     			    self.prev_width  = curr_container_width;

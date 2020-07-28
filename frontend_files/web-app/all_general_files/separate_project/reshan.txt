@@ -9,7 +9,7 @@ https://kbr.symphonyindai.com/wrp/pages/asset/1?navbar=false
     app_logger.debug(resp.text)
 
 
-ambrane power bank : 
+ambrane power bank :
 https://www.amazon.in/Ambrane-Li-Polymer-Smartphones-PP-30-Pro/dp/B083DX7PJF/ref=pd_sbs_23_16?_encoding=UTF8&pd_rd_i=B083DX7PJF&pd_rd_r=d50e9b8a-bc42-42d0-ab56-a2a284f03a69&pd_rd_w=c1i9R&pd_rd_wg=ZdNzF&pf_rd_p=00b53f5d-d1f8-4708-89df-2987ccce05ce&pf_rd_r=Z6EKKZAQSHMSHEZKG0DN&psc=1&refRID=Z6EKKZAQSHMSHEZKG0DN
 
 lapgaurd :
@@ -31,12 +31,12 @@ https://www.amazon.in/Lenovo-18-5-inch-Monitor-Response-time/dp/B07XX24XWD/ref=s
 HARD DISK :
 https://www.amazon.in/Seagate-Backup-Desktop-External-Drive/dp/B06Y45CCHR/ref=sr_1_21?crid=2VYIIXKFQJGAN&dchild=1&keywords=1+tb+hardisk&qid=1594648020&s=computers&sprefix=1+tb+%2Ccomputers%2C656&sr=1-21
 
-should have 
+should have
 LED screen,
 
 Router :
 https://www.amazon.in/TP-Link-TL-WR841N-300Mbps-Wireless-N-Router/dp/B001FWYGJS
-  
+
 5300
 3500
 2000

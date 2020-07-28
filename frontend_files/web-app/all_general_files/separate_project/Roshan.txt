@@ -1,5 +1,25 @@
-<div class="single-video-section">
-<video width="400" controls=""> <source src="http://localhost:5000/static/videos/digestive_system.mp4" type="video/mp4"></video>
+for context menu 
+https://stackoverflow.com/questions/4495626/making-custom-right-click-context-menus-for-my-web-app
 
-<div class="video-name">digestive system</div> 
-</div>
+
+
+for chat section 
+see codepen
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

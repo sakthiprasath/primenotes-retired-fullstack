@@ -1,6 +1,36 @@
-padding: 1px 11px 2px 38px;
-    text-decoration: none;
-    font-size: 15px;
-    color: black;
-    display: block;
-    transition: 0.3s;
+wd_client.py
+
+
+from ai.timeli.sdk.response_handlers import *
+from ai.timeli.utils.rest_client import *
+
+class WDSClient:
+
+    def update_asset_status(self, asset_details):
+        headers = {}
+        headers["X-SUPER-USER"] = str(True)
+        headers["X-TENANT-ID"] = self.rc.tenant_id
+        self.rc.headers = headers
+        return self.rc.doPost('/api/wds/asset/status',body=asset_details.toDict())
+
+------------------------------------------------------------------
+classes.py
+class AssetStatusForm(DomainBase):
+    def __init__(self, attr_vals):
+        super(AssetStatusForm, self).__init__(attr_vals)
+
+	def toDict(self):
+            return self.__dict__
+
+------------------------------------------------------------------
+
+              
+        modified:   ../configs/config.yml
+        modified:   ../requirements.txt
+        modified:   ../samples/constants.py
+        modified:   ../samples/recieve_msg_from_eventhub.py
+        modified:   ../samples/send_msg_to_eventhub.py
+        modified:   ../src/main.py
+        modified:   ../src/pipelines/transformers/watchman_status_transformer.py
+        modified:   ../src/pipelines/transformers/watchman_test_results_transformer.py
+        modified:   ../src/reliability_portal/reliability_portal_routes.py
