@@ -18,6 +18,13 @@ export default class DomEvents{
          });
     }
 
+    _create_component_open_close(){
+       /*component create dialog open close*/
+        $('#create-component').on('click',function(){
+            $('#create-component-dialog').dialog();
+        });
+    }
+
     _download_video_click_event(){
         /*download youtube video*/
         self = this;
@@ -41,6 +48,7 @@ export default class DomEvents{
         this._component_container_open_close();
         this._maximize_icon_click_event();
         this._initialize_file_chat_switches_events();
+        this._create_component_open_close();
     }
 
 }

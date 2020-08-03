@@ -1,10 +1,10 @@
-<div data-darkreader-inline-bgcolor="" data-darkreader-inline-bgimage="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-darkreader-inline-border-right="" data-darkreader-inline-border-top="" style="background: rgb(238, 238, 238); border: 1px solid rgb(204, 204, 204); padding: 5px 10px; --darkreader-inline-bgimage: initial; --darkreader-inline-bgcolor:#2e2d2a; --darkreader-inline-border-top:#494843; --darkreader-inline-border-right:#494843; --darkreader-inline-border-bottom:#494843; --darkreader-inline-border-left:#494843;">
+<div style="--darkreader-inline-bgcolor:#2e2d2a; --darkreader-inline-bgimage:initial; --darkreader-inline-border-bottom:#494843; --darkreader-inline-border-left:#494843; --darkreader-inline-border-right:#494843; --darkreader-inline-border-top:#494843; background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">
 <pre>
 <strong><span dir="rtl"><cite>                                                                                   WOE - AZIMA INTEGRATION</cite></span>
 </strong></pre>
 </div>
 
-<h2><strong>WOE </strong></h2>
+<h2><strong>WOE</strong></h2>
 
 <h2><strong>Ondemand :</strong></h2>
 
@@ -102,7 +102,7 @@ These are the credentials used in <big><strong>src/rest/config.py to connect to 
 AUTH_HOST_INTERNAL=http://localhost:19011            #host:port of fusion auth
 AUTH_HOST_EXTERNAL=http://localhost:19011
 AUTH_SERVER_APP_ID=Nothing                           #if we wanto connect to an application inside fusion auth               
-AUTH_API_KEY=master-api-key                          #master_api_key for generated in each time we start the fusion auth server</pre>
+AUTH_API_KEY=master-api-key                          #master_api_key for the fusion auth server</pre>
 
 <p>STATIC_PATH = os.environ.get(&quot;STATIC_PATH&quot;, &quot;/app&quot;)</p>
 

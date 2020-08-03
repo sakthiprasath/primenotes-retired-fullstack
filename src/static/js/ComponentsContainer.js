@@ -301,14 +301,14 @@ static searchResults(){
 
     var initialize_save_action_for_save_button=function(){
             $('#editor1-save-button').on('click',function(){
-            var mainClassName = $(this).attr('main-class')
+            var file_name = $('#file-name').text()
             var savable_data = CKEDITOR.instances.editor1.getData();
 
             var defObj=$.Deferred();
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/individual-component-fetch/save-file/'+mainClassName,
+                        url: 'http://localhost:5000/api/individual-component-fetch/save-file/'+file_name,
                         data: JSON.stringify(savable_data),
                         type : "POST",
                         contentType: 'application/json;charset=UTF-8',
@@ -330,8 +330,7 @@ static initialisingEventHandlers(){
 		$('#right-side-components').css('display','block');
 		$('#right-side-components-container').css('display','block');
 
-
-
+        $('#file-name').text(this.id)
 
 		/*handle drowssap file with password validation*/
 		if(this.id === 'drowssap'){

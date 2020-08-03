@@ -1,36 +1,45 @@
-wd_client.py
+Gold rate increase : 
+1) Minig process is less so production is less , more demand
+2) Production in every industry is less, so investors invest in gold , demand is more
+
+3) Reserve currency
+	dollar - > gold
+	Before recession or pandemic dollar was user for exchanges( petrol ,oil, electornic goods)
+    but during recession or pandemic dollar's value becomes less so people, banks start to keep the gold stock 
+	so demand is increasing for gold
+4) quantitative easing == getting monay for vote in politics
+	a person with salary 100$ and one with 200$ can buy
+	1kg tomato = > 100$
+    when demand for tomato(production is less) is more every one cant afford 
+	1kg of tomato for 100$, 
+    so because of low-economy government start to print currency papers.
+    Now both of them will get salary of 150$ and 250$ respectively, but the tomato production remains same.
+    So, the quantitaive easing seems to be the immediate-solution for low economy, 
+	within that time people should start producing more tomatoes to change the situation back to normal.
+    
+5) staculation- > country becomes diwal
+
+panam veekam
+panam vattam
+
+$ rete increase : 
+
+india whole sale price index
+foreign consumer price index
 
 
-from ai.timeli.sdk.response_handlers import *
-from ai.timeli.utils.rest_client import *
 
-class WDSClient:
 
-    def update_asset_status(self, asset_details):
-        headers = {}
-        headers["X-SUPER-USER"] = str(True)
-        headers["X-TENANT-ID"] = self.rc.tenant_id
-        self.rc.headers = headers
-        return self.rc.doPost('/api/wds/asset/status',body=asset_details.toDict())
 
-------------------------------------------------------------------
-classes.py
-class AssetStatusForm(DomainBase):
-    def __init__(self, attr_vals):
-        super(AssetStatusForm, self).__init__(attr_vals)
 
-	def toDict(self):
-            return self.__dict__
 
-------------------------------------------------------------------
 
-              
-        modified:   ../configs/config.yml
-        modified:   ../requirements.txt
-        modified:   ../samples/constants.py
-        modified:   ../samples/recieve_msg_from_eventhub.py
-        modified:   ../samples/send_msg_to_eventhub.py
-        modified:   ../src/main.py
-        modified:   ../src/pipelines/transformers/watchman_status_transformer.py
-        modified:   ../src/pipelines/transformers/watchman_test_results_transformer.py
-        modified:   ../src/reliability_portal/reliability_portal_routes.py
+
+
+
+
+
+
+
+
+

@@ -158,7 +158,7 @@ body {
     min-width: 380px;
     position: absolute;
     width: 100%;
-    top: 79px;
+    top: 5px;
     background-color: #f1f1f1;
     max-height: max-content;
     left: 9px;
@@ -196,13 +196,13 @@ a.w3schoolslink:hover,a.w3schoolslink:active {
   font-family:Consolas, monospace;
 }
 #container {
-  background-color:#f1f1f1;
-  width:100%;
-  overflow:auto;
-  position:absolute;
-  top:138px;
-  bottom:0;
-  height:auto;
+    background-color: #f1f1f1;
+    width: 100%;
+    overflow: auto;
+    position: absolute;
+    top: 65px;
+    bottom: 0;
+    height: auto;
 }
 #textareacontainer, #iframecontainer {
   float:left;
@@ -654,15 +654,12 @@ function switchCode(curr){
   let name=curr.getAttribute('code-section');
     switch(name){
       case 'html':{
-        alert('its html');
         break;
       }
       case 'css':{
-        alert('its css');
         break;
       }
       case 'js':{
-        alert('its js');
           break;
       }
     }
@@ -867,7 +864,6 @@ function switchCode(curr){
 
 
 var url=window.location.href;
-alert(url);
 
 
 submitTryit()
@@ -1020,7 +1016,7 @@ function dragmove(e) {
     document.getElementById("shield").style.display = "block";        
     if (stack != " horizontal") {
       var percentage = (e.pageX / window.innerWidth) * 100;
-      if (percentage > 5 && percentage < 98) {
+      if (percentage > 1 && percentage < 98) {
         var mainPercentage = 100-percentage;
         document.getElementById("textareacontainer").style.width = percentage + "%";
         document.getElementById("iframecontainer").style.width = mainPercentage + "%";

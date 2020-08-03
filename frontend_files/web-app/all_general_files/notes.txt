@@ -72,18 +72,6 @@ notes:</p>
 
 <p><a href="https://www.forbes.com/sites/tommybeer/2020/07/10/fauci-pushes-back-on-trumps-false-claims-says-he-hasnt-briefed-president-in-2-months/#55274d7c79d0">https://www.forbes.com/sites/tommybeer/2020/07/10/fauci-pushes-back-on-trumps-false-claims-says-he-hasnt-briefed-president-in-2-months/#55274d7c79d0</a></p>
 
-<hr />
-<hr />
-<h1>PR s yeat to accepted :</h1>
-
-<p>PR yet to get accected&nbsp; :&nbsp;<a href="https://symphonytimeli.slack.com/team/USH45QLSK">@Deepak S</a>&nbsp;<a href="https://symphonytimeli.slack.com/team/UAG2JMT6Z">@venki</a>&nbsp;<br />
-1 . WOE :&nbsp;&nbsp;&nbsp;&nbsp; Error handler for get asset in program view<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://bitbucket.org/timeli/woe/pull-requests/49" target="_blank">https://bitbucket.org/timeli/woe/pull-requests/49</a><br />
-2 . tsdb-apm :&nbsp;&nbsp;&nbsp; all properties fetch from DB and getting only required ones,<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://bitbucket.org/timeli/tsdb-apm/pull-requests/292" target="_blank">https://bitbucket.org/timeli/tsdb-apm/pull-requests/292</a>&nbsp;(edited)&nbsp;</p>
-
-<p>&nbsp;</p>
-
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>

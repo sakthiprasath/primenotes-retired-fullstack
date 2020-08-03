@@ -421,13 +421,15 @@ font-variant-caps: small-caps;
 }
 
 #close-editor-button {
-    position: absolute;
-    margin-top: 15px;
+    width: max-content;
+    height: 65%;
+    position: relative;
+    margin-top: 5px;
+    background: #5fd59f;
+    padding: 5px;
+    top: 0px;
+    font-family: fantasy;
     margin-left: 10px;
-    font-family: cursive;
-    width: 96%;
-    left: -1%;
-    top: inherit;
 }
 .img-icon{
       width: 100%;
@@ -852,3 +854,68 @@ body {
     background: linear-gradient(270deg, #206e83 5%, #60D69F 80%);
     text-align: left;
 }
+#main-sections{
+position: absolute;
+    top: 75px;
+    width: 100%;
+    height: 88%;
+    z-index: 4;
+    border: 5px solid black;
+    left: 1px;
+    --darkreader-inline-border-top: #908573;
+    --darkreader-inline-border-right: #908573;
+    --darkreader-inline-border-bottom: #908573;
+    --darkreader-inline-border-left: #908573;
+}
+
+#tab-options-section{
+    width: 100%;
+    height: 40px;
+    background: rgb(27, 161, 191);
+    position: absolute;
+    top: 40px;
+    left: auto;
+    z-index: 5;
+    --darkreader-inline-bgimage: initial;
+    --darkreader-inline-bgcolor: #507778;
+}
+
+.tab-options{
+    position: relative;
+    left: 1px;
+    height: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    }
+.tab-options-button{
+width: max-content;
+    height: 65%;
+    position: relative;
+    margin-top: 5px;
+    background: rgb(95, 213, 159);
+    padding: 5px;
+    top: 0px;
+    font-family: fantasy;
+    margin-left: 10px;
+    --darkreader-inline-bgimage: initial;
+    --darkreader-inline-bgcolor: #577c64;
+    }
+
+
+/*create component dialog css*/
+  .ui-widget-header {
+          background:linear-gradient(45deg, #06d6a0 100%, #26547c 0%) !important;
+          font-style:fantacy;
+    }
+ #create-component-dialog{
+    width: 100%;
+    min-height: 95%;
+    max-height: none;
+    height: 550px;
+    }
+  .ui-dialog .ui-dialog-content{
+    background:linear-gradient(45deg, #26547c 0%, #06d6a0 100%) !important;
+  }
+  .ui-widget-content{
+    background:linear-gradient(45deg, #26547c 0%, #06d6a0 100%) !important;
+  }

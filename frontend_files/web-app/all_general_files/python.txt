@@ -8,8 +8,6 @@
 <hr />
 <p>&nbsp;</p>
 
-<p>&nbsp;</p>
-
 <p>python strings :&nbsp;<br />
 &nbsp;</p>
 
@@ -464,13 +462,13 @@ whole List in reverse order use [::-1]<br />
 
 <p>code :</p>
 
-<div data-darkreader-inline-bgcolor="" data-darkreader-inline-bgimage="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-darkreader-inline-border-right="" data-darkreader-inline-border-top="" style="background: rgb(238, 238, 238); border: 1px solid rgb(204, 204, 204); padding: 5px 10px; --darkreader-inline-bgimage: initial; --darkreader-inline-bgcolor:#2e2d2a; --darkreader-inline-border-top:#494843; --darkreader-inline-border-right:#494843; --darkreader-inline-border-bottom:#494843; --darkreader-inline-border-left:#494843;">List_1 = [1,2,3,3,4,5,6,6,7,7,7,8]<br />
+<div style="--darkreader-inline-bgcolor:#2e2d2a; --darkreader-inline-bgimage:initial; --darkreader-inline-border-bottom:#494843; --darkreader-inline-border-left:#494843; --darkreader-inline-border-right:#494843; --darkreader-inline-border-top:#494843; background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">List_1 = [1,2,3,3,4,5,6,6,7,7,7,8]<br />
 duplicate_elements&nbsp; =&nbsp; [ i for i in List_! if List_1.count(i)&nbsp; &gt;&nbsp; 1]<br />
 print(duplicate_elements)</div>
 
 <p>&nbsp;output:</p>
 
-<div data-darkreader-inline-bgcolor="" data-darkreader-inline-bgimage="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-darkreader-inline-border-right="" data-darkreader-inline-border-top="" style="background: rgb(238, 238, 238); border: 1px solid rgb(204, 204, 204); padding: 5px 10px; --darkreader-inline-bgimage: initial; --darkreader-inline-bgcolor:#2e2d2a; --darkreader-inline-border-top:#494843; --darkreader-inline-border-right:#494843; --darkreader-inline-border-bottom:#494843; --darkreader-inline-border-left:#494843;">3,3,6,6,7,7,7</div>
+<div style="--darkreader-inline-bgcolor:#2e2d2a; --darkreader-inline-bgimage:initial; --darkreader-inline-border-bottom:#494843; --darkreader-inline-border-left:#494843; --darkreader-inline-border-right:#494843; --darkreader-inline-border-top:#494843; background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">3,3,6,6,7,7,7</div>
 
 <p>17. to find the unique elements</p>
 
@@ -478,7 +476,7 @@ print(duplicate_elements)</div>
 
 <p>print(unique_elements)</p>
 
-<div data-darkreader-inline-bgcolor="" data-darkreader-inline-bgimage="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-darkreader-inline-border-right="" data-darkreader-inline-border-top="" style="background: rgb(238, 238, 238); border: 1px solid rgb(204, 204, 204); padding: 5px 10px; --darkreader-inline-bgimage: initial; --darkreader-inline-bgcolor:#2e2d2a; --darkreader-inline-border-top:#494843; --darkreader-inline-border-right:#494843; --darkreader-inline-border-bottom:#494843; --darkreader-inline-border-left:#494843;">3, 6, 7</div>
+<div style="--darkreader-inline-bgcolor:#2e2d2a; --darkreader-inline-bgimage:initial; --darkreader-inline-border-bottom:#494843; --darkreader-inline-border-left:#494843; --darkreader-inline-border-right:#494843; --darkreader-inline-border-top:#494843; background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">3, 6, 7</div>
 
 <p>&nbsp;</p>
 
@@ -486,7 +484,7 @@ print(duplicate_elements)</div>
 
 <p>code :</p>
 
-<div data-darkreader-inline-bgcolor="" data-darkreader-inline-bgimage="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-darkreader-inline-border-right="" data-darkreader-inline-border-top="" style="background: rgb(238, 238, 238); border: 1px solid rgb(204, 204, 204); padding: 5px 10px; --darkreader-inline-bgimage: initial; --darkreader-inline-bgcolor:#2e2d2a; --darkreader-inline-border-top:#494843; --darkreader-inline-border-right:#494843; --darkreader-inline-border-bottom:#494843; --darkreader-inline-border-left:#494843;"><br />
+<div style="--darkreader-inline-bgcolor:#2e2d2a; --darkreader-inline-bgimage:initial; --darkreader-inline-border-bottom:#494843; --darkreader-inline-border-left:#494843; --darkreader-inline-border-right:#494843; --darkreader-inline-border-top:#494843; background:#eeeeee; border:1px solid #cccccc; padding:5px 10px"><br />
 from collections import deque<br />
 List_1 = [1,2,3]<br />
 List_1 = deque(List_1)<br />
@@ -495,7 +493,7 @@ print(List_1)</div>
 
 <p>output:&nbsp;</p>
 
-<div data-darkreader-inline-bgcolor="" data-darkreader-inline-bgimage="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-darkreader-inline-border-right="" data-darkreader-inline-border-top="" style="background: rgb(238, 238, 238); border: 1px solid rgb(204, 204, 204); padding: 5px 10px; --darkreader-inline-bgimage: initial; --darkreader-inline-bgcolor:#2e2d2a; --darkreader-inline-border-top:#494843; --darkreader-inline-border-right:#494843; --darkreader-inline-border-bottom:#494843; --darkreader-inline-border-left:#494843;">deque([3, 1, 2])</div>
+<div style="--darkreader-inline-bgcolor:#2e2d2a; --darkreader-inline-bgimage:initial; --darkreader-inline-border-bottom:#494843; --darkreader-inline-border-left:#494843; --darkreader-inline-border-right:#494843; --darkreader-inline-border-top:#494843; background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">deque([3, 1, 2])</div>
 
 <p>&nbsp;</p>
 
@@ -656,9 +654,35 @@ print(f&#39;Total score for {name} is {score}&#39;)</code></pre>
 
 <hr />
 <hr />
-<p>Types of arguments :&nbsp;<br />
-positional arguments</p>
+<h2><strong>Types of arguments :&nbsp;</strong></h2>
+
+<h2><span style="font-size:12px">positional arguments</span></h2>
 
 <p>keyword argument</p>
 
+<hr />
+<hr />
+<h2><strong>creating virtual env :</strong></h2>
+
+<p>1) cd&nbsp; project_folder/</p>
+
+<p>2) python3 -m venv ./venv</p>
+
+<h3>&nbsp; &nbsp; [if venv not installed try this command &quot;<strong>sudo apt-get install python3-venv&quot;</strong> ]</h3>
+
+<p>3 ) mkvirtualenv pro1000_backend/</p>
+
 <p>&nbsp;</p>
+
+<hr />
+<hr />
+<h2><strong>create python HTTP server :</strong></h2>
+
+<p><a href="https://medium.com/@ryanblunden/create-a-http-server-with-one-command-thanks-to-python-29fcfdcd240e">https://medium.com/@ryanblunden/create-a-http-server-with-one-command-thanks-to-python-29fcfdcd240e</a></p>
+
+<p>&nbsp;</p>
+
+<hr />
+<h2><a href="https://stackoverflow.com/questions/20499074/run-local-python-script-on-remote-server"><strong>Run local python script on remote server</strong></a></h2>
+
+<h2><span style="font-size:12px"><a href="https://stackoverflow.com/questions/20499074/run-local-python-script-on-remote-server">https://stackoverflow.com/questions/20499074/run-local-python-script-on-remote-server</a></span></h2>

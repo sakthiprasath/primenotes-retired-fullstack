@@ -89,6 +89,41 @@
 
 
 
+	<div id="tab-options-section" >
+    <div class="tab-options" >
+		<button id="close-editor-button" class="button tab-options-button" >click to view componentFactory</button>
+		<button id='create-component' class="button tab-options-button">
+			CreateComponent
+		</button>
+		<button class="button tab-options-button">
+			CreateComponent
+		</button>
+		<button class="button tab-options-button">
+			CreateComponent
+		</button>
+		<button class="button tab-options-button">
+			CreateComponent
+		</button>
+
+
+	</div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -346,7 +381,6 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
 										left: -40px;
 									}">
 
-
 								</div>
 
 
@@ -403,10 +437,14 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
 
 					<div id='right-side-components'>
 						<div id='right-side-components-container'>
-						<div id="file-name" class="button" >Dummy file name</div>
+						<div id="file-name" class="button" ></div>
 						<button class="button" id="editor1-save-button" class="button">save
 						</button>
 
+<!--						<iframe src="https://cdpn.io/sakthics25/debug/ZEQNzKN/VJMxxOQDQbvM" style="-->
+<!--							width: 100%;-->
+<!--							height: 100%;-->
+<!--						"></iframe>-->
 
 <!--https://codepen.io/edsonperotoni/pen/OJJZzZq?editors=1010-->
 						<textarea id='editor1' contenteditable>
@@ -425,8 +463,12 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
 
 	<div id='individual-component-editor-section'></div>
 
-
-
+<!--create-component dialog section -->
+	<div id="create-component-dialog" title="Create component">
+  		<div id='create-component-dialog-sub-div' style="width: 100%;height: 100%;">
+			<iframe src="http://localhost:5000/api/individual-component-fetch/create_component"  style="width: inherit;height: inherit;"></iframe>
+  		</div>
+	</div>
 
 
 
@@ -445,30 +487,26 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
 
 
 
- <div id="main-sections" style="
-    position: absolute;
-    top: 40px;
-    width: 100%;
-    height: 94%;
-    background: red;
-    z-index: 4;
-    border: 5px solid black;
-    left: 1px;
-    ">
+ <div id="main-sections" >
 	<div id='navigation-bar'>
-		<div class="sidenav">
-			<div id="close-editor-button" style="display: block;">
-				<button class="button" style="
-						width: 100%;
-				">click to view componentFactory</button>
+
+		<div id="sidenav-tab-section">Yet to be filled
 			</div>
-			<a href="javascript:void(0)" class="closebtn">&times;</a>
+
+
+		<div class="sidenav">
+			<a href="javascript:void(0)" class="closebtn" style="
+				position: absolute;
+    			margin-top: 5px;
+    			left: 190px;
+			">×</a>
+
 			<div class='source-code-tab-content'>
 
 
 
 
-				<!-- tree part starts here -->
+				<!-- tree part staAdd New Brandrts here -->
 				<div class="dTree">
 					<ul>
 						<li><a href="#" class='file-click' filename="site123" >Site</a></li>
@@ -479,7 +517,7 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
 
 						<li><a href="#" class='file-click'>Cars</a>
 							<ul>
-								<li><a href="#" class='file-click'>Add New Brand</a></li>
+								<li><a href="#" class='file-click' filename="base64_encoder" title="base64_encoder" >base64_encoder</a></li>
 								<li><a href="#" class='file-click'>List All Brand</a></li>
 								<li><a href="#" class='file-click'>Mercedes - Benz</a>
 									<ul>

@@ -45,8 +45,97 @@ https://www.amazon.in/TP-Link-TL-WR841N-300Mbps-Wireless-N-Router/dp/B001FWYGJS
 
 
 
+<div id="tab-options-section" style="
+    width: 100%;
+    height: 46px;
+    background: #1ba1bf;
+    position: absolute;
+    top: -46px;
+    left: 0px;
+">
+    <div class="tab-options" style="
+    position: relative;
+    left: 7px;
+    height: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+">
 
 
+
+
+
+
+
+
+
+<button style="
+    width: max-content;
+    height: 65%;
+    position: relative;
+    margin-top: 5px;
+    background: #5fd59f;
+    padding: 5px;
+    top: 0px;
+    font-family: fantasy;
+    margin-left: 10px;
+" class="button"> 
+    CreateComponent
+
+</button>
+
+
+
+<button style="
+    width: max-content;
+    height: 65%;
+    position: relative;
+    margin-top: 5px;
+    background: #5fd59f;
+    padding: 5px;
+    top: 0px;
+    font-family: fantasy;
+    margin-left: 10px;
+" class="button"> 
+    CreateComponent
+
+</button>
+
+
+<button style="
+    width: max-content;
+    height: 65%;
+    position: relative;
+    margin-top: 5px;
+    background: #5fd59f;
+    padding: 5px;
+    top: 0px;
+    font-family: fantasy;
+    margin-left: 10px;
+" class="button"> 
+    CreateComponent
+
+</button>
+    
+    
+    
+    
+    <button style="
+    width: max-content;
+    height: 65%;
+    position: relative;
+    margin-top: 5px;
+    background: #5fd59f;
+    padding: 5px;
+    top: 0px;
+    font-family: fantasy;
+    margin-left: 10px;
+" class="button"> 
+    CreateComponent
+
+</button>
+</div>
+    </div>
 
 
 

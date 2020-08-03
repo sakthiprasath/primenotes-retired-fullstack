@@ -18,12 +18,16 @@ def return_index_html():
         return print(e)
 
 
-@individual_component_fetcher_routes.route('', methods=['GET'])
-def return_index_html():
+@individual_component_fetcher_routes.route('<html_name>', methods=['GET'])
+def return_index_html(html_name):
     try:
-       return  flask.render_template('CompanyProRecover.html')
+        if html_name == "index":
+            return  flask.render_template('CompanyProRecover.html')
+        elif html_name == "create_component":
+            return flask.render_template('IndividualComponent.html')
     except Exception as e:
         return print(e)
+
 
 
 
