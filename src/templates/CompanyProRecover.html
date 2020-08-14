@@ -90,25 +90,34 @@
 
 
 	<div id="tab-options-section" >
-    <div class="tab-options" >
-		<button id="close-editor-button" class="button tab-options-button" >click to view componentFactory</button>
-		<button id='create-component' class="button tab-options-button">
-			CreateComponent
-		</button>
-		<button class="button tab-options-button">
-			CreateComponent
-		</button>
-		<button class="button tab-options-button">
-			CreateComponent
-		</button>
-		<button class="button tab-options-button">
-			CreateComponent
-		</button>
+	<button id="close-editor-button" class="button tab-options-button" >FileFactory</button>
+	<div class="tab-options" >
+		<div id="component-tabs">
+			<button class='create-component create-component button tab-options-button' title='calculator' class="button tab-options-button">
+				Calculator
+			</button>
+			<button class='create-component create-component button tab-options-button' title='slideshow' class="button tab-options-button">
+				slideshow
+			</button>
+		</div>
 
+		<div id="create-component-section">
 
+			<div id="create-component-form">
+				<input type="text" id="create-component-text-box" name="firstname" class="form-text-box" placeholder="Create Component">
+				<button id='create-component-submit-btn'  class="button">create</button>
+				<button id='close-create-component-form' class="button" style="
+				"> X </button>
+			</div>
+
+		<div id='create-component-add-btn' class="dropdown_1">
+				<button  class="button dropbtn">+</button>
+				<div id="myDropdown-add-component" class="dropdown-content">
+				</div>
+		</div>
 	</div>
     </div>
-
+	</div>
 
 
 
@@ -162,8 +171,11 @@
 			  <input type="radio" name="tabset" id="tab2" aria-controls="clock-tab-section">
 			  <label for="tab2">Clocks</label>
 			  <!-- Tab 3 -->
-			  <input type="radio" name="tabset" id="tab3" aria-controls="dunkles">
-			  <label for="tab3">Not Occupied</label>
+			  <input type="radio" name="tabset" id="tab3" aria-controls="python-tab-section">
+			  <label for="tab3">Python Compiler</label>
+			  <!-- Tab 4 -->
+			  <input type="radio" name="tabset" id="tab4" aria-controls="dunkles">
+			  <label for="tab4">Not Occupied</label>
 
 
 				<!-- tab-pannels begins -->
@@ -209,10 +221,31 @@
 
 
 
+				  <section id="python-tab-section" class="tab-panel">
+				    <h2></h2>
+					<iframe src="https://www.programiz.com/python-programming/online-compiler/" style="
+									width: 1345px;
+									height: 550px;
+									top: -52px;
+									position: relative">
+							  </iframe>
+					</section>
+
+
 				<section id="dunkles" class="tab-panel">
 				  <h2>Other Things</h2>
-				  <a href="https://chemours.symphonyindai.com/wrp/pages/loggedout" target="_blank">
+				  <a href="https://chemours.symphonyindai.com/" target="_blank">
 								chemours tenant  </a>
+				 </br>
+			      <a href="https://economictimes.indiatimes.com/commoditysummary/symbol-GOLD.cms" target="_blank">
+					  Economic times
+				  </a>
+				  </br>
+				  <a href="https://www.goodreturns.in/gold-rates/" target="_blank">
+					  Good Returns
+				  </a>
+
+
 				  <button class="button" onclick="window.open('http://localhost:5000/api/individual-component-fetch/screen-recorder');">Screen Recorder</button>
 				</section>
 			  </div>
@@ -464,16 +497,12 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
 	<div id='individual-component-editor-section'></div>
 
 <!--create-component dialog section -->
-	<div id="create-component-dialog" title="Create component">
-  		<div id='create-component-dialog-sub-div' style="width: 100%;height: 100%;">
-			<iframe src="http://localhost:5000/api/individual-component-fetch/create_component"  style="width: inherit;height: inherit;"></iframe>
-  		</div>
-	</div>
 
 
 
 
-<!-- password validation for drowssap file opening -->
+
+ <!--password validation for drowssap file opening-->
 	<div id="password-validate-dialog" title="Title of dialog">
   		<div id='password-for-drowssap'>
    			<input id='password-content-for-drowssap' type='password' placeholder='password'/>
@@ -488,7 +517,12 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
 
 
  <div id="main-sections" >
+
 	<div id='navigation-bar'>
+
+		<div id='sidenav-button-id' class='sidenav-button-class'>
+			<span class='sidenav-button-content-class'>>></span></span>
+		</div>
 
 		<div id="sidenav-tab-section">Yet to be filled
 			</div>
@@ -509,13 +543,15 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
 				<!-- tree part staAdd New Brandrts here -->
 				<div class="dTree">
 					<ul>
-						<li><a href="#" class='file-click' filename="site123" >Site</a></li>
-						<li><a href="#" class='file-click' filename="about123">About the Web Site</a></li>
-						<li><a href="#" class='file-click' filename="hrithik">Hrithik</a></li>
-						<li><a href="#" class='file-click' filename="Roshan">Roshan</a></li>
-						<li><a href="#" class='file-click' filename="reshan">Reshan</a></li>
-
-						<li><a href="#" class='file-click'>Cars</a>
+						<li><a href="#" >Site</a>
+							<ul>
+								<li><a href="#" class='file-click' filename="about123">About the Web Site</a></li>
+								<li><a href="#" class='file-click' filename="hrithik">Hrithik</a></li>
+								<li><a href="#" class='file-click' filename="Roshan">Roshan</a></li>
+								<li><a href="#" class='file-click' filename="reshan">Reshan</a></li>
+							</ul>
+						</li>
+						<li><a href="#" >Cars</a>
 							<ul>
 								<li><a href="#" class='file-click' filename="base64_encoder" title="base64_encoder" >base64_encoder</a></li>
 								<li><a href="#" class='file-click'>List All Brand</a></li>
@@ -577,12 +613,13 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
 						<li><a href="#">Graphics</a></li>
 						<li><a href="#">Smart Phones</a>
 							<ul>
-								<li><a href="#">Apple</a></li>
-								<li><a href="#">Samsung</a></li>
-								<li><a href="#">LG</a></li>
-								<li><a href="#">Sony</a></li>
-								<li><a href="#">HTC</a></li>
-								<li><a href="#">Samsung</a></li>
+								<li><a href="#" class='file-click' filename='distributed_computing_1'>distributed_computing_1</a></li>
+								<li><a href="#" class='file-click' filename='distributed_computing_2'>distributed_computing_2</a></li>
+
+								<li><a href="#" class='file-click' filename='LG'>LG</a></li>
+								<li><a href="#" class='file-click' filename='Sony'>Sony</a></li>
+								<li><a href="#" class='file-click' filename='HTC'>HTC</a></li>
+								<li><a href="#" class='file-click' filename='Samsung'>Samsung</a></li>
 								<li><a href="#">Samsung</a></li>
 								<li><a href="#">Other Models</a>
 									<ul>
@@ -603,9 +640,7 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
 
 		</div>
 
-		<div id='sidenav-button-id' class='sidenav-button-class'>
-			<span class='sidenav-button-content-class'>>></span></span>
-		</div>
+
 	</div>
 
 	<script src="{{ url_for('static', filename='js/SourceCodeSection.js') }}"></script>
@@ -633,35 +668,6 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
 
 <script>
 
-var tabsDropDownClickflag=0;
-$('#tabs-list-drop-down').on('click',function(){
-	if(tabsDropDownClickflag==0){
-		tabsDropDownClickflag=1;
-		document.getElementById("myDropdown").classList.toggle("show");
-
-		var tabArr=$('.tab');
-		let len=tabArr.length;
-		for(let i=0;i<len;i++){
-			var resultHtml="<div class='tab'>";
-	        resultHtml+= $(tabArr[i]).text();
-			resultHtml+= "<div class='close-tab' onclick='removeCurrentTab(this)'> </div></div>";
-	        $('#myDropdown').append($(resultHtml));
-		}
-	}
-	else{
-		tabsDropDownClickflag=0;
-		$('#myDropdown').empty();
-		var dropdowns = document.getElementsByClassName("dropdown-content");
-        for (let i = 0; i < dropdowns.length; i++) {
-          var openDropdown = dropdowns[i];
-          if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
-          }
-        }
-
-	}
-
-});
 
 
 /* When the user clicks on the button,
@@ -679,6 +685,8 @@ function myFunction() {
 
 			<link rel='stylesheet'
 				href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/theme/material.css'>
+
+
 				<div id='code-editor'>
 					<textarea id="js">
 
@@ -942,11 +950,13 @@ $(".dTree").dTree();
 				var sideNavWidth='40%';
 				var sideNavLeft=0;
 				$('#navigation-bar').css('left','0px');
+				$('#sidenav-button-id').css('left','100%');
 				kojinFlag=1;
 			}
 			else {
 				var sideNavWidth=10;
 				$('#navigation-bar').css('left','-35%');
+				$('#sidenav-button-id').css('left','100%');
 				kojinFlag=0;
 			}		
 		});

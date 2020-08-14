@@ -1,0 +1,476 @@
+openapi: "3.0.0"
+info:
+  description: "This is the API specification for Symphony AzimaAI's data platform for industrial AI, a.k.a. Eureka platform"
+  version: "0.0.1"
+  title: "Eureka platform API"
+  termsOfService: ""
+  contact:
+    email: "eureka-admin@symphonyazimaai.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+tags:
+- name: "WDS METADATA"
+  description: "Manage WDS related metadata on the platform"
+
+- name: "RELIABILITY PORTAL"
+  description: "Manages Reliability Portal metadata"
+- name: "VIBRATION-TEST-RESULTS"
+  description: "Manages test-results metadata"
+
+servers:
+- url: http://localhost:5001/api/
+  description: Production server
+
+  
+components:
+  securitySchemes:
+    oauth2:    # <---- arbitrary name
+      type: oauth2
+      description: This API uses OAuth 2 with the implicit grant flow. [More info](https://api.example.com/docs/auth)
+      flows:
+        implicit:   # <---- OAuth flow(authorizationCode, implicit, password or clientCredentials)
+          authorizationUrl: https://auth.symphonyindai.com/api/auth/token
+          scopes:
+            default_scope: "read, write, update, delete"
+  
+      
+  
+  schemas:
+    ProgramViewCustomerGroup:
+      type: object
+      properties:
+        areaID:
+          type: integer
+        areaUUID:
+          type: string
+        extremeCount:
+          type: integer
+        name:
+          type: integer
+        newDataCount:
+          type: integer
+        noFaultsCount:
+          type: integer
+        notTestedCount:
+          type: integer
+        plantID:
+          type: integer
+        plantUUID:
+          type: string
+        seriousCount:
+          type: integer
+        slightCount:
+          type: integer
+        total:
+          type: integer
+
+    LastReviewedDate:
+      type: object
+      properties:
+        lastReviewedDate:
+          type: string
+          format: "date-time"
+        statusDescription:
+          type: string
+
+    ProgramViewArea:
+      type: object
+      properties:
+        areaID:
+          type: integer
+        areaName:
+          type: string
+        areaUUID:
+          type: string
+          format: uuid
+        isOnlineMachine:
+          type: boolean
+        lastReviewedDate1:
+          $ref: "#/components/schemas/LastReviewedDate"
+        lastReviewedDate2:
+          $ref: "#/components/schemas/LastReviewedDate"
+        lastReviewedDate3:
+          $ref: "#/components/schemas/LastReviewedDate"
+        lastReviewedDate4:
+          $ref: "#/components/schemas/LastReviewedDate"
+        lastReviewedDate5:
+          $ref: "#/components/schemas/LastReviewedDate"
+        lastReviewedDate6:
+          $ref: "#/components/schemas/LastReviewedDate"
+        lastReviewedDate7:
+          $ref: "#/components/schemas/LastReviewedDate"
+        machineID:
+          type: integer
+        machineName:
+          type: string
+        machineUUID:
+          type: string
+        plantID:
+          type: integer
+        plantName:
+          type: string
+        plantUUID:
+          type: string
+          format: uuid
+
+    ProgramViewPlant:
+      type: object
+      properties:
+        areaID:
+          type: integer
+        areaUUID:
+          type: string
+          format: uuid
+        extremeCount:
+          type: integer
+        moderateCount:
+          type: integer
+        name:
+          type: integer
+        newDataCount:
+          type: integer
+        noFaultsCount:
+          type: integer
+        notTestedCount:
+          type: integer
+        plantID:
+          type: integer
+        plantUUID:
+          type: string
+          format: uuid
+        seriousCount:
+          type: integer
+        slightCount:
+          type: integer
+        total:
+          type: integer
+
+    StatusViewObject:
+      type: object
+      properties:
+        machineStateID:
+          type: integer
+        machineID:
+          type: integer
+        statusID:
+          type: integer
+        statusDescription:
+          type: string
+        statusDate:
+          type: string
+          format: "date-time"
+        isOnlineMachine:
+          type: boolean
+        machineUUID:
+          type: string
+          format: uuid
+        areaID:
+          type: integer
+        areaUUID:
+          type: string
+          format: uuid
+        plantID:
+          type: integer
+        plantUUID:
+          type: string
+          format: uuid
+
+    AssetStatusUpdate:
+      type: object
+      properties:
+        data:
+            items:
+              $ref: '#/components/schemas/StatusViewObject'
+
+    AssetTreeMetadata:
+      type: object
+      properties:
+        customer_id:
+          type: integer
+        tenant_id:
+          type: string
+
+security:
+  - oauth2:
+    - default_scope
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
+
+
+paths:
+  /wds/program-view/{asset_id}:
+    post:
+      tags:
+      - "WDS METADATA"
+      summary: "Get an programview of asset by its ID"
+      operationId: "getProgramViewOfAssetByID"
+      parameters:
+      - name: asset_id
+        in: path
+        description: "ID of the asset"
+        required: true
+        schema:
+          type: integer
+      - name: X-TENANT-ID
+        in: header
+        description: tenant_id header data
+        schema:
+          type: string
+        required: true  
+        
+      requestBody:
+        description: "portal_user_id"
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                portal_user_id :
+                  type: integer
+            
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                items:
+                  oneOf:
+                    - $ref: '#/components/schemas/ProgramViewCustomerGroup'
+                    - $ref: '#/components/schemas/ProgramViewArea'
+                    - $ref: '#/components/schemas/ProgramViewPlant'
+        "404":
+          description: "Asset not found"
+
+
+
+  /wds/asset/status:
+    post:
+      tags:
+      - "RELIABILITY PORTAL"
+      summary: "updating status for asset"
+      description: "asset status update"
+      operationId: "assetStatusUpdate"
+      requestBody:
+        description: "request body should contain AssetStatusUpdate contents"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetStatusUpdate'
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /wds/asset/tree:
+    post:
+      tags:
+      - "RELIABILITY PORTAL"
+      summary: "metadata asset tree import"
+      description: "import asset tree metadata"
+      operationId: "assetTreeImportMetadata"
+      requestBody:
+        description: "request body should contain AssetStatusUpdate contents"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetTreeMetadata'
+      responses:
+        '200':
+          description: success
+          
+
+  /wds/asset/bulk-import:
+    post:
+      tags:
+      - "RELIABILITY PORTAL"
+      summary: "Initiate asset bulk import"
+      description: "import assets"
+      operationId: "assetImport"
+      requestBody:
+        description: "request body should contain AssetTreeMetadata contents"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetTreeMetadata'
+      responses:
+        '200':
+          description: success
+
+  /wds/asset/{asset_id}/severity-trend:
+    get:
+      tags:
+      - "RELIABILITY PORTAL"
+      summary: "Get Severity trends by asset id"
+      description: "Asset severity trend"
+      operationId: "assetSevrityTrend"
+      parameters:
+        - name: "asset_id"
+          in: "path"
+          description: "asset id"
+          required: true
+          schema:
+            type: integer
+        - name: "limit"
+          in: "query"
+          description: "severity trend limit"
+          required: false
+          schema:
+            type: integer
+        - name: "online"
+          in: "query"
+          description: "online status of severity trend"
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: success
+
+  /wds/asset/status-import:
+    post:
+      tags:
+      - "RELIABILITY PORTAL"
+      summary: "Initiate asset status bulk import"
+      description: "import assets statuses"
+      operationId: "assetStatusImport"
+      requestBody:
+        description: "request body should contain AssetTreeMetadata contents"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetTreeMetadata'
+      responses:
+        '200':
+          description: success
+
+  /wds/asset/{asset_id}/alert-summary:
+    get:
+      tags:
+      - "RELIABILITY PORTAL"
+      summary: "Get alert summary for an asset"
+      description: "get alert summary by asset id and other query params"
+      operationId: "assetAlertSummary"
+      parameters:
+        - name: "asset_id"
+          in: "path"
+          description: "asset_id"
+          required: true
+          schema:
+            type: integer
+        - name: "page_number"
+          in: "query"
+          description: "page_number for pagination"
+          required: false
+          schema:
+            type: integer
+        - name: "page_size"
+          in: "query"
+          description: "single page size"
+          required: false
+          schema:
+            type: integer
+        - name: "since"
+          in: "query"
+          description: "start date for alerts"
+          required: false
+          schema:
+            type: integer
+
+        - name: "until"
+          in: "query"
+          description: "end date for alerts"
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: success
+        '400':
+          description:  "error : the error may be one of the following example reasons"
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/AssetTreeMetadata'
+                example:
+                  - message_1: AssetID/TenantID may be empty
+                  - message_2: Alert summary is applicable only for business and plant type assets
+
+  /wds/measurements/test-results:
+    post:
+      tags:
+      - "VIBRATION-TEST-RESULTS"
+      summary: "test-results Measurements import"
+      description: "Bulk import measurements for test-results"
+      operationId: "testResultsMeasurements"
+      requestBody:
+        description: "request body must contain customer_id and tenant_id"
+        content:
+          application/schema:
+            schema:
+              $ref: '#/components/schemas/AssetTreeMetadata'
+      responses:
+        '200':
+          description: success
+          
+  /wds/measurements/test-results1:
+    get:
+      tags:
+      - "VIBRATION-TEST-RESULTS"
+      summary: "search test-results"
+      description: "search test-results measurements"
+      operationId: "testResultsSearchMeasurements"
+      parameters:
+        - name: "asset_id"
+          in: "query"
+          description: "asset_id"
+          required: true
+          schema:
+            type: integer
+        - name: "page_number"
+          in: "query"
+          description: "page_number for pagination"
+          required: false
+          schema:
+            type: integer
+        - name: "page_size"
+          in: "query"
+          description: "single page size"
+          required: false
+          schema:
+            type: integer
+        - name: "since"
+          in: "query"
+          description: "start date for alerts"
+          required: false
+          schema:
+            type: integer
+        - name: "until"
+          in: "query"
+          description: "end date for alerts"
+          required: false
+          schema:
+            type: integer
+        - name: "timestamp"
+          in: "query"
+          description: "timestamp"
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: success
+        '400':
+          description: "validation error"

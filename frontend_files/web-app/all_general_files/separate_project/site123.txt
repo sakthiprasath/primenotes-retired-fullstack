@@ -6,12 +6,6 @@ user import form watchman end validate access token error
 -----------------------------------------------------------
 
 
-made every configuration needed for send-mail
-and checked locally
-have to discuss with venki about this
-
-
-
 
 currently fusion auth setup
 ---
@@ -31,20 +25,23 @@ currently fusion auth setup
 
 
 
+-----------------------------------------------------------
+sdks MS
+users.py 
 
+    def upsert_user(self,attr_vals, change_password=False):
+        tenant_id = self.rc.get_tenant_id()
+        url = 'api/auth/tenant/user/{}?change_password={}'.format(tenant_id, change_password)
+        return self.rc.doPut(url, body=attr_vals.toDict())
 
-
-linear-gradient(270deg, #d2ea97 ,#a8d02f ,#d2ea97)
-
+  
+  
+  
+  
 
 -----------------------------------------------------------
-
-                <a href="http://localhost:9011/email/verify/${verificationId}?tenantId=${user.tenantId}">
-    http://localhost:9011/email/verify/${verificationId}?tenantId=${user.tenantId}
-
-
-
------------------------------------------------------------
+                
+                
 -----------------------------------------------------------
 
 

@@ -15,6 +15,11 @@
 <link rel="stylesheet" href="https://www.w3schools.com/lib/codemirror.css">
 <script src="https://www.w3schools.com/lib/codemirror.js"></script>
 <script src="https://www.w3schools.com/lib/codemirror_jsx.js"></script>
+<script 	src="{{ url_for('static', filename='js/lib/jquery.min.js') }}">
+</script>
+
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 <script>
@@ -204,10 +209,16 @@ a.w3schoolslink:hover,a.w3schoolslink:active {
     bottom: 0;
     height: auto;
 }
-#textareacontainer, #iframecontainer {
+#textareacontainer{
   float:left;
   height:100%;
-  width:50%;
+  width:5%;
+}
+
+#iframecontainer {
+  float:left;
+  height:100%;
+  width:95%;
 }
 #textarea, #iframe {
   height:100%;
@@ -708,9 +719,9 @@ function switchCode(curr){
  
   <div class="code-switch-tabs code-refresh" style="font-size:16px;float:right;" onclick="submitTryit(1);snhb.startAuction(['try_it_leaderboard']);">Refresh &raquo;</div>
   
-  <div class="code-switch-tabs code-revert " style="font-size:16px;float:right;" onclick="submitTryit(1);snhb.startAuction(['try_it_leaderboard']);">Revert &raquo;</div>
+  <div class="code-switch-tabs code-revert" style="font-size:16px;float:right;" onclick="revert_data();snhb.startAuction(['try_it_leaderboard']);">Revert &raquo;</div>
   
-  <div class="code-switch-tabs code-save" style="font-size:16px;float:right;" onclick="submitTryit(1);snhb.startAuction(['try_it_leaderboard']);">save &raquo;</div>
+  <div class="code-switch-tabs code-save" style="font-size:16px;float:right;" onclick="save_action();snhb.startAuction(['try_it_leaderboard']);">save &raquo;</div>
  </div>
 
 
@@ -797,6 +808,27 @@ function switchCode(curr){
   <a style="display:inline;padding:0;" href="/about/about_copyright.asp" target="_blank" onclick="openMenu();" class="w3-hover-none w3-hover-text-green">Copyright 1999-2019</a></p>
   </footer>
 </div>
+
+
+<!--                <div id='code-editor'>-->
+<!--					<textarea id="js">-->
+
+<!--					</textarea>-->
+<!--				</div>-->
+<!--                <script-->
+<!--					src='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.js'></script>-->
+<!--			-->
+<!--				<script-->
+<!--					src='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/htmlmixed/htmlmixed.js'></script>-->
+<!--				<script id="rendered-js">-->
+
+
+
+
+
+
+
+
 <div id="menuOverlay" class="w3-overlay w3-transparent" style="cursor:pointer;z-index:4"></div>
   <div id="textareacontainer">
     <div id="textarea">
@@ -938,16 +970,16 @@ function restack(horizontal) {
         if (sv) {sv.className = sv.className + " horizontal"};
         if (sv) {sh.className = sh.className + " horizontal"};
         stack = " horizontal";
-        document.getElementById("textareacontainer").style.height = "50%";
-        document.getElementById("iframecontainer").style.height = "50%";
+        document.getElementById("textareacontainer").style.height = "10%";
+        document.getElementById("iframecontainer").style.height = "10%";
         document.getElementById("textareacontainer").style.width = "100%";
         document.getElementById("iframecontainer").style.width = "100%";
         currentStack=false;
     } else {
         document.getElementById("textareacontainer").style.height = "100%";
         document.getElementById("iframecontainer").style.height = "100%";
-        document.getElementById("textareacontainer").style.width = "50%";
-        document.getElementById("iframecontainer").style.width = "50%";
+        document.getElementById("textareacontainer").style.width = "10%";
+        document.getElementById("iframecontainer").style.width = "10%";
         currentStack=true;        
     }
     fixDragBtn();
@@ -1078,17 +1110,10 @@ colorcoding();
 feather.replace();
 </script>
 
-<script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
+
+
 </template>
-<script>
- function myGeeks() { 
-            var t = document.getElementsByTagName("template")[0]; 
-            var clone = t.content.cloneNode(true); 
-            document.body.appendChild(clone); 
-        } 
-myGeeks();
-
+  	<script 	src="{{ url_for('static', filename='js/IndividualComponentJS/main.js') }}">
 </script>
-
 </body>
 </html>

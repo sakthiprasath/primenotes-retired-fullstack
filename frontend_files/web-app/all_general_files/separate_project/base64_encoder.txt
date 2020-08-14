@@ -3,12 +3,12 @@ import base64
 
 m1 = {
     "AuthRequest": {
-        "auth_url": "http://localhost:16000/api/auth/",
-        "resource_url": "http://localhost:5000/",
+        "auth_url": 'http://auth_server:16000/',
+        "resource_url": 'http://gateway',
         "client_id": "b4ea82d9-caf1-4e38-b24b-04650875d78f",
         "client_secret": "r5Lc6czwNliI00TyEiz8EycPLLYUjN6vH_Ak420HE9Q",
-        "username": "super-user",
-        "password": "siaipass1234",
+        "username": "sakthi",
+        "password": "sakthics25",
         "redirect_url": ''}
 }
 b = str(m1).encode("UTF-8")

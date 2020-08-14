@@ -1,0 +1,122 @@
+
+
+distributed computing :
+
+1)serial computing:
+sequential execution of tasks and processes.
+image a 
+
+2) concurrent  computing :
+when something is executed simultaneously or nearly started at the same time. 
+image c
+
+3)an examaple of distributed computing is
+lets take a problem xyz
+x  
+y 
+z
+and make it execute concurrently and after all the sub prolems have been solved 
+we gather the solutions and form the end result.
+these x,y,z may or maynot have shared access.
+	
+	i)when shared access comes to scene, it means that we may have crictical section problem.
+	  there are algorithms available  to handle crictical section thing. 
+      
+image b
+    
+4) Distributed computing comes in mind when we here terms like
+	Massive Data( big data)
+    Real-Time Analytics
+    Large scale computations.
+    Block chain and so on
+    
+----------------------
+Threads and processes Hands on example:
+
+threads :
+	1) single thread python example
+    2) multi thread python example
+
+    
+process :
+	1) similar to threads
+    2) controversial thing is that
+    	factorial example:
+          i) when memory acess time is more than processing time 
+          parallel processing is not suitable.
+          ii) when memory access time less than processing time ,
+          distributed computing architecture should be used.
+	
+A hands on distributed computing example :
+	groupchat  application to implement Distributed computing : 
+   
+
+
+List of Important terms that rely on distributed computing architecture:
+COMPUTON :
+		A computon is a combined unit of computing power,
+        including processor cycles, memory, disk storage and bandwidth. 
+        The term was proposed in 2005 by researchers at Hewlett Packard, 
+        with the word being a cross between "computation" and "photon",
+        the name for a packet of electromagnetic energy.
+        HP hopes that the computon will become the computing industry's equivalent to public utility's watt-hour.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Advantages :
+	Resource sharing -sharing of hardware and software resources
+    openness -Flexibility of using hardware and software vendors.
+    concurrency - concurrent processsing to enhance performance.
+    scalability - Increased throughput by adding new resources.
+    Fault tolerance - the ablility to continue in operation after a fault has occured.
+    
+Disadvantages : 
+	Complexity - They are more comlex than centralised systems.
+    Security - More suectible to external attack.
+    
+    Manegebility - More effort required for system management.
+    
+    Unpredictability - Unpredictability responses depending on the system organization and network load.
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

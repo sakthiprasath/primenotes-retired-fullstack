@@ -361,4 +361,14 @@ index-url = https://keshav:Pa55word@123@symphonyai.jfrog.io/symphonyai/api/pypi/
 
 <hr />
 <hr />
+<p><span style="font-size:20px"><strong>ERRORS :&nbsp;</strong></span><br />
+<strong>login manager.py : validate auth server access (401 error)</strong><br />
+this issue is because of&nbsp;<br />
+./env credentials<br />
+check :<br />
+app_id<br />
+master apikey&nbsp;&nbsp;<br />
+&nbsp;</p>
+
+<hr />
 <p>&nbsp;</p>

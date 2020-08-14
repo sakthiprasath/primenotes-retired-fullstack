@@ -1,8 +1,6 @@
-
+//import get_editor_file from './SourceCodeSection.js'
 
 export default class DomActions{
-
-
 
     _button_clicks(){
         /*initial clicks for file */
@@ -17,9 +15,8 @@ export default class DomActions{
                 width:'90%',
                 height:'700'
             });
-
-
-
+        /*close File container*/
+        $('#close-component-results-container').click();
     }
     _initialize_file_chat_switches_actions(){
         /* file and chat  switches actions*/
@@ -56,8 +53,7 @@ export default class DomActions{
     }
     maximize_icon_click_action(self){
         /* maximize-icon in drag and drop container action*/
-            let prev_height = self.prev_height;
-            let prev_width = self.prev_width;
+
             let curr_container_width = parseInt($('.resizable').css('width'));
             let curr_container_height = parseInt($('.resizable').css('height'));
             let screenWidth = parseInt(window.innerWidth) + 1;
@@ -66,26 +62,14 @@ export default class DomActions{
 
 
     		if(curr_container_width === screenWidth && curr_container_height === screenHeight){
-    		    if(prev_height != 0 && prev_width != 0){
-    			    $('#pane').css({'width':prev_width,'height':prev_height,'top':'0px','left':'0px'});
-    			    $('.resizable').css({'width':prev_width,'height':prev_height,'top':'0px','left':'0px'});
-    		    }
-//    		    else{
-//    		        $('#pane').css({'width':'50%','height':'50%','top':'10px','left':'0px'});
-//    			    $('.resizable').css({'width':'100%','height':'100%','top':'0px','left':'0px'});
-//    			}
+
+    		        $('#pane').css({'width':'50%','height':'50%','top':'10px','left':'0px'});
+    			    $('.resizable').css({'width':'100%','height':'100%','top':'0px','left':'0px'});
+
     		}
     		else{
-    		    if(prev_height != 0 && prev_width != 0){
-    			    $('#pane').css({'width':prev_width,'height':prev_height,'top':'10px','left':'0px'});
-    			    $('.resizable').css({'width':prev_width,'height':prev_height,'top':'0px','left':'0px'});
-    		    }
-    		    else{
-    		        $('#pane').css({'width':screenWidth,'height':screenHeight,'top':'0px','left':'0px'});
+    			    $('#pane').css({'width':screenWidth,'height':screenHeight,'top':'0px','left':'0px'});
     			    $('.resizable').css({'width':screenWidth,'height':screenHeight,'top':'0px','left':'0px'});
-    			    self.prev_height = curr_container_height;
-    			    self.prev_width  = curr_container_width;
-    		    }
             }
     }
     _get_all_videos(){
@@ -136,6 +120,52 @@ export default class DomActions{
                 });
             return defObj.promise();
     }
+
+    _tabs_drop_down_click(self){
+         if(self.tabs_dropdown_click_flag == 0){
+                self.tabs_dropdown_click_flag = 1;
+                document.getElementById("myDropdown").classList.toggle("show");
+             var tabArr=$('.file-get-section');
+                    let len=tabArr.length;
+                    for(let i=0;i<len;i++){
+                        let file_name = $(tabArr[i]).text().trim();
+                        var resultHtml="<div class='tab' onclick=buildTab('" + file_name + "');>";
+                        resultHtml+= file_name;
+                        resultHtml+= "<div class='close-tab' onclick='removeCurrentTab(this)'> </div></div>";
+                        $('#myDropdown').append($(resultHtml));
+                        }
+                    }
+                else{
+                    self.tabs_dropdown_click_flag=0;
+                    $('#myDropdown').empty();
+                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                    for (let i = 0; i < dropdowns.length; i++) {
+                      var openDropdown = dropdowns[i];
+                      if (openDropdown.classList.contains('show')) {
+                            openDropdown.classList.remove('show');
+                            }
+                        }
+                    }
+    }
+    _build_new_component(compo_name){
+         let iframe_ele = "<iframe src='http://localhost:5000/api/individual-component-fetch/create_component?component_name="+compo_name + "' style='width: inherit;height: inherit;'></iframe>"
+         let ele = `<div id='`+compo_name+`' class="create-component-dialog"  style='display:none;min-width:100% !important;min-height: 100% !important' title="drop-down">
+                <div id='create-component-dialog-sub-div' style="width: 100%;height: 100%;">`
+                + iframe_ele +		    `</div> </div>`;
+        return ele;
+    }
+    _create_component_open_close(event_obj, curr_ele){
+            let compo_name = $(curr_ele).attr('title');
+            let self = event_obj;
+            /*checking if the current to-generate component is already present as active element*/
+            if (self.components_list.indexOf(compo_name) <0){
+                self.components_list.push(compo_name);
+                let ele = this._build_new_component(compo_name);
+                $('#destination-container').append($(ele));
+            }
+            $('#'+compo_name).dialog();
+    }
+
     init(){
         this._button_clicks();
         this._get_all_videos();

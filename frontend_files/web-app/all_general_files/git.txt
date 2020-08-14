@@ -1,7 +1,14 @@
-<p>list all the listening port :<br />
-sudo lsof -i -P -n &nbsp;</p>
+<p><strong><span style="font-size:16px">OPENRESTY :&nbsp;</span></strong></p>
+
+<p><a href="https://openresty.org/en/getting-started.html">https://openresty.org/en/getting-started.html</a></p>
 
 <p>&nbsp;</p>
+
+<p><span style="font-size:18px"><strong>list all the listening port :</strong></span><br />
+sudo lsof -i -P -n &nbsp;</p>
+
+<p><span style="font-size:16px"><strong>linux-command for decoding base64 encoded string :</strong></span><br />
+echo &#39;base64_string&#39; | base64 -d</p>
 
 <h2><strong>creating branch locally and pushing to remote</strong> :&nbsp;</h2>
 

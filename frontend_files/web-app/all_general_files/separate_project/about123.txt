@@ -1,134 +1,20 @@
-Dictionary meanings :
-
-diligent - showing more care and consciousness on one's work
-emigency - an urgent need or demand
-scramble - a difficult or hurried clamber up or over something.
--import os
-import unittest
-import datetime
-import json
-import copy
-from unittest.mock import patch, Mock
-from requests.exceptions import Timeout
+user upsert : 
+SDKS:
+https://bitbucket.org/timeli/sdks/pull-requests/59/request-params-added-for-upsert-user
 
 
 
-from events.event import build_event
-from pipelines.transformers.watchman_alert_transformer import WatchmanAlertTransformer
+10-8-2020 tasks :
+1)	Atleast by 8:30 am start office work.
+2)	check the mail, slack, and start checking PRs 
+2)	After evening 6 pm study about distributed computing.
+	
+
+youtube search :
+distributed computing
 
 
-class TestAlertsTransformer(unittest.TestCase):
-    """
-    Tests TestResultTransformer
-    """
-
-    @classmethod
-    def setUpClass(cls) -> None:
-        os.environ['CREDENTIALS'] = 'ASTRING'
-        cls.asset = Mock()
-        cls.asset.id = 349
-
-        fp = open("./samples/sample_jsons/sample_alert_message.json", "r")
-        fp_content = fp.read()
-        cls.event = json.loads(fp_content)
-
-        cls.result_log = {
-             'insert_date': str(datetime.datetime.date(datetime.datetime.utcnow())),
-             'machine_uuid': '00000000-0000-0000-0000-000000000000',
-             'alert_id': '44444'
-        }
-
-    def _get_partial_event_data(self, event):
-        insert_date = event['data'].get('insertDate')
-        if insert_date is not None:
-            insert_date = insert_date + "+00:00"
-
-        alert_id = event['data'].get('alertID')
-        if alert_id is not None:
-            alert_id = str(alert_id)
-
-        machine_uuid = event['data'].get('machineUUID')
-        meta = event['meta']
-
-        return insert_date, alert_id, machine_uuid, meta
-
-    def test_transformer_passing_get_asset(self):
-        transformer = WatchmanAlertTransformer()
-        event = copy.copy(self.event)
-        event['meta']['tenant_id'] = ''
-
-        #successful  transform (event_type : created )
-        with patch('pipelines.transformers.watchman_alert_transformer.WatchmanAlertTransformer._get_asset_id') as _get_asset_id, \
-            patch('pipelines.transformers.watchman_alert_transformer.WatchmanAlertTransformer._get_alert_meta_parameters') as _get_alert_meta_parameters:
-
-            _get_alert_meta_parameters.return_value = self._get_partial_event_data(event)
-            _get_asset_id.return_value = self.asset.id
-
-            payload, config = transformer.handle(event, {})
-
-            args_values = list(_get_asset_id.call_args_list[0][1].values())
-            self.assertFalse(all(args_values))
-
-            log_obj = payload
-            self.assertEqual(log_obj['id'], self.result_log['alert_id'])
-
-
-    def test_transformer_without_alt_id(self):
-        transformer = WatchmanAlertTransformer()
-        #tenant_id or alternate id not present
-        event = copy.copy(self.event)
-        event['data'] = {}
-
-        with patch('pipelines.transformers.watchman_alert_transformer.WatchmanAlertTransformer._get_asset_id') as _get_asset_id, \
-            patch('pipelines.transformers.watchman_alert_transformer.WatchmanAlertTransformer._get_alert_meta_parameters') as _get_alert_meta_parameters:
-            _get_asset_id.return_value = self.asset.id
-            _get_alert_meta_parameters.return_value = self._get_partial_event_data(self.event)
-
-
-            payload, config = transformer.handle(event, {})
-            log_obj = payload
-            self.assertIsNone(payload['data'])
-
-    def test_transformer_for_update(self):
-        transformer = WatchmanAlertTransformer()
-        event = copy.copy(self.event)
-        event['meta']['event_type'] = 'alerts/updated'
-
-        # successful  transform (event_type : update )
-        with patch('pipelines.transformers.watchman_alert_transformer.WatchmanAlertTransformer._get_asset_id') as _get_asset_id, \
-             patch('pipelines.transformers.watchman_alert_transformer.WatchmanAlertTransformer._get_alert_meta_parameters') as _get_alert_meta_parameters:
-            _get_alert_meta_parameters.return_value = self._get_partial_event_data(event)
-            _get_asset_id.return_value = self.asset.id
-
-            payload, config = transformer.handle(event, {})
-
-            log_obj = payload
-            self.assertEqual(log_obj['id'], self.result_log['alert_id'])
-
-    def test_transformer_for_delete(self):
-        transformer = WatchmanAlertTransformer()
-        event = copy.copy(self.event)
-        event['meta']['event_type'] = 'alerts/deleted'
-
-        # successful  transform (event_type : update )
-        with patch('pipelines.transformers.watchman_alert_transformer.WatchmanAlertTransformer._get_asset_id') as _get_asset_id, \
-             patch('pipelines.transformers.watchman_alert_transformer.WatchmanAlertTransformer._get_alert_meta_parameters') as _get_alert_meta_parameters:
-            _get_alert_meta_parameters.return_value = self._get_partial_event_data(event)
-            _get_asset_id.return_value = self.asset.id
-
-            payload, config = transformer.handle(event, {})
-
-            log_obj = payload
-            self.assertEqual(log_obj['id'], self.result_log['alert_id'])
-
-
-
-
-
-
-
-
-
+sasasasa
 
 
 

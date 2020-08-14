@@ -5,7 +5,7 @@ from flask import Flask, request, jsonify
 from flask_rest_api import Api
 import traceback
 from http.client import HTTPException
-from src.rest.routes.individual_component_fetcher import individual_component_fetcher_routes
+from rest.routes.individual_component_fetcher import individual_component_fetcher_routes
 
 # Instantiate loggers
 flask_logger = logging.getLogger('werkzeug')
@@ -83,4 +83,4 @@ def handle_error(e):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',   port='5000')
+    app.run(host='127.0.0.1',   port='5000')

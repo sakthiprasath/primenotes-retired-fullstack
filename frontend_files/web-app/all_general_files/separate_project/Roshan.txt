@@ -1,25 +1,69 @@
-for context menu 
-https://stackoverflow.com/questions/4495626/making-custom-right-click-context-menus-for-my-web-app
+src/rest/routes/email.py
+from flask import jsonify, request
+from flask_rest_api import Blueprint
+from auth.email_manager import EmailManager
+
+
+email_routes = Blueprint('email', __name__, url_prefix='/api/auth/')
 
 
 
-for chat section 
-see codepen
+"""Verification of user-emails"""
+@email_routes.route('/email/verify-email/<verification_id>', methods=['GET'])
+def send_email(verification_id):
+    email_manager = EmailManager()
+    ret_val = email_manager.verify_email(verification_id)
+    print(ret_val)
+    return jsonify('send email success'), 200
+
+
+
+"""user setting the password"""
+@email_routes.route('/email/set-password-by-user/', methods=['POST'])
+def set_password_by_user():
+    email_manager = EmailManager()
+    request_json = request.get_json(force=True)
+
+    email = request_json.get('email')
+    password = request_json.get('password')
+
+    ret_val = email_manager.set_password_by_user()
+    print(ret_val)
+    return jsonify('send email success'), 200
+
+
+"""Forget password"""
+@email_routes.route('/forget-password', methods=['POST'])
+def forget_password():
+    input_json = request.get_json(force=True)
+    payload = input_json #do schema validation here
+    email_manager = EmailManager()
+    ret_mesg= email_manager.forget_password(payload)
+    return jsonify(ret_mesg)
+
+
+# http: // localhost: 16000 / password / change /${changePasswordId}?tenantId =${user.tenantId}
+"""change password"""
+@email_routes.route('/password/change/<change_password_id>', methods=['POST'])
+def change_password(change_password_id):
+    input_json = request.get_json(force=True)
+    tenant_id = request.headers.get('X-FUSIONAUTH-TENANTID')
+
+    payload = input_json  # do schema validation here
+    email_manager = EmailManager()
+
+    ret_mesg = email_manager.change_password(change_password_id, tenant_id, payload)
+    return jsonify(ret_mesg)
 
 
 
 
 
+"""Let the user set the password - rather than admin or system
 
+Reset password by Admin results in a password reset email or a verifications mail
 
+Forgot password
 
-
-
-
-
-
-
-
-
-
+Two factor Authentication - this is a stretch goal"""
 

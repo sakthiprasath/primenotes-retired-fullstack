@@ -118,6 +118,7 @@ color:white;
     padding: 0rem 3rem 2rem;
     margin-top: 3px;
     right: 5.5%;
+    top:1%;
 }
 #close-cpnt-factry-icon{
 	    width: 50%;
@@ -423,7 +424,7 @@ font-variant-caps: small-caps;
 #close-editor-button {
     width: max-content;
     height: 65%;
-    position: relative;
+    position: absolute;
     margin-top: 5px;
     background: #5fd59f;
     padding: 5px;
@@ -637,12 +638,10 @@ content:"\f002";
 }
 
 .save-editor-file{
-   background: #21a6bd;
-    height: 25px;
-    width: 30px;
-    position: absolute;
-    left: 70px;
-    bottom: 3px;
+    position: relative;
+    height: 24px;
+    top: 1.5px;
+    right: -3px;
  }
 
 .save-editor-img-icon{
@@ -650,8 +649,20 @@ content:"\f002";
     width: 100%;
     height: 100%;
 }
+.save-close-for-tab{
+    position: relative;
+    height: 74%;
+    width: 57px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    top: 1px;
+}
 
-
+.file-get-section{
+    width: max-content;
+    height: 100%;
+    position: relative;
+}
 
 
 
@@ -855,37 +866,33 @@ body {
     text-align: left;
 }
 #main-sections{
-position: absolute;
-    top: 75px;
+    position: absolute;
+    top: 12%;
     width: 100%;
     height: 88%;
     z-index: 4;
-    border: 5px solid black;
     left: 1px;
-    --darkreader-inline-border-top: #908573;
-    --darkreader-inline-border-right: #908573;
-    --darkreader-inline-border-bottom: #908573;
-    --darkreader-inline-border-left: #908573;
 }
 
 #tab-options-section{
     width: 100%;
-    height: 40px;
+    height: 7%;
     background: rgb(27, 161, 191);
     position: absolute;
-    top: 40px;
-    left: auto;
     z-index: 5;
     --darkreader-inline-bgimage: initial;
     --darkreader-inline-bgcolor: #507778;
+    top: 5%;
 }
 
 .tab-options{
-    position: relative;
-    left: 1px;
+    position: absolute;
+    left: 20%;
     height: 100%;
     display: flex;
     flex-wrap: nowrap;
+    width:64.5%;
+    column-gap: 7px;
     }
 .tab-options-button{
 width: max-content;
@@ -908,10 +915,8 @@ width: max-content;
           font-style:fantacy;
     }
  #create-component-dialog{
-    width: 100%;
-    min-height: 95%;
-    max-height: none;
-    height: 550px;
+    width: 100% !important;
+    height: 100% !important;
     }
   .ui-dialog .ui-dialog-content{
     background:linear-gradient(45deg, #26547c 0%, #06d6a0 100%) !important;
@@ -919,3 +924,11 @@ width: max-content;
   .ui-widget-content{
     background:linear-gradient(45deg, #26547c 0%, #06d6a0 100%) !important;
   }
+
+ #cke_1_contents{
+    height:69.5vh !important;
+ }
+.cm-s-material{
+    height:100% !important;
+}
+

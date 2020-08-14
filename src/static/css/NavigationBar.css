@@ -2,19 +2,19 @@
 @charset "ISO-8859-1";
 
 #navigation-bar{
-	position: absolute;
-    height: 102%;
-    z-index: 4;
-    margin-top: -5px;
+    position: absolute;
+    height: 100%;
+    z-index: 6;
 }
 
 @media only screen and (max-width:700px){
 	.sidenav-button-class{
 		display:block !important;
-		left:97% !important;	
-		}		
+		left: 100%;
+		}
 		#navigation-bar {
 			width:35% !important;
+			left:0% ;
 		}
 		#source-code-main-div{
 			width:100% !important;
@@ -24,10 +24,10 @@
 @media only screen and (min-width:700px){
 	.sidenav-button-class{
 		display:none !important;
-		}		
+		}
 		#navigation-bar {
 			width:20% !important;
-			left:-4px !important;
+	        left: 0% !important;
 		}
 		#source-code-main-div{
 			    width: 82% !important;
@@ -36,30 +36,29 @@
 }
 
 .sidenav-button-class{
-	width: 25px;
-    height: 70px;
-    background-color: #ccffff;
-    transition: 0.3s;
-    top: 300px;
-    border-radius: 5px;
-    z-index: 1;
-    display: none;
+	display: block;
+    background-color: #53cca4;
+    width: 25px;
+    height: 50px;
+    z-index: 6;
+    margin-top: 220px;
+    margin-top: 220px;
     position: absolute;
-    left: 386px;
+    margin-left: 0px;
+    z-index:6;
 	}
 .sidenav-button-class:hover{
     cursor:pointer;
 }
 .sidenav {
-	height: 94.4%;
+	    position: relative;
+    height: 100%;
     width: 100%;
     background: linear-gradient(25deg, #5ad2a2 -5%, #1ba1bf 80%);
     overflow-x: hidden;
     transition: 0.3s;
     padding-top: 1px;
     display: inline-block;
-    position: absolute;
-    top: 42px;
    }
 
 div {
@@ -121,12 +120,10 @@ left:170px;
 .source-code-tab-content{
     position: absolute;
     top: 4px;
-    left: 4px;
     width: 94%;
     box-shadow: 1px 1px 10px 5px #e2cccc;
     overflow: auto;
     height: 100%;
-}
 }
 .close-btn-class-for-sourcecode{
     position:absolute;
@@ -150,20 +147,19 @@ left:170px;
 
 #source-code-main-div{
     position: absolute;
-    height: 101.3%;
+    height: 100%;
     width: 75%;
     left: 25%;
     background: linear-gradient(270deg, #60D69F 0%, #19A0C0 100%);
-    top: 0px;
     z-index: 4;
 }
 .source-code-sub-divs{
     position: absolute;
     width: 98.3%;
     left: 17px;
-    height: 37px;
+    height: 8%;
     overflow-x: hidden;
-    top: 0px;
+    top: 1px;
 }
 
 .source-code-content{
@@ -174,13 +170,13 @@ left:170px;
     top:55px;
 }
 #code-editor{
-position: absolute;
+    position: absolute;
     top: 38px;
     margin-right: 27px;
     margin-left: 18px;
     margin-bottom: 10px;
-    height: 80%;
-    width: 78%;
+    height: 92%;
+    width: 96%;
     margin-top: auto;
 }
 
@@ -210,37 +206,40 @@ position: absolute;
     top: 0%;
     margin-right: 22px;
     height: 34px;
+    display: inline-flex;
 }
 
 .tab-container .tab{
    display:inline-block;
+   display: grid;
+    grid-template-columns: max-content max-content;
 }
 
 .tab{
-    width: 129px;
-    height: 100%;
+    height: 34px;
     padding-top: -1px;
     margin: 1px;
     font-size: 20px;
     font-family: fantasy;
     font-weight: 100;
     color: #26162d;
-    position: relative;
     border: 1px solid #92c3ce;
     background-color: #19a6c5;
     font-variant-caps: all-small-caps;
     padding-left: 6px;
     }
 .tab-active{
-border-bottom-color: white;
-    border-bottom-style: solid;
+    border-bottom: 3px solid #f2dec7;
 }
 .close-tab{
-   position: absolute;
+    position: absolute;
     width: 21px;
     height: 21px;
-    right: 1px;
-    top: 5px;
+    top: 2px;
+    right: 0px;
+    font-size: 18px;
+    font-family: sans-serif;
+    cursor:pointer;
 }
 .close-tab-img{
    width:100%;
@@ -296,9 +295,35 @@ position: fixed !important;
     }
 #myDropdown{
 	overflow:scroll;
-	height:300px;
-	z-index:10;	
+	z-index:10;
 }
+#create-component-add-btn{
+    position: relative;
+    width: 56px;
+    top: 3px;
+}
+#create-component-form{
+    top: 2px;
+    height: 35px;
+    right: 5%;
+    padding: 2px;
+    display:none;
+}
+ #create-component-section{
+    position: relative;
+ }
+#create-component-submit-btn{
+    position: absolute;
+}
+#create-component-text-box{
+    height:100%;
+    width:100%;
+}
+#close-create-component-form{
+    position: absolute;
+    right: -39%;
+    width: 22px;
+    }
 #sidenav-tab-section{
     position: absolute;
     width: 100%;
@@ -307,6 +332,5 @@ position: fixed !important;
     padding-left: 81px;
     font-family: fantasy;
     padding-top: 7px;
-    margin-left: 0px;
 }
 

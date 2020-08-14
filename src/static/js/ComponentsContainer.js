@@ -370,7 +370,7 @@ CKEDITOR.on( 'instanceReady', function( evt )
     var ckeditorFrameCollection = contentSpace.$.getElementsByTagName('iframe');
     var ckeditorFrame = ckeditorFrameCollection[0];
     var innerDoc = ckeditorFrame.contentDocument;
-    var innerDocTextAreaHeight = $(innerDoc.body).height();
+    var innerDocTextAreaHeight = $(innerDoc.body).height()*3;
     console.log(innerDocTextAreaHeight);
     });
  });
