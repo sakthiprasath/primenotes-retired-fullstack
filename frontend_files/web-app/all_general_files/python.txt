@@ -6,7 +6,7 @@
 <hr />
 <p>&nbsp;</p>
 
-<p>python strings :&nbsp;<br />
+<p><strong><span style="background-color:#FF8C00">python strings</span></strong><span style="background-color:#FF8C00"> :&nbsp;</span><br />
 &nbsp;</p>
 
 <p>&nbsp;</p>
@@ -684,3 +684,33 @@ print(f&#39;Total score for {name} is {score}&#39;)</code></pre>
 <h2><a href="https://stackoverflow.com/questions/20499074/run-local-python-script-on-remote-server"><strong>Run local python script on remote server</strong></a></h2>
 
 <h2><span style="font-size:12px"><a href="https://stackoverflow.com/questions/20499074/run-local-python-script-on-remote-server">https://stackoverflow.com/questions/20499074/run-local-python-script-on-remote-server</a></span></h2>
+
+<hr />
+<hr />
+<p><span style="font-size:18px"><strong>Add Python to the Environment variable :&nbsp;</strong></span></p>
+
+<p>1)&nbsp; Edit environment varibles&nbsp; -&gt;&nbsp;<strong> System Variables&nbsp;&nbsp;</strong>-&gt; <strong>Create a new variable &#39;PYTHON_HOME&#39;&nbsp;</strong></p>
+
+<p>2) -&gt; paste the python.exe path like below</p>
+
+<p>&nbsp;Example :C:\Users\Sakthi\AppData\Local\Programs\Python\Python38-32</p>
+
+<p>3) add the &#39;PYTHON_HOME&#39; variable name in <span style="font-size:14px"><strong>system varaibles </strong></span>- &gt;&#39;<span style="font-size:14px"><strong>path&#39;</strong></span>&nbsp;&nbsp;</p>
+
+<hr />
+<p><span style="font-size:18px"><strong>Add PIP to the Environment variable :&nbsp;</strong></span></p>
+
+<p>1) Add srcipts folder path to the <span style="font-size:14px"><strong>System variables</strong></span> -&gt; &#39;<span style="font-size:16px"><strong>path&#39;&nbsp; </strong>like below</span></p>
+
+<p>&nbsp; &nbsp; C:\Users\Sakthi\AppData\Local\Programs\Python\Python38-32\scripts</p>
+
+<hr />
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>

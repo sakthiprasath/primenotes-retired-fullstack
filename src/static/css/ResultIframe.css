@@ -1,12 +1,14 @@
-.overlay {
-    width: 100%;
-    position: fixed;
-    top: 0;
+#overlay {
+    width: 101%;
+    position: absolute;
+    top: 0%;
     background-color: transparent;
     overflow-y: hidden;
     transition: 0.5s;
     z-index: 4;
-    height:100%;
+    height: 94%;
+    left: 0px;
+    display:none;
 }
 #hider-for-resize{
 	height:0%;
@@ -15,34 +17,33 @@
 	position:absolute;
 }
 @media screen and (max-height: 450px) {
-  .overlay {overflow-y: auto;}
-  .overlay a {font-size: 20px}
-  .overlay .closebtn {
+  #overlay {overflow-y: auto;}
+  #overlay a {font-size: 20px}
+  #overlay .closebtn {
   font-size: 40px;
   top: 15px;
   right: 35px;
   }
 }
-.up-missile{
-    background-color: #a7cd4e;
-    z-index: 1;
-    padding-left: 20px;
-    padding-right: 20px;
-    border:1px solid;
+.open-close{
+        width: max-content;
+    height: 65%;
+    position: relative;
+    margin-top: 5px;
+    background: rgb(95, 213, 159);
+    padding: 5px;
+    top: 0px;
+    font-family: fantasy;
+    margin-left: 0px;
+    --darkreader-inline-bgimage: initial;
+    --darkreader-inline-bgcolor: #577c64;
 }
-#up-missile{
-	position:absolute;
-    left:51%;
-    z-index: 1;
-}
-#down-missile{
-	position:absolute;
-    left:44%;
-    z-index: 1;
+.open-close:hover{
+    background-color:#5d648e !important
 }
 #result-iframe{
 	width:99%;
-    height:20px;
+    height:100%;
     overflow:auto;
     transition:0.5s;
     min-height:20px;

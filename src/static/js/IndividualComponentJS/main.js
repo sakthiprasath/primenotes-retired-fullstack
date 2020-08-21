@@ -12,6 +12,7 @@ myGeeks();
 function get_file_from_server(componentClassName){
 
 var defObj=$.Deferred();
+componentClassName = 'html_components-' + componentClassName;
 	var promise =
 		$.ajax
 		({
@@ -35,7 +36,7 @@ get_file_from_server(component_name).done(function(data){
 
 function save_action(file_name){
             var savable_data = window.editor.getDoc().getValue();
-
+            file_name = 'html_components-' + file_name;
             var defObj=$.Deferred();
                 var promise =
                     $.ajax

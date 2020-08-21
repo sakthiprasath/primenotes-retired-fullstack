@@ -13,7 +13,7 @@
 		<title>Layout Test Page</title> 
 		<script 	src="{{ url_for('static', filename='js/lib/jquery.min.js') }}">
 </script>
-		<script src="https://cdn.ckeditor.com/4.11.2/full-all/ckeditor.js"></script>
+	    <script src="//cdn.gaic.com/cdn/ui-bootstrap/0.58.0/js/lib/ckeditor/ckeditor.js"></script>
 		<script type="text/javascript"
 			src="{{ url_for('static', filename='/js/lib/jquery-ui/jquery-latest.js') }}"></script>
 		<script type="text/javascript"
@@ -24,6 +24,7 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js">/</script>
 
 		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}" />
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/ComponentEditor.css') }}" />
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/ResultIframe.css') }}" />
 	 <link rel="stylesheet" href="{{ url_for('static', filename='/css/ComponentEditor.css') }}">
@@ -81,43 +82,79 @@
 
 
 
+<!-- progress loading before website loads -->
+	<div class="progress" id="PreLoaderBar">
+        <div class="indeterminate"></div>
+    </div>
+
+
+	<script>
+
+document.onreadystatechange = function () {
+            if (document.readyState === "complete") {
+                console.log(document.readyState);
+                document.getElementById("PreLoaderBar").style.display = "none";
+                document.getElementById("destination-container").style.display = "block";
+
+            }
+        }
+</script>
+
+
+
+
+
+
+
+
+
+
 
 
 	<div id="destination-container" >
-		<div class='background-img-class' alt='plastation' />
+
+
+<!-- top header section -->
+<div id="top-header">
+	<div id="logo-section">
+		<img src='http://localhost:8080/static/pin_100.png' alt='primenotes_logo' id='primes-notes-logo' />
+		<span class="logo-font">Prime Notes</span>
 	</div>
+
+
+
 
 
 
 	<div id="tab-options-section" >
-	<button id="close-editor-button" class="button tab-options-button" >FileFactory</button>
-	<div class="tab-options" >
-		<div id="component-tabs">
-			<button class='create-component create-component button tab-options-button' title='calculator' class="button tab-options-button">
-				Calculator
-			</button>
-			<button class='create-component create-component button tab-options-button' title='slideshow' class="button tab-options-button">
-				slideshow
-			</button>
-		</div>
+	<div class="tab-options">
+		<button id="close-editor-button" class="button tab-options-button" >FileFactory</button>
 
-		<div id="create-component-section">
+		<button id='main-section-button' class="button open-close">
+			<span style="padding:3px">General Notes</span>
+		</button>
 
-			<div id="create-component-form">
-				<input type="text" id="create-component-text-box" name="firstname" class="form-text-box" placeholder="Create Component">
-				<button id='create-component-submit-btn'  class="button">create</button>
-				<button id='close-create-component-form' class="button" style="
-				"> X </button>
-			</div>
+		<button id='open-close-overlay' class="button open-close" >
+			<span style="padding:3px">open-close-overlay</span>
+		</button>
 
-		<div id='create-component-add-btn' class="dropdown_1">
-				<button  class="button dropbtn">+</button>
-				<div id="myDropdown-add-component" class="dropdown-content">
-				</div>
-		</div>
-	</div>
+
+
+		<button id='html-renderer' class="button open-close" >
+			<span style="padding:3px">open-close-html-renderer</span>
+		</button>
+
+
     </div>
 	</div>
+
+
+
+	<div id='user-name-section'>
+		<span class="logo-font user-name-font">SakthiPrasath Tamilazhagan</span>
+	</div>
+
+</div>
 
 
 
@@ -151,156 +188,9 @@
 
 	<!-- result iframe  -->
 
-	<div class="overlay">
-		<button id='up-missile' class="button" onclick="closeNav()" class='up-missile'>
-			<span style="padding:3px">close</span>
-		</button>
-		<button id='down-missile' class="button" onclick="openNav()" class='up-missile'>
-			<span style="padding:3px">open</span>
-		</button>
-		<div id='hider-for-resize'></div>
-		<div id='result-iframe'  style="background-color:black;">
 
-			<!-- tab-section with contents -->
-
-			<div class="tabset">
-			  <!-- Tab 1 -->
-			  <input type="radio" name="tabset" id="tab1" aria-controls="videos-tab-section" checked>
-			  <label for="tab1">Videos</label>
-			  <!-- Tab 2 -->
-			  <input type="radio" name="tabset" id="tab2" aria-controls="clock-tab-section">
-			  <label for="tab2">Clocks</label>
-			  <!-- Tab 3 -->
-			  <input type="radio" name="tabset" id="tab3" aria-controls="python-tab-section">
-			  <label for="tab3">Python Compiler</label>
-			  <!-- Tab 4 -->
-			  <input type="radio" name="tabset" id="tab4" aria-controls="dunkles">
-			  <label for="tab4">Not Occupied</label>
-
-
-				<!-- tab-pannels begins -->
-			  <div class="tab-panels">
-				<section id="videos-tab-section" class="tab-panel">
-				  <h2></h2>
-
-							<div id="video-download-section>" style="
-								margin-left: 30px;
-							">
-							<input type="text" id="video-link" placeholder="video-link" style="
-								padding: 4px 40px;
-								margin: 8px 0;
-								box-sizing: border-box;
-							">
-							<input type="text" id="video-name" placeholder="video-name" style="
-								padding: 4px 40px;
-								margin: 8px 0;
-								box-sizing: border-box;
-							">
-							<button id="download-video-button" class="button">download</button>
-							</div>
-							<div id='video-section' style="height: 500px;
-    														overflow-y: scroll;
-    														width: 101%;">
-								<video width="400" controls>
-								</video>
-							</div>
-
-				</section>
-
-
-
-				  <section id="clock-tab-section" class="tab-panel">
-				  <h2></h2>
-					<iframe src="https://vclock.com/timer/" style="
-									width: 1345px;
-									height: 550px;
-									top: -52px;
-									position: relative">
-							  </iframe>
-					</section>
-
-
-
-				  <section id="python-tab-section" class="tab-panel">
-				    <h2></h2>
-					<iframe src="https://www.programiz.com/python-programming/online-compiler/" style="
-									width: 1345px;
-									height: 550px;
-									top: -52px;
-									position: relative">
-							  </iframe>
-					</section>
-
-
-				<section id="dunkles" class="tab-panel">
-				  <h2>Other Things</h2>
-				  <a href="https://chemours.symphonyindai.com/" target="_blank">
-								chemours tenant  </a>
-				 </br>
-			      <a href="https://economictimes.indiatimes.com/commoditysummary/symbol-GOLD.cms" target="_blank">
-					  Economic times
-				  </a>
-				  </br>
-				  <a href="https://www.goodreturns.in/gold-rates/" target="_blank">
-					  Good Returns
-				  </a>
-
-
-				  <button class="button" onclick="window.open('http://localhost:5000/api/individual-component-fetch/screen-recorder');">Screen Recorder</button>
-				</section>
-			  </div>
-
-			</div>
-
-
-		</div>
-
-
-		<div id='iframe-dragger-button' style="background-color:orange;">
-		</div>
-
-
-	</div>
 
 	<script>
-function openNav() {
-  //document.getElementById("myNav").style.height = "99%";
-  $('#result-iframe').css('height',$(document).height() + 10);
-  $('.overlay').css('z-index',5);
-}
-function closeNav() {
-  //document.getElementById("myNav").style.height = "3%";
-  document.getElementById("result-iframe").style.height = "20px";
-  $('.overlay').css('z-index',4);
-}
-
-$(document).ready(function(){
-
-$('#iframe-dragger-button').on('mousedown',function(e1){
-		$(this).css('cursor','grabbing');
-        e1.preventDefault();
-      	$('#result-iframe').css('transition','none');
-		$(document).on('mousemove',function(e){
-      	   e.preventDefault();
-           console.log(e.clientX+"  "+e.clientY);
-    	   let height=e.clientY;
-   	       if(height>10){
-                $('#result-iframe').css('height',height+15);
-                $('#hider-for-resize').css('height',height+15);
-        		//$('#hider-for-resize').css('background-color','red');
-           }
-		});
-});
-
-	$('#iframe-dragger-button').on('mouseup',function(e1){
-      e1.preventDefault();
-      $('#result-iframe').css('transition','0.5s');
-      $(this).css('cursor','grab');
-      $('#hider-for-resize').css('height',0);
-	  $('#hider-for-resize').css('background-color','none');
-      $(document).unbind('mousemove');
-    });
-});
 
 
 
@@ -393,13 +283,35 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
 									right: -85px;
 									width: 138px;
 									top : 15px">
-									<img id='create-new-file' src="https://cdn2.iconfinder.com/data/icons/explore-and-analysis-2/64/76-512.png"
-										 style="
+									<div id="create-new-file" class="dropdown_1" style="
 									    width: 27px;
 										height: 27px;
 										display: block;
 										left: -20px;
 										position: absolute;">
+											<button class="button dropbtn">+</button>
+											<div  class="dropdown-content">
+											</div>
+									</div>
+
+									<div id="create-new-file-form" style="display:none;top:10px
+											display: block;
+											top: px;
+											left: 15px;
+											position: absolute;
+											width: 275px;
+											z-index: 1;
+											background: white;
+											height: 50px;
+											padding: 10px;
+									">
+										<input type="text" id="create-file-text-box"  class="form-text-box" placeholder="Create file">
+										<button id='create-new-file-submit-btn'  class="button">create</button>
+										<button id='close-create-file-form' class="button" style="
+										font-family:sans-serif;
+										"> X </button>
+									</div>
+
 									<img id='single-chat' src="https://cdn2.iconfinder.com/data/icons/explore-and-analysis-2/64/76-512.png" style="
 									    width: 27px;
 										height: 27px;
@@ -514,9 +426,12 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
 
 
 
+<div id="main-section-wrapper">
 
 
- <div id="main-sections" >
+
+
+	<div class='main-section-wrapper-class' id="main-sections" >
 
 	<div id='navigation-bar'>
 
@@ -530,9 +445,9 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
 
 		<div class="sidenav">
 			<a href="javascript:void(0)" class="closebtn" style="
-				position: absolute;
-    			margin-top: 5px;
-    			left: 190px;
+				    position: absolute;
+    				top: 0px;
+    				left: 190px;
 			">×</a>
 
 			<div class='source-code-tab-content'>
@@ -546,6 +461,7 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
 						<li><a href="#" >Site</a>
 							<ul>
 								<li><a href="#" class='file-click' filename="about123">About the Web Site</a></li>
+								<li><a href="#" class='file-click' filename="site123">site123</a></li>
 								<li><a href="#" class='file-click' filename="hrithik">Hrithik</a></li>
 								<li><a href="#" class='file-click' filename="Roshan">Roshan</a></li>
 								<li><a href="#" class='file-click' filename="reshan">Reshan</a></li>
@@ -658,7 +574,7 @@ $('#iframe-dragger-button').on('mousedown',function(e1){
 <!--			</div>-->
 
 			<div id='tabs-list-drop-down' class="dropdown">
-				<button  class="button dropbtn">CDD</button>
+				<button  class="three-vertical-dots button dropbtn">OPEN ITEMS</button>
 				<div id="myDropdown" class="dropdown-content">
 				</div>
 			</div>
@@ -742,6 +658,149 @@ $('.CodeMirror').css('height','100%');
     </script>
 	</div>
   </div>
+
+	<div class='main-section-wrapper-class' id="overlay">
+		<div id='hider-for-resize'></div>
+		<div id='result-iframe'  style="background-color:black;">
+
+			<!-- tab-section with contents -->
+
+			<div class="tabset">
+			  <!-- Tab 1 -->
+			  <input type="radio" name="tabset" id="tab1" aria-controls="videos-tab-section" checked>
+			  <label for="tab1">Videos</label>
+			  <!-- Tab 2 -->
+			  <input type="radio" name="tabset" id="tab2" aria-controls="clock-tab-section">
+			  <label for="tab2">Clocks</label>
+			  <!-- Tab 3 -->
+			  <input type="radio" name="tabset" id="tab3" aria-controls="python-tab-section">
+			  <label for="tab3">Python Compiler</label>
+			  <!-- Tab 4 -->
+			  <input type="radio" name="tabset" id="tab4" aria-controls="dunkles">
+			  <label for="tab4">Not Occupied</label>
+
+
+				<!-- tab-pannels begins -->
+			  <div class="tab-panels">
+				<section id="videos-tab-section" class="tab-panel">
+				  <h2></h2>
+
+							<div id="video-download-section>" style="
+								margin-left: 30px;
+							">
+							<input type="text" id="video-link" placeholder="video-link" style="
+								padding: 4px 40px;
+								margin: 8px 0;
+								box-sizing: border-box;
+							">
+							<input type="text" id="video-name" placeholder="video-name" style="
+								padding: 4px 40px;
+								margin: 8px 0;
+								box-sizing: border-box;
+							">
+							<button id="download-video-button" class="button">download</button>
+							</div>
+							<div id='video-section' style="height: 500px;
+    														overflow-y: scroll;
+    														width: 101%;">
+								<video width="400" controls>
+								</video>
+							</div>
+
+				</section>
+
+
+
+				  <section id="clock-tab-section" class="tab-panel">
+				  <h2></h2>
+<!--					<iframe src="https://vclock.com/timer/" style="-->
+<!--									width: 1345px;-->
+<!--									height: 550px;-->
+<!--									top: -52px;-->
+<!--									position: relative">-->
+<!--							  </iframe>-->
+					</section>
+
+
+
+				  <section id="python-tab-section" class="tab-panel">
+				    <h2></h2>
+<!--					<iframe src="https://www.programiz.com/python-programming/online-compiler/" style="-->
+<!--									width: 1345px;-->
+<!--									height: 550px;-->
+<!--									top: -52px;-->
+<!--									position: relative">-->
+<!--							  </iframe>-->
+					</section>
+
+
+				<section id="dunkles" class="tab-panel">
+				  <h2>Other Things</h2>
+				  <a href="https://chemours.symphonyindai.com/" target="_blank">
+								chemours tenant  </a>
+				 </br>
+			      <a href="https://economictimes.indiatimes.com/commoditysummary/symbol-GOLD.cms" target="_blank">
+					  Economic times
+				  </a>
+				  </br>
+				  <a href="https://www.goodreturns.in/gold-rates/" target="_blank">
+					  Good Returns
+				  </a>
+
+
+				  <button class="button" onclick="window.open('http://localhost:5000/api/individual-component-fetch/screen-recorder');">Screen Recorder</button>
+				</section>
+			  </div>
+
+			</div>
+
+
+		</div>
+
+
+
+
+	</div>
+
+ 	<div class='main-section-wrapper-class'  id="html-renderer-section">
+
+
+ 		<div id="component-tabs">
+			<button class="create-component create-component button tab-options-button" title="calculator">
+				Calculator
+			</button>
+			<button class="create-component create-component button tab-options-button" title="slideshow">
+				slideshow
+			</button>
+			<button class="create-component create-component button tab-options-button" title="markup_editor">
+				markup_editor
+			</button>
+
+		</div><div id="create-component-section">
+
+			<div id="create-component-form" style="display: none;">
+				<input type="text" id="create-component-text-box" name="firstname" class="form-text-box" placeholder="Create Component">
+				<button id="create-component-submit-btn" class="button">create</button>
+				<button id="close-create-component-form" class="button" style="
+				"> X </button>
+			</div>
+
+		<div id="create-component-add-btn" class="dropdown_1">
+				<button class="button dropbtn">+</button>
+				<div id="myDropdown-add-component" class="dropdown-content">
+				</div>
+		</div>
+	</div>
+
+
+ </div>
+
+
+
+
+
+
+</div>
 
 
 

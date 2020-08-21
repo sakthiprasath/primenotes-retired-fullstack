@@ -1,0 +1,35 @@
+
+		<div id='iframe-dragger-button' style="background-color:orange;">
+		</div>
+        
+        <script>
+        
+$(document).ready(function(){
+
+$('#iframe-dragger-button').on('mousedown',function(e1){
+		$(this).css('cursor','grabbing');
+        e1.preventDefault();
+      	$('#result-iframe').css('transition','none');
+		$(document).on('mousemove',function(e){
+      	   e.preventDefault();
+           console.log(e.clientX+"  "+e.clientY);
+    	   let height=e.clientY;
+   	       if(height>10){
+                $('#result-iframe').css('height',height+15);
+                $('#hider-for-resize').css('height',height+15);
+        		//$('#hider-for-resize').css('background-color','red');
+           }
+		});
+});
+
+	$('#iframe-dragger-button').on('mouseup',function(e1){
+      e1.preventDefault();
+      $('#result-iframe').css('transition','0.5s');
+      $(this).css('cursor','grab');
+      $('#hider-for-resize').css('height',0);
+	  $('#hider-for-resize').css('background-color','none');
+      $(document).unbind('mousemove');
+    });
+});
+
+        </script>

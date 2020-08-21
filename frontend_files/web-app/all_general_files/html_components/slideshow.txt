@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<head>
+<style>
+body{
+
+background-color:black;}
+#top-header{
+	position:fixed;
+	top:10px;
+	width:100%;
+	height:50px;
+	border-top:1px solid black;
+    border-bottom:1px solid black;
+    background-color:#5a2769;
+    color: white;
+}
+#logo-section{
+	position:absolute;
+    left:10px;
+    height:100%;
+    top:0%;
+    display:flex;
+}
+#primes-notes-logo{
+	width:50px;
+    height:90%;
+}
+.logo-font{
+	top: 25%;
+    position: relative;
+    left: 6px;
+    font-size: 15px;
+    font-family: cursive;
+}
+#user-name-section{
+	position:absolute;
+    height:55%;
+    top:4px;
+    right:20px;
+    width:max-content;
+    padding-top:6px;
+}
+
+.user-name-font{
+	top:5%;
+    left: 0px;
+}
+</style>
+</head>
+<body>
+
+<div id="top-header">
+
+<div id="logo-section">
+<img src='http://localhost:8080/static/pin_100.png' alt='primenotes_logo' id='primes-notes-logo' />
+
+<span class="logo-font">Prime Notes</span>
+</div>
+
+
+<div id='user-name-section'>
+<span class="logo-font user-name-font">SakthiPrasath Tamilazhagan</span>
+<div>
+
+</div>
+
+
+
+</html>

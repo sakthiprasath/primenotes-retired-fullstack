@@ -7,7 +7,7 @@ export default class DomActions{
             ($('.file-click')[0]).click()
             setTimeout( function(){
                 ($('.file-get-section')[0]).click()
-            },1000);
+            },3000);
 
         /*password validate for drowssap*/
             $('#password-validate-dialog').dialog({
@@ -163,7 +163,12 @@ export default class DomActions{
                 let ele = this._build_new_component(compo_name);
                 $('#destination-container').append($(ele));
             }
-            $('#'+compo_name).dialog();
+            var height = $(window).height();
+            $('#'+compo_name).dialog({
+                width:'100%',
+                height: height*0.8,
+                position: { my: "left top"}
+            });
     }
 
     init(){

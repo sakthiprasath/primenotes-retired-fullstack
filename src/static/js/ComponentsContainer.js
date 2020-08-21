@@ -170,10 +170,12 @@ export default class loadComponentsContainer {
 		applyDragAndDrop.Draggable(document.getElementById('component-factory-title'));
 	}
 	
-static searchResults(){ 
+static searchResults(){
+
 	var searchResultTop=10;
 	var searchContent=$('#search-box').val();
 	var  html='';
+
 	let def=$.Deferred();
 	loadComponentsContainer.prototype.codesMap=new Object();
 	loadComponentsContainer.prototype.currentSubClass="";

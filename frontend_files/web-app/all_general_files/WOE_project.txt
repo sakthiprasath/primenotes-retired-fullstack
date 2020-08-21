@@ -1,4 +1,4 @@
-<div style="--darkreader-inline-bgcolor:#2e2d2a; --darkreader-inline-bgimage:initial; --darkreader-inline-border-bottom:#494843; --darkreader-inline-border-left:#494843; --darkreader-inline-border-right:#494843; --darkreader-inline-border-top:#494843; background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">
+<div data-darkreader-inline-bgcolor="" data-darkreader-inline-bgimage="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-darkreader-inline-border-right="" data-darkreader-inline-border-top="" style="--darkreader-inline-bgcolor:#302e2b; --darkreader-inline-bgimage:initial; --darkreader-inline-border-bottom:#4c4b46; --darkreader-inline-border-left:#4c4b46; --darkreader-inline-border-right:#4c4b46; --darkreader-inline-border-top:#4c4b46; background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">
 <pre>
 <strong><span dir="rtl"><cite>                                                                                   WOE - AZIMA INTEGRATION</cite></span>
 </strong></pre>
@@ -131,16 +131,16 @@ AUTH_API_KEY=master-api-key                          #master_api_key for the fus
 <p>credentials for connectinfg to auth server :&nbsp;</p>
 
 <p>AuthRequest:<br />
-&nbsp; auth_url: &quot;https://auth.symphonyindai.com&quot;<br />
+&nbsp; auth_url: &quot;http://localhost:16000&quot;<br />
 &nbsp; resource_url: &quot;http://localhost:16000&quot;<br />
-&nbsp; client_id: &quot;eac39deb-b436-4b07-9a39-b414853bd224&quot;<br />
-&nbsp; client_secret: &quot;DnX9eQiNINPJo6MdLOJX29NqHGbdwH1T&quot;<br />
-&nbsp; username: &quot;azima&quot;<br />
+&nbsp; client_id: &quot;b4ea82d9-caf1-4e38-b24b-04650875d78f&quot;<br />
+&nbsp; client_secret: &quot;r5Lc6czwNliI00TyEiz8EycPLLYUjN6vH_Ak420HE9Q&quot;<br />
+&nbsp; username: &quot;super-user&quot;<br />
 &nbsp; password: &quot;siai1234&quot;<br />
 &nbsp; redirect_url: &#39;&#39;</p>
 
 <p>MasterApiKey:<br />
-&nbsp; key: &quot;qsy7monu8secD7kPzV4ZEvgkbDLyAEjS6Q8n9pS3gLM&quot;</p>
+&nbsp; key: &quot;hnryPlKZv9itGFxAtNmlw6yzWm2bkSz1-zSZ44QDUZs&quot;</p>
 
 <hr />
 <hr />

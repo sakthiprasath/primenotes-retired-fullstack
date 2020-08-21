@@ -1,20 +1,25 @@
 user upsert : 
 SDKS:
-https://bitbucket.org/timeli/sdks/pull-requests/59/request-params-added-for-upsert-user
+https://bitbucket.org/timeli/sdks/pull-requests/60
 
+auth_server:
+https://bitbucket.org/timeli/auth-server/pull-requests/24
 
+WOE:
+https://bitbucket.org/timeli/woe/pull-requests/24
 
 10-8-2020 tasks :
 1)	Atleast by 8:30 am start office work.
 2)	check the mail, slack, and start checking PRs 
-2)	After evening 6 pm study about distributed computing.
-	
-
-youtube search :
-distributed computing
+3)	After evening 6 pm study about distributed computing.
 
 
-sasasasa
+today tasks:
+1) check for fullName 
+2) add user active status  in upsert
+3) 
+
+
 
 
 

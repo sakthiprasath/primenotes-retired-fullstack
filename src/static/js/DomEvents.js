@@ -1,16 +1,20 @@
 import DomActions from './DomActions.js';
-//import tsp from './ComponentsContainer.js';
+import loadComponentsContainer from './ComponentsContainer.js';
 
 export default class DomEvents{
     components_list= [];
     static _get_action_object(){
         return new DomActions()
     }
+    static _get_components_container_object(){
+        return new loadComponentsContainer()
+    }
 
     _initialize_file_chat_switches_events(){//component container left-corner
         self = this;
         self.action_obj._initialize_file_chat_switches_actions();
     }
+
     _component_container_open_close(){
         /*component container open-close */
          $('#close-editor-button').on('click',function(){
@@ -101,7 +105,56 @@ export default class DomEvents{
 
 		});
     }
+    _create_new_file_form(){
+        /*create new file */
+        let self = this;
+        $('#create-new-file').on('click', function(){
+            $('#create-new-file-form').css('display','block');
 
+        });
+        $('#create-new-file-submit-btn').on('click',function(){
+
+              let file_name = $('#create-file-text-box').val();
+
+            let html="<div class='individual-search' id='"+file_name+"'> <span class='search-result-item' >"+file_name+"</span></div>";
+
+	        $('#file-middle-section').prepend($(html));
+
+        });
+
+        $('#close-create-file-form').on('click',function(){
+            $('#create-new-file-form').css('display', 'none');
+        });
+    }
+
+    _open_close_main_section_warapper(){
+        let self = this;
+        self.active_bg_color = 'rgb(124 206 56)';
+        self.inactive_bg_color = '#7482d2';
+        function _hide_all_main_section_wrapper_class(){
+            $('.main-section-wrapper-class').css('display','none');
+            $('.open-close').css('background-color',self.inactive_bg_color);
+        }
+        $('#open-close-overlay').on('click',function(){
+            _hide_all_main_section_wrapper_class();
+            $('#overlay').css('display','block');
+            $(this).css('background-color',self.active_bg_color);
+        });
+
+        $('#html-renderer').on('click',function(){
+            _hide_all_main_section_wrapper_class();
+            $('#html-renderer-section').css('display','block');
+            $(this).css('background-color',self.active_bg_color);
+        });
+
+        $('#main-section-button').on('click',function(){
+            _hide_all_main_section_wrapper_class();
+            $('#main-sections').css('display','block');
+            $(this).css('background-color',self.active_bg_color);
+        });
+
+
+    }
 
     init(){
         this.action_obj = new DomActions();
@@ -112,6 +165,8 @@ export default class DomEvents{
         this._create_component_open_close();
         this._create_component_form()
         this._tabs_dropdown_click();
+        this._create_new_file_form();
+        this._open_close_main_section_warapper();
     }
 
 }

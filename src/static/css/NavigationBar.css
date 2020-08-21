@@ -4,7 +4,7 @@
 #navigation-bar{
     position: absolute;
     height: 100%;
-    z-index: 6;
+    z-index: 4;
 }
 
 @media only screen and (max-width:700px){
@@ -51,10 +51,10 @@
     cursor:pointer;
 }
 .sidenav {
-	    position: relative;
+	position: relative;
     height: 100%;
     width: 100%;
-    background: linear-gradient(25deg, #5ad2a2 -5%, #1ba1bf 80%);
+    background-color: #49c5a9;
     overflow-x: hidden;
     transition: 0.3s;
     padding-top: 1px;
@@ -124,6 +124,7 @@ left:170px;
     box-shadow: 1px 1px 10px 5px #e2cccc;
     overflow: auto;
     height: 100%;
+    padding:15px;
 }
 .close-btn-class-for-sourcecode{
     position:absolute;
@@ -150,7 +151,7 @@ left:170px;
     height: 100%;
     width: 75%;
     left: 25%;
-    background: linear-gradient(270deg, #60D69F 0%, #19A0C0 100%);
+    background-color: #49c5a9;
     z-index: 4;
 }
 .source-code-sub-divs{
@@ -216,6 +217,7 @@ left:170px;
 }
 
 .tab{
+    cursor: pointer;
     height: 34px;
     padding-top: -1px;
     margin: 1px;
@@ -229,8 +231,9 @@ left:170px;
     padding-left: 6px;
     }
 .tab-active{
-    border-bottom: 3px solid #f2dec7;
-}
+    border-bottom: 3px solid #131211;
+    background: #5ed5a0;
+    }
 .close-tab{
     position: absolute;
     width: 21px;
@@ -247,13 +250,14 @@ left:170px;
 }
 
 .dropbtn {
-  background-color: #48c4aa;
+    background-color: #48c4aa;
     color: white;
     padding: 6px;
     font-size: 15px;
     border: none;
     cursor: pointer;
     width: 100%;
+    border: 1px solid #ffffff;
 }
 
 .dropbtn:hover, .dropbtn:focus {
@@ -290,23 +294,31 @@ position: fixed !important;
     right: 1%;
     padding: 2px;
     z-index: 10;
-    width: 60px;
-    margin-top: 1px;
+    width: max-content;
+    margin-top: -1px;
     }
+
+.three-vertical-dots:after{
+    content: '\2807';
+  font-size: 100px;
+}
 #myDropdown{
 	overflow:scroll;
 	z-index:10;
 }
 #create-component-add-btn{
     position: relative;
-    width: 56px;
+    width: 30px;
     top: 3px;
 }
 #create-component-form{
     top: 2px;
     height: 35px;
-    right: 5%;
+    right: %;
     padding: 2px;
+    position: absolute;
+    width: max-content;
+    left: 33px;
     display:none;
 }
  #create-component-section{
@@ -323,6 +335,7 @@ position: fixed !important;
     position: absolute;
     right: -39%;
     width: 22px;
+    font-family: sans-serif;
     }
 #sidenav-tab-section{
     position: absolute;

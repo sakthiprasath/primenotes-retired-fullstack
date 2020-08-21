@@ -1,6 +1,7 @@
 <p>http://editor.swagger.io/</p>
 
-<p>&nbsp;</p>
+<p><span style="font-size:20px"><strong>Swagger Reference Pull Requests :&nbsp;</strong></span><br />
+<a href="https://bitbucket.org/timeli/health-scores-api/pull-requests/11/added-openapijson-and-routes?link_source=email">https://bitbucket.org/timeli/health-scores-api/pull-requests/11/added-openapijson-and-routes?link_source=email</a></p>
 
 <h1>Swagger reference notes :</h1>
 

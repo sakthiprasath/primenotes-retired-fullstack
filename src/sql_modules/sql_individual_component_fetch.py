@@ -42,8 +42,11 @@ class SQLIndividualComponent():
         return read_file_contents
 
     def result_write(self, file_name, file_content):
+
+        name_list = file_name.split('-')
         if 'separate_project' in file_name:
-            name_list = file_name.split('-')
+            file_name = name_list[0] + '\\' + name_list[1]
+        if 'html_components' in file_name:
             file_name = name_list[0] + '\\' + name_list[1]
 
         file_path = '../frontend_files/web-app/all_general_files/'+ file_name + ".txt"
@@ -55,6 +58,10 @@ class SQLIndividualComponent():
         if 'separate_project' in file_name:
             name_list = file_name.split('-')
             file_name = name_list[0] + '\\' + name_list[1]
+        if 'html_components' in file_name:
+            name_list = file_name.split('-')
+            file_name = name_list[0] + '\\' + name_list[1]
+
         file_path = '../frontend_files/web-app/all_general_files/' + file_name + ".txt"
 
         fp = open(file_path, 'r')
