@@ -20,15 +20,30 @@ today tasks:
 3) 
 
 
+.tab
+
+    cursor: pointer;
+    height: 92%;
+    padding-top: -1px;
+    margin: 1px;
+    font-size: 14px;
+    font-family: cursive;
+    font-weight: 500;
+    color: #26162d;
+    border: 1px solid #92c3ce;
+    background-color: #19a6c5;
+    font-variant-caps: unset;
+    padding-left: 8px;
+    padding-top: 4px;
 
 
+.tab-active
 
+    border-bottom: 4px solid #eceefb;
+    background: #3a468e;
+    color: #f5f5f5;
+    font-variant-caps: unset;
 
-
-
-
-
-
-
-
+almost all social networks : 
+https://jar-download.com/download-handling.php
 

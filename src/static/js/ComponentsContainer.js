@@ -170,7 +170,7 @@ export default class loadComponentsContainer {
 		applyDragAndDrop.Draggable(document.getElementById('component-factory-title'));
 	}
 	
-static searchResults(){
+static searchResults(labelMap){
 
 	var searchResultTop=10;
 	var searchContent=$('#search-box').val();
@@ -201,6 +201,29 @@ static searchResults(){
 	def.resolve(html);
 	return def.promise();
 };
+    _get_file_factory_list(){
+        let file_type = 'file_factory';
+        let temp_map = {};
+         var defObj=$.Deferred();
+            var promise =
+                $.ajax
+                ({
+                    url:"http://localhost:5000/api/individual-component-fetch/get-all-files/" + file_type,
+                    type : "GET",
+                    contentType:'application/x-www-form-urlencoded',
+                    success : function(response){
+                        let files = {};
+                        files = response;
+                        for(let i in files){
+                            let file = files[i];
+                            temp_map [file] = [file];
+                        }
+                        return defObj.resolve(temp_map);
+                    }
+                });
+            return defObj.promise();
+    }
+
     init(){
 	this.buildDragAndDropEleSet();
 	this.makeResizableDiv('.resizable');
@@ -210,30 +233,32 @@ static searchResults(){
 	
 	/*first time event listener is added so flag is generated*/
 	self.eventListenerFlag=0;
-	var defStart=$.Deferred();
+	let init_deferred = $.Deferred();
+	let  defStart=$.Deferred();
 	/*map for storing labels of the corresponding id*/
 
-	self.labelMap={
-	        /*file_name : ['display_name']*/
-			'drowssap':['drowssap','secrets'],
-			'python':['python'],
-			'ML':['ML','ai','deep learning'],
-			'flask_swagger':['flask','swagger','rest','api'],
-			'notes':['notes'],
-			'git':['git commands','bitbucket commands'],
-			'encryptor_algorithm':['algorithm'],
-			'docker':['docker'],
-			'postgres':['postgres sql'],
-			'WOE_project':['azima integration(woe)'],
-			'personal':['personal','plan'],
-			'partner_in_crime':['partner_in_crime']
-	};
-	
-	$.Deferred().resolve().then(function(){
-		loadComponentsContainer.searchResults().then(function(backHtml){
+//	self.labelMap={
+//	        /*file_name : ['display_name']*/
+//			'drowssap':['drowssap','secrets'],
+//			'python':['python'],
+//			'ML':['ML','ai','deep learning'],
+//			'flask_swagger':['flask','swagger','rest','api'],
+//			'notes':['notes'],
+//			'git':['git commands','bitbucket commands'],
+//			'encryptor_algorithm':['algorithm'],
+//			'docker':['docker'],
+//			'postgres':['postgres sql'],
+//			'WOE_project':['azima integration(woe)'],
+//			'personal':['personal','plan'],
+//			'partner_in_crime':['partner_in_crime']
+//	};
+	this._get_file_factory_list().then(function(label_map){
+	    self.label_map= label_map;
+		loadComponentsContainer.searchResults(label_map).then(function(backHtml){
 		$('#file-middle-section').append(backHtml);
 		loadComponentsContainer.initialisingEventHandlers();
 		defStart.resolve();
+		init_deferred.resolve(self.label_map);
 		});
 		return defStart.promise();
 	});
@@ -304,6 +329,7 @@ static searchResults(){
     var initialize_save_action_for_save_button=function(){
             $('#editor1-save-button').on('click',function(){
             var file_name = $('#file-name').text()
+            file_name = 'file_factory-'  + file_name ;
             var savable_data = CKEDITOR.instances.editor1.getData();
 
             var defObj=$.Deferred();
@@ -323,6 +349,7 @@ static searchResults(){
     };
     initialize_save_action_for_save_button();
 
+    return init_deferred.promise();
 };
 
 static initialisingEventHandlers(){
@@ -414,7 +441,7 @@ CKEDITOR.instances.editor1.setData(general_text_data);
 
 
 static get_file_from_server(componentClassName){
-
+componentClassName = 'file_factory-' + componentClassName;
 var defObj=$.Deferred();
 	var promise =
 		$.ajax

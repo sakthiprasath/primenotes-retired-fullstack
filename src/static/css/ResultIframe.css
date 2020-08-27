@@ -30,7 +30,7 @@
     height: 65%;
     position: relative;
     margin-top: 5px;
-    background: rgb(95, 213, 159);
+    background: None ;
     padding: 5px;
     top: 0px;
     font-family: fantasy;
@@ -39,7 +39,8 @@
     --darkreader-inline-bgcolor: #577c64;
 }
 .open-close:hover{
-    background-color:#5d648e !important
+    background-color:#5d648e !important;
+    color: white;
 }
 #result-iframe{
 	width:99%;
@@ -81,4 +82,15 @@
 }
 .video-content{
 height:230px;
+}
+
+
+/*website embeder */
+
+#create-website-embeder-add-btn{
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    width: 2%;
+
 }

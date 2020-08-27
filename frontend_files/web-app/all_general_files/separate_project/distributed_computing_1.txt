@@ -20,6 +20,31 @@ ulysses
 Typora
 
 
+MOST common reasons startups fail : 
+no market need
+ran out of cash
+not a right team
+get out competed
+unfriendly product
+pricing cost issues
+no business model
+
+Top 20 reasond why startups fail
+[CB insights]
+
+
+You can raiss money from idea
+
+[startup CEO and Responsibility -in separate video]
+[share value as ceo is the motivation and not the salary]
+[fast growth comes first and then profitability]
+
+-Two plans for series funding(acquisition)
+A : go in full swing untill u win
+B : Take a step and get ur company to a profitable state
+
+Investors :
+Presure to submit an ROI
 
 
 
@@ -39,3 +64,65 @@ Typora
 
 
 
+
+
+
+
+
+
+
+
+Youtube integrate : 
+https://developers.google.com/youtube/iframe_api_reference
+
+
+
+prime notes css changes :
+
+create-comp...o-edito.css
+@media screen and (max-width: 727px)
+.trytopnav{
+ top: 0px; 
+}
+
+
+.trytopnav {
+    overflow: hidden;
+    min-width: 380px;
+    position: absolute;
+    width: 100%;
+    top: 5px;
+    background-color: #f1f1f1;
+    max-height: max-content;
+    left: 1px;
+}
+
+create-comp...o-edito.css
+.individual-component-editor-buttons {
+    position: absolute;
+    top: 15px;
+    left: 34%;
+    width: 65%;
+}
+
+
+markup_editor
+element.style {
+    min-width: 100% !important;
+    min-height: 0px;
+    width: 106%;
+    max-height: none;
+    height: 96%;
+    left: -3%;
+    margin-top: -5px;
+}
+
+NavigationBar.css
+#closebtn {
+    color: white;
+    position: relative;
+    top: 10px;
+    float: right;
+    right: 30px;
+    z-index: 1;
+}

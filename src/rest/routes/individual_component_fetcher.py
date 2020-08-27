@@ -87,6 +87,17 @@ def download_youtube_video():
         return print(e)
 
 
+@individual_component_fetcher_routes.route('get-all-files/<file_type>', methods=['GET'])
+def get_files(file_type):
+    try:
+
+        files = SQLIndividualComponent().all_files(file_type)
+        return jsonify(files), 200
+    except Exception as e:
+        return print(e)
+
+
+
 @individual_component_fetcher_routes.route('get-all-videos', methods=['GET'])
 def get_all_video_files():
     try:

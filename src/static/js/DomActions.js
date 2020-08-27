@@ -131,7 +131,7 @@ export default class DomActions{
                         let file_name = $(tabArr[i]).text().trim();
                         var resultHtml="<div class='tab' onclick=buildTab('" + file_name + "');>";
                         resultHtml+= file_name;
-                        resultHtml+= "<div class='close-tab' onclick='removeCurrentTab(this)'> </div></div>";
+                        resultHtml+= "</div>";
                         $('#myDropdown').append($(resultHtml));
                         }
                     }
@@ -154,6 +154,35 @@ export default class DomActions{
                 + iframe_ele +		    `</div> </div>`;
         return ele;
     }
+    _create_file_in_backend(file_type, file_name){
+    /*this funciton can also be used from indicidualComponentJS/main.js */
+        let send_file_name = '';
+        function save_action(file_name){
+            var savable_data = '';
+            var defObj=$.Deferred();
+                var promise =
+                    $.ajax
+                    ({
+                        url: 'http://localhost:5000/api/individual-component-fetch/save-file/'+file_name,
+                        data: JSON.stringify(savable_data),
+                        type : "POST",
+                        contentType: 'application/json;charset=UTF-8',
+                        success : function(response){
+                            return defObj.resolve(response);
+                        }
+                    });
+                return defObj.promise();
+        }
+        if(file_type === 'html_components')
+            send_file_name = 'html_components-' + file_name;
+        else if( file_type === 'separate_project' ){
+            send_file_name = 'separate_project-' + file_name;
+        }
+        else if( file_type === 'file_factory' ){
+            send_file_name = 'file_factory-' + file_name;
+        }
+        save_action(send_file_name);
+    }
     _create_component_open_close(event_obj, curr_ele){
             let compo_name = $(curr_ele).attr('title');
             let self = event_obj;
@@ -162,10 +191,11 @@ export default class DomActions{
                 self.components_list.push(compo_name);
                 let ele = this._build_new_component(compo_name);
                 $('#destination-container').append($(ele));
+
             }
             var height = $(window).height();
             $('#'+compo_name).dialog({
-                width:'100%',
+                width:'95%',
                 height: height*0.8,
                 position: { my: "left top"}
             });

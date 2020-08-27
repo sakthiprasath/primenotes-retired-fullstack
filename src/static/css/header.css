@@ -19,24 +19,20 @@
 }
 #primes-notes-logo{
 	width:50px;
-    height:90%;
+    height:90%;.user-name-font
 }
 .logo-font{
 	position: relative;
     font-size: 90%;
     font-family: cursive;
-    padding-top: 6%;
     color: #49c5a9;
+    letter-spacing: 1px;
     font-weight: 600;
 }
 #user-name-section{
-    height: 55%;
-    width: 100%;
-    right: -1%;
-    position: relative;
-    top: 13%;
+ display: flex;
+ align-items: center;
 }
 
 .user-name-font{
-	top:12%;
 }

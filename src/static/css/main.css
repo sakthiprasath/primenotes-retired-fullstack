@@ -427,7 +427,7 @@ font-variant-caps: small-caps;
     height: 65%;
     position: relative;
     margin-top: 5px;
-    background: #7482d2;
+    background: None;
     padding: 5px;
     top: 0px;
     font-family: fantasy;
@@ -817,7 +817,6 @@ body {
 
 .button {
    position: relative;
-    background-color:#7482d2 ;
     border: none;
     padding: 5px;
     width: max-content;
@@ -828,7 +827,7 @@ body {
     overflow: hidden;
     cursor: pointer;
     outline: none;
-    color: #26162d;
+    color: #c2bac5;
     font-size: 14px;
     font-family: fantasy;
     font-weight: 100;
@@ -863,7 +862,7 @@ body {
     position: absolute;
     margin-left: 0pc;
     width: 100%;
-    background: linear-gradient(270deg, #206e83 5%, #60D69F 80%);
+    background: #206e83;
     text-align: left;
 }
 #html-renderer-section{
@@ -874,7 +873,7 @@ body {
     z-index: 4;
     left: 1px;
     display:none;
-    background-color:#49c5a9;
+    background-color:#060b31;
 }
 #main-sections {
     position: absolute;
@@ -906,7 +905,7 @@ width: max-content;
     height: 65%;
     position: relative;
     margin-top: 5px;
-    background: rgb(116 130 210);
+    background: rgb(35 43 93);
     padding: 5px;
     top: 0px;
     font-family: fantasy;
@@ -926,10 +925,11 @@ width: max-content;
     height: 100% !important;
     }
   .ui-dialog .ui-dialog-content{
-    background:linear-gradient(45deg, #26547c 0%, #06d6a0 100%) !important;
+    background:None;
   }
   .ui-widget-content{
-    background:linear-gradient(45deg, #26547c 0%, #06d6a0 100%) !important;
+    background:#232b5d;
+    color:white;
   }
 
  #cke_1_contents{
@@ -1028,4 +1028,60 @@ background-color:black; }
       100% {
         left: 107%;
         right: -8%; } }
-</style>
+
+
+/* Dragbar for general notes*/
+// Variables
+$black: #3C3530;
+$green: #AACD6E;
+$gray: #C5C6B6;
+
+
+
+
+#main-sections {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.split__left {
+  width: 50%;
+  background-color: $green;
+}
+
+.split__right {
+  flex: 1; // the right panel will stretch the bg color
+  background-color: $gray;
+}
+
+.split__bar {
+    width: 8px;
+    height: 100%;
+    cursor: col-resize;
+    position: absolute;
+    background: #232b5d;
+    z-index: 5;
+    left: 19.4%;
+    top: 1px;
+}
+
+#markup_editor{
+    max-height: none;
+    width: 542px;
+    height: 528px;
+    min-height: 96% !important;
+    min-width: 104% !important;
+    margin-top: -1px !important;
+    margin-left: -19px !important;
+}
+.main-section-wrapper-class{
+background:#060b31;
+}

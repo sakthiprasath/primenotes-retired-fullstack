@@ -45,7 +45,7 @@ function save_action(file_name){
                         data: JSON.stringify(savable_data),
                         type : "POST",
                         contentType: 'application/json;charset=UTF-8',
-                        success : function(response){``
+                        success : function(response){
                             return defObj.resolve(response);
                         }
                     });

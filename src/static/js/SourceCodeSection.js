@@ -59,7 +59,8 @@ function buildTab(file_name, display){
 
     /*find the to-build-tab filename is already present in tab container*/
     let tab_elems = $('.file-get-section');
-    for(let i=0;i < tab_elems.length;i++){
+    let len =tab_elems.length;
+    for(let i=0;i < len ;i++){
         let curr_file_name = $(tab_elems[i]).text();
         if(curr_file_name === file_name){
             _highlight_and_fetch(tab_elems[i]);

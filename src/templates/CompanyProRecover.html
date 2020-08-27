@@ -57,6 +57,8 @@
 				<link rel="stylesheet"
 					href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 					<script type="text/javascript" src="{{ url_for('static', filename='js/treeview.js') }}"></script>
+
+					<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 					<script src="https://www.w3schools.com/lib/codemirror_jsx.js"></script>
 
 
@@ -117,8 +119,8 @@ document.onreadystatechange = function () {
 <!-- top header section -->
 <div id="top-header">
 	<div id="logo-section">
-		<img src='http://localhost:8080/static/pin_100.png' alt='primenotes_logo' id='primes-notes-logo' />
-		<span class="logo-font">Prime Notes</span>
+		<img src='https://www.freepnglogos.com/uploads/instagram-logos-png-images-free-download-2.png' alt='primenotes_logo' id='primes-notes-logo' />
+		<span class="logo-font" style="top:20px;left:-5px;">Prime Notes</span>
 	</div>
 
 
@@ -128,20 +130,20 @@ document.onreadystatechange = function () {
 
 	<div id="tab-options-section" >
 	<div class="tab-options">
-		<button id="close-editor-button" class="button tab-options-button" >FileFactory</button>
+		<button id="close-editor-button" class="button tab-options-button open-close" data-toggle="tooltip" title="Notes with Text Editor Options">FileFactory</button>
 
-		<button id='main-section-button' class="button open-close">
+		<button id='main-section-button' class="button open-close" data-toggle="tooltip" title="Project based Notes taker with folder and file creation options">
 			<span style="padding:3px">General Notes</span>
 		</button>
 
-		<button id='open-close-overlay' class="button open-close" >
-			<span style="padding:3px">open-close-overlay</span>
+		<button id='open-close-overlay' class="button open-close"  data-toggle="tooltip" title="Embed Websites, Youtube Videos">
+			<span style="padding:3px">Website Embeder</span>
 		</button>
 
 
 
-		<button id='html-renderer' class="button open-close" >
-			<span style="padding:3px">open-close-html-renderer</span>
+		<button id='html-renderer' class="button open-close"  data-toggle="tooltip" title="HTML, css, js editor for creating webdesigned notes">
+			<span style="padding:3px" >Html Editor</span>
 		</button>
 
 
@@ -351,10 +353,37 @@ document.onreadystatechange = function () {
 											position: relative;
 											left: 0px;	">
 
+										<div style="
+												width: 45px;
+												height: 45px;">
+											<img src="https://img.etimg.com/thumb/msid-67467301,width-650,imgsize-575034,,resizemode-4,quality-100/hrithik-roshan.jpg" alt="sakthiprasath.jpg" style="
+												width: 100%;
+												height: 100%;
+												border-radius: 100%;">
+
+										<div class="search-result-item" style="
+												position: absolute;
+												top: 24px;
+												left: 58px;
+												font-family: cursive;
+												height:20px;
+												">Hrithik</div>
+										</div>
+										<div style="
+													position: absolute;
+											right: 20px;
+											bottom: 10px;
+											font: small-caption;">online</div>
+									</div>
+
+								<div class="individual-search" id="sakthiprasath" style="
+											position: relative;
+											left: 0px;	">
+
 									<div style="
 											width: 45px;
 											height: 45px;">
-										<img src="https://img.etimg.com/thumb/msid-67467301,width-650,imgsize-575034,,resizemode-4,quality-100/hrithik-roshan.jpg" alt="sakthiprasath.jpg" style="
+										<img src="https://scontent-maa2-1.xx.fbcdn.net/v/t1.0-9/51484204_2315196172094301_2885794796834652160_o.jpg?_nc_cat=108&amp;_nc_sid=09cbfe&amp;_nc_ohc=w4T6TVutcbAAX8WvuDs&amp;_nc_ht=scontent-maa2-1.xx&amp;oh=33586aab906406c3cbd1f04328e8909b&amp;oe=5F68B0A3" alt="sakthiprasath.jpg" style="
 											width: 100%;
 											height: 100%;
 											border-radius: 100%;">
@@ -365,15 +394,21 @@ document.onreadystatechange = function () {
 											left: 58px;
 											font-family: cursive;
 											height:20px;
-											">Hrithik</div>
+											">sakthiprasath</div>
 									</div>
 									<div style="
 											    position: absolute;
 										right: 20px;
 										bottom: 10px;
 										font: small-caption;">online</div>
-									</div></div>
 									</div>
+
+
+
+
+								</div>
+							</div>
+
 							</div>
 
 
@@ -433,22 +468,18 @@ document.onreadystatechange = function () {
 
 	<div class='main-section-wrapper-class' id="main-sections" >
 
-	<div id='navigation-bar'>
-
+		<div id='navigation-bar' class="split__left">
+		<a href="javascript:void(0)" id="closebtn">×</a>
 		<div id='sidenav-button-id' class='sidenav-button-class'>
 			<span class='sidenav-button-content-class'>>></span></span>
 		</div>
 
-		<div id="sidenav-tab-section">Yet to be filled
+		<div id="sidenav-tab-section">
 			</div>
 
 
 		<div class="sidenav">
-			<a href="javascript:void(0)" class="closebtn" style="
-				    position: absolute;
-    				top: 0px;
-    				left: 190px;
-			">×</a>
+
 
 			<div class='source-code-tab-content'>
 
@@ -559,15 +590,11 @@ document.onreadystatechange = function () {
 
 	</div>
 
-	<script src="{{ url_for('static', filename='js/SourceCodeSection.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/SourceCodeSection.js') }}"></script>
 
+		<div class="split__bar"></div>
 
-
-
-
-
-
-	<div id='source-code-main-div'>
+		<div id='source-code-main-div' class="split__right">
 		<div class='source-code-sub-divs'>
 <!--			<div id="close-editor-button">-->
 <!--			<img style='height:100%;width:100%;' src="https://img.icons8.com/color/48/000000/suitcase.png">-->
@@ -657,7 +684,7 @@ $('.CodeMirror').css('height','100%');
 
     </script>
 	</div>
-  </div>
+    </div>
 
 	<div class='main-section-wrapper-class' id="overlay">
 		<div id='hider-for-resize'></div>
@@ -679,6 +706,19 @@ $('.CodeMirror').css('height','100%');
 			  <input type="radio" name="tabset" id="tab4" aria-controls="dunkles">
 			  <label for="tab4">Not Occupied</label>
 
+				<div id="create-website-embeder-add-btn" class="dropdown_1" style="">
+					<button class="button dropbtn">+</button>
+					<div id="myDropdown-add-website" class="dropdown-content">
+					</div>
+				</div>
+<!--				<div id="create-website_embeder-form" style="display: block;">
+					<input type="text" id="create-website-embeder-url-text-box"  class="form-text-box" placeholder="Embed site URL">
+					<input type="text" id="tag-name-website-embeder-text-box"  class="form-text-box" placeholder="Website name">
+
+					<button id="create-website-embeder-submit-btn" class="button">create</button>
+					<button id="close-create-component-form" class="button" style="
+					"> X </button>
+				</div>-->
 
 				<!-- tab-pannels begins -->
 			  <div class="tab-panels">
@@ -766,17 +806,19 @@ $('.CodeMirror').css('height','100%');
 
 
  		<div id="component-tabs">
-			<button class="create-component create-component button tab-options-button" title="calculator">
-				Calculator
-			</button>
-			<button class="create-component create-component button tab-options-button" title="slideshow">
-				slideshow
-			</button>
-			<button class="create-component create-component button tab-options-button" title="markup_editor">
-				markup_editor
-			</button>
+<!--			<button class="create-component create-component button tab-options-button" title="calculator">-->
+<!--				Calculator-->
+<!--			</button>-->
+<!--			<button class="create-component create-component button tab-options-button" title="slideshow">-->
+<!--				slideshow-->
+<!--			</button>-->
+<!--			<button class="create-component create-component button tab-options-button" title="markup_editor">-->
+<!--				markup_editor-->
+<!--			</button>-->
 
-		</div><div id="create-component-section">
+		</div>
+
+		<div id="create-component-section">
 
 			<div id="create-component-form" style="display: none;">
 				<input type="text" id="create-component-text-box" name="firstname" class="form-text-box" placeholder="Create Component">
@@ -909,140 +951,16 @@ $('.CodeMirror').css('height','100%');
 
 $(document).ready(function(){
 
-var sourceCodeFilesMap={};
-var tabIdArr=[];
 
 
 
 
 
 
-
-var children='';
-var cloningcontent="<div contenteditable='true' class='source-code-content' style='display:block;'></div>";
-var cloningTabAndBottomContent="<div class='tabs' style='display:block'>";
-    cloningTabAndBottomContent+="<div class='close-btn-class-for-sourcecode'></div>";
-    cloningTabAndBottomContent+="<div  class='tab-bottom' style='display:block;'></div>";
-    cloningTabAndBottomContent+="</div>";
-/* 
-$('.file-click').click(function(){
-
-    $('.tab-bottom').css('display','none');
-
-    var fileName=$(this).text();
-    var filNameWithMinus=fileName.split(' ').join('-');
-
-
-    $('#source-code-main-div').css('display','block');
-
-
-    if(sourceCodeFilesMap[fileName]===1){
-        alert(typeof(sourceCodeFilesMap[fileName]));
-        $('.source-code-content').css('display','none');
-        alert('#source-code-content-'+filNameWithMinus);    
-        $('#source-code-content-'+filNameWithMinus).css('display','block');
-        $('.tab-bottom').css('display','none');
-        var temp='#tab-'+filNameWithMinus;
-        $('#tab-bottom-'+filNameWithMinus).css('display','block');
-    }
-    else
-    {
-        var obj=$(cloningcontent);
-        // make all the other source code contents hide
-        $('.source-code-content').css('display','none');
-        obj.attr('id','source-code-content-'+(filNameWithMinus));
-        obj.css('display','block');
-        $('.source-code-sub-divs').append(obj);
-
-
-
-        sourceCodeFilesMap[fileName]=1;
-        var mapLen=JSON.stringify(Object.keys(sourceCodeFilesMap).length);
-        var left=(mapLen*parseInt($('.tabs').css('width')))+(mapLen * 10);
-        //alert(filNameWithMinus);
-        
-        var tabObj=$(cloningTabAndBottomContent);
-        tabObj.attr('id','tab-'+filNameWithMinus);
-        tabIdArr.push('tab-'+filNameWithMinus);
-        
-        tabObj.css('left',left);
-        tabObj.find('.tab-bottom').attr('id','tab-bottom-'+filNameWithMinus);
-
-        tabObj.find('.close-btn-class-for-sourcecode').attr('id',('close-btn-id-for-sourcecode$'+filNameWithMinus));
-        
-        $('.tabs-container').append(tabObj);
-    if(mapLen !==0){
-        //first time initialisation of bind events with the id s
-        $('.close-btn-class-for-sourcecode').click(function(event){
-            var closeBtnId=this.id;
-            let idForFileName=closeBtnId.split('$');
-            let fileNameWithMinus=idForFileName[1];
-            let fileName=fileNameWithMinus.split('-').join(' ');
-            $('#tab-'+fileNameWithMinus).remove();
-            $('#source-code-content-'+fileNameWithMinus).remove();
-            sourceCodeFilesMap[fileName]=0;
-            var tabId='tab-'+(idForFileName[1]);
-            var indexOf=tabIdArr.indexOf(tabId);
-            tabIdArr.splice(indexOf+1,1);
-
-            //for displaing the next source code content if previous is closed
-            if(indexOf===0){
-                alert(indexOf);
-                alert(tabIdArr[indexOf]);
-            $('#source-code-content'+tabIdArr[indexOf].replace('tab-','')).css('display','block');
-            alert('#source-code-content-'+tabIdArr[indexOf].replace('tab-',''));
-            
-            }
-        });
-      }   
-    }
-});
- */
-$(".dTree").dTree();
     
     
-	/*beginning of navigation  bar */
- 		var kojinFlag=1;
-        
-        $('.sidenav-button-class , .closebtn').click( function(){
-			if(kojinFlag==0){
-				var sideNavWidth='40%';
-				var sideNavLeft=0;
-				$('#navigation-bar').css('left','0px');
-				$('#sidenav-button-id').css('left','100%');
-				kojinFlag=1;
-			}
-			else {
-				var sideNavWidth=10;
-				$('#navigation-bar').css('left','-35%');
-				$('#sidenav-button-id').css('left','100%');
-				kojinFlag=0;
-			}		
-		});
-	/*end   navigation bar */
-	/*
-    var tabsEleArr=document.getElementsByClassName('tabs');
-    tabsEleArr[0].addEventListener('click',function(){
-    document.getElementsByClassName('tab-bottom')[0].style.display="block";
-    document.getElementsByClassName('tab-bottom')[1].style.display="none";
-    document.getElementsByClassName('tab-bottom')[2].style.display="none";
-    //document.getElementById('source-code-tab-content').style.display="block";    
-    });
-    
-    
-    tabsEleArr[1].addEventListener('click',function(){
-    document.getElementsByClassName('tab-bottom')[0].style.display="none";
-    document.getElementsByClassName('tab-bottom')[1].style.display="block";
-    document.getElementsByClassName('tab-bottom')[2].style.display="none";
-    
-    });
-    
-    tabsEleArr[2].addEventListener('click',function(){
-    document.getElementsByClassName('tab-bottom')[0].style.display="none";
-    document.getElementsByClassName('tab-bottom')[1].style.display="none";
-    document.getElementsByClassName('tab-bottom')[2].style.display="block";
-    });
- */    
+
+
     
     
 });

@@ -48,6 +48,8 @@ class SQLIndividualComponent():
             file_name = name_list[0] + '\\' + name_list[1]
         if 'html_components' in file_name:
             file_name = name_list[0] + '\\' + name_list[1]
+        if 'file_factory' in file_name:
+            file_name = name_list[0] + '\\' + name_list[1]
 
         file_path = '../frontend_files/web-app/all_general_files/'+ file_name + ".txt"
         fp = open(file_path, 'w')
@@ -59,6 +61,9 @@ class SQLIndividualComponent():
             name_list = file_name.split('-')
             file_name = name_list[0] + '\\' + name_list[1]
         if 'html_components' in file_name:
+            name_list = file_name.split('-')
+            file_name = name_list[0] + '\\' + name_list[1]
+        if 'file_factory' in file_name:
             name_list = file_name.split('-')
             file_name = name_list[0] + '\\' + name_list[1]
 
@@ -80,5 +85,9 @@ class SQLIndividualComponent():
         files = os.listdir(path)
         return files
 
+    def all_files(self, file_type):
+        path = '../frontend_files/web-app/all_general_files/' + file_type
 
-
+        files = os.listdir(path)
+        file_list =  [  file[:-(len('.txt'))]  for file in files ]
+        return file_list
