@@ -527,6 +527,9 @@ left:30%;
     padding-right: 8px;
     position: absolute;
     top: 8px;
+    color: white;
+    background: #232b5d !important;
+    cursor: pointer;
  }
 
 .code-html-switch-tab{
@@ -551,20 +554,15 @@ background-color:#94ce96;
 
 .code-refresh{
   right:20.5%;
-  background-color:#07ff50;
 }
 
 
 .code-revert{
   right:10%;
-    
-background-color:#bdd9dc;
 }
 
 .code-save{
   right:1%;
-    
-background-color:#94ce96;
 }
 
 
@@ -736,32 +734,32 @@ function switchCode(curr){
 
 
 
-  <section id="content1">
-    <p>
-      Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye leberkas filet mignon brisket beef kevin tenderloin porchetta. Capicola fatback venison shank kielbasa, drumstick ribeye landjaeger beef kevin tail meatball pastrami prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket shoulder. Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta turkey.
-    </p>
-    <p>
-      Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin.
-    </p>
-  </section>
+<!--  <section id="content1">-->
+<!--    <p>-->
+<!--      Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye leberkas filet mignon brisket beef kevin tenderloin porchetta. Capicola fatback venison shank kielbasa, drumstick ribeye landjaeger beef kevin tail meatball pastrami prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket shoulder. Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta turkey.-->
+<!--    </p>-->
+<!--    <p>-->
+<!--      Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin.-->
+<!--    </p>-->
+<!--  </section>-->
 
-  <section id="content2">
-    <p>
-      Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin.
-    </p>
-    <p>
-      Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye leberkas filet mignon brisket beef kevin tenderloin porchetta. Capicola fatback venison shank kielbasa, drumstick ribeye landjaeger beef kevin tail meatball pastrami prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket shoulder. Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta turkey.
-    </p>
-  </section>
+<!--  <section id="content2">-->
+<!--    <p>-->
+<!--      Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin.-->
+<!--    </p>-->
+<!--    <p>-->
+<!--      Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye leberkas filet mignon brisket beef kevin tenderloin porchetta. Capicola fatback venison shank kielbasa, drumstick ribeye landjaeger beef kevin tail meatball pastrami prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket shoulder. Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta turkey.-->
+<!--    </p>-->
+<!--  </section>-->
 
-  <section id="content3">
-    <p>
-      Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye leberkas filet mignon brisket beef kevin tenderloin porchetta. Capicola fatback venison shank kielbasa, drumstick ribeye landjaeger beef kevin tail meatball pastrami prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket shoulder. Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta turkey.
-    </p>
-    <p>
-      Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin.
-    </p>
-  </section>
+<!--  <section id="content3">-->
+<!--    <p>-->
+<!--      Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye leberkas filet mignon brisket beef kevin tenderloin porchetta. Capicola fatback venison shank kielbasa, drumstick ribeye landjaeger beef kevin tail meatball pastrami prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket shoulder. Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta turkey.-->
+<!--    </p>-->
+<!--    <p>-->
+<!--      Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin.-->
+<!--    </p>-->
+<!--  </section>-->
 
   
  
@@ -976,8 +974,8 @@ function restack(horizontal) {
         if (sv) {sv.className = sv.className + " horizontal"};
         if (sv) {sh.className = sh.className + " horizontal"};
         stack = " horizontal";
-        document.getElementById("textareacontainer").style.height = "10%";
-        document.getElementById("iframecontainer").style.height = "10%";
+        document.getElementById("textareacontainer").style.height = "20%";
+        document.getElementById("iframecontainer").style.height = "80%";
         document.getElementById("textareacontainer").style.width = "100%";
         document.getElementById("iframecontainer").style.width = "100%";
         currentStack=false;
@@ -985,7 +983,7 @@ function restack(horizontal) {
         document.getElementById("textareacontainer").style.height = "100%";
         document.getElementById("iframecontainer").style.height = "100%";
         document.getElementById("textareacontainer").style.width = "10%";
-        document.getElementById("iframecontainer").style.width = "10%";
+        document.getElementById("iframecontainer").style.width = "90%";
         currentStack=true;        
     }
     fixDragBtn();

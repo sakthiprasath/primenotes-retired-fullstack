@@ -50,7 +50,21 @@ export default class DomEvents{
 
         });
     }
+    _move_tabs_for_source_code_section(){
+        /*move tabs left right */
+            $('#move-tabs-right').on('click',function(){
+                let curr_target = $('#tab-container');
+                let tabs_container_left = parseInt(curr_target.css('left'));
+                curr_target.css('left', tabs_container_left + 100);
+            });
+            $('#move-tabs-left').on('click',function(){
+                let curr_target = $('#tab-container');
+                let tabs_container_left = parseInt(curr_target.css('left'));
+                curr_target.css('left', tabs_container_left - 100);
+            });
 
+
+    }
     _create_component_buttons_generation(file_type){
 
          var defObj=$.Deferred();
@@ -92,6 +106,17 @@ export default class DomEvents{
          $('#close-editor-button').on('click',function(){
             $('#pane').css('display','block');
          });
+
+         $('#change-pane-orientation-left').on('click',function(){
+            $('#pane').removeClass('pane-orientation-right-class');
+            $('#pane').addClass('pane-orientation-left-class');
+         });
+
+        $('#change-pane-orientation-right').on('click',function(){
+            $('#pane').removeClass('pane-orientation-left-class');
+            $('#pane').addClass('pane-orientation-right-class');
+         });
+
     }
 
     _create_component_open_close(){
@@ -117,6 +142,10 @@ export default class DomEvents{
         self.prev_height = 0;
         $('.maximize-icon').on('click',function(){
             DomEvents._get_action_object().maximize_icon_click_action(self);
+            $('#pane').removeClass('pane-orientation-left-class');
+            $('#pane').removeClass('pane-orientation-right-class');
+
+
         });
     }
     _tabs_dropdown_click(){
@@ -271,6 +300,22 @@ export default class DomEvents{
           self.mouse_is_down = false;
         })
     }
+
+    _context_menu_for_project_tree(){
+            $('.file-click').on("contextmenu", function(event) {
+              event.preventDefault();
+              $(".context")
+                .show()
+                .css({
+                  top: event.pageY - 100,
+                  left: event.pageX
+                });
+            });
+            $(document).click(function() {
+//                $(".context").css('display', 'none');
+            });
+    }
+
     init(label_map){
 
         this.label_map = label_map;
@@ -291,6 +336,9 @@ export default class DomEvents{
         this._open_close_main_section_wrapper();
         this._build_tree_and_close_sidenav();
         this._create_event_listeners_for_dragbar();
+
+        this._move_tabs_for_source_code_section();
+        this._context_menu_for_project_tree();
     }
 
 }

@@ -1,10 +1,11 @@
 
+@import url(https://fonts.googleapis.com/css?family=Roboto);
 @charset "ISO-8859-1";
 
 #navigation-bar{
     position: static;
     height: 100%;
-    z-index: 5;
+    z-index: 3;
 }
 
 @media only screen and (max-width:700px){
@@ -37,7 +38,7 @@
 }
 
 .sidenav-button-class{
-    background-color: #bdf10b;
+    background-color: #14de5c;
     width: 35px;
     height: 24px;
     z-index: 6;
@@ -54,7 +55,7 @@
 	position: absolute;
     height: 100%;
     width: 100%;
-    background-color: #49c5a9;
+    background-color: #3c184c;
     overflow-x: hidden;
     transition: 0.3s;
     padding-top: 1px;
@@ -66,7 +67,7 @@ div {
     display: block;
 }
 .sidenav a {
-    color: #26162d;
+    color: #ffe9e9;
     font-size: 14px;
     font-family: fantasy;
     font-weight: 100;
@@ -79,11 +80,14 @@ div {
 }
 
 #closebtn {
-    position: relative;
+        position: relative;
     top: 10px;
     float: right;
     right: 30px;
     z-index: 1;
+    font-size: 18px;
+    background: #3c184c;
+    color: white;
 }
 #main2 {
     transition: margin-left .5s;
@@ -152,12 +156,12 @@ left:170px;
     top:0px;
     position: absolute;
     height: 100%;
-    background-color: #49c5a9;
+    background-color: #3c184c;
     z-index: 4;
 }
-.source-code-sub-divs{
+#source-code-sub-divs{
     position: absolute;
-    width: 98.3%;
+    width: 88.3%;
     left: 17px;
     height: 8%;
     overflow-x: hidden;
@@ -202,7 +206,7 @@ left:170px;
 
 
 
-.tab-container {
+#tab-container {
        width: calc(100% - 104px);
     position: absolute;
     top: 0%;
@@ -211,7 +215,7 @@ left:170px;
     display: inline-flex;
 }
 
-.tab-container .tab{
+#tab-container .tab{
    display:inline-block;
    display: grid;
     grid-template-columns: max-content max-content;
@@ -225,16 +229,17 @@ left:170px;
     font-size: 20px;
     font-family: fantasy;
     font-weight: 100;
-    color: #26162d;
+    color: #ffffff;
     border: 1px solid #92c3ce;
-    background-color: #19a6c5;
+    background-color: #3c184c;
     font-variant-caps: all-small-caps;
     padding-left: 6px;
     }
 .tab-active{
-    border-bottom: 4px solid #232b5d;
-    background: #49c5a9;
-    }
+    border-bottom: 4px solid #53246b;
+    background: #c5d1d4;
+    color: #1c191d;
+        }
 .close-tab{
     position: absolute;
     width: 21px;
@@ -251,7 +256,7 @@ left:170px;
 }
 
 .dropbtn {
-    background-color: #48c4aa;
+    background-color: #09e22a;
     color: white;
     padding: 6px;
     font-size: 15px;
@@ -291,12 +296,12 @@ left:170px;
 
 .show {display: block;}
 #tabs-list-drop-down{
-position: fixed !important;
-    right: 1%;
-    padding: 2px;
+    position: fixed !important;
+    right: 0.9%;
+    padding: 0px;
     z-index: 10;
-    width: max-content;
-    margin-top: -1px;
+    width: 43px;
+    margin-top: 0px;
     }
 
 .three-vertical-dots:after{
@@ -344,9 +349,69 @@ position: fixed !important;
     position: relative;
     width: 100%;
     height: 8%;
-    background: #150a0a;
+    background: #3c184c;
     font-family: fantasy;
     padding-top: 7px;
     left: inherit;
 }
 
+#move-tabs-right{
+    position: fixed;
+    width: 20px;
+    height: 30px;
+    background: red;
+    float: right;
+    right: 59px;
+    margin-top: 3px;
+    z-index:1;
+}
+#move-tabs-left{
+    position: fixed;
+    width: 20px;
+    height: 30px;
+    background: red;
+    float: right;
+    right: 81px;
+    padding: px;
+    margin-top: 3px;
+    z-index:1;
+}
+
+
+/*context menu */
+.context {
+  font-size: 1.1em;
+  position: absolute;
+  width: 200px;
+  height: auto;
+  padding: 5px 0px;
+  border-radius: 5px;
+  top: 10;
+  left: 10;
+  background-color: #fff;
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
+  color: #333;
+  }
+  .context_item {
+    height: 32px;
+    line-height: 32px;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    &:hover {
+      background-color: #ddd;
+    }
+    .inner_item {
+      margin: 0px 10px;
+      i {
+        margin: 0 5px 0 0;
+        font-weight: bold;
+      }
+    }
+  }
+  .context_hr {
+    height: 1px;
+    border-top: 1px solid #bbb;
+    margin: 3px 10px;
+  }

@@ -2,7 +2,7 @@
 
 <p>command for importing db sql file to local database</p>
 
-<div data-darkreader-inline-bgcolor="" data-darkreader-inline-bgimage="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-darkreader-inline-border-right="" data-darkreader-inline-border-top="" style="background: rgb(238, 238, 238); border: 1px solid rgb(204, 204, 204); padding: 5px 10px; --darkreader-inline-bgimage: initial; --darkreader-inline-bgcolor:#2e2d2a; --darkreader-inline-border-top:#494843; --darkreader-inline-border-right:#494843; --darkreader-inline-border-bottom:#494843; --darkreader-inline-border-left:#494843;">psql -h localhost -p 5433 --username=postgres <strong>&lt;kbr_db&gt;</strong>&nbsp; &lt;&nbsp; file_path&nbsp;</div>
+<div data-darkreader-inline-bgcolor="" data-darkreader-inline-bgimage="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-darkreader-inline-border-right="" data-darkreader-inline-border-top="" style="background: rgb(238, 238, 238); border: 1px solid rgb(204, 204, 204); padding: 5px 10px; --darkreader-inline-bgimage: initial; --darkreader-inline-bgcolor:#302e2b; --darkreader-inline-border-top:#4c4b46; --darkreader-inline-border-right:#4c4b46; --darkreader-inline-border-bottom:#4c4b46; --darkreader-inline-border-left:#4c4b46;">psql -h localhost -p 5433 --username=postgres <strong>&lt;kbr_db&gt;</strong>&nbsp; &lt;&nbsp; file_path&nbsp;</div>
 
 <p><strong>note:&nbsp; &lt;kbr_db&gt;&nbsp;&nbsp;&nbsp;must be created previously<br />
 <br />
@@ -28,3 +28,11 @@ psql -h localhost -p 5432 -U postgres -d kbr_db -f /home/sakthi/Downloads/kbr_db
 <hr />
 <hr />
 <p>sudo apt-get install postgresql-client</p>
+
+<hr />
+<p><span style="font-size:18px"><strong>In Windows :</strong></span><br />
+start the Postgres service :&nbsp;<br />
+windows search -&gt; services -&gt; right click on the postgres (10/13)&nbsp; -&gt; strat / stop</p>
+
+<p>Reference :&nbsp;<br />
+https://tableplus.com/blog/2018/10/how-to-start-stop-restart-postgresql-server.html</p>

@@ -16,7 +16,7 @@ export default class DomActions{
                 height:'700'
             });
         /*close File container*/
-        $('#close-component-results-container').click();
+//        $('#close-component-results-container').click();
     }
     _initialize_file_chat_switches_actions(){
         /* file and chat  switches actions*/
@@ -59,17 +59,13 @@ export default class DomActions{
             let screenWidth = parseInt(window.innerWidth) + 1;
             let screenHeight = parseInt(window.innerHeight) + 1;
 
-
-
     		if(curr_container_width === screenWidth && curr_container_height === screenHeight){
 
     		        $('#pane').css({'width':'50%','height':'50%','top':'10px','left':'0px'});
-    			    $('.resizable').css({'width':'100%','height':'100%','top':'0px','left':'0px'});
 
     		}
     		else{
     			    $('#pane').css({'width':screenWidth,'height':screenHeight,'top':'0px','left':'0px'});
-    			    $('.resizable').css({'width':screenWidth,'height':screenHeight,'top':'0px','left':'0px'});
             }
     }
     _get_all_videos(){
@@ -86,7 +82,7 @@ export default class DomActions{
                         $('#video-section').empty();
                         for(let i in files){
                             let file = files[i];
-                            let video_div_html = "<div class='single-video-section'> <div class='video-content'><video width='400' controls> <source src='http://localhost:5000/static/videos/" + file + "'  type='video/mp4'></video></div>   <div class='video-name'>" + file + "</div> </div>";
+                            let video_div_html = "<div class='single-video-section'> <div class='video-content'><video width='400px' controls> <source src='http://localhost:5000/static/videos/" + file + "'  type='video/mp4'></video></div>   <div class='video-name'>" + file + "</div> </div>";
                             $('#video-section').append($(video_div_html))
                         }
 
@@ -148,10 +144,11 @@ export default class DomActions{
                     }
     }
     _build_new_component(compo_name){
-         let iframe_ele = "<iframe src='http://localhost:5000/api/individual-component-fetch/create_component?component_name="+compo_name + "' style='width: inherit;height: inherit;'></iframe>"
-         let ele = `<div id='`+compo_name+`' class="create-component-dialog"  style='display:none;min-width:100% !important;min-height: 100% !important' title="drop-down">
-                <div id='create-component-dialog-sub-div' style="width: 100%;height: 100%;">`
-                + iframe_ele +		    `</div> </div>`;
+         let iframe_ele = "<iframe src='http://localhost:5000/api/individual-component-fetch/create_component?component_name="+compo_name + "' style='width: inherit;height: inherit;'></iframe>";
+         let ele = `<div id='` + compo_name +`' class="create-component-dialog"  style='display:none;min-width:103.5% !important;min-height: 100% !important' title="` + compo_name + `">`
+                        + `<div class='create-component-dialog-sub-div' style="width: 100%;height: 100%;">` + iframe_ele
+                        + `</div>`
+                    + `</div>`;
         return ele;
     }
     _create_file_in_backend(file_type, file_name){
@@ -195,15 +192,73 @@ export default class DomActions{
             }
             var height = $(window).height();
             $('#'+compo_name).dialog({
-                width:'95%',
+                width:'50%',
                 height: height*0.8,
-                position: { my: "left top"}
+                position: { my: "left top"},
+                dialogClass: compo_name + '-class',
+                 buttons: [
+                        {
+                            text: "L",
+                            icon: "ui-icon-minimize",
+                            title: compo_name,
+                            click: function( e ) {
+                                let dialog_ele = $(this).parent();
+                                dialog_ele.css('left','0px');
+                                dialog_ele.css('height','100%');
+                                dialog_ele.css('width','50%');
+                                dialog_ele.css('top','0px');
+                            }
+                        },
+                        {
+                            text: "R",
+                            icon: "ui-icon-maximize",
+                            class: compo_name + 'right-orientation',
+                            click: function( e ) {
+                                let dialog_ele = $(this).parent();
+                                dialog_ele.css('left','50%');
+                                dialog_ele.css('height','100%');
+                                dialog_ele.css('width','50%');
+                                dialog_ele.css('top','0px');
+                            }
+                        },
+                        {
+                            text: "[]",
+                            icon: "ui-icon-maximize",
+                            class: compo_name + 'right-orientation',
+                            click: function( e ) {
+                                 let dialog_ele = $(this).parent();
+                                 let left = '0px';
+                                 let top = '0px';
+                                 let width = '100%';
+                                 let height = '100%';
+                                 let curr_wid = parseInt($(this).parent().css('width'))
+                                 let curr_hei = parseInt($(this).parent().css('height'));
+                                 let screen_width = window.innerWidth;
+                                 let screen_height = window.innerHeight;
+                                 if(curr_wid == screen_width && curr_hei == screen_height){
+                                    top = '200px';
+                                    left ='200px';
+                                    width = '50%';
+                                    height = "70%";
+                                 }
+                                dialog_ele.css('top', top);
+                                dialog_ele.css('left', left);
+                                dialog_ele.css('height', height);
+                                dialog_ele.css('width', width);
+                            }
+                        }
+
+                    ],
+                    create: function( event, ui ) {
+                        $('.ui-dialog-buttonset').prependTo('.ui-dialog-titlebar');
+                    }
             });
     }
 
     init(){
         this._button_clicks();
         this._get_all_videos();
+
     }
 }
 

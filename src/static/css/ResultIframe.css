@@ -26,8 +26,8 @@
   }
 }
 .open-close{
-        width: max-content;
-    height: 65%;
+    width: max-content;
+    height: max-content;
     position: relative;
     margin-top: 5px;
     background: None ;
@@ -40,7 +40,8 @@
 }
 .open-close:hover{
     background-color:#5d648e !important;
-    color: white;
+    color: white !important;
+    font-size: x-large;
 }
 #result-iframe{
 	width:99%;
@@ -68,9 +69,9 @@
     overflow-y: scroll;
     width: 101%;
     padding: 30px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
     grid-gap: 20px;
+    flex-wrap: wrap;
 }
 
 .video-name {

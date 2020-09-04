@@ -70,6 +70,23 @@
 <!--window.loadComponentsContainer=loadComponentsContainer;-->
 <!--window.IndividualComponenrtEditor=IndividualComponentEditor;-->
 <!--</script>-->
+<!-- progress loading before website loads -->
+
+
+<div id="loading-container" style="display: block;
+    width: 50%;
+    left: 35%;
+    top: 50%;
+	background:skyblue;
+	height:300px;">
+	<span>Loading...</span>
+	<div class="progress" id="PreLoaderBar" style="width:80%;left:10%;top:20%;">
+
+        <div class="indeterminate"></div>
+    </div>
+</div>
+
+
 
 					<script
 						src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
@@ -84,10 +101,7 @@
 
 
 
-<!-- progress loading before website loads -->
-	<div class="progress" id="PreLoaderBar">
-        <div class="indeterminate"></div>
-    </div>
+
 
 
 	<script>
@@ -120,7 +134,7 @@ document.onreadystatechange = function () {
 <div id="top-header">
 	<div id="logo-section">
 		<img src='https://www.freepnglogos.com/uploads/instagram-logos-png-images-free-download-2.png' alt='primenotes_logo' id='primes-notes-logo' />
-		<span class="logo-font" style="top:20px;left:-5px;">Prime Notes</span>
+		<span class="logo-font" style="top: 12px;left: -2px;">Prime Notes</span>
 	</div>
 
 
@@ -130,7 +144,7 @@ document.onreadystatechange = function () {
 
 	<div id="tab-options-section" >
 	<div class="tab-options">
-		<button id="close-editor-button" class="button tab-options-button open-close" data-toggle="tooltip" title="Notes with Text Editor Options">FileFactory</button>
+		<button id="close-editor-button" class="open-close button tab-options-button open-close" data-toggle="tooltip" title="Notes with Text Editor Options">FileFactory</button>
 
 		<button id='main-section-button' class="button open-close" data-toggle="tooltip" title="Project based Notes taker with folder and file creation options">
 			<span style="padding:3px">General Notes</span>
@@ -221,6 +235,9 @@ document.onreadystatechange = function () {
 				<div class='resizer bottom-left'></div>
 				<div class='resizer bottom-right'></div>
 				<div id='component-factory-header-icons'>
+					<div id="change-pane-orientation-left" class="button dropbtn">L</div>
+					<div id="change-pane-orientation-right" class="button dropbtn">R</div>
+
 					<div id='maximize-component-factory'>
 						<input id='maximize-input-toggle' type='checkbox'
 							style='display: none'> <img for='maximize-input-toggle'
@@ -466,13 +483,13 @@ document.onreadystatechange = function () {
 
 
 
-	<div class='main-section-wrapper-class' id="main-sections" >
+	<div  id="main-sections" class='main-section-wrapper-class'>
 
 		<div id='navigation-bar' class="split__left">
 		<a href="javascript:void(0)" id="closebtn">×</a>
-		<div id='sidenav-button-id' class='sidenav-button-class'>
-			<span class='sidenav-button-content-class'>>></span></span>
-		</div>
+<!--		<div id='sidenav-button-id' class='sidenav-button-class'>-->
+<!--			<span class='sidenav-button-content-class'>>></span></span>-->
+<!--		</div>-->
 
 		<div id="sidenav-tab-section">
 			</div>
@@ -480,10 +497,34 @@ document.onreadystatechange = function () {
 
 		<div class="sidenav">
 
-
-			<div class='source-code-tab-content'>
-
-
+			<div class="context" hidden>
+			  <div class="context_item">
+				<div class="inner_item">
+				  Copy
+				</div>
+			  </div>
+			  <div class="context_item">
+				<div class="inner_item">
+				  Cut
+				</div>
+			  </div>
+			  <div class="context_item">
+				<div class="inner_item">
+				  Paste
+				</div>
+			  </div>
+			  <div class="context_hr"></div>
+			  <div class="context_item">
+				<div class="inner_item">
+				  Share
+				</div>
+			  </div>
+			  <div class="context_item">
+				<div class="inner_item">
+				  Delete
+				</div>
+			  </div>
+			</div>
 
 
 				<!-- tree part staAdd New Brandrts here -->
@@ -588,37 +629,31 @@ document.onreadystatechange = function () {
 		</div>
 
 
-	</div>
+
 
 		<script src="{{ url_for('static', filename='js/SourceCodeSection.js') }}"></script>
 
 		<div class="split__bar"></div>
 
 		<div id='source-code-main-div' class="split__right">
-		<div class='source-code-sub-divs'>
+			<div id="sidenav-button-id" class="sidenav-button-class">
+				<span class="sidenav-button-content-class">&gt;&gt;</span>
+			</div>
+
+		<div id='source-code-sub-divs'>
 <!--			<div id="close-editor-button">-->
 <!--			<img style='height:100%;width:100%;' src="https://img.icons8.com/color/48/000000/suitcase.png">-->
 <!--			</div>-->
+			<div id="move-tabs-left" class ='button dropbtn'>L</div>
+			<div id="move-tabs-right" class="button dropbtn">R</div>
 
 			<div id='tabs-list-drop-down' class="dropdown">
-				<button  class="three-vertical-dots button dropbtn">OPEN ITEMS</button>
+				<button  class="three-vertical-dots button dropbtn">MORE</button>
 				<div id="myDropdown" class="dropdown-content">
 				</div>
 			</div>
 
-			<div class='tab-container'>
-
-
-<script>
-
-
-
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-}
-
-</script>
+			<div id='tab-container'>
 			</div>
 		</div>
 		<link rel='stylesheet'
@@ -740,9 +775,7 @@ $('.CodeMirror').css('height','100%');
 							">
 							<button id="download-video-button" class="button">download</button>
 							</div>
-							<div id='video-section' style="height: 500px;
-    														overflow-y: scroll;
-    														width: 101%;">
+							<div id='video-section' >
 								<video width="400" controls>
 								</video>
 							</div>

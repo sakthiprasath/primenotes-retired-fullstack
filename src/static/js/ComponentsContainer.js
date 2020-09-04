@@ -171,7 +171,6 @@ export default class loadComponentsContainer {
 	}
 	
 static searchResults(labelMap){
-
 	var searchResultTop=10;
 	var searchContent=$('#search-box').val();
 	var  html='';
@@ -268,7 +267,7 @@ static searchResults(labelMap){
 		$('#file-middle-section').empty();
 		var defSecond=$.Deferred();
 		$.Deferred().resolve().then(function(){
-			loadComponentsContainer.searchResults().then(function(backHtml){
+			loadComponentsContainer.searchResults(self.label_map).then(function(backHtml){
 			$('#file-middle-section').append(backHtml);
 			loadComponentsContainer.initialisingEventHandlers();
 			defSecond.resolve();

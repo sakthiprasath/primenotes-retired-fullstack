@@ -126,3 +126,50 @@ NavigationBar.css
     right: 30px;
     z-index: 1;
 }
+
+
+`###on-off-propeller
+width: 632px;
+    max-height: none;
+    left: -17px;
+    top: -8px;
+    height: 550px;
+    min-height: 98% !important;
+    min-width: 105% !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+local   all             all                                     scram-sha-256
+# IPv4 local connections:
+host    all             all                         		trust
+# IPv6 local connections:
+host    all             all             			trust
+# Allow replication connections from localhost, by a user with the
+# replication privilege.
+local   replication     all                                     scram-sha-256
+host    replication     all             127.0.0.1/32            scram-sha-256
+host    replication     all             ::1/128                 scram-sha-256
+
+
+
+
+
+
+
+

@@ -76,7 +76,7 @@ function buildTab(file_name, display){
     resultHtml+= "><div class='file-get-section' onclick='get_editor_file(this);'   title='" + file_name +"'>"+ file_name;//$(this).text();
     resultHtml+="</div> <div class='save-close-for-tab'>  <div class='save-editor-file' onclick='save_editor_file(this);'>    <img class='save-editor-img-icon' src='https://img.icons8.com/dusk/64/000000/save.png' />          </div> <div class='close-tab' onclick='removeCurrentTab(this)'> X </div></div> </div>";
     let curr = $(resultHtml);
-    $('.tab-container').append(curr);
+    $('#tab-container').append(curr);
     get_editor_file(curr.children()[0]);
 
 }
