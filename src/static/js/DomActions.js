@@ -144,12 +144,15 @@ export default class DomActions{
                     }
     }
     _build_new_component(compo_name){
-         let iframe_ele = "<iframe src='http://localhost:5000/api/individual-component-fetch/create_component?component_name="+compo_name + "' style='width: inherit;height: inherit;'></iframe>";
-         let ele = `<div id='` + compo_name +`' class="create-component-dialog"  style='display:none;min-width:103.5% !important;min-height: 100% !important' title="` + compo_name + `">`
-                        + `<div class='create-component-dialog-sub-div' style="width: 100%;height: 100%;">` + iframe_ele
+        let def = $.Deferred();
+        let ele = `<div id='pro1000-component-dialog' class="create-component-dialog"  style='display:none;min-width:103.5% !important;min-height: 100% !important' title="` + compo_name + `">`
+                        + `<div id='create-component-dialog-sub-div' style="width: 100%;height: 100%;">`
                         + `</div>`
                     + `</div>`;
-        return ele;
+
+        $('#destination-container').append($(ele));
+        def.resolve();
+        return def.promise();
     }
     _create_file_in_backend(file_type, file_name){
     /*this funciton can also be used from indicidualComponentJS/main.js */
@@ -180,22 +183,45 @@ export default class DomActions{
         }
         save_action(send_file_name);
     }
-    _create_component_open_close(event_obj, curr_ele){
-            let compo_name = $(curr_ele).attr('title');
-            let self = event_obj;
-            /*checking if the current to-generate component is already present as active element*/
-            if (self.components_list.indexOf(compo_name) <0){
-                self.components_list.push(compo_name);
-                let ele = this._build_new_component(compo_name);
-                $('#destination-container').append($(ele));
+    _create_component_submit_execution(event_obj){
 
+            let new_component_name = $('#create-component-text-box').val()
+            if(new_component_name == ''){
+                return;
             }
+            let component_list = event_obj._get_components_list();
+            if(component_list.indexOf(new_component_name.toLowerCase()) < 0){
+                this._create_file_in_backend('html_components', new_component_name);
+
+                /*create a new component button, building the same in current DOM and also in the backend;*/
+
+                //building the DOM Button
+                let new_component_button = `<button class='create-component create-component button tab-options-button' title='`+
+                                        new_component_name + `' class="button tab-options-button">` +
+			                            new_component_name + `</button>`;
+                $('#component-tabs').append($(new_component_button));
+
+                //building the component in DOM
+
+                 $('.create-component').on('click',function(){
+                    $(event_obj.dialog_component).css('display', 'block');
+                    event_obj.action_obj._create_component_open_close(event_obj,this);
+                });
+            }
+            else{
+                 alert('Component Exists with the same name : '+ new_component_name);
+            }
+
+
+    }
+    _build_component_dialog(){
+            let compo_name = 'pro1000-component-dialog';
             var height = $(window).height();
-            $('#'+compo_name).dialog({
+            return $('#'+compo_name).dialog({
                 width:'50%',
                 height: height*0.8,
                 position: { my: "left top"},
-                dialogClass: compo_name + '-class',
+                dialogClass: 'no-close',
                  buttons: [
                         {
                             text: "L",
@@ -246,6 +272,14 @@ export default class DomActions{
                                 dialog_ele.css('height', height);
                                 dialog_ele.css('width', width);
                             }
+                        },
+                         {
+                            text: "X",
+                            icon: "ui-icon-maximize",
+                            click: function( e ) {
+                                let dialog_ele = $(this).parent();
+                                dialog_ele.css('display', 'none');
+                            }
                         }
 
                     ],
@@ -253,6 +287,27 @@ export default class DomActions{
                         $('.ui-dialog-buttonset').prependTo('.ui-dialog-titlebar');
                     }
             });
+
+    }
+    _get_iframe_ele(compo_name){
+        let iframe_ele = "<iframe src='http://localhost:5000/api/individual-component-fetch/create_component?component_name="+compo_name + "' style='width: inherit;height: inherit;'></iframe>";
+        return $(iframe_ele);
+    }
+    _create_component_open_close(event_obj, curr_ele){
+            let compo_name = $(curr_ele).attr('title');
+            let self = event_obj;
+            /*checking if the current to-generate component is already present as active element*/
+            if (self.active_component_dialog_element !== compo_name ){
+//                let ele = this._build_new_component(compo_name);
+//                $('#destination-container').append($(ele));
+                  $('#create-component-dialog-sub-div').empty();
+                  let iframe_ele = this._get_iframe_ele(compo_name);
+                  $('#create-component-dialog-sub-div').append(iframe_ele);
+                  $('#ui-id-2').text(compo_name);
+                  self.active_component_dialog_element = compo_name;
+            }
+
+
     }
 
     init(){

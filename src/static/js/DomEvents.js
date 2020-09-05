@@ -3,6 +3,7 @@ import loadComponentsContainer from './ComponentsContainer.js';
 
 export default class DomEvents{
     components_list= [];
+    active_component_dialog_elements = [];
     static _get_action_object(){
         return new DomActions()
     }
@@ -121,10 +122,19 @@ export default class DomEvents{
 
     _create_component_open_close(){
        /*component create dialog open close*/
-        var self = this;//this event obj
+
+        this.active_component_dialog_element = '';
+        var self = this;
+
+        self.action_obj = DomEvents._get_action_object();
+        self.action_obj._build_new_component().then(function(){
+            self.dialog_component = self.action_obj._build_component_dialog().parent();
+            $(self.dialog_component).css('display', 'none');
+        });
+
         $('.create-component').on('click',function(){
-            let action_obj = DomEvents._get_action_object(self, this);
-            action_obj._create_component_open_close(self,this);
+            $(self.dialog_component).css('display', 'block');
+            self.action_obj._create_component_open_close(self,this);
         });
     }
 
@@ -171,33 +181,9 @@ export default class DomEvents{
     _create_component_form(){
         let self = this;
         $('#create-component-submit-btn').on('click',function(){
-            let new_component_name = $('#create-component-text-box').val()
-            if(new_component_name == ''){
-                return;
-            }
-            let component_list = self._get_components_list();
-            if(component_list.indexOf(new_component_name.toLowerCase()) < 0){
-                let action_obj = DomEvents._get_action_object();
-                action_obj._create_file_in_backend('html_components', new_component_name);
-
-                /*create a new component button, building the same in current DOM and also in the backend;*/
-
-                //building the DOM Button
-                let new_component_button = `<button class='create-component create-component button tab-options-button' title='`+
-                                        new_component_name + `' class="button tab-options-button">` +
-			                            new_component_name + `</button>`;
-                $('#component-tabs').append($(new_component_button));
-
-                //building the component in DOM
-                let ele = action_obj._build_new_component(new_component_name);
-                $('#destination-container').append($(ele));
-                $('#'+new_component_name).dialog();
-                self._create_component_open_close();
-            }
-            else{
-                 alert('Component Exists with the same name : '+ new_component_name);
-            }
-		});
+            let action_obj = DomEvents._get_action_object();
+            action_obj._create_component_submit_execution(self)
+        });
 
 		$('#close-create-component-form').on('click', function(){
 				$('#create-component-form').css('display','none')

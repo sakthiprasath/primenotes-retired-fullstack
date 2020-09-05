@@ -974,7 +974,9 @@ width: max-content;
     background:#232b5d;
     color:white;
   }
-  .ui-dialog-buttonset{
+.no-close .ui-dialog-titlebar-close {display: none }
+
+ .ui-dialog-buttonset{
         position: absolute;
         width: 55px;
         top: 3px;
@@ -988,7 +990,15 @@ width: max-content;
     height:100% !important;
 }
 
+.create-component{
+        height: 36%;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-right: 25px;
+    padding-left: 25px;
+    width: 30%;
 
+    }
 
 
 
@@ -1139,8 +1149,14 @@ background:#060b31;
 /*html -editor*/
 #component-tabs{
     display: flex;
-    column-gap: 10px;
-    justify-content: space-evenly;
+    height: 92%;
+    justify-content: center;
+    column-gap: 7px;
+    padding: 21px;
+    flex-wrap: wrap;
+    width: 51%;
+    overflow: scroll;
+    margin-left: 25%;
 }
 
 /*html editor dialog css*/

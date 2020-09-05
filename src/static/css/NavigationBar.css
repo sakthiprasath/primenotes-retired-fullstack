@@ -313,19 +313,18 @@ left:170px;
 	z-index:10;
 }
 #create-component-add-btn{
-    position: relative;
-    width: 30px;
-    top: 3px;
+    position: absolute;
+    width: 35px;
+    top: -2px;
+    right: 37px;
 }
 #create-component-form{
-    top: 2px;
+    top: -36px;
     height: 35px;
-    right: %;
+    right: 11%;
     padding: 2px;
     position: absolute;
     width: max-content;
-    left: 33px;
-    display:none;
 }
  #create-component-section{
     position: relative;
