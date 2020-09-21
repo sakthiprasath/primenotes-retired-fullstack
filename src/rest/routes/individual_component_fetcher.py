@@ -54,6 +54,10 @@ def fetch_individual_component_codes(component_key):
 
 @individual_component_fetcher_routes.route('save-file/<file_name>', methods=['POST'])
 def save_file(file_name):
+    @after_this_request
+    def add_header(response):
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
     try:
         data = request.get_json()
         SQLIndividualComponent().result_write(file_name,data)
@@ -61,21 +65,49 @@ def save_file(file_name):
     except Exception as e:
         return print(e)
 
-@individual_component_fetcher_routes.route('/general_files/<file_name>', methods=['GET'])
-def get_data_by_name(file_name):
+@individual_component_fetcher_routes.route('rename-file/<category>/<old_file_name>/<new_file_name>', methods=['POST'])
+def rename_file(category, old_file_name, new_file_name):
+    @after_this_request
+    def add_header(response):
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
+    try:
+        SQLIndividualComponent().rename_file(category, old_file_name, new_file_name)
+        return jsonify('save_success')
+    except Exception as e:
+        return print(e)
+
+@individual_component_fetcher_routes.route('delete-file/<category>/<file_name>/', methods=['POST'])
+def delete_file(category, file_name):
+    @after_this_request
+    def add_header(response):
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
+    try:
+        SQLIndividualComponent().delete_file(category, file_name)
+        return jsonify('save_success')
+    except Exception as e:
+        return print(e)
+
+@individual_component_fetcher_routes.route('/general_files/<category>/<file_name>', methods=['GET'])
+def get_data_by_name(category, file_name):
     @after_this_request
     def add_header(response):
         response.headers['Access-Control-Allow-Origin'] = '*'
         return response
 
     try:
-        file_data = SQLIndividualComponent().get_file_data(file_name)
+        file_data = SQLIndividualComponent().get_file_data(category, file_name)
         return file_data
     except Exception as e:
         return print(e)
 
 @individual_component_fetcher_routes.route('download-youtube-video', methods=['POST'])
 def download_youtube_video():
+    @after_this_request
+    def add_header(response):
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
     try:
         json_inputs = request.get_json(force=True)
         link = json_inputs['link']
@@ -89,6 +121,10 @@ def download_youtube_video():
 
 @individual_component_fetcher_routes.route('get-all-files/<file_type>', methods=['GET'])
 def get_files(file_type):
+    @after_this_request
+    def add_header(response):
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
     try:
 
         files = SQLIndividualComponent().all_files(file_type)
@@ -100,6 +136,10 @@ def get_files(file_type):
 
 @individual_component_fetcher_routes.route('get-all-videos', methods=['GET'])
 def get_all_video_files():
+    @after_this_request
+    def add_header(response):
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
     try:
 
         files = SQLIndividualComponent().all_video_files()

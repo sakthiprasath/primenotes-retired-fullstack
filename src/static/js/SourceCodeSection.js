@@ -23,7 +23,6 @@ function get_editor_file(curr, flag){
                 $(curr).parent().addClass('tab-active');
                 file_name = $(curr).text();
                 console.log(file_name)
-                file_name ='separate_project-'+ file_name ;
                 $.when(getComponentHtmlFromServer(file_name)).done(function(res){
                                 _fill_test_area(res);
                 });
@@ -99,7 +98,7 @@ var defObj=$.Deferred();
 	var promise =
 		$.ajax
 		({
-			url:'http://localhost:5000/api/individual-component-fetch/general_files/'+componentClassName,
+			url:'http://localhost:5000/api/individual-component-fetch/general_files/separate_project/'+componentClassName,
 			type : "GET",
 			contentType:'application/x-www-form-urlencoded',
 			success : function(response){

@@ -36,3 +36,33 @@ windows search -&gt; services -&gt; right click on the postgres (10/13)&nbsp; -&
 
 <p>Reference :&nbsp;<br />
 https://tableplus.com/blog/2018/10/how-to-start-stop-restart-postgresql-server.html</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<hr />
+<hr />
+<h2><strong>Alter&nbsp; table:</strong></h2>
+
+<p>alter table jobs<br />
+alter column type TYPE char(15)<br />
+-- select count(*) from sample_13_table;</p>
+
+<p>alter table plants &nbsp;<br />
+&nbsp; &nbsp; &nbsp; add constraint pk_test&nbsp;<br />
+&nbsp; &nbsp; &nbsp; primary key (plantid)&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<h2><strong>Create table with foreign key :&nbsp;</strong></h2>
+
+<p>create table xxx(</p>
+
+<p>....</p>
+
+<p>CONSTRAINT fk_plants<br />
+&nbsp; &nbsp; &nbsp; FOREIGN key (PlantID)&nbsp;<br />
+&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;REFERENCES Plants (plantid)</p>
+
+<p>);</p>

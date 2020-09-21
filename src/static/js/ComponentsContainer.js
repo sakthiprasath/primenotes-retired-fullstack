@@ -1,4 +1,4 @@
-
+import DomEvents from './DomEvents.js';
 
 class applyDragAndDrop{
 	/*Make resizable div by Hung Nguyen*/
@@ -186,7 +186,7 @@ static searchResults(labelMap){
 			if(searchContent===''  || arrValue.includes(searchContent.toLowerCase().trim())) {
 				if(arrValue != undefined){
 					//style='top:"+searchResultTop+"px;' 
-				    html+="<div class='individual-search' id='"+key+"'> <span class='search-result-item' >"+tempArr[i]+"</span></div>";
+				    html+="<div class='individual-search' id='"+key.trim().replaceAll('  ',' ').replaceAll(' ','-')+"'> <span class='search-result-item' >"+tempArr[i]+"</span></div>";
 				    searchResultTop+=35;
 					if(self.eventListenerFlag===0){
 						//console.log('event listners created for.........'+key);
@@ -269,6 +269,7 @@ static searchResults(labelMap){
 		$.Deferred().resolve().then(function(){
 			loadComponentsContainer.searchResults(self.label_map).then(function(backHtml){
 			$('#file-middle-section').append(backHtml);
+			 new DomEvents()._build_file_factory_options();
 			loadComponentsContainer.initialisingEventHandlers();
 			defSecond.resolve();
 			});
@@ -280,7 +281,6 @@ static searchResults(labelMap){
 			$('#middle-section').css('width','0px');
 			$('.search-container').css('display','none');
 			$('#chat-file-icon-section').css('display','none');
-
 
 		    $('#right-side-components').attr('class','right-side-modify');
 
@@ -357,8 +357,8 @@ static initialisingEventHandlers(){
 	$('.individual-search').on('click',function(){
 		$('#right-side-components').css('display','block');
 		$('#right-side-components-container').css('display','block');
-
-        $('#file-name').text(this.id)
+        let file_name = this.textContent.trim();
+        $('#file-name').text(file_name)
 
 		/*handle drowssap file with password validation*/
 		if(this.id === 'drowssap'){
@@ -377,9 +377,10 @@ static initialisingEventHandlers(){
               });
 		}
 		else{/* other files */
-		    loadComponentsContainer.fillRightSideComponents(this.id);
+		    loadComponentsContainer.fillRightSideComponents(file_name);
 		}
 	});
+
 
 	$('#close-component-results-container').on('click',function(){
 		$('#pane').css('display','none');
@@ -440,12 +441,11 @@ CKEDITOR.instances.editor1.setData(general_text_data);
 
 
 static get_file_from_server(componentClassName){
-componentClassName = 'file_factory-' + componentClassName;
 var defObj=$.Deferred();
 	var promise =
 		$.ajax
 		({
-			url:'http://localhost:5000/api/individual-component-fetch/general_files/'+componentClassName,
+			url:'http://localhost:5000/api/individual-component-fetch/general_files/file_factory/' + componentClassName,
 			type : "GET",
 			contentType:'application/x-www-form-urlencoded',
 			success : function(response){

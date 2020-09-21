@@ -66,6 +66,499 @@ https://www.youtube.com/watch?v=0xtYsiunA_8
 
 
 
+jobs table : 
+job_id varchar(10) 	  JOB0001
+company_id	varchar(10)  symphony_azima_AI_001 
+title char(30)	      senior  UI		
+job_level integer     7 - Associate, 6 - Software Engineer 5 - Senior Engineer 4 - Leader 3 - Director 2 - Vice President 1 - Executive  
+type char(10)         full time or part time 	
+eligibility (50)	  >5 years experience
+location char(30)	  bangalore  
+job_description	JSON  UI developer will do x,y,z 
+job_requirment JSON   experience in React/Anguar	
+required_qualification JSON  cgpa 7 and above, should be in bangalore, referred CS/IT, from 1 tier college
+
+min_salary varchar(5)
+max_salary varchar(5)
+opening_date	date
+deadline	date
+notes	JSON
+
+
+company table : 
+company_id varchar(10)
+about_company varchar(500)	
+application_medium_url varchar(100) 	
+
+
+
+
+"job_id"
+"job_requirement"
+"required_qualification"
+"min_salary"
+"max_salary"
+"opening_date"
+"deadline"
+"job_level"
+"job_description"
+"notes"
+"company_id"
+"title"
+"type"
+"eligibility"
+"location"
+
+
+
+candidates table
+name
+email
+application date
+experience
+current salary
+expected salary
+no interviews scheduled
+job_id
+
+
+
+interview table
+interview_id 
+candidate_id 
+job_id 
+rating:json
+yes, no, onhold
+
+
+
+candidate_name
+candidate_email
+application_date_by_candidate
+candidate_experience
+candidate_current_salary
+candidate_current_salary_expected_salary,
+candidate_status
+job_id
+company_id
+job_title
+job_level
+job_type
+job_eligibility
+job_location
+job_job_description
+job_requirement
+job_min_salary
+job_max_salary
+job_opening_date
+job_deadline
+job_notes
+
+from candidates cd, jobs jb where cd.job_id = jb.job_id
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE  "system"."DBA"."Plants" (
+	"PlantID" INTEGER NOT NULL ,
+	"PlantName" VARCHAR(50) NULL,
+	"CompanyName" VARCHAR(50) NULL,
+	"siteid" INTEGER NULL,
+	"DrawingID" INTEGER NULL,
+	"PortalActive" SMALLINT NULL DEFAULT 1,
+	"CSIDBUID" VARCHAR(36) NULL,
+	"CreatedBySiteID" INTEGER NULL,
+	"ModifiedBySiteID" INTEGER NULL,
+	"RecordLastUpdated" TIMESTAMP NULL DEFAULT timezone('utc', now()),
+	PRIMARY KEY ( "PlantID" )
+);
+COMMENT ON COLUMN "DBA"."Plants"."siteid" IS 'Needed for the Voyager Integrator';
+COMMENT ON COLUMN "DBA"."Plants"."CSIDBUID" IS 'This column is used for CSI integration, uniquely identifies the source CSI database';
+
+
+CREATE TABLE "DBA"."Areas" (
+	"AreaID" INTEGER NOT NULL,
+	"PlantID" INTEGER NOT NULL,
+	"AreaName" VARCHAR(50) NULL,
+	"UnderConstruction" VARCHAR(2) NULL,
+	"subsiteid" INTEGER NULL,
+	"PositionLeft" INTEGER NULL,
+	"PositionTop" INTEGER NULL,
+	"DrawingID" INTEGER NULL,
+	"PortalActive" SMALLINT NULL DEFAULT 1,
+	"CSIDBUID" VARCHAR(36) NULL,
+	"CSIAreaKey" INTEGER NULL,
+	"CreatedBySiteID" INTEGER NULL,
+	"ModifiedBySiteID" INTEGER NULL,
+	"RecordLastUpdated" TIMESTAMP NULL DEFAULT UTC TIMESTAMP,
+	"LineFrequency" INTEGER NULL DEFAULT 1,
+	PRIMARY KEY ( "AreaID" ASC )
+);
+CREATE TABLE "DBA"."Machines" (
+	"MachineID" INTEGER NOT NULL,
+	"MachineName" VARCHAR(50) NULL,
+	"AreaID" INTEGER NULL,
+	"MIDID" INTEGER NULL,
+	"StatusID" INTEGER NULL,
+	"ClassName" VARCHAR(30) NULL,
+	"CMMSLink" VARCHAR(50) NULL,
+	"NominalSpeed" FLOAT NULL,
+	"SpeedUnitID" INTEGER NULL,
+	"CollectSpeed" VARCHAR(2) NOT NULL,
+	"SpeedRatio" FLOAT NULL,
+	"SpeedVariation" FLOAT NULL,
+	"TestConditions" VARCHAR(1000) NULL,
+	"CollectionPeriod" SMALLINT NULL,
+	"CustID" INTEGER NULL,
+	"Area" SMALLINT NULL,
+	"assetid" INTEGER NULL,
+	"LatestMachineTestDate" TIMESTAMP NULL,
+	"PositionLeft" INTEGER NULL,
+	"PositionTop" INTEGER NULL,
+	"DrawingID" INTEGER NULL,
+	"MachineOnlineSettings" LONG VARCHAR NULL,
+	"TestTimeWindow" INTEGER NULL,
+	"OnlineGUISettings" LONG VARCHAR NULL,
+	"Active" SMALLINT NULL DEFAULT 1,
+	"LinearSpeedConversionFactor" FLOAT NULL DEFAULT 0.0,
+	"SpeedTypeID" INTEGER NULL DEFAULT 1,
+	"LinearSpeedUnitID" INTEGER NULL DEFAULT 2,
+	"SpeedMeasurementTypeID" INTEGER NULL DEFAULT 1,
+	"TachMovesWithLocation" INTEGER NULL DEFAULT 0,
+	"AcceptableSpeedRange" INTEGER NULL DEFAULT 0,
+	"LowerSpeed" FLOAT NULL DEFAULT 0.0,
+	"UpperSpeed" FLOAT NULL DEFAULT 0.0,
+	"OperationalSignificance" INTEGER NULL DEFAULT 10,
+	"MachineVibrationCategoryID" INTEGER NULL DEFAULT 4,
+	"PortalActive" SMALLINT NULL DEFAULT 1,
+	"MachineDriveIdentifier" VARCHAR(100) NULL,
+	"CollectorActive" SMALLINT NULL DEFAULT 1,
+	"CSIDBUID" VARCHAR(36) NULL,
+	"CSIEquipmentKey" INTEGER NULL,
+	"CreatedBySiteID" INTEGER NULL,
+	"ModifiedBySiteID" INTEGER NULL,
+	"RecordLastUpdated" TIMESTAMP NULL DEFAULT UTC TIMESTAMP,
+	"ExpertResultsStatusID" INTEGER NULL,
+	"ExpertResultsStatusMachineTestID" INTEGER NULL,
+	"ReviewedResultsStatusID" INTEGER NULL,
+	"ReviewedResultsStatusMachineTestID" INTEGER NULL,
+	"OperationalRisk" INTEGER NULL DEFAULT 10,
+	"CurrencyLabel" VARCHAR(10) NULL DEFAULT 'USD',
+	"ReplacementCost" INTEGER NULL DEFAULT 10000,
+	"OverhaulCost" INTEGER NULL DEFAULT 10000,
+	"AuxillaryCost1" INTEGER NULL DEFAULT 10000,
+	"AuxillaryCost2" INTEGER NULL DEFAULT 10000,
+	"FinalReviewedResultsStatusID" INTEGER NULL,
+	"FinalReviewedResultsStatusMachineTestID" INTEGER NULL,
+	PRIMARY KEY ( "MachineID" ASC )
+) IN "system";
+COMMENT ON COLUMN "DBA"."Machines"."assetid" IS 'For the Voyager Integrator';
+COMMENT ON COLUMN "DBA"."Machines"."TestTimeWindow" IS 'The time required, in minutes, to test all locations and process points on the machine';
+COMMENT ON COLUMN "DBA"."Machines"."TachMovesWithLocation" IS '0=No, 1=Yes';
+COMMENT ON COLUMN "DBA"."Machines"."AcceptableSpeedRange" IS '0=Off, 1=On';
+COMMENT ON COLUMN "DBA"."Machines"."OperationalSignificance" IS 'Scaled from 1 to 10. 1 = least significant, 10 = most significant. 10 = machine is critical to maintain full output of the system, and has no redundancies. 5 = machine is critical to maintain full output of the system, but has redundancy. 2= machine is not needed for full output of the system, but operations may be affected without it (for example an automated process is performed manually)';
+COMMENT ON COLUMN "DBA"."Machines"."CSIDBUID" IS 'This column is used for CSI integration, uniquely identifies the source CSI database';
+COMMENT ON COLUMN "DBA"."Machines"."CSIEquipmentKey" IS 'This field is used for CSI integration.  CSIDBUID combined with the CSIEquipmentKey uniquely identify a machine within the entire CSI system';
+CREATE TABLE "DBA"."Locations" (
+	"LocationID" INTEGER NOT NULL,
+	"MachineID" INTEGER NOT NULL,
+	"LocationName" VARCHAR(50) NOT NULL,
+	"PositionNumber" SMALLINT NOT NULL,
+	"OrientationID" INTEGER NOT NULL,
+	"BarcodeNumber" INTEGER NOT NULL,
+	"LowRange" FLOAT NULL,
+	"HighRange" FLOAT NULL,
+	"DemodLowRange" FLOAT NULL,
+	"DemodHighRange" FLOAT NULL,
+	"FrequencyUnitID" INTEGER NULL,
+	"LowRangeSetupID" INTEGER NULL,
+	"HighRangeSetupID" INTEGER NULL,
+	"DemodLowRangeSetupID" INTEGER NULL,
+	"DemodHighRangeSetupID" INTEGER NULL,
+	"SpeedRatio" FLOAT NULL,
+	"CollectSpectra" VARCHAR(10) NOT NULL,
+	"CollectDemod" VARCHAR(10) NOT NULL,
+	"CollectOveralls" VARCHAR(3) NOT NULL,
+	"CollectPhase" VARCHAR(3) NULL,
+	"PhaseRelation" VARCHAR(3) NULL,
+	"AmplitudeAlarm" FLOAT NULL,
+	"AmplitudeAlarmActive" VARCHAR(2) NULL,
+	"PhaseAlarm" FLOAT NULL,
+	"PhaseAlarmActive" VARCHAR(2) NULL,
+	"BearingID" INTEGER NULL,
+	"CMMSComponentLink" VARCHAR(50) NULL,
+	"LatestLocationTestDate" TIMESTAMP NULL,
+	"PositionLeft" INTEGER NULL,
+	"PositionTop" INTEGER NULL,
+	"LocationOnlineSettings" LONG VARCHAR NULL,
+	"CollectFullSpectra" VARCHAR(10) NULL DEFAULT '00000',
+	"FullSpectrumLowRange" FLOAT NULL DEFAULT 0.0,
+	"FullSpectrumHighRange" FLOAT NULL DEFAULT 0.0,
+	"FullSpectrumProxLowRangeSetupID" INTEGER NULL DEFAULT 0,
+	"FullSpectrumProxHighRangeSetupID" INTEGER NULL DEFAULT 0,
+	"FullSpectrumSeismicLowRangeSetupID" INTEGER NULL DEFAULT 0,
+	"FullSpectrumSeismicHighRangeSetupID" INTEGER NULL DEFAULT 0,
+	"OnlineGUISettings" LONG VARCHAR NULL,
+	"CollectorActive" SMALLINT NULL DEFAULT 1,
+	"CreatedBySiteID" INTEGER NULL,
+	"ModifiedBySiteID" INTEGER NULL,
+	"RecordLastUpdated" TIMESTAMP NULL DEFAULT UTC TIMESTAMP,
+	"LocationRPM" FLOAT NULL DEFAULT 0.0,
+	"CollectTachWaveform" VARCHAR(5) NULL DEFAULT '00000',
+	"TachPowered" SMALLINT NULL DEFAULT 0,
+	"TachAngle" FLOAT NULL DEFAULT 0.0,
+	"XProbeAngle" FLOAT NULL DEFAULT 0.0,
+	"YProbeAngle" FLOAT NULL DEFAULT 90.0,
+	"AlarmCategoryID" INTEGER NULL,
+	PRIMARY KEY ( "LocationID" ASC )
+) IN "system";
+COMMENT ON COLUMN "DBA"."Locations"."MachineID" IS 'Point to the machine this location belongs to';
+COMMENT ON COLUMN "DBA"."Locations"."LocationName" IS 'The name of the location: Motor, free end, etc.';
+COMMENT ON COLUMN "DBA"."Locations"."PositionNumber" IS 'The bearing poisition';
+COMMENT ON COLUMN "DBA"."Locations"."OrientationID" IS 'Orientation of the triax transducer: ART, RTA, etc.  Will be found in the Orientation table, but we save the text here instead of an index';
+COMMENT ON COLUMN "DBA"."Locations"."BarcodeNumber" IS 'The barcode number.  Need to make sure it is unique (in this plant?)';
+COMMENT ON COLUMN "DBA"."Locations"."LowRange" IS 'The range (e.g. 3000 Hz, 100 X) for the low range measurements';
+COMMENT ON COLUMN "DBA"."Locations"."HighRange" IS 'The range (e.g. 3000 Hz, 100 X) for the high range measurements';
+COMMENT ON COLUMN "DBA"."Locations"."DemodLowRange" IS 'The range (e.g. 600 Hz, 20 X) for the low range demod measurements';
+COMMENT ON COLUMN "DBA"."Locations"."DemodHighRange" IS 'The range (e.g. 6000 Hz, 200 X) for the high range demod measurements: Not Used Currently';
+COMMENT ON COLUMN "DBA"."Locations"."FrequencyUnitID" IS 'Units for the ranges: Hz, CPM, X';
+COMMENT ON COLUMN "DBA"."Locations"."LowRangeSetupID" IS 'Point to the setup file which describes everything bar the frequency range';
+COMMENT ON COLUMN "DBA"."Locations"."HighRangeSetupID" IS 'Point to the setup file which describes everything bar the frequency range';
+COMMENT ON COLUMN "DBA"."Locations"."DemodLowRangeSetupID" IS 'Point to the setup file which describes everything bar the frequency range';
+COMMENT ON COLUMN "DBA"."Locations"."DemodHighRangeSetupID" IS 'Point to the setup file which describes everything bar the frequency range';
+COMMENT ON COLUMN "DBA"."Locations"."SpeedRatio" IS 'The ratio of the shaft at this location to the nominal shaft';
+COMMENT ON COLUMN "DBA"."Locations"."CollectSpectra" IS 'Code: 1-3 spectra, 4-5 L/H, 6-8 time range, 9-10 L/H';
+COMMENT ON COLUMN "DBA"."Locations"."CollectDemod" IS 'Same code (although only spectra *low* range supported for now).  Characters: 1:Yes, 0:No  Order: RTA, HVA or XYZ';
+COMMENT ON COLUMN "DBA"."Locations"."CollectOveralls" IS 'Code: 1-3  (1:Yes or 0:No in three axes)';
+COMMENT ON COLUMN "DBA"."Locations"."CollectPhase" IS 'Code: 1-3  (1:Yes or 0:No in three axes)';
+COMMENT ON COLUMN "DBA"."Locations"."PhaseRelation" IS 'Code: 111 means all three channels in-phase';
+COMMENT ON COLUMN "DBA"."Locations"."AmplitudeAlarm" IS 'Initial setting: +/- amplitude as a percent %';
+COMMENT ON COLUMN "DBA"."Locations"."AmplitudeAlarmActive" IS 'Toggle whether this alarm level applies in this case.';
+COMMENT ON COLUMN "DBA"."Locations"."PhaseAlarm" IS 'Initial setting: +/- degree';
+COMMENT ON COLUMN "DBA"."Locations"."PhaseAlarmActive" IS 'Toggle whether this alarm level applies in this case.';
+COMMENT ON COLUMN "DBA"."Locations"."BearingID" IS 'We may have a bearing database';
+COMMENT ON COLUMN "DBA"."Locations"."CMMSComponentLink" IS 'This has the link between this component and the CMMS component: not used to begin with, but store the ALERT data in here';
+CREATE TABLE "DBA"."Spectra" (
+	"SpectrumID" INTEGER NOT NULL,
+	"LocationID" INTEGER NOT NULL,
+	"Axis" VARCHAR(1) NOT NULL,
+	"Range" VARCHAR(1) NOT NULL,
+	"Type" VARCHAR(1) NOT NULL,
+	"MeasurementDate" TIMESTAMP NOT NULL,
+	"Resolution" SMALLINT NOT NULL,
+	"StartFrequency" FLOAT NOT NULL,
+	"StopFrequency" FLOAT NOT NULL,
+	"TestSpeed" FLOAT NULL,
+	"SpeedSource" VARCHAR(1) NULL,
+	"VibrationUnitID" INTEGER NOT NULL,
+	"VoltsPerEU" FLOAT NOT NULL,
+	"StoredAsLinear" VARCHAR(2) NOT NULL,
+	"ScaleOffset" FLOAT NOT NULL,
+	"ScaleRatio" FLOAT NOT NULL,
+	"SpectrumData" LONG BINARY NULL,
+	"RefAxis" VARCHAR(1) NULL,
+	"SpectrumTestType" SMALLINT NULL,
+	"InsertDate" TIMESTAMP NULL,
+	"ReferenceSpeed" FLOAT NULL DEFAULT 0.0,
+	"MachineTestID" INTEGER NULL,
+	"CreatedBySiteID" INTEGER NULL,
+	"ModifiedBySiteID" INTEGER NULL,
+	"RecordLastUpdated" TIMESTAMP NULL DEFAULT UTC TIMESTAMP,
+	"TestParameterID" INTEGER NULL,
+	PRIMARY KEY ( "SpectrumID" ASC )
+) IN "system";
+COMMENT ON COLUMN "DBA"."Spectra"."Axis" IS 'The axis in the format selected be the user: RTA, VHA, XYZ';
+COMMENT ON COLUMN "DBA"."Spectra"."RefAxis" IS 'While the user may choose VHA and XYZ formats, this is the equivalent in RTA - used fpr sorting';
+CREATE TABLE "DBA"."Waveforms" (
+	"WaveformID" INTEGER NOT NULL,
+	"LocationID" INTEGER NULL,
+	"Axis" VARCHAR(1) NULL,
+	"Range" VARCHAR(1) NULL,
+	"Type" VARCHAR(1) NULL,
+	"MeasurementDate" TIMESTAMP NULL,
+	"NumberOfSamples" INTEGER NULL,
+	"SampleRate" FLOAT NULL,
+	"VoltsPerEU" FLOAT NULL,
+	"VibrationUnitID" INTEGER NULL,
+	"ScaleFactor" FLOAT NULL,
+	"WaveformData" LONG BINARY NULL,
+	"WaveformTestType" SMALLINT NULL,
+	"InsertDate" TIMESTAMP NULL,
+	"MachineTestID" INTEGER NULL,
+	"CreatedBySiteID" INTEGER NULL,
+	"ModifiedBySiteID" INTEGER NULL,
+	"RecordLastUpdated" TIMESTAMP NULL DEFAULT UTC TIMESTAMP,
+	"TestParameterID" INTEGER NULL,
+	PRIMARY KEY ( "WaveformID" ASC )
+) IN "system";
+CREATE TABLE "DBA"."ProcessReadings" (
+	"ReadingID" INTEGER NOT NULL,
+	"PointID" INTEGER NULL,
+	"MeasurementValue" FLOAT NULL,
+	"MeasurementDate" TIMESTAMP NULL,
+	"ProcessUnitID" INTEGER NULL,
+	"InsertDate" TIMESTAMP NULL,
+	"MachineTestID" INTEGER NULL,
+	"CreatedBySiteID" INTEGER NULL,
+	"ModifiedBySiteID" INTEGER NULL,
+	"RecordLastUpdated" TIMESTAMP NULL DEFAULT UTC TIMESTAMP,
+	"TestParameterID" INTEGER NULL,
+	PRIMARY KEY ( "ReadingID" ASC )
+) IN "system";
+CREATE TABLE "DBA"."Overalls" (
+	"OverallID" INTEGER NOT NULL,
+	"LocationID" INTEGER NULL,
+	"Axis" VARCHAR(1) NULL,
+	"MeasurementValue" FLOAT NULL,
+	"MeasurementDate" TIMESTAMP NULL,
+	"OverallTestType" SMALLINT NULL,
+	"VibrationUnitID" INTEGER NULL,
+	"InsertDate" TIMESTAMP NULL,
+	"MachineTestID" INTEGER NULL,
+	"CreatedBySiteID" INTEGER NULL,
+	"ModifiedBySiteID" INTEGER NULL,
+	"RecordLastUpdated" TIMESTAMP NULL DEFAULT UTC TIMESTAMP,
+	"TestParameterID" INTEGER NULL,
+	PRIMARY KEY ( "OverallID" ASC )
+) IN "system";
+CREATE TABLE "DBA"."HistoryLookup" (
+	"HistoryID" INTEGER NOT NULL,
+	"HistoryType" SMALLINT NULL,
+	"MachineID" INTEGER NULL,
+	"HistoryDate" TIMESTAMP NULL,
+	"MachineTestID" INTEGER NULL,
+	"CreatedBySiteID" INTEGER NULL,
+	"ModifiedBySiteID" INTEGER NULL,
+	"RecordLastUpdated" TIMESTAMP NULL DEFAULT UTC TIMESTAMP,
+	PRIMARY KEY ( "HistoryID" ASC )
+) IN "system";
+CREATE TABLE "DBA"."ExpertHistory" (
+	"ExpertHistoryID" INTEGER NOT NULL UNIQUE,
+	"HistoryID" INTEGER NULL,
+	"ExpertResults" LONG VARCHAR NULL,
+	"ExpertIndex" LONG VARCHAR NULL,
+	"ExpertNote" LONG VARCHAR NULL,
+	"UserName" VARCHAR(30) NULL,
+	"ScreeningSheet" LONG VARCHAR NULL,
+	"ExpertNoteDate" TIMESTAMP NULL,
+	"NoteAvailable" VARCHAR(2) NULL,
+	"DiagnosisID" INTEGER NULL,
+	"RecommendationID" INTEGER NULL,
+	"MaxLevel" VARCHAR(200) NULL,
+	"MIDNumber" INTEGER NULL,
+	"ReportDate" TIMESTAMP NULL DEFAULT CURRENT UTC TIMESTAMP,
+	"CreatedBySiteID" INTEGER NULL,
+	"ModifiedBySiteID" INTEGER NULL,
+	"RecordLastUpdated" TIMESTAMP NULL DEFAULT UTC TIMESTAMP,
+	PRIMARY KEY ( "ExpertHistoryID" ASC )
+) IN "system";
+CREATE TABLE "DBA"."ModifiedExpertHistory" (
+	"ExpertHistoryID2" INTEGER NOT NULL,
+	"SourceHistoryID" INTEGER NULL,
+	"HistoryID" INTEGER NOT NULL,
+	"Comments" LONG VARCHAR NULL,
+	"AnalystName" VARCHAR(100) NULL,
+	"FinalName" VARCHAR(100) NULL,
+	"MaxLevel" VARCHAR(200) NULL,
+	"Revised" SMALLINT NULL,
+	"FigureOfMerit" INTEGER NULL,
+	"MIDNumber" INTEGER NULL,
+	"ReviewDate" TIMESTAMP NULL,
+	"FinalReviewDate" TIMESTAMP NULL,
+	"DiscrepancyClassificationIDs" VARCHAR(50) NULL,
+	"DiscrepancySignificanceID" INTEGER NULL DEFAULT 0,
+	"CreatedBySiteID" INTEGER NULL,
+	"ModifiedBySiteID" INTEGER NULL,
+	"RecordLastUpdated" TIMESTAMP NULL DEFAULT UTC TIMESTAMP,
+	"QuickReviewName" VARCHAR(100) NULL,
+	"IncludeInReport" SMALLINT NULL,
+	PRIMARY KEY ( "ExpertHistoryID2" ASC )
+) IN "system";
+COMMENT ON COLUMN "DBA"."ModifiedExpertHistory"."Revised" IS '0=NO (default)        1=Yes';
+COMMENT ON COLUMN "DBA"."ModifiedExpertHistory"."IncludeInReport" IS 'default=0 no, 1 to include in report';
+CREATE TABLE "DBA"."MID" (
+	"MIDID" INTEGER NOT NULL,
+	"MIDNumber" SMALLINT NULL,
+	"MIDName" VARCHAR(50) NULL,
+	"MIDNominalSpeed" FLOAT NULL,
+	"SpeedUnitID" INTEGER NULL,
+	"Orientation" VARCHAR(1) NULL,
+	"MIDRating" SMALLINT NULL,
+	"SecondarySpeedRatio" FLOAT NULL,
+	"CreatedBySiteID" INTEGER NULL,
+	"ModifiedBySiteID" INTEGER NULL,
+	"RecordLastUpdated" TIMESTAMP NULL DEFAULT UTC TIMESTAMP,
+	PRIMARY KEY ( "MIDID" ASC )
+) IN "system";
+CREATE TABLE "DBA"."Averages" (
+	"AverageID" INTEGER NOT NULL UNIQUE,
+	"MIDID" INTEGER NOT NULL,
+	"PositionNumber" SMALLINT NOT NULL,
+	"Axis" VARCHAR(1) NOT NULL,
+	"Range" VARCHAR(1) NOT NULL,
+	"NumberOfAverages" SMALLINT NOT NULL,
+	"NumberOfOrders" SMALLINT NOT NULL,
+	"AverageSum" LONG BINARY NOT NULL,
+	"AverageSumOfSquares" LONG BINARY NOT NULL,
+	"AverageSumOffset" FLOAT NULL,
+	"AverageSumRatio" FLOAT NULL,
+	"AverageSumOfSquaresOffset" FLOAT NULL,
+	"AverageSumOfSquaresRatio" FLOAT NULL,
+	"AverageSpeedSum" FLOAT NULL,
+	"AverageSpeedSumOfSquares" FLOAT NULL,
+	"Type" VARCHAR(1) NULL DEFAULT 'S',
+	"CreatedBySiteID" INTEGER NULL,
+	"ModifiedBySiteID" INTEGER NULL,
+	"RecordLastUpdated" TIMESTAMP NULL DEFAULT UTC TIMESTAMP,
+	PRIMARY KEY ( "AverageID" ASC )
+) IN "system";
+COMMENT ON COLUMN "DBA"."Averages"."AverageSumOffset" IS 'To convert the linear Sum to an integer';
+COMMENT ON COLUMN "DBA"."Averages"."AverageSumRatio" IS 'To convert the linear Sum to an integer';
+COMMENT ON COLUMN "DBA"."Averages"."AverageSumOfSquaresOffset" IS 'To convert the linear Sum of squares to an integer';
+COMMENT ON COLUMN "DBA"."Averages"."AverageSumOfSquaresRatio" IS 'To convert the linear Sum of squares to an integer';
+CREATE TABLE "DBA"."FaultFrequencies" (
+	"FaultFrequencyLookupID" INTEGER NOT NULL,
+	"MIDID" INTEGER NULL,
+	"FaultCode" VARCHAR(3) NULL,
+	"FaultRatio" FLOAT NULL,
+	"SecondaryShaft" VARCHAR(2) NOT NULL,
+	"FinalRatio" FLOAT NULL,
+	"CreatedBySiteID" INTEGER NULL,
+	"ModifiedBySiteID" INTEGER NULL,
+	"RecordLastUpdated" TIMESTAMP NULL DEFAULT UTC TIMESTAMP,
+	PRIMARY KEY ( "FaultFrequencyLookupID" ASC )
+) IN "system";
+CREATE TABLE "DBA"."Components" (
+	"ComponentID" INTEGER NOT NULL,
+	"ComponentCode" NUMERIC(5,2) NULL,
+	"MIDID" INTEGER NULL,
+	"ComponentOrder" SMALLINT NULL,
+	"PickupCode" VARCHAR(50) NULL,
+	"PickupOne" SMALLINT NULL,
+	"PickupTwo" SMALLINT NULL,
+	"PickupThree" SMALLINT NULL,
+	"PickupFour" SMALLINT NULL,
+	"CreatedBySiteID" INTEGER NULL,
+	"ModifiedBySiteID" INTEGER NULL,
+	"RecordLastUpdated" TIMESTAMP NULL DEFAULT UTC TIMESTAMP,
+	PRIMARY KEY ( "ComponentID" ASC )
+) IN "system";
+
+
+
+
+
+
+
+
 
 
 

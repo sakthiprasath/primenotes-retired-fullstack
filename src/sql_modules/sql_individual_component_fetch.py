@@ -55,18 +55,27 @@ class SQLIndividualComponent():
         fp = open(file_path, 'w')
         fp.write(file_content)
 
-    def get_file_data(self, file_name):
-        read_file_contents = {}
-        if 'separate_project' in file_name:
-            name_list = file_name.split('-')
-            file_name = name_list[0] + '\\' + name_list[1]
-        if 'html_components' in file_name:
-            name_list = file_name.split('-')
-            file_name = name_list[0] + '\\' + name_list[1]
-        if 'file_factory' in file_name:
-            name_list = file_name.split('-')
-            file_name = name_list[0] + '\\' + name_list[1]
+    def rename_file(self, category, old_file_name, new_file_name):
 
+        old_file_path = category + '\\' + old_file_name
+        new_file_path = category + '\\' + new_file_name
+
+        old_file_path = '../frontend_files/web-app/all_general_files/' + old_file_path + ".txt"
+        new_file_path = '../frontend_files/web-app/all_general_files/' + new_file_path + ".txt"
+
+        os.rename(old_file_path, new_file_path)
+
+    def delete_file(self, category, file_name):
+
+        file_path = category + '\\' + file_name
+
+        file_path = '../frontend_files/web-app/all_general_files/' + file_path + ".txt"
+
+        os.remove(file_path)
+
+    def get_file_data(self, category, file_name):
+
+        file_name = category + '\\' + file_name
         file_path = '../frontend_files/web-app/all_general_files/' + file_name + ".txt"
 
         fp = open(file_path, 'r')

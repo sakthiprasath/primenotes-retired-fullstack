@@ -1,4 +1,4 @@
-<div data-darkreader-inline-bgcolor="" data-darkreader-inline-bgimage="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-darkreader-inline-border-right="" data-darkreader-inline-border-top="" style="--darkreader-inline-bgcolor:#302e2b; --darkreader-inline-bgimage:initial; --darkreader-inline-border-bottom:#4c4b46; --darkreader-inline-border-left:#4c4b46; --darkreader-inline-border-right:#4c4b46; --darkreader-inline-border-top:#4c4b46; background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">
+<div style="--darkreader-inline-bgcolor:#302e2b; --darkreader-inline-bgimage:initial; --darkreader-inline-border-bottom:#4c4b46; --darkreader-inline-border-left:#4c4b46; --darkreader-inline-border-right:#4c4b46; --darkreader-inline-border-top:#4c4b46; background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">
 <pre>
 <strong><span dir="rtl"><cite>                                                                                   WOE - AZIMA INTEGRATION</cite></span>
 </strong></pre>
@@ -317,9 +317,39 @@ create super user :</h3>
 &nbsp;&nbsp; &nbsp;&quot;password&quot;:&quot;siaipass1234&quot;,<br />
 &nbsp; &nbsp; &quot;client_id&quot;:&quot;b4ea82d9-caf1-4e38-b24b-04650875d78f&quot;,<br />
 &nbsp;&nbsp; &nbsp;&quot;client_secret&quot;:&quot;r5Lc6czwNliI00TyEiz8EycPLLYUjN6vH_Ak420HE9Q&quot;<br />
-}<br />
-<br />
-&nbsp;</p>
+}</p>
+
+<p>&nbsp;</p>
+
+<p>currently :</p>
+
+<p>{<br />
+&nbsp;&nbsp; &nbsp;&quot;grant_type&quot;:&quot;password&quot;,<br />
+&nbsp;&nbsp; &nbsp;&quot;username&quot;:&quot;sakthi&quot;,<br />
+&nbsp;&nbsp; &nbsp;&quot;password&quot;:&quot;sakthics25&quot;,<br />
+&nbsp;&nbsp; &nbsp;&quot;client_id&quot;:&quot;b4ea82d9-caf1-4e38-b24b-04650875d78f&quot;,<br />
+&nbsp;&nbsp; &nbsp;&quot;client_secret&quot;:&quot;r5Lc6czwNliI00TyEiz8EycPLLYUjN6vH_Ak420HE9Q&quot;<br />
+}</p>
+
+<h2><strong>For Staging-cluster :&nbsp;</strong></h2>
+
+<pre>
+<strong>URL </strong>-&nbsp;<a href="http://auth-staging.symphonyindai.com/" rel="noopener noreferrer" target="_blank">auth-staging.symphonyindai.com</a>
+{
+&quot;client_id&quot;: &quot;6d72602a-0a8c-4c44-9cdc-c49d2b5a8c9d&quot;
+&quot;client_secret&quot;: &quot;nC9VslpcOsJ-gCJK3w6aLJCwt3jrOi1yc8OfXaKU2RE&quot;
+&quot;user_name&quot;: &quot;super-user&quot;
+&quot;password&quot;: &quot;xh{s$7EdUqX&lt;$c5)&quot;</pre>
+
+<p>}</p>
+
+<p><strong>Tenant_ids for the tenants </strong>:</p>
+
+<pre>
+chemours - 64600517-b1c6-4a14-9eed-da478c1160e6
+dow-chemical - 8f8123de-8ce9-4422-8afb-e3f132a124be</pre>
+
+<p>&nbsp;</p>
 
 <hr />
 <hr />

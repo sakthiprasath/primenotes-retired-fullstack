@@ -5,8 +5,8 @@
     left: 0px;
     width: 100%;
     height: 50px;
-    background-color: brown;
-    color: white;
+    background-color: #4099b7;
+    color: #382e2e;
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
     z-index: 5;
@@ -25,7 +25,7 @@
 	position: relative;
     font-size: 90%;
     font-family: cursive;
-    color: white;
+    color: #382e2e;
     letter-spacing: 1px;
     font-weight: 600;
 }

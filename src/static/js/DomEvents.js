@@ -105,7 +105,7 @@ export default class DomEvents{
     _component_container_open_close(){
         /*component container open-close */
          $('#close-editor-button').on('click',function(){
-            $('#pane').css('display','block');
+            $('#pane').css({'display':'block', 'top':'10px', 'left': '10px'});
          });
 
          $('#change-pane-orientation-left').on('click',function(){
@@ -116,6 +116,10 @@ export default class DomEvents{
         $('#change-pane-orientation-right').on('click',function(){
             $('#pane').removeClass('pane-orientation-left-class');
             $('#pane').addClass('pane-orientation-right-class');
+         });
+         $('#component-factory-title').on('dblclick', function(){
+            DomEvents._get_action_object().maximize_icon_click_action();
+
          });
 
     }
@@ -151,7 +155,7 @@ export default class DomEvents{
         self.prev_width = 0;
         self.prev_height = 0;
         $('.maximize-icon').on('click',function(){
-            DomEvents._get_action_object().maximize_icon_click_action(self);
+            DomEvents._get_action_object().maximize_icon_click_action();
             $('#pane').removeClass('pane-orientation-left-class');
             $('#pane').removeClass('pane-orientation-right-class');
 
@@ -223,14 +227,57 @@ export default class DomEvents{
         });
     }
 
+     __internal_rename(rename_field){
+            let new_file_name = $(rename_field).val();
+            let old_file_name = rename_field.getAttribute('placeholder').trim();
+
+            let actionObj = DomEvents._get_action_object();
+            actionObj._rename_file_factory_files('file_factory', old_file_name, new_file_name).then(function(){
+                let new_span = `<span class="search-result-item">${new_file_name}</span>`
+                let parent_ele = $(rename_field).parent();
+                parent_ele.attr('id', new_file_name.trim().replaceAll('  ',' ').replaceAll(' ','-'));
+                parent_ele.empty();
+                parent_ele.append($(new_span));
+            });
+        }
+
+    _build_rename_field_and_call_backend(curr_icon_obj){
+        let self = this;
+        let file_name = curr_icon_obj.getAttribute('file-name').trim();
+
+        let input =  `<input type='text' value='${file_name}' placeholder='${file_name}' onfocusout=self.__internal_rename(this); />`;
+        let curr_file_ele = $('#'+ file_name.trim().replaceAll('  ',' ').replaceAll(' ','-'));
+        curr_file_ele.empty();
+        curr_file_ele.append($(input));
+    }
+
+    _delete_file_in_the_backend(curr_icon_obj){
+        let self = this;
+        let file_name = curr_icon_obj.getAttribute('file-name').trim();
+        var r = confirm("Are you sure you want to delete?");
+        if (r == true) {
+          let action_obj = DomEvents._get_action_object()
+          action_obj._delete_file('file_factory', file_name).then(function(){
+            alert('file_deleted');
+          }).fail(function(){
+            alert('cant delete the file');
+          });
+
+        }
+    }
+    _mark_favourite_in_the_backend(file_name){
+            alert(file_name)
+    }
+
+
     _open_close_main_section_wrapper(){
         let self = this;
         self.active_bg_color = '#3d3f57';
-        self.inactive_bg_color = 'none';
+        self.inactive_bg_color = '#7ebdd2';
         function _hide_all_main_section_wrapper_class(){
             $('.main-section-wrapper-class').css('display','none');
             let css_map = {'background':self.inactive_bg_color,
-                            'color': '#c2bac5'};
+                            'color': 'black'};
             $('.open-close').css(css_map);
 
 
@@ -301,7 +348,92 @@ export default class DomEvents{
 //                $(".context").css('display', 'none');
             });
     }
+    __display_youtube_streaming_dialog(){
+        $(this.dialog_component).css('display', 'block');
+    }
+    _initialize_youtube_stream(){
+        let action_obj = DomEvents._get_action_object();
+        let self = this;
+        $('#stream-youtube-video').on('click',function(){
+            let youtube_link = $('#youtube-video-link').val();
+             self.__display_youtube_streaming_dialog();
+             $(self.dialog_component).css('display', 'block');
+            action_obj._create_component_open_close('youtube', youtube_link);
+        });
 
+        $('#open-youtube-frame').on('click',function(){
+            self.__display_youtube_streaming_dialog();
+        });
+    }
+    _initialize_local_video_Stream(){
+        (function localFileVideoPlayer() {
+          'use strict'
+          var URL = window.URL || window.webkitURL
+          var displayMessage = function (message, isError) {
+            var element = document.querySelector('#message')
+            element.innerHTML = message
+            element.className = isError ? 'error' : 'info'
+          }
+          var playSelectedFile = function (event) {
+            var file = this.files[0]
+            var type = file.type
+            var videoNode = document.getElementById('local-stream-video-node')
+            var canPlay = videoNode.canPlayType(type)
+            if (canPlay === '') canPlay = 'no'
+            var message = 'Can play type "' + type + '": ' + canPlay
+            var isError = canPlay === 'no'
+            displayMessage(message, isError)
+
+            if (isError) {
+              return
+            }
+
+            var fileURL = URL.createObjectURL(file)
+            videoNode.src = fileURL;
+
+            videoNode.style.width = '400px';
+            videoNode.style.height = '300px';
+          }
+          var inputNode = document.getElementById('local-stream')
+          inputNode.addEventListener('change', playSelectedFile, false);
+
+//          $('#local-stream').on('change', function(){
+//            playSelectedFile();
+//          });
+        })()
+
+    }
+
+//    _delete_file_in_the_backend()
+//    _mark_favourite_in_the_backend()
+
+    _build_file_factory_options(){
+        let flag = 0;
+        let self = this;
+        $('.individual-search').on('mouseover', function(){
+            if ( flag == 1 ){
+                return;
+            }
+            let curr_this =  $(this);
+            let curr_file_name  = curr_this.context.textContent;
+            let file_factory_option_icons =  `<div class="file">` +
+                `<div class="file-factory-options">` +
+                    `<img class="file-factory-option-icons" file-name='${curr_file_name}' onclick=self._build_rename_field_and_call_backend(this); alt="Rename icon" src="https://img.icons8.com/ultraviolet/344/rename.png" lazy="loaded"> ` +
+                    `<img class="file-factory-option-icons" file-name='${curr_file_name}' onclick=self._delete_file_in_the_backend(this); alt="Delete Bin icon" src="https://img.icons8.com/carbon-copy/344/delete-forever--v1.png" lazy="loaded"> `+
+                     `<img class="file-factory-option-icons" file-name='${curr_file_name}' onclick=self._mark_favourite_in_the_backend('${curr_file_name}'); alt="Star icon" src="https://img.icons8.com/fluent/2x/star.png">` +
+                 `</div>`+
+            `</div>`;
+            $(this).append(file_factory_option_icons);
+            flag =1;
+        });
+        $('.individual-search').on('mouseleave', function(){
+            let curr_this =  $(this);
+            let file_icons = curr_this.find('.file');
+            file_icons.remove();
+            flag = 0;
+        });
+
+    }
     init(label_map){
 
         this.label_map = label_map;
@@ -325,6 +457,11 @@ export default class DomEvents{
 
         this._move_tabs_for_source_code_section();
         this._context_menu_for_project_tree();
+
+        this._initialize_youtube_stream();
+        this._initialize_local_video_Stream();
+
+        this._build_file_factory_options();
     }
 
 }

@@ -1,3 +1,5 @@
+https://www.w3schools.com/code/tryit.asp?filename=GIU3QHNEQFUR
+
 user upsert : 
 SDKS:
 https://bitbucket.org/timeli/sdks/pull-requests/60
@@ -15,7 +17,65 @@ https://bitbucket.org/timeli/woe/pull-requests/24
 
 
 today tasks:
-1) disabled windows defender, enable afterwards. 
+1) 2 days Airflow tool practice tasks.  
+2) NIFI processors  practice tasks.
+3) Dash Framework Practice tasks and overall understanding of UDR 
+4) Sybase setup. 
+
+
+
+  
+[{ "fname" : "sakthi","lname" : "prasath",}]
+
+
+    
+{
+	"type" : "record",
+	"namespace" : "EmployeeDetails",
+	"name" : "Employee",
+	"fields" : [
+  		{ "name" : "fname" , "type" : "string" },
+  		{ "name" : "lname" , "type" : "string" }
+	]
+}
+
+
+
+name Age
+
+
+
+
+
+
+
+
+
+"job_id"
+"company_id"
+"job_requirement"
+"required_qualification"
+"min_salary"
+"max_salary"
+"opening_date"
+"deadline"
+"job_level"
+"job_description"
+"notes"
+"title"
+"type"
+"eligibility"
+"location"
+
+
+
+
+
+
+
+tableplus
+
+
 
 
 

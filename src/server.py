@@ -9,12 +9,14 @@ from rest.routes.individual_component_fetcher import individual_component_fetche
 
 # Instantiate loggers
 flask_logger = logging.getLogger('werkzeug')
+from flaskwebgui import FlaskUI #get the FlaskUI class
 
 app = Flask(__name__)
 
 
 app.config['OPENAPI_VERSION'] = '3.0.2'
 api = Api(app)
+ui = FlaskUI(app=app, url_suffix='/api/individual-component-fetch/index')
 
 api.register_blueprint(individual_component_fetcher_routes)
 
@@ -83,4 +85,5 @@ def handle_error(e):
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1',   port='5000')
+    # app.run(host='127.0.0.1',   port='5000')
+    ui.run()

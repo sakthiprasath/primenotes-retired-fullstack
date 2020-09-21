@@ -183,6 +183,45 @@ export default class DomActions{
         }
         save_action(send_file_name);
     }
+    _rename_file_factory_files(file_type,old_file_name, new_file_name){
+        let send_file_name = '';
+        function rename_action(file_type, file_name){
+            var savable_data = '';
+            var defObj=$.Deferred();
+                var promise =
+                    $.ajax
+                    ({
+                        url: 'http://localhost:5000/api/individual-component-fetch/rename-file/'+ file_type + '/' + old_file_name + '/' + new_file_name,
+                        type : "POST",
+                        contentType: 'application/json;charset=UTF-8',
+                        success : function(response){
+                            return defObj.resolve(response);
+                        }
+                    });
+                return defObj.promise();
+        }
+        return rename_action(file_type, send_file_name);
+    }
+
+    _delete_file(file_type, file_name){
+        function delete_action(file_type, file_name){
+            var savable_data = '';
+            var defObj=$.Deferred();
+                var promise =
+                    $.ajax
+                    ({
+                        url: 'http://localhost:5000/api/individual-component-fetch/delete-file/'+ file_type + '/' + file_name,
+                        type : "POST",
+                        contentType: 'application/json;charset=UTF-8',
+                        success : function(response){
+                            return defObj.resolve(response);
+                        }
+                    });
+                return defObj.promise();
+        }
+        return delete_action(file_type, file_name);
+    }
+
     _create_component_submit_execution(event_obj){
 
             let new_component_name = $('#create-component-text-box').val()
@@ -221,7 +260,7 @@ export default class DomActions{
                 width:'50%',
                 height: height*0.8,
                 position: { my: "left top"},
-                dialogClass: 'no-close',
+                dialogClass: 'no-close success-dialog',
                  buttons: [
                         {
                             text: "L",
@@ -289,22 +328,60 @@ export default class DomActions{
             });
 
     }
-    _get_iframe_ele(compo_name){
-        let iframe_ele = "<iframe src='http://localhost:5000/api/individual-component-fetch/create_component?component_name="+compo_name + "' style='width: inherit;height: inherit;'></iframe>";
-        return $(iframe_ele);
+    _get_iframe_ele(compo_name, youtube_link){
+        let iframe_ele = "";
+        iframe_ele = "<iframe src='http://localhost:5000/api/individual-component-fetch/create_component?component_name="+compo_name + "' style='width: inherit;height: inherit;'></iframe>";
+        return $(iframe_ele).css({'width':'100%','height':'95%'});
+    }
+
+
+
+    __get_youtube_embed_iframe(link){
+//        let link = 'https://youtu.be/fAlTcjFXlic';
+        if (link.indexOf('youtu.be') > -1){
+
+            let q1 = link.split('youtu.be');
+            let iframe_ele = document.createElement('iframe');
+            iframe_ele.src = "https://www.youtube.com/embed" + q1[1];
+            return $(iframe_ele).css({'width':'100%','height':'95%'});
+        }
+        else if(link.indexOf('<iframe') > -1){
+               return $(link).css({'width':'100%','height':'95%'});
+        }
+        else{
+                if(link.indexOf('&') > -1){
+                    let link_contents = link.split('&');
+                    let watch_splits = link_contents[0].split('watch');
+                    let actual_link = watch_splits[1].split('=')[1];
+                     let iframe_ele = document.createElement('iframe');
+                    iframe_ele.src = "https://www.youtube.com/embed/" + actual_link ;
+                    return $(iframe_ele).css({'width':'100%','height':'95%'});
+                }
+            }
+
     }
     _create_component_open_close(event_obj, curr_ele){
-            let compo_name = $(curr_ele).attr('title');
-            let self = event_obj;
-            /*checking if the current to-generate component is already present as active element*/
-            if (self.active_component_dialog_element !== compo_name ){
-//                let ele = this._build_new_component(compo_name);
-//                $('#destination-container').append($(ele));
+
+            if (event_obj =='youtube'){
                   $('#create-component-dialog-sub-div').empty();
-                  let iframe_ele = this._get_iframe_ele(compo_name);
+                  let iframe_ele = this.__get_youtube_embed_iframe(curr_ele);
                   $('#create-component-dialog-sub-div').append(iframe_ele);
-                  $('#ui-id-2').text(compo_name);
-                  self.active_component_dialog_element = compo_name;
+                  $('#ui-id-2').text('Youtube');
+            }
+            else{
+                let compo_name = $(curr_ele).attr('title');
+                let self = event_obj;
+                /*checking if the current to-generate component is already present as active element*/
+                if (self.active_component_dialog_element !== compo_name ){
+    //                let ele = this._build_new_component(compo_name);
+    //                $('#destination-container').append($(ele));
+                      $('#create-component-dialog-sub-div').empty();
+                      let iframe_ele = this._get_iframe_ele(compo_name);
+                      $('#create-component-dialog-sub-div').append(iframe_ele);
+                      $('#ui-id-2').text(compo_name);
+                      self.active_component_dialog_element = compo_name;
+                    }
+
             }
 
 

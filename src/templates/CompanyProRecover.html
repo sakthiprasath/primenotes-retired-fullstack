@@ -63,6 +63,7 @@
 
 
 
+
 <!--					<script type='module'>-->
 <!--import loadComponentsContainer from './js/ComponentsContainer.js';-->
 <!--import IndividualComponentEditor from './js/DomEvents.js';-->
@@ -75,12 +76,20 @@
 
 <div id="loading-container" style="display: block;
     width: 50%;
-    left: 35%;
-    top: 50%;
-	background:skyblue;
-	height:300px;">
-	<span>Loading...</span>
-	<div class="progress" id="PreLoaderBar" style="width:80%;left:10%;top:20%;">
+    left: 25%;
+    background: skyblue;
+    height: 300px;
+    position: absolute;
+    top: 25%;">
+	<span style="
+	position: absolute;
+    top: 84px;
+    left: 30px;
+	">Loading...</span>
+	<div class="progress" id="PreLoaderBar" style="    width: 80%;
+    left: 10%;
+    top: 40%;
+    display: block;">
 
         <div class="indeterminate"></div>
     </div>
@@ -144,14 +153,14 @@ document.onreadystatechange = function () {
 
 	<div id="tab-options-section" >
 	<div class="tab-options">
-		<button id="close-editor-button" class="open-close button tab-options-button open-close" data-toggle="tooltip" title="Notes with Text Editor Options">FileFactory</button>
+		<button id="close-editor-button" class="button open-close button tab-options-button open-close" data-toggle="tooltip" title="Notes with Text Editor Options">FileFactory</button>
 
 		<button id='main-section-button' class="button open-close" data-toggle="tooltip" title="Project based Notes taker with folder and file creation options">
 			<span style="padding:3px">General Notes</span>
 		</button>
 
 		<button id='open-close-overlay' class="button open-close"  data-toggle="tooltip" title="Embed Websites, Youtube Videos">
-			<span style="padding:3px">Website Embeder</span>
+			<span style="padding:3px">Video Notes</span>
 		</button>
 
 
@@ -227,27 +236,28 @@ document.onreadystatechange = function () {
 
 
 
-	<div id='pane'>
-		<div class='resizable'>
+	<div id='pane' style="width: 40% !important;min-height: 40% !important;">
+		<div class='resizable' >
 			<div class='resizers'>
 				<div class='resizer top-left'></div>
 				<div class='resizer top-right'></div>
 				<div class='resizer bottom-left'></div>
 				<div class='resizer bottom-right'></div>
 				<div id='component-factory-header-icons'>
-					<div id="change-pane-orientation-left" class="button dropbtn">L</div>
-					<div id="change-pane-orientation-right" class="button dropbtn">R</div>
-
+					<div id='close-component-results-container'>
+						<img class='close-component-results-container-icon'
+							src="https://img.icons8.com/color/48/000000/close-window.png">
+					</div>
 					<div id='maximize-component-factory'>
 						<input id='maximize-input-toggle' type='checkbox'
 							style='display: none'> <img for='maximize-input-toggle'
 							class='maximize-icon'
 							src="https://img.icons8.com/material/64/000000/full-screen.png"></img>
 					</div>
-					<div id='close-component-results-container'>
-						<img class='close-component-results-container-icon'
-							src="https://img.icons8.com/color/48/000000/close-window.png">
-					</div>
+
+					<div id="change-pane-orientation-left" class="button dropbtn">L</div>
+					<div id="change-pane-orientation-right" class="button dropbtn">R</div>
+
 
 				</div>
 				<div id="component-factory-title">Component Factory</div>
@@ -308,7 +318,7 @@ document.onreadystatechange = function () {
 										display: block;
 										left: -20px;
 										position: absolute;">
-											<button class="button dropbtn">+</button>
+											<button id="add-new-file-in-file-factory">+</button>
 											<div  class="dropdown-content">
 											</div>
 									</div>
@@ -318,17 +328,17 @@ document.onreadystatechange = function () {
 											top: px;
 											left: 15px;
 											position: absolute;
-											width: 275px;
+											width: 300px;
 											z-index: 1;
-											background: white;
+											background: rgb(196, 221, 228);
 											height: 50px;
 											padding: 10px;
 									">
 										<input type="text" id="create-file-text-box"  class="form-text-box" placeholder="Create file">
 										<button id='create-new-file-submit-btn'  class="button">create</button>
-										<button id='close-create-file-form' class="button" style="
-										font-family:sans-serif;
-										"> X </button>
+										<button id='close-create-file-form' class="button" style="font-family:sans-serif;
+																								color: #130c0c;
+																								background: no-repeat;"> X </button>
 									</div>
 
 									<img id='single-chat' src="https://cdn2.iconfinder.com/data/icons/explore-and-analysis-2/64/76-512.png" style="
@@ -434,7 +444,7 @@ document.onreadystatechange = function () {
 
 					<div id='right-side-components'>
 						<div id='right-side-components-container'>
-						<div id="file-name" class="button" ></div>
+						<div id="file-name"  ></div>
 						<button class="button" id="editor1-save-button" class="button">save
 						</button>
 
@@ -469,7 +479,7 @@ document.onreadystatechange = function () {
  <!--password validation for drowssap file opening-->
 	<div id="password-validate-dialog" title="Title of dialog">
   		<div id='password-for-drowssap'>
-   			<input id='password-content-for-drowssap' type='password' placeholder='password'/>
+   			<input id='password-content-for-drowssap' type='password' placeholder='password' style="color:black;"/>
   			<button class="button" id='password-validate'>check password</button>
   		</div>
 	</div>
@@ -723,37 +733,20 @@ $('.CodeMirror').css('height','100%');
 
 	<div class='main-section-wrapper-class' id="overlay">
 		<div id='hider-for-resize'></div>
-		<div id='result-iframe'  style="background-color:black;">
+		<div id='result-iframe'>
 
 			<!-- tab-section with contents -->
 
 			<div class="tabset">
 			  <!-- Tab 1 -->
 			  <input type="radio" name="tabset" id="tab1" aria-controls="videos-tab-section" checked>
-			  <label for="tab1">Videos</label>
-			  <!-- Tab 2 -->
-			  <input type="radio" name="tabset" id="tab2" aria-controls="clock-tab-section">
-			  <label for="tab2">Clocks</label>
-			  <!-- Tab 3 -->
-			  <input type="radio" name="tabset" id="tab3" aria-controls="python-tab-section">
-			  <label for="tab3">Python Compiler</label>
+			  <label for="tab1">Download Youtube Videos</label>
+
 			  <!-- Tab 4 -->
 			  <input type="radio" name="tabset" id="tab4" aria-controls="dunkles">
-			  <label for="tab4">Not Occupied</label>
+			  <label for="tab4">Video Stream</label>
 
-				<div id="create-website-embeder-add-btn" class="dropdown_1" style="">
-					<button class="button dropbtn">+</button>
-					<div id="myDropdown-add-website" class="dropdown-content">
-					</div>
-				</div>
-<!--				<div id="create-website_embeder-form" style="display: block;">
-					<input type="text" id="create-website-embeder-url-text-box"  class="form-text-box" placeholder="Embed site URL">
-					<input type="text" id="tag-name-website-embeder-text-box"  class="form-text-box" placeholder="Website name">
 
-					<button id="create-website-embeder-submit-btn" class="button">create</button>
-					<button id="close-create-component-form" class="button" style="
-					"> X </button>
-				</div>-->
 
 				<!-- tab-pannels begins -->
 			  <div class="tab-panels">
@@ -784,44 +777,59 @@ $('.CodeMirror').css('height','100%');
 
 
 
-				  <section id="clock-tab-section" class="tab-panel">
-				  <h2></h2>
-<!--					<iframe src="https://vclock.com/timer/" style="-->
-<!--									width: 1345px;-->
-<!--									height: 550px;-->
-<!--									top: -52px;-->
-<!--									position: relative">-->
-<!--							  </iframe>-->
-					</section>
 
 
-
-				  <section id="python-tab-section" class="tab-panel">
-				    <h2></h2>
-<!--					<iframe src="https://www.programiz.com/python-programming/online-compiler/" style="-->
-<!--									width: 1345px;-->
-<!--									height: 550px;-->
-<!--									top: -52px;-->
-<!--									position: relative">-->
-<!--							  </iframe>-->
-					</section>
 
 
 				<section id="dunkles" class="tab-panel">
-				  <h2>Other Things</h2>
-				  <a href="https://chemours.symphonyindai.com/" target="_blank">
-								chemours tenant  </a>
-				 </br>
-			      <a href="https://economictimes.indiatimes.com/commoditysummary/symbol-GOLD.cms" target="_blank">
-					  Economic times
-				  </a>
-				  </br>
-				  <a href="https://www.goodreturns.in/gold-rates/" target="_blank">
-					  Good Returns
-				  </a>
+
+				   <div id="local-video-stream-section>" style="
+								margin-left: 30px;
+							">
+					   <input type="file"  id='local-stream'  class="button" accept="video/*"/>
+					   <label for="local-stream" class="button">stream local video</label>
+					   <div id="message"></div>
+					   <video id="local-stream-video-node" controls autoplay></video>
 
 
-				  <button class="button" onclick="window.open('http://localhost:5000/api/individual-component-fetch/screen-recorder');">Screen Recorder</button>
+				   </div>
+				 <div id="divider" style="
+				    position: fixed;
+					width: 10px;
+					height: 100%;
+					background: #5c366d;
+					left: 41%;
+					top: 7px;
+					">
+
+				 </div>
+
+					<div id="right-side-section" style="
+						left: 114%;
+						position: absolute;
+						right: 10px;
+						top: 84%;
+					">
+						<input type="text" id="youtube-video-link" title="Right click the youtube video and copy embed code and pate here" placeholder="Right click the youtube video and copy embed code and pate here" style="
+														    padding: 4px 40px;
+															margin: 7px 0;
+															box-sizing: border-box;
+															position: absolute;
+															left: 187px;
+															top: -174px;
+												">
+						<button id="stream-youtube-video" class="button" style="      position: absolute;
+																					left: 445px;
+																					top: -166px;">
+							stream Youtube video</button>
+						<button id="open-youtube-frame" class="button" style="   position: absolute;
+																					left: 601px;
+																					top: -166px;">
+							Frame</button>
+					</div>
+
+
+
 				</section>
 			  </div>
 
