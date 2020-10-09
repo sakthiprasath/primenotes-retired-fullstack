@@ -3,7 +3,6 @@
  * dtree.css v1.0.0 
  * mefe.net
  * 2014-08-21
- */
 
 body
 {
@@ -16,7 +15,7 @@ ul, li
     margin:0px;
     padding: 0px;
     list-style-type: none;
-    
+
 }
 
 a
@@ -48,7 +47,7 @@ li
 li.folder-group
 {
     height: auto;
-    
+
 }
 
 .folder-group ul
@@ -79,7 +78,6 @@ li.folder-group
 
 .main
 {
-    background: url('../images/misc.png') 2px 0 no-repeat;
     width: 18px;
     height: 18px;
     display: inline-block;
@@ -88,17 +86,25 @@ li.folder-group
 
 .folder-group
 {
-    background: url('../images/misc.png') -46px -2px repeat-y;
+    padding: 6px;
+    margin-top: 8px;
 }
 
 .folder-group.last
 {
    background: none;
 }
-
+.open-close-folder{
+    position: absolute;
+    left: 15px;
+    font-size: 22px;
+    font-family: cursive;
+    margin-left: -1px;
+    margin-top: -3px;
+    cursor: pointer;
+}
 .plus
 {
-    background: url('../images/misc.png') 0px -59px no-repeat;
     padding-left: 20px;
     display: inline-block;
     height: 18px;
@@ -158,3 +164,79 @@ li.folder-group
     display: inline-block;
     float: left;
 }
+ */
+
+
+
+
+
+/*custome tree css*/
+
+ul, #myUL {
+  list-style-type: none;
+}
+
+#myUL {
+  margin: 0;
+  padding: 0;
+  overflow: scroll;
+}
+
+
+.folder {
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: max-content;
+    padding: 5px;
+    padding-left: 20px;
+    background: #e9f3ed;
+}
+
+.folder::before {
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
+  margin-top:10px;
+}
+
+.folder-down::before {
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Safari */'
+  transform: rotate(90deg);
+}
+.open-close-folder{
+    position: relative;
+    left: -15px;
+    font-size: 22px;
+    font-family: cursive;
+    left: -10px;
+    top:1px;
+    cursor: pointer;
+}
+.file{
+    height: 10px;
+    width: 80px;
+    right: 11px;
+}
+.nested {
+    display: none;
+    left: -4px;
+    position: relative;
+    background: #e9f3ed;
+    margin-top: -12px !important;
+}
+.nested > li {
+    width: max-content;
+    padding: -4px;
+    cursor: pointer;
+    margin-top: 25px;
+}
+.active {
+  display: block;
+}
+
+
+

@@ -54,8 +54,8 @@
 			href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.css'>
 			<link rel='stylesheet'
 				href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/theme/material.css'>
-				<link rel="stylesheet"
-					href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<!--				<link rel="stylesheet"-->
+<!--					href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">-->
 					<script type="text/javascript" src="{{ url_for('static', filename='js/treeview.js') }}"></script>
 
 					<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -140,10 +140,14 @@ document.onreadystatechange = function () {
 
 
 <!-- top header section -->
-<div id="top-header">
-	<div id="logo-section">
-		<img src='https://www.freepnglogos.com/uploads/instagram-logos-png-images-free-download-2.png' alt='primenotes_logo' id='primes-notes-logo' />
-		<span class="logo-font" style="top: 12px;left: -2px;">Prime Notes</span>
+<div id="top-header" class="top-header-top-margin">
+	<div id="logo-section" class="logo-section-top-margin">
+<!--		https://www.freepnglogos.com/uploads/instagram-logos-png-images-free-download-2.png-->
+
+		<img src="{{ url_for('static', filename='images/logo_.PNG') }}" alt='primenotes_logo' id='primes-notes-logo' />
+		<span class="logo-font" style="top: 6px;
+    left: 14px;
+    width: min-content;">Prime Notes</span>
 	</div>
 
 
@@ -152,8 +156,8 @@ document.onreadystatechange = function () {
 
 
 	<div id="tab-options-section" >
-	<div class="tab-options">
-		<button id="close-editor-button" class="button open-close button tab-options-button open-close" data-toggle="tooltip" title="Notes with Text Editor Options">FileFactory</button>
+	<div id='top-header-tab-options' class="tab-options">
+		<button id="close-editor-button" class="button open-close button tab-options-button open-close" data-toggle="tooltip" title="Notes with Text Editor Options">Quick Notes</button>
 
 		<button id='main-section-button' class="button open-close" data-toggle="tooltip" title="Project based Notes taker with folder and file creation options">
 			<span style="padding:3px">General Notes</span>
@@ -179,6 +183,16 @@ document.onreadystatechange = function () {
 		<span class="logo-font user-name-font">SakthiPrasath Tamilazhagan</span>
 	</div>
 
+
+
+	<div id="header-orientation">
+
+		<div id="left-header-id" class="top-header-orientation"> <span id="left-header-id-span"> < </span></div>
+        <div id="top-header-id" class="top-header-orientation">  <span id="top-header-id-span"> ^ </span> </div>
+        <div id="right-header-id" class="top-header-orientation">  <span id="right-header-id-span"> > </span>   </div>
+        <div id="bottom-header-id" class="top-header-orientation">  <span id="bottom-header-id-span"> ^ </span>  </div>
+
+    </div>
 </div>
 
 
@@ -236,7 +250,7 @@ document.onreadystatechange = function () {
 
 
 
-	<div id='pane' style="width: 40% !important;min-height: 40% !important;">
+	<div id='pane' class="pane-centered">
 		<div class='resizable' >
 			<div class='resizers'>
 				<div class='resizer top-left'></div>
@@ -244,25 +258,30 @@ document.onreadystatechange = function () {
 				<div class='resizer bottom-left'></div>
 				<div class='resizer bottom-right'></div>
 				<div id='component-factory-header-icons'>
-					<div id='close-component-results-container'>
-						<img class='close-component-results-container-icon'
-							src="https://img.icons8.com/color/48/000000/close-window.png">
+					<div id="change-pane-orientation-left" class="button dropbtn">
+						<span class="span-for-orientation"> &lt;</span>
 					</div>
+					<div id="change-pane-orientation-right" class="button dropbtn">
+						<span class="span-for-orientation"> &gt;</span>
+					</div>
+
 					<div id='maximize-component-factory'>
 						<input id='maximize-input-toggle' type='checkbox'
 							style='display: none'> <img for='maximize-input-toggle'
 							class='maximize-icon'
 							src="https://img.icons8.com/material/64/000000/full-screen.png"></img>
 					</div>
+					<div id='close-component-results-container'>
+						<span class="close-file-factory-x span-for-orientation "> X </span>
+					</div>
 
-					<div id="change-pane-orientation-left" class="button dropbtn">L</div>
-					<div id="change-pane-orientation-right" class="button dropbtn">R</div>
+
 
 
 				</div>
-				<div id="component-factory-title">Component Factory</div>
+				<div id="component-factory-title">Quick Notes</div>
 				<div id='components-search-container'>
-						<div id='left-and-middle-section'>
+					<div id='left-and-middle-section'>
 						<div class="left-corner">
 							<div class='left-corner-sub-div'>
 								<div id='file-switch' class='component-factory-left-icons'>
@@ -360,14 +379,7 @@ document.onreadystatechange = function () {
 
 
 
-								<img id ="search-results-close-button" class="close-component-results-container-icon" src="https://img.icons8.com/color/48/000000/close-window.png" style="
-									position: absolute;
-									background: #f44336;
-									margin-top: 5px;
-									margin-right: 5px;
-									right: 5px;
-								">
-							</div>
+								<div id="search-results-close-button"> X </div>
 
 							<div class='search-results'>
 
@@ -442,6 +454,8 @@ document.onreadystatechange = function () {
 						</div>
 					</div>
 
+
+					</div>
 					<div id='right-side-components'>
 						<div id='right-side-components-container'>
 						<div id="file-name"  ></div>
@@ -464,7 +478,6 @@ document.onreadystatechange = function () {
 					</div>
 				</div>
 			</div>
-
 		</div>
 	</div>
 
@@ -507,7 +520,7 @@ document.onreadystatechange = function () {
 
 		<div class="sidenav">
 
-			<div class="context" hidden>
+			<div class="context" >
 			  <div class="context_item">
 				<div class="inner_item">
 				  Copy
@@ -538,97 +551,66 @@ document.onreadystatechange = function () {
 
 
 				<!-- tree part staAdd New Brandrts here -->
-				<div class="dTree">
-					<ul>
-						<li><a href="#" >Site</a>
-							<ul>
-								<li><a href="#" class='file-click' filename="about123">About the Web Site</a></li>
-								<li><a href="#" class='file-click' filename="site123">site123</a></li>
-								<li><a href="#" class='file-click' filename="hrithik">Hrithik</a></li>
-								<li><a href="#" class='file-click' filename="Roshan">Roshan</a></li>
-								<li><a href="#" class='file-click' filename="reshan">Reshan</a></li>
-							</ul>
-						</li>
-						<li><a href="#" >Cars</a>
-							<ul>
-								<li><a href="#" class='file-click' filename="base64_encoder" title="base64_encoder" >base64_encoder</a></li>
-								<li><a href="#" class='file-click'>List All Brand</a></li>
-								<li><a href="#" class='file-click'>Mercedes - Benz</a>
-									<ul>
-										<li><a href="#">About the Mercedes - Benz</a></li>
-										<li><a href="#">History</a></li>
-										<li><a href="#">Series</a>
-											<ul>
-												<li><a href="#">A Series</a>
-													<ul>
-														<li><a href="#">A 140</a></li>
-														<li><a href="#">A 150</a></li>
-														<li><a href="#">A 180 CDI</a></li>
-														<li><a href="#">A 200 CDI</a></li>
-													</ul></li>
-												<li><a href="#">B Series</a>
-													<ul>
-														<li><a href="#">B 140</a></li>
-														<li><a href="#">B 150</a></li>
-														<li><a href="#">B 180 CDI</a></li>
-														<li><a href="#">B Special Series</a>
-															<ul>
-																<li><a href="#">B Extreme</a></li>
-																<li><a href="#">B Jumper</a></li>
-																<li><a href="#">B Raiden</a></li>
-																<li><a href="#">B Subzero</a></li>
-															</ul></li>
-													</ul></li>
-												<li><a href="#">Concept Cars</a></li>
-												<li><a href="#">Best Prototypes</a></li>
-												<li><a href="#">List all other categories</a></li>
-											</ul></li>
-										<li><a href="#">Custom Series</a></li>
-										<li><a href="#">A+ Series for children</a></li>
-										<li><a href="#">B+ Series for women</a></li>
-									</ul></li>
-								<li><a href="#">Chevrolet</a></li>
-								<li><a href="#">Saab Custom models</a></li>
-								<li><a href="#">Fiat</a>
-									<ul>
-										<li><a href="#">Kartal SLX</a></li>
-										<li><a href="#">Dogan 1.6 Turbo</a></li>
-										<li><a href="#">Sahin</a></li>
-										<li><a href="#">Dogan Gorunumlu Sahin</a>
-											<ul>
-												<li><a href="#">1.3 Motor</a></li>
-												<li><a href="#">1.6 Motor</a></li>
-												<li><a href="#">1.8 Motor</a></li>
-												<li><a href="#">2.0 Motor</a></li>
-											</ul></li>
-										<li><a href="#">Serce</a></li>
-										<li><a href="#">Murat 131</a></li>
-									</ul></li>
-							</ul></li>
-						<li><a href="#">Electronic Models</a></li>
-						<li><a href="#">Real Estate</a></li>
-						<li><a href="#">Bruce Lee</a></li>
-						<li><a href="#">Graphics</a></li>
-						<li><a href="#">Smart Phones</a>
-							<ul>
-								<li><a href="#" class='file-click' filename='distributed_computing_1'>distributed_computing_1</a></li>
-								<li><a href="#" class='file-click' filename='distributed_computing_2'>distributed_computing_2</a></li>
+<!--				<div class="dTree">-->
+<!--					<ul>-->
+<!--						<li><a href="#" >Site</a>-->
+<!--							<ul>-->
+<!--								<li><a href="#" class='file-click' filename="about12345" file-type='document'>About the Web Site</a></li>-->
 
-								<li><a href="#" class='file-click' filename='LG'>LG</a></li>
-								<li><a href="#" class='file-click' filename='Sony'>Sony</a></li>
-								<li><a href="#" class='file-click' filename='HTC'>HTC</a></li>
-								<li><a href="#" class='file-click' filename='Samsung'>Samsung</a></li>
-								<li><a href="#">Samsung</a></li>
-								<li><a href="#">Other Models</a>
-									<ul>
-										<li><a href="#">First other model</a></li>
-										<li><a href="#">Second other model</a></li>
-									</ul></li>
-								<li><a href="#">Add New Model</a></li>
-							</ul></li>
-					</ul>
-				</div>
+<!--							</ul>-->
+<!--						</li>-->
+<!--					</ul>-->
+<!--				</div>-->
 				<!-- tree part ends here -->
+
+
+
+
+
+
+
+				<ul id="myUL">
+  					 <li>
+						<span class="folder">
+						  <span class='open-close-folder'> > </span>
+						  Beverages
+						</span>
+
+						<ul class="nested">
+							<li class='file'><a href="#" class='file-click' filename="about12345" file-type='document'>About the Web Site</a></li>
+						 	<li class='file'><a href="#" class='file-click' filename="about123">About the Web Site</a></li>
+						 	<li class='file'><a href="#" class='file-click' filename="site123">site123</a></li>
+							<li class='file'><a href="#" class='file-click' filename="hrithik">Hrithik</a></li>
+							<li class='file'><a href="#" class='file-click' filename="Roshan">Roshan</a></li>
+							<li class='file'><a href="#" class='file-click' filename="reshan">Reshan</a></li>
+							<li class='file'><a href="#" class='file-click' filename="base64_encoder" title="base64_encoder" >base64_encoder</a></li>
+							<li class='file'><a href="#" class='file-click' filename='distributed_computing_1'>distributed_computing_1</a></li>
+							<li class='file'><a href="#" class='file-click' filename='distributed_computing_2'>distributed_computing_2</a></li>
+							<li class='file'><a href="#" class='file-click' filename='LG'>LG</a></li>
+							<li class='file'><a href="#" class='file-click' filename='Sony'>Sony</a></li>
+							<li class='file'><a href="#" class='file-click' filename='HTC'>HTC</a></li>
+							<li class='file'><a href="#" class='file-click' filename='HTC'>samsung</a></li>
+
+
+
+						    <li>
+							<span class="folder">
+							  <span class='open-close-folder'> > </span>Tea
+							</span>
+							<ul class="nested">
+							  <li class='file'>Black Tea</li>
+							  <li class='file'>White Tea</li>
+							</ul>
+						  </li>
+
+
+						</ul>
+					  </li>
+					</ul>
+
+
+
+
 
 			</div>
 
@@ -642,30 +624,76 @@ document.onreadystatechange = function () {
 
 
 		<script src="{{ url_for('static', filename='js/SourceCodeSection.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/DocumentSection.js') }}"></script>
 
 		<div class="split__bar"></div>
 
 		<div id='source-code-main-div' class="split__right">
 			<div id="sidenav-button-id" class="sidenav-button-class">
-				<span class="sidenav-button-content-class">&gt;&gt;</span>
+				<span class="sidenav-button-content-class"> => </span>
 			</div>
+
+
 
 		<div id='source-code-sub-divs'>
 <!--			<div id="close-editor-button">-->
 <!--			<img style='height:100%;width:100%;' src="https://img.icons8.com/color/48/000000/suitcase.png">-->
 <!--			</div>-->
-			<div id="move-tabs-left" class ='button dropbtn'>L</div>
-			<div id="move-tabs-right" class="button dropbtn">R</div>
-
-			<div id='tabs-list-drop-down' class="dropdown">
-				<button  class="three-vertical-dots button dropbtn">MORE</button>
-				<div id="myDropdown" class="dropdown-content">
-				</div>
-			</div>
 
 			<div id='tab-container'>
+				<div id="create-new-project-note" class="dropdown_1" style="
+
+									    ">
+											<button id="add-new-file-in-project-notes" class="button">+</button>
+											<div class="dropdown-content">
+											</div>
+									</div>
 			</div>
 		</div>
+		<div id="tabs-container-button-section">
+				<div id="move-tabs-left" class ='button dropbtn'>
+					<span class="move-tabs">  &lt;</span>
+				</div>
+				<div id="move-tabs-right" class="button dropbtn">
+					<span class="move-tabs">  >	</span>
+				</div>
+
+				<div id='tabs-list-drop-down' class="dropdown">
+					<button  class="three-vertical-dots button" style="    padding: 2px;
+						right: -2px;
+						transform: rotate(90deg);
+						background: none;
+						outline:none;
+					">>></button>
+					<div id="myDropdown" class="dropdown-content">
+					</div>
+				</div>
+		</div>
+
+
+		<!-- Summernote section for  Document editor starts -->
+
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
+
+
+
+
+
+    	<div id="summer-note" style="display:none"> 	</div>
+
+
+
+
+
+
+
+
+		<!-- codemirror section for  code editpr starts -->
 		<link rel='stylesheet'
 			href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.css'>
 		<link href='https://fonts.googleapis.com/css?family=Dosis|Candal' rel='stylesheet' type='text/css'>
@@ -677,10 +705,6 @@ document.onreadystatechange = function () {
 
 				<div id='code-editor'>
 					<textarea id="js">
-
-
-
-
 					</textarea>
 				</div>
 				<script
@@ -805,11 +829,10 @@ $('.CodeMirror').css('height','100%');
 				 </div>
 
 					<div id="right-side-section" style="
-						left: 114%;
-						position: absolute;
-						right: 10px;
-						top: 84%;
-					">
+						    left: 450px;
+							top: 273px;
+							position: absolute;
+											">
 						<input type="text" id="youtube-video-link" title="Right click the youtube video and copy embed code and pate here" placeholder="Right click the youtube video and copy embed code and pate here" style="
 														    padding: 4px 40px;
 															margin: 7px 0;

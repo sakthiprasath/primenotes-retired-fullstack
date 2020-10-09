@@ -1,4 +1,4 @@
-<h2 style="text-align: center;"><strong>Apache&nbsp; nifi :&nbsp;</strong></h2>
+<h2 style="text-align:center"><strong>Apache&nbsp; nifi :&nbsp;</strong></h2>
 
 <p>- 200 nodes i the cluster like Hadoop to solve&nbsp; a problem and each communicating the server for every 5 seconds about their live status is not feasible.<br />
 More notes here also&nbsp;<br />
@@ -11,7 +11,7 @@ More notes here also&nbsp;<br />
 
 <p>-So the status is shared between the cordinators for sync purpose.&nbsp;&nbsp;</p>
 
-<h2 style="text-align: center;"><strong>While Excuting :</strong></h2>
+<h2 style="text-align:center"><strong>While Excuting :</strong></h2>
 
 <p>-&nbsp;notify pattern[wait untill the data requested has come back]</p>
 
@@ -19,7 +19,7 @@ More notes here also&nbsp;<br />
 
 <hr />
 <hr />
-<h2 style="text-align: center;"><strong>Windows Hack :&nbsp;</strong></h2>
+<h2 style="text-align:center"><strong>Windows Hack :&nbsp;</strong></h2>
 
 <p>if unknowingly windows explorer is killed in task manager,<br />
 Go to&nbsp; c:/windows/explorer.exe</p>
@@ -30,7 +30,7 @@ Go to&nbsp; c:/windows/explorer.exe</p>
 
 <p>&nbsp;</p>
 
-<p><input alt="" src="https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg" style="height: 354px; width: 830px;" type="image" /><br />
+<p><input alt="" src="https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg" style="height:354px; width:830px" type="image" /><br />
 <a href="https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg">https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg</a></p>
 
 <p>&nbsp;</p>
@@ -140,3 +140,25 @@ notes:</p>
 <p>ssombu</p>
 
 <p>honey</p>
+
+<p>-------------------------------------------</p>
+
+<h2>If windows brightness adjusting not working :&nbsp;</h2>
+
+<p>https://blog.pcrisk.com/windows/12682-how-to-fix-screen-brightness-control#run-windows-troubleshooters</p>
+
+<h2><strong>In short&nbsp; :</strong></h2>
+
+<h2>&quot;&quot;&quot;go to drivers</h2>
+
+<p>display -&gt; uninstall intel driver and</p>
+
+<p>right click the root and click scan and install. &quot;&quot;&quot;</p>
+
+<p>--------------------------------------------------------------------------------</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>

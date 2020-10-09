@@ -59,14 +59,19 @@ export default class DomActions{
             let screenWidth = parseInt(window.innerWidth) + 1;
             let screenHeight = parseInt(window.innerHeight) + 1;
 
-    		if(curr_container_width === screenWidth && curr_container_height === screenHeight){
+//    			if(curr_container_width === screenWidth && curr_container_height === screenHeight){
+                if($('#pane').hasClass('pane-full-screen')){
 
-    		        $('#pane').css({'width':'50%','height':'50%','top':'10px','left':'0px'});
+//    		        $('#pane').css({'width':'50%','height':'50%','top':'10px','left':'0px'});
+                    $('#pane').addClass('pane-centered');
+                    $('#pane').removeClass('pane-full-screen');
 
-    		}
-    		else{
-    			    $('#pane').css({'width':screenWidth,'height':screenHeight,'top':'0px','left':'0px'});
-            }
+                }
+                else{
+    //    			    $('#pane').css({'width':screenWidth,'height':screenHeight});
+                        $('#pane').removeClass('pane-centered');
+                        $('#pane').addClass('pane-full-screen');
+                }
     }
     _get_all_videos(){
          var defObj=$.Deferred();
@@ -125,9 +130,11 @@ export default class DomActions{
                     let len=tabArr.length;
                     for(let i=0;i<len;i++){
                         let file_name = $(tabArr[i]).text().trim();
-                        var resultHtml="<div class='tab' onclick=buildTab('" + file_name + "');>";
+                        let type = $(tabArr[i]).attr('type');
+                        let on_click_func = `buildTab('${file_name}','${type}')`;
+                        var resultHtml=`<div class='tab' onclick=${on_click_func}; >`;
                         resultHtml+= file_name;
-                        resultHtml+= "</div>";
+                        resultHtml+= `</div>`;
                         $('#myDropdown').append($(resultHtml));
                         }
                     }
@@ -383,13 +390,31 @@ export default class DomActions{
                     }
 
             }
-
+    }
+    _header_orientation_actions(){
 
     }
 
     init(){
         this._button_clicks();
         this._get_all_videos();
+
+
+
+
+        var toggler = document.getElementsByClassName("folder");
+        var i;
+
+        for (i = 0; i < toggler.length; i++) {
+          toggler[i].addEventListener("click", function() {
+            this.parentElement.querySelector(".nested").classList.toggle("active");
+            this.classList.toggle("folder-down");
+          });
+        }
+
+
+
+
 
     }
 }

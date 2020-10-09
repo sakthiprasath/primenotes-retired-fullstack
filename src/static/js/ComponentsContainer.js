@@ -92,7 +92,9 @@ export default class loadComponentsContainer {
 	makeResizableDiv(div) {
 		  const element = document.querySelector(div);
 		  const resizers = document.querySelectorAll(div + ' .resizer')
-		  const minimum_size = 20;
+		  const minimum_width = 570;
+		  const minimum_height = 275;
+
 		  let original_width = 0;
 		  let original_height = 0;
 		  let original_x = 0;
@@ -114,23 +116,25 @@ export default class loadComponentsContainer {
 		    })
 		    
 		    function resize(e) {
+		      element.classList = '';
+		      element.classList = 'pane-reduce-transition';
 		      if (currentResizer.classList.contains('bottom-right')) {
 		        const width = original_width + (e.pageX - original_mouse_x);
 		        const height = original_height + (e.pageY - original_mouse_y)
-		        if (width > minimum_size) {
+		        if (width > minimum_width) {
 		          element.style.width = width + 'px'
 		        }
-		        if (height > minimum_size) {
+		        if (height > minimum_height) {
 		          element.style.height = height + 'px'
 		        }
 		      }
 		      else if (currentResizer.classList.contains('bottom-left')) {
 		        const height = original_height + (e.pageY - original_mouse_y)
 		        const width = original_width - (e.pageX - original_mouse_x)
-		        if (height > minimum_size) {
+		        if (height > minimum_height) {
 		          element.style.height = height + 'px'
 		        }
-		        if (width > minimum_size) {
+		        if (width > minimum_width) {
 		          element.style.width = width + 'px'
 		          element.style.left = original_x + (e.pageX - original_mouse_x) + 'px'
 		        }
@@ -138,10 +142,10 @@ export default class loadComponentsContainer {
 		      else if (currentResizer.classList.contains('top-right')) {
 		        const width = original_width + (e.pageX - original_mouse_x)
 		        const height = original_height - (e.pageY - original_mouse_y)
-		        if (width > minimum_size) {
+		        if (width > minimum_width) {
 		          element.style.width = width + 'px'
 		        }
-		        if (height > minimum_size) {
+		        if (height > minimum_height) {
 		          element.style.height = height + 'px'
 		          element.style.top = original_y + (e.pageY - original_mouse_y) + 'px'
 		        }
@@ -149,11 +153,11 @@ export default class loadComponentsContainer {
 		      else {
 		        const width = original_width - (e.pageX - original_mouse_x)
 		        const height = original_height - (e.pageY - original_mouse_y)
-		        if (width > minimum_size) {
+		        if (width > minimum_width) {
 		          element.style.width = width + 'px'
 		          element.style.left = original_x + (e.pageX - original_mouse_x) + 'px'
 		        }
-		        if (height > minimum_size) {
+		        if (height > minimum_height) {
 		          element.style.height = height + 'px'
 		          element.style.top = original_y + (e.pageY - original_mouse_y) + 'px'
 		        }
@@ -225,7 +229,7 @@ static searchResults(labelMap){
 
     init(){
 	this.buildDragAndDropEleSet();
-	this.makeResizableDiv('.resizable');
+	this.makeResizableDiv('#pane');
 
 	var screenWidth=parseInt(screen.width);
 	var screenHeight=parseInt(screen.height);

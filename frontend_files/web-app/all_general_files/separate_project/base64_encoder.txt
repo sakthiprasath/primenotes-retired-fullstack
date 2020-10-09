@@ -5,16 +5,15 @@ m1 = {
     "AuthRequest": {
         "auth_url": 'http://auth_server:16000/',
         "resource_url": 'http://gateway',
-        "client_id": "b4ea82d9-caf1-4e38-b24b-04650875d78f",
-        "client_secret": "r5Lc6czwNliI00TyEiz8EycPLLYUjN6vH_Ak420HE9Q",
-        "username": "sakthi",
-        "password": "sakthics25",
+        "client_id": "2e8b0b82-d7e3-4d80-b3f6-c21fc3f579ae",
+        "client_secret": "tK5_HnRw7UGYNbhKm77dRY7sVOOaeFtEJbfSpk7pwmI",
+        "username": "super-user",
+        "password": "siaipass1234",
         "redirect_url": ''}
 }
 b = str(m1).encode("UTF-8")
 encodedString = base64.b64encode(b)
 print(encodedString)
-
 
 
 

@@ -1,38 +1,60 @@
-
-Apache Air flow :
-1) monitor preprocessing  large data through pipleines.
-2) scheduler
-
-Default Airflow DASg files folder in my pc: 
-C:\Users\Sakthi\AppData\Local\Programs\Python\Python38-32\Lib\site-packages\airflow
-
-
-https://www.youtube.com/watch?v=AHMm1wfGuHE
-https://www.youtube.com/watch?v=vvr_WNzEXBE
-
-
-https://www.astronomer.io/guides/airflow-wsl/
+just improve you memory - with connected facts logically related - LSTM - :slightly_smiling_face:
 
 
 
-https://godatadriven.com/blog/using-the-airflow-experimental-rest-api-to-trigger-a-dag/
-https://airflow.apache.org/docs/stable/start.html
-https://timeli.atlassian.net/wiki/spaces/SIA/pages/1164640257/Engineering+UDR
-https://timeli.atlassian.net/wiki/spaces/SIA/pages/1111884171/Universal+Data+Repository
+7:48
+approach each problem or issue situation with open mind and a logical plan - look for reasons - and work backwards - from errors, 
+log-files and why a piece of code behaves that way
 
-download vscode c++ build tools : 
-https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16
-
-pwd present working dir
-ls -a 
-	bashrc (edit for env variables)
+--------------------------------------------------------------------------------------------------------------------------------------
 
 
-    
-    
-    
-    ipv4
-    host    all             all             127.0.0.1/32            md5
-    
-    ipv6
-    host    all             all             ::1/128                 md5
+timeli-sdk==3.8.9
+
+
+
+auth-server 16000
+tsdb-apm 5000
+
+send_msg_to_event_hub.py
+|
+|
+V
+main.py
+|
+|
+V
+pipeline 
+  -> transformer
+		-> get asset from tsdb apm		
+			[ create a AssetClient  
+
+
+
+
+
+
+
+
+$('#summernote').summernote({
+  height: 300,                 // set editor height
+  minHeight: null,             // set minimum height of editor
+  maxHeight: null,             // set maximum height of editor
+  focus: true                  // set focus to editable area after initializing summernote
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

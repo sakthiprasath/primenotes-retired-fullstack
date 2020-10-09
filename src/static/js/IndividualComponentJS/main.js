@@ -12,11 +12,11 @@ myGeeks();
 function get_file_from_server(componentClassName){
 
 var defObj=$.Deferred();
-componentClassName = 'html_components-' + componentClassName;
+//componentClassName = 'html_components-' + componentClassName;
 	var promise =
 		$.ajax
 		({
-			url:'http://localhost:5000/api/individual-component-fetch/general_files/'+componentClassName,
+			url:'http://localhost:5000/api/individual-component-fetch/general_files/html_components/'+componentClassName,
 			type : "GET",
 			contentType:'application/x-www-form-urlencoded',
 			success : function(response){
@@ -36,12 +36,12 @@ get_file_from_server(component_name).done(function(data){
 
 function save_action(file_name){
             var savable_data = window.editor.getDoc().getValue();
-            file_name = 'html_components-' + file_name;
+//            file_name = 'html_components-' + file_name;
             var defObj=$.Deferred();
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/individual-component-fetch/save-file/'+file_name,
+                        url: 'http://localhost:5000/api/individual-component-fetch/save-file/html_components/'+file_name,
                         data: JSON.stringify(savable_data),
                         type : "POST",
                         contentType: 'application/json;charset=UTF-8',
