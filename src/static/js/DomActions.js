@@ -3,6 +3,8 @@
 export default class DomActions{
 
     _button_clicks(){
+
+
         /*initial clicks for file */
             ($('.file-click')[0]).click()
             setTimeout( function(){
@@ -164,7 +166,7 @@ export default class DomActions{
     _create_file_in_backend(file_type, file_name){
     /*this funciton can also be used from indicidualComponentJS/main.js */
         let send_file_name = '';
-        function save_action(file_name){
+        function create_action(file_name){
             var savable_data = '';
             var defObj=$.Deferred();
                 var promise =
@@ -182,13 +184,35 @@ export default class DomActions{
         }
         if(file_type === 'html_components')
             send_file_name = 'html_components-' + file_name;
-        else if( file_type === 'separate_project' ){
+        else if( file_type === 'document' ){
             send_file_name = 'separate_project-' + file_name;
         }
         else if( file_type === 'file_factory' ){
             send_file_name = 'file_factory-' + file_name;
         }
-        save_action(send_file_name);
+        create_action(send_file_name);
+    }
+     _create_file_in_backend_duplicate( data_map){
+    /*this funciton can also be used from indicidualComponentJS/main.js */
+        let send_file_name = '';
+        function create_action(data_map){
+
+            var defObj=$.Deferred();
+                var promise =
+                    $.ajax
+                    ({
+                        url: 'http://localhost:5000/api/individual-component-fetch/create-file/',
+                        data: JSON.stringify(data_map),
+                        type : "POST",
+                        contentType: 'application/json;charset=UTF-8',
+                        success : function(response){
+                            return defObj.resolve(response);
+                        }
+                    });
+                return defObj.promise();
+        }
+
+        create_action(data_map);
     }
     _rename_file_factory_files(file_type,old_file_name, new_file_name){
         let send_file_name = '';
@@ -402,17 +426,16 @@ export default class DomActions{
 
 
 
-        var toggler = document.getElementsByClassName("folder");
-        var i;
-
-        for (i = 0; i < toggler.length; i++) {
-          toggler[i].addEventListener("click", function() {
-            this.parentElement.querySelector(".nested").classList.toggle("active");
-            this.classList.toggle("folder-down");
-          });
-        }
-
-
+//        var toggler = document.getElementsByClassName("folder-section");
+//        var i;
+//
+//
+//        for (i = 0; i < toggler.length; i++) {
+//          toggler[i].addEventListener("click", function() {
+//            this.parentElement.querySelector(".nested").classList.toggle("active");
+//            this.classList.toggle("folder-down");
+//          });
+//        }
 
 
 

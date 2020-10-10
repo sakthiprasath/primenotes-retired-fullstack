@@ -12,7 +12,20 @@ export default class DomEvents{
     }
 
     _build_tree_and_close_sidenav(){
-//        $(".dTree").dTree();
+
+        /*events for tree*/
+        $('.folder').on('click', function(){
+            let parent = $(this).parent();
+            let sibling_1_nested = $(parent).siblings().get(0);
+            $(sibling_1_nested).toggleClass('active');
+            $(parent).toggleClass('folder-down');
+//            let sibling_1_nested = $(this).siblings().get(0);
+//            $(sibling_1_nested).toggleClass('active');
+//            $(this).toggleClass('folder-down');
+        });
+
+
+
         /*beginning of navigation  bar */
  		let self = this;
  		self.kojinFlag = 0;
@@ -49,7 +62,6 @@ export default class DomEvents{
 				 $('.split__bar').css('left','19%');
 				self.kojinFlag = 0;
             }
-
         });
     }
     _move_tabs_for_source_code_section(){
@@ -331,22 +343,79 @@ export default class DomEvents{
         })
     }
 
+    _create_new_project_file_form(self, curr_active_folder){
+         var modal = document.getElementById("modal-id");
+         modal.style.display = "block";
+
+         // Get the <span> element that closes the modal
+         var span = document.getElementById("close-modal");
+
+         // When the user clicks on <span> (x), close the modal
+         span.onclick = function() {
+            modal.style.display = "none";
+         }
+
+
+
+         // When the user clicks anywhere outside of the modal, close it
+         window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+
+                   }
+            }
+    }
+
     _context_menu_for_project_tree(){
-            $('.file-click').on("contextmenu", function(event) {
-              event.preventDefault();
-              $(".context")
-                .show()
-                .css({
-                  top: event.pageY - 100,
-                  left: event.pageX
+          let self = this;
+          let curr_active_folder = '';
+//          let html = `<div class="inner-item-form">` +
+//				    `<input id="new-project-note-name" type="text" /> `+
+//				    `<button id='new-project-file-submit'>Create</button> </div>`;
+//
+//          $('.modal-body').append($(html).clone());
+          $('.three-dots').on("click", function(event) {
+                let parent_folder = $(this).parent().get(0);
+                curr_active_folder = $(parent_folder).attr('folder-name');
+                event.preventDefault();
+                $(".context")
+                    .show()
+                    .css({
+                      top: event.pageY - 100,
+                      left: event.pageX
+                    });
                 });
+
+
+
+            $(document).click(function(e) {
+                if($(e.target).hasClass('three-dots') != true){
+                    $(".context").css('display', 'none');
+                }
             });
-            $(document).click(function() {
 
-                $(".context").css('display', 'none');
+            $('.inner-item').on('click',function(){
+                let option_name = $(this).text().trim();
+                switch(option_name){
+                    case "New File":
+                    self._create_new_project_file_form(self, curr_active_folder)
+                    break;
 
-
+                }
             });
+             $('#new-project-file-submit').on('click',function(){
+                let project_note_name = $('#new-project-note-name').val();
+                let temp_map = {
+                    'folder_id' : '',
+                    'folder_name' : curr_active_folder,
+                    'file_name' : project_note_name,
+                    'file_type' : 'document'
+                }
+                self.action_obj._create_file_in_backend_duplicate(temp_map);
+
+        });
+
+
     }
     __display_youtube_streaming_dialog(){
         $(this.dialog_component).css('display', 'block');
@@ -519,27 +588,32 @@ export default class DomEvents{
         this._create_component_buttons_generation('html_components').then(function(){
             self._create_component_open_close();
         });
+        this._header_orientation_events();
         this._create_component_form()
+
         this._component_container_open_close();
         this._create_new_file_factory_form();
+
         this._download_video_click_event();
         this._maximize_icon_click_event();
+
         this._initialize_file_chat_switches_events();
         this._initialize_tool_tips();
 
         this._tabs_dropdown_click();
         this._open_close_main_section_wrapper();
-        this._build_tree_and_close_sidenav();
         this._create_event_listeners_for_dragbar();
 
         this._move_tabs_for_source_code_section();
-        this._context_menu_for_project_tree();
 
         this._initialize_youtube_stream();
         this._initialize_local_video_Stream();
 
+        this._build_tree_and_close_sidenav();
+        this._context_menu_for_project_tree();
+
         this._build_file_factory_options();
-        this._header_orientation_events();
+
     }
 
 }

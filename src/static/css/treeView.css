@@ -181,8 +181,11 @@ ul, #myUL {
   padding: 0;
   overflow: scroll;
 }
-
-
+.folder-section{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    width: max-content;
+}
 .folder {
     cursor: pointer;
     -webkit-user-select: none;
@@ -202,6 +205,24 @@ ul, #myUL {
   margin-top:10px;
 }
 
+.three-dots{
+	font-size: 24px;
+    position: relative;
+    width: max-content;
+    cursor: pointer;
+    right: -30px;
+    display:none;
+}
+.three-dots:hover{
+	font-size: 26px;
+    transition-duration:0.5s;
+
+}
+
+.folder-section:hover  .three-dots{
+	display: block;
+}
+
 .folder-down::before {
   -ms-transform: rotate(90deg); /* IE 9 */
   -webkit-transform: rotate(90deg); /* Safari */'
@@ -217,7 +238,7 @@ ul, #myUL {
     cursor: pointer;
 }
 .file{
-    height: 10px;
+    height: 22px;
     width: 80px;
     right: 11px;
 }
@@ -226,13 +247,13 @@ ul, #myUL {
     left: -4px;
     position: relative;
     background: #e9f3ed;
-    margin-top: -12px !important;
+    margin-top: -2px !important;
 }
 .nested > li {
     width: max-content;
     padding: -4px;
     cursor: pointer;
-    margin-top: 25px;
+    margin-top: 5px;
 }
 .active {
   display: block;

@@ -355,17 +355,17 @@ bottom:0px;
 .file-factory-options{
     background-color: #88baca;
     display: block;
-    right: -18px;
+    right: -70px;
     position: relative;
-    padding-right: 6px;
+    padding-right: 5px;
     padding-left: 5px;
-    width: 100px;
+    width: 77px;
     top: 3px;
     border-radius: 5px;
 }
 .file-factory-option-icons {
-    width: 25px;
-    height: 25px;
+    width: 18px;
+    height: 18px;
 }
 
 #right-side-components-container {

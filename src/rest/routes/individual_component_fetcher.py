@@ -51,6 +51,18 @@ def fetch_individual_component_codes(component_key):
 
 
 
+@individual_component_fetcher_routes.route('create-file/', methods=['POST'])
+def create_file():
+    @after_this_request
+    def add_header(response):
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
+    try:
+        data_map = request.get_json()
+        SQLIndividualComponent().create_file(data_map)
+        return jsonify('save_success')
+    except Exception as e:
+        return print(e)
 
 @individual_component_fetcher_routes.route('save-file/<file_name>', methods=['POST'])
 def save_file(file_name):

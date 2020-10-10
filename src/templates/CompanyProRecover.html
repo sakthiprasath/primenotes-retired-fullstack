@@ -25,6 +25,7 @@
 
 		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/utils.css') }}" />
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/ComponentEditor.css') }}" />
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/ResultIframe.css') }}" />
 	 <link rel="stylesheet" href="{{ url_for('static', filename='/css/ComponentEditor.css') }}">
@@ -518,33 +519,34 @@ document.onreadystatechange = function () {
 			</div>
 
 
-		<div class="sidenav">
+		<div class="sidenav" >
 
 			<div class="context" >
-			  <div class="context_item">
-				<div class="inner_item">
+			  <div class="context-item">
+				<div class="inner-item">
+				  Rename
+				</div>
+			  </div>
+			  <div class="context-item">
+				<div class="inner-item">
+				  New File
+				</div>
+
+			  </div>
+			  <div class="context-item">
+				<div class="inner-item">
+				  New Folder
+				</div>
+			  </div>
+			  <div class="context-hr"></div>
+			  <div class="context-item">
+				<div class="inner-item">
+				  Move To Trash
+				</div>
+			  </div>
+			  <div class="context-item">
+				<div class="inner-item">
 				  Copy
-				</div>
-			  </div>
-			  <div class="context_item">
-				<div class="inner_item">
-				  Cut
-				</div>
-			  </div>
-			  <div class="context_item">
-				<div class="inner_item">
-				  Paste
-				</div>
-			  </div>
-			  <div class="context_hr"></div>
-			  <div class="context_item">
-				<div class="inner_item">
-				  Share
-				</div>
-			  </div>
-			  <div class="context_item">
-				<div class="inner_item">
-				  Delete
 				</div>
 			  </div>
 			</div>
@@ -571,13 +573,19 @@ document.onreadystatechange = function () {
 
 				<ul id="myUL">
   					 <li>
-						<span class="folder">
-						  <span class='open-close-folder'> > </span>
-						  Beverages
-						</span>
+
+						<div class='folder-section' folder-name="Beverages">
+							<span class="folder">
+							  <span class='open-close-folder'> > </span>
+							  Beverages
+							</span>
+							<span class='three-dots'>...</span>
+						</div>
 
 						<ul class="nested">
-							<li class='file'><a href="#" class='file-click' filename="about12345" file-type='document'>About the Web Site</a></li>
+							<li class='file'><a href="#" class='file-click' filename="about12345" file-type='document'>About the Web Site</a>
+
+							</li>
 						 	<li class='file'><a href="#" class='file-click' filename="about123">About the Web Site</a></li>
 						 	<li class='file'><a href="#" class='file-click' filename="site123">site123</a></li>
 							<li class='file'><a href="#" class='file-click' filename="hrithik">Hrithik</a></li>
@@ -589,14 +597,17 @@ document.onreadystatechange = function () {
 							<li class='file'><a href="#" class='file-click' filename='LG'>LG</a></li>
 							<li class='file'><a href="#" class='file-click' filename='Sony'>Sony</a></li>
 							<li class='file'><a href="#" class='file-click' filename='HTC'>HTC</a></li>
-							<li class='file'><a href="#" class='file-click' filename='HTC'>samsung</a></li>
+							<li class='file'><a href="#" class='file-click' filename='samsung'>samsung</a></li>
 
 
 
 						    <li>
-							<span class="folder">
-							  <span class='open-close-folder'> > </span>Tea
-							</span>
+							<div class='folder-section' folder-name="Tea">
+								<span class="folder">
+								  <span class='open-close-folder'> > </span>Tea
+								</span>
+								 <span class='three-dots'>...</span>
+							</div>
 							<ul class="nested">
 							  <li class='file'>Black Tea</li>
 							  <li class='file'>White Tea</li>
@@ -983,7 +994,26 @@ $('.CodeMirror').css('height','100%');
 
 
 
+<!-- dialog content starts here-->
+<div id="modal-id" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span id="close-modal">&times;</span>
+      <h2>Modal Header</h2>
+    </div>
+    <div class="modal-body">
+		<div class="inner-item-form">
+			<input id="new-project-note-name" type="text" />
+			<button id='new-project-file-submit'>Create</button>
+		</div>
+    </div>
+    <div class="modal-footer">
+      <h3>Modal Footer</h3>
+    </div>
+  </div>
 
+</div>
 
 
 

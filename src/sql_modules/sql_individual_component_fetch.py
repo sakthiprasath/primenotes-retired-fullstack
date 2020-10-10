@@ -41,6 +41,20 @@ class SQLIndividualComponent():
 
         return read_file_contents
 
+    def create_file(self, data_map):
+        file_type = data_map['file_type']
+        file_name = data_map['file_name']
+
+        if file_type == 'document':
+            folder_id = data_map.get('folder_id', None)
+            folder_name = data_map['folder_name']
+            file_name = 'separate_project\\' + folder_name + '\\' + file_name
+
+        file_path = '../frontend_files/web-app/all_general_files/' + file_name + ".txt"
+        fp = open(file_path, 'w+')
+
+
+
     def result_write(self, file_name, file_content):
 
         name_list = file_name.split('-')
