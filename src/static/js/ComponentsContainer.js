@@ -343,7 +343,7 @@ static searchResults(labelMap){
                         data: JSON.stringify(savable_data),
                         type : "POST",
                         contentType: 'application/json;charset=UTF-8',
-                        success : function(response){``
+                        success : function(response){
                             return defObj.resolve(response);
                         }
                     });
@@ -363,6 +363,25 @@ static initialisingEventHandlers(){
 		$('#right-side-components-container').css('display','block');
         let file_name = this.textContent.trim();
         $('#file-name').text(file_name)
+
+
+        let component_factory_icon = $('.active').prop('id');
+        if(component_factory_icon == "video-stream-switch"){
+             $('#middle-section').hide();
+             $('#quick-notes-in-file-factory').show();
+             let screenWidth = screen.width;
+             let pane_width = parseInt($('#pane').css('width'));
+             let pane_left =  parseInt($('#pane').css('left'));
+             let pane_right = parseInt($('#pane').css('right'));
+             $('#right-side-components').removeClass('right-side-components-split-screen');
+             $('#left-and-middle-section').css('width',pane_width/2);
+             $('.file-factory-split-bar').css('left' , (pane_width/2));
+             $('#right-side-components').css('left' , (pane_width/2));
+             $('#right-side-components').css('width' , (pane_width/2));
+
+
+        }
+
 
 		/*handle drowssap file with password validation*/
 		if(this.id === 'drowssap'){
@@ -389,6 +408,7 @@ static initialisingEventHandlers(){
 	$('#close-component-results-container').on('click',function(){
 		$('#pane').css('display','none');
 		$('#close-editor-button').css('display','block');
+		$($('#right-side-components').children()[0]).attr('src','');
 	});
 
     /*ckeditor part starts */

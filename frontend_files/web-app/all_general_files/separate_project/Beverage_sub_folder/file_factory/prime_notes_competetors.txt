@@ -1,0 +1,65 @@
+<h2><strong>Ever Note </strong></h2>
+
+<p><strong>-charged</strong></p>
+
+<p><strong>-no markdown</strong></p>
+
+<p><strong>-no nested hierarchy of notebooks</strong></p>
+
+<p>&nbsp;</p>
+
+<h2><strong>MS one note </strong></h2>
+
+<p><strong>-free&nbsp;</strong></p>
+
+<h2>&nbsp;</h2>
+
+<h2><strong>BEAR</strong></h2>
+
+<p>-markdown<br>
+&nbsp;</p>
+
+<h2><strong>Apple Notes [ Notability ]</strong></h2>
+
+<p>-no markdown<br>
+-default formatting looks good than evernote</p>
+
+<p>&nbsp;</p>
+
+<h2>Google keep</h2>
+
+<p>-no hierarchical&nbsp;</p>
+
+<p>-search function is good</p>
+
+<p>&nbsp;</p>
+
+<p><strong>Notion</strong></p>
+
+<p>-good with database options</p>
+
+<p>&nbsp;</p>
+
+<h2><strong>Standard Notes</strong>&nbsp;</h2>
+
+<p>-paid</p>
+
+<p>-free with only bare text editor</p>
+
+<p>-no drag and&nbsp; drop feature for files and folders</p>
+
+<p>&nbsp;</p>
+
+<h2><strong>slite&nbsp;</strong></h2>
+
+<p>same features</p>
+
+<p>&nbsp;</p>
+
+<p>ulysys</p>
+
+<p>infineltily nestable folders</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>

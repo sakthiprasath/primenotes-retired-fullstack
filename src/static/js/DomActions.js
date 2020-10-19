@@ -39,19 +39,46 @@ export default class DomActions{
                 $("#right-side-components").css('left','245px');
             });
 
-            $('#chat-switch').on('click',function(){
-                $('#file-middle-section').css('display','none');
-                $('#chat-middle-section').css(
-                        {'display' : 'block',
-                        'width' : '260px'});
-                $('#create-new-file').css('display','none');
-                 $('#single-chat').css('display','block');
-                $('#group-chat').css('display','block');
-                $('#middle-section').css({'width' : '275px'})
-                $("#right-side-components").css('left','310px');
+//            $('#chat-switch').on('click',function(){
+//                $('#file-middle-section').css('display','none');
+//                $('#chat-middle-section').css(
+//                        {'display' : 'block',
+//                        'width' : '260px'});
+//                $('#create-new-file').css('display','none');
+//                 $('#single-chat').css('display','block');
+//                $('#group-chat').css('display','block');
+//                $('#middle-section').css({'width' : '275px'})
+//                $("#right-side-components").css('left','310px');
+//
+//            });
+            $('#video-stream-switch').on('click',function(){
+                let component_factory_icon_elems = $('.component-factory-left-icons');
+                let len = component_factory_icon_elems.length;
+                for(let i=0;i < len; i++){
+                    let class_list = $(component_factory_icon_elems[i]).attr('class').split(' ');
+                    if( class_list.indexOf('active') >=0 ){
+                        $(component_factory_icon_elems[i]).removeClass('active');
+                        break;
+                    }
+                }
+
+                $(this).addClass('active');
+
+                let classList =  $("#right-side-components").attr('class');
+                if(classList.indexOf('right-side-components-split-screen') >=0 ){
+                    $("#right-side-components").removeClass('right-side-components-split-screen');
+                    $("#right-side-components").addClass('right-side-components-full-screen');
+                    $('.file-factory-split-bar').css('left','0px');
+                }
+                else{
+                    $("#right-side-components").removeClass('right-side-components-full-screen');
+                    $("#right-side-components").addClass('right-side-components-split-screen');
+                    $('.file-factory-split-bar').css('left','250px');
+                    $('#left-and-middle-section').css('width','255px');
+                }
+
 
             });
-
     }
     maximize_icon_click_action(self){
         /* maximize-icon in drag and drop container action*/
@@ -74,6 +101,10 @@ export default class DomActions{
                         $('#pane').removeClass('pane-centered');
                         $('#pane').addClass('pane-full-screen');
                 }
+                $('#right-side-components').addClass('right-side-components-split-screen');
+                $('.file-factory-split-bar').css('left','250px');
+                $('#left-and-middle-section').css('width','255px');
+
     }
     _get_all_videos(){
          var defObj=$.Deferred();
@@ -192,7 +223,7 @@ export default class DomActions{
         }
         create_action(send_file_name);
     }
-     _create_file_in_backend_duplicate( data_map){
+     _create_file_in_backend_duplicate(data_map){
     /*this funciton can also be used from indicidualComponentJS/main.js */
         let send_file_name = '';
         function create_action(data_map){
@@ -212,7 +243,7 @@ export default class DomActions{
                 return defObj.promise();
         }
 
-        create_action(data_map);
+        return create_action(data_map);
     }
     _rename_file_factory_files(file_type,old_file_name, new_file_name){
         let send_file_name = '';
@@ -348,6 +379,7 @@ export default class DomActions{
                             icon: "ui-icon-maximize",
                             click: function( e ) {
                                 let dialog_ele = $(this).parent();
+                                $($('#create-component-dialog-sub-div').children()[0]).attr('src','');
                                 dialog_ele.css('display', 'none');
                             }
                         }
@@ -374,10 +406,14 @@ export default class DomActions{
             let q1 = link.split('youtu.be');
             let iframe_ele = document.createElement('iframe');
             iframe_ele.src = "https://www.youtube.com/embed" + q1[1];
-            return $(iframe_ele).css({'width':'100%','height':'95%'});
+//            return $(iframe_ele).css({'width':'100%','height':'100%'});
+            return $(iframe_ele).attr('width','100%').attr('height','100%');
+
         }
         else if(link.indexOf('<iframe') > -1){
-               return $(link).css({'width':'100%','height':'95%'});
+//               return $(link).css({'width':'100%','height':'100%'});
+               return $(link).attr('width','100%').attr('height','100%');
+
         }
         else{
                 if(link.indexOf('&') > -1){
@@ -386,7 +422,8 @@ export default class DomActions{
                     let actual_link = watch_splits[1].split('=')[1];
                      let iframe_ele = document.createElement('iframe');
                     iframe_ele.src = "https://www.youtube.com/embed/" + actual_link ;
-                    return $(iframe_ele).css({'width':'100%','height':'95%'});
+                    return $(iframe_ele).attr('width','100%').attr('height','100%');
+
                 }
             }
 
@@ -396,8 +433,15 @@ export default class DomActions{
             if (event_obj =='youtube'){
                   $('#create-component-dialog-sub-div').empty();
                   let iframe_ele = this.__get_youtube_embed_iframe(curr_ele);
-                  $('#create-component-dialog-sub-div').append(iframe_ele);
-                  $('#ui-id-2').text('Youtube');
+//                $('#create-component-dialog-sub-div').append(iframe_ele);
+//                $('#ui-id-1').text('Youtube');
+                  $('.right-side-components-in-file-factory').hide();
+                  $('#right-side-components').css({'left':'35px','width':'calc(100% - 35px)','height':'100%','display':'block'})
+                  $('#right-side-components-container').css({'width':'100%','height':'100%','display':'block'})
+                  $('#video-stream-in-file-factory').css({'left':'0','width':'100%','height':'100%','display':'block'});
+                  $('#video-stream-in-file-factory').empty();
+                  $('#video-stream-in-file-factory').append($(iframe_ele));
+
             }
             else{
                 let compo_name = $(curr_ele).attr('title');
@@ -412,30 +456,22 @@ export default class DomActions{
                       $('#ui-id-2').text(compo_name);
                       self.active_component_dialog_element = compo_name;
                     }
-
             }
     }
     _header_orientation_actions(){
 
     }
-
+    _notification_dialog(content_str){
+        let content_html  = `<span><p>${content_str}</p></span>`;
+        $('#notification').css('opacity',1).empty().append($(content_html).clone());
+        setTimeout(function(){
+            $('#notification').css('opacity',0);
+        }, 2500);
+    }
     init(){
-        this._button_clicks();
+//        this._button_clicks();
         this._get_all_videos();
 
-
-
-
-//        var toggler = document.getElementsByClassName("folder-section");
-//        var i;
-//
-//
-//        for (i = 0; i < toggler.length; i++) {
-//          toggler[i].addEventListener("click", function() {
-//            this.parentElement.querySelector(".nested").classList.toggle("active");
-//            this.classList.toggle("folder-down");
-//          });
-//        }
 
 
 

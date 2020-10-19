@@ -1,0 +1,91 @@
+<pre>
+a)
+<img alt="" src="https://player.slideplayer.com/24/6945108/data/images/img1.jpg" style="height:168px; width:453px" />
+
+
+</pre>
+
+<hr />
+<p>b)<img alt="" src="https://upload.wikimedia.org/wikipedia/commons/d/d3/IBM_Blue_Gene_P_supercomputer.jpg" style="height:132px; width:199px" /><br />
+&nbsp;</p>
+
+<hr />
+<p>c)<img alt="" src="https://player.slideplayer.com/24/6945108/data/images/img2.jpg" style="height:242px; width:512px" /></p>
+
+<p>&nbsp;</p>
+
+<hr />
+<p><strong><span style="font-size:18px">Distributed computing :</span></strong></p>
+
+<p>1)serial computing:<br />
+sequential execution of tasks and processes.<br />
+image a&nbsp;</p>
+
+<p>2) concurrent &nbsp;computing :<br />
+when something is executed simultaneously or nearly started at the same time.&nbsp;<br />
+image c</p>
+
+<p>3)an examaple of distributed computing is<br />
+lets take a problem xyz<br />
+x &nbsp;<br />
+y&nbsp;<br />
+z<br />
+and make it execute concurrently and after all the sub prolems have been solved&nbsp;<br />
+we gather the solutions and form the end result.<br />
+these x,y,z may or maynot have shared access.<br />
+&nbsp;&nbsp; &nbsp;<br />
+&nbsp;&nbsp; &nbsp;i)when shared access comes to scene, it means that we may have crictical section problem.<br />
+&nbsp;&nbsp; &nbsp; &nbsp;there are algorithms available &nbsp;to handle crictical section thing.&nbsp;<br />
+&nbsp; &nbsp; &nbsp;&nbsp;<br />
+image b<br />
+&nbsp; &nbsp;&nbsp;<br />
+4) Distributed computing comes in mind when we here terms like<br />
+&nbsp;&nbsp; &nbsp;Massive Data( big data)<br />
+&nbsp; &nbsp; Real-Time Analytics<br />
+&nbsp; &nbsp; Large scale computations.<br />
+&nbsp; &nbsp; Block chain and so on<br />
+&nbsp; &nbsp;&nbsp;<br />
+----------------------<br />
+<strong><span style="font-size:18px">Threads and processes Hands on example:</span></strong></p>
+
+<p>threads :<br />
+&nbsp;&nbsp; &nbsp;1) single thread python example<br />
+&nbsp; &nbsp; 2) multi thread python example</p>
+
+<p>&nbsp; &nbsp;&nbsp;<br />
+process :<br />
+&nbsp;&nbsp; &nbsp;1) similar to threads<br />
+&nbsp; &nbsp; 2) controversial thing is that<br />
+&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;factorial example:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; i) when memory acess time is more than processing time&nbsp;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; parallel processing is not suitable.<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ii) when memory access time less than processing time ,<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; distributed computing architecture should be used.<br />
+&nbsp;&nbsp; &nbsp;</p>
+
+<p>groupchat &nbsp;application to implement Distributed computing :&nbsp;<br />
+&nbsp; &nbsp;</p>
+
+<p><br />
+&nbsp; &nbsp;<br />
+<span style="font-size:16px"><strong>Atlast :&nbsp;<br />
+Advantages :</strong></span></p>
+
+<p>&nbsp; &nbsp; Resource sharing &minus; Sharing of hardware and software resources.</p>
+
+<p>&nbsp; &nbsp; Openness &minus; Flexibility of using hardware and software of different vendors.</p>
+
+<p>&nbsp; &nbsp; Concurrency &minus; Concurrent processing to enhance performance.</p>
+
+<p>&nbsp; &nbsp; Scalability &minus; Increased throughput by adding new resources.</p>
+
+<p>&nbsp; &nbsp; Fault tolerance &minus; The ability to continue in operation after a fault has occurred.</p>
+
+<p><span style="font-size:16px"><strong>Disadvantages :</strong></span><br />
+&nbsp; &nbsp; Complexity &minus; They are more complex than centralized systems.</p>
+
+<p>&nbsp; &nbsp; Security &minus; More susceptible to external attack.</p>
+
+<p>&nbsp; &nbsp; Manageability &minus; More effort required for system management.</p>
+
+<p>&nbsp; &nbsp; Unpredictability &minus; Unpredictable responses depending on the system organization and network load.</p>

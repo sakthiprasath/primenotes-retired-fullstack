@@ -1,7 +1,7 @@
 
 #top-header{
     position: fixed;
-    background-color: #2d5779;
+    background-color: #2b95ea;
     display: grid;
     z-index: 5;
     box-shadow: rgb(19 24 29) 0px 0.1px 8px;
@@ -82,7 +82,7 @@
 	position: relative;
     font-size: 90%;
     font-family: cursive;
-    color: #9ccbe2;
+    color: #e9f3ed;
     letter-spacing: 1px;
     font-weight: 600;
     cursor:pointer;
@@ -167,7 +167,7 @@
     width: 14px;
     height: 16px;
     background: white;
-    background: #2d5779;
+    background: #2b95ea;
     color: white;
 }
 

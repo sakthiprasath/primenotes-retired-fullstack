@@ -1,0 +1,97 @@
+<p>yet schemas to be created :-&gt; see schema file</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>CREATE TABLE ModifiedExpertHistory (<br />
+&nbsp;&nbsp; &nbsp;ExpertHistoryID2 INTEGER NOT NULL,<br />
+&nbsp;&nbsp; &nbsp;SourceHistoryID INTEGER NULL,<br />
+&nbsp;&nbsp; &nbsp;HistoryID INTEGER NOT NULL,<br />
+&nbsp;&nbsp; &nbsp;Comments VARCHAR NULL,<br />
+&nbsp;&nbsp; &nbsp;AnalystName VARCHAR(100) NULL,<br />
+&nbsp;&nbsp; &nbsp;FinalName VARCHAR(100) NULL,<br />
+&nbsp;&nbsp; &nbsp;MaxLevel VARCHAR(200) NULL,<br />
+&nbsp;&nbsp; &nbsp;Revised SMALLINT NULL,<br />
+&nbsp;&nbsp; &nbsp;FigureOfMerit INTEGER NULL,<br />
+&nbsp;&nbsp; &nbsp;MIDNumber INTEGER NULL,<br />
+&nbsp;&nbsp; &nbsp;ReviewDate TIMESTAMP NULL,<br />
+&nbsp;&nbsp; &nbsp;FinalReviewDate TIMESTAMP NULL,<br />
+&nbsp;&nbsp; &nbsp;DiscrepancyClassificationIDs VARCHAR(50) NULL,<br />
+&nbsp;&nbsp; &nbsp;DiscrepancySignificanceID INTEGER NULL DEFAULT 0,<br />
+&nbsp;&nbsp; &nbsp;CreatedBySiteID INTEGER NULL,<br />
+&nbsp;&nbsp; &nbsp;ModifiedBySiteID INTEGER NULL,<br />
+&nbsp;&nbsp; &nbsp;RecordLastUpdated TIMESTAMP NULL DEFAULT timezone(&#39;utc&#39;, now()),<br />
+&nbsp;&nbsp; &nbsp;QuickReviewName VARCHAR(100) NULL,<br />
+&nbsp;&nbsp; &nbsp;IncludeInReport SMALLINT NULL,<br />
+&nbsp;&nbsp; &nbsp;PRIMARY KEY ( ExpertHistoryID2 )<br />
+)</p>
+
+<p>CREATE TABLE MID (<br />
+&nbsp;&nbsp; &nbsp;MIDID INTEGER NOT NULL,<br />
+&nbsp;&nbsp; &nbsp;MIDNumber SMALLINT NULL,<br />
+&nbsp;&nbsp; &nbsp;MIDName VARCHAR(50) NULL,<br />
+&nbsp;&nbsp; &nbsp;MIDNominalSpeed FLOAT NULL,<br />
+&nbsp;&nbsp; &nbsp;SpeedUnitID INTEGER NULL,<br />
+&nbsp;&nbsp; &nbsp;Orientation VARCHAR(1) NULL,<br />
+&nbsp;&nbsp; &nbsp;MIDRating SMALLINT NULL,<br />
+&nbsp;&nbsp; &nbsp;SecondarySpeedRatio FLOAT NULL,<br />
+&nbsp;&nbsp; &nbsp;CreatedBySiteID INTEGER NULL,<br />
+&nbsp;&nbsp; &nbsp;ModifiedBySiteID INTEGER NULL,<br />
+&nbsp;&nbsp; &nbsp;RecordLastUpdated TIMESTAMP NULL DEFAULT timezone(&#39;utc&#39;, now()),<br />
+&nbsp;&nbsp; &nbsp;PRIMARY KEY ( MIDID )<br />
+)</p>
+
+<p>CREATE TABLE Averages (<br />
+&nbsp;&nbsp; &nbsp;AverageID INTEGER NOT NULL UNIQUE,<br />
+&nbsp;&nbsp; &nbsp;MIDID INTEGER NOT NULL,<br />
+&nbsp;&nbsp; &nbsp;PositionNumber SMALLINT NOT NULL,<br />
+&nbsp;&nbsp; &nbsp;Axis VARCHAR(1) NOT NULL,<br />
+&nbsp;&nbsp; &nbsp;Range VARCHAR(1) NOT NULL,<br />
+&nbsp;&nbsp; &nbsp;NumberOfAverages SMALLINT NOT NULL,<br />
+&nbsp;&nbsp; &nbsp;NumberOfOrders SMALLINT NOT NULL,<br />
+&nbsp;&nbsp; &nbsp;AverageSum BIGINT NOT NULL,<br />
+&nbsp;&nbsp; &nbsp;AverageSumOfSquares BIGINT NOT NULL,<br />
+&nbsp;&nbsp; &nbsp;AverageSumOffset FLOAT NULL,<br />
+&nbsp;&nbsp; &nbsp;AverageSumRatio FLOAT NULL,<br />
+&nbsp;&nbsp; &nbsp;AverageSumOfSquaresOffset FLOAT NULL,<br />
+&nbsp;&nbsp; &nbsp;AverageSumOfSquaresRatio FLOAT NULL,<br />
+&nbsp;&nbsp; &nbsp;AverageSpeedSum FLOAT NULL,<br />
+&nbsp;&nbsp; &nbsp;AverageSpeedSumOfSquares FLOAT NULL,<br />
+&nbsp;&nbsp; &nbsp;Type VARCHAR(1) NULL DEFAULT &#39;S&#39;,<br />
+&nbsp;&nbsp; &nbsp;CreatedBySiteID INTEGER NULL,<br />
+&nbsp;&nbsp; &nbsp;ModifiedBySiteID INTEGER NULL,<br />
+&nbsp;&nbsp; &nbsp;RecordLastUpdated TIMESTAMP NULL DEFAULT timezone(&#39;utc&#39;, now()),<br />
+&nbsp;&nbsp; &nbsp;PRIMARY KEY ( AverageID )<br />
+)</p>
+
+<p><br />
+CREATE TABLE FaultFrequencies (<br />
+&nbsp;&nbsp; &nbsp;FaultFrequencyLookupID INTEGER NOT NULL,<br />
+&nbsp;&nbsp; &nbsp;MIDID INTEGER NULL,<br />
+&nbsp;&nbsp; &nbsp;FaultCode VARCHAR(3) NULL,<br />
+&nbsp;&nbsp; &nbsp;FaultRatio FLOAT NULL,<br />
+&nbsp;&nbsp; &nbsp;SecondaryShaft VARCHAR(2) NOT NULL,<br />
+&nbsp;&nbsp; &nbsp;FinalRatio FLOAT NULL,<br />
+&nbsp;&nbsp; &nbsp;CreatedBySiteID INTEGER NULL,<br />
+&nbsp;&nbsp; &nbsp;ModifiedBySiteID INTEGER NULL,<br />
+&nbsp;&nbsp; &nbsp;RecordLastUpdated TIMESTAMP NULL DEFAULT timezone(&#39;utc&#39;, now()),<br />
+&nbsp;&nbsp; &nbsp;PRIMARY KEY ( FaultFrequencyLookupID )<br />
+)</p>
+
+<p><br />
+CREATE TABLE Components (<br />
+&nbsp;&nbsp; &nbsp;ComponentID INTEGER NOT NULL,<br />
+&nbsp;&nbsp; &nbsp;ComponentCode NUMERIC(5,2) NULL,<br />
+&nbsp;&nbsp; &nbsp;MIDID INTEGER NULL,<br />
+&nbsp;&nbsp; &nbsp;ComponentOrder SMALLINT NULL,<br />
+&nbsp;&nbsp; &nbsp;PickupCode VARCHAR(50) NULL,<br />
+&nbsp;&nbsp; &nbsp;PickupOne SMALLINT NULL,<br />
+&nbsp;&nbsp; &nbsp;PickupTwo SMALLINT NULL,<br />
+&nbsp;&nbsp; &nbsp;PickupThree SMALLINT NULL,<br />
+&nbsp;&nbsp; &nbsp;PickupFour SMALLINT NULL,<br />
+&nbsp;&nbsp; &nbsp;CreatedBySiteID INTEGER NULL,<br />
+&nbsp;&nbsp; &nbsp;ModifiedBySiteID INTEGER NULL,<br />
+&nbsp;&nbsp; &nbsp;RecordLastUpdated TIMESTAMP NULL DEFAULT timezone(&#39;utc&#39;, now()),<br />
+&nbsp;&nbsp; &nbsp;PRIMARY KEY ( ComponentID )<br />
+)</p>

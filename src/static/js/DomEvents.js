@@ -1,5 +1,6 @@
 import DomActions from './DomActions.js';
 import loadComponentsContainer from './ComponentsContainer.js';
+import SourceCodeSection from './DocumentSection.js';
 
 export default class DomEvents{
     components_list= [];
@@ -124,15 +125,25 @@ export default class DomEvents{
          $('#change-pane-orientation-left').on('click',function(){
             $('#pane').removeAttr('class');
             $('#pane').addClass('pane-orientation-left-class');
+            $('#right-side-components').addClass('right-side-components-split-screen');
+            $('.file-factory-split-bar').css('left','250px');
+            $('#left-and-middle-section').css('width','255px');
+
          });
 
         $('#change-pane-orientation-right').on('click',function(){
             $('#pane').removeAttr('class');
             $('#pane').addClass('pane-orientation-right-class');
+            $('#right-side-components').addClass('right-side-components-split-screen');
+            $('.file-factory-split-bar').css('left','250px');
+            $('#left-and-middle-section').css('width','255px');
          });
          $('#component-factory-title').on('dblclick', function(){
             $('#pane').removeAttr('class');
             DomEvents._get_action_object().maximize_icon_click_action();
+            $('#right-side-components').addClass('right-side-components-split-screen');
+            $('.file-factory-split-bar').css('left','250px');
+            $('#left-and-middle-section').css('width','255px');
          });
 
     }
@@ -297,6 +308,7 @@ export default class DomEvents{
             let css_map = {'background':'rgb(20 222 92)',
                             'color': 'black'};
             $(this).css(css_map);
+            self._create_new_project_file_form(self, 'right-side-section');
         });
 
         $('#html-renderer').on('click',function(){
@@ -317,25 +329,28 @@ export default class DomEvents{
 
 
     }
+//    this._create_event_listeners_for_dragbar('.split__left','.split__bar','#source-code-main-div', 'destimation-container');
+
     _create_event_listeners_for_dragbar(){
-        const bar = document.querySelector('.split__bar');
-        const left = document.querySelector('.split__left');
+        const bar = $('.split__bar');
+        const left_part = $('.split__left');
+        const right_part = $('#source-code-main-div');
         let self = this;
         self.mouse_is_down = false;
 
-        bar.addEventListener('mousedown', (e) => {
+        bar.on('mousedown', function(e){
           self.mouse_is_down = true;
-        })
+        });
 
-        document.addEventListener('mousemove', (e) => {
+        $(document).on('mousemove', (e) => {
           if (!self.mouse_is_down) return;
           let screenWidth = screen.width;
           let q1 = screenWidth - parseInt(`${e.clientX}px`);
           let q2 =  parseInt(`${e.clientX}px`);
-          left.style.width = `${e.clientX}px`;
-          $('#source-code-main-div').css('width',q1);
-          $('#source-code-main-div').css('left',q2);
-          $('.split__bar').css('left',q2-5);
+          left_part.css('width', `${e.clientX}px`);
+          right_part.css('width',q1);
+          right_part.css('left',q2);
+          bar.css('left',q2-5);
         })
 
         document.addEventListener('mouseup', () => {
@@ -343,9 +358,45 @@ export default class DomEvents{
         })
     }
 
-    _create_new_project_file_form(self, curr_active_folder){
+    _create_event_listeners_for_file_factory_dragbar(){
+        const bar = $('.file-factory-split-bar');
+        const left_part = $('#left-and-middle-section');
+        const right_part = $('#right-side-components');
+        let self = this;
+        self.file_factory_mouse_is_down = false;
+
+        bar.on('mousedown', function(e){
+          self.file_factory_mouse_is_down = true;
+          $('#right-side-components').removeClass('right-side-components-split-screen');
+        });
+
+        $(document).on('mousemove', (e) => {
+          if (!self.file_factory_mouse_is_down) return;
+          let screenWidth = screen.width;
+          let pane_width = parseInt($('#pane').css('width'));
+          let screenLeft =  parseInt($('#pane').css('left'));
+          let screenRight = parseInt($('#pane').css('right'));
+
+          let q1 = screenWidth - parseInt(`${e.clientX}px`) - screenRight;
+          let q2 =  parseInt(`${e.clientX}px`);
+          if(q2 < screenLeft || q2 > screenLeft + pane_width)
+            return;
+          left_part.css('width',q2 - screenLeft);
+          right_part.css('width',q1 -5);
+          right_part.css('left',q2 - screenLeft);
+          bar.css('left',q2-screenLeft - 5);
+        })
+
+        document.addEventListener('mouseup', () => {
+          self.file_factory_mouse_is_down = false;
+//            $('#right-side-components').addClass('right-side-components-split-screen');
+        })
+    }
+    _create_new_project_file_form(self, form_id){
          var modal = document.getElementById("modal-id");
          modal.style.display = "block";
+         $('.inner-item-form').hide();
+         $('#' + form_id).show();
 
          // Get the <span> element that closes the modal
          var span = document.getElementById("close-modal");
@@ -354,8 +405,6 @@ export default class DomEvents{
          span.onclick = function() {
             modal.style.display = "none";
          }
-
-
 
          // When the user clicks anywhere outside of the modal, close it
          window.onclick = function(event) {
@@ -369,24 +418,19 @@ export default class DomEvents{
     _context_menu_for_project_tree(){
           let self = this;
           let curr_active_folder = '';
-//          let html = `<div class="inner-item-form">` +
-//				    `<input id="new-project-note-name" type="text" /> `+
-//				    `<button id='new-project-file-submit'>Create</button> </div>`;
-//
-//          $('.modal-body').append($(html).clone());
+          let parent_folder = '';
+
           $('.three-dots').on("click", function(event) {
-                let parent_folder = $(this).parent().get(0);
-                curr_active_folder = $(parent_folder).attr('folder-name');
+                parent_folder = $(this).parent().get(0);
+                curr_active_folder = $(parent_folder).attr('folder-path');
                 event.preventDefault();
                 $(".context")
                     .show()
                     .css({
-                      top: event.pageY - 100,
+                      top: event.pageY,
                       left: event.pageX
                     });
                 });
-
-
 
             $(document).click(function(e) {
                 if($(e.target).hasClass('three-dots') != true){
@@ -398,7 +442,7 @@ export default class DomEvents{
                 let option_name = $(this).text().trim();
                 switch(option_name){
                     case "New File":
-                    self._create_new_project_file_form(self, curr_active_folder)
+                    self._create_new_project_file_form(self, 'new-project-file-create-form')
                     break;
 
                 }
@@ -407,18 +451,35 @@ export default class DomEvents{
                 let project_note_name = $('#new-project-note-name').val();
                 let temp_map = {
                     'folder_id' : '',
-                    'folder_name' : curr_active_folder,
+                    'folder_path' : curr_active_folder,
                     'file_name' : project_note_name,
                     'file_type' : 'document'
                 }
-                self.action_obj._create_file_in_backend_duplicate(temp_map);
+//                self.action_obj._initiate_loder();
+                self.action_obj._create_file_in_backend_duplicate(temp_map).then(function(){
 
+                    if (curr_active_folder.indexOf('MY-ROOT') >=0 ){
+                        curr_active_folder = curr_active_folder.replace('MY-ROOT', project_note_name + '.txt');
+                    }
+                    let new_file_html = `<li class="file"><a href="#" class="file-click" filename='${project_note_name}' file-type="document" file-path='${curr_active_folder}'>${project_note_name}</a></li>`
+                    let nested_folder_sibling = $(parent_folder).siblings().get(0);
+                    $(nested_folder_sibling).prepend($(new_file_html));
+                    /*initialising events for the created file in tree*/
+                    let source_code_section_obj = new SourceCodeSection();
+                    source_code_section_obj
+                        .buildTab(project_note_name, 'document', curr_active_folder);
+                    source_code_section_obj._initialise_summer_note();
+
+                    let content_str = 'File Creation Success';
+                    self.action_obj._notification_dialog(content_str);
+                });
         });
-
 
     }
     __display_youtube_streaming_dialog(){
-        $(this.dialog_component).css('display', 'block');
+//        $(this.dialog_component).css('display', 'block');
+//        $(this.dialog_component).css({'width': '40%','height': '55%','top':'32%','left':'40%'});
+        $('#pane').show();
     }
     _initialize_youtube_stream(){
         let action_obj = DomEvents._get_action_object();
@@ -426,7 +487,7 @@ export default class DomEvents{
         $('#stream-youtube-video').on('click',function(){
             let youtube_link = $('#youtube-video-link').val();
              self.__display_youtube_streaming_dialog();
-             $(self.dialog_component).css('display', 'block');
+//             $(self.dialog_component).css('display', 'block');
             action_obj._create_component_open_close('youtube', youtube_link);
         });
 
@@ -603,7 +664,7 @@ export default class DomEvents{
         this._tabs_dropdown_click();
         this._open_close_main_section_wrapper();
         this._create_event_listeners_for_dragbar();
-
+        this._create_event_listeners_for_file_factory_dragbar();
         this._move_tabs_for_source_code_section();
 
         this._initialize_youtube_stream();

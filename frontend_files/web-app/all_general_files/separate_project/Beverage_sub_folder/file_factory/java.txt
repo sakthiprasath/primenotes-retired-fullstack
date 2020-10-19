@@ -1,0 +1,5 @@
+<h2>LINUX :&nbsp;</h2>
+
+<h2>By default all the jars are present in&nbsp;</h2>
+
+<p>/usr/share/java</p>

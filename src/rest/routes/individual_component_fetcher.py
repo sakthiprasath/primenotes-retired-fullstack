@@ -64,15 +64,16 @@ def create_file():
     except Exception as e:
         return print(e)
 
-@individual_component_fetcher_routes.route('save-file/<file_name>', methods=['POST'])
-def save_file(file_name):
+@individual_component_fetcher_routes.route('save-file', methods=['POST'])
+def save_file():
     @after_this_request
     def add_header(response):
         response.headers['Access-Control-Allow-Origin'] = '*'
         return response
     try:
-        data = request.get_json()
-        SQLIndividualComponent().result_write(file_name,data)
+        file_path = request.args.get('file_path')
+        file_data = request.get_json(force=True)
+        SQLIndividualComponent().result_write(file_path, file_data)
         return jsonify('save_success')
     except Exception as e:
         return print(e)
@@ -101,15 +102,16 @@ def delete_file(category, file_name):
     except Exception as e:
         return print(e)
 
-@individual_component_fetcher_routes.route('/general_files/<category>/<file_name>', methods=['GET'])
-def get_data_by_name(category, file_name):
+@individual_component_fetcher_routes.route('/general_files/<category>', methods=['GET'])
+def get_data_by_name(category):
     @after_this_request
     def add_header(response):
         response.headers['Access-Control-Allow-Origin'] = '*'
         return response
 
     try:
-        file_data = SQLIndividualComponent().get_file_data(category, file_name)
+        file_path = json.loads(request.args.get('file_path'))
+        file_data = SQLIndividualComponent().get_file_data(category, file_path)
         return file_data
     except Exception as e:
         return print(e)
@@ -144,6 +146,18 @@ def get_files(file_type):
     except Exception as e:
         return print(e)
 
+@individual_component_fetcher_routes.route('tree', methods=['GET'])
+def get_tree():
+    @after_this_request
+    def add_header(response):
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
+    try:
+
+        ret_dict = SQLIndividualComponent().get_tree()
+        return jsonify(ret_dict), 200
+    except Exception as e:
+        return print(e)
 
 
 @individual_component_fetcher_routes.route('get-all-videos', methods=['GET'])

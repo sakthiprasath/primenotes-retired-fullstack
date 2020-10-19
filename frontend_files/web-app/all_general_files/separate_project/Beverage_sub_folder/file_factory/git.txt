@@ -1,0 +1,13 @@
+<p><strong><span style="font-size:16px">OPENRESTY :&nbsp;</span></strong></p>
+
+<p><a href="https://openresty.org/en/getting-started.html">https://openresty.org/en/getting-started.html</a></p>
+
+<p><br>
+<strong>creating branch locally and pushing to remote</strong> :&nbsp;</p>
+
+<ul>
+	<li>git checkout -b&nbsp;branch_name</li>
+	<li>git add -u</li>
+	<li>git commit -m "some message"</li>
+	<li>git push --set-upstream origin branch_name</li>
+</ul>

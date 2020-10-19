@@ -94,10 +94,11 @@ height:230px;
 /*stream local video*/
 
 #local-stream {
-  height: 0;
-  overflow: hidden;
-  width: 0;
-  top:15px;
+    height: 0;
+    overflow: hidden;
+    width: 0;
+    top: -13px;
+    left: 20px;
 }
 
 [type="file"] + label {

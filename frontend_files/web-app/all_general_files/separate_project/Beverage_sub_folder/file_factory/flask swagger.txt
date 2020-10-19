@@ -1,0 +1,709 @@
+<p>http://editor.swagger.io/</p>
+
+<p><span style="font-size:20px"><strong>Swagger Reference Pull Requests :&nbsp;</strong></span><br />
+<a href="https://bitbucket.org/timeli/health-scores-api/pull-requests/11/added-openapijson-and-routes?link_source=email">https://bitbucket.org/timeli/health-scores-api/pull-requests/11/added-openapijson-and-routes?link_source=email</a></p>
+
+<h1>Swagger reference notes :</h1>
+
+<p>------------------------------------------------------</p>
+
+<p>swagger: &quot;2.0&quot;<br />
+info:<br />
+&nbsp; description: &quot;This is a sample server Petstore server. &nbsp;You can find out more about &nbsp; &nbsp; Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/). &nbsp; &nbsp; &nbsp;For this sample, you can use the api key `special-key` to test the authorization &nbsp; &nbsp; filters.&quot;<br />
+&nbsp; version: &quot;1.0.0&quot;<br />
+&nbsp; title: &quot;Swagger Petstore&quot;<br />
+&nbsp; termsOfService: &quot;http://swagger.io/terms/&quot;<br />
+&nbsp; contact:<br />
+&nbsp; &nbsp; email: &quot;apiteam@swagger.io&quot;<br />
+&nbsp; license:<br />
+&nbsp; &nbsp; name: &quot;Apache 2.0&quot;<br />
+&nbsp; &nbsp; url: &quot;http://www.apache.org/licenses/LICENSE-2.0.html&quot;<br />
+host: &quot;petstore.swagger.io&quot;<br />
+basePath: &quot;/v2&quot;<br />
+tags:<br />
+- name: &quot;pet&quot;<br />
+&nbsp; description: &quot;Everything about your Pets&quot;<br />
+&nbsp; externalDocs:<br />
+&nbsp; &nbsp; description: &quot;Find out more&quot;<br />
+&nbsp; &nbsp; url: &quot;http://swagger.io&quot;<br />
+- name: &quot;store&quot;<br />
+&nbsp; description: &quot;Access to Petstore orders&quot;<br />
+- name: &quot;user&quot;<br />
+&nbsp; description: &quot;Operations about user&quot;<br />
+&nbsp; externalDocs:<br />
+&nbsp; &nbsp; description: &quot;Find out more about our store&quot;<br />
+&nbsp; &nbsp; url: &quot;http://swagger.io&quot;<br />
+schemes:<br />
+- &quot;https&quot;<br />
+- &quot;http&quot;<br />
+paths:<br />
+&nbsp; /pet:<br />
+&nbsp; &nbsp; post:<br />
+&nbsp; &nbsp; &nbsp; tags:<br />
+&nbsp; &nbsp; &nbsp; - &quot;pet&quot;<br />
+&nbsp; &nbsp; &nbsp; summary: &quot;Add a new pet to the store&quot;<br />
+&nbsp; &nbsp; &nbsp; description: &quot;&quot;<br />
+&nbsp; &nbsp; &nbsp; operationId: &quot;addPet&quot;<br />
+&nbsp; &nbsp; &nbsp; consumes:<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/json&quot;<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/xml&quot;<br />
+&nbsp; &nbsp; &nbsp; produces:<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/xml&quot;<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/json&quot;<br />
+&nbsp; &nbsp; &nbsp; parameters:<br />
+&nbsp; &nbsp; &nbsp; - in: &quot;body&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; name: &quot;body&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Pet object that needs to be added to the store&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; required: true<br />
+&nbsp; &nbsp; &nbsp; &nbsp; schema:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $ref: &quot;#/definitions/Pet&quot;<br />
+&nbsp; &nbsp; &nbsp; responses:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;405&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Invalid input&quot;<br />
+&nbsp; &nbsp; &nbsp; security:<br />
+&nbsp; &nbsp; &nbsp; - petstore_auth:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; - &quot;write:pets&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; - &quot;read:pets&quot;<br />
+&nbsp; &nbsp; put:<br />
+&nbsp; &nbsp; &nbsp; tags:<br />
+&nbsp; &nbsp; &nbsp; - &quot;pet&quot;<br />
+&nbsp; &nbsp; &nbsp; summary: &quot;Update an existing pet&quot;<br />
+&nbsp; &nbsp; &nbsp; description: &quot;&quot;<br />
+&nbsp; &nbsp; &nbsp; operationId: &quot;updatePet&quot;<br />
+&nbsp; &nbsp; &nbsp; consumes:<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/json&quot;<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/xml&quot;<br />
+&nbsp; &nbsp; &nbsp; produces:<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/xml&quot;<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/json&quot;<br />
+&nbsp; &nbsp; &nbsp; parameters:<br />
+&nbsp; &nbsp; &nbsp; - in: &quot;body&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; name: &quot;body&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Pet object that needs to be added to the store&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; required: true<br />
+&nbsp; &nbsp; &nbsp; &nbsp; schema:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $ref: &quot;#/definitions/Pet&quot;<br />
+&nbsp; &nbsp; &nbsp; responses:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;400&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Invalid ID supplied&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;404&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Pet not found&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;405&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Validation exception&quot;<br />
+&nbsp; &nbsp; &nbsp; security:<br />
+&nbsp; &nbsp; &nbsp; - petstore_auth:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; - &quot;write:pets&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; - &quot;read:pets&quot;<br />
+&nbsp; /pet/findByStatus:<br />
+&nbsp; &nbsp; get:<br />
+&nbsp; &nbsp; &nbsp; tags:<br />
+&nbsp; &nbsp; &nbsp; - &quot;pet&quot;<br />
+&nbsp; &nbsp; &nbsp; summary: &quot;Finds Pets by status&quot;<br />
+&nbsp; &nbsp; &nbsp; description: &quot;Multiple status values can be provided with comma separated strings&quot;<br />
+&nbsp; &nbsp; &nbsp; operationId: &quot;findPetsByStatus&quot;<br />
+&nbsp; &nbsp; &nbsp; produces:<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/xml&quot;<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/json&quot;<br />
+&nbsp; &nbsp; &nbsp; parameters:<br />
+&nbsp; &nbsp; &nbsp; - name: &quot;status&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; in: &quot;query&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Status values that need to be considered for filter&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; required: true<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;array&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; items:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; enum:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; - &quot;available&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; - &quot;pending&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; - &quot;sold&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; default: &quot;available&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; collectionFormat: &quot;multi&quot;<br />
+&nbsp; &nbsp; &nbsp; responses:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;200&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;successful operation&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; schema:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; type: &quot;array&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; items:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $ref: &quot;#/definitions/Pet&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;400&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Invalid status value&quot;<br />
+&nbsp; &nbsp; &nbsp; security:<br />
+&nbsp; &nbsp; &nbsp; - petstore_auth:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; - &quot;write:pets&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; - &quot;read:pets&quot;<br />
+&nbsp; /pet/findByTags:<br />
+&nbsp; &nbsp; get:<br />
+&nbsp; &nbsp; &nbsp; tags:<br />
+&nbsp; &nbsp; &nbsp; - &quot;pet&quot;<br />
+&nbsp; &nbsp; &nbsp; summary: &quot;Finds Pets by tags&quot;<br />
+&nbsp; &nbsp; &nbsp; description: &quot;Muliple tags can be provided with comma separated strings. Use &nbsp; &nbsp; &nbsp; &nbsp; tag1, tag2, tag3 for testing.&quot;<br />
+&nbsp; &nbsp; &nbsp; operationId: &quot;findPetsByTags&quot;<br />
+&nbsp; &nbsp; &nbsp; produces:<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/xml&quot;<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/json&quot;<br />
+&nbsp; &nbsp; &nbsp; parameters:<br />
+&nbsp; &nbsp; &nbsp; - name: &quot;tags&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; in: &quot;query&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Tags to filter by&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; required: true<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;array&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; items:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; collectionFormat: &quot;multi&quot;<br />
+&nbsp; &nbsp; &nbsp; responses:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;200&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;successful operation&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; schema:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; type: &quot;array&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; items:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $ref: &quot;#/definitions/Pet&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;400&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Invalid tag value&quot;<br />
+&nbsp; &nbsp; &nbsp; security:<br />
+&nbsp; &nbsp; &nbsp; - petstore_auth:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; - &quot;write:pets&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; - &quot;read:pets&quot;<br />
+&nbsp; &nbsp; &nbsp; deprecated: true<br />
+&nbsp; /pet/{petId}:<br />
+&nbsp; &nbsp; get:<br />
+&nbsp; &nbsp; &nbsp; tags:<br />
+&nbsp; &nbsp; &nbsp; - &quot;pet&quot;<br />
+&nbsp; &nbsp; &nbsp; summary: &quot;Find pet by ID&quot;<br />
+&nbsp; &nbsp; &nbsp; description: &quot;Returns a single pet&quot;<br />
+&nbsp; &nbsp; &nbsp; operationId: &quot;getPetById&quot;<br />
+&nbsp; &nbsp; &nbsp; produces:<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/xml&quot;<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/json&quot;<br />
+&nbsp; &nbsp; &nbsp; parameters:<br />
+&nbsp; &nbsp; &nbsp; - name: &quot;petId&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; in: &quot;path&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;ID of pet to return&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; required: true<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;integer&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; format: &quot;int64&quot;<br />
+&nbsp; &nbsp; &nbsp; responses:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;200&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;successful operation&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; schema:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $ref: &quot;#/definitions/Pet&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;400&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Invalid ID supplied&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;404&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Pet not found&quot;<br />
+&nbsp; &nbsp; &nbsp; security:<br />
+&nbsp; &nbsp; &nbsp; - api_key: []<br />
+&nbsp; &nbsp; post:<br />
+&nbsp; &nbsp; &nbsp; tags:<br />
+&nbsp; &nbsp; &nbsp; - &quot;pet&quot;<br />
+&nbsp; &nbsp; &nbsp; summary: &quot;Updates a pet in the store with form data&quot;<br />
+&nbsp; &nbsp; &nbsp; description: &quot;&quot;<br />
+&nbsp; &nbsp; &nbsp; operationId: &quot;updatePetWithForm&quot;<br />
+&nbsp; &nbsp; &nbsp; consumes:<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/x-www-form-urlencoded&quot;<br />
+&nbsp; &nbsp; &nbsp; produces:<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/xml&quot;<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/json&quot;<br />
+&nbsp; &nbsp; &nbsp; parameters:<br />
+&nbsp; &nbsp; &nbsp; - name: &quot;petId&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; in: &quot;path&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;ID of pet that needs to be updated&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; required: true<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;integer&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; format: &quot;int64&quot;<br />
+&nbsp; &nbsp; &nbsp; - name: &quot;name&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; in: &quot;formData&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Updated name of the pet&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; required: false<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; &nbsp; - name: &quot;status&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; in: &quot;formData&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Updated status of the pet&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; required: false<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; &nbsp; responses:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;405&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Invalid input&quot;<br />
+&nbsp; &nbsp; &nbsp; security:<br />
+&nbsp; &nbsp; &nbsp; - petstore_auth:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; - &quot;write:pets&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; - &quot;read:pets&quot;<br />
+&nbsp; &nbsp; delete:<br />
+&nbsp; &nbsp; &nbsp; tags:<br />
+&nbsp; &nbsp; &nbsp; - &quot;pet&quot;<br />
+&nbsp; &nbsp; &nbsp; summary: &quot;Deletes a pet&quot;<br />
+&nbsp; &nbsp; &nbsp; description: &quot;&quot;<br />
+&nbsp; &nbsp; &nbsp; operationId: &quot;deletePet&quot;<br />
+&nbsp; &nbsp; &nbsp; produces:<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/xml&quot;<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/json&quot;<br />
+&nbsp; &nbsp; &nbsp; parameters:<br />
+&nbsp; &nbsp; &nbsp; - name: &quot;api_key&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; in: &quot;header&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; required: false<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; &nbsp; - name: &quot;petId&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; in: &quot;path&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Pet id to delete&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; required: true<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;integer&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; format: &quot;int64&quot;<br />
+&nbsp; &nbsp; &nbsp; responses:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;400&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Invalid ID supplied&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;404&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Pet not found&quot;<br />
+&nbsp; &nbsp; &nbsp; security:<br />
+&nbsp; &nbsp; &nbsp; - petstore_auth:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; - &quot;write:pets&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; - &quot;read:pets&quot;<br />
+&nbsp; /pet/{petId}/uploadImage:<br />
+&nbsp; &nbsp; post:<br />
+&nbsp; &nbsp; &nbsp; tags:<br />
+&nbsp; &nbsp; &nbsp; - &quot;pet&quot;<br />
+&nbsp; &nbsp; &nbsp; summary: &quot;uploads an image&quot;<br />
+&nbsp; &nbsp; &nbsp; description: &quot;&quot;<br />
+&nbsp; &nbsp; &nbsp; operationId: &quot;uploadFile&quot;<br />
+&nbsp; &nbsp; &nbsp; consumes:<br />
+&nbsp; &nbsp; &nbsp; - &quot;multipart/form-data&quot;<br />
+&nbsp; &nbsp; &nbsp; produces:<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/json&quot;<br />
+&nbsp; &nbsp; &nbsp; parameters:<br />
+&nbsp; &nbsp; &nbsp; - name: &quot;petId&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; in: &quot;path&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;ID of pet to update&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; required: true<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;integer&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; format: &quot;int64&quot;<br />
+&nbsp; &nbsp; &nbsp; - name: &quot;additionalMetadata&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; in: &quot;formData&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Additional data to pass to server&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; required: false<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; &nbsp; - name: &quot;file&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; in: &quot;formData&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;file to upload&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; required: false<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;file&quot;<br />
+&nbsp; &nbsp; &nbsp; responses:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;200&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;successful operation&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; schema:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $ref: &quot;#/definitions/ApiResponse&quot;<br />
+&nbsp; &nbsp; &nbsp; security:<br />
+&nbsp; &nbsp; &nbsp; - petstore_auth:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; - &quot;write:pets&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; - &quot;read:pets&quot;<br />
+&nbsp; /store/inventory:<br />
+&nbsp; &nbsp; get:<br />
+&nbsp; &nbsp; &nbsp; tags:<br />
+&nbsp; &nbsp; &nbsp; - &quot;store&quot;<br />
+&nbsp; &nbsp; &nbsp; summary: &quot;Returns pet inventories by status&quot;<br />
+&nbsp; &nbsp; &nbsp; description: &quot;Returns a map of status codes to quantities&quot;<br />
+&nbsp; &nbsp; &nbsp; operationId: &quot;getInventory&quot;<br />
+&nbsp; &nbsp; &nbsp; produces:<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/json&quot;<br />
+&nbsp; &nbsp; &nbsp; parameters: []<br />
+&nbsp; &nbsp; &nbsp; responses:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;200&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;successful operation&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; schema:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; type: &quot;object&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; additionalProperties:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; type: &quot;integer&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; format: &quot;int32&quot;<br />
+&nbsp; &nbsp; &nbsp; security:<br />
+&nbsp; &nbsp; &nbsp; - api_key: []<br />
+&nbsp; /store/order:<br />
+&nbsp; &nbsp; post:<br />
+&nbsp; &nbsp; &nbsp; tags:<br />
+&nbsp; &nbsp; &nbsp; - &quot;store&quot;<br />
+&nbsp; &nbsp; &nbsp; summary: &quot;Place an order for a pet&quot;<br />
+&nbsp; &nbsp; &nbsp; description: &quot;&quot;<br />
+&nbsp; &nbsp; &nbsp; operationId: &quot;placeOrder&quot;<br />
+&nbsp; &nbsp; &nbsp; produces:<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/xml&quot;<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/json&quot;<br />
+&nbsp; &nbsp; &nbsp; parameters:<br />
+&nbsp; &nbsp; &nbsp; - in: &quot;body&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; name: &quot;body&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;order placed for purchasing the pet&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; required: true<br />
+&nbsp; &nbsp; &nbsp; &nbsp; schema:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $ref: &quot;#/definitions/Order&quot;<br />
+&nbsp; &nbsp; &nbsp; responses:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;200&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;successful operation&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; schema:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $ref: &quot;#/definitions/Order&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;400&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Invalid Order&quot;<br />
+&nbsp; /store/order/{orderId}:<br />
+&nbsp; &nbsp; get:<br />
+&nbsp; &nbsp; &nbsp; tags:<br />
+&nbsp; &nbsp; &nbsp; - &quot;store&quot;<br />
+&nbsp; &nbsp; &nbsp; summary: &quot;Find purchase order by ID&quot;<br />
+&nbsp; &nbsp; &nbsp; description: &quot;For valid response try integer IDs with value &gt;= 1 and &lt;= 10. &nbsp; &nbsp; &nbsp; &nbsp; Other values will generated exceptions&quot;<br />
+&nbsp; &nbsp; &nbsp; operationId: &quot;getOrderById&quot;<br />
+&nbsp; &nbsp; &nbsp; produces:<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/xml&quot;<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/json&quot;<br />
+&nbsp; &nbsp; &nbsp; parameters:<br />
+&nbsp; &nbsp; &nbsp; - name: &quot;orderId&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; in: &quot;path&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;ID of pet that needs to be fetched&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; required: true<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;integer&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; maximum: 10.0<br />
+&nbsp; &nbsp; &nbsp; &nbsp; minimum: 1.0<br />
+&nbsp; &nbsp; &nbsp; &nbsp; format: &quot;int64&quot;<br />
+&nbsp; &nbsp; &nbsp; responses:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;200&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;successful operation&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; schema:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $ref: &quot;#/definitions/Order&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;400&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Invalid ID supplied&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;404&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Order not found&quot;<br />
+&nbsp; &nbsp; delete:<br />
+&nbsp; &nbsp; &nbsp; tags:<br />
+&nbsp; &nbsp; &nbsp; - &quot;store&quot;<br />
+&nbsp; &nbsp; &nbsp; summary: &quot;Delete purchase order by ID&quot;<br />
+&nbsp; &nbsp; &nbsp; description: &quot;For valid response try integer IDs with positive integer value. &nbsp; &nbsp; &nbsp; &nbsp; Negative or non-integer values will generate API errors&quot;<br />
+&nbsp; &nbsp; &nbsp; operationId: &quot;deleteOrder&quot;<br />
+&nbsp; &nbsp; &nbsp; produces:<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/xml&quot;<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/json&quot;<br />
+&nbsp; &nbsp; &nbsp; parameters:<br />
+&nbsp; &nbsp; &nbsp; - name: &quot;orderId&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; in: &quot;path&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;ID of the order that needs to be deleted&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; required: true<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;integer&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; minimum: 1.0<br />
+&nbsp; &nbsp; &nbsp; &nbsp; format: &quot;int64&quot;<br />
+&nbsp; &nbsp; &nbsp; responses:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;400&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Invalid ID supplied&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;404&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Order not found&quot;<br />
+&nbsp; /user:<br />
+&nbsp; &nbsp; post:<br />
+&nbsp; &nbsp; &nbsp; tags:<br />
+&nbsp; &nbsp; &nbsp; - &quot;user&quot;<br />
+&nbsp; &nbsp; &nbsp; summary: &quot;Create user&quot;<br />
+&nbsp; &nbsp; &nbsp; description: &quot;This can only be done by the logged in user.&quot;<br />
+&nbsp; &nbsp; &nbsp; operationId: &quot;createUser&quot;<br />
+&nbsp; &nbsp; &nbsp; produces:<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/xml&quot;<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/json&quot;<br />
+&nbsp; &nbsp; &nbsp; parameters:<br />
+&nbsp; &nbsp; &nbsp; - in: &quot;body&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; name: &quot;body&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Created user object&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; required: true<br />
+&nbsp; &nbsp; &nbsp; &nbsp; schema:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $ref: &quot;#/definitions/User&quot;<br />
+&nbsp; &nbsp; &nbsp; responses:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; default:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;successful operation&quot;<br />
+&nbsp; /user/createWithArray:<br />
+&nbsp; &nbsp; post:<br />
+&nbsp; &nbsp; &nbsp; tags:<br />
+&nbsp; &nbsp; &nbsp; - &quot;user&quot;<br />
+&nbsp; &nbsp; &nbsp; summary: &quot;Creates list of users with given input array&quot;<br />
+&nbsp; &nbsp; &nbsp; description: &quot;&quot;<br />
+&nbsp; &nbsp; &nbsp; operationId: &quot;createUsersWithArrayInput&quot;<br />
+&nbsp; &nbsp; &nbsp; produces:<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/xml&quot;<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/json&quot;<br />
+&nbsp; &nbsp; &nbsp; parameters:<br />
+&nbsp; &nbsp; &nbsp; - in: &quot;body&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; name: &quot;body&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;List of user object&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; required: true<br />
+&nbsp; &nbsp; &nbsp; &nbsp; schema:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; type: &quot;array&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; items:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $ref: &quot;#/definitions/User&quot;<br />
+&nbsp; &nbsp; &nbsp; responses:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; default:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;successful operation&quot;<br />
+&nbsp; /user/createWithList:<br />
+&nbsp; &nbsp; post:<br />
+&nbsp; &nbsp; &nbsp; tags:<br />
+&nbsp; &nbsp; &nbsp; - &quot;user&quot;<br />
+&nbsp; &nbsp; &nbsp; summary: &quot;Creates list of users with given input array&quot;<br />
+&nbsp; &nbsp; &nbsp; description: &quot;&quot;<br />
+&nbsp; &nbsp; &nbsp; operationId: &quot;createUsersWithListInput&quot;<br />
+&nbsp; &nbsp; &nbsp; produces:<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/xml&quot;<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/json&quot;<br />
+&nbsp; &nbsp; &nbsp; parameters:<br />
+&nbsp; &nbsp; &nbsp; - in: &quot;body&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; name: &quot;body&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;List of user object&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; required: true<br />
+&nbsp; &nbsp; &nbsp; &nbsp; schema:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; type: &quot;array&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; items:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $ref: &quot;#/definitions/User&quot;<br />
+&nbsp; &nbsp; &nbsp; responses:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; default:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;successful operation&quot;<br />
+&nbsp; /user/login:<br />
+&nbsp; &nbsp; get:<br />
+&nbsp; &nbsp; &nbsp; tags:<br />
+&nbsp; &nbsp; &nbsp; - &quot;user&quot;<br />
+&nbsp; &nbsp; &nbsp; summary: &quot;Logs user into the system&quot;<br />
+&nbsp; &nbsp; &nbsp; description: &quot;&quot;<br />
+&nbsp; &nbsp; &nbsp; operationId: &quot;loginUser&quot;<br />
+&nbsp; &nbsp; &nbsp; produces:<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/xml&quot;<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/json&quot;<br />
+&nbsp; &nbsp; &nbsp; parameters:<br />
+&nbsp; &nbsp; &nbsp; - name: &quot;username&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; in: &quot;query&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;The user name for login&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; required: true<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; &nbsp; - name: &quot;password&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; in: &quot;query&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;The password for login in clear text&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; required: true<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; &nbsp; responses:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;200&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;successful operation&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; schema:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; headers:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; X-Rate-Limit:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; type: &quot;integer&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; format: &quot;int32&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;calls per hour allowed by the user&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; X-Expires-After:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; format: &quot;date-time&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;date in UTC when token expires&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;400&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Invalid username/password supplied&quot;<br />
+&nbsp; /user/logout:<br />
+&nbsp; &nbsp; get:<br />
+&nbsp; &nbsp; &nbsp; tags:<br />
+&nbsp; &nbsp; &nbsp; - &quot;user&quot;<br />
+&nbsp; &nbsp; &nbsp; summary: &quot;Logs out current logged in user session&quot;<br />
+&nbsp; &nbsp; &nbsp; description: &quot;&quot;<br />
+&nbsp; &nbsp; &nbsp; operationId: &quot;logoutUser&quot;<br />
+&nbsp; &nbsp; &nbsp; produces:<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/xml&quot;<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/json&quot;<br />
+&nbsp; &nbsp; &nbsp; parameters: []<br />
+&nbsp; &nbsp; &nbsp; responses:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; default:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;successful operation&quot;<br />
+&nbsp; /user/{username}:<br />
+&nbsp; &nbsp; get:<br />
+&nbsp; &nbsp; &nbsp; tags:<br />
+&nbsp; &nbsp; &nbsp; - &quot;user&quot;<br />
+&nbsp; &nbsp; &nbsp; summary: &quot;Get user by user name&quot;<br />
+&nbsp; &nbsp; &nbsp; description: &quot;&quot;<br />
+&nbsp; &nbsp; &nbsp; operationId: &quot;getUserByName&quot;<br />
+&nbsp; &nbsp; &nbsp; produces:<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/xml&quot;<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/json&quot;<br />
+&nbsp; &nbsp; &nbsp; parameters:<br />
+&nbsp; &nbsp; &nbsp; - name: &quot;username&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; in: &quot;path&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;The name that needs to be fetched. Use user1 for testing. &quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; required: true<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; &nbsp; responses:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;200&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;successful operation&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; schema:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $ref: &quot;#/definitions/User&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;400&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Invalid username supplied&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;404&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;User not found&quot;<br />
+&nbsp; &nbsp; put:<br />
+&nbsp; &nbsp; &nbsp; tags:<br />
+&nbsp; &nbsp; &nbsp; - &quot;user&quot;<br />
+&nbsp; &nbsp; &nbsp; summary: &quot;Updated user&quot;<br />
+&nbsp; &nbsp; &nbsp; description: &quot;This can only be done by the logged in user.&quot;<br />
+&nbsp; &nbsp; &nbsp; operationId: &quot;updateUser&quot;<br />
+&nbsp; &nbsp; &nbsp; produces:<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/xml&quot;<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/json&quot;<br />
+&nbsp; &nbsp; &nbsp; parameters:<br />
+&nbsp; &nbsp; &nbsp; - name: &quot;username&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; in: &quot;path&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;name that need to be updated&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; required: true<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; &nbsp; - in: &quot;body&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; name: &quot;body&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Updated user object&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; required: true<br />
+&nbsp; &nbsp; &nbsp; &nbsp; schema:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $ref: &quot;#/definitions/User&quot;<br />
+&nbsp; &nbsp; &nbsp; responses:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;400&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Invalid user supplied&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;404&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;User not found&quot;<br />
+&nbsp; &nbsp; delete:<br />
+&nbsp; &nbsp; &nbsp; tags:<br />
+&nbsp; &nbsp; &nbsp; - &quot;user&quot;<br />
+&nbsp; &nbsp; &nbsp; summary: &quot;Delete user&quot;<br />
+&nbsp; &nbsp; &nbsp; description: &quot;This can only be done by the logged in user.&quot;<br />
+&nbsp; &nbsp; &nbsp; operationId: &quot;deleteUser&quot;<br />
+&nbsp; &nbsp; &nbsp; produces:<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/xml&quot;<br />
+&nbsp; &nbsp; &nbsp; - &quot;application/json&quot;<br />
+&nbsp; &nbsp; &nbsp; parameters:<br />
+&nbsp; &nbsp; &nbsp; - name: &quot;username&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; in: &quot;path&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;The name that needs to be deleted&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; required: true<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; &nbsp; responses:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;400&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Invalid username supplied&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &quot;404&quot;:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description: &quot;User not found&quot;<br />
+securityDefinitions:<br />
+&nbsp; petstore_auth:<br />
+&nbsp; &nbsp; type: &quot;oauth2&quot;<br />
+&nbsp; &nbsp; authorizationUrl: &quot;http://petstore.swagger.io/oauth/dialog&quot;<br />
+&nbsp; &nbsp; flow: &quot;implicit&quot;<br />
+&nbsp; &nbsp; scopes:<br />
+&nbsp; &nbsp; &nbsp; write:pets: &quot;modify pets in your account&quot;<br />
+&nbsp; &nbsp; &nbsp; read:pets: &quot;read your pets&quot;<br />
+&nbsp; api_key:<br />
+&nbsp; &nbsp; type: &quot;apiKey&quot;<br />
+&nbsp; &nbsp; name: &quot;api_key&quot;<br />
+&nbsp; &nbsp; in: &quot;header&quot;<br />
+definitions:<br />
+&nbsp; Order:<br />
+&nbsp; &nbsp; type: &quot;object&quot;<br />
+&nbsp; &nbsp; properties:<br />
+&nbsp; &nbsp; &nbsp; id:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;integer&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; format: &quot;int64&quot;<br />
+&nbsp; &nbsp; &nbsp; petId:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;integer&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; format: &quot;int64&quot;<br />
+&nbsp; &nbsp; &nbsp; quantity:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;integer&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; format: &quot;int32&quot;<br />
+&nbsp; &nbsp; &nbsp; shipDate:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; format: &quot;date-time&quot;<br />
+&nbsp; &nbsp; &nbsp; status:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;Order Status&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; enum:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; - &quot;placed&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; - &quot;approved&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; - &quot;delivered&quot;<br />
+&nbsp; &nbsp; &nbsp; complete:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;boolean&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; default: false<br />
+&nbsp; &nbsp; xml:<br />
+&nbsp; &nbsp; &nbsp; name: &quot;Order&quot;<br />
+&nbsp; Category:<br />
+&nbsp; &nbsp; type: &quot;object&quot;<br />
+&nbsp; &nbsp; properties:<br />
+&nbsp; &nbsp; &nbsp; id:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;integer&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; format: &quot;int64&quot;<br />
+&nbsp; &nbsp; &nbsp; name:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; xml:<br />
+&nbsp; &nbsp; &nbsp; name: &quot;Category&quot;<br />
+&nbsp; User:<br />
+&nbsp; &nbsp; type: &quot;object&quot;<br />
+&nbsp; &nbsp; properties:<br />
+&nbsp; &nbsp; &nbsp; id:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;integer&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; format: &quot;int64&quot;<br />
+&nbsp; &nbsp; &nbsp; username:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; &nbsp; firstName:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; &nbsp; lastName:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; &nbsp; email:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; &nbsp; password:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; &nbsp; phone:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; &nbsp; userStatus:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;integer&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; format: &quot;int32&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;User Status&quot;<br />
+&nbsp; &nbsp; xml:<br />
+&nbsp; &nbsp; &nbsp; name: &quot;User&quot;<br />
+&nbsp; Tag:<br />
+&nbsp; &nbsp; type: &quot;object&quot;<br />
+&nbsp; &nbsp; properties:<br />
+&nbsp; &nbsp; &nbsp; id:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;integer&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; format: &quot;int64&quot;<br />
+&nbsp; &nbsp; &nbsp; name:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; xml:<br />
+&nbsp; &nbsp; &nbsp; name: &quot;Tag&quot;<br />
+&nbsp; Pet:<br />
+&nbsp; &nbsp; type: &quot;object&quot;<br />
+&nbsp; &nbsp; required:<br />
+&nbsp; &nbsp; - &quot;name&quot;<br />
+&nbsp; &nbsp; - &quot;photoUrls&quot;<br />
+&nbsp; &nbsp; properties:<br />
+&nbsp; &nbsp; &nbsp; id:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;integer&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; format: &quot;int64&quot;<br />
+&nbsp; &nbsp; &nbsp; category:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; $ref: &quot;#/definitions/Category&quot;<br />
+&nbsp; &nbsp; &nbsp; name:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; example: &quot;doggie&quot;<br />
+&nbsp; &nbsp; &nbsp; photoUrls:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;array&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; xml:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; name: &quot;photoUrl&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; wrapped: true<br />
+&nbsp; &nbsp; &nbsp; &nbsp; items:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; &nbsp; tags:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;array&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; xml:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; name: &quot;tag&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; wrapped: true<br />
+&nbsp; &nbsp; &nbsp; &nbsp; items:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $ref: &quot;#/definitions/Tag&quot;<br />
+&nbsp; &nbsp; &nbsp; status:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; description: &quot;pet status in the store&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; enum:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; - &quot;available&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; - &quot;pending&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; - &quot;sold&quot;<br />
+&nbsp; &nbsp; xml:<br />
+&nbsp; &nbsp; &nbsp; name: &quot;Pet&quot;<br />
+&nbsp; ApiResponse:<br />
+&nbsp; &nbsp; type: &quot;object&quot;<br />
+&nbsp; &nbsp; properties:<br />
+&nbsp; &nbsp; &nbsp; code:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;integer&quot;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; format: &quot;int32&quot;<br />
+&nbsp; &nbsp; &nbsp; type:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+&nbsp; &nbsp; &nbsp; message:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; type: &quot;string&quot;<br />
+externalDocs:<br />
+&nbsp; description: &quot;Find out more about Swagger&quot;<br />
+&nbsp; url: &quot;http://swagger.io&quot;</p>

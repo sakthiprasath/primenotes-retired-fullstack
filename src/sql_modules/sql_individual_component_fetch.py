@@ -2,6 +2,7 @@
 import json
 import os
 from pytube import YouTube
+import pathlib
 
 SQL_CODE_FETCH_QUERIES = {
     "get_all_configs": "select * from tenant_config"
@@ -47,27 +48,19 @@ class SQLIndividualComponent():
 
         if file_type == 'document':
             folder_id = data_map.get('folder_id', None)
-            folder_name = data_map['folder_name']
-            file_name = 'separate_project\\' + folder_name + '\\' + file_name
+            folder_path = data_map['folder_path']
+            if 'MY-ROOT' in folder_path:
+                folder_path = folder_path[:-(len('MY-ROOT'))]
+            file_name = folder_path + '//' + file_name +'.txt'
 
-        file_path = '../frontend_files/web-app/all_general_files/' + file_name + ".txt"
-        fp = open(file_path, 'w+')
+        fp = open(file_name, 'w+')
 
 
 
-    def result_write(self, file_name, file_content):
+    def result_write(self, file_path, file_data):
 
-        name_list = file_name.split('-')
-        if 'separate_project' in file_name:
-            file_name = name_list[0] + '\\' + name_list[1]
-        if 'html_components' in file_name:
-            file_name = name_list[0] + '\\' + name_list[1]
-        if 'file_factory' in file_name:
-            file_name = name_list[0] + '\\' + name_list[1]
-
-        file_path = '../frontend_files/web-app/all_general_files/'+ file_name + ".txt"
         fp = open(file_path, 'w')
-        fp.write(file_content)
+        fp.write(file_data)
 
     def rename_file(self, category, old_file_name, new_file_name):
 
@@ -87,10 +80,12 @@ class SQLIndividualComponent():
 
         os.remove(file_path)
 
-    def get_file_data(self, category, file_name):
+    def get_file_data(self, category, file_path):
 
-        file_name = category + '\\' + file_name
-        file_path = '../frontend_files/web-app/all_general_files/' + file_name + ".txt"
+        # if category == 'separate_project':
+        #     file_name = 'Root\\My_Files\\' + file_name
+        # file_name = category + '//' + file_name + '.txt'
+        # file_path = '../frontend_files/web-app/all_general_files/' + file_name
 
         fp = open(file_path, 'r')
         fp_content = fp.read()
@@ -114,3 +109,18 @@ class SQLIndividualComponent():
         files = os.listdir(path)
         file_list =  [  file[:-(len('.txt'))]  for file in files ]
         return file_list
+
+    def list_dirs(self, path):
+        temp_map = {}
+        temp_map['files'] = []
+        print(path)
+        for p in pathlib.Path(path).iterdir():
+                if p.is_file():
+                        temp_map['files'].append(p.__str__())
+                if p.is_dir():
+                        temp_map[p.__str__()] = self.list_dirs(p.__str__())
+        return temp_map
+
+    def get_tree(self):
+        path = '../frontend_files/web-app/all_general_files/separate_project'
+        return self.list_dirs(path)

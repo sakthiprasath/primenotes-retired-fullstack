@@ -71,3 +71,16 @@
   background-color: #5cb85c;
   color: white;
 }
+
+/*notification dialog*/
+#notification{
+    width: 200px;
+    height: 100px;
+    border: 1px solid red;
+    position: fixed;
+    right: 6px;
+    bottom: 54px;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 500ms;
+}

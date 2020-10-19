@@ -86,20 +86,20 @@ def ff = session.create()
 def query = "select now(*) as timestamp, mid.* from DBA.mid mid"
 def row = SQL.mydb.freshRow(query)
 ff.write("UTF-8", row)
-REL_SUCCESS << ff
+REL_SUCCESS &lt;&lt; ff
 ------------------------
   
 String s1= ""
 def ff = session.create()
 def query = "select now(*) as timestamp, mid.* from DBA.mid mid"
-def row = SQL.mydb.freshRow(query) { resultSet ->
+def row = SQL.mydb.freshRow(query) { resultSet -&gt;
   while (resultSet.next()) {
     def first = resultSet.getString(1)
     s1 += "$first"
   }
 }
 ff.write("UTF-8", row)
-REL_SUCCESS << ff
+REL_SUCCESS &lt;&lt; ff
                                                      
 				                                                                          
 

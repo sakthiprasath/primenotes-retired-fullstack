@@ -1,0 +1,34 @@
+<h1 style="text-align:center"><strong>Target Customers/ Users :</strong></h1>
+
+<hr>
+<p>1) Enterprise Managers&nbsp;&nbsp;</p>
+
+<p>2) Any employees working with computers</p>
+
+<p>3) coders</p>
+
+<p>4) College Students</p>
+
+<p>5) Content Writers</p>
+
+<p>6) Any one who want to be well Organized with their work.&nbsp;</p>
+
+<p>7) Unknown&nbsp;&nbsp;</p>
+
+<p>8) CAD users&nbsp;</p>
+
+<p>9) Designers</p>
+
+<p>10) civil architects</p>
+
+<hr>
+<hr>
+<h2>Features based on people</h2>
+
+<p>1. Code editor( programming languages)</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>

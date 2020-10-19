@@ -1,0 +1,3 @@
+<h2>Installed in the entire windows environment&nbsp;&nbsp;:</h2>
+
+<p>Just have to run the python dash file.&nbsp;</p>

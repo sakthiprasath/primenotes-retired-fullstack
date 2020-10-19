@@ -1,0 +1,9 @@
+<h1><strong>linux commands :&nbsp;</strong></h1>
+
+<p>sudo lsof -i -P -n | grep LISTEN</p>
+
+<p><span style="font-size:18px"><strong>list all the listening port :</strong></span><br>
+sudo lsof -i -P -n &nbsp;</p>
+
+<p><span style="font-size:16px"><strong>linux-command for decoding base64 encoded string :</strong></span><br>
+echo 'base64_string' | base64 -d</p>
