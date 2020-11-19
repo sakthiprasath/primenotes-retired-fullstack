@@ -25,8 +25,8 @@ main.py
 |
 V
 pipeline 
-  -> transformer
-		-> get asset from tsdb apm		
+  -&gt; transformer
+		-&gt; get asset from tsdb apm		
 			[ create a AssetClient  
 
 

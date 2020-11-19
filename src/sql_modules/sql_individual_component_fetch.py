@@ -52,6 +52,9 @@ class SQLIndividualComponent():
             if 'MY-ROOT' in folder_path:
                 folder_path = folder_path[:-(len('MY-ROOT'))]
             file_name = folder_path + '//' + file_name +'.txt'
+        elif file_type == 'file_factory':
+            folder_path = data_map['folder_path']
+            file_name = folder_path + '//' + file_name + '.txt'
 
         fp = open(file_name, 'w+')
 
@@ -64,8 +67,8 @@ class SQLIndividualComponent():
 
     def rename_file(self, category, old_file_name, new_file_name):
 
-        old_file_path = category + '\\' + old_file_name
-        new_file_path = category + '\\' + new_file_name
+        old_file_path = category + '//' + old_file_name
+        new_file_path = category + '//' + new_file_name
 
         old_file_path = '../frontend_files/web-app/all_general_files/' + old_file_path + ".txt"
         new_file_path = '../frontend_files/web-app/all_general_files/' + new_file_path + ".txt"
@@ -74,19 +77,19 @@ class SQLIndividualComponent():
 
     def delete_file(self, category, file_name):
 
-        file_path = category + '\\' + file_name
+        file_path = category + '//' + file_name
 
-        file_path = '../frontend_files/web-app/all_general_files/' + file_path + ".txt"
+        file_path = '../frontend_files/web-app/all_general_files/' + file_path
 
         os.remove(file_path)
 
-    def get_file_data(self, category, file_path):
+    def get_file_data(self, file_path):
 
         # if category == 'separate_project':
         #     file_name = 'Root\\My_Files\\' + file_name
-        # file_name = category + '//' + file_name + '.txt'
         # file_path = '../frontend_files/web-app/all_general_files/' + file_name
 
+        file_path =  file_path
         fp = open(file_path, 'r')
         fp_content = fp.read()
         return fp_content
@@ -105,10 +108,13 @@ class SQLIndividualComponent():
 
     def all_files(self, file_type):
         path = '../frontend_files/web-app/all_general_files/' + file_type
+        file_path_and_files_dict = {}
 
         files = os.listdir(path)
-        file_list =  [  file[:-(len('.txt'))]  for file in files ]
-        return file_list
+        # file_list =  [file[:-(len('.txt'))]  for file in files ]
+        file_path_and_files_dict['file_path'] = path
+        file_path_and_files_dict['files'] = files
+        return file_path_and_files_dict
 
     def list_dirs(self, path):
         temp_map = {}

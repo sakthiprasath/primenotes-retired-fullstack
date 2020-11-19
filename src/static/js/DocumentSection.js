@@ -1,12 +1,37 @@
 
 
+
+
+
 export default class SourceCodeSection{
     code_mirror_editor='';
 
     removeCurrentTab(ele) {
       $(ele).parent().parent().remove();
     };
+     _tabs_dropdown_click(){
+        let self = this;
+        self.tabs_dropdown_click_flag = 0;
 
+        $('#tabs-list-drop-down').on('click',function(){
+            let action_obj = self.tsp.DomActions;
+            action_obj._tabs_drop_down_click(self);
+        });
+
+    }
+    _move_tabs_for_source_code_section(){
+        /*move tabs left right */
+            $('#move-tabs-right').on('click',function(){
+                let curr_target = $('#tab-container');
+                let tabs_container_left = parseInt(curr_target.css('left'));
+                curr_target.css('left', tabs_container_left + 100);
+            });
+            $('#move-tabs-left').on('click',function(){
+                let curr_target = $('#tab-container');
+                let tabs_container_left = parseInt(curr_target.css('left'));
+                curr_target.css('left', tabs_container_left - 100);
+            });
+    }
     _highlight_and_fetch(tab_elem){
         if($(tab_elem).parent().hasClass('tab-active')){
             return false;
@@ -215,8 +240,14 @@ export default class SourceCodeSection{
 
     }//end of events
 
-    init(){
-        this.events();
+    init(tsp, to_return_values){
+//        this._initialise_summer_note();
+        tsp.SourceCodeSection = this;
+        this.tsp = tsp;
+        this.events(); //this might be called more than once ondemand
+        this._tabs_dropdown_click();
+        this._move_tabs_for_source_code_section();
+        return $.Deferred().resolve(tsp, to_return_values);
     }
 
 

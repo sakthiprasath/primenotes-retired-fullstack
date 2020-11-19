@@ -1,0 +1,98 @@
+.all-ele-class-for-background{
+    background: #f1f7f9 !important;
+}
+.wrapper {
+    margin-top: 6px;
+    height: calc(100% - 36px);
+    background-color: #fff;
+    width: 100%;
+    padding-left: 10pt;
+    padding-right: 10pt;
+    border-radius: 10px;
+}
+#quick-file-title{
+    margin: 0;
+    padding-bottom: 5pt;
+    border-bottom: 1px solid #1b1010;
+    display:none;
+}
+input[type="text"] {
+  height: 20pt;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  outline: none;
+  font-size: 14px;
+  margin-top: 5pt;
+}
+.options {
+    width: 52px;
+    height: 90%
+    margin-top: 3pt;
+    border:1px solid #bde4f1;
+    padding: 3px;
+    border-top: 1px solid #bde4f1;
+    overflow: scroll;
+    display: none;
+}
+
+.quick-notes-top-section{
+    display: flex;
+    padding: 10px;
+    padding-left: 3px;
+    column-gap: 15px;
+    margin-left: 10px;
+}
+#quick-notes-setting{
+    width:30px;
+    height:30px;
+}
+
+#quick-file-editor {
+    border: 0;
+    width: calc(100% - 83px);
+    height: 91%;
+    border: 1px solid #f1f7f9;
+    top: 45px;
+    position: absolute;
+    margin-left: 16px;
+    border-top: 1px solid #f1f7f9;
+}
+.seperator {
+    border: 1px solid #d6b8b8;
+    height: 1px;
+    width: 30px;
+    margin-left: 6px;
+  }
+ .quick-file-editor-button {
+    margin: 0;
+    padding: 0;
+    height: 30pt;
+    width: 30pt;
+    background-color: #bde4f1;
+    border: none;
+    cursor: pointer;
+    color: #333;
+}
+.quick-file-editor-button:active {
+  color: #333;
+}
+select {
+  width: 38px;
+  height: 30pt;
+  -webkit-appearance: none;
+  border: 0;
+  padding-left: 5pt;
+  padding-right: 5pt;
+  outline: none;
+}
+input[type="number"] {
+    height: 30pt;
+    border: 0;
+    padding: 0;
+    padding-left: 5pt;
+    padding-right: 5pt;
+    outline: none;
+    width: 44px;
+    margin-left: 0px;
+}

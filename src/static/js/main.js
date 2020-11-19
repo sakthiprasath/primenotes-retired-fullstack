@@ -2,6 +2,8 @@ import DomActions from './DomActions.js';
 import DomEvents from './DomEvents.js';
 import loadComponentsContainer from './ComponentsContainer.js';
 import SourceCodeSection from './DocumentSection.js';
+//import Tree from './TreeView.js';
+
 
 class Tsp{
 	constructor(){
@@ -20,10 +22,10 @@ $(document).ready(function(){
 	tsp.loadComponentsContainer_live_obj.init().then(function(label_map){
 	    new Tree().init().then(function(){
 	        new SourceCodeSection().init();
-	        tsp.dom_events.init(label_map);
+	        tsp.dom_events.init(tsp, label_map);
+	        tsp.dom_actions.init(); //initialDomActions should be called only after tsp.loadComponentsContainer.init() and tsp.dom_events.init()
 	    });
 	});
-	tsp.dom_actions.init(); //initialDomActions should be called only after tsp.loadComponentsContainer.init() and tsp.dom_events.init()
 
 
 });

@@ -4,81 +4,21 @@ export default class DomActions{
 
     _button_clicks(){
 
-
-        /*initial clicks for file */
-            ($('.file-click')[0]).click()
+//        $('#add-new-file-in-project-notes').click();
+        /*initial clicks for file*/
             setTimeout( function(){
-                ($('.file-get-section')[0]).click()
+            ($('.file-click')[0]).click()
+//                ($('.file-get-section')[0]).click();
             },3000);
-
-        /*password validate for drowssap*/
+        /*password validate for drowssap
             $('#password-validate-dialog').dialog({
                 autoOpen: false,
                 width:'90%',
                 height:'700'
-            });
+            });*/
         /*close File container*/
 //        $('#close-component-results-container').click();
-    }
-    _initialize_file_chat_switches_actions(){
-        /* file and chat  switches actions*/
-            $('#chat-middle-section').css('display','none');
-            $('#single-chat').css('display','none');
-            $('#group-chat').css('display','none');
-            $("#right-side-components").css('left','245px');
 
-            $('#file-switch').on('click',function(){
-                $('#chat-middle-section').css('display','none');
-                $('#file-middle-section').css(
-                        {'display' : 'block',
-                        'width' : '210px'});
-                $('#create-new-file').css('display','block');
-                $('#single-chat').css('display','none');
-                $('#group-chat').css('display','none');
-                $('#middle-section').css({'width' : '210px'});
-                $("#right-side-components").css('left','245px');
-            });
-
-//            $('#chat-switch').on('click',function(){
-//                $('#file-middle-section').css('display','none');
-//                $('#chat-middle-section').css(
-//                        {'display' : 'block',
-//                        'width' : '260px'});
-//                $('#create-new-file').css('display','none');
-//                 $('#single-chat').css('display','block');
-//                $('#group-chat').css('display','block');
-//                $('#middle-section').css({'width' : '275px'})
-//                $("#right-side-components").css('left','310px');
-//
-//            });
-            $('#video-stream-switch').on('click',function(){
-                let component_factory_icon_elems = $('.component-factory-left-icons');
-                let len = component_factory_icon_elems.length;
-                for(let i=0;i < len; i++){
-                    let class_list = $(component_factory_icon_elems[i]).attr('class').split(' ');
-                    if( class_list.indexOf('active') >=0 ){
-                        $(component_factory_icon_elems[i]).removeClass('active');
-                        break;
-                    }
-                }
-
-                $(this).addClass('active');
-
-                let classList =  $("#right-side-components").attr('class');
-                if(classList.indexOf('right-side-components-split-screen') >=0 ){
-                    $("#right-side-components").removeClass('right-side-components-split-screen');
-                    $("#right-side-components").addClass('right-side-components-full-screen');
-                    $('.file-factory-split-bar').css('left','0px');
-                }
-                else{
-                    $("#right-side-components").removeClass('right-side-components-full-screen');
-                    $("#right-side-components").addClass('right-side-components-split-screen');
-                    $('.file-factory-split-bar').css('left','250px');
-                    $('#left-and-middle-section').css('width','255px');
-                }
-
-
-            });
     }
     maximize_icon_click_action(self){
         /* maximize-icon in drag and drop container action*/
@@ -101,9 +41,9 @@ export default class DomActions{
                         $('#pane').removeClass('pane-centered');
                         $('#pane').addClass('pane-full-screen');
                 }
-                $('#right-side-components').addClass('right-side-components-split-screen');
-                $('.file-factory-split-bar').css('left','250px');
-                $('#left-and-middle-section').css('width','255px');
+                $('#right-side-components').addClass('right-side-components-full-screen');
+//                $('.file-factory-split-bar').css('left','-3px');
+//                $('#left-and-middle-section').css('width','0px');
 
     }
     _get_all_videos(){
@@ -219,7 +159,7 @@ export default class DomActions{
             send_file_name = 'separate_project-' + file_name;
         }
         else if( file_type === 'file_factory' ){
-            send_file_name = 'file_factory-' + file_name;
+            send_file_name = '../frontend_files/web-app/all_general_files/file_factory/' + file_name + '.txt';
         }
         create_action(send_file_name);
     }
@@ -273,7 +213,7 @@ export default class DomActions{
                     $.ajax
                     ({
                         url: 'http://localhost:5000/api/individual-component-fetch/delete-file/'+ file_type + '/' + file_name,
-                        type : "POST",
+                        type : "DELETE",
                         contentType: 'application/json;charset=UTF-8',
                         success : function(response){
                             return defObj.resolve(response);
@@ -283,14 +223,21 @@ export default class DomActions{
         }
         return delete_action(file_type, file_name);
     }
-
+    _get_components_list(){
+            let compo_names = [];
+            let elems = $('.create-component');
+            for (let i=0; i< elems.length;i++){
+                compo_names.push(elems[i].title.toLowerCase());
+            }
+            return compo_names;
+    }
     _create_component_submit_execution(event_obj){
 
             let new_component_name = $('#create-component-text-box').val()
             if(new_component_name == ''){
                 return;
             }
-            let component_list = event_obj._get_components_list();
+            let component_list = this._get_components_list();
             if(component_list.indexOf(new_component_name.toLowerCase()) < 0){
                 this._create_file_in_backend('html_components', new_component_name);
 
@@ -433,11 +380,15 @@ export default class DomActions{
             if (event_obj =='youtube'){
                   $('#create-component-dialog-sub-div').empty();
                   let iframe_ele = this.__get_youtube_embed_iframe(curr_ele);
-//                $('#create-component-dialog-sub-div').append(iframe_ele);
-//                $('#ui-id-1').text('Youtube');
+
                   $('.right-side-components-in-file-factory').hide();
-                  $('#right-side-components').css({'left':'35px','width':'calc(100% - 35px)','height':'100%','display':'block'})
+//                  $('#right-side-components').css({'left':'35px','width':'calc(100% - 35px)','height':'100%','display':'block'})
+                  $("#right-side-components").removeClass('right-side-components-full-screen');
+                  $("#right-side-components").addClass('right-side-components-split-screen');
                   $('#right-side-components-container').css({'width':'100%','height':'100%','display':'block'})
+
+                  $('.file-factory-split-bar').css('left' ,'250px' );
+
                   $('#video-stream-in-file-factory').css({'left':'0','width':'100%','height':'100%','display':'block'});
                   $('#video-stream-in-file-factory').empty();
                   $('#video-stream-in-file-factory').append($(iframe_ele));
@@ -468,13 +419,35 @@ export default class DomActions{
             $('#notification').css('opacity',0);
         }, 2500);
     }
-    init(){
-//        this._button_clicks();
+
+     _create_new_project_file_form(self, form_id){
+         var modal = document.getElementById("modal-id");
+         modal.style.display = "block";
+         $('.inner-item-form').hide();
+         $('#' + form_id).show();
+
+         // Get the <span> element that closes the modal
+         var span = document.getElementById("close-modal");
+
+         // When the user clicks on <span> (x), close the modal
+         span.onclick = function() {
+            modal.style.display = "none";
+         }
+
+         // When the user clicks anywhere outside of the modal, close it
+         window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+
+                   }
+            }
+    }
+    init(tsp, to_return_values){
+        tsp.DomActions = this;
+        this._button_clicks();
         this._get_all_videos();
 
-
-
-
+        return $.Deferred().resolve(tsp, to_return_values);
     }
 }
 

@@ -94,7 +94,7 @@ docker run -d -p 5432:5432 -e POSTGRES_PASSWORD=password timescale/timescaledb:l
 <p><strong>2)</strong> run the docker image</p>
 
 <blockquote>
-<p>docker tun temp_name</p>
+<p>docker run temp_name</p>
 </blockquote>
 
 <hr>

@@ -9,7 +9,6 @@ from sql_modules.sql_individual_component_fetch import  SQLIndividualComponent
 
 individual_component_fetcher_routes = Blueprint('individual_component_fetcher', __name__, url_prefix='/api/individual-component-fetch')
 
-
 @individual_component_fetcher_routes.route('screen-recorder', methods=['GET'])
 def return_index_html():
     try:
@@ -90,7 +89,7 @@ def rename_file(category, old_file_name, new_file_name):
     except Exception as e:
         return print(e)
 
-@individual_component_fetcher_routes.route('delete-file/<category>/<file_name>/', methods=['POST'])
+@individual_component_fetcher_routes.route('delete-file/<category>/<file_name>/', methods=['DELETE'])
 def delete_file(category, file_name):
     @after_this_request
     def add_header(response):
@@ -103,7 +102,7 @@ def delete_file(category, file_name):
         return print(e)
 
 @individual_component_fetcher_routes.route('/general_files/<category>', methods=['GET'])
-def get_data_by_name(category):
+def get_file_data(category):
     @after_this_request
     def add_header(response):
         response.headers['Access-Control-Allow-Origin'] = '*'
@@ -111,7 +110,7 @@ def get_data_by_name(category):
 
     try:
         file_path = json.loads(request.args.get('file_path'))
-        file_data = SQLIndividualComponent().get_file_data(category, file_path)
+        file_data = SQLIndividualComponent().get_file_data(file_path)
         return file_data
     except Exception as e:
         return print(e)

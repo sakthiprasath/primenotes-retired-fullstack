@@ -1,0 +1,5 @@
+.note-editor:hover::-webkit-scrollbar-thumb {
+    width : 6px;
+    display :block !important;
+    overflow-x: hidden;
+}

@@ -175,8 +175,9 @@ applications.py
 users.py
     def upsert_user(self,attr_vals, change_password=False, application_id=None):
         tenant_id = self.rc.get_tenant_id()
-        url = 'api/auth/tenant/user/{}?change_password={}&&application_id={}'.format(tenant_id, change_password, application_id)
+        url = 'api/auth/tenant/user/{}?change_password={}&amp;&amp;application_id={}'.format(tenant_id, change_password, application_id)
         return self.rc.doPut(url, body=attr_vals.toDict())
 
 
 
+</tenant_id></tenant_id></app_name>

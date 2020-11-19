@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<title>Layout Test Page</title> 
+		<title>Layout Test Page</title>
 		<script 	src="{{ url_for('static', filename='js/lib/jquery.min.js') }}">
 </script>
 	    <script src="//cdn.gaic.com/cdn/ui-bootstrap/0.58.0/js/lib/ckeditor/ckeditor.js"></script>
@@ -44,6 +44,9 @@
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/button.css') }}" />
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/DocumentSection.css') }}" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/QuickFileEditor.css') }}" />
+
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/NavigationBar.css') }}" />
 
 		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/treeView.css') }}" />
@@ -57,7 +60,7 @@
 				href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/theme/material.css'>
 <!--				<link rel="stylesheet"-->
 <!--					href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">-->
-					<script type="text/javascript" src="{{ url_for('static', filename='js/treeview.js') }}"></script>
+<!--					<script type="text/javascript" src="{{ url_for('static', filename='js/treeview.js') }}"></script>-->
 
 					<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 					<script src="https://www.w3schools.com/lib/codemirror_jsx.js"></script>
@@ -175,9 +178,9 @@ document.onreadystatechange = function () {
 		</button>
 
 
-<!--		<button id='html-renderer' class="button open-close"  data-toggle="tooltip" title="HTML, css, js editor for creating webdesigned notes">-->
-<!--			<span style="padding:3px" >Html Editor</span>-->
-<!--		</button>-->
+		<button id='html-renderer' class="button open-close"  data-toggle="tooltip" title="HTML, css, js editor for creating webdesigned notes">
+			<span style="padding:3px" >Html Editor</span>
+		</button>
 
     </div>
 	</div>
@@ -255,7 +258,7 @@ document.onreadystatechange = function () {
 
 
 
-	<div id='pane' class="pane-centered">
+	<div id='pane' class="pane-full-screen">
 		<div class='resizable' >
 			<div class='resizers'>
 				<div class='resizer top-left'></div>
@@ -286,29 +289,30 @@ document.onreadystatechange = function () {
 				</div>
 				<div id="component-factory-title">Quick Notes</div>
 				<div id='components-search-container'>
-					<div id='left-and-middle-section'>
+					<div id='quick-notes-backdrop'></div>
+					<div id="left-and-middle-section" class="all-ele-class-for-background">
 						<div class="left-corner">
 							<div class='left-corner-sub-div'>
-								<div id='file-switch' class='component-factory-left-icons'>
-									<img src="https://img.icons8.com/ios/50/000000/select-all.png"
+								<div id='file-switch' class='component-factory-left-icons active'>
+									<img src="https://i.pinimg.com/564x/02/6d/62/026d628fdb4b72eba87baccf4d676c87.jpg"
 										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">
 								</div>
-								<div id='chat-switch' class='component-factory-left-icons'>
-									<img src="https://img.icons8.com/ios/50/000000/select-all.png"
-										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">
-								</div>
+<!--								<div id='chat-switch' class='component-factory-left-icons'>-->
+<!--									<img src="https://img.icons8.com/ios/50/000000/select-all.png"-->
+<!--										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">-->
+<!--								</div>-->
 								<div id='video-stream-switch' class='component-factory-left-icons'>
-									<img src="https://img.icons8.com/ios/50/000000/select-all.png"
+									<img src="https://image.shutterstock.com/image-vector/video-icon-vector-camera-player-260nw-1034861974.jpg"
 										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">
 								</div>
-								<div class='component-factory-left-icons'>
-									<img src="https://img.icons8.com/ios/50/000000/select-all.png"
-										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">
-								</div>
-								<div class='component-factory-left-icons'>
-									<img src="https://img.icons8.com/ios/50/000000/select-all.png"
-										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">
-								</div>
+<!--								<div class='component-factory-left-icons'>-->
+<!--									<img src="https://img.icons8.com/ios/50/000000/select-all.png"-->
+<!--										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">-->
+<!--								</div>-->
+<!--								<div class='component-factory-left-icons'>-->
+<!--									<img src="https://img.icons8.com/ios/50/000000/select-all.png"-->
+<!--										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">-->
+<!--								</div>-->
 
 							</div>
 						</div>
@@ -458,34 +462,96 @@ document.onreadystatechange = function () {
 
 						</div>
 					</div>
-						<div id="quick-notes-in-file-factory" class="right-side-components-in-file-factory">
-								<div id="file-name"  ></div>
-								<button class="button" id="editor1-save-button" class="button">save
-								</button>
-
-	<!--						<iframe src="https://cdpn.io/sakthics25/debug/ZEQNzKN/VJMxxOQDQbvM" style="-->
-	<!--							width: 100%;-->
-	<!--							height: 100%;-->
-	<!--						"></iframe>-->
-
-								<!--https://codepen.io/edsonperotoni/pen/OJJZzZq?editors=1010-->
-														<textarea id='editor1' contenteditable>
-														  <h1>A Heading.</h1>
-														  <p>Some text that you can format. Try inserting an image or a link.</p>
-														</textarea>
-						</div>
-
 
 					</div>
 					<div class="file-factory-split-bar"></div>
+
 					<div id='right-side-components' class="right-side-components-split-screen">
 						<div id='right-side-components-container'>
-
-
-
 							<div id="video-stream-in-file-factory" class="right-side-components-in-file-factory" style="width:100%;height:100%;">
 
 							</div>
+							<div id="quick-notes-in-file-factory" class="right-side-components-in-file-factory">
+
+								<div class="quick-notes-top-section">
+									<img id="quick-notes-setting" src="https://tekion.com/_next/static/chunks/images/ac89fdc2be9f7c06c2bc366a125586d2.png">
+									<div class="file-factory-options">
+										   <img class="file-factory-option-icons quick-file-rename"  alt="Rename icon" src="https://img.icons8.com/ultraviolet/344/rename.png" lazy="loaded">
+											<img class="file-factory-option-icons quick-file-delete"  alt="Delete Bin icon" src="https://img.icons8.com/carbon-copy/344/delete-forever--v1.png" lazy="loaded">
+											 <img class="file-factory-option-icons quick-file-favourite"  alt="Star icon" src="https://img.icons8.com/fluent/2x/star.png">
+									</div>
+
+									<div id="file-name"> </div>
+								</div>
+
+								<div class="wrapper all-ele-class-for-background">
+
+								  <input id="quick-file-title" class="all-ele-class-for-background" type="text" contenteditable="true" placeholder="Title"></input>
+								  <div class="options">
+									<button class="quick-file-editor-button" onClick="transform('bold', null)">
+									  <i class="fas fa-bold"></i>
+									</button>
+									<button class="quick-file-editor-button" onClick="transform('italic', null)">
+									  <i class="fas fa-italic"></i>
+									</button>
+									<button class="quick-file-editor-button" onClick="transform('strikeThrough', null)">
+									  <i class="fas fa-strikethrough"></i>
+									</button>
+									<button class="quick-file-editor-button" onClick="transform('underline', null)">
+									  <i class="fas fa-underline"></i>
+									</button>
+									<div class="seperator"></div>
+									<button class="quick-file-editor-button" onClick="transform('justifyLeft', null)">
+									  <i class="fas fa-align-left"></i>
+									</button>
+									<button class="quick-file-editor-button" onClick="transform('justifyCenter', null)">
+									  <i class="fas fa-align-center"></i>
+									</button>
+									<button class="quick-file-editor-button" onClick="transform('justifyRight', null)">
+									  <i class="fas fa-align-right"></i>
+									</button>
+									<div class="seperator"></div>
+									<button class="quick-file-editor-button" onClick="transform('insertOrderedList', null)">
+									  <i class="fas fa-list-ol"></i>
+									</button>
+									<button class="quick-file-editor-button" onClick="transform('insertUnorderedList', null)">
+									  <i class="fas fa-list-ul"></i>
+									</button>
+									<div class="seperator"></div>
+									<select onChange="transform('fontName', this.value)">
+									  <option disabled default>Font</option>
+									  <option value="Times New Roman">Times</option>
+									  <option value="Arial">Arial</option>
+									  <option value="Courier New">Courier New</option>
+									  <option value="Tahoma">Tahoma</option>
+									  <option value="Arial">Verdana</option>
+									</select>
+									<div class="seperator"></div>
+									<input type="number" class="all-ele-class-for-background" onChange="transform('fontSize', this.value)" value="3" max="7" min="1"></input>
+								  </div>
+								  <iframe name="editor" id="quick-file-editor"></iframe>
+									<script>
+
+										function transform(option, argument) {
+										  editor.document.execCommand(option, false, argument);
+										}
+									</script>
+								</div>
+
+
+								<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+																<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+						</div>
 						</div>
 						<div class='corner'></div>
 					</div>
@@ -644,8 +710,8 @@ document.onreadystatechange = function () {
 
 
 
-		<script src="{{ url_for('static', filename='js/SourceCodeSection.js') }}"></script>
-		<script src="{{ url_for('static', filename='js/DocumentSection.js') }}"></script>
+<!--		<script src="{{ url_for('static', filename='js/SourceCodeSection.js') }}"></script>-->
+<!--		<script src="{{ url_for('static', filename='js/DocumentSection.js') }}"></script>-->
 
 		<div class="split__bar"></div>
 		<div id="parent-source-code-main-div">
@@ -1036,7 +1102,7 @@ $('.CodeMirror').css('height','100%');
 																			    padding: 4px 40px;
 																				margin: 6px 0;
 																				box-sizing: border-box;
-																">
+																" value="https://youtu.be/Cuy4ZOgwqsQ">
 										<button id="stream-youtube-video" class="button" style="
 																									    display: inline;
 																										margin-top: 7px;
@@ -1081,7 +1147,12 @@ $('.CodeMirror').css('height','100%');
 
 
 <script type="text/javascript" src="{{ url_for('static', filename='/js/CodeEditor.js') }}"></script>
-<script type="module" src="{{ url_for('static', filename='/js/main.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='/js/main_1.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='/js/pro1000.js') }}"></script>
+<!--<script type="module" src="{{ url_for('static', filename='/js/DocumentSection.js') }}"></script>-->
+<!--<script type="module" src="{{ url_for('static', filename='/js/TreeView.js') }}"></script>-->
+<!--<script type="module" src="{{ url_for('static', filename='/js/DomEvents.js') }}"></script>-->
+<!--<script type="module" src="{{ url_for('static', filename='/js/DomActions.js') }}"></script>-->
 
 <script type='text/javascript'>
 
@@ -1095,12 +1166,12 @@ $(document).ready(function(){
 
 
 
-    
-    
 
 
-    
-    
+
+
+
+
 });
 
 

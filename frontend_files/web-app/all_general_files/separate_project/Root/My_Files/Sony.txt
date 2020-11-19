@@ -72,7 +72,7 @@ company_id	varchar(10)  symphony_azima_AI_001
 title char(30)	      senior  UI		
 job_level integer     7 - Associate, 6 - Software Engineer 5 - Senior Engineer 4 - Leader 3 - Director 2 - Vice President 1 - Executive  
 type char(10)         full time or part time 	
-eligibility (50)	  >5 years experience
+eligibility (50)	  &gt;5 years experience
 location char(30)	  bangalore  
 job_description	JSON  UI developer will do x,y,z 
 job_requirment JSON   experience in React/Anguar	
