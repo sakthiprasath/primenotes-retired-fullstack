@@ -101,6 +101,20 @@ def delete_file(category, file_name):
     except Exception as e:
         return print(e)
 
+@individual_component_fetcher_routes.route('delete-project-file/<category>', methods=['DELETE'])
+def delete_project_file(category):
+    @after_this_request
+    def add_header(response):
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
+    try:
+        file_path = json.loads(request.args.get('file_path'))
+        file_data = SQLIndividualComponent().delete_project_file(category, file_path)
+        return jsonify('delete_success')
+    except Exception as e:
+        return print(e)
+
+
 @individual_component_fetcher_routes.route('/general_files/<category>', methods=['GET'])
 def get_file_data(category):
     @after_this_request

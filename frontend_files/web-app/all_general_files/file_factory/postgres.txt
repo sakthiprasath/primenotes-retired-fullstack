@@ -4,53 +4,53 @@
 
 <div data-darkreader-inline-bgcolor="" data-darkreader-inline-bgimage="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-darkreader-inline-border-right="" data-darkreader-inline-border-top="" style="background: rgb(238, 238, 238); border: 1px solid rgb(204, 204, 204); padding: 5px 10px; --darkreader-inline-bgimage: initial; --darkreader-inline-bgcolor:#302e2b; --darkreader-inline-border-top:#4c4b46; --darkreader-inline-border-right:#4c4b46; --darkreader-inline-border-bottom:#4c4b46; --darkreader-inline-border-left:#4c4b46;">psql -h localhost -p 5433 --username=postgres <strong>&lt;kbr_db&gt;</strong>&nbsp; &lt;&nbsp; file_path&nbsp;</div>
 
-<p><strong>note:&nbsp; &lt;kbr_db&gt;&nbsp;&nbsp;&nbsp;must be created previously<br />
-<br />
-eg:<br />
+<p><strong>note:&nbsp; &lt;kbr_db&gt;&nbsp;&nbsp;&nbsp;must be created previously<br>
+<br>
+eg:<br>
 psql -h localhost -p 5433 --username=postgres kbr_db &lt; /home/sakthi/Downloads/kbr_db.sql</strong></p>
 
-<hr />
-<p><br />
-postgresql commands :<br />
-&nbsp;&nbsp; &nbsp;\l &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; - to list all the databases<br />
-&nbsp;&nbsp; &nbsp;\c database name - to connect to the database<br />
-&nbsp;&nbsp; &nbsp;\dt &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; - to list the database contents<br />
-&nbsp;&nbsp; &nbsp;create database databaseName&nbsp;<br />
+<hr>
+<p><br>
+postgresql commands :<br>
+&nbsp;&nbsp; &nbsp;\l &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; - to list all the databases<br>
+&nbsp;&nbsp; &nbsp;\c database name - to connect to the database<br>
+&nbsp;&nbsp; &nbsp;\dt &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; - to list the database contents<br>
+&nbsp;&nbsp; &nbsp;create database databaseName&nbsp;<br>
 &nbsp;&nbsp; &nbsp;</p>
 
-<hr />
-<hr />
-<p>In the Terminal :&nbsp;<br />
-copy kbr_db.sql to kbr_db database<br />
-psql -h localhost -p 5432 -U postgres -d kbr_db -f /home/sakthi/Downloads/kbr_db.sql D<br />
+<hr>
+<hr>
+<p>In the Terminal :&nbsp;<br>
+copy kbr_db.sql to kbr_db database<br>
+psql -h localhost -p 5432 -U postgres -d kbr_db -f /home/sakthi/Downloads/kbr_db.sql D<br>
 &nbsp;</p>
 
-<hr />
-<hr />
+<hr>
+<hr>
 <p>sudo apt-get install postgresql-client</p>
 
-<hr />
-<p><span style="font-size:18px"><strong>In Windows :</strong></span><br />
-start the Postgres service :&nbsp;<br />
+<hr>
+<p><span style="font-size:18px"><strong>In Windows :</strong></span><br>
+start the Postgres service :&nbsp;<br>
 windows search -&gt; services -&gt; right click on the postgres (10/13)&nbsp; -&gt; strat / stop</p>
 
-<p>Reference :&nbsp;<br />
+<p>Reference :&nbsp;<br>
 https://tableplus.com/blog/2018/10/how-to-start-stop-restart-postgresql-server.html</p>
 
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>
 
-<hr />
-<hr />
+<hr>
+<hr>
 <h2><strong>Alter&nbsp; table:</strong></h2>
 
-<p>alter table jobs<br />
-alter column type TYPE char(15)<br />
+<p>alter table jobs<br>
+alter column type TYPE char(15)<br>
 -- select count(*) from sample_13_table;</p>
 
-<p>alter table plants &nbsp;<br />
-&nbsp; &nbsp; &nbsp; add constraint pk_test&nbsp;<br />
+<p>alter table plants &nbsp;<br>
+&nbsp; &nbsp; &nbsp; add constraint pk_test&nbsp;<br>
 &nbsp; &nbsp; &nbsp; primary key (plantid)&nbsp;</p>
 
 <p>&nbsp;</p>
@@ -61,8 +61,8 @@ alter column type TYPE char(15)<br />
 
 <p>....</p>
 
-<p>CONSTRAINT fk_plants<br />
-&nbsp; &nbsp; &nbsp; FOREIGN key (PlantID)&nbsp;<br />
+<p>CONSTRAINT fk_plants<br>
+&nbsp; &nbsp; &nbsp; FOREIGN key (PlantID)&nbsp;<br>
 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;REFERENCES Plants (plantid)</p>
 
 <p>);</p>

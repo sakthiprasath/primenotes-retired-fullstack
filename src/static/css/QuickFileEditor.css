@@ -52,11 +52,9 @@ input[type="text"] {
     border: 0;
     width: calc(100% - 83px);
     height: 91%;
-    border: 1px solid #f1f7f9;
     top: 45px;
     position: absolute;
     margin-left: 16px;
-    border-top: 1px solid #f1f7f9;
 }
 .seperator {
     border: 1px solid #d6b8b8;

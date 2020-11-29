@@ -26,17 +26,14 @@
   }
 }
 .open-close{
-    width: max-content;
-    height: max-content;
-    position: relative;
-    margin-top: 5px;
-    background: None ;
-    padding: 5px;
-    top: 0px;
-    font-family: fantasy;
-    margin-left: 0px;
-    --darkreader-inline-bgimage: initial;
-    --darkreader-inline-bgcolor: #577c64;
+    background: rgb(45 87 121);
+    color: rgb(204 232 255);
+    width: 110% !important;
+    font-size: 11px;
+    margin-left: 0px !important;
+    padding: 8px !important;
+    padding-left: 0px;
+    cursor: pointer;
 }
 .open-close:hover{
     background-color:#5d648e !important;

@@ -45,18 +45,27 @@ class SQLIndividualComponent():
     def create_file(self, data_map):
         file_type = data_map['file_type']
         file_name = data_map['file_name']
+        create_type = data_map['create_type']
 
         if file_type == 'document':
             folder_id = data_map.get('folder_id', None)
             folder_path = data_map['folder_path']
             if 'MY-ROOT' in folder_path:
                 folder_path = folder_path[:-(len('MY-ROOT'))]
-            file_name = folder_path + '//' + file_name +'.txt'
+            if create_type == 'Folder':
+                file_name = folder_path + '//' + file_name
+            else :
+                file_name = folder_path + '//' + file_name +'.txt'
+
+
         elif file_type == 'file_factory':
             folder_path = data_map['folder_path']
             file_name = folder_path + '//' + file_name + '.txt'
-
-        fp = open(file_name, 'w+')
+        if create_type == 'Folder':
+            if not os.path.exists(file_name):
+                os.makedirs(file_name)
+        elif create_type == 'File':
+            fp = open(file_name, 'w+')
 
 
 
@@ -81,6 +90,9 @@ class SQLIndividualComponent():
 
         file_path = '../frontend_files/web-app/all_general_files/' + file_path
 
+        os.remove(file_path)
+
+    def delete_project_file(self, category, file_path):
         os.remove(file_path)
 
     def get_file_data(self, file_path):

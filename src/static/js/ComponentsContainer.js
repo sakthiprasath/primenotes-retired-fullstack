@@ -182,6 +182,8 @@ export default class loadComponentsContainer {
             self.prev_width = 0;
             self.prev_height = 0;
             $('.maximize-icon').on('click',function(){
+                $('#make-resize').show();
+                $('.resize-icon').hide();
                 self.tsp.DomActions.maximize_icon_click_action();
                 $('#pane').removeClass('pane-orientation-left-class');
                 $('#pane').removeClass('pane-orientation-right-class');
@@ -189,26 +191,21 @@ export default class loadComponentsContainer {
         }
      _initialize_file_chat_switches_events(){//component container left-corner
           let self = this;
-//        self.action_obj._initialize_file_chat_switches_actions();
-
             $('#chat-middle-section').css('display','none');
             $('#single-chat').css('display','none');
             $('#group-chat').css('display','none');
             $("#right-side-components").css('left','245px');
 
-            $('#file-switch').on('click',function(){
+            $('.file-switch').on('click',function(){
+             $('#right-side-section').hide();
              let component_factory_icon_elems = $('.component-factory-left-icons');
                 let len = component_factory_icon_elems.length;
                 for(let i=0;i < len; i++){
                     let class_list = $(component_factory_icon_elems[i]).attr('class').split(' ');
-                    if( class_list.indexOf('active') >=0 ){
-                        $(component_factory_icon_elems[i]).removeClass('active');
-                        break;
-                    }
                 }
 
-                $(this).addClass('active');
-
+//                $(this).addClass('active');
+                self.active_switch = "file-switch";
                 let classList =  $("#right-side-components").attr('class');
                 if(classList.indexOf('right-side-components-full-screen') >=0 ){
                        $("#right-side-components").removeClass('right-side-components-full-screen');
@@ -228,17 +225,21 @@ export default class loadComponentsContainer {
                 $('#middle-section').show();
                 let file_editor = $('#quick-notes-in-file-factory').clone();
                 $('#quick-notes-in-file-factory').remove();
+                $('#video-stream-in-file-factory').hide();
 
                 let file_editor_obj = $(file_editor).removeClass('text-editor-in-middle-section').addClass('text-editor-in-right-side-components');
                 $('#right-side-components-container').append(file_editor_obj);
                 $("#right-side-components").css('left','245px');
                 $('#file-factory-split-bar').css('left','245px');
                 $('#file-name').off('click');
-                self.fillRightSideComponents(self, $('#file-name').text().trim());
+                self.fillRightSideComponents(self, $('#file-name').text().trim() + '.txt');
+                self._build_file_factory_options();
                 self._open_settings();
              });
 
-            $('#video-stream-switch').on('click',function(){
+            $('.video-stream-switch').on('click',function(){
+                $('#pane').css({'display':'block'});
+                $('#right-side-section').show();
                 let component_factory_icon_elems = $('.component-factory-left-icons');
                 let len = component_factory_icon_elems.length;
                 for(let i=0;i < len; i++){
@@ -249,10 +250,7 @@ export default class loadComponentsContainer {
                     }
                 }
 
-                $(this).addClass('active');
-                if( $('#video-stream-in-file-factory').html().trim() == ""){
-                    self.tsp.DomActions._create_new_project_file_form(self, 'right-side-section');
-                }
+                self.active_switch = "video-stream-switch";
                 let classList =  $("#right-side-components").attr('class');
                 if(classList.indexOf('right-side-components-split-screen') >=0 ){
                     $("#right-side-components").removeClass('right-side-components-split-screen');
@@ -275,7 +273,9 @@ export default class loadComponentsContainer {
                     $('#quick-notes-in-file-factory').hide();
                     $('#middle-section').show();
                 });
-                self.fillRightSideComponents(self, $('#file-name').text().trim());
+                self.fillRightSideComponents(self, $('#file-name').text().trim() + '.txt');
+                self.initialisingEventHandlers(self);
+                self._build_file_factory_options();
                 self._open_settings();
             });
     }
@@ -363,9 +363,11 @@ export default class loadComponentsContainer {
 
         /*after buliding the search results in middle section
          * create event listeners for search results*/
-//        $('#file-switch').addClass('active');
+//        $('.file-switch').addClass('active');
         $('.individual-search').off('click');
         $('.individual-search').on('click',function(){
+            $('.individual-search').css({'background':'none'})
+            $(this).css({'background':'rgb(224 238 243)'});
             $('#right-side-components').css('display','block');
             $('#right-side-components-container').css('display','block');
 //            $('#file-name').text(this.textContent.trim())
@@ -373,7 +375,7 @@ export default class loadComponentsContainer {
 
 
             let component_factory_icon = $('.active').prop('id');
-            if(component_factory_icon == "video-stream-switch"){
+            if(self.active_switch == "video-stream-switch"){
                  $('#middle-section').hide();
                  $('#quick-notes-in-file-factory').show();
                  let screenWidth = screen.width;
@@ -387,7 +389,7 @@ export default class loadComponentsContainer {
                  $('#right-side-components').css('width' , (pane_width/2));
 
             }
-            else if(component_factory_icon == "file-switch"){
+            else if(self.active_switch == "file-switch"){
                 $('#video-stream-in-file-factory').hide();
                 $('#quick-notes-in-file-factory').show();
                 $('#middle-section').show();
@@ -473,9 +475,6 @@ export default class loadComponentsContainer {
     };
      _component_container_open_close(){
         /*component container open-close */
-         $('#close-editor-button').on('click',function(){
-            $('#pane').css({'display':'block'});
-         });
 
          $('#change-pane-orientation-left').on('click',function(){
             $('#pane').removeAttr('class');
@@ -507,8 +506,8 @@ export default class loadComponentsContainer {
             /*create new file */
             let self = this;
             $('#create-new-file').on('click', function(){
-                $('#create-new-file-form').css('display','block');
-
+//                $('#create-new-file-form').css('display','block');
+                self.tsp.DomActions._create_new_project_file_form(self, 'create-new-quick-file-form')
             });
             $('#create-new-file-submit-btn').on('click',function(){
 
@@ -522,7 +521,8 @@ export default class loadComponentsContainer {
                     'folder_id' : '',
                     'folder_path' : '../frontend_files/web-app/all_general_files/file_factory',
                     'file_name' : file_name,
-                    'file_type' : 'file_factory'
+                    'file_type' : 'file_factory',
+                    'create_type': 'File'
                 }
                 self.tsp.DomActions._create_file_in_backend_duplicate(temp_map).then(function(){
                     let file_name_id = file_name.replaceAll('  ',' ').replaceAll(' ','-') ;
@@ -531,6 +531,8 @@ export default class loadComponentsContainer {
                     self.initialisingEventHandlers(self);
                     $('#file-name').text(file_name);
                     document.getElementById('quick-file-editor').contentWindow.document.body.innerHTML = '';
+
+                    self.tsp.DomActions._notification_dialog('File Creation Success');
                 });
             });
 
@@ -609,6 +611,7 @@ export default class loadComponentsContainer {
                 parent_ele.empty();
                 parent_ele.append($(new_span));
                 $('#file-name').text(new_file_name)
+                self.tsp.DomActions._notification_dialog('File Renamed');
             });
         }
     _onfocusout_rename_field(){
@@ -621,10 +624,15 @@ export default class loadComponentsContainer {
         let self = this;
         let file_name = $('#file-name').text().trim();
 
-        let input =  `<input type='text' id='quick-file-rename-field' value='${file_name}' placeholder='${file_name}' />`;
+        let input =  $(`<input type='text' id='quick-file-rename-field' value='${file_name}' placeholder='${file_name}' />`);
         let curr_file_ele = $('#'+ file_name.trim().replaceAll('  ',' ').replaceAll(' ','-'));
         curr_file_ele.empty();
-        curr_file_ele.append($(input));
+        curr_file_ele.append(input);
+        let input_text = input.val();
+        input.val('');
+        input.val(input_text).focus();
+
+//        input.focus();
         self._onfocusout_rename_field();
     }
     _delete_file_in_the_backend(){
@@ -641,6 +649,8 @@ export default class loadComponentsContainer {
              $(curr_file_ele).remove();
             delete  self.label_map[file_name_with_Extension];
             self.fillRightSideComponents(self, Object.keys(self.label_map)[0]);
+
+            self.tsp.DomActions._notification_dialog('File Deleted');
           }).fail(function(){
             alert('cant delete the file');
           });
@@ -690,6 +700,12 @@ export default class loadComponentsContainer {
         });
 
     }
+    _make_resize(){
+        $('#make-resize').on('click',function(){
+            $('.resize-icon').show();
+            $(this).hide();
+        });
+    }
     init(tsp, unused_return_values){
         this.tsp = tsp;
         let self = this;
@@ -705,6 +721,7 @@ export default class loadComponentsContainer {
         this._create_event_listeners_for_file_factory_dragbar();
         this._initialize_youtube_stream();
         this._open_settings();
+        this._make_resize();
         this._build_file_factory_options();
         var screenWidth=parseInt(screen.width);
         var screenHeight=parseInt(screen.height);

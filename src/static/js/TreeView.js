@@ -78,16 +78,7 @@ export default class TreeClass{
 
     _build_tree_and_close_sidenav(){
 
-        /*events for tree*/
-        $('.folder').on('click', function(){
-            let parent = $(this).parent();
-            let sibling_1_nested = $(parent).siblings().get(0);
-            $(sibling_1_nested).toggleClass('active');
-            $(parent).toggleClass('folder-down');
-//            let sibling_1_nested = $(this).siblings().get(0);
-//            $(sibling_1_nested).toggleClass('active');
-//            $(this).toggleClass('folder-down');
-        });
+
 
 
 
@@ -129,14 +120,12 @@ export default class TreeClass{
             }
         });
     }
-    _context_menu_for_project_tree(){
-          let self = this;
-          let curr_active_folder = '';
-          let parent_folder = '';
-
-          $('.three-dots').on("click", function(event) {
-                parent_folder = $(this).parent().get(0);
-                curr_active_folder = $(parent_folder).attr('folder-path');
+    _events(){
+        let self = this;
+         $('.three-dots').off("click");
+         $('.three-dots').on("click", function(event) {
+                self.parent_folder = $(this).parent().get(0);
+                self.curr_active_folder = $(self.parent_folder).attr('folder-path');
                 event.preventDefault();
                 $(".context")
                     .show()
@@ -145,6 +134,21 @@ export default class TreeClass{
                       left: event.pageX
                     });
                 });
+
+         /*events for tree*/
+        $('.folder').off('click');
+        $('.folder').on('click', function(){
+            let parent = $(this).parent();
+            let sibling_1_nested = $(parent).siblings().get(0);
+            $(sibling_1_nested).toggleClass('active');
+            $(parent).toggleClass('folder-down');
+//            let sibling_1_nested = $(this).siblings().get(0);
+//            $(sibling_1_nested).toggleClass('active');
+//            $(this).toggleClass('folder-down');
+        });
+    }
+    _context_menu_for_project_tree(){
+          let self = this;
 
             $(document).click(function(e) {
                 if($(e.target).hasClass('three-dots') != true){
@@ -155,37 +159,73 @@ export default class TreeClass{
             $('.inner-item').on('click',function(){
                 let option_name = $(this).text().trim();
                 switch(option_name){
-                    case "New File":
-                    self.tsp.DomActions._create_new_project_file_form(self, 'new-project-file-create-form')
-                    break;
-
+                    case "New File":{
+                        self.create_type = 'File';
+                        self.tsp.DomActions._create_new_project_file_form(self, 'new-project-file-create-form')
+                        break;
+                    }
+                    case "Move To Trash":{
+                        let active_file_path = $($('.tab-active').children()[0]).attr('file-path');
+                        self.tsp.DomActions._delete_project_note_file('document', active_file_path).then(function(){
+                            self.tsp.DomActions._notification_dialog('File Moved To Trash');
+                        });
+                        break;
+                    }
+                    case "New Folder":{
+                        self.create_type = 'Folder';
+                        self.tsp.DomActions._create_new_project_file_form(self, 'new-project-file-create-form')
+                        break;
+                    }
                 }
             });
              $('#new-project-file-submit').on('click',function(){
                 let project_note_name = $('#new-project-note-name').val();
+                if (self.curr_active_folder.indexOf('MY-ROOT') >=0 ){
+                        self.curr_active_folder = self.curr_active_folder.replace('MY-ROOT', '');
+                }
                 let temp_map = {
                     'folder_id' : '',
-                    'folder_path' : curr_active_folder,
+                    'folder_path' : self.curr_active_folder,
                     'file_name' : project_note_name,
-                    'file_type' : 'document'
+                    'file_type' : 'document',
+                    'create_type': self.create_type
                 }
 //                self.action_obj._initiate_loder();
                  self.tsp.DomActions._create_file_in_backend_duplicate(temp_map).then(function(){
 
-                    if (curr_active_folder.indexOf('MY-ROOT') >=0 ){
-                        curr_active_folder = curr_active_folder.replace('MY-ROOT', project_note_name + '.txt');
+
+                    let new_file_html = '';
+                    let file_name = '';
+                    //$(self.parent_folder).attr('folder-path').replace('MY-ROOT','')
+                    let folder_path =  self.curr_active_folder + '/' + project_note_name ;
+                    if(self.create_type == 'Folder'){
+                        new_file_html = `<li><div class="folder-section folder-down" folder-name='${project_note_name}' folder-path='${folder_path}'>`;
+                        new_file_html += `<span class="folder"><span class="open-close-folder"> &gt; </span>${project_note_name}</span>`;
+                        new_file_html += `<span class="three-dots">...</span></div>`;
+                        new_file_html += `<ul class="nested"></ul></li>`;
                     }
-                    let new_file_html = `<li class="file"><a href="#" class="file-click" filename='${project_note_name}' file-type="document" file-path='${curr_active_folder}'>${project_note_name}</a></li>`
-                    let nested_folder_sibling = $(parent_folder).siblings().get(0);
-                    $(nested_folder_sibling).prepend($(new_file_html));
+                    else if(self.create_type == 'File'){
+                        file_name = ('${self.curr_active_folder}').toString();
+                        new_file_html = `<li class="file"><a href="#" class="file-click" filename='${project_note_name}' file-type="document" file-path=file_name >${project_note_name}</a></li>`;
+                    }
+                    let nested_folder_sibling = $(self.parent_folder).siblings().get(0);
+                    if(nested_folder_sibling === undefined){
+                        let q1 = $(self.parent).find('.nested');
+                        $(q1).append($(new_file_html));
+                    }
+                    else{
+                        $(nested_folder_sibling).prepend($(new_file_html));
+                    }
+
                     /*initialising events for the created file in tree*/
                     let source_code_section_obj = new SourceCodeSection();
-                    source_code_section_obj
-                        .buildTab(project_note_name, 'document', curr_active_folder);
-                    source_code_section_obj._initialise_summer_note();
-
-                    let content_str = 'File Creation Success';
-                    self.tsp.DomActions._notification_dialog(content_str);
+                    if(self.create_type != 'Folder'){
+                        source_code_section_obj
+                            .buildTab(project_note_name, 'document', self.curr_active_folder);
+                        source_code_section_obj._initialise_summer_note();
+                    }
+                    self._events();
+                    self.tsp.DomActions._notification_dialog(`${self.create_type} Creation Success`);
                 });
         });
 
@@ -201,6 +241,7 @@ export default class TreeClass{
             document.getElementById('myUL').innerHTML = tree_html;
             self._build_tree_and_close_sidenav();
             self._context_menu_for_project_tree();
+            self._events();
             return def.resolve(tsp, to_return_values);
         });
         return def.promise();

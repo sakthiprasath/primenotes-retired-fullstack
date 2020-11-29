@@ -6,25 +6,25 @@
 
 <h3>https://docs.cloudera.com/HDPDocuments/HDF3/HDF-3.1.1/bk_user-guide/content/instantiating-a-template.html</h3>
 
-<hr />
-<hr />
+<hr>
+<hr>
 <h1>current &nbsp;azure que push java code with access key:</h1>
 
-<p>package com.siai.udr;<br />
-import com.azure.messaging.eventhubs.*;<br />
-import static java.nio.charset.StandardCharsets.UTF_8;<br />
-public class SendUDREvent {<br />
-&nbsp; &nbsp; public static String connectionString = &quot;Endpoint=sb://siai-udr.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=egKxDBPMwtAKbHp28x1aq9GJAxXmn7Jfn8Rs9UHgzb0=&quot;;<br />
-&nbsp; &nbsp; public static String eventHubName = &quot;sakthi-udr&quot;;<br />
-&nbsp; &nbsp; public static void main(String[] args) {<br />
-&nbsp; &nbsp; &nbsp; &nbsp; EventHubClientBuilder builder = new EventHubClientBuilder().connectionString(connectionString, eventHubName);<br />
-&nbsp; &nbsp; &nbsp; &nbsp; try(EventHubProducerClient producer = builder.buildProducerClient()) {<br />
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; EventDataBatch batch = producer.createBatch();<br />
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; batch.tryAdd(new EventData(&quot;Import Machines&quot;));<br />
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; producer.send(batch);<br />
-&nbsp; &nbsp; &nbsp; &nbsp; }<br />
-&nbsp; &nbsp; &nbsp; &nbsp; System.out.println(&quot;Message Sent..&quot;);<br />
-&nbsp; &nbsp; }<br />
+<p>package com.siai.udr;<br>
+import com.azure.messaging.eventhubs.*;<br>
+import static java.nio.charset.StandardCharsets.UTF_8;<br>
+public class SendUDREvent {<br>
+&nbsp; &nbsp; public static String connectionString = "Endpoint=sb://siai-udr.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=egKxDBPMwtAKbHp28x1aq9GJAxXmn7Jfn8Rs9UHgzb0=";<br>
+&nbsp; &nbsp; public static String eventHubName = "sakthi-udr";<br>
+&nbsp; &nbsp; public static void main(String[] args) {<br>
+&nbsp; &nbsp; &nbsp; &nbsp; EventHubClientBuilder builder = new EventHubClientBuilder().connectionString(connectionString, eventHubName);<br>
+&nbsp; &nbsp; &nbsp; &nbsp; try(EventHubProducerClient producer = builder.buildProducerClient()) {<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; EventDataBatch batch = producer.createBatch();<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; batch.tryAdd(new EventData("Import Machines"));<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; producer.send(batch);<br>
+&nbsp; &nbsp; &nbsp; &nbsp; }<br>
+&nbsp; &nbsp; &nbsp; &nbsp; System.out.println("Message Sent..");<br>
+&nbsp; &nbsp; }<br>
 }</p>
 
 <p>&nbsp;</p>
@@ -55,8 +55,8 @@ public class SendUDREvent {<br />
 
 <p>&nbsp;</p>
 
-<hr />
-<hr />
+<hr>
+<hr>
 <h2>search PG Admin for browser access</h2>
 
 <h2><strong>Engineering UDR (UNIVERSAL DATA REPOSITORY) :</strong></h2>
@@ -65,28 +65,28 @@ public class SendUDREvent {<br />
 
 <p>&nbsp;</p>
 
-<hr />
+<hr>
 <p>C:\Program Files\SQL Anywhere 12\Bin64\dbsrv12.exe</p>
 
 <p>&nbsp;</p>
 
 <h2>&nbsp;</h2>
 
-<h2><strong>In sybase app :<br />
+<h2><strong>In sybase app :<br>
 Could not connect to the database.</strong></h2>
 
-<p>Internal database error *** ERROR *** Assertion failed: 201129 (12.0.0.2483)<br />
-File is shorter than expected -- transaction rolled back<br />
-[Sybase][ODBC Driver][SQL Anywhere]Internal database error *** ERROR *** Assertion failed: 201129 (12.0.0.2483)<br />
-File is shorter than expected -- transaction rolled back<br />
-&nbsp;&nbsp; &nbsp;SQLCODE=-301<br />
+<p>Internal database error *** ERROR *** Assertion failed: 201129 (12.0.0.2483)<br>
+File is shorter than expected -- transaction rolled back<br>
+[Sybase][ODBC Driver][SQL Anywhere]Internal database error *** ERROR *** Assertion failed: 201129 (12.0.0.2483)<br>
+File is shorter than expected -- transaction rolled back<br>
+&nbsp;&nbsp; &nbsp;SQLCODE=-301<br>
 &nbsp;&nbsp; &nbsp;SQLSTATE=HY000</p>
 
-<p>Connection parameters:<br />
-&nbsp;&nbsp; &nbsp;User=dba<br />
-&nbsp;&nbsp; &nbsp;Password=***<br />
-&nbsp;&nbsp; &nbsp;DBF=C:\Users\Sakthi\Downloads\vibration AI\Cargill_Blair_PSrinivasan\Cargill_Blair_PSrinivasan.db<br />
-&nbsp;&nbsp; &nbsp;LINKS=ShMem<br />
+<p>Connection parameters:<br>
+&nbsp;&nbsp; &nbsp;User=dba<br>
+&nbsp;&nbsp; &nbsp;Password=***<br>
+&nbsp;&nbsp; &nbsp;DBF=C:\Users\Sakthi\Downloads\vibration AI\Cargill_Blair_PSrinivasan\Cargill_Blair_PSrinivasan.db<br>
+&nbsp;&nbsp; &nbsp;LINKS=ShMem<br>
 &nbsp;&nbsp; &nbsp;ENC=NONE</p>
 
 <p>&nbsp;</p>
@@ -103,8 +103,8 @@ File is shorter than expected -- transaction rolled back<br />
 
 <p>&nbsp;</p>
 
-<hr />
-<hr />
+<hr>
+<hr>
 <h2 style="text-align:center">&nbsp;<strong> configurations, setups, paths :</strong></h2>
 
 <h2><span style="font-family:arial,helvetica,sans-serif"><strong>POSTGRES SQL :</strong></span></h2>
@@ -117,12 +117,12 @@ File is shorter than expected -- transaction rolled back<br />
 
 <p>&nbsp;</p>
 
-<hr />
-<hr />
-<p><br />
-https://godatadriven.com/blog/using-the-airflow-experimental-rest-api-to-trigger-a-dag/<br />
-https://airflow.apache.org/docs/stable/start.html<br />
-https://timeli.atlassian.net/wiki/spaces/SIA/pages/1164640257/Engineering+UDR<br />
+<hr>
+<hr>
+<p><br>
+https://godatadriven.com/blog/using-the-airflow-experimental-rest-api-to-trigger-a-dag/<br>
+https://airflow.apache.org/docs/stable/start.html<br>
+https://timeli.atlassian.net/wiki/spaces/SIA/pages/1164640257/Engineering+UDR<br>
 https://timeli.atlassian.net/wiki/spaces/SIA/pages/1111884171/Universal+Data+Repository</p>
 
 <h2 style="text-align:center">&nbsp;</h2>
@@ -133,21 +133,21 @@ https://timeli.atlassian.net/wiki/spaces/SIA/pages/1111884171/Universal+Data+Rep
 
 <p><strong>ETL : Extract Transform Load :</strong></p>
 
-<p><img alt="" src="https://webassets.mongodb.com/_com_assets/cms/ETL_Visual-sa656kl6df.png" style="height:414px; width:537px" /></p>
+<p><img alt="" src="https://webassets.mongodb.com/_com_assets/cms/ETL_Visual-sa656kl6df.png" style="height:414px; width:537px"></p>
 
 <p>&nbsp;</p>
 
-<hr />
-<hr />
-<h2>Experiments:<br />
+<hr>
+<hr>
+<h2>Experiments:<br>
 Machines_from_venki</h2>
 
 <p><strong>/home/sakthi/udr/templates</strong></p>
 
 <p>&nbsp;</p>
 
-<hr />
-<hr />
+<hr>
+<hr>
 <h1>Linux :&nbsp;</h1>
 
 <h1>Output files generated from nifi :&nbsp;&nbsp;</h1>

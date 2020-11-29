@@ -144,14 +144,28 @@ document.onreadystatechange = function () {
 
 
 <!-- top header section -->
-<div id="top-header" class="top-header-top-margin">
-	<div id="logo-section" class="logo-section-top-margin">
-<!--		https://www.freepnglogos.com/uploads/instagram-logos-png-images-free-download-2.png-->
+<div id="top-header" class="top-header-left-margin">
+	<div id="logo-section" class="logo-section-right-margin">
+		<!--		https://www.freepnglogos.com/uploads/instagram-logos-png-images-free-download-2.png-->
+		<img src="/static/images/logo_.PNG" alt="primenotes_logo" id="prime-notes-logo">
+		<div class="logo-quotes" style="
+			display: flex;
+			flex-direction: column;
+			flex-wrap: wrap;
+			justify-content: center;
+			width: 120px;
+			position: relative;
+			left: 7px;
+		">
+		<div class="" style="color: white;position: relative;left: 13%;">
+			Prime Notes
+			</div>
 
-<!--		<img src="{{ url_for('static', filename='images/logo_.PNG') }}" alt='primenotes_logo' id='primes-notes-logo' />-->
-		<span class="logo-font" style="top: 6px;
-    left: 14px;
-    width: min-content;">Prime Notes</span>
+		<div class="" style="color: wheat;font-size: 9px;position: relative;left: 1%;font-variant: all-small-caps;letter-spacing: 1px;">
+		A Productivity Booster
+		</div>
+
+		</div>
 	</div>
 
 
@@ -161,48 +175,118 @@ document.onreadystatechange = function () {
 
 	<div id="tab-options-section" >
 	<div id='top-header-tab-options' class="tab-options">
-		<button id="close-editor-button" class="button open-close button tab-options-button open-close" data-toggle="tooltip" title="Notes with Text Editor Options">Quick Notes</button>
 
-		<button id='main-section-button' class="button open-close" data-toggle="tooltip" title="Project based Notes taker with folder and file creation options">
-			<span style="padding:3px">General Notes</span>
-		</button>
+		<div id="close-editor-button" class="button-with-icon-in-header" style="
+			display: grid;
+			grid-template-columns: 2fr 4fr;
+		">
+					<img src="https://cdn2.iconfinder.com/data/icons/favorite-and-like/512/favorite-like-button-21-512.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" style="
+						width: 18px;
+						height: 18px;
+						position: relative;
+						top: 23%;
+					">
+					<span  class="file-switch open-close" data-toggle="tooltip" title="" data-placement="auto" data-original-title="Notes with Text Editor Options" style="background: rgb(45 87 121);color: rgb(241 247 249);">Quick Notes</span>
+		</div>
 
-		<button id='open-close-overlay' class="button open-close"  data-toggle="tooltip" title="Embed Websites, Youtube Videos">
-			<span style="padding:3px">Stream</span>
-		</button>
-		<button id="open-youtube-frame" class="button open-close" style="">
-			<img class="thumb" src="https://image.flaticon.com/icons/png/512/15/15077.png" alt="Computer screen Free Icon" data-pin-no-hover="true" onerror="this.onerror=null;ga('send', 'event', 'broken_image', 'detail', '318_752318');" style="
-				width: 20px;
-				height: 20px;
+		<div id='main-section-button' class="button-with-icon-in-header" style="
+			display: grid;
+			grid-template-columns: 2fr 4fr;
+		">
+					<img src="https://cdn2.iconfinder.com/data/icons/favorite-and-like/512/favorite-like-button-21-512.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" style="
+						width: 18px;
+						height: 19px;
+						position: relative;
+						top: 23%;
+					">
+			<span  class="open-close" data-toggle="tooltip" title="Project based Notes taker with folder and file creation options" data-placement="auto" style="background: rgb(45 87 121);color: rgb(241 247 249);">
+				<span style="padding:3px">Tree Notes</span>
+			</span>
+		</div>
+
+		<div id='open-close-overlay' class="button-with-icon-in-header" style="
+			display: grid;
+			grid-template-columns: 2fr 4fr;
 			">
-		</button>
+						<img src="https://cdn2.iconfinder.com/data/icons/favorite-and-like/512/favorite-like-button-21-512.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" style="
+							width: 18px;
+							height: 18px;
+							position: relative;
+							top: 23%;
+						">
+			<span  class="video-stream-switch open-close"  data-toggle="tooltip" title="Embed Websites, Youtube Videos" data-placement="auto" style="background: rgb(45 87 121);color: rgb(241 247 249);">
+				<span style="padding:3px">Video Notes</span>
+			</span>
+		</div>
 
+<!--		<div class="button-with-icon-in-header" style="-->
+<!--			display: grid;-->
+<!--			grid-template-columns: 1fr 3fr;-->
+<!--			">-->
+<!--						<img src="https://cdn2.iconfinder.com/data/icons/favorite-and-like/512/favorite-like-button-21-512.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" style="-->
+<!--							width: 70%;-->
+<!--							height: 60%;-->
+<!--							position: relative;-->
+<!--							top: 23%;-->
+<!--						">-->
+<!--			<span id="open-youtube-frame" class="button open-close" style="" style="background: rgb(45 87 121);color: rgb(241 247 249);">-->
+<!--				<img class="thumb" src="https://image.flaticon.com/icons/png/512/15/15077.png" alt="Computer screen Free Icon" data-pin-no-hover="true" onerror="this.onerror=null;ga('send', 'event', 'broken_image', 'detail', '318_752318');" style="-->
+<!--					width: 20px;-->
+<!--					height: 20px;-->
+<!--				">-->
+<!--			</span>-->
+<!--		</div>-->
 
-		<button id='html-renderer' class="button open-close"  data-toggle="tooltip" title="HTML, css, js editor for creating webdesigned notes">
-			<span style="padding:3px" >Html Editor</span>
-		</button>
-
+		<div id='html-renderer' class="button-with-icon-in-header" style="
+			display: grid;
+			grid-template-columns: 2fr 4fr;
+			">
+						<img src="https://cdn2.iconfinder.com/data/icons/favorite-and-like/512/favorite-like-button-21-512.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" style="
+							width: 18px;
+							height: 18px;
+							position: relative;
+							top: 23%;
+						">
+			<span  class="open-close"  data-placement="auto" data-toggle="tooltip" title="HTML, css, js editor for creating webdesigned notes" style="background: rgb(45 87 121);color: rgb(241 247 249);">
+				<span style="padding:3px" >Html Editor</span>
+			</span>
+		</div>
     </div>
 	</div>
 
 
 
-	<div id='user-name-section'>
-		<span class="logo-font user-name-font">SakthiPrasath Tamilazhagan</span>
+
+	<div id="top-header-preferences" class="button-with-icon-in-header" style="display: grid; grid-template-columns: 27fr 4fr; background-color: rgb(45 87 121)">
+					<img src="https://cdn.onlinewebfonts.com/svg/img_77554.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" style="
+						width: 18px;
+						height: 18px;
+						position: relative;
+						top: 23%;
+					">
+					<span class="file-switch open-close tab-option-buttons-right-in-margin" data-toggle="tooltip" title="" data-placement="auto" data-original-title="Notes with Text Editor Options" style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: block; width:100% !important;margin-top: 3px;">Preferences</span>
+	</div>
+	<div id='user-name-section' class="button-with-icon-in-header" style="display: grid; grid-template-columns: 3fr 4fr; background-color: rgb(45 87 121)">
+					<img src="https://secure.gravatar.com/avatar/d2e20c788a53eb35044eada00ca76d95?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FS-6.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" style="
+						width: 18px;
+						height: 18px;
+						position: relative;
+						top: 0%;
+					">
+					<span class="file-switch open-close tab-option-buttons-right-in-margin" data-toggle="tooltip" title="" data-placement="auto" data-original-title="Notes with Text Editor Options" style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: block; width:100% !important;">Sakthi</span>
 	</div>
 
 
+<!--	<div id="header-orientation">-->
 
-	<div id="header-orientation">
+<!--		<div id="left-header-id"  class="top-header-orientation"> <span id="left-header-id-span"> < </span></div>-->
+<!--        <div id="top-header-id" class="top-header-orientation">  <span id="top-header-id-span"> ^ </span> </div>-->
+<!--        <div id="right-header-id" class="top-header-orientation">  <span id="right-header-id-span"> > </span>   </div>-->
+<!--        <div id="bottom-header-id" class="top-header-orientation">  <span id="bottom-header-id-span"> ^ </span>  </div>-->
 
-		<div id="left-header-id" class="top-header-orientation"> <span id="left-header-id-span"> < </span></div>
-        <div id="top-header-id" class="top-header-orientation">  <span id="top-header-id-span"> ^ </span> </div>
-        <div id="right-header-id" class="top-header-orientation">  <span id="right-header-id-span"> > </span>   </div>
-        <div id="bottom-header-id" class="top-header-orientation">  <span id="bottom-header-id-span"> ^ </span>  </div>
-
-    </div>
+<!--    </div>-->
 </div>
-
+<span class="top-header-drag-bar" style="width: 7px; height: 101%;cursor: grab;background: rgb(45 87 121); position: absolute; margin-top: 0px; z-index: 11; left: 0px;"></span>
 
 
 
@@ -258,42 +342,74 @@ document.onreadystatechange = function () {
 
 
 
-	<div id='pane' class="pane-full-screen">
+	<div id='pane' class="pane-full-screen main-section-wrapper-class">
 		<div class='resizable' >
 			<div class='resizers'>
 				<div class='resizer top-left'></div>
 				<div class='resizer top-right'></div>
 				<div class='resizer bottom-left'></div>
 				<div class='resizer bottom-right'></div>
-				<div id='component-factory-header-icons'>
-					<div id="change-pane-orientation-left" class="button dropbtn">
-						<span class="span-for-orientation"> &lt;</span>
+<!--				<div id='component-factory-header-icons'>-->
+<!--					<img id='make-resize' src="https://icon-library.net/images/open-in-new-tab-icon/open-in-new-tab-icon-18.jpg" alt="Open Duplicate Chrome Tabs with Bash | JoshPrewitt.com" id="cpimg" style="-->
+<!--						position: relative;-->
+<!--						z-index: 1;-->
+<!--						width: 45px;-->
+<!--						height: 31px;-->
+<!--						margin-top: -4px;-->
+<!--					">-->
+<!--					<div id="change-pane-orientation-left" class="button dropbtn resize-icon">-->
+<!--						<span class="span-for-orientation"> &lt;</span>-->
+<!--					</div>-->
+<!--					<div id="change-pane-orientation-right" class="button dropbtn resize-icon">-->
+<!--						<span class="span-for-orientation"> &gt;</span>-->
+<!--					</div>-->
+
+<!--					<div id='maximize-component-factory' class="resize-icon">-->
+<!--						<input id='maximize-input-toggle' type='checkbox'-->
+<!--							style='display: none'> <img for='maximize-input-toggle'-->
+<!--							class='maximize-icon'-->
+<!--							src="https://img.icons8.com/material/64/000000/full-screen.png"></img>-->
+<!--					</div>-->
+<!--					<div id='close-component-results-container' class="resize-icon">-->
+<!--						<span class="close-file-factory-x span-for-orientation "> X </span>-->
+<!--					</div>-->
+
+
+
+
+<!--				</div>-->
+				<div id="component-factory-title">
+					<div id="right-side-section" class="inner-item-form" style="top: 0px; position: absolute; background: rgb(25, 131, 214); width: calc(30%); display: flex; left: 35%; column-gap: 10px; grid-template-columns: 2fr 1fr; z-index: 3;">
+										<input type="text" id="youtube-video-link" title="Right click the youtube video and copy embed code and pate here" placeholder="Right click the youtube video and copy embed code and pate here" style="
+																margin-left: 1px;
+																height: 24px;
+																margin-top: 4px;
+																border-radius: 2px;
+																font-size: 12px;
+																background: none;
+																border: 1px solid white;
+																color: white;
+																padding: 10px;
+																" value="https://youtu.be/zIwLWfaAg-8">
+										<button id="stream-youtube-video" class="button" style="
+																										display: inline;
+																										WIDTH: 34%;
+																										height: 25px !important;
+																										margin: 1px;
+																										margin-top: 4.8px;
+																										padding-left: 10px;
+																										padding-right: 10px;
+																										padding-top: 2px;
+																									">
+											stream Youtube video</button>
 					</div>
-					<div id="change-pane-orientation-right" class="button dropbtn">
-						<span class="span-for-orientation"> &gt;</span>
-					</div>
-
-					<div id='maximize-component-factory'>
-						<input id='maximize-input-toggle' type='checkbox'
-							style='display: none'> <img for='maximize-input-toggle'
-							class='maximize-icon'
-							src="https://img.icons8.com/material/64/000000/full-screen.png"></img>
-					</div>
-					<div id='close-component-results-container'>
-						<span class="close-file-factory-x span-for-orientation "> X </span>
-					</div>
-
-
-
-
 				</div>
-				<div id="component-factory-title">Quick Notes</div>
 				<div id='components-search-container'>
 					<div id='quick-notes-backdrop'></div>
 					<div id="left-and-middle-section" class="all-ele-class-for-background">
 						<div class="left-corner">
 							<div class='left-corner-sub-div'>
-								<div id='file-switch' class='component-factory-left-icons active'>
+								<div  class='file-switch component-factory-left-icons active'>
 									<img src="https://i.pinimg.com/564x/02/6d/62/026d628fdb4b72eba87baccf4d676c87.jpg"
 										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">
 								</div>
@@ -301,7 +417,7 @@ document.onreadystatechange = function () {
 <!--									<img src="https://img.icons8.com/ios/50/000000/select-all.png"-->
 <!--										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">-->
 <!--								</div>-->
-								<div id='video-stream-switch' class='component-factory-left-icons'>
+								<div  class='video-stream-switch component-factory-left-icons'>
 									<img src="https://image.shutterstock.com/image-vector/video-icon-vector-camera-player-260nw-1034861974.jpg"
 										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">
 								</div>
@@ -336,37 +452,13 @@ document.onreadystatechange = function () {
 								</div>
 
 								<div id='chat-file-icon-section' style="
-									position: absolute;
-									right: -85px;
-									width: 138px;
-									top : 15px">
+									right: 7px;
+    								position: absolute;">
 									<div id="create-new-file" class="dropdown_1" style="
-									    width: 27px;
-										height: 27px;
-										display: block;
-										left: -20px;
-										position: absolute;">
+									    display:block;">
 											<button id="add-new-file-in-file-factory">+</button>
 											<div  class="dropdown-content">
 											</div>
-									</div>
-
-									<div id="create-new-file-form" style="display:none;top:10px
-											display: block;
-											top: px;
-											left: 15px;
-											position: absolute;
-											width: 300px;
-											z-index: 1;
-											background: rgb(196, 221, 228);
-											height: 50px;
-											padding: 10px;
-									">
-										<input type="text" id="create-file-text-box"  class="form-text-box" placeholder="Create file">
-										<button id='create-new-file-submit-btn'  class="button">create</button>
-										<button id='close-create-file-form' class="button" style="font-family:sans-serif;
-																								color: #130c0c;
-																								background: no-repeat;"> X </button>
 									</div>
 
 									<img id='single-chat' src="https://cdn2.iconfinder.com/data/icons/explore-and-analysis-2/64/76-512.png" style="
@@ -478,7 +570,7 @@ document.onreadystatechange = function () {
 									<div class="file-factory-options">
 										   <img class="file-factory-option-icons quick-file-rename"  alt="Rename icon" src="https://img.icons8.com/ultraviolet/344/rename.png" lazy="loaded">
 											<img class="file-factory-option-icons quick-file-delete"  alt="Delete Bin icon" src="https://img.icons8.com/carbon-copy/344/delete-forever--v1.png" lazy="loaded">
-											 <img class="file-factory-option-icons quick-file-favourite"  alt="Star icon" src="https://img.icons8.com/fluent/2x/star.png">
+<!--											 <img class="file-factory-option-icons quick-file-favourite"  alt="Star icon" src="https://img.icons8.com/fluent/2x/star.png">-->
 									</div>
 
 									<div id="file-name"> </div>
@@ -738,17 +830,15 @@ document.onreadystatechange = function () {
 			</div>
 		</div>
 		<div id="tabs-container-button-section">
-				<div id="move-tabs-left" class ='button dropbtn'>
-					<span class="move-tabs">  &lt;</span>
-				</div>
-				<div id="move-tabs-right" class="button dropbtn">
-					<span class="move-tabs">  >	</span>
-				</div>
+<!--				<div id="move-tabs-left" class ='button dropbtn'>-->
+<!--					<span class="move-tabs">  &lt;</span>-->
+<!--				</div>-->
+<!--				<div id="move-tabs-right" class="button dropbtn">-->
+<!--					<span class="move-tabs">  >	</span>-->
+<!--				</div>-->
 
 				<div id='tabs-list-drop-down' class="dropdown">
-					<button  class="three-vertical-dots button" style="    padding: 2px;
-						right: -2px;
-						transform: rotate(90deg);
+					<button  class="three-vertical-dots button" style="    padding: 6px;
 						background: none;
 						outline:none;
 					">>></button>
@@ -1085,34 +1175,13 @@ $('.CodeMirror').css('height','100%');
 
 
 
-		<div id="right-side-section" class="inner-item-form" style="top: 0px;
-    position: relative;
-    z-index: 1;
-    left: 33px;
-    background: white;
-    --darkreader-inline-bgimage: radial-gradient(#0e0e0c, rgba(14, 14, 12, 0));
-    --darkreader-inline-bgcolor: initial;
-    width: 310px;
-    height: 54px;
-    padding-left: 12px;
-    padding-top: 10px;
-    display: grid;
-    grid-template-columns: 2fr 1fr;">
-										<input type="text" id="youtube-video-link" title="Right click the youtube video and copy embed code and pate here" placeholder="Right click the youtube video and copy embed code and pate here" style="
-																			    padding: 4px 40px;
-																				margin: 6px 0;
-																				box-sizing: border-box;
-																" value="https://youtu.be/Cuy4ZOgwqsQ">
-										<button id="stream-youtube-video" class="button" style="
-																									    display: inline;
-																										margin-top: 7px;
-																										margin-left: 9px;
-																									">
-											stream Youtube video</button>
+
+
+
+		<div id="create-new-quick-file-form" class="inner-item-form" >
+			<input type="text" id="create-file-text-box" class="form-text-box" placeholder="Create file">
+			<button id="create-new-file-submit-btn" class="button">create</button>
 		</div>
-
-
-
 
 
     </div>

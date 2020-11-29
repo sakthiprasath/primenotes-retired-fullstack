@@ -381,12 +381,15 @@ display:none !important;
 
 .show {display: block;}
 #tabs-list-drop-down{
-       z-index: 10;
-    height: 29px;
-    width: 20px;
+    z-index: 10;
+    height: 34px;
+    width: 26px;
     background: #14de5c;
     border: 1px solid white;
-    }
+    margin-top: -2px;
+    right: 0%;
+    position: absolute;
+}
 
 .three-vertical-dots:after{
     content: '\2807';

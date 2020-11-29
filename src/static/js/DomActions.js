@@ -8,8 +8,9 @@ export default class DomActions{
         /*initial clicks for file*/
             setTimeout( function(){
             ($('.file-click')[0]).click()
-//                ($('.file-get-section')[0]).click();
-            },3000);
+            $('#stream-youtube-video').click();
+                ($('.individual-search')[0]).click();
+            },1500);
         /*password validate for drowssap
             $('#password-validate-dialog').dialog({
                 autoOpen: false,
@@ -223,6 +224,25 @@ export default class DomActions{
         }
         return delete_action(file_type, file_name);
     }
+
+    _delete_project_note_file(file_type, file_path){
+        function delete_action(file_type, file_name){
+            var savable_data = '';
+            var defObj=$.Deferred();
+                var promise =
+                    $.ajax
+                    ({
+                        url: 'http://localhost:5000/api/individual-component-fetch/delete-project-file/'+ file_type + '?file_path=' + JSON.stringify(file_name),
+                        type : "DELETE",
+                        contentType: 'application/json;charset=UTF-8',
+                        success : function(response){
+                            return defObj.resolve(response);
+                        }
+                    });
+                return defObj.promise();
+        }
+        return delete_action(file_type, file_path);
+    }
     _get_components_list(){
             let compo_names = [];
             let elems = $('.create-component');
@@ -414,9 +434,9 @@ export default class DomActions{
     }
     _notification_dialog(content_str){
         let content_html  = `<span><p>${content_str}</p></span>`;
-        $('#notification').css('opacity',1).empty().append($(content_html).clone());
+        $('#notification').empty().append($(content_html).clone()).toggleClass('display-notification');
         setTimeout(function(){
-            $('#notification').css('opacity',0);
+            $('#notification').toggleClass('display-notification');
         }, 2500);
     }
 
@@ -445,7 +465,7 @@ export default class DomActions{
     init(tsp, to_return_values){
         tsp.DomActions = this;
         this._button_clicks();
-        this._get_all_videos();
+//        this._get_all_videos();
 
         return $.Deferred().resolve(tsp, to_return_values);
     }

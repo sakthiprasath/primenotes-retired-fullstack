@@ -245,12 +245,10 @@ color:white;
 }
 #add-new-file-in-file-factory{
     border: none;
-    font-size: 30px;
+    font-size: 29px;
     font-family: fangsong;
-    top: -8px;
-    position: absolute;
-    background: #baeacd;
-    outline: none;
+    background: #f1f7f9;
+    outline: aliceblue;
 }
 #add-new-file-in-file-factory:hover{
     color: #b1f50d;
@@ -359,8 +357,9 @@ bottom:0px;
     padding-left: 25px;
     overflow-y: scroll;
     letter-spacing: 0px;
-    font-family: 'Roboto', sans-serif;
     font-size: 15px;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+    text-rendering: optimizeLegibility;
     }
 .individual-search{
     width: 95%;
@@ -369,8 +368,7 @@ bottom:0px;
     box-sizing: content-box;
     }
 .individual-search:hover {
-	background-color: #bde4f1;
-    cursor: pointer;
+	cursor: pointer;
     zoom: 1.3;
     color: black;
 }
@@ -389,6 +387,7 @@ bottom:0px;
     width: 150px;
     background: #f1f7f9;
     padding: 3px;
+    cursor: pointer;
 }
 .file-factory-option-icons {
     width: 25px;
@@ -506,15 +505,6 @@ bottom:0px;
 	width: 150px;
 	height: 600px;
 	left: 700px;
-}
-
-#close-editor-button {
-    width: 109px !important;
-    height: 30px;
-    position: relative;
-    margin-top: 5px;
-    top: 0px;
-    margin-left: 5px;
 }
 .img-icon{
       width: 100%;
@@ -641,8 +631,8 @@ footer {
     z-index:99;
     display:none;
     box-shadow: rgb(34, 99, 119) 0px 0.5rem 3rem;
-    transition-duration: 0.5s;
     transform-origin: center center;
+    z-index: 5;
 }
 #change-pane-orientation-left{
     z-index: 1;
@@ -659,6 +649,9 @@ footer {
     position: absolute;
     right: 10px;
 }
+.resize-icon{
+    display:none;
+}
 #change-pane-orientation-right{
     z-index: 1;
     margin-top: -1px;
@@ -669,10 +662,10 @@ footer {
     border: none;
 }
 .pane-orientation-left-class{
-    top:0px !important;
-    left:0px !important;
-    height:100% !important;
-    width:50% !important;
+    top: 0px !important;
+    left: 90px !important;
+    height: 100% !important;
+    width: 50% !important;
 }
 .pane-orientation-right-class{
     top:0px !important;
@@ -688,9 +681,9 @@ footer {
 }
 .pane-full-screen{
     top: 0px !important;
-    left: 0px !important;
+    left: 90px;
     height: 100% !important;
-    width: 100% !important;
+    width: calc(100% - 90px);
 }
 .pane-reduce-transition{
     transition-duration: 0s !important;
@@ -1027,13 +1020,12 @@ body {
 .tab-options{
     position: absolute;
     left: 0%;
-    height: 91%;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     width: 78.5%;
     column-gap: 6px;
     top: 3px;
-     }
+ }
 .tab-options-button{
     width: max-content;
     height: 65%;
@@ -1263,7 +1255,7 @@ $gray: #C5C6B6;
     width: 100px;
     display: flex;
     position: absolute;
-    right: 12px;
+    right: 2%;
     margin-top: 4px;
 }
 

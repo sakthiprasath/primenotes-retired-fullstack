@@ -6,26 +6,25 @@
 
 <h2><strong>Ondemand :</strong></h2>
 
-<p><strong><a href="https://imgbb.com/"><img alt="WIN-20200508-16-11-02-Pro-2" src="https://i.ibb.co/pZ7jtCY/WIN-20200508-16-11-02-Pro-2.jpg" style="height:218px; width:411px" /></a></strong></p>
+<p><strong><a href="https://imgbb.com/"><img alt="WIN-20200508-16-11-02-Pro-2" src="https://i.ibb.co/pZ7jtCY/WIN-20200508-16-11-02-Pro-2.jpg" style="height:218px; width:411px"></a></strong></p>
 
 <p>The endpoint in ondemand&nbsp; gets the asset details from tsdb apm and with that fetches azima data&nbsp; from azima api then return back&nbsp;</p>
 
 <p><big><strong>CREDENTIALS (for connecting with azima)&nbsp;: </strong></big></p>
 
-<p>SAAIDI_URI&nbsp; :&nbsp; &nbsp;<a href="https://devweb.wptss.com/saaidi/swagger/index.html" target="_blank">https://devweb.wptss.com/saaidi/swagger/index.html</a><br />
-<a href="https://azdevweb.wptss.com/saaidi/swagger/index.html">https://azdevweb.wptss.com/saaidi/swagger/index.html</a><br />
-SAAIDI_USER: dba&nbsp;&nbsp;<br />
+<p>SAAIDI_URI&nbsp; :&nbsp; &nbsp;<a href="https://devweb.wptss.com/saaidi/swagger/index.html" target="_blank">https://devweb.wptss.com/saaidi/swagger/index.html</a><br>
+<a href="https://azdevweb.wptss.com/saaidi/swagger/index.html">https://azdevweb.wptss.com/saaidi/swagger/index.html</a><br>
+SAAIDI_USER: dba&nbsp;&nbsp;<br>
 SAAIDI_PASSWORD: vibration</p>
 
-<p>EUREKA_SDK_CREDENTIALS: &#39;eydBdXRoUmVxdWVzdCc6IHsnYXV0aF91cmwnOiAnaHR0cHM6Ly9hdXRoLnN5bXBob255aW5kYWkuY29tJywgJ3Jlc291cmNlX3VybCc6ICdodHRwOi8vbG9jYWxob3N0OjE2MDAwLycsICdjbGllbnRfaWQnOiAnZWFjMzlkZWItYjQzNi00YjA3LTlhMzktYjQxNDg1M2JkMjI0JywgJ2NsaWVudF9zZWNyZXQnOiAnRG5YOWVRaU5JTlBKbzZNZExPSlgyOU5xSEdiZHdIMVQnLCAndXNlcm5hbWUnOiAnYXppbWEnLCAncGFzc3dvcmQnOiAnc2lhaTEyMzQnLCAncmVkaXJlY3RfdXJsJzogJyd9fQ==&#39;<br />
+<p>EUREKA_SDK_CREDENTIALS: 'eydBdXRoUmVxdWVzdCc6IHsnYXV0aF91cmwnOiAnaHR0cHM6Ly9hdXRoLnN5bXBob255aW5kYWkuY29tJywgJ3Jlc291cmNlX3VybCc6ICdodHRwOi8vbG9jYWxob3N0OjE2MDAwLycsICdjbGllbnRfaWQnOiAnZWFjMzlkZWItYjQzNi00YjA3LTlhMzktYjQxNDg1M2JkMjI0JywgJ2NsaWVudF9zZWNyZXQnOiAnRG5YOWVRaU5JTlBKbzZNZExPSlgyOU5xSEdiZHdIMVQnLCAndXNlcm5hbWUnOiAnYXppbWEnLCAncGFzc3dvcmQnOiAnc2lhaTEyMzQnLCAncmVkaXJlY3RfdXJsJzogJyd9fQ=='<br>
 &nbsp;</p>
 
 <p>temporary :&nbsp;</p>
 
 <p>tenant_id for customer_id 100 is</p>
 
-<pre>
-7dc071e1-3fd5-4620-8f73-099a59e40281</pre>
+<pre>7dc071e1-3fd5-4620-8f73-099a59e40281</pre>
 
 <p>&nbsp;</p>
 
@@ -39,59 +38,58 @@ SAAIDI_PASSWORD: vibration</p>
 
 <p>&nbsp;</p>
 
-<p>lambda :<br />
+<p>lambda :<br>
 1ddd396e-1e6f-4dc8-bc98-b08325f53aa6</p>
 
 <p>&nbsp;</p>
 
 <h1>GET watchman users inside Eureka&nbsp;platform :</h1>
 
-<p>1 ) put the connection string in&nbsp; config.yaml<br />
-TASK_QUEUE_SEND_CONNECTION_STRING: &quot;Endpoint=sb://siai-eventhubs-test.servicebus.windows.net/;SharedAccessKeyName=send_listen;SharedAccessKey=52eMK+9/DcZifdgZhWcW5HxkY1fJFjMJqlt0AVkJKZQ=;EntityPath=topic-test&quot;<br />
-TASK_QUEUE_LISTEN_CONNECTION_STRING: &quot;Endpoint=sb://siai-eventhubs-test.servicebus.windows.net/;SharedAccessKeyName=send_listen;SharedAccessKey=52eMK+9/DcZifdgZhWcW5HxkY1fJFjMJqlt0AVkJKZQ=;EntityPath=topic-test&quot;</p>
+<p>1 ) put the connection string in&nbsp; config.yaml<br>
+TASK_QUEUE_SEND_CONNECTION_STRING: "Endpoint=sb://siai-eventhubs-test.servicebus.windows.net/;SharedAccessKeyName=send_listen;SharedAccessKey=52eMK+9/DcZifdgZhWcW5HxkY1fJFjMJqlt0AVkJKZQ=;EntityPath=topic-test"<br>
+TASK_QUEUE_LISTEN_CONNECTION_STRING: "Endpoint=sb://siai-eventhubs-test.servicebus.windows.net/;SharedAccessKeyName=send_listen;SharedAccessKey=52eMK+9/DcZifdgZhWcW5HxkY1fJFjMJqlt0AVkJKZQ=;EntityPath=topic-test"</p>
 
 <p>2) change the config_file_path to the required pipline yaml file in <strong>main.py</strong></p>
 
-<p>3 )&nbsp; run server.py&nbsp;<br />
-4) run task_executor.py<br />
-5 ) insert a user or initiate bulk import from postman only<br />
-<br />
+<p>3 )&nbsp; run server.py&nbsp;<br>
+4) run task_executor.py<br>
+5 ) insert a user or initiate bulk import from postman only<br>
+<br>
 &nbsp;</p>
 
 <p>&nbsp;</p>
 
-<hr />
-<hr />
-<h2><strong>Auth Server Project :</strong><br />
+<hr>
+<hr>
+<h2><strong>Auth Server Project :</strong><br>
 &nbsp;</h2>
 
-<h3>Auth server project is a medium&nbsp;to connect to the fusion auth server running at localhost:16000<br />
-for managing&nbsp; <strong><em>tenants,</em></strong> <strong><em>applications,</em></strong> <strong><em>users,&nbsp;super user, generatng access tokens<br />
-<br />
-Example:<br />
+<h3>Auth server project is a medium&nbsp;to connect to the fusion auth server running at localhost:16000<br>
+for managing&nbsp; <strong><em>tenants,</em></strong> <strong><em>applications,</em></strong> <strong><em>users,&nbsp;super user, generatng access tokens<br>
+<br>
+Example:<br>
 To generate logn token&nbsp;</em></strong></h3>
 
 <p><em>URL:</em></p>
 
-<p>http://localhost/api/auth/token<br />
-<strong>REQUEST BODY:&nbsp;</strong><br />
-<strong>{<br />
-&nbsp;&nbsp; &nbsp;&quot;grant_type&quot;:&quot;password&quot;,<br />
-&nbsp;&nbsp; &nbsp;&quot;username&quot;:&quot;super-user&quot;,<br />
-&nbsp;&nbsp; &nbsp;&quot;password&quot;:&quot;siaipass1234&quot;,<br />
-&nbsp; &nbsp; &quot;client_id&quot;:&quot;client id of APM Internal&nbsp; application in fusion auth portal&quot;,<br />
-&nbsp;&nbsp; &nbsp;&quot;client_secret&quot;:&quot;client secret of APM Internal in fusion auth portal&quot;<br />
+<p>http://localhost/api/auth/token<br>
+<strong>REQUEST BODY:&nbsp;</strong><br>
+<strong>{<br>
+&nbsp;&nbsp; &nbsp;"grant_type":"password",<br>
+&nbsp;&nbsp; &nbsp;"username":"super-user",<br>
+&nbsp;&nbsp; &nbsp;"password":"siaipass1234",<br>
+&nbsp; &nbsp; "client_id":"client id of APM Internal&nbsp; application in fusion auth portal",<br>
+&nbsp;&nbsp; &nbsp;"client_secret":"client secret of APM Internal in fusion auth portal"<br>
 }</strong></p>
 
 <p><strong><em>------------------------------------------------------------------------------------------------------------</em></strong></p>
 
-<pre>
-&quot;&quot;&quot; use
+<pre>""" use
 docker-compose down
 and 
 docker-compose up 
 for restarting the fusion auth
-donot terminate it &quot;&quot;&quot;
+donot terminate it """
 
 
 current  <strong>master-api-key </strong>:   hnryPlKZv9itGFxAtNmlw6yzWm2bkSz1-zSZ44QDUZs
@@ -103,10 +101,10 @@ AUTH_HOST_EXTERNAL=http://localhost:19011
 AUTH_SERVER_APP_ID=Nothing                           #if we wanto connect to an application inside fusion auth               
 AUTH_API_KEY=master-api-key                          #master_api_key for the fusion auth server</pre>
 
-<p>STATIC_PATH = os.environ.get(&quot;STATIC_PATH&quot;, &quot;/app&quot;)</p>
+<p>STATIC_PATH = os.environ.get("STATIC_PATH", "/app")</p>
 
-<hr />
-<hr />
+<hr>
+<hr>
 <h2><u><strong>Gunicorn server start :&nbsp;</strong></u></h2>
 
 <blockquote>
@@ -114,10 +112,10 @@ AUTH_API_KEY=master-api-key                          #master_api_key for the fus
 
 <p>FROM base</p>
 
-<p>COPY src /app<br />
+<p>COPY src /app<br>
 COPY run_with_gunicorn.sh /app</p>
 
-<p>CMD [ &quot;/app/run_with_gunicorn.sh&quot; ]</p>
+<p>CMD [ "/app/run_with_gunicorn.sh" ]</p>
 </blockquote>
 
 <p>&nbsp;</p>
@@ -125,41 +123,41 @@ COPY run_with_gunicorn.sh /app</p>
 <p>&nbsp; <strong>run_with_gunicorn.sh :</strong></p>
 
 <blockquote>
-<p>#!/usr/bin/env bash<br />
-# References:<br />
-# - http://docs.gunicorn.org/en/stable/settings.html#worker-class<br />
+<p>#!/usr/bin/env bash<br>
+# References:<br>
+# - http://docs.gunicorn.org/en/stable/settings.html#worker-class<br>
 # - http://docs.gunicorn.org/en/stable/settings.html#access-log-format</p>
 
-<p>gunicorn auth_server:app \<br />
-&nbsp;--bind 0.0.0.0:16000 \<br />
-&nbsp;--backlog 100 \<br />
-&nbsp;--workers 1 \<br />
-&nbsp;--threads 5 \<br />
-&nbsp;--worker-class eventlet \<br />
-&nbsp;--access-logfile &#39;-&#39; \<br />
-&nbsp;--access-logformat &#39;%(h)s %(l)s %(u)s %(t)s &quot;%(r)s&quot; %(s)s %(b)s &quot;%(f)s&quot; &quot;%(a)s&quot; %({host}i)s %(D)s&#39;<br />
+<p>gunicorn auth_server:app \<br>
+&nbsp;--bind 0.0.0.0:16000 \<br>
+&nbsp;--backlog 100 \<br>
+&nbsp;--workers 1 \<br>
+&nbsp;--threads 5 \<br>
+&nbsp;--worker-class eventlet \<br>
+&nbsp;--access-logfile '-' \<br>
+&nbsp;--access-logformat '%(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s" %({host}i)s %(D)s'<br>
 &nbsp;</p>
 </blockquote>
 
-<p><strong>.env file :</strong><br />
+<p><strong>.env file :</strong><br>
 &nbsp; &nbsp;add the following</p>
 
 <blockquote>
-<p>AUTH_HOST_INTERNAL=http://localhost:19011<br />
-AUTH_HOST_EXTERNAL=http://localhost:19011<br />
+<p>AUTH_HOST_INTERNAL=http://localhost:19011<br>
+AUTH_HOST_EXTERNAL=http://localhost:19011<br>
 AUTH_SERVER_APP_ID=9e77864d-3bbd-4111-ac67-2fa00cfdb739</p>
 </blockquote>
 
-<hr />
-<hr />
-<h2><strong>Log Channels :</strong><br />
-<br />
-<br />
-<br />
+<hr>
+<hr>
+<h2><strong>Log Channels :</strong><br>
+<br>
+<br>
+<br>
 &nbsp;</h2>
 
-<hr />
-<hr />
+<hr>
+<hr>
 <h1><strong>Sdks :</strong></h1>
 
 <p>its a set of library modules for calling different MS routes</p>
@@ -168,20 +166,20 @@ AUTH_SERVER_APP_ID=9e77864d-3bbd-4111-ac67-2fa00cfdb739</p>
 
 <p>credentials for connectinfg to auth server :&nbsp;</p>
 
-<p>AuthRequest:<br />
-&nbsp; auth_url: &quot;http://localhost:16000&quot;<br />
-&nbsp; resource_url: &quot;http://localhost:16000&quot;<br />
-&nbsp; client_id: &quot;b4ea82d9-caf1-4e38-b24b-04650875d78f&quot;<br />
-&nbsp; client_secret: &quot;r5Lc6czwNliI00TyEiz8EycPLLYUjN6vH_Ak420HE9Q&quot;<br />
-&nbsp; username: &quot;super-user&quot;<br />
-&nbsp; password: &quot;siai1234&quot;<br />
-&nbsp; redirect_url: &#39;&#39;</p>
+<p>AuthRequest:<br>
+&nbsp; auth_url: "http://localhost:16000"<br>
+&nbsp; resource_url: "http://localhost:16000"<br>
+&nbsp; client_id: "b4ea82d9-caf1-4e38-b24b-04650875d78f"<br>
+&nbsp; client_secret: "r5Lc6czwNliI00TyEiz8EycPLLYUjN6vH_Ak420HE9Q"<br>
+&nbsp; username: "super-user"<br>
+&nbsp; password: "siai1234"<br>
+&nbsp; redirect_url: ''</p>
 
-<p>MasterApiKey:<br />
-&nbsp; key: &quot;hnryPlKZv9itGFxAtNmlw6yzWm2bkSz1-zSZ44QDUZs&quot;</p>
+<p>MasterApiKey:<br>
+&nbsp; key: "hnryPlKZv9itGFxAtNmlw6yzWm2bkSz1-zSZ44QDUZs"</p>
 
-<hr />
-<hr />
+<hr>
+<hr>
 <h1><strong>Tsdb-apm :</strong></h1>
 
 <ul>
@@ -191,33 +189,33 @@ AUTH_SERVER_APP_ID=9e77864d-3bbd-4111-ac67-2fa00cfdb739</p>
 
 <p><big><strong>DB-Connection :</strong></big></p>
 
-<p>currently db_config.yaml value is taken for active db as of may 13,2020<br />
+<p>currently db_config.yaml value is taken for active db as of may 13,2020<br>
 previously config.override.yaml value is taken</p>
 
 <p>docker-compose up -d timescale-db</p>
 
-<p><br />
+<p><br>
 <big><strong>Redis cache :</strong></big></p>
 
-<p>docker-compose up -d redis<br />
+<p>docker-compose up -d redis<br>
 &nbsp;</p>
 
 <h3><strong><big>Note :&nbsp;(problems faced previously)</big></strong></h3>
 
-<p>if the tsdb-server does not start&nbsp;<br />
+<p>if the tsdb-server does not start&nbsp;<br>
 do docker-compose down for timescale-db and up .</p>
 
-<p>if tsdb-server not started then delete the existing tsdb compose data in volume list.[warning if deleted all previous dbs will be&nbsp;deleted]<br />
+<p>if tsdb-server not started then delete the existing tsdb compose data in volume list.[warning if deleted all previous dbs will be&nbsp;deleted]<br>
 &nbsp;</p>
 
-<hr />
-<hr />
+<hr>
+<hr>
 <h1><strong>Data-store-connectors:&nbsp;</strong></h1>
 
 <p><strong>send connection string :</strong></p>
 
-<p>&nbsp;&quot;Endpoint=sb://siai-eventhubs-test.servicebus.windows.net/;SharedAccessKeyName=send;SharedAccessKey=+6fBVaxz/1WLEeeg/5bTZCWUxXrDWnwfiGIb+glraqc=;EntityPath=topic-sakthi&quot;<br />
-<br />
+<p>&nbsp;"Endpoint=sb://siai-eventhubs-test.servicebus.windows.net/;SharedAccessKeyName=send;SharedAccessKey=+6fBVaxz/1WLEeeg/5bTZCWUxXrDWnwfiGIb+glraqc=;EntityPath=topic-sakthi"<br>
+<br>
 <strong>receive connection string:&nbsp;</strong></p>
 
 <p>Endpoint=sb://siai-eventhubs-test.servicebus.windows.net/;SharedAccessKeyName=listen;SharedAccessKey=MtibW/kUwOit3VwLxZ916ZTmpB/yBAXGvy4o4z7xem8=;EntityPath=topic-sakthi</p>
@@ -238,173 +236,171 @@ do docker-compose down for timescale-db and up .</p>
 
 <p>&nbsp;</p>
 
-<hr />
-<hr />
-<h3><strong>WOE docker-compose :</strong><br />
+<hr>
+<hr>
+<h3><strong>WOE docker-compose :</strong><br>
 create super user :</h3>
 
 <h3><strong>PUT :&nbsp; &nbsp;http://localhost:16000/api/auth/tenant/user/create-super-user</strong></h3>
 
-<p>{<br />
-&nbsp; &nbsp; &quot;email&quot;: &quot;prasath@symphonyai.com&quot;,<br />
-&nbsp; &nbsp; &quot;password&quot;: &quot;siaipass1234&quot;<br />
+<p>{<br>
+&nbsp; &nbsp; "email": "prasath@symphonyai.com",<br>
+&nbsp; &nbsp; "password": "siaipass1234"<br>
 }</p>
 
 <h2>output :&nbsp;</h2>
 
-<h2><strong>user &#39;s credentials :&nbsp;</strong></h2>
+<h2><strong>user 's credentials :&nbsp;</strong></h2>
 
 <p>{</p>
 
-<p>&nbsp;&nbsp;&quot;internal_app&quot;:&nbsp;{</p>
+<p>&nbsp;&nbsp;"internal_app":&nbsp;{</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;client_id&quot;:&nbsp;&quot;b4ea82d9-caf1-4e38-b24b-04650875d78f&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"client_id":&nbsp;"b4ea82d9-caf1-4e38-b24b-04650875d78f",</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;client_secret&quot;:&nbsp;&quot;r5Lc6czwNliI00TyEiz8EycPLLYUjN6vH_Ak420HE9Q&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"client_secret":&nbsp;"r5Lc6czwNliI00TyEiz8EycPLLYUjN6vH_Ak420HE9Q",</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;domain&quot;:&nbsp;&quot;auth.symphonyindai.com&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"domain":&nbsp;"auth.symphonyindai.com",</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;id&quot;:&nbsp;&quot;b4ea82d9-caf1-4e38-b24b-04650875d78f&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"id":&nbsp;"b4ea82d9-caf1-4e38-b24b-04650875d78f",</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;name&quot;:&nbsp;&quot;APM&nbsp;Internal&nbsp;Apps&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"name":&nbsp;"APM&nbsp;Internal&nbsp;Apps",</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;redirect_urls&quot;:&nbsp;[</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"redirect_urls":&nbsp;[</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;https://auth.symphonyindai.com/redirect&quot;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"https://auth.symphonyindai.com/redirect"</p>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;],</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;tenant_id&quot;:&nbsp;&quot;adc6c8c2-be14-4482-9b79-d5c4e562c48b&quot;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"tenant_id":&nbsp;"adc6c8c2-be14-4482-9b79-d5c4e562c48b"</p>
 
 <p>&nbsp;&nbsp;},</p>
 
-<p>&nbsp;&nbsp;&quot;super_user&quot;:&nbsp;{</p>
+<p>&nbsp;&nbsp;"super_user":&nbsp;{</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;email&quot;:&nbsp;&quot;prasath@symphonyai.com&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"email":&nbsp;"prasath@symphonyai.com",</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;id&quot;:&nbsp;&quot;beca98ed-975d-4ff7-80cf-43547f9fff7d&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"id":&nbsp;"beca98ed-975d-4ff7-80cf-43547f9fff7d",</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;name&quot;:&nbsp;null,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"name":&nbsp;null,</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;password&quot;:&nbsp;null,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"password":&nbsp;null,</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;super_user&quot;:&nbsp;false,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"super_user":&nbsp;false,</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;tenant_id&quot;:&nbsp;&quot;adc6c8c2-be14-4482-9b79-d5c4e562c48b&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"tenant_id":&nbsp;"adc6c8c2-be14-4482-9b79-d5c4e562c48b",</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;user_name&quot;:&nbsp;&quot;super-user&quot;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"user_name":&nbsp;"super-user"</p>
 
 <p>&nbsp;&nbsp;}</p>
 
 <p>}</p>
 
-<hr />
+<hr>
 <h2>tenants credentials :&nbsp;</h2>
 
 <p>{</p>
 
-<p>&nbsp;&nbsp;&quot;application&quot;:&nbsp;{</p>
+<p>&nbsp;&nbsp;"application":&nbsp;{</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;client_id&quot;:&nbsp;&quot;92eba166-c6e1-4d4b-9a34-0c7750a6c0f6&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"client_id":&nbsp;"92eba166-c6e1-4d4b-9a34-0c7750a6c0f6",</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;client_secret&quot;:&nbsp;&quot;CkHMcf-2A_u01viArVlkggydqG9Vimk5AotL425iuI4&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"client_secret":&nbsp;"CkHMcf-2A_u01viArVlkggydqG9Vimk5AotL425iuI4",</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;domain&quot;:&nbsp;&quot;localhost.azima&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"domain":&nbsp;"localhost.azima",</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;id&quot;:&nbsp;&quot;92eba166-c6e1-4d4b-9a34-0c7750a6c0f6&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"id":&nbsp;"92eba166-c6e1-4d4b-9a34-0c7750a6c0f6",</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;name&quot;:&nbsp;&quot;azima-apm&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"name":&nbsp;"azima-apm",</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;redirect_urls&quot;:&nbsp;[</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"redirect_urls":&nbsp;[</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;https://localhost.azima/api/auth/redirect&quot;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"https://localhost.azima/api/auth/redirect"</p>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;],</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;tenant_id&quot;:&nbsp;&quot;83849e93-922a-4f2f-82b0-aecf90c8348d&quot;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"tenant_id":&nbsp;"83849e93-922a-4f2f-82b0-aecf90c8348d"</p>
 
 <p>&nbsp;&nbsp;},</p>
 
-<p>&nbsp;&nbsp;&quot;tenant&quot;:&nbsp;{</p>
+<p>&nbsp;&nbsp;"tenant":&nbsp;{</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;data_base&quot;:&nbsp;&quot;azima_db&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"data_base":&nbsp;"azima_db",</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;id&quot;:&nbsp;&quot;83849e93-922a-4f2f-82b0-aecf90c8348d&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"id":&nbsp;"83849e93-922a-4f2f-82b0-aecf90c8348d",</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;name&quot;:&nbsp;&quot;azima&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"name":&nbsp;"azima",</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;schema_name&quot;:&nbsp;&quot;azima&quot;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"schema_name":&nbsp;"azima"</p>
 
 <p>&nbsp;&nbsp;},</p>
 
-<p>&nbsp;&nbsp;&quot;user&quot;:&nbsp;{</p>
+<p>&nbsp;&nbsp;"user":&nbsp;{</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;email&quot;:&nbsp;&quot;prasath@symphonyai.com&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"email":&nbsp;"prasath@symphonyai.com",</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;id&quot;:&nbsp;&quot;a2527b31-6fbe-4ffd-89d5-d984af29a98f&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"id":&nbsp;"a2527b31-6fbe-4ffd-89d5-d984af29a98f",</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;name&quot;:&nbsp;null,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"name":&nbsp;null,</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;password&quot;:&nbsp;null,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"password":&nbsp;null,</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;super_user&quot;:&nbsp;false,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"super_user":&nbsp;false,</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;tenant_id&quot;:&nbsp;&quot;83849e93-922a-4f2f-82b0-aecf90c8348d&quot;,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"tenant_id":&nbsp;"83849e93-922a-4f2f-82b0-aecf90c8348d",</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&quot;user_name&quot;:&nbsp;&quot;super-user&quot;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;"user_name":&nbsp;"super-user"</p>
 
 <p>&nbsp;&nbsp;}</p>
 
 <p>}</p>
 
-<hr />
-<hr />
+<hr>
+<hr>
 <h2>GET Authentication bearer token :&nbsp;</h2>
 
 <p>http://localhost/api/auth/token</p>
 
-<p>{<br />
-&nbsp;&nbsp; &nbsp;&quot;grant_type&quot;:&quot;password&quot;,<br />
-&nbsp;&nbsp; &nbsp;&quot;username&quot;:&quot;super-user&quot;,<br />
-&nbsp;&nbsp; &nbsp;&quot;password&quot;:&quot;siaipass1234&quot;,<br />
-&nbsp; &nbsp; &quot;client_id&quot;:&quot;b4ea82d9-caf1-4e38-b24b-04650875d78f&quot;,<br />
-&nbsp;&nbsp; &nbsp;&quot;client_secret&quot;:&quot;r5Lc6czwNliI00TyEiz8EycPLLYUjN6vH_Ak420HE9Q&quot;<br />
+<p>{<br>
+&nbsp;&nbsp; &nbsp;"grant_type":"password",<br>
+&nbsp;&nbsp; &nbsp;"username":"super-user",<br>
+&nbsp;&nbsp; &nbsp;"password":"siaipass1234",<br>
+&nbsp; &nbsp; "client_id":"b4ea82d9-caf1-4e38-b24b-04650875d78f",<br>
+&nbsp;&nbsp; &nbsp;"client_secret":"r5Lc6czwNliI00TyEiz8EycPLLYUjN6vH_Ak420HE9Q"<br>
 }</p>
 
 <p>&nbsp;</p>
 
 <p>currently :</p>
 
-<p>{<br />
-&nbsp;&nbsp; &nbsp;&quot;grant_type&quot;:&quot;password&quot;,<br />
-&nbsp;&nbsp; &nbsp;&quot;username&quot;:&quot;sakthi&quot;,<br />
-&nbsp;&nbsp; &nbsp;&quot;password&quot;:&quot;sakthics25&quot;,<br />
-&nbsp;&nbsp; &nbsp;&quot;client_id&quot;:&quot;b4ea82d9-caf1-4e38-b24b-04650875d78f&quot;,<br />
-&nbsp;&nbsp; &nbsp;&quot;client_secret&quot;:&quot;r5Lc6czwNliI00TyEiz8EycPLLYUjN6vH_Ak420HE9Q&quot;<br />
+<p>{<br>
+&nbsp;&nbsp; &nbsp;"grant_type":"password",<br>
+&nbsp;&nbsp; &nbsp;"username":"sakthi",<br>
+&nbsp;&nbsp; &nbsp;"password":"sakthics25",<br>
+&nbsp;&nbsp; &nbsp;"client_id":"b4ea82d9-caf1-4e38-b24b-04650875d78f",<br>
+&nbsp;&nbsp; &nbsp;"client_secret":"r5Lc6czwNliI00TyEiz8EycPLLYUjN6vH_Ak420HE9Q"<br>
 }</p>
 
 <h2><strong>For Staging-cluster :&nbsp;</strong></h2>
 
-<pre>
-<strong>URL </strong>-&nbsp;<a href="http://auth-staging.symphonyindai.com/" rel="noopener noreferrer" target="_blank">auth-staging.symphonyindai.com</a>
+<pre><strong>URL </strong>-&nbsp;<a href="http://auth-staging.symphonyindai.com/" rel="noopener noreferrer" target="_blank">auth-staging.symphonyindai.com</a>
 {
-&quot;client_id&quot;: &quot;6d72602a-0a8c-4c44-9cdc-c49d2b5a8c9d&quot;
-&quot;client_secret&quot;: &quot;nC9VslpcOsJ-gCJK3w6aLJCwt3jrOi1yc8OfXaKU2RE&quot;
-&quot;user_name&quot;: &quot;super-user&quot;
-&quot;password&quot;: &quot;xh{s$7EdUqX&lt;$c5)&quot;</pre>
+"client_id": "6d72602a-0a8c-4c44-9cdc-c49d2b5a8c9d"
+"client_secret": "nC9VslpcOsJ-gCJK3w6aLJCwt3jrOi1yc8OfXaKU2RE"
+"user_name": "super-user"
+"password": "xh{s$7EdUqX&lt;$c5)"</pre>
 
 <p>}</p>
 
 <p><strong>Tenant_ids for the tenants </strong>:</p>
 
-<pre>
-chemours - 64600517-b1c6-4a14-9eed-da478c1160e6
+<pre>chemours - 64600517-b1c6-4a14-9eed-da478c1160e6
 dow-chemical - 8f8123de-8ce9-4422-8afb-e3f132a124be</pre>
 
 <p>&nbsp;</p>
 
-<hr />
-<hr />
+<hr>
+<hr>
 <h2><strong>common set up :</strong></h2>
 
 <p>for the first time downloadig the dependencies (only in virtual environment)</p>
@@ -414,7 +410,7 @@ dow-chemical - 8f8123de-8ce9-4422-8afb-e3f132a124be</pre>
 <p>open the .bashrc file and insert the below two linea at last</p>
 
 <blockquote>
-<p>&nbsp; &nbsp; export WORKON_HOME=~/virtualenvs<br />
+<p>&nbsp; &nbsp; export WORKON_HOME=~/virtualenvs<br>
 &nbsp;&nbsp; &nbsp;source /usr/local/bin/virtualenvwrapper.sh</p>
 </blockquote>
 
@@ -424,7 +420,7 @@ dow-chemical - 8f8123de-8ce9-4422-8afb-e3f132a124be</pre>
 <p>mkvirtualenv -p /usr/local/bin/python3.6 tsdb-apm(name of the virtual environment)</p>
 </blockquote>
 
-<p><br />
+<p><br>
 switch to the required virtual environment</p>
 
 <blockquote>
@@ -437,33 +433,33 @@ switch to the required virtual environment</p>
 <p>deactivate</p>
 </blockquote>
 
-<p><br />
+<p><br>
 create a file name pip.conf in tsdb-apm and paste the following&nbsp;</p>
 
 <blockquote>
-<p>[global]<br />
+<p>[global]<br>
 index-url = https://keshav:Pa55word@123@symphonyai.jfrog.io/symphonyai/api/pypi/timeli-python/simple/</p>
 </blockquote>
 
 <p>execute the commands&nbsp;</p>
 
 <blockquote>
-<p>&nbsp; &nbsp; export PIP_CONFIG_FILE=pip.conf<br />
+<p>&nbsp; &nbsp; export PIP_CONFIG_FILE=pip.conf<br>
 &nbsp; &nbsp; pip install -r requirements.txt --extra-index-url https://pypi.python.org/simple</p>
 </blockquote>
 
 <p>&nbsp;</p>
 
-<hr />
-<hr />
-<p><span style="font-size:20px"><strong>ERRORS :&nbsp;</strong></span><br />
-<strong>login manager.py : validate auth server access (401 error)</strong><br />
-this issue is because of&nbsp;<br />
-./env credentials<br />
-check :<br />
-app_id<br />
-master apikey&nbsp;&nbsp;<br />
+<hr>
+<hr>
+<p><span style="font-size:20px"><strong>ERRORS :&nbsp;</strong></span><br>
+<strong>login manager.py : validate auth server access (401 error)</strong><br>
+this issue is because of&nbsp;<br>
+./env credentials<br>
+check :<br>
+app_id<br>
+master apikey&nbsp;&nbsp;<br>
 &nbsp;</p>
 
-<hr />
+<hr>
 <p>&nbsp;</p>

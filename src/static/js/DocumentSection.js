@@ -106,7 +106,7 @@ export default class SourceCodeSection{
 
         var resultHtml= `<div class='tab' `;
 
-        resultHtml += `><div class='file-get-section' file-type=${type} file-path=${file_path}  title=${file_name}>${file_name}`;//$(this).text();
+        resultHtml += `><div class='file-get-section' file-type=${type} file-path='${file_path}'  title='${file_name}'>${file_name}`;//$(this).text();
         resultHtml +=`</div> <div class='save-close-for-tab'>   <div class='close-tab' > X </div></div> </div>`;
         let curr = $(resultHtml);
     //    $('#tab-container').append(curr);
@@ -206,6 +206,8 @@ export default class SourceCodeSection{
 
         $('.file-click').off('click');
         $('.file-click').on('click',function(){
+            $('.file-click.project-file-active').removeClass('project-file-active');
+            $(this).addClass('project-file-active');
             let file_name = $(this).attr('filename');
             let file_path = $(this).attr('file-path');
             let type =  $(this).attr('file-type');
