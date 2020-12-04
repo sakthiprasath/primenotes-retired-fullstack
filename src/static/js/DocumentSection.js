@@ -102,6 +102,11 @@ export default class SourceCodeSection{
                 this.events();
                 return;
             }
+            else{
+                //remove the unwanted tabs if the multi_tab_check is false
+                 if(!this.multi_tab_flag)
+                    $(tab_elems[i]).parent().remove();
+            }
         }
 
         var resultHtml= `<div class='tab' `;
@@ -109,8 +114,14 @@ export default class SourceCodeSection{
         resultHtml += `><div class='file-get-section' file-type=${type} file-path='${file_path}'  title='${file_name}'>${file_name}`;//$(this).text();
         resultHtml +=`</div> <div class='save-close-for-tab'>   <div class='close-tab' > X </div></div> </div>`;
         let curr = $(resultHtml);
-    //    $('#tab-container').append(curr);
-        $('#create-new-project-note').before(curr);
+
+        if(this.multi_tab_flag){
+            $('#create-new-project-note').before(curr);
+        }
+        else{
+            $('.tab').remove();
+            $('#create-new-project-note').before(curr);
+        }
         this.get_editor_file(curr.children()[0], type, false, file_path);
 
         this.events();
@@ -198,6 +209,26 @@ export default class SourceCodeSection{
             }
         });
 
+        $('#tab-check').off('change');
+        $('#tab-check').change(function(){
+            if(this.checked == true)
+                self.multi_tab_flag = true;
+            else{
+                self.multi_tab_flag = false;
+                var tab_list = $('.tab');
+                var tab_active_text = $($('.tab.tab-active').children()[0]).text();
+                tab_list.map( x =>{
+                     let cached_ele = $(tab_list[x]);
+                    console.log($(cached_ele.children()[0]).text());
+                    if( $(cached_ele.children()[0]).text() != tab_active_text){
+                        cached_ele.remove();
+                    }
+                });
+
+            }
+        });
+
+
         $('.close-tab').off('click');
         $('.close-tab').on('click', function(){
             self.removeCurrentTab(this);
@@ -247,6 +278,7 @@ export default class SourceCodeSection{
         tsp.SourceCodeSection = this;
         this.tsp = tsp;
         this.events(); //this might be called more than once ondemand
+        this.multi_tab_flag = true;
         this._tabs_dropdown_click();
         this._move_tabs_for_source_code_section();
         return $.Deferred().resolve(tsp, to_return_values);

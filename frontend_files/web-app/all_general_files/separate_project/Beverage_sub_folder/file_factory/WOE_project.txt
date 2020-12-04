@@ -6,7 +6,7 @@
 
 <h2><strong>Ondemand :</strong></h2>
 
-<p><strong><a href="https://imgbb.com/"><img alt="WIN-20200508-16-11-02-Pro-2" src="https://i.ibb.co/pZ7jtCY/WIN-20200508-16-11-02-Pro-2.jpg" style="height:218px; width:411px"></a></strong></p>
+<p><strong><a href="https://imgbb.com/"><img alt="WIN-20200508-16-11-02-Pro-2" src="https://i.ibb.co/pZ7jtCY/WIN-20200508-16-11-02-Pro-2.jpg" style="width: 50%;" class=""></a></strong></p>
 
 <p>The endpoint in ondemand&nbsp; gets the asset details from tsdb apm and with that fetches azima data&nbsp; from azima api then return back&nbsp;</p>
 

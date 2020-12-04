@@ -6,6 +6,7 @@
     position: static;
     height: 100%;
     z-index: 3;
+    background: #e9f3ed !important;
 }
 
 @media only screen and (max-width:700px){
@@ -15,7 +16,7 @@
 		#navigation-bar {
 			width:0%;
 		}
-		#source-code-main-div{
+		#parent-source-code-main-div{
 			width:100% ;
 			left: 0%;
 		}
@@ -31,13 +32,14 @@
 			width:20% ;
 	        left: 0% ;
 		}
-		#source-code-main-div{
+		#parent-source-code-main-div{
 			    width: 82% ;
                 left: 19% ;
 		}
 }
 
 .sidenav-button-class{
+    display: none;
     background-color: #14de5c;
     width: 30px;
     height: 24px;
@@ -55,7 +57,6 @@
 	position: absolute;
     height: 100%;
     width: 100%;
-    background-color: #e9f3ed;
     overflow: scroll;
     transition: 0.3s;
     padding-top: 1px;
@@ -93,6 +94,7 @@ div {
     z-index: 1;
     font-size: 18px;
     color: #100c0c;
+    display: none;
     }
 #main2 {
     transition: margin-left .5s;
@@ -159,9 +161,10 @@ left:170px;
 #parent-source-code-main-div{
     width: 100%;
     height: 100%;
-    background: #e9f3ed;
+    background: #ffffff;
     top: 0px;
     position: absolute;
+    z-index: 5;
 }
 
 .note-editor.note-frame {
@@ -180,11 +183,12 @@ left:170px;
     border-color: #f8f9fa !important;
 }
 #source-code-main-div{
-        top: 40px;
+       top: 40px;
     position: absolute;
     height: 100%;
-    background-color: #e9f3ed;
     z-index: 3;
+    background-color: #fff;
+    width: calc(100% - 20px);
 }
 #source-code-sub-divs{
     position: absolute;
@@ -269,6 +273,7 @@ display:none !important;
     overflow-y: hidden;
     overflow-x: scroll;
     cursor:pointer;
+    left: 27px;
 }
 #tab-container:hover::-webkit-scrollbar-thumb{
     width : 6px;

@@ -224,7 +224,7 @@ color:white;
 #quick-notes-in-file-factory{
     position: absolute;
     width: inherit;
-    overflow: scroll;
+    overflow: hidden;
     height: calc(100% - 0px) !important;
 }
 .search-input-box {
@@ -380,7 +380,6 @@ bottom:0px;
     right: 11px;
 }
 .file-factory-options{
-    display: block;
     position: relative;
     display: flex;
     justify-content: space-evenly;
@@ -388,6 +387,7 @@ bottom:0px;
     background: #f1f7f9;
     padding: 3px;
     cursor: pointer;
+    visibility: hidden;
 }
 .file-factory-option-icons {
     width: 25px;
@@ -697,7 +697,7 @@ footer {
     text-align: center;
     top: 100px;
     left: 100px;
-    background-color: #1983d6;
+    background-color: #2d5779;
     //: ;
     image: linear-gradient(270deg, #206e83 5%, #54c39a 80%);
     padding-right: 87px;
@@ -732,8 +732,7 @@ position:absolute;
 
 
 .search-container{
-display: block;
-    width: 57%;
+    display: block;
     left: 7px;
     position: absolute;
     top: 3px;
@@ -746,13 +745,6 @@ display: block;
   font-size: 12px;
   border: none;
 }
-.search-container >  img{
-    left: 95px;
-    position: absolute;
-    top: 8px;
-    width: 27px;
-    height: 26px
- }
  .search-container button {
   padding: 6px 10px;
   margin-top: 8px;
@@ -900,10 +892,8 @@ body {
 
 
 .search-box {
-    padding: 0px 0px 7px 0px;
+    padding: 0px 0px 7px 6px;
     height: 32px;
-    width: 100%;
-
 }
 
 
@@ -912,9 +902,10 @@ body {
     border-bottom: 2px solid #f1e7e7;
     background-color: inherit;
     display: block;
-    width: 120px;
+    width: 100%;
     font-weight: 900;
     font-family: cursive;
+    left: 10px;
 }
 
 .search-box input[type=text]:focus, select:focus {
@@ -990,6 +981,8 @@ body {
     background: #f1f7f9;
     font-variant-caps: all-petite-caps;
     cursor: pointer;
+    position: absolute;
+    right: 10px;
     padding: 4px;
 }
 #html-renderer-section{
@@ -1006,16 +999,11 @@ body {
     position: absolute;
     top: 0%;
     width: 100%;
-    height: 94%;
+    height: 101%;
     z-index: 4;
     left: 1px;
 }
 
-#tab-options-section{
-    height: 100%;
-    top: 0px;
-    position: relative;
-}
 
 .tab-options{
     position: absolute;
@@ -1187,7 +1175,7 @@ $gray: #C5C6B6;
 
 #main-sections {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   margin: 0;
   padding: 0;
 }
@@ -1209,13 +1197,14 @@ $gray: #C5C6B6;
 }
 
 .split__bar {
-   width: 6px;
-    height: 100%;
+   width: 2px;
+    height: 101%;
     cursor: col-resize;
     position: absolute;
-    z-index: 5;
+    z-index: 6;
     left: 19.4%;
     top: 1px;
+    background: #e5e9ec;
 }
 .split__bar:hover{
     background-color: #14de5c;

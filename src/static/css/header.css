@@ -35,7 +35,7 @@
     width: 125px;
     height: 100% !important;
     top: 0px !important;
-    grid-template-rows: 1fr 3fr 0.3fr 0.3fr;
+    grid-template-rows: 3fr 0.3fr 0.3fr;
 }
 
 
@@ -43,9 +43,10 @@
 .top-header-right-margin-tab-options {
     flex-wrap: wrap !important;
     column-gap: 0px !important;
-    height: 30% !important;
+    height: 35% !important;
     width: 90% !important;
     margin: 4px;
+    row-gap: 25px;
 }
 
 .tab-option-buttons-right-in-margin{
@@ -54,6 +55,11 @@
     width: 109px !important;
 }
 
+#tab-options-section{
+    height: 100%;
+    top: 25px;
+    position: relative;
+}
 
 
 #logo-section{

@@ -177,7 +177,7 @@ ul, #myUL {
 }
 
 #myUL {
-  margin: 0;
+  margin: 0 0 0 10px;
   padding: 0;
   overflow: scroll;
   height: 95%;
@@ -196,7 +196,6 @@ ul, #myUL {
     width: max-content;
     padding: 5px;
     padding-left: 20px;
-    background: #e9f3ed;
 }
 
 .folder::before {
@@ -247,7 +246,6 @@ ul, #myUL {
     display: none;
     left: -4px;
     position: relative;
-    background: #e9f3ed;
     margin-top: -2px !important;
 }
 .nested > li {

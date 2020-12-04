@@ -2,25 +2,7 @@
 
 export default class DomActions{
 
-    _button_clicks(){
 
-//        $('#add-new-file-in-project-notes').click();
-        /*initial clicks for file*/
-            setTimeout( function(){
-            ($('.file-click')[0]).click()
-            $('#stream-youtube-video').click();
-                ($('.individual-search')[0]).click();
-            },1500);
-        /*password validate for drowssap
-            $('#password-validate-dialog').dialog({
-                autoOpen: false,
-                width:'90%',
-                height:'700'
-            });*/
-        /*close File container*/
-//        $('#close-component-results-container').click();
-
-    }
     maximize_icon_click_action(self){
         /* maximize-icon in drag and drop container action*/
 
@@ -464,7 +446,6 @@ export default class DomActions{
     }
     init(tsp, to_return_values){
         tsp.DomActions = this;
-        this._button_clicks();
 //        this._get_all_videos();
 
         return $.Deferred().resolve(tsp, to_return_values);

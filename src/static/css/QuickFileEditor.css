@@ -40,8 +40,8 @@ input[type="text"] {
     display: flex;
     padding: 10px;
     padding-left: 3px;
-    column-gap: 15px;
-    margin-left: 10px;
+    column-gap: 0px;
+    margin-left: 25px;
 }
 #quick-notes-setting{
     width:30px;
@@ -67,7 +67,7 @@ input[type="text"] {
     padding: 0;
     height: 30pt;
     width: 30pt;
-    background-color: #bde4f1;
+    background-color: #f1f7f9;
     border: none;
     cursor: pointer;
     color: #333;

@@ -197,6 +197,11 @@ export default class loadComponentsContainer {
             $("#right-side-components").css('left','245px');
 
             $('.file-switch').on('click',function(){
+
+             $('#components-search-container').css({'top':'0',
+                                                    'height':'100%'
+                                                  });
+             $('#component-factory-title').hide()
              $('#right-side-section').hide();
              let component_factory_icon_elems = $('.component-factory-left-icons');
                 let len = component_factory_icon_elems.length;
@@ -238,6 +243,12 @@ export default class loadComponentsContainer {
              });
 
             $('.video-stream-switch').on('click',function(){
+
+                $('#components-search-container').css({'top':'35px',
+                                                    'height':' calc( 100% - 36px)'
+                                                  });
+                $('#component-factory-title').show();
+
                 $('#pane').css({'display':'block'});
                 $('#right-side-section').show();
                 let component_factory_icon_elems = $('.component-factory-left-icons');
@@ -689,11 +700,13 @@ export default class loadComponentsContainer {
         $('#quick-notes-setting').on('click', function(){
             if(self.open_setting_flag === 0){
                 $('.options').css({'display':'block'});
+                $('.file-factory-options').css('visibility','visible');
                 $('#quick-file-editor').css('left','55px');
                 self.open_setting_flag = 1;
             }
             else{
                 $('.options').css({'display':'none'});
+                $('.file-factory-options').css('visibility','hidden');
                 $('#quick-file-editor').css('left','15px');
                 self.open_setting_flag = 0;
             }

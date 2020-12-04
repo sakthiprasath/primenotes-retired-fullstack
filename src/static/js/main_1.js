@@ -5,12 +5,10 @@ import SourceCodeSection from './DocumentSection.js';
 import TreeClass from './TreeView.js';
 import Header from './Header.js';
 import DeveloperComponents from './DeveloperComponents.js';
+import SearchBox from './SearchBox.js';
+
 class Tsp{
-	constructor(){
-//		Tsp.prototype.dom_events = new DomEvents();
-//	    Tsp.prototype.dom_actions = new DomActions();
-//        Tsp.prototype.loadComponentsContainer_live_obj = new Object();
-	}
+	constructor(){}
 }
 
 
@@ -24,20 +22,11 @@ $(document).ready(function(){
         SourceCodeSection,
         Header,
         DeveloperComponents,
+        SearchBox,
         DomEvents
         ];
-
-//	tsp.loadComponentsContainer_live_obj = new (loadComponentsContainer)()
-
-//	tsp.loadComponentsContainer_live_obj.init().then(function(label_map){
-//	    new TreeClass().init().then(function(){
-//	        new SourceCodeSection().init();
-//	        tsp.dom_events.init(tsp, label_map);
-//	        tsp.dom_actions.init(); //initialDomActions should be called only after tsp.loadComponentsContainer.init() and tsp.dom_events.init()
-//	    });
-//	});
-
 	let len = class_list.length;
+
     function recursive_dom_builder(index, tsp, ret_Values){
         if(index >= len)
             return null;

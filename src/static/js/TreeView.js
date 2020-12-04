@@ -78,10 +78,6 @@ export default class TreeClass{
 
     _build_tree_and_close_sidenav(){
 
-
-
-
-
         /*beginning of navigation  bar */
  		let self = this;
  		self.kojinFlag = 0;
@@ -92,15 +88,15 @@ export default class TreeClass{
 				var sideNavWidth = '40%';
 				var sideNavLeft = 0;
 				$('#navigation-bar').css('width','0px');
-				$('#source-code-main-div').css({'left':'0px','width':'100%'});
-                $('#sidenav-button-id').css('display','block');
+				$('#parent-source-code-main-div').css({'left':'0px','width':'100%'});
+//                $('#sidenav-button-id').css('display','block');
                 $('.split__bar').css('left','-20px');
 				self.kojinFlag = 1;
 			}
 			else {//opening navigation-bar
-				$('#source-code-main-div').css('left','19%');
+				$('#parent-source-code-main-div').css('left','19%');
 				$('#navigation-bar').css('width','19%');
-				$('#sidenav-button-id').css('display','none');
+//				$('#sidenav-button-id').css('display','none');
 		        $('.split__bar').css('left','19%');
 				self.kojinFlag = 0;
 			}
@@ -111,8 +107,8 @@ export default class TreeClass{
         $('#sidenav-button-id').on('click',function(){
             let curr_ele = $(this);
             if(self.kojinFlag == 1 || curr_ele.css('display') !=='None' ){
-            	$('#source-code-main-div').css({'left':'19%','width':'81%'});
-				$('#source-code-main-div').css('left','19%');
+            	$('#parent-source-code-main-div').css({'left':'19%','width':'81%'});
+				$('#parent-source-code-main-div').css('left','19%');
                 curr_ele.css('display','none');
 				$('#navigation-bar').css({'width':'19%' , 'left':'0%'});
 				 $('.split__bar').css('left','19%');

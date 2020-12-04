@@ -78,7 +78,7 @@
     display: none;
     border: 1px solid red;
     transition: opacity 500ms;
-    top: 25px;
+    top: 50px;
     background: #f1f7f9;
     color: #0d1115;
     position: absolute;
@@ -95,4 +95,10 @@
 .display-notification{
     opacity:1 !important;
     display:block !important;
+}
+
+/*overide semantic css*/
+body ::-webkit-scrollbar-track {
+    background: none !important;
+    border-radius: 0;
 }

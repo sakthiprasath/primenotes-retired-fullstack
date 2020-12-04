@@ -5,6 +5,27 @@ import SourceCodeSection from './DocumentSection.js';
 export default class DomEvents{
     components_list= [];
     active_component_dialog_elements = [];
+
+       _button_clicks(){
+
+//        $('#add-new-file-in-project-notes').click();
+        /*initial clicks for file*/
+            setTimeout( function(){
+            ($('.file-click')[0]).click()
+            $('#stream-youtube-video').click();
+            $('.top-header-drag-bar').click();
+               ($('.individual-search')[0]).click();
+            },1500);
+        /*password validate for drowssap
+            $('#password-validate-dialog').dialog({
+                autoOpen: false,
+                width:'90%',
+                height:'700'
+            });*/
+        /*close File container*/
+//        $('#close-component-results-container').click();
+
+    }
     static _get_action_object(){
         return new DomActions()
     }
@@ -40,23 +61,27 @@ export default class DomEvents{
     _create_event_listeners_for_dragbar(){
         const bar = $('.split__bar');
         const left_part = $('.split__left');
-        const right_part = $('#source-code-main-div');
+        const right_part = $('#parent-source-code-main-div');
         let self = this;
         self.mouse_is_down = false;
 
         bar.on('mousedown', function(e){
+          $(this).css({
+            'width':'5px'
+          });
           self.mouse_is_down = true;
         });
 
         $(document).on('mousemove', (e) => {
+          let header_width = $('#top-header').width();
           if (!self.mouse_is_down) return;
           let screenWidth = screen.width;
           let q1 = screenWidth - parseInt(`${e.clientX}px`);
           let q2 =  parseInt(`${e.clientX}px`);
           left_part.css('width', `${e.clientX}px`);
-          right_part.css('width',q1);
-          right_part.css('left',q2);
-          bar.css('left',q2-5);
+          right_part.css('width',q1 - header_width);
+          right_part.css('left',q2 - header_width);
+          bar.css('left',q2 - header_width);
         })
 
         document.addEventListener('mouseup', () => {
@@ -123,6 +148,7 @@ export default class DomEvents{
         this._initialize_tool_tips();
         this._create_event_listeners_for_dragbar();
         this._initialize_local_video_Stream();
+        this._button_clicks();
         return $.Deferred().resolve(tsp, label_map);
     }
 
