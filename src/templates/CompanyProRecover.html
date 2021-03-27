@@ -29,7 +29,8 @@
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/ComponentEditor.css') }}" />
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/ResultIframe.css') }}" />
 	 <link rel="stylesheet" href="{{ url_for('static', filename='/css/ComponentEditor.css') }}">
-
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
 
 
 
@@ -58,11 +59,11 @@
 			href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.css'>
 			<link rel='stylesheet'
 				href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/theme/material.css'>
-<!--				<link rel="stylesheet"-->
-<!--					href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">-->
+				<link rel="stylesheet"
+					href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <!--					<script type="text/javascript" src="{{ url_for('static', filename='js/treeview.js') }}"></script>-->
 
-					<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!--					<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
 					<script src="https://www.w3schools.com/lib/codemirror_jsx.js"></script>
 
 
@@ -78,58 +79,34 @@
 <!-- progress loading before website loads -->
 
 
-<div id="loading-container" style="display: block;
+
+<div id="loading-container" style="
+    display: block;
     width: 50%;
     left: 25%;
-    background: skyblue;
-    height: 300px;
+    height: 40%;
     position: absolute;
-    top: 25%;">
-	<span style="
-	position: absolute;
-    top: 84px;
-    left: 30px;
-	">Loading...</span>
-	<div class="progress" id="PreLoaderBar" style="    width: 80%;
-    left: 10%;
-    top: 40%;
-    display: block;">
+    top: 18%;
+    display: grid;
+    grid-template-rows: 3fr 2fr;
+    ">
+    <img id="logo-in-progressbar" src="/static/images/logo_with_quotes.PNG" alt="logo" style="margin: 2% 0px 0 33%;">
+	<div style="
+		margin: 0px 0 0 15%;
+		display: grid;
+		grid-template-rows: 1fr 1fr;">
 
-        <div class="indeterminate"></div>
+		<div style="color: black;" class="label">Loading...</div>
+		<div class="ui  teal success"  id="pre-loader-bar" style="width: 80%;display: block;">
+		  <div class="bar" style="transition-duration: 300ms; width: 100%;">
+			  <div class="progress"></div>
+		  </div>
+		</div>
     </div>
 </div>
 
-
-
-					<script
-						src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 </head>
 <body>
-
-
-
-
-
-
-
-
-
-
-
-
-	<script>
-
-document.onreadystatechange = function () {
-            if (document.readyState === "complete") {
-                console.log(document.readyState);
-                document.getElementById("PreLoaderBar").style.display = "none";
-                document.getElementById("destination-container").style.display = "block";
-
-            }
-        }
-</script>
-
-
 
 
 
@@ -144,7 +121,6 @@ document.onreadystatechange = function () {
 
 
 <!-- top header section -->
-<div id="top-header" class="top-header-left-margin">
 <!--	<div id="logo-section" class="logo-section-right-margin">-->
 <!--		&lt;!&ndash;		https://www.freepnglogos.com/uploads/instagram-logos-png-images-free-download-2.png&ndash;&gt;-->
 <!--		<img src="/static/images/logo_.PNG" alt="primenotes_logo" id="prime-notes-logo">-->
@@ -168,123 +144,89 @@ document.onreadystatechange = function () {
 <!--		</div>-->
 <!--	</div>-->
 
+		<div id="top-header" class="top-header-left-margin" >
 
+			<div id="tab-options-section">
+				<div id="top-header-tab-options" class="tab-options top-header-right-margin-tab-options">
 
+					<div id="close-editor-button" data-tooltip="quick notes"  data-position="right center" class="file-switch button-with-icon-in-header" style="display: grid; grid-template-columns: 2fr 4fr; height: 45px;">
+								<img class="top-header-icons" src="https://cdn2.iconfinder.com/data/icons/favorite-and-like/512/favorite-like-button-21-512.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder">
+								<span class="open-close tab-option-buttons-right-in-margin" style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: none;">Quick Notes</span>
+					</div>
 
+					<div id="main-section-button" class="button-with-icon-in-header" data-tooltip="Tree notes" data-position="right center" style="display: grid; grid-template-columns: 2fr 4fr; height: 45px;">
+								<img class="top-header-icons" src="https://img.icons8.com/color/48/000000/folder-tree.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" >
+						<span class="open-close tab-option-buttons-right-in-margin" title="" style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: none;">
+							<span style="padding:3px">Tree Notes</span>
+						</span>
+					</div>
 
+					<div id="open-close-overlay" class="video-stream-switch button-with-icon-in-header"  data-tooltip="Video Notes" data-position="right center" style="display: grid; grid-template-columns: 2fr 4fr; height: 45px;">
+									<img class="top-header-icons" src="https://www.flaticon.com/svg/static/icons/svg/1412/1412629.svg" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" >
+						<span class="open-close tab-option-buttons-right-in-margin" style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: none;">
+							<span style="padding:3px">Video Notes</span>
+						</span>
+					</div>
 
-	<div id="tab-options-section" >
-		<div id="top-header-tab-options" class="tab-options top-header-right-margin-tab-options">
+<!--					<div class="button-with-icon-in-header" style="-->
+<!--						display: grid;-->
+<!--						grid-template-columns: 1fr 3fr;-->
+<!--						">-->
+<!--									<img src="https://cdn2.iconfinder.com/data/icons/favorite-and-like/512/favorite-like-button-21-512.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" style="-->
+<!--										width: 70%;-->
+<!--										height: 60%;-->
+<!--										position: relative;-->
+<!--										top: 23%;-->
+<!--									">-->
+<!--						<span id="open-youtube-frame" class="button open-close" style="" style="background: rgb(45 87 121);color: rgb(241 247 249);">-->
+<!--							<img class="thumb" src="https://image.flaticon.com/icons/png/512/15/15077.png" alt="Computer screen Free Icon" data-pin-no-hover="true" onerror="this.onerror=null;ga('send', 'event', 'broken_image', 'detail', '318_752318');" style="-->
+<!--								width: 20px;-->
+<!--								height: 20px;-->
+<!--							">-->
+<!--						</span>-->
+<!--					</div>-->
 
-			<div id="close-editor-button" data-toggle="tooltip" title="" data-placement="auto" data-original-title="Quick Notes" class="file-switch button-with-icon-in-header" style="display: grid; grid-template-columns: 2fr 4fr; background-color: rgb(45, 87, 121);height: 45px">
-						<img src="https://cdn2.iconfinder.com/data/icons/favorite-and-like/512/favorite-like-button-21-512.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" style="
-							    width: 22px !important;
-								height: 21px !important;
-								position: relative;
-								top: 11%;
-								margin-left: 9px !important;
-						">
-						<span class="open-close tab-option-buttons-right-in-margin" style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: block;">Quick Notes</span>
+<!--					<div id="html-renderer" class="button-with-icon-in-header" data-tooltip="HTML Editor" data-position="right center" style="display: grid; grid-template-columns: 2fr 4fr; height: 45px;">-->
+<!--									<img class="top-header-icons" src="https://www.codepile.net/images/logo.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" >-->
+<!--						<span class="open-close tab-option-buttons-right-in-margin" title="" style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: none;">-->
+<!--							<span style="padding:3px">Html Editor</span>-->
+<!--						</span>-->
+<!--					</div>-->
+				</div>
 			</div>
 
-			<div id="main-section-button" class="button-with-icon-in-header" data-toggle="tooltip" data-placement="auto" data-original-title="Tree notes"style="display: grid; grid-template-columns: 2fr 4fr; background-color: rgb(45, 87, 121);height: 45px">
-						<img src="https://img.icons8.com/color/48/000000/folder-tree.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" style="
-							width: 25px;
-							height: 25px;
-							position: relative;
-							top: 23%;
-							margin-left: 9px !important;
-						">
-				<span class="open-close tab-option-buttons-right-in-margin"  title=""  style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: block;" >
-					<span style="padding:3px">Tree Notes</span>
-				</span>
-			</div>
-
-			<div id="open-close-overlay" class="video-stream-switch button-with-icon-in-header"  data-toggle="tooltip" title="" data-placement="auto" data-original-title="Video Notes" style="display: grid; grid-template-columns: 2fr 4fr; background-color: rgb(45, 87, 121);height: 45px">
-							<img src="https://www.flaticon.com/svg/static/icons/svg/1412/1412629.svg" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" style="
-								width: 25px;
-								height: 25px;
-								position: relative;
-								top: 23%;
-								margin-left: 7px !important;
-							">
-				<span class="open-close tab-option-buttons-right-in-margin" style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: block;" >
-					<span style="padding:3px">Video Notes</span>
-				</span>
-			</div>
-
-	<!--		<div class="button-with-icon-in-header" style="-->
-	<!--			display: grid;-->
-	<!--			grid-template-columns: 1fr 3fr;-->
-	<!--			">-->
-	<!--						<img src="https://cdn2.iconfinder.com/data/icons/favorite-and-like/512/favorite-like-button-21-512.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" style="-->
-	<!--							width: 70%;-->
-	<!--							height: 60%;-->
-	<!--							position: relative;-->
-	<!--							top: 23%;-->
-	<!--						">-->
-	<!--			<span id="open-youtube-frame" class="button open-close" style="" style="background: rgb(45 87 121);color: rgb(241 247 249);">-->
-	<!--				<img class="thumb" src="https://image.flaticon.com/icons/png/512/15/15077.png" alt="Computer screen Free Icon" data-pin-no-hover="true" onerror="this.onerror=null;ga('send', 'event', 'broken_image', 'detail', '318_752318');" style="-->
-	<!--					width: 20px;-->
-	<!--					height: 20px;-->
-	<!--				">-->
-	<!--			</span>-->
-	<!--		</div>-->
-
-			<div id="html-renderer" class="button-with-icon-in-header" data-placement="auto" data-toggle="tooltip" data-original-title="HTML Editor"
-				 style="display: grid;
-				 grid-template-columns: 2fr 4fr;
-				 background-color: rgb(73, 117, 152);
-				 height: 45px">
-							<img src="https://www.codepile.net/images/logo.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" style="
-								width: 28px;
-								height: 20px;
+			<div id="top-header-preferences" class="button-with-icon-in-header" data-tooltip="overall Preferences" data-position="right center" style="display: grid; grid-template-columns: 27fr 4fr; background-color: rgb(233, 243, 237);height:7.5%;">
+							<img src="https://cdn.onlinewebfonts.com/svg/img_77554.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" style="
+								width: 18px;
+								height: 18px;
 								position: relative;
 								top: 23%;
-								margin-left: 5px !important;
+								margin-left: 16px !important;
 							">
-				<span class="open-close tab-option-buttons-right-in-margin"  title="" style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: block;" >
-					<span style="padding:3px">Html Editor</span>
-				</span>
+							<span class="file-switch open-close tab-option-buttons-right-in-margin" style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: none; margin-top: 3px; width: 100% !important;">Preferences</span>
 			</div>
+			<div id="user-name-section" class="button-with-icon-in-header" data-tooltip="SAKTHIPRASATH Tamilazhagan" data-position="right center" style="display: grid; grid-template-columns: 3fr 4fr; background-color: rgb(233, 243, 237);height:5%;">
+							<img src="https://secure.gravatar.com/avatar/d2e20c788a53eb35044eada00ca76d95?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FS-6.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" style="
+								width: 18px;
+								height: 18px;
+								position: relative;
+								top: 0%;
+								margin-left: 16px !important;
+							">
+							<span class="file-switch open-close tab-option-buttons-right-in-margin" data-toggle="tooltip" title="" data-placement="auto" data-original-title="Notes with Text Editor Options" style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: none; width: 100% !important;">Sakthi</span>
+			</div>
+
+
+		<!--	<div id="header-orientation">-->
+
+		<!--		<div id="left-header-id"  class="top-header-orientation"> <span id="left-header-id-span"> < </span></div>-->
+		<!--        <div id="top-header-id" class="top-header-orientation">  <span id="top-header-id-span"> ^ </span> </div>-->
+		<!--        <div id="right-header-id" class="top-header-orientation">  <span id="right-header-id-span"> > </span>   </div>-->
+		<!--        <div id="bottom-header-id" class="top-header-orientation">  <span id="bottom-header-id-span"> ^ </span>  </div>-->
+
+		<!--    </div>-->
 		</div>
-	</div>
-
-
-
-
-	<div id="top-header-preferences" class="button-with-icon-in-header" style="display: grid; grid-template-columns: 27fr 4fr; background-color: rgb(45 87 121)">
-					<img src="https://cdn.onlinewebfonts.com/svg/img_77554.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" style="
-						width: 18px;
-						height: 18px;
-						position: relative;
-						top: 23%;
-						margin-left: 16px !important;
-					">
-					<span class="file-switch open-close tab-option-buttons-right-in-margin" data-toggle="tooltip" title="" data-placement="auto" data-original-title="Notes with Text Editor Options" style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: block; width:100% !important;margin-top: 3px;">Preferences</span>
-	</div>
-	<div id='user-name-section' class="button-with-icon-in-header" style="display: grid; grid-template-columns: 3fr 4fr; background-color: rgb(45 87 121)">
-					<img src="https://secure.gravatar.com/avatar/d2e20c788a53eb35044eada00ca76d95?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FS-6.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" style="
-						width: 18px;
-						height: 18px;
-						position: relative;
-						top: 0%;
-						margin-left: 16px !important;
-					">
-					<span class="file-switch open-close tab-option-buttons-right-in-margin" data-toggle="tooltip" title="" data-placement="auto" data-original-title="Notes with Text Editor Options" style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: block; width:100% !important;">Sakthi</span>
-	</div>
-
-
-<!--	<div id="header-orientation">-->
-
-<!--		<div id="left-header-id"  class="top-header-orientation"> <span id="left-header-id-span"> < </span></div>-->
-<!--        <div id="top-header-id" class="top-header-orientation">  <span id="top-header-id-span"> ^ </span> </div>-->
-<!--        <div id="right-header-id" class="top-header-orientation">  <span id="right-header-id-span"> > </span>   </div>-->
-<!--        <div id="bottom-header-id" class="top-header-orientation">  <span id="bottom-header-id-span"> ^ </span>  </div>-->
-
-<!--    </div>-->
-</div>
-<span class="top-header-drag-bar" style="width: 7px; height: 101%;cursor: grab;background: rgb(45 87 121); position: absolute; margin-top: 0px; z-index: 11; left: 0px;"></span>
+<span class="top-header-drag-bar" style="width: 7px; height: 101%;cursor: grab; position: absolute; margin-top: 0px; z-index: 9; left: 0px;"></span>
 
 
 
@@ -377,17 +319,17 @@ document.onreadystatechange = function () {
 
 <!--				</div>-->
 				<div id="component-factory-title">
-					<div id="right-side-section" class="inner-item-form" style="top: 0px; position: absolute; background: rgb(25, 131, 214); width: calc(30%); display: flex; left: 35%; column-gap: 10px; grid-template-columns: 2fr 1fr; z-index: 3;">
+					<div id="right-side-section" class="inner-item-form" style="top: 0px; position: absolute; background: rgb(244 247 249); width: calc(30%); display: flex; left: 35%; column-gap: 10px; grid-template-columns: 2fr 1fr; z-index: 3;">
 										<input type="text" id="youtube-video-link" title="Right click the youtube video and copy embed code and pate here" placeholder="Right click the youtube video and copy embed code and pate here" style="
-																margin-left: 1px;
-																height: 24px;
-																margin-top: 4px;
-																border-radius: 2px;
-																font-size: 12px;
-																background: none;
-																border: 1px solid white;
-																color: white;
-																padding: 10px;
+																    margin-left: 1px;
+																	height: 24px;
+																	margin-top: 4px;
+																	border-radius: 2px;
+																	font-size: 12px;
+																	background: none;
+																	border: 1px solid #0c0a0a;
+																	color: #131010;
+																	padding: 10px;
 																" value="https://youtu.be/zIwLWfaAg-8">
 										<button id="stream-youtube-video" class="button" style="
 																										display: inline;
@@ -438,7 +380,17 @@ document.onreadystatechange = function () {
 
 									<div class="search-box">
 									  <div class="form-group">
-										<input type="text" id='search-box' name="firstname" class="line-animation" placeholder="search...">
+										<div class="ui segment">
+											<div  class="ui category search focus" style="
+												width: 85%;
+											">
+												<div class="ui icon input">
+												<input class="prompt" id="search-box" type="text" style="background-color: rgb(244 247 249); --darkreader-inline-bgcolor:#27312b;" placeholder="Search Tree..." autocomplete="off" data-darkreader-inline-bgcolor="">
+													<i class="search icon"></i>
+												</div>
+
+											</div>
+											</div>
 											<div class="line">
 											</div>
 									  </div>
@@ -450,8 +402,9 @@ document.onreadystatechange = function () {
 								</div>
 
 								<div id='chat-file-icon-section' style="
-									right: 7px;
-    								position: absolute;">
+									    right: 7px;
+										position: absolute;
+										top: 12px;">
 									<div id="create-new-file" class="dropdown_1" style="
 									    display:block;">
 											<button id="add-new-file-in-file-factory">+</button>
@@ -485,32 +438,32 @@ document.onreadystatechange = function () {
 							</div>
 							<div id="chat-middle-section">
 								<div style="position: relative;" class="list-section">
-									<div class="individual-search" id="hrithik" style="
-											position: relative;
-											left: 0px;	">
+<!--									<div class="individual-search" id="hrithik" style="-->
+<!--											position: relative;-->
+<!--											left: 0px;	">-->
 
-										<div style="
-												width: 45px;
-												height: 45px;">
-											<img src="https://img.etimg.com/thumb/msid-67467301,width-650,imgsize-575034,,resizemode-4,quality-100/hrithik-roshan.jpg" alt="sakthiprasath.jpg" style="
-												width: 100%;
-												height: 100%;
-												border-radius: 100%;">
+<!--										<div style="-->
+<!--												width: 45px;-->
+<!--												height: 45px;">-->
+<!--											<img src="https://img.etimg.com/thumb/msid-67467301,width-650,imgsize-575034,,resizemode-4,quality-100/hrithik-roshan.jpg" alt="sakthiprasath.jpg" style="-->
+<!--												width: 100%;-->
+<!--												height: 100%;-->
+<!--												border-radius: 100%;">-->
 
-										<div class="search-result-item" style="
-												position: absolute;
-												top: 24px;
-												left: 58px;
-												font-family: cursive;
-												height:20px;
-												">Hrithik</div>
-										</div>
-										<div style="
-													position: absolute;
-											right: 20px;
-											bottom: 10px;
-											font: small-caption;">online</div>
-									</div>
+<!--										<div class="search-result-item" style="-->
+<!--												position: absolute;-->
+<!--												top: 24px;-->
+<!--												left: 58px;-->
+<!--												font-family: cursive;-->
+<!--												height:20px;-->
+<!--												">Hrithik</div>-->
+<!--										</div>-->
+<!--										<div style="-->
+<!--													position: absolute;-->
+<!--											right: 20px;-->
+<!--											bottom: 10px;-->
+<!--											font: small-caption;">online</div>-->
+<!--									</div>-->
 
 								<div class="individual-search" id="sakthiprasath" style="
 											position: relative;
@@ -552,9 +505,13 @@ document.onreadystatechange = function () {
 					</div>
 
 					</div>
-					<div class="file-factory-split-bar"></div>
+					<div class="file-factory-split-bar">
+						<div id="sidenav-button-id1" class="sidenav-button-class" >
+								<span class="sidenav-button-content-class"> &lt; </span>
+						</div>
+					</div>
 
-					<div id='right-side-components' class="right-side-components-split-screen">
+					<div id='right-side-components' class="right-side-components-split-screen all-ele-class-for-background">
 						<div id='right-side-components-container'>
 							<div id="video-stream-in-file-factory" class="right-side-components-in-file-factory" style="width:100%;height:100%;">
 
@@ -562,8 +519,9 @@ document.onreadystatechange = function () {
 							<div id="quick-notes-in-file-factory" class="right-side-components-in-file-factory">
 
 								<div class="quick-notes-top-section">
+
 									<img id="quick-notes-setting" src="https://cdn1.iconfinder.com/data/icons/modern-universal/32/icon-16-512.png">
-									<div class="file-factory-options">
+									<div class="file-factory-options all-ele-class-for-background">
 										   <img class="file-factory-option-icons quick-file-rename"  alt="Rename icon" src="https://img.icons8.com/ios/452/rename.png" lazy="loaded">
 											<img class="file-factory-option-icons quick-file-delete"  alt="Delete Bin icon" src="https://image.flaticon.com/icons/png/512/61/61848.png" lazy="loaded">
 <!--											 <img class="file-factory-option-icons quick-file-favourite"  alt="Star icon" src="https://img.icons8.com/fluent/2x/star.png">-->
@@ -666,7 +624,62 @@ document.onreadystatechange = function () {
 	</div>
 
 
+<div class="context" >
+			  <div class="context-item both-file-and-folder">
+				<div class="inner-item">
+				  Rename
+				</div>
+			  </div>
+			  <div class="context-item only-folder">
+				<div class="inner-item">
+				  New File
+				</div>
 
+			  </div>
+			  <div class="context-item  only-folder">
+				<div class="inner-item">
+				  New Folder
+				</div>
+			  </div>
+
+			  <div class="context-item  only-file">
+				<div class="inner-item">
+				  Cut
+				</div>
+			  </div>
+			  <div class="context-item only-file">
+				<div class="inner-item">
+				  Copy
+				</div>
+			  </div>
+
+			  <div class="context-item only-folder">
+				<div class="inner-item">
+				  Paste
+				</div>
+			  </div>
+			  <div class="context-item only-trash">
+				<div class="inner-item">
+				  Restore
+				</div>
+			  </div>
+			  <div class="context-item only-trash">
+				<div class="inner-item">
+				  Delete from Trash
+				</div>
+			  </div>
+
+			  <div class="context-item both-file-and-folder">
+				<div class="inner-item">
+				  Move To Trash
+				</div>
+			  </div>
+			<div class="context-item only-trash both-file-and-folder">
+				<div class="inner-item">
+				  Details
+				</div>
+			  </div>
+			</div>
 
 
 <div id="main-section-wrapper">
@@ -674,18 +687,13 @@ document.onreadystatechange = function () {
 
 
 
-	<div  id="main-sections" class='main-section-wrapper-class'>
+	<div class='main-section-wrapper-class'id="main-sections" >
 
 		<div id='navigation-bar' class="split__left">
 		<a href="javascript:void(0)" id="closebtn">×</a>
 <!--		<div id='sidenav-button-id' class='sidenav-button-class'>-->
 <!--			<span class='sidenav-button-content-class'>>></span></span>-->
 <!--		</div>-->
-
-		<div id="sidenav-tab-section">
-
-			</div>
-
 
 		<div class="sidenav" >
 
@@ -694,12 +702,11 @@ document.onreadystatechange = function () {
 			<script src="https://semantic-ui.com/dist/semantic.min.js"></script>
 
 			<div class="ui container" style="
-				width: 245px !important;
-				margin-left: 5px!important;
+				width: 112% !important;
 				background: #e9f3ed;
 				height: 50px !important;
-				margin-top: 0px !important;
-				z-index:1;
+				z-index: 1;
+				margin-left: -5px !important;
 			">
 
 			<div class="ui segment">
@@ -707,173 +714,158 @@ document.onreadystatechange = function () {
 					width: 85%;
 				">
 			<div class="ui icon input">
-			<input class="prompt" type="text" placeholder="Search Tree..." autocomplete="off">
+			<input class="prompt" type="text" style="background-color: #e9f3ed;" placeholder="Search Tree..." autocomplete="off">
 				<i class="search icon"></i>
 			</div>
 			<div class="results transition hidden"><div class="category"><div class="name">Category 1</div><div class="results transition hidden"><a class="result"><div class="content"><div class="title">result Title</div><div class="description">Optional Description</div></div></a><a class="result"><div class="content"><div class="title">result Title</div><div class="description">Optional Description</div></div></a></div></div><div class="category"><div class="name">Category 2</div><div class="results transition hidden"><a class="result"><div class="content"><div class="title">result Title</div><div class="description">Optional Description</div></div></a></div></div></div>
 			</div>
 
 
-				<div id="tree-note-filter" style="
-					width: 15%;
-					height: 20px;
-					position: absolute;
-					background: red;
-					top: 17px;
-					right: 5px;
-				"></div>
 				</div>
 			</div>
 
 
 
 
-			<div class="context" >
-			  <div class="context-item">
-				<div class="inner-item">
-				  Rename
-				</div>
-			  </div>
-			  <div class="context-item">
-				<div class="inner-item">
-				  New File
-				</div>
-
-			  </div>
-			  <div class="context-item">
-				<div class="inner-item">
-				  New Folder
-				</div>
-			  </div>
-			  <div class="context-hr"></div>
-			  <div class="context-item">
-				<div class="inner-item">
-				  Move To Trash
-				</div>
-			  </div>
-			  <div class="context-item">
-				<div class="inner-item">
-				  Copy
-				</div>
-			  </div>
-			</div>
-
-
-				<!-- tree part staAdd New Brandrts here -->
-<!--				<div class="dTree">-->
-<!--					<ul>-->
-<!--						<li><a href="#" >Site</a>-->
-<!--							<ul>-->
-<!--								<li><a href="#" class='file-click' filename="about12345" file-type='document'>About the Web Site</a></li>-->
-
-<!--							</ul>-->
-<!--						</li>-->
-<!--					</ul>-->
-<!--				</div>-->
-				<!-- tree part ends here -->
 
 
 
+<div class="ui tabular menu">
+  <div class="item" data-tab="tree">Tree</div>
+  <div class="item" data-tab="trash">Trash</div>
+  <div class="item" data-tab="starred">Starred</div>
+</div>
+<div class="ui tab" data-tab="tree">
+  <!-- Tab Content !-->
+	<ul id="myUL">
+	</ul>
+</div>
+<div class="ui tab" data-tab="trash">
+  <!-- Tab Content !-->
+	<ul class="tree-trash-tab-class" style="margin-left: -30px;">
+	</ul>
+</div>
 
-
-
-
-				<ul id="myUL">
-<!--  					 <li>-->
-
-<!--						<div class='folder-section' folder-name="Beverages">-->
-<!--							<span class="folder">-->
-<!--							  <span class='open-close-folder'> > </span>-->
-<!--							  Beverages-->
-<!--							</span>-->
-<!--							<span class='three-dots'>...</span>-->
-<!--						</div>-->
-
-<!--						<ul class="nested">-->
-<!--							<li class='file'><a href="#" class='file-click' filename="about12345" file-type='document'>About the Web Site</a></li>-->
-<!--						 	<li class='file'><a href="#" class='file-click' filename="about123">About the Web Site</a></li>-->
-<!--						 	<li class='file'><a href="#" class='file-click' filename="site123">site123</a></li>-->
-<!--							<li class='file'><a href="#" class='file-click' filename="hrithik">Hrithik</a></li>-->
-<!--							<li class='file'><a href="#" class='file-click' filename="Roshan">Roshan</a></li>-->
-<!--							<li class='file'><a href="#" class='file-click' filename="reshan">Reshan</a></li>-->
-<!--							<li class='file'><a href="#" class='file-click' filename="base64_encoder" title="base64_encoder" >base64_encoder</a></li>-->
-<!--							<li class='file'><a href="#" class='file-click' filename='distributed_computing_1'>distributed_computing_1</a></li>-->
-<!--							<li class='file'><a href="#" class='file-click' filename='distributed_computing_2'>distributed_computing_2</a></li>-->
-<!--							<li class='file'><a href="#" class='file-click' filename='LG'>LG</a></li>-->
-<!--							<li class='file'><a href="#" class='file-click' filename='Sony'>Sony</a></li>-->
-<!--							<li class='file'><a href="#" class='file-click' filename='HTC'>HTC</a></li>-->
-<!--							<li class='file'><a href="#" class='file-click' filename='samsung'>samsung</a></li>-->
-
-
-
-<!--						    <li>-->
-<!--							<div class='folder-section' folder-name="Tea">-->
-<!--								<span class="folder">-->
-<!--								  <span class='open-close-folder'> > </span>Tea-->
-<!--								</span>-->
-<!--								 <span class='three-dots'>...</span>-->
-<!--							</div>-->
-<!--							<ul class="nested">-->
-<!--							  <li class='file'>Black Tea</li>-->
-<!--							  <li class='file'>White Tea</li>-->
-<!--							</ul>-->
-<!--						  </li>-->
-
-
-<!--						</ul>-->
-<!--					  </li>-->
-					</ul>
-
-
-
-
+<div class="ui tab" data-tab="starred">
+  <!-- Tab Content !-->
+	<ul id="myUL">
+	</ul>
+</div>
 
 			</div>
-
-
-
-
-
 		</div>
 
 
 
 
-<!--		<script src="{{ url_for('static', filename='js/SourceCodeSection.js') }}"></script>-->
-<!--		<script src="{{ url_for('static', filename='js/DocumentSection.js') }}"></script>-->
-
+		<div id="sidenav-button-id" class="sidenav-button-class split__bar">
+				<span class="sidenav-button-content-class"> < </span>
+		</div>
 		<div class="split__bar"></div>
 		<div id="parent-source-code-main-div">
-			<div id='source-code-main-div' class="split__right">
-			<div id="sidenav-button-id" class="sidenav-button-class">
-				<span class="sidenav-button-content-class"> => </span>
+			<div class="tree-file-tracker" style="
+				position: relative;
+				margin-left: 24px;
+				padding: 0px;
+				margin-top: 1px;
+			">
+<!--			<span>MY-ROOT </span>-->
+<!--			<span> &gt; </span>-->
+<!--			<span>My To Do List </span>-->
+<!--			<span> &gt;  </span>-->
+<!--			<span> Folder 1 </span>-->
+<!--			<span> &gt;  </span>-->
+<!--			<span> Folder 2  </span>-->
+				<div class="ui breadcrumb">
+				  <a class="section">Home</a>
+				  <div class="divider"> / </div>
+				  <a class="section">Store</a>
+				  <div class="divider"> / </div>
+				  <div class="active section">T-Shirt</div>
+				</div>
+
 			</div>
+
+
+			<div id='source-code-main-div' class="split__right">
+
 
 
 
 		<div id='source-code-sub-divs'>
-			<div id="tree-notes-setting" style="
-				    width: 25px;
-					height: 32px;
-					margin-top: 1px;
-					margin-left: 0px;
-					border: 1px solid red;
-					padding: 5px;
-					padding-top: 9px;">
-				<input id='tab-check' type="checkbox"  data-toggle="tooltip"  data-placement="auto" data-original-title="Enable/disable muulti-tab" src="https://img.icons8.com/color/48/000000/suitcase.png" checked>
-			</div>
 
+			<div id="create-new-project-note"  data-tooltip="Create a Blank Doc" data-position="top center">
+				<button id="add-new-file-in-project-notes" class="button" data-tooltip="Create a Blank Doc" data-position="top center">+</button>
+
+			</div>
 			<div id='tab-container'>
-				<div id="create-new-project-note" class="dropdown_1" style="
-
-									    ">
-											<button id="add-new-file-in-project-notes" class="button">+</button>
-											<div class="dropdown-content">
-											</div>
-									</div>
 			</div>
-		</div>
-		<div id="tabs-container-button-section">
+
+
+			<div class="tab-container-setting ui dropdown" data-tooltip="Tab Settings" data-position="top center"
+				style="
+					      top: 50px;
+							z-index: 4;
+							width: 25px;
+							height: 32px;
+							padding: 5px;
+							position: fixed;
+							right: 7.5%;
+							transition-duration: 2s;
+						">
+					<img style="
+						width: 30px;
+						height: 30px;
+						margin-top: -13px;
+					" width="256" alt="Apple Settings Icon" src="https://img.icons8.com/ios/452/settings.png">
+				  <div class="text">File</div>
+				  <i class="dropdown icon"></i>
+				  <div class="menu">
+						<div class="item">
+					  <i class="dropdown icon"></i>
+					  Close
+					  <div class="menu">
+						  <div class="item" close-type="close_the_current_tab">Current Tab</div>
+						  <div class="item" close-type="close_tabs_to_the_left">Tabs To the Left</div>
+						  <div class="item" close-type="close_tabs_to_the_right">Tabs To the Right</div>
+						<div class="item" close-type="close_all_except_the_current">All Tabs except the current</div>
+						<div class="item" close-type="all">All</div>
+					  </div>
+					</div>
+					<div class="item">
+						<i class="dropdown icon"></i>
+					  	Open
+					  <div id="project-notes-opened-list" class="menu">
+					  </div>
+					</div>
+					<div class="item">
+						<span class="description">
+							<input id='tab-check' type="checkbox"   src="https://img.icons8.com/color/48/000000/suitcase.png" checked>
+						</span>
+						Toggle multitab
+					</div>
+					<div class="item">
+					  	<span class="description">
+							<input id='note-editor-toolbar-check' type="checkbox"   src="https://img.icons8.com/color/48/000000/suitcase.png" checked>
+						</span>
+						Toggle ToolBar
+					</div>
+
+					<div class="item">
+					  <i class="folder icon"></i>
+					  Move to folder
+					</div>
+					<div class="item">
+					  <i class="trash icon"></i>
+					  Move to trash
+					</div>
+					<div class="divider"></div>
+					<div class="item">Download As...</div>
+
+				  </div>
+			</div>
+	</div>
+<!--		<div id="tabs-container-button-section">-->
 <!--				<div id="move-tabs-left" class ='button dropbtn'>-->
 <!--					<span class="move-tabs">  &lt;</span>-->
 <!--				</div>-->
@@ -881,33 +873,45 @@ document.onreadystatechange = function () {
 <!--					<span class="move-tabs">  >	</span>-->
 <!--				</div>-->
 
-				<div id='tabs-list-drop-down' class="dropdown">
-					<button  class="three-vertical-dots button" style="    padding: 6px;
-						background: none;
-						outline:none;
-					">>></button>
-					<div id="myDropdown" class="dropdown-content">
-					</div>
-				</div>
-		</div>
+<!--				<div id='tabs-list-drop-down' class="dropdown">-->
+<!--					<button  class="three-vertical-dots button" style="    padding: 6px;-->
+<!--						background: none;-->
+<!--						outline:none;-->
+<!--					">>></button>-->
+<!--					<div id="myDropdown" class="dropdown-content">-->
+<!--					</div>-->
+<!--				</div>-->
+<!--		</div>-->
 
 
 		<!-- Summernote section for  Document editor starts -->
 
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+<!--     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>-->
 
 
 
 
 
 
-    	<div id="summer-note" style="display:none"> 	</div>
+<!--    	<div id="summer-note" style="display:none"> 	</div>-->
+			<iframe id="summer-note-iframe-id" src="http://localhost:5000/api/individual-component-fetch/summer_note" style="
+				position: absolute;
+				margin-top: 56px;
+				margin-left: 26px;
+				width: 99%;
+				height: 85%;
+				border: none;
+			"></iframe>
+			<div id="display-tab-setting-message">
 
+			</div>
+			<div id="display-tab-setting-back-drop">
 
+			</div>
 
 
 
@@ -1198,39 +1202,40 @@ $('.CodeMirror').css('height','100%');
 
 
 
-
+<div id="loading-backdrop" class="modal">
+</div>
 
 <!-- dialog content starts here-->
 <div id="modal-id" class="modal">
   <!-- Modal content -->
   <div class="modal-content">
     <div class="modal-header">
-      <span id="close-modal">&times;</span>
-      <h2>Modal Header</h2>
+      <h2> </h2>
     </div>
     <div class="modal-body">
 
-		<div id='new-project-file-create-form' class="inner-item-form">
+<!--		create new tree file dialog content-->
+		<div id='new-project-file-create-form' class="inner-item inner-item-form" >
 			<input id="new-project-note-name" type="text" />
-			<button id='new-project-file-submit'>Create</button>
 		</div>
 
-
-
-
-
-
-
-
+<!--		create new quick file dialog content -->
 		<div id="create-new-quick-file-form" class="inner-item-form" >
 			<input type="text" id="create-file-text-box" class="form-text-box" placeholder="Create file">
-			<button id="create-new-file-submit-btn" class="button">create</button>
 		</div>
 
+		<div id="folder-clone-section">
+
+		</div>
 
     </div>
     <div class="modal-footer">
-      <h3>Modal Footer</h3>
+<!--      <h3>Modal Footer</h3>-->
+		<button id="create-new-file-submit-btn" class="button">create</button>
+		<button class="button close-modal" style="
+			position: relative;
+			float: left;
+		">cancel</button>
     </div>
   </div>
 
@@ -1261,7 +1266,6 @@ $('.CodeMirror').css('height','100%');
 
 <script type="text/javascript" src="{{ url_for('static', filename='/js/CodeEditor.js') }}"></script>
 <script type="module" src="{{ url_for('static', filename='/js/main_1.js') }}"></script>
-<script type="module" src="{{ url_for('static', filename='/js/pro1000.js') }}"></script>
 <!--<script type="module" src="{{ url_for('static', filename='/js/DocumentSection.js') }}"></script>-->
 <!--<script type="module" src="{{ url_for('static', filename='/js/TreeView.js') }}"></script>-->
 <!--<script type="module" src="{{ url_for('static', filename='/js/DomEvents.js') }}"></script>-->

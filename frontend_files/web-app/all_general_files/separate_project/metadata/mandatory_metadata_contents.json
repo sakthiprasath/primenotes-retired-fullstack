@@ -1,0 +1,29 @@
+{
+  "delete-folder-uuid-14cb-4ec1-9fdc-0783951a365d": {
+    "date_created": "",
+    "last_updated": "",
+    "type": "code",
+    "path": "Trash",
+    "name": "Trash",
+    "language": "document",
+    "folder_type": "folder"
+  },
+  "folder-uuid-14cb-4ec1-9fdc-0783951a365d": {
+        "date_created": "",
+        "last_updated": "",
+        "type": "code",
+        "path": "Some Root Folder",
+        "name": "Some Root Folder",
+        "language": "document",
+        "folder_type": "folder"
+    },
+    "file-uuid-14cb-4ec1-9fdc-0783951a365d": {
+        "date_created": "",
+        "last_updated": "",
+        "type": "code",
+        "path": "Some Root Folder/sample file",
+        "name": "sample file",
+        "language": "document",
+        "folder_type": "file"
+    }
+}

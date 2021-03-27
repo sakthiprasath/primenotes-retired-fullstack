@@ -9,13 +9,15 @@ export default class DomEvents{
        _button_clicks(){
 
 //        $('#add-new-file-in-project-notes').click();
+
         /*initial clicks for file*/
             setTimeout( function(){
+            $($('.folder-section')[0]).hide().click();
             ($('.file-click')[0]).click()
             $('#stream-youtube-video').click();
             $('.top-header-drag-bar').click();
-               ($('.individual-search')[0]).click();
-            },1500);
+            $('.top-header-drag-bar').off('click');
+        },1500);
         /*password validate for drowssap
             $('#password-validate-dialog').dialog({
                 autoOpen: false,
@@ -35,7 +37,7 @@ export default class DomEvents{
 
 
     _initialize_tool_tips(){
-       $('[data-toggle="tooltip"]').tooltip();
+//       $('[data-toggle="tooltip"]').tooltip();
     }
 
 
@@ -64,28 +66,30 @@ export default class DomEvents{
         const right_part = $('#parent-source-code-main-div');
         let self = this;
         self.mouse_is_down = false;
-
+        const split_bar_width = 3;
         bar.on('mousedown', function(e){
+          $('#display-tab-setting-back-drop').show()
           $(this).css({
-            'width':'5px'
+            'width': split_bar_width
           });
           self.mouse_is_down = true;
         });
 
         $(document).on('mousemove', (e) => {
           let header_width = $('#top-header').width();
-          if (!self.mouse_is_down) return;
           let screenWidth = screen.width;
           let q1 = screenWidth - parseInt(`${e.clientX}px`);
           let q2 =  parseInt(`${e.clientX}px`);
-          left_part.css('width', `${e.clientX}px`);
+          if (!self.mouse_is_down || q2 >= (screenWidth/2) ) return;
+          left_part.css('width', q2 - 53);
           right_part.css('width',q1 - header_width);
           right_part.css('left',q2 - header_width);
-          bar.css('left',q2 - header_width);
+          bar.css('left',q2 - header_width - split_bar_width);
         })
 
         document.addEventListener('mouseup', () => {
           self.mouse_is_down = false;
+          $('#display-tab-setting-back-drop').show()
         })
     }
 
@@ -134,11 +138,45 @@ export default class DomEvents{
 //    _delete_file_in_the_backend()
 //    _mark_favourite_in_the_backend()
 
+      keyboard_events(){
+        let self = this;
+        // When the user clicks anywhere outside of the modal, close it
+
+         $(document).on('keyup',function(e){
+            if(self.tsp.current_window === undefined)
+                self.tsp.current_window = 1;
+            switch(self.tsp.current_window){
+                case 1:
+                case 3 : {
+                    if(e.keyCode === 187){ // shift + '+'
+                        self.tsp.loadComponentsContainer.action_function_map.create_new_file();
+                    }
+                    else if(e.keyCode === 46){
+                        self.tsp.loadComponentsContainer._delete_file_in_the_backend();
+                    }
+                    else if (e.keyCode === 27) {
+                        $('#modal-id').hide();
+                    }
+                    break;
+                }
+            }
+         });
 
 
 
+        $('input').keypress(function(e){
+            let target_id = e.target.id;
+
+            if(e.keyCode === 13){
+                if(target_id === "create-file-text-box"){
+                    self.tsp.loadComponentsContainer.action_function_map.create_new_file_submit_btn();
+                }
+            }
+        });
+
+    }
     init(tsp, label_map){
-        this.super_parent = tsp;
+        this.tsp = tsp;
         this.label_map = label_map;
         let self = this;
         tsp.DomEvents = this;
@@ -149,7 +187,8 @@ export default class DomEvents{
         this._create_event_listeners_for_dragbar();
         this._initialize_local_video_Stream();
         this._button_clicks();
-        return $.Deferred().resolve(tsp, label_map);
+        this.keyboard_events();
+        return $.Deferred().resolve(this.tsp, label_map);
     }
 
 }

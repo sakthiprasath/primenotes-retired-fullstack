@@ -24,6 +24,11 @@ def return_index_html(html_name):
             return  flask.render_template('CompanyProRecover.html')
         elif html_name == "create_component":
             return flask.render_template('IndividualComponent.html')
+        elif html_name == "file_manage":
+            return flask.render_template('FileManagerPro.html')
+        elif html_name == "summer_note":
+            return flask.render_template('SummerNote.html')
+
     except Exception as e:
         return print(e)
 
@@ -58,8 +63,21 @@ def create_file():
         return response
     try:
         data_map = request.get_json()
-        SQLIndividualComponent().create_file(data_map)
-        return jsonify('save_success')
+        ret_dict = SQLIndividualComponent().create_file(data_map)
+        return jsonify(ret_dict), 200
+    except Exception as e:
+        return print(e)
+
+@individual_component_fetcher_routes.route('save-file-factory', methods=['POST'])
+def save_file():
+    @after_this_request
+    def add_header(response):
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
+    try:
+        data = request.get_json(force=True)
+        SQLIndividualComponent().save_file_factory(data)
+        return jsonify(data)
     except Exception as e:
         return print(e)
 
@@ -77,26 +95,40 @@ def save_file():
     except Exception as e:
         return print(e)
 
-@individual_component_fetcher_routes.route('rename-file/<category>/<old_file_name>/<new_file_name>', methods=['POST'])
-def rename_file(category, old_file_name, new_file_name):
+@individual_component_fetcher_routes.route('rename-file/<category>', methods=['POST'])
+def rename_quick_file_file(category):
     @after_this_request
     def add_header(response):
         response.headers['Access-Control-Allow-Origin'] = '*'
         return response
     try:
-        SQLIndividualComponent().rename_file(category, old_file_name, new_file_name)
-        return jsonify('save_success')
+        req_json = request.get_json(force=True)
+        SQLIndividualComponent().rename_quick_note_file(req_json)
+        return jsonify('rename_success')
     except Exception as e:
         return print(e)
 
-@individual_component_fetcher_routes.route('delete-file/<category>/<file_name>/', methods=['DELETE'])
-def delete_file(category, file_name):
+@individual_component_fetcher_routes.route('rename-tree-note-file', methods=['POST'])
+def rename_tree_note_file():
     @after_this_request
     def add_header(response):
         response.headers['Access-Control-Allow-Origin'] = '*'
         return response
     try:
-        SQLIndividualComponent().delete_file(category, file_name)
+        req_json = request.get_json(force=True)
+        SQLIndividualComponent().rename_tree_note_file(req_json)
+        return jsonify('rename_success')
+    except Exception as e:
+        return print(e)
+
+@individual_component_fetcher_routes.route('delete-file/file-factory/<file_key>/', methods=['DELETE'])
+def delete_file(file_key):
+    @after_this_request
+    def add_header(response):
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
+    try:
+        SQLIndividualComponent().delete_file(file_key)
         return jsonify('save_success')
     except Exception as e:
         return print(e)
@@ -145,6 +177,19 @@ def download_youtube_video():
     except Exception as e:
         return print(e)
 
+
+@individual_component_fetcher_routes.route('get-all-file-factory-contents', methods=['GET'])
+def get_file_factory_contents():
+    @after_this_request
+    def add_header(response):
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
+    try:
+
+        files = SQLIndividualComponent().get_all_file_factory_contents()
+        return jsonify(files), 200
+    except Exception as e:
+        return print(e)
 
 @individual_component_fetcher_routes.route('get-all-files/<file_type>', methods=['GET'])
 def get_files(file_type):

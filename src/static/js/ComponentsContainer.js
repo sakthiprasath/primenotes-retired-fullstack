@@ -189,15 +189,32 @@ export default class loadComponentsContainer {
                 $('#pane').removeClass('pane-orientation-right-class');
             });
         }
-     _initialize_file_chat_switches_events(){//component container left-corner
+    _initialize_file_chat_switches_events(){//component container left-corner
           let self = this;
             $('#chat-middle-section').css('display','none');
             $('#single-chat').css('display','none');
             $('#group-chat').css('display','none');
-            $("#right-side-components").css('left','245px');
+            $("#right-side-components").css('left','250px');
 
-            $('.file-switch').on('click',function(){
+            $('.file-switch, #sidenav-button-id1').on('click',function(){
 
+                self.active_switch = "file-switch";
+                let classList =  $("#right-side-components").attr('class');
+                if(classList.indexOf('right-side-components-full-screen') >=0 ){
+                       $("#right-side-components").removeClass('right-side-components-full-screen');
+                    $("#right-side-components").addClass('right-side-components-split-screen');
+                    $('.file-factory-split-bar').css('left','250px');
+                    $('#left-and-middle-section').css('width','250px');
+
+                }
+                else{
+                     $("#right-side-components").removeClass('right-side-components-split-screen');
+                    $("#right-side-components").addClass('right-side-components-full-screen');
+                    $('.file-factory-split-bar').css('left','0px');
+                }
+                if(this.id === "sidenav-button-id1"){
+                    return;
+                }
              $('#components-search-container').css({'top':'0',
                                                     'height':'100%'
                                                   });
@@ -210,22 +227,6 @@ export default class loadComponentsContainer {
                 }
 
 //                $(this).addClass('active');
-                self.active_switch = "file-switch";
-                let classList =  $("#right-side-components").attr('class');
-                if(classList.indexOf('right-side-components-full-screen') >=0 ){
-                       $("#right-side-components").removeClass('right-side-components-full-screen');
-                    $("#right-side-components").addClass('right-side-components-split-screen');
-                    $('.file-factory-split-bar').css('left','250px');
-                    $('#left-and-middle-section').css('width','255px');
-
-                }
-                else{
-                     $("#right-side-components").removeClass('right-side-components-split-screen');
-                    $("#right-side-components").addClass('right-side-components-full-screen');
-                    $('.file-factory-split-bar').css('left','0px');
-                }
-
-
 
                 $('#middle-section').show();
                 let file_editor = $('#quick-notes-in-file-factory').clone();
@@ -234,10 +235,10 @@ export default class loadComponentsContainer {
 
                 let file_editor_obj = $(file_editor).removeClass('text-editor-in-middle-section').addClass('text-editor-in-right-side-components');
                 $('#right-side-components-container').append(file_editor_obj);
-                $("#right-side-components").css('left','245px');
-                $('#file-factory-split-bar').css('left','245px');
+                $("#right-side-components").css('left','250px');
+                $('#file-factory-split-bar').css('left','248px');
                 $('#file-name').off('click');
-                self.fillRightSideComponents(self, $('#file-name').text().trim() + '.txt');
+                self.fillRightSideComponents(self, $('#file-name').attr('file-key'));
                 self._build_file_factory_options();
                 self._open_settings();
              });
@@ -272,19 +273,20 @@ export default class loadComponentsContainer {
                     $("#right-side-components").removeClass('right-side-components-full-screen');
                     $("#right-side-components").addClass('right-side-components-split-screen');
                     $('.file-factory-split-bar').css('left','250px');
-                    $('#left-and-middle-section').css('width','255px');
+                    $('#left-and-middle-section').css('width','250px');
                 }
 
                 let file_editor = $('#quick-notes-in-file-factory').clone();
                 $('#quick-notes-in-file-factory').remove();
-                let file_editor_obj = $(file_editor).removeClass('text-editor-in-right-side-components').addClass('text-editor-in-middle-section')
+                $('#middle-section').show();
+                let file_editor_obj = $(file_editor).removeClass('text-editor-in-right-side-components').addClass('text-editor-in-middle-section').hide();
                 $('#left-and-middle-section').append($(file_editor_obj));
                 $('#video-stream-in-file-factory').css('display','block');
                  $('#file-name').on('click', function(){
                     $('#quick-notes-in-file-factory').hide();
                     $('#middle-section').show();
                 });
-                self.fillRightSideComponents(self, $('#file-name').text().trim() + '.txt');
+//                self.fillRightSideComponents(self, $('#file-name').text().trim() + '.txt');
                 self.initialisingEventHandlers(self);
                 self._build_file_factory_options();
                 self._open_settings();
@@ -297,21 +299,27 @@ export default class loadComponentsContainer {
         var  html='';
 
         let def=$.Deferred();
-//        loadComponentsContainer.prototype.codesMap=new Object();
-//        loadComponentsContainer.prototype.currentSubClass="";
-        for(let key in  labelMap){
-            let len = labelMap[key].length;
-            let tempArr= labelMap[key];
-            for(var i=0;i<len;i++){
-                let arrValue=tempArr[i].toLowerCase().trim();
-                if(searchContent===''  || arrValue.includes(searchContent.toLowerCase().trim())) {
-                    if(arrValue != undefined){
-                        //style='top:"+searchResultTop+"px;'
-                        html+="<div class='individual-search' id='"+key.trim().replaceAll('  ',' ').replaceAll(' ','-').replace('.txt','')+"'> <span class='search-result-item' >"+tempArr[i].replace('.txt','')+"</span></div>";
-                        searchResultTop+=35;
-                        break;
-                    }
-                }
+//        for(let key in  labelMap){
+//            let len = labelMap[key].length;
+//            let tempArr= labelMap[key];
+//            for(var i=0;i<len;i++){
+//                let arrValue=tempArr[i].toLowerCase().trim();
+//                if(searchContent===''  || arrValue.includes(searchContent.toLowerCase().trim())) {
+//                    if(arrValue != undefined){
+//                        html+="<div class='individual-search' id='"+key.trim().replaceAll('  ',' ').replaceAll(' ','-').replace('.txt','')+"'> <span class='search-result-item' >"+tempArr[i].replace('.txt','')+"</span></div>";
+//                        searchResultTop+=35;
+//                        break;
+//                    }
+//                }
+//            }
+//
+//        }
+
+        for(let key in labelMap){
+            if( searchContent === ''  || labelMap[key].content.includes(searchContent.toLowerCase().trim()) || labelMap[key].name.includes(searchContent.toLowerCase().trim())) {
+                html +=`<div class='individual-search' id='${key}'>`;
+                html +=`<span class='search-result-item' >${labelMap[key].name}</span>`;
+                html += `<div class='quick-note-file-icon'><span class="search-star-item"><img class="quick-note-img" src="https://img.icons8.com/ios/452/star--v1.png" alt="Star icon" loading="lazy"></span><span class="quick-note-info" ><img class="quick-note-img" src="https://img.icons8.com/pastel-glyph/344/info--v4.png" alt="Info icon" loading="lazy"></span></div></div>`;
             }
         }
         def.resolve(html);
@@ -326,19 +334,26 @@ export default class loadComponentsContainer {
             var promise =
                 $.ajax
                 ({
-                    url:"http://localhost:5000/api/individual-component-fetch/get-all-files/" + file_type,
+                    url:"http://localhost:5000/api/individual-component-fetch/get-all-file-factory-contents",
                     type : "GET",
                     contentType:'application/x-www-form-urlencoded',
                     success : function(response){
                         let files = {};
                         let ret_json = {};
                         ret_json = response;
-                        self.file_factory_path = ret_json['file_path'];
-                        files = ret_json['files']
+//                        self.file_factory_path = ret_json['file_path'];
 
-                        for(let i in files){
-                            let file = files[i];
-                            temp_map [file] = [file];
+//                        for(let i in files_map){
+//                            let file = files[i];
+//                            temp_map [file] = [file];
+//                        }
+
+                        for(let i in ret_json){
+                            console.log(ret_json[i].name);
+                            temp_map[ret_json[i].uuid_file_name] = {
+                                'name' : ret_json[i].name,
+                                'content' : ret_json[i].content,
+                            } ;
                         }
                         return defObj.resolve(temp_map);
                     }
@@ -348,19 +363,25 @@ export default class loadComponentsContainer {
     initialize_save_action_for_save_button(self){
         let iframe_obj = document.getElementById('quick-file-editor');
         iframe_obj.contentWindow.onblur=function(){
-            var file_name = $('#file-name').text() +'.txt'
-                let file_path =  self.file_factory_path + '/' + file_name ;
-                var savable_data = document.getElementById('quick-file-editor').contentWindow.document.body.innerHTML;
+                var file_key = $('#file-name').attr('file-key')
+                let file_data = document.getElementById('quick-file-editor').contentWindow.document.body.innerHTML;
+                var savable_data = {
+                            'file_key' : file_key,
+                            'name' : self.label_map[file_key].name,
+                            'content' : file_data
+                }
 
                 var defObj=$.Deferred();
                     var promise =
                         $.ajax
                         ({
-                            url: 'http://localhost:5000/api/individual-component-fetch/save-file?file_path=' + (file_path),
+                            url: 'http://localhost:5000/api/individual-component-fetch/save-file-factory',
                             data: JSON.stringify(savable_data),
                             type : "POST",
                             contentType: 'application/json;charset=UTF-8',
                             success : function(response){
+                                self.label_map[file_key].content = file_data;
+                                self.tsp.DomActions._notification_dialog('file saved');
                                 return defObj.resolve(response);
                             }
                         });
@@ -377,12 +398,13 @@ export default class loadComponentsContainer {
 //        $('.file-switch').addClass('active');
         $('.individual-search').off('click');
         $('.individual-search').on('click',function(){
+            $('#quick-notes-in-file-factory').show();
             $('.individual-search').css({'background':'none'})
             $(this).css({'background':'rgb(224 238 243)'});
             $('#right-side-components').css('display','block');
             $('#right-side-components-container').css('display','block');
 //            $('#file-name').text(this.textContent.trim())
-            let file_name = this.textContent.trim() + '.txt';
+            let file_key = $(this).attr('id');
 
 
             let component_factory_icon = $('.active').prop('id');
@@ -408,7 +430,7 @@ export default class loadComponentsContainer {
             }
 
 
-         self.fillRightSideComponents(self, file_name);
+         self.fillRightSideComponents(self, file_key);
 
         });
 
@@ -439,23 +461,25 @@ export default class loadComponentsContainer {
 
 };
 
-    fillRightSideComponents(self, mainClass){
-        //console.log(currId);
-            $('#file-name').text(mainClass);
+    fillRightSideComponents(self, file_key){
+        if(file_key === undefined)
+            return;
+            //console.log(currId);
+            $('#file-name').text(self.label_map[file_key].name);
+            $('#file-name').attr('file-key', file_key)
             document.getElementById('quick-file-editor').contentWindow.document.body.innerHTML = '';
 
             var html='';
             var componentClassName='';
                     $.Deferred().resolve().then(function(){
-                        $.when(self.get_file_from_server(mainClass)).done(function(res){
-                            self._appendHtmlAndEventListner(mainClass,res);
+                        $.when(self.get_file_from_server(file_key)).done(function(res){
+                            self._appendHtmlAndEventListner(file_key,res);
                         });
                     });
         self.initialize_save_action_for_save_button(self);
     }
 
     _appendHtmlAndEventListner(mainClass, general_text_data){
-        $('#file-name').text(mainClass.replace('.txt',''));
         document.getElementById('quick-file-editor').contentWindow.document.designMode = "On";
         document.getElementById('quick-file-editor').contentWindow.document.body.innerHTML = general_text_data;
 
@@ -469,65 +493,64 @@ export default class loadComponentsContainer {
 
 
 
-    get_file_from_server(file_name){
-        file_name = this.file_factory_path + '/' + file_name;
+    get_file_from_server(file_key){
+//        file_name = this.file_factory_path + '/' + file_name;
         var defObj=$.Deferred();
-            var promise =
-                $.ajax
-                ({
-                    url:'http://localhost:5000/api/individual-component-fetch/general_files/file_factory?file_path='+JSON.stringify(file_name),
-                    type : "GET",
-                    contentType:'application/x-www-form-urlencoded',
-                    success : function(response){
-                        return defObj.resolve(response);
-                    }
-                });
-            return defObj.promise();
-    };
+//            var promise =
+//                $.ajax
+//                ({
+//                    url:'http://localhost:5000/api/individual-component-fetch/general_files/file_factory?file_path='+JSON.stringify(file_name),
+//                    type : "GET",
+//                    contentType:'application/x-www-form-urlencoded',
+//                    success : function(response){
+//                        return defObj.resolve(response);
+//                    }
+//                });
+            return defObj.resolve(this.label_map[file_key].content);
+    }
+
      _component_container_open_close(){
         /*component container open-close */
 
-         $('#change-pane-orientation-left').on('click',function(){
-            $('#pane').removeAttr('class');
-            $('#pane').addClass('pane-orientation-left-class');
-//            $('#right-side-components').addClass('right-side-components-full-screen');
-//            $('.file-factory-split-bar').css('left','0px');
-//            $('#left-and-middle-section').css('width','0px');
-
-         });
-
-        $('#change-pane-orientation-right').on('click',function(){
-            $('#pane').removeAttr('class');
-            $('#pane').addClass('pane-orientation-right-class');
-//            $('#right-side-components').addClass('right-side-components-full-screen');
-//            $('.file-factory-split-bar').css('left','0px');
-//            $('#left-and-middle-section').css('width','0px');
-         });
-         $('#component-factory-title').on('dblclick', function(){
+//         $('#change-pane-orientation-left').on('click',function(){
 //            $('#pane').removeAttr('class');
-            self.tsp.DomActions.maximize_icon_click_action();
+//            $('#pane').addClass('pane-orientation-left-class');
+//            $('#right-side-components').addClass('right-side-components-full-screen');
+//            $('.file-factory-split-bar').css('left','0px');
+//            $('#left-and-middle-section').css('width','0px');
+
+//         });
+
+//        $('#change-pane-orientation-right').on('click',function(){
+//            $('#pane').removeAttr('class');
+//            $('#pane').addClass('pane-orientation-right-class');
+//            $('#right-side-components').addClass('right-side-components-full-screen');
+//            $('.file-factory-split-bar').css('left','0px');
+//            $('#left-and-middle-section').css('width','0px');
+//         });
+//         $('#component-factory-title').on('dblclick', function(){
+//            $('#pane').removeAttr('class');
+//            self.tsp.DomActions.maximize_icon_click_action();
 //            $('#right-side-components').addClass('right-side-components--screen');
 //            $('.file-factory-split-bar').css('left','250px');
 //            $('#left-and-middle-section').css('width','255px');
-         });
+//         });
 
     }
-
-    _create_new_file_factory_form(){
-            /*create new file */
-            let self = this;
-            $('#create-new-file').on('click', function(){
-//                $('#create-new-file-form').css('display','block');
-                self.tsp.DomActions._create_new_project_file_form(self, 'create-new-quick-file-form')
-            });
-            $('#create-new-file-submit-btn').on('click',function(){
-
+     action_functions(){
+        let self = this;
+        this.action_function_map = {};
+        this.action_function_map = {
+            create_new_file  : function(){
+                self.tsp.Dialog._create_new_project_file_form( 'create-new-quick-file-form')
+                $('#create-file-text-box').focus();
+            },
+            create_new_file_submit_btn : function(){
                 let file_name = $('#create-file-text-box').val();
                 if (file_name == '' || self.label_map[file_name + '.txt'] != undefined){
                     alert('File exists with the same name ');
                     return;
                 }
-                self.label_map[file_name + '.txt'] = [file_name + '.txt'];
                 let temp_map = {
                     'folder_id' : '',
                     'folder_path' : '../frontend_files/web-app/all_general_files/file_factory',
@@ -535,17 +558,37 @@ export default class loadComponentsContainer {
                     'file_type' : 'file_factory',
                     'create_type': 'File'
                 }
-                self.tsp.DomActions._create_file_in_backend_duplicate(temp_map).then(function(){
-                    let file_name_id = file_name.replaceAll('  ',' ').replaceAll(' ','-') ;
-                    let html="<div class='individual-search' id='" + file_name_id + "'> <span class='search-result-item' >"+file_name+"</span></div>";
+                self.tsp.DomActions._create_file_in_backend_duplicate(temp_map).then(function(ret_json){
+
+                    console.log(ret_json);
+//                    let file_name_id =  //file_name.replaceAll('  ',' ').replaceAll(' ','-') ;
+                    let html=`<div class='individual-search' id="${ret_json.uuid_file_name}" > <span class='search-result-item' >${ret_json.name}</span></div>`;
                     $('#file-middle-section').prepend($(html));
                     self.initialisingEventHandlers(self);
-                    $('#file-name').text(file_name);
+                    $('#file-name').text(ret_json.name);
+                    $('#file-name').attr('file-key', ret_json.uuid_file_name);
+                    self.label_map[ret_json.uuid_file_name] = {
+                                                                    'name' : ret_json.name,
+                                                                    'content' : ''
+                                                              };
                     document.getElementById('quick-file-editor').contentWindow.document.body.innerHTML = '';
 
                     self.tsp.DomActions._notification_dialog('File Creation Success');
+                    $('#modal-id').hide();
                 });
+            }
+        }
+    }
+    _create_new_file_factory_form(){
+            /*create new file */
+            let self = this;
+            $('#create-new-file').on('click', function(){
+//                $('#create-new-file-form').css('display','block');
+                self.action_function_map.create_new_file();
             });
+//            $('#create-new-file-submit-btn').on('click',function(){
+//                self.action_function_map.create_new_file_submit_btn();
+//            });
 
             $('#close-create-file-form').on('click',function(){
                 $('#create-new-file-form').css('display', 'none');
@@ -561,8 +604,8 @@ export default class loadComponentsContainer {
 
         bar.on('mousedown', function(e){
           self.file_factory_mouse_is_down = true;
-          $('#right-side-components').removeClass('right-side-components-split-screen');
-          $('#quick-notes-backdrop').show();
+           $('#right-side-components').removeClass('right-side-components-split-screen');//.css({'left':'250px', 'width':'1090px'});
+            $('#quick-notes-backdrop').show();
         });
 
         bar.on('mouseup', function(e){
@@ -580,9 +623,9 @@ export default class loadComponentsContainer {
           if(q2 < screenLeft || q2 > screenLeft + pane_width)
             return;
           left_part.css('width',q2 - screenLeft);
-          right_part.css('width',q1 -5);
-          right_part.css('left',q2 - screenLeft);
-          bar.css('left',q2-screenLeft - 5);
+          right_part.css('width',q1 );
+          right_part.css('left',q2 - screenLeft + 3);
+          bar.css('left',q2-screenLeft);
         });
 
         document.addEventListener('mouseup', () => {
@@ -611,54 +654,55 @@ export default class loadComponentsContainer {
         });
     }
 
-    __internal_rename(self, rename_field){
+    __internal_rename(self, rename_field, file_key){
             let new_file_name = $(rename_field).val();
-            let old_file_name = rename_field.getAttribute('placeholder').trim();
-
-            self.tsp.DomActions._rename_file_factory_files('file_factory', old_file_name, new_file_name).then(function(){
+            self.label_map[file_key].name = new_file_name;
+            let send_data = {
+                'file_key': file_key,
+                'name' : new_file_name
+            }
+            self.tsp.DomActions._rename_file_factory_files('file_factory', send_data).then(function(){
                 let new_span = `<span class="search-result-item">${new_file_name}</span>`
                 let parent_ele = $(rename_field).parent();
-                parent_ele.attr('id', new_file_name.trim().replaceAll('  ',' ').replaceAll(' ','-'));
+                parent_ele.attr('id', file_key);
                 parent_ele.empty();
                 parent_ele.append($(new_span));
                 $('#file-name').text(new_file_name)
                 self.tsp.DomActions._notification_dialog('File Renamed');
             });
         }
-    _onfocusout_rename_field(){
+    _onfocusout_rename_field(file_key){
         let self = this;
         $('#quick-file-rename-field').on('blur',function(){
-            self.__internal_rename(self, this);
+            self.__internal_rename(self, this, file_key);
         });
     }
     _build_rename_field_and_call_backend(){
         let self = this;
-        let file_name = $('#file-name').text().trim();
-
-        let input =  $(`<input type='text' id='quick-file-rename-field' value='${file_name}' placeholder='${file_name}' />`);
-        let curr_file_ele = $('#'+ file_name.trim().replaceAll('  ',' ').replaceAll(' ','-'));
+        let file_key = $('#file-name').attr('file-key');
+        let file_name = self.label_map[file_key].name;
+        let input =  $(`<input type='text' id='quick-file-rename-field' value='${file_name}' />`);
+        let curr_file_ele = $('#'+ file_key)
         curr_file_ele.empty();
         curr_file_ele.append(input);
         let input_text = input.val();
         input.val('');
         input.val(input_text).focus();
+        $('#quick-file-rename-field').keypress(function (e) {if (e.which == 13)    $(this).blur();});
 
 //        input.focus();
-        self._onfocusout_rename_field();
+        self._onfocusout_rename_field(file_key);
     }
     _delete_file_in_the_backend(){
         let self = this;
-        let file_name = $('#file-name').text();
-        let file_name_with_Extension = file_name + '.txt';
+        let file_key = $('#file-name').attr('file-key');
 
         var r = confirm("Are you sure you want to delete?");
         if (r == true) {
-          let action_obj = DomEvents._get_action_object()
-          action_obj._delete_file('file_factory', file_name_with_Extension).then(function(){
-            alert('file_deleted');
-            let curr_file_ele = $('#'+ file_name_with_Extension.trim().replaceAll('  ',' ').replaceAll(' ','-').replace('.txt',''));
+          self.tsp.DomActions._delete_file(file_key).then(function(){
+            let curr_file_ele = $('#' + file_key);
              $(curr_file_ele).remove();
-            delete  self.label_map[file_name_with_Extension];
+            delete  self.label_map[file_key];
             self.fillRightSideComponents(self, Object.keys(self.label_map)[0]);
 
             self.tsp.DomActions._notification_dialog('File Deleted');
@@ -719,15 +763,19 @@ export default class loadComponentsContainer {
             $(this).hide();
         });
     }
+
+
     init(tsp, unused_return_values){
+        tsp.loadComponentsContainer = this;
         this.tsp = tsp;
         let self = this;
-        tsp.loadComponentsContainer = this;
         self.open_setting_flag = 0;
-
+        this.file_factory_path = '../frontend_files/web-app/all_general_files/file_factory';
+        this.active_switch = 'video-stream-switch';
+        this.action_functions();
         this._maximize_icon_click_event();
-        this.buildDragAndDropEleSet();
-        this.makeResizableDiv('#pane');
+//        this.buildDragAndDropEleSet();
+//        this.makeResizableDiv('#pane');
         this._component_container_open_close();
         this._create_new_file_factory_form();
         this._initialize_file_chat_switches_events();
@@ -825,7 +873,7 @@ export default class loadComponentsContainer {
         self.initialize_save_action_for_save_button(self);
 
         self._get_file_factory_list().then(function(label_map){
-            self.label_map= label_map;
+            self.label_map = label_map;
             self.searchResults(self, label_map).then(function(backHtml){
 
                 $('#file-middle-section').append(backHtml);

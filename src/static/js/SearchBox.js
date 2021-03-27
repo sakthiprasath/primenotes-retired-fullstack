@@ -20,60 +20,23 @@ export default class TreeClass{
                   description: "Optional Description"
                 }
               ]
-            },
-            {
-              name: "Category 2",
-              results: [
-                {
-                  title: "result Title",
-                  description: "Optional Description"
-                }
-              ]
-            },
-            {
-              name: "sasasa 2",
-              results: [
-                {
-                  title: "resuRETRETRETERTEle",
-                  description: "sADREWTRETEion"
-                }
-              ]
-            },
-            {
-              name: "Cat234543TSRT",
-              results: [
-                {
-                  title: "result Title",
-                  description: "Optional Description"
-                }
-              ]
-            },
-            {
-              name: "CaDASSDA",
-              results: [
-                {
-                  title: "resuWETRWTERe",
-                  description: "2324314234on"
-                }
-              ]
-            },
-
-        ];
+            }];
     }
     _events(){
         let self = this;
         $('#searchInput').search({
-            apiSettings: {
+
+              apiSettings: {
                 'response': function (e) {
                     var searchTerm = e.urlData.query;
 
-                    var result = self.searchItems.map(function (cat) {
+                    var result = self.tsp.TreeClass.file_folder_list.map(function (cat) {
 
                         var items = cat.results.filter(function (item) {
-                          return item.title.toLowerCase().includes(searchTerm.toLowerCase());
+                          console.log(item);
+                          return item.title.toLowerCase().includes(searchTerm.toLowerCase())
                         });
-
-                        if(items !== null)
+                       if(items !== null)
                         {
                             var category = {'name' : cat.name};
                             category.results = items;
@@ -84,8 +47,45 @@ export default class TreeClass{
                     return {'results' : result };
                 }
             },
-            type: 'category'
+//            source: self.tsp.TreeClass.file_folder_list,
+            type: "category",
+            duration: 100,
+            maxResults: 50,
+            showNoResults: true,
+            fullTextSearch: 'exact',
+            searchFields: ['title'],
+            onSelect: function(result, response){
+                let folder_type = self.tsp.TreeClass.metadata_map[result.description]['folder_type'];
+                if( folder_type === "folder"){
+                    self.tsp.TreeClass.clone_folder_into_dialog(result.description);
+                }
+                else{
+                    self.tsp.SourceCodeSection._highlight_in_tree(result.description);
+                    self.tsp.SourceCodeSection.buildTab(result.title, 'document', result.description);
+                }
+            }
           });
+
+
+          $('.prompt').on('focus',function(){
+
+            $('.sidenav').css('z-index',7);
+          });
+
+          $('.prompt').on('blur',function(){
+            $('.sidenav').css('z-index',5);
+          });
+
+        $('.tab-container-setting')
+          .dropdown()
+        ;
+        $('.tab-container-setting').on('click', function(){
+             self.tsp.DomActions._tabs_drop_down_click();
+        });
+
+
+
+
     }
 
     init(tsp, to_return_values){
@@ -97,8 +97,9 @@ export default class TreeClass{
         this._build_searchbox();
         this._events();
 
-        def.resolve(tsp, to_return_values);
-        return def.promise();
+        return def.resolve(tsp, to_return_values);
+//        return def.promise();
     }
+
 
 }

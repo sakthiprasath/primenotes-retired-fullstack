@@ -45,10 +45,11 @@
 
 /* The Close Button */
 #close-modal {
-  color: white;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    margin-left: 1px;
 }
 
 #close-modal:hover,
@@ -60,25 +61,30 @@
 
 .modal-header {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background-color: #fdfdfd;
   color: white;
 }
 
-.modal-body {padding: 2px 16px;}
+.modal-body {
+    position: relative;
+    padding: 1rem;
+    overflow: scroll;
+    min-height: 300px;
+    max-height: 400px;}
 
 .modal-footer {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background-color: #fdfdfd;
   color: white;
+  justify-content: flex-start;
 }
 
 /*notification dialog*/
 #notification{
     opacity: 0;
-    display: none;
+    display: block;
     border: 1px solid red;
     transition: opacity 500ms;
-    top: 50px;
     background: #f1f7f9;
     color: #0d1115;
     position: absolute;
@@ -90,6 +96,7 @@
     margin: 5px;
     padding: 10px;
     padding-right: 40px;
+    top: 85px;
 }
 
 .display-notification{
@@ -101,4 +108,12 @@
 body ::-webkit-scrollbar-track {
     background: none !important;
     border-radius: 0;
+}
+
+img{
+    transition-duration: 0.3s;
+    transform: rotate(0deg);
+}
+img:hover{
+    transform: rotate(720deg) !important;
 }

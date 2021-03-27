@@ -1,5 +1,5 @@
 .all-ele-class-for-background{
-    background: #f1f7f9 !important;
+    background: #ffff !important;
 }
 .wrapper {
     margin-top: 6px;
@@ -18,9 +18,9 @@
 }
 input[type="text"] {
   height: 20pt;
-  width: 100%;
-  padding: 0;
-  border: 0;
+  width: 50%;
+  padding: 10px;
+  border: 1px solid black;
   outline: none;
   font-size: 14px;
   margin-top: 5pt;
@@ -39,19 +39,20 @@ input[type="text"] {
 .quick-notes-top-section{
     display: flex;
     padding: 10px;
-    padding-left: 3px;
-    column-gap: 0px;
-    margin-left: 25px;
+    padding-left: -1px;
+    column-gap: 10px;
 }
 #quick-notes-setting{
-    width:30px;
-    height:30px;
+    width: 30px;
+    height: 30px;
+    top: 3px;
+    position: relative;
 }
 
 #quick-file-editor {
     border: 0;
-    width: calc(100% - 83px);
-    height: 91%;
+    width: calc(100% - 27px);
+    height: 93%;
     top: 45px;
     position: absolute;
     margin-left: 16px;
@@ -67,7 +68,7 @@ input[type="text"] {
     padding: 0;
     height: 30pt;
     width: 30pt;
-    background-color: #f1f7f9;
+    background-color: #ffff;
     border: none;
     cursor: pointer;
     color: #333;

@@ -1,6 +1,0 @@
-<div class="textbox" id="textbox" style="width: 300px;"
-			servletName="ServiceSearchBox" functionName="myFunc"
-			tableName="odi_rankings_keys615" key="nation">
-			<input id="myInput" class='ui_text' type="text" name="myCountry"
-				placeholder="Country" />
-		</div>	

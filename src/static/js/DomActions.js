@@ -78,34 +78,23 @@ export default class DomActions{
             return defObj.promise();
     }
 
-    _tabs_drop_down_click(self){
-         if(self.tabs_dropdown_click_flag == 0){
+    _tabs_drop_down_click(){
+         let self = this;
+         $('#project-notes-opened-list').empty();
                 self.tabs_dropdown_click_flag = 1;
-                document.getElementById("myDropdown").classList.toggle("show");
-             var tabArr=$('.file-get-section');
+                var tabArr=$('.file-get-section');
                     let len=tabArr.length;
                     for(let i=0;i<len;i++){
-                        let file_name = $(tabArr[i]).text().trim();
-                        let type = $(tabArr[i]).attr('type');
-                        let on_click_func = `buildTab('${file_name}','${type}')`;
-                        var resultHtml=`<div class='tab' onclick=${on_click_func}; >`;
-                        resultHtml+= file_name;
-                        resultHtml+= `</div>`;
-                        $('#myDropdown').append($(resultHtml));
+                        let cloned_ele = $( $(tabArr[i]).clone() );
+                        cloned_ele.addClass('item');
+//                        var resultHtml=`<div class='item' >`;
+//                        resultHtml+= file_name;
+//                        resultHtml+= `</div>`;
+                        $('#project-notes-opened-list').append(cloned_ele);
+
                         }
-                    }
-                else{
-                    self.tabs_dropdown_click_flag=0;
-                    $('#myDropdown').empty();
-                    var dropdowns = document.getElementsByClassName("dropdown-content");
-                    for (let i = 0; i < dropdowns.length; i++) {
-                      var openDropdown = dropdowns[i];
-                      if (openDropdown.classList.contains('show')) {
-                            openDropdown.classList.remove('show');
-                            }
-                        }
-                    }
-    }
+          self.tsp.SourceCodeSection.events();
+     }
     _build_new_component(compo_name){
         let def = $.Deferred();
         let ele = `<div id='pro1000-component-dialog' class="create-component-dialog"  style='display:none;min-width:103.5% !important;min-height: 100% !important' title="` + compo_name + `">`
@@ -168,15 +157,17 @@ export default class DomActions{
 
         return create_action(data_map);
     }
-    _rename_file_factory_files(file_type,old_file_name, new_file_name){
+     _create_file_in_backend_with_metadata(data_map){
+    /*this funciton can also be used from indicidualComponentJS/main.js */
         let send_file_name = '';
-        function rename_action(file_type, file_name){
-            var savable_data = '';
+        function create_action(data_map){
+
             var defObj=$.Deferred();
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/individual-component-fetch/rename-file/'+ file_type + '/' + old_file_name + '/' + new_file_name,
+                        url: 'http://localhost:5000/api/tree-note/create-folder',
+                        data: JSON.stringify(data_map),
                         type : "POST",
                         contentType: 'application/json;charset=UTF-8',
                         success : function(response){
@@ -185,17 +176,120 @@ export default class DomActions{
                     });
                 return defObj.promise();
         }
-        return rename_action(file_type, send_file_name);
+
+        return create_action(data_map);
+    }
+    _copy_paste_file_in_backend_with_metadata(data_map){
+    /*this funciton can also be used from indicidualComponentJS/main.js */
+        let send_file_name = '';
+        function create_action(data_map){
+
+            var defObj=$.Deferred();
+                var promise =
+                    $.ajax
+                    ({
+                        url: 'http://localhost:5000/api/tree-note/copy-paste-file',
+                        data: JSON.stringify(data_map),
+                        type : "POST",
+                        contentType: 'application/json;charset=UTF-8',
+                        success : function(response){
+                            return defObj.resolve(response);
+                        }
+                    });
+                return defObj.promise();
+        }
+        return create_action(data_map);
+    }
+    _cut_paste_file_in_backend_with_metadata(data_map){
+    /*this funciton can also be used from indicidualComponentJS/main.js */
+        let send_file_name = '';
+        function create_action(data_map){
+
+            var defObj=$.Deferred();
+                var promise =
+                    $.ajax
+                    ({
+                        url: 'http://localhost:5000/api/tree-note/cut-paste-file',
+                        data: JSON.stringify(data_map),
+                        type : "POST",
+                        contentType: 'application/json;charset=UTF-8',
+                        success : function(response){
+                            return defObj.resolve(response);
+                        }
+                    });
+                return defObj.promise();
+        }
+        return create_action(data_map);
     }
 
-    _delete_file(file_type, file_name){
-        function delete_action(file_type, file_name){
+    _rename_file_factory_files(file_type, send_data ){
+        let send_file_name = '';
+        function rename_action(file_type, send_data){
             var savable_data = '';
             var defObj=$.Deferred();
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/individual-component-fetch/delete-file/'+ file_type + '/' + file_name,
+                        url: 'http://localhost:5000/api/individual-component-fetch/rename-file/'+ file_type,
+                        type : "POST",
+                        data: JSON.stringify(send_data),
+                        contentType: 'application/json;charset=UTF-8',
+                        success : function(response){
+                            return defObj.resolve(response);
+                        }
+                    });
+                return defObj.promise();
+        }
+        return rename_action(file_type, send_data);
+    }
+    _rename_tree_note_files(send_data){
+        let send_file_name = '';
+        function rename_action(file_type, send_data){
+            var savable_data = '';
+            var defObj=$.Deferred();
+                var promise =
+                    $.ajax
+                    ({
+                        url: 'http://localhost:5000/api/individual-component-fetch/rename-tree-note-file',
+                        type : "POST",
+                        data: JSON.stringify(send_data),
+                        contentType: 'application/json;charset=UTF-8',
+                        success : function(response){
+                            return defObj.resolve(response);
+                        }
+                    });
+                return defObj.promise();
+        }
+        return rename_action(send_data);
+    }
+    _rename_tree_note_files_with_metadata(send_data){
+        let send_file_name = '';
+        function rename_action(send_data){
+            var savable_data = '';
+            var defObj=$.Deferred();
+                var promise =
+                    $.ajax
+                    ({
+                        url: 'http://localhost:5000/api/tree-note/rename',
+                        type : "POST",
+                        data: JSON.stringify(send_data),
+                        contentType: 'application/json;charset=UTF-8',
+                        success : function(response){
+                            return defObj.resolve(response);
+                        }
+                    });
+                return defObj.promise();
+        }
+        return rename_action(send_data);
+    }
+    _delete_file(file_key){
+        function delete_action(file_key){
+            var savable_data = '';
+            var defObj=$.Deferred();
+                var promise =
+                    $.ajax
+                    ({
+                        url: 'http://localhost:5000/api/individual-component-fetch/delete-file/file-factory/' + file_key,
                         type : "DELETE",
                         contentType: 'application/json;charset=UTF-8',
                         success : function(response){
@@ -204,17 +298,17 @@ export default class DomActions{
                     });
                 return defObj.promise();
         }
-        return delete_action(file_type, file_name);
+        return delete_action(file_key);
     }
 
-    _delete_project_note_file(file_type, file_path){
+    _delete_project_note_file(uuid){
         function delete_action(file_type, file_name){
             var savable_data = '';
             var defObj=$.Deferred();
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/individual-component-fetch/delete-project-file/'+ file_type + '?file_path=' + JSON.stringify(file_name),
+                        url: 'http://localhost:5000/api/tree-note/move-to-trash-tree-file-or-folder/'+uuid,
                         type : "DELETE",
                         contentType: 'application/json;charset=UTF-8',
                         success : function(response){
@@ -223,7 +317,7 @@ export default class DomActions{
                     });
                 return defObj.promise();
         }
-        return delete_action(file_type, file_path);
+        return delete_action(uuid);
     }
     _get_components_list(){
             let compo_names = [];
@@ -382,8 +476,8 @@ export default class DomActions{
             if (event_obj =='youtube'){
                   $('#create-component-dialog-sub-div').empty();
                   let iframe_ele = this.__get_youtube_embed_iframe(curr_ele);
-
-                  $('.right-side-components-in-file-factory').hide();
+                  $('#middle-section').show();
+                  $('#quick-notes-in-file-factory').hide();
 //                  $('#right-side-components').css({'left':'35px','width':'calc(100% - 35px)','height':'100%','display':'block'})
                   $("#right-side-components").removeClass('right-side-components-full-screen');
                   $("#right-side-components").addClass('right-side-components-split-screen');
@@ -422,33 +516,13 @@ export default class DomActions{
         }, 2500);
     }
 
-     _create_new_project_file_form(self, form_id){
-         var modal = document.getElementById("modal-id");
-         modal.style.display = "block";
-         $('.inner-item-form').hide();
-         $('#' + form_id).show();
 
-         // Get the <span> element that closes the modal
-         var span = document.getElementById("close-modal");
-
-         // When the user clicks on <span> (x), close the modal
-         span.onclick = function() {
-            modal.style.display = "none";
-         }
-
-         // When the user clicks anywhere outside of the modal, close it
-         window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-
-                   }
-            }
-    }
     init(tsp, to_return_values){
         tsp.DomActions = this;
+        this.tsp = tsp;
 //        this._get_all_videos();
 
-        return $.Deferred().resolve(tsp, to_return_values);
+        return $.Deferred().resolve(this.tsp, to_return_values);
     }
 }
 

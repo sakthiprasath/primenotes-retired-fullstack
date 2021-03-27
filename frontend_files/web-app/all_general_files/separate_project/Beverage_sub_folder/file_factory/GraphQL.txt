@@ -1,2 +1,0 @@
-<p>Graph ql :<br>
-we can fetch only the needed informantion from the API.</p>

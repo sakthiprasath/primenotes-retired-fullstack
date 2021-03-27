@@ -1,5 +1,0 @@
-<blockquote>
-<h1>Features 80%</h1>
-
-<h1>[with two notes manager, slate facilty, video stream notes, to-do manager]</h1>
-</blockquote>

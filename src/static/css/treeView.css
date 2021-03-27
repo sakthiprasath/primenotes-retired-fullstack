@@ -1,6 +1,6 @@
 @charset "ISO-8859-1";
 /*!
- * dtree.css v1.0.0 
+ * dtree.css v1.0.0
  * mefe.net
  * 2014-08-21
 
@@ -177,15 +177,19 @@ ul, #myUL {
 }
 
 #myUL {
-  margin: 0 0 0 10px;
-  padding: 0;
-  overflow: scroll;
-  height: 95%;
+    margin: 0px 0 0 5px;
+    padding: 0;
+    overflow: scroll;
+    height: 86%;
+    width: 100%;
+    left: -10px;
+    position: relative;
 }
 .folder-section{
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    width: max-content;
+    grid-template-columns: max-content max-content;
+    width: 700px;
+    margin-left: -10px;
 }
 .folder {
     cursor: pointer;
@@ -195,7 +199,8 @@ ul, #myUL {
     user-select: none;
     width: max-content;
     padding: 5px;
-    padding-left: 20px;
+    padding-left: 13px;
+    color: #362e77;
 }
 
 .folder::before {
@@ -210,19 +215,27 @@ ul, #myUL {
     position: relative;
     width: max-content;
     cursor: pointer;
-    right: -30px;
+    right: 0px;
     display:none;
 }
 .three-dots:hover{
 	font-size: 26px;
     transition-duration:0.5s;
-
 }
-
+.file > .three-dots {
+    margin-top: -10px;
+}
 .folder-section:hover  .three-dots{
 	display: block;
 }
+.folder-section:hover{
+    background: #cce2d6;
+    color: #362e77;
+}
 
+.file:hover  .three-dots{
+	display: block;
+}
 .folder-down::before {
   -ms-transform: rotate(90deg); /* IE 9 */
   -webkit-transform: rotate(90deg); /* Safari */'
@@ -233,39 +246,96 @@ ul, #myUL {
     left: -15px;
     font-size: 22px;
     font-family: cursive;
-    left: -10px;
+    left: 0px;
     top:1px;
     cursor: pointer;
 }
 .file{
-    height: 22px;
+    height: max-content;
     width: 80px;
     right: 11px;
+    display: grid;
+    grid-template-columns: 2fr 0.5fr;
+    width: max-content;
+    padding-left: 5px;
+}
+li.file:hover {
+    background: #cce2d6;
 }
 .nested {
     display: none;
-    left: -4px;
+    left: -24px;
     position: relative;
-    margin-top: -2px !important;
+    margin-top: -6px !important;
 }
 .nested > li {
-    width: max-content;
-    padding: -4px;
+    width: 100%;
     cursor: pointer;
     margin-top: 5px;
+    min-width: 210px;
+    max-width: 100%;
 }
 .active {
   display: block;
 }
 
 .project-file-active{
-    border-left: 3px solid #e9f3ed;
+           border-left: 3px solid #e9f3ed;
     padding-left: 30px;
-    border-right: 3px solid #ef122f;
-    padding-right: 39px;
-    border-top: 1px solid #e9f3ed;
-    border-bottom: 1px solid #e9f3ed;
+    border-right: 0px solid #bcd2c5;
+    padding-right: 30px;
+    border-top: 0.01px solid #e9f3ed;
+    border-bottom: 0.01px solid #e9f3ed;
     margin-left: 1px;
-    color: #8509f7 !important;
+    color: #29278e !important;
+    border-left: 0px solid #cba8d2;
+    font-weight: 700 !important;
+    margin-left: -30px;
 }
-
+.file-click{
+    display: grid;
+    grid-template-columns: 0.3fr max-content;
+    text-decoration: none !important;
+}
+.tree-note-file-name-div{
+       width: 15px;
+    height: 15px;
+    margin-top: 7px;
+}
+.tree-note-file-name{
+    padding: 4px;
+    padding-left: 11px;
+    padding-top: 6px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", Ubuntu, "Droid Sans", "Helvetica Neue", sans-serif;
+    width: inherit;
+}
+span.tree-note-file-name:hover {
+    color: #362e77;
+}
+#myUL:hover::-webkit-scrollbar-thumb{
+    width : 6px;
+    display :block !important;
+    overflow: scroll;
+}
+#tree-note-icons-panel{
+    left: 41px;
+    position: relative;
+    margin-top: 10px;
+    display: flex;
+    column-gap: 11px;
+    justify-content: space-between;
+    width: 167px;
+    margin-left: -13px;
+    height: 35px;
+    }
+#tree-note-icons-panel:hover {
+    border: 1.9px solid #aaddbe;
+    padding: 5px;
+    border-radius: 15px;
+    justify-content: space-evenly;
+}
+.tree-note-icons{
+    width: 20px;
+    height: 20px;
+    background: #e9f3ed;
+}

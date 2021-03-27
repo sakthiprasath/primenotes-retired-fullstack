@@ -85,46 +85,51 @@ export default class Header{
     _open_close_main_section_wrapper(){
         let self = this;
         let tree_navigation_open_close = 0;
-        self.active_css = { 'background-color': 'rgb(73 117 152)'};
-        self.inactive_css = { 'background-color': '#2d5779'};
+//        self.active_css = { 'background-color': 'rgb(222 236 228)'};
+//        self.inactive_css = { 'background-color': '#e9f3ed'};
 
         function _hide_all_main_section_wrapper_class(){
+            $('.top-header-highlighter').removeClass('top-header-highlighter');
             $('.main-section-wrapper-class').css('display','none');
-            $('.button-with-icon-in-header').css(self.inactive_css);
+//            $('.button-with-icon-in-header').css(self.inactive_css);
         }
         $('#close-editor-button').on('click',function(){
             _hide_all_main_section_wrapper_class();
-            $('#pane').css({'display':'block'});
-            $(this).css(self.active_css);
 
+            $('#pane').css({'display':'block'});
+            $(this).addClass('top-header-highlighter');
+            self.tsp.current_window  = 1;
          });
+
+        $('#main-section-button').on('click',function(){
+            _hide_all_main_section_wrapper_class();
+            $('#main-sections').css('display','block');
+            $(this).addClass('top-header-highlighter');
+            self.tsp.current_window  = 2;
+//            if(tree_navigation_open_close === 0){
+//                $('#closebtn').click();
+//                tree_navigation_open_close = 1;
+//            }
+//            else{
+//                $('#sidenav-button-id').click();
+//                tree_navigation_open_close = 0;
+//            }
+        });
 
         $('#open-close-overlay').on('click',function(){
             _hide_all_main_section_wrapper_class();
             $('#pane').css({'display':'block'});
             $('#overlay').css('display','block');
-            $(this).css(self.active_css);
+            $(this).addClass('top-header-highlighter');
+            self.tsp.current_window  = 3;
         });
 
-
-        $('#main-section-button').on('click',function(){
-            _hide_all_main_section_wrapper_class();
-            $('#main-sections').css('display','block');
-            $(this).css(self.active_css);
-            if(tree_navigation_open_close === 0){
-                $('#closebtn').click();
-                tree_navigation_open_close = 1;
-            }
-            else{
-                $('#sidenav-button-id').click();
-                tree_navigation_open_close = 0;
-            }
-        });
 
         $('#html-renderer').on('click',function(){
             _hide_all_main_section_wrapper_class();
             $('#html-renderer-section').css('display','block');
-            $(this).css(self.active_css);
+            $(this).addClass('top-header-highlighter');
+            self.tsp.current_window  = 4;
         });
 
     }
@@ -167,6 +172,7 @@ export default class Header{
     init(tsp, to_return_Values){
         tsp.Header = this;
         this.tsp = tsp;
+
         this._header_orientation_events();
         this._open_close_main_section_wrapper();
         this._header_drag_bar_events()

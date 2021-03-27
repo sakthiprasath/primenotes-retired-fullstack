@@ -6,6 +6,8 @@ from flask_rest_api import Api
 import traceback
 from http.client import HTTPException
 from rest.routes.individual_component_fetcher import individual_component_fetcher_routes
+from rest.routes.tree_note_routes import tree_note_routes
+
 
 # Instantiate loggers
 flask_logger = logging.getLogger('werkzeug')
@@ -19,7 +21,7 @@ api = Api(app)
 ui = FlaskUI(app=app, url_suffix='/api/individual-component-fetch/index')
 
 api.register_blueprint(individual_component_fetcher_routes)
-
+api.register_blueprint(tree_note_routes)
 
 
 @app.before_request
