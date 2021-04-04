@@ -1,86 +1,78 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<!--
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
--->
+    <!--
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    -->
 
-<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<title>Layout Test Page</title>
-		<script 	src="{{ url_for('static', filename='js/lib/jquery.min.js') }}">
-</script>
-	    <script src="//cdn.gaic.com/cdn/ui-bootstrap/0.58.0/js/lib/ckeditor/ckeditor.js"></script>
-		<script type="text/javascript"
-			src="{{ url_for('static', filename='/js/lib/jquery-ui/jquery-latest.js') }}"></script>
-		<script type="text/javascript"
-			src="{{ url_for('static', filename='/js/lib/jquery-ui/jquery-ui-latest.js') }}"></script>
-		<script type="text/javascript"
-			src="{{ url_for('static', filename='/js/lib/jquery-ui/jquery-ui-latest.js') }}"></script>
+    <title>Layout Test Page</title>
+    <script src="{{ url_for('static', filename='js/lib/jquery.min.js') }}">
+    </script>
+    <script src="//cdn.gaic.com/cdn/ui-bootstrap/0.58.0/js/lib/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='/js/lib/jquery-ui/jquery-latest.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='/js/lib/jquery-ui/jquery-ui-latest.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='/js/lib/jquery-ui/jquery-ui-latest.js') }}"></script>
 
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js">/</script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js">/
 
-		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}" />
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/utils.css') }}" />
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/ComponentEditor.css') }}" />
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/ResultIframe.css') }}" />
-	 <link rel="stylesheet" href="{{ url_for('static', filename='/css/ComponentEditor.css') }}">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
+    </script>
 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/utils.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ComponentEditor.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ResultIframe.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/DetailsPanel.css') }}"/>
 
-
-
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
 
 
+    <link rel="stylesheet"
+          href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/button.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/DocumentSection.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/QuickFileEditor.css') }}"/>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/NavigationBar.css') }}"/>
+
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/treeView.css') }}"/>
+    <link href='https://fonts.googleapis.com/css?family=Source Code Pro'
+          rel='stylesheet'/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+
+    <link rel='stylesheet'
+          href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.css'>
+    <link rel='stylesheet'
+          href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/theme/material.css'>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <!--					<script type="text/javascript" src="{{ url_for('static', filename='js/treeview.js') }}"></script>-->
+
+    <!--					<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
+    <script src="https://www.w3schools.com/lib/codemirror_jsx.js"></script>
 
 
+    <!--					<script type='module'>-->
+    <!--import loadComponentsContainer from './js/ComponentsContainer.js';-->
+    <!--import IndividualComponentEditor from './js/DomEvents.js';-->
+
+    <!--window.loadComponentsContainer=loadComponentsContainer;-->
+    <!--window.IndividualComponenrtEditor=IndividualComponentEditor;-->
+    <!--</script>-->
+    <!-- progress loading before website loads -->
 
 
-		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/button.css') }}" />
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/DocumentSection.css') }}" />
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/QuickFileEditor.css') }}" />
-
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/NavigationBar.css') }}" />
-
-		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/treeView.css') }}" />
-		<link href='https://fonts.googleapis.com/css?family=Source Code Pro'
-			rel='stylesheet' />
-		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-
-		<link rel='stylesheet'
-			href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.css'>
-			<link rel='stylesheet'
-				href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/theme/material.css'>
-				<link rel="stylesheet"
-					href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<!--					<script type="text/javascript" src="{{ url_for('static', filename='js/treeview.js') }}"></script>-->
-
-<!--					<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
-					<script src="https://www.w3schools.com/lib/codemirror_jsx.js"></script>
-
-
-
-
-<!--					<script type='module'>-->
-<!--import loadComponentsContainer from './js/ComponentsContainer.js';-->
-<!--import IndividualComponentEditor from './js/DomEvents.js';-->
-
-<!--window.loadComponentsContainer=loadComponentsContainer;-->
-<!--window.IndividualComponenrtEditor=IndividualComponentEditor;-->
-<!--</script>-->
-<!-- progress loading before website loads -->
-
-
-
-<div id="loading-container" style="
+    <div id="loading-container" style="
     display: block;
     width: 50%;
     left: 25%;
@@ -90,237 +82,216 @@
     display: grid;
     grid-template-rows: 3fr 2fr;
     ">
-    <img id="logo-in-progressbar" src="/static/images/logo_with_quotes.PNG" alt="logo" style="margin: 2% 0px 0 33%;">
-	<div style="
+        <img id="logo-in-progressbar" src="/static/images/logo_with_quotes.PNG" alt="logo"
+             style="margin: 2% 0px 0 33%;">
+        <div style="
 		margin: 0px 0 0 15%;
 		display: grid;
 		grid-template-rows: 1fr 1fr;">
 
-		<div style="color: black;" class="label">Loading...</div>
-		<div class="ui  teal success"  id="pre-loader-bar" style="width: 80%;display: block;">
-		  <div class="bar" style="transition-duration: 300ms; width: 100%;">
-			  <div class="progress"></div>
-		  </div>
-		</div>
+            <div style="color: black;" class="label">Loading...</div>
+            <div class="ui  teal success" id="pre-loader-bar" style="width: 80%;display: block;">
+                <div class="bar" style="transition-duration: 300ms; width: 100%;">
+                    <div class="progress"></div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 
 </head>
 <body>
 
+    <div id="top-header" class="top-header-left-margin">
 
+        <div id="tab-options-section">
+            <div id="top-header-tab-options" class="tab-options top-header-right-margin-tab-options">
 
+                <div id="close-editor-button" data-tooltip="quick notes" data-position="right center"
+                     class="file-switch button-with-icon-in-header"
+                     style="display: grid; grid-template-columns: 2fr 4fr; height: 45px;">
+                    <img class="top-header-icons"
+                         src="https://cdn2.iconfinder.com/data/icons/favorite-and-like/512/favorite-like-button-21-512.png"
+                         alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder">
+                    <span class="open-close tab-option-buttons-right-in-margin"
+                          style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: none;">Quick Notes</span>
+                </div>
 
-
-
-
-
-
-
-	<div id="destination-container" >
-
-
-<!-- top header section -->
-<!--	<div id="logo-section" class="logo-section-right-margin">-->
-<!--		&lt;!&ndash;		https://www.freepnglogos.com/uploads/instagram-logos-png-images-free-download-2.png&ndash;&gt;-->
-<!--		<img src="/static/images/logo_.PNG" alt="primenotes_logo" id="prime-notes-logo">-->
-<!--		<div class="logo-quotes" style="-->
-<!--			display: flex;-->
-<!--			flex-direction: column;-->
-<!--			flex-wrap: wrap;-->
-<!--			justify-content: center;-->
-<!--			width: 120px;-->
-<!--			position: relative;-->
-<!--			left: 7px;-->
-<!--		">-->
-<!--		<div class="" style="color: white;position: relative;left: 13%;">-->
-<!--			Prime Notes-->
-<!--			</div>-->
-
-<!--		<div class="" style="color: wheat;font-size: 9px;position: relative;left: 1%;font-variant: all-small-caps;letter-spacing: 1px;">-->
-<!--		A Productivity Booster-->
-<!--		</div>-->
-
-<!--		</div>-->
-<!--	</div>-->
-
-		<div id="top-header" class="top-header-left-margin" >
-
-			<div id="tab-options-section">
-				<div id="top-header-tab-options" class="tab-options top-header-right-margin-tab-options">
-
-					<div id="close-editor-button" data-tooltip="quick notes"  data-position="right center" class="file-switch button-with-icon-in-header" style="display: grid; grid-template-columns: 2fr 4fr; height: 45px;">
-								<img class="top-header-icons" src="https://cdn2.iconfinder.com/data/icons/favorite-and-like/512/favorite-like-button-21-512.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder">
-								<span class="open-close tab-option-buttons-right-in-margin" style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: none;">Quick Notes</span>
-					</div>
-
-					<div id="main-section-button" class="button-with-icon-in-header" data-tooltip="Tree notes" data-position="right center" style="display: grid; grid-template-columns: 2fr 4fr; height: 45px;">
-								<img class="top-header-icons" src="https://img.icons8.com/color/48/000000/folder-tree.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" >
-						<span class="open-close tab-option-buttons-right-in-margin" title="" style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: none;">
+                <div id="main-section-button" class="button-with-icon-in-header" data-tooltip="Tree notes"
+                     data-position="right center" style="display: grid; grid-template-columns: 2fr 4fr; height: 45px;">
+                    <img class="top-header-icons" src="https://img.icons8.com/color/48/000000/folder-tree.png"
+                         alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder"
+                         class="d-block mx-auto">
+                    <span class="open-close tab-option-buttons-right-in-margin" title=""
+                          style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: none;">
 							<span style="padding:3px">Tree Notes</span>
 						</span>
-					</div>
+                </div>
 
-					<div id="open-close-overlay" class="video-stream-switch button-with-icon-in-header"  data-tooltip="Video Notes" data-position="right center" style="display: grid; grid-template-columns: 2fr 4fr; height: 45px;">
-									<img class="top-header-icons" src="https://www.flaticon.com/svg/static/icons/svg/1412/1412629.svg" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" >
-						<span class="open-close tab-option-buttons-right-in-margin" style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: none;">
+                <div id="open-close-overlay" class="video-stream-switch button-with-icon-in-header"
+                     data-tooltip="Video Notes" data-position="right center"
+                     style="display: grid; grid-template-columns: 2fr 4fr; height: 45px;">
+                    <img class="top-header-icons" src="https://www.flaticon.com/svg/static/icons/svg/1412/1412629.svg"
+                         alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder"
+                         class="d-block mx-auto">
+                    <span class="open-close tab-option-buttons-right-in-margin"
+                          style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: none;">
 							<span style="padding:3px">Video Notes</span>
 						</span>
-					</div>
+                </div>
 
-<!--					<div class="button-with-icon-in-header" style="-->
-<!--						display: grid;-->
-<!--						grid-template-columns: 1fr 3fr;-->
-<!--						">-->
-<!--									<img src="https://cdn2.iconfinder.com/data/icons/favorite-and-like/512/favorite-like-button-21-512.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" style="-->
-<!--										width: 70%;-->
-<!--										height: 60%;-->
-<!--										position: relative;-->
-<!--										top: 23%;-->
-<!--									">-->
-<!--						<span id="open-youtube-frame" class="button open-close" style="" style="background: rgb(45 87 121);color: rgb(241 247 249);">-->
-<!--							<img class="thumb" src="https://image.flaticon.com/icons/png/512/15/15077.png" alt="Computer screen Free Icon" data-pin-no-hover="true" onerror="this.onerror=null;ga('send', 'event', 'broken_image', 'detail', '318_752318');" style="-->
-<!--								width: 20px;-->
-<!--								height: 20px;-->
-<!--							">-->
-<!--						</span>-->
-<!--					</div>-->
+                <!--					<div class="button-with-icon-in-header" style="-->
+                <!--						display: grid;-->
+                <!--						grid-template-columns: 1fr 3fr;-->
+                <!--						">-->
+                <!--									<img src="https://cdn2.iconfinder.com/data/icons/favorite-and-like/512/favorite-like-button-21-512.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" style="-->
+                <!--										width: 70%;-->
+                <!--										height: 60%;-->
+                <!--										position: relative;-->
+                <!--										top: 23%;-->
+                <!--									">-->
+                <!--						<span id="open-youtube-frame" class="button open-close" style="" style="background: rgb(45 87 121);color: rgb(241 247 249);">-->
+                <!--							<img class="thumb" src="https://image.flaticon.com/icons/png/512/15/15077.png" alt="Computer screen Free Icon" data-pin-no-hover="true" onerror="this.onerror=null;ga('send', 'event', 'broken_image', 'detail', '318_752318');" style="-->
+                <!--								width: 20px;-->
+                <!--								height: 20px;-->
+                <!--							">-->
+                <!--						</span>-->
+                <!--					</div>-->
 
-<!--					<div id="html-renderer" class="button-with-icon-in-header" data-tooltip="HTML Editor" data-position="right center" style="display: grid; grid-template-columns: 2fr 4fr; height: 45px;">-->
-<!--									<img class="top-header-icons" src="https://www.codepile.net/images/logo.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" >-->
-<!--						<span class="open-close tab-option-buttons-right-in-margin" title="" style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: none;">-->
-<!--							<span style="padding:3px">Html Editor</span>-->
-<!--						</span>-->
-<!--					</div>-->
-				</div>
-			</div>
+                <!--					<div id="html-renderer" class="button-with-icon-in-header" data-tooltip="HTML Editor" data-position="right center" style="display: grid; grid-template-columns: 2fr 4fr; height: 45px;">-->
+                <!--									<img class="top-header-icons" src="https://www.codepile.net/images/logo.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" >-->
+                <!--						<span class="open-close tab-option-buttons-right-in-margin" title="" style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: none;">-->
+                <!--							<span style="padding:3px">Html Editor</span>-->
+                <!--						</span>-->
+                <!--					</div>-->
+            </div>
+        </div>
 
-			<div id="top-header-preferences" class="button-with-icon-in-header" data-tooltip="overall Preferences" data-position="right center" style="display: grid; grid-template-columns: 27fr 4fr; background-color: rgb(233, 243, 237);height:7.5%;">
-							<img src="https://cdn.onlinewebfonts.com/svg/img_77554.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" style="
+        <div id="top-header-preferences" class="button-with-icon-in-header" data-tooltip="overall Preferences"
+             data-position="right center"
+             style="display: grid; grid-template-columns: 27fr 4fr; background-color: rgb(233, 243, 237);height:7.5%;">
+            <img src="https://cdn.onlinewebfonts.com/svg/img_77554.png"
+                 alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder"
+                 class="d-block mx-auto" style="
 								width: 18px;
 								height: 18px;
 								position: relative;
 								top: 23%;
 								margin-left: 16px !important;
 							">
-							<span class="file-switch open-close tab-option-buttons-right-in-margin" style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: none; margin-top: 3px; width: 100% !important;">Preferences</span>
-			</div>
-			<div id="user-name-section" class="button-with-icon-in-header" data-tooltip="SAKTHIPRASATH Tamilazhagan" data-position="right center" style="display: grid; grid-template-columns: 3fr 4fr; background-color: rgb(233, 243, 237);height:5%;">
-							<img src="https://secure.gravatar.com/avatar/d2e20c788a53eb35044eada00ca76d95?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FS-6.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto" style="
+            <span class="file-switch open-close tab-option-buttons-right-in-margin"
+                  style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: none; margin-top: 3px; width: 100% !important;">Preferences</span>
+        </div>
+        <div id="user-name-section" class="button-with-icon-in-header" data-tooltip="SAKTHIPRASATH Tamilazhagan"
+             data-position="right center"
+             style="display: grid; grid-template-columns: 3fr 4fr; background-color: rgb(233, 243, 237);height:5%;">
+            <img src="https://secure.gravatar.com/avatar/d2e20c788a53eb35044eada00ca76d95?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FS-6.png"
+                 alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder"
+                 class="d-block mx-auto" style="
 								width: 18px;
 								height: 18px;
 								position: relative;
 								top: 0%;
 								margin-left: 16px !important;
 							">
-							<span class="file-switch open-close tab-option-buttons-right-in-margin" data-toggle="tooltip" title="" data-placement="auto" data-original-title="Notes with Text Editor Options" style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: none; width: 100% !important;">Sakthi</span>
-			</div>
+            <span class="file-switch open-close tab-option-buttons-right-in-margin" data-toggle="tooltip" title=""
+                  data-placement="auto" data-original-title="Notes with Text Editor Options"
+                  style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: none; width: 100% !important;">Sakthi</span>
+        </div>
 
 
-		<!--	<div id="header-orientation">-->
+        <!--	<div id="header-orientation">-->
 
-		<!--		<div id="left-header-id"  class="top-header-orientation"> <span id="left-header-id-span"> < </span></div>-->
-		<!--        <div id="top-header-id" class="top-header-orientation">  <span id="top-header-id-span"> ^ </span> </div>-->
-		<!--        <div id="right-header-id" class="top-header-orientation">  <span id="right-header-id-span"> > </span>   </div>-->
-		<!--        <div id="bottom-header-id" class="top-header-orientation">  <span id="bottom-header-id-span"> ^ </span>  </div>-->
+        <!--		<div id="left-header-id"  class="top-header-orientation"> <span id="left-header-id-span"> < </span></div>-->
+        <!--        <div id="top-header-id" class="top-header-orientation">  <span id="top-header-id-span"> ^ </span> </div>-->
+        <!--        <div id="right-header-id" class="top-header-orientation">  <span id="right-header-id-span"> > </span>   </div>-->
+        <!--        <div id="bottom-header-id" class="top-header-orientation">  <span id="bottom-header-id-span"> ^ </span>  </div>-->
 
-		<!--    </div>-->
-		</div>
-<span class="top-header-drag-bar" style="width: 7px; height: 101%;cursor: grab; position: absolute; margin-top: 0px; z-index: 9; left: 0px;"></span>
+        <!--    </div>-->
+    </div>
 
+    <div id="right-side-panel">
+        <div class="details-section"></div>
+    </div>
 
+    <div id="destination-container">
 
+    <!-- top header section -->
+    <!--	<div id="logo-section" class="logo-section-right-margin">-->
+    <!--		&lt;!&ndash;		https://www.freepnglogos.com/uploads/instagram-logos-png-images-free-download-2.png&ndash;&gt;-->
+    <!--		<img src="/static/images/logo_.PNG" alt="primenotes_logo" id="prime-notes-logo">-->
+    <!--		<div class="logo-quotes" style="-->
+    <!--			display: flex;-->
+    <!--			flex-direction: column;-->
+    <!--			flex-wrap: wrap;-->
+    <!--			justify-content: center;-->
+    <!--			width: 120px;-->
+    <!--			position: relative;-->
+    <!--			left: 7px;-->
+    <!--		">-->
+    <!--		<div class="" style="color: white;position: relative;left: 13%;">-->
+    <!--			Prime Notes-->
+    <!--			</div>-->
 
+    <!--		<div class="" style="color: wheat;font-size: 9px;position: relative;left: 1%;font-variant: all-small-caps;letter-spacing: 1px;">-->
+    <!--		A Productivity Booster-->
+    <!--		</div>-->
 
+    <!--		</div>-->
+    <!--	</div>-->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<!-- result iframe  -->
-
-
-
-	<script>
+    <span class="top-header-drag-bar"
+          style="width: 7px; height: 101%;cursor: grab; position: absolute; margin-top: 0px; z-index: 9; left: 0px;"></span>
 
 
-
-</script>
-
+    <!-- result iframe  -->
 
 
+    <script>
 
 
+    </script>
 
 
+    <div id='pane' class="pane-full-screen main-section-wrapper-class">
+        <div class='resizable'>
+            <div class='resizers'>
+                <div class='resizer top-left'></div>
+                <div class='resizer top-right'></div>
+                <div class='resizer bottom-left'></div>
+                <div class='resizer bottom-right'></div>
+                <!--				<div id='component-factory-header-icons'>-->
+                <!--					<img id='make-resize' src="https://icon-library.net/images/open-in-new-tab-icon/open-in-new-tab-icon-18.jpg" alt="Open Duplicate Chrome Tabs with Bash | JoshPrewitt.com" id="cpimg" style="-->
+                <!--						position: relative;-->
+                <!--						z-index: 1;-->
+                <!--						width: 45px;-->
+                <!--						height: 31px;-->
+                <!--						margin-top: -4px;-->
+                <!--					">-->
+                <!--					<div id="change-pane-orientation-left" class="button dropbtn resize-icon">-->
+                <!--						<span class="span-for-orientation"> &lt;</span>-->
+                <!--					</div>-->
+                <!--					<div id="change-pane-orientation-right" class="button dropbtn resize-icon">-->
+                <!--						<span class="span-for-orientation"> &gt;</span>-->
+                <!--					</div>-->
+
+                <!--					<div id='maximize-component-factory' class="resize-icon">-->
+                <!--						<input id='maximize-input-toggle' type='checkbox'-->
+                <!--							style='display: none'> <img for='maximize-input-toggle'-->
+                <!--							class='maximize-icon'-->
+                <!--							src="https://img.icons8.com/material/64/000000/full-screen.png"></img>-->
+                <!--					</div>-->
+                <!--					<div id='close-component-results-container' class="resize-icon">-->
+                <!--						<span class="close-file-factory-x span-for-orientation "> X </span>-->
+                <!--					</div>-->
 
 
-
-
-
-
-
-
-
-	<div id='pane' class="pane-full-screen main-section-wrapper-class">
-		<div class='resizable' >
-			<div class='resizers'>
-				<div class='resizer top-left'></div>
-				<div class='resizer top-right'></div>
-				<div class='resizer bottom-left'></div>
-				<div class='resizer bottom-right'></div>
-<!--				<div id='component-factory-header-icons'>-->
-<!--					<img id='make-resize' src="https://icon-library.net/images/open-in-new-tab-icon/open-in-new-tab-icon-18.jpg" alt="Open Duplicate Chrome Tabs with Bash | JoshPrewitt.com" id="cpimg" style="-->
-<!--						position: relative;-->
-<!--						z-index: 1;-->
-<!--						width: 45px;-->
-<!--						height: 31px;-->
-<!--						margin-top: -4px;-->
-<!--					">-->
-<!--					<div id="change-pane-orientation-left" class="button dropbtn resize-icon">-->
-<!--						<span class="span-for-orientation"> &lt;</span>-->
-<!--					</div>-->
-<!--					<div id="change-pane-orientation-right" class="button dropbtn resize-icon">-->
-<!--						<span class="span-for-orientation"> &gt;</span>-->
-<!--					</div>-->
-
-<!--					<div id='maximize-component-factory' class="resize-icon">-->
-<!--						<input id='maximize-input-toggle' type='checkbox'-->
-<!--							style='display: none'> <img for='maximize-input-toggle'-->
-<!--							class='maximize-icon'-->
-<!--							src="https://img.icons8.com/material/64/000000/full-screen.png"></img>-->
-<!--					</div>-->
-<!--					<div id='close-component-results-container' class="resize-icon">-->
-<!--						<span class="close-file-factory-x span-for-orientation "> X </span>-->
-<!--					</div>-->
-
-
-
-
-<!--				</div>-->
-				<div id="component-factory-title">
-					<div id="right-side-section" class="inner-item-form" style="top: 0px; position: absolute; background: rgb(244 247 249); width: calc(30%); display: flex; left: 35%; column-gap: 10px; grid-template-columns: 2fr 1fr; z-index: 3;">
-										<input type="text" id="youtube-video-link" title="Right click the youtube video and copy embed code and pate here" placeholder="Right click the youtube video and copy embed code and pate here" style="
+                <!--				</div>-->
+                <div id="component-factory-title">
+                    <div id="right-side-section" class="inner-item-form"
+                         style="top: 0px; position: absolute; background: rgb(244 247 249); width: calc(30%); display: flex; left: 35%; column-gap: 10px; grid-template-columns: 2fr 1fr; z-index: 3;">
+                        <input type="text" id="youtube-video-link"
+                               title="Right click the youtube video and copy embed code and pate here"
+                               placeholder="Right click the youtube video and copy embed code and pate here" style="
 																    margin-left: 1px;
 																	height: 24px;
 																	margin-top: 4px;
@@ -331,7 +302,7 @@
 																	color: #131010;
 																	padding: 10px;
 																" value="https://youtu.be/zIwLWfaAg-8">
-										<button id="stream-youtube-video" class="button" style="
+                        <button id="stream-youtube-video" class="button" style="
 																										display: inline;
 																										WIDTH: 34%;
 																										height: 25px !important;
@@ -341,82 +312,89 @@
 																										padding-right: 10px;
 																										padding-top: 2px;
 																									">
-											stream Youtube video</button>
-					</div>
-				</div>
-				<div id='components-search-container'>
-					<div id='quick-notes-backdrop'></div>
-					<div id="left-and-middle-section" class="all-ele-class-for-background">
-						<div class="left-corner">
-							<div class='left-corner-sub-div'>
-								<div  class='file-switch component-factory-left-icons active'>
-									<img src="https://i.pinimg.com/564x/02/6d/62/026d628fdb4b72eba87baccf4d676c87.jpg"
-										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">
-								</div>
-<!--								<div id='chat-switch' class='component-factory-left-icons'>-->
-<!--									<img src="https://img.icons8.com/ios/50/000000/select-all.png"-->
-<!--										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">-->
-<!--								</div>-->
-								<div  class='video-stream-switch component-factory-left-icons'>
-									<img src="https://image.shutterstock.com/image-vector/video-icon-vector-camera-player-260nw-1034861974.jpg"
-										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">
-								</div>
-<!--								<div class='component-factory-left-icons'>-->
-<!--									<img src="https://img.icons8.com/ios/50/000000/select-all.png"-->
-<!--										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">-->
-<!--								</div>-->
-<!--								<div class='component-factory-left-icons'>-->
-<!--									<img src="https://img.icons8.com/ios/50/000000/select-all.png"-->
-<!--										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">-->
-<!--								</div>-->
+                            stream Youtube video
+                        </button>
+                    </div>
+                </div>
+                <div id='components-search-container'>
+                    <div id='quick-notes-backdrop'></div>
+                    <div id="left-and-middle-section" class="all-ele-class-for-background">
+                        <div class="left-corner">
+                            <div class='left-corner-sub-div'>
+                                <div class='file-switch component-factory-left-icons active'>
+                                    <img src="https://i.pinimg.com/564x/02/6d/62/026d628fdb4b72eba87baccf4d676c87.jpg"
+                                         style="position: relative; padding: 1px; height: 100%; width: 100%; left:">
+                                </div>
+                                <!--								<div id='chat-switch' class='component-factory-left-icons'>-->
+                                <!--									<img src="https://img.icons8.com/ios/50/000000/select-all.png"-->
+                                <!--										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">-->
+                                <!--								</div>-->
+                                <div class='video-stream-switch component-factory-left-icons'>
+                                    <img src="https://image.shutterstock.com/image-vector/video-icon-vector-camera-player-260nw-1034861974.jpg"
+                                         style="position: relative; padding: 1px; height: 100%; width: 100%; left:">
+                                </div>
+                                <!--								<div class='component-factory-left-icons'>-->
+                                <!--									<img src="https://img.icons8.com/ios/50/000000/select-all.png"-->
+                                <!--										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">-->
+                                <!--								</div>-->
+                                <!--								<div class='component-factory-left-icons'>-->
+                                <!--									<img src="https://img.icons8.com/ios/50/000000/select-all.png"-->
+                                <!--										style="position: relative; padding: 1px; height: 100%; width: 100%; left:">-->
+                                <!--								</div>-->
 
-							</div>
-						</div>
+                            </div>
+                        </div>
 
-						<div id='middle-section'>
-							<div id='search-container-section' style="width: 10px;height: 10px;">
-								<div class="search-container">
+                        <div id='middle-section'>
+                            <div id='search-container-section' style="width: 10px;height: 10px;">
+                                <div class="search-container">
 
 
-									<div class="search-box">
-									  <div class="form-group">
-										<div class="ui segment">
-											<div  class="ui category search focus" style="
+                                    <div class="search-box">
+                                        <div class="form-group">
+                                            <div class="ui segment">
+                                                <div class="ui category search focus" style="
 												width: 85%;
 											">
-												<div class="ui icon input">
-												<input class="prompt" id="search-box" type="text" style="background-color: rgb(244 247 249); --darkreader-inline-bgcolor:#27312b;" placeholder="Search Tree..." autocomplete="off" data-darkreader-inline-bgcolor="">
-													<i class="search icon"></i>
-												</div>
+                                                    <div class="ui icon input">
+                                                        <input class="prompt" id="search-box" type="text"
+                                                               style="background-color: rgb(244 247 249); --darkreader-inline-bgcolor:#27312b;"
+                                                               placeholder="Search Tree..." autocomplete="off"
+                                                               data-darkreader-inline-bgcolor="">
+                                                        <i class="search icon"></i>
+                                                    </div>
 
-											</div>
-											</div>
-											<div class="line">
-											</div>
-									  </div>
-  									</div>
+                                                </div>
+                                            </div>
+                                            <div class="line">
+                                            </div>
+                                        </div>
+                                    </div>
 
 
+                                    <!--									<img  src="https://img.icons8.com/color/48/000000/search.png">-->
+                                </div>
 
-<!--									<img  src="https://img.icons8.com/color/48/000000/search.png">-->
-								</div>
-
-								<div id='chat-file-icon-section' style="
+                                <div id='chat-file-icon-section' style="
 									    right: 7px;
 										position: absolute;
 										top: 12px;">
-									<div id="create-new-file" class="dropdown_1" style="
+                                    <div id="create-new-file" class="dropdown_1" style="
 									    display:block;">
-											<button id="add-new-file-in-file-factory">+</button>
-									</div>
+                                        <button id="add-new-file-in-file-factory">+</button>
+                                    </div>
 
-									<img id='single-chat' src="https://cdn2.iconfinder.com/data/icons/explore-and-analysis-2/64/76-512.png" style="
+                                    <img id='single-chat'
+                                         src="https://cdn2.iconfinder.com/data/icons/explore-and-analysis-2/64/76-512.png"
+                                         style="
 									    width: 27px;
 										height: 27px;
 										display: block;
 										position: absolute;
 										left: -76px;">
-									<img id='group-chat' src="https://cdn2.iconfinder.com/data/icons/explore-and-analysis-2/64/76-512.png" style="
+                                    <img id='group-chat'
+                                         src="https://cdn2.iconfinder.com/data/icons/explore-and-analysis-2/64/76-512.png"
+                                         style="
 									    width: 27px;
 										height: 27px;
 										display: block;
@@ -424,284 +402,291 @@
 										left: -40px;
 									}">
 
-								</div>
+                                </div>
 
 
+                                <div id="search-results-close-button"> X</div>
+
+                                <div class='search-results'>
 
 
-								<div id="search-results-close-button"> X </div>
+                                    <div id="file-middle-section">
+                                    </div>
+                                    <div id="chat-middle-section">
+                                        <div style="position: relative;" class="list-section">
+                                            <!--									<div class="individual-search" id="hrithik" style="-->
+                                            <!--											position: relative;-->
+                                            <!--											left: 0px;	">-->
 
-							<div class='search-results'>
+                                            <!--										<div style="-->
+                                            <!--												width: 45px;-->
+                                            <!--												height: 45px;">-->
+                                            <!--											<img src="https://img.etimg.com/thumb/msid-67467301,width-650,imgsize-575034,,resizemode-4,quality-100/hrithik-roshan.jpg" alt="sakthiprasath.jpg" style="-->
+                                            <!--												width: 100%;-->
+                                            <!--												height: 100%;-->
+                                            <!--												border-radius: 100%;">-->
 
+                                            <!--										<div class="search-result-item" style="-->
+                                            <!--												position: absolute;-->
+                                            <!--												top: 24px;-->
+                                            <!--												left: 58px;-->
+                                            <!--												font-family: cursive;-->
+                                            <!--												height:20px;-->
+                                            <!--												">Hrithik</div>-->
+                                            <!--										</div>-->
+                                            <!--										<div style="-->
+                                            <!--													position: absolute;-->
+                                            <!--											right: 20px;-->
+                                            <!--											bottom: 10px;-->
+                                            <!--											font: small-caption;">online</div>-->
+                                            <!--									</div>-->
 
-							<div id="file-middle-section">
-							</div>
-							<div id="chat-middle-section">
-								<div style="position: relative;" class="list-section">
-<!--									<div class="individual-search" id="hrithik" style="-->
-<!--											position: relative;-->
-<!--											left: 0px;	">-->
-
-<!--										<div style="-->
-<!--												width: 45px;-->
-<!--												height: 45px;">-->
-<!--											<img src="https://img.etimg.com/thumb/msid-67467301,width-650,imgsize-575034,,resizemode-4,quality-100/hrithik-roshan.jpg" alt="sakthiprasath.jpg" style="-->
-<!--												width: 100%;-->
-<!--												height: 100%;-->
-<!--												border-radius: 100%;">-->
-
-<!--										<div class="search-result-item" style="-->
-<!--												position: absolute;-->
-<!--												top: 24px;-->
-<!--												left: 58px;-->
-<!--												font-family: cursive;-->
-<!--												height:20px;-->
-<!--												">Hrithik</div>-->
-<!--										</div>-->
-<!--										<div style="-->
-<!--													position: absolute;-->
-<!--											right: 20px;-->
-<!--											bottom: 10px;-->
-<!--											font: small-caption;">online</div>-->
-<!--									</div>-->
-
-								<div class="individual-search" id="sakthiprasath" style="
+                                            <div class="individual-search" id="sakthiprasath" style="
 											position: relative;
 											left: 0px;	">
 
-									<div style="
+                                                <div style="
 											width: 45px;
 											height: 45px;">
-										<img src="https://scontent-maa2-1.xx.fbcdn.net/v/t1.0-9/51484204_2315196172094301_2885794796834652160_o.jpg?_nc_cat=108&amp;_nc_sid=09cbfe&amp;_nc_ohc=w4T6TVutcbAAX8WvuDs&amp;_nc_ht=scontent-maa2-1.xx&amp;oh=33586aab906406c3cbd1f04328e8909b&amp;oe=5F68B0A3" alt="sakthiprasath.jpg" style="
+                                                    <img src="https://scontent-maa2-1.xx.fbcdn.net/v/t1.0-9/51484204_2315196172094301_2885794796834652160_o.jpg?_nc_cat=108&amp;_nc_sid=09cbfe&amp;_nc_ohc=w4T6TVutcbAAX8WvuDs&amp;_nc_ht=scontent-maa2-1.xx&amp;oh=33586aab906406c3cbd1f04328e8909b&amp;oe=5F68B0A3"
+                                                         alt="sakthiprasath.jpg" style="
 											width: 100%;
 											height: 100%;
 											border-radius: 100%;">
 
-									<div class="search-result-item" style="
+                                                    <div class="search-result-item" style="
 											position: absolute;
 											top: 24px;
 											left: 58px;
 											font-family: cursive;
 											height:20px;
-											">sakthiprasath</div>
-									</div>
-									<div style="
+											">sakthiprasath
+                                                    </div>
+                                                </div>
+                                                <div style="
 											    position: absolute;
 										right: 20px;
 										bottom: 10px;
-										font: small-caption;">online</div>
-									</div>
+										font: small-caption;">online
+                                                </div>
+                                            </div>
 
 
+                                        </div>
+                                    </div>
+
+                                </div>
 
 
-								</div>
-							</div>
+                            </div>
+                        </div>
 
-							</div>
+                    </div>
+                    <div class="file-factory-split-bar">
+                        <div id="sidenav-button-id1" class="sidenav-button-class">
+                            <span class="sidenav-button-content-class"> &lt; </span>
+                        </div>
+                    </div>
 
+                    <div id='right-side-components'
+                         class="right-side-components-split-screen all-ele-class-for-background">
+                        <div id='right-side-components-container'>
+                            <div id="video-stream-in-file-factory" class="right-side-components-in-file-factory"
+                                 style="width:100%;height:100%;">
 
-						</div>
-					</div>
+                            </div>
+                            <div id="quick-notes-in-file-factory" class="right-side-components-in-file-factory">
 
-					</div>
-					<div class="file-factory-split-bar">
-						<div id="sidenav-button-id1" class="sidenav-button-class" >
-								<span class="sidenav-button-content-class"> &lt; </span>
-						</div>
-					</div>
+                                <div class="quick-notes-top-section">
 
-					<div id='right-side-components' class="right-side-components-split-screen all-ele-class-for-background">
-						<div id='right-side-components-container'>
-							<div id="video-stream-in-file-factory" class="right-side-components-in-file-factory" style="width:100%;height:100%;">
+                                    <img id="quick-notes-setting"
+                                         src="https://cdn1.iconfinder.com/data/icons/modern-universal/32/icon-16-512.png">
+                                    <div class="file-factory-options all-ele-class-for-background">
+                                        <img class="file-factory-option-icons quick-file-rename" alt="Rename icon"
+                                             src="https://img.icons8.com/ios/452/rename.png" lazy="loaded">
+                                        <img class="file-factory-option-icons quick-file-delete" alt="Delete Bin icon"
+                                             src="https://image.flaticon.com/icons/png/512/61/61848.png" lazy="loaded">
+                                        <!--											 <img class="file-factory-option-icons quick-file-favourite"  alt="Star icon" src="https://img.icons8.com/fluent/2x/star.png">-->
+                                    </div>
 
-							</div>
-							<div id="quick-notes-in-file-factory" class="right-side-components-in-file-factory">
+                                    <div id="file-name"></div>
+                                </div>
 
-								<div class="quick-notes-top-section">
+                                <div class="wrapper all-ele-class-for-background">
 
-									<img id="quick-notes-setting" src="https://cdn1.iconfinder.com/data/icons/modern-universal/32/icon-16-512.png">
-									<div class="file-factory-options all-ele-class-for-background">
-										   <img class="file-factory-option-icons quick-file-rename"  alt="Rename icon" src="https://img.icons8.com/ios/452/rename.png" lazy="loaded">
-											<img class="file-factory-option-icons quick-file-delete"  alt="Delete Bin icon" src="https://image.flaticon.com/icons/png/512/61/61848.png" lazy="loaded">
-<!--											 <img class="file-factory-option-icons quick-file-favourite"  alt="Star icon" src="https://img.icons8.com/fluent/2x/star.png">-->
-									</div>
+                                    <input id="quick-file-title" class="all-ele-class-for-background" type="text"
+                                           contenteditable="true" placeholder="Title"></input>
+                                    <div class="options">
+                                        <input type="number" class="all-ele-class-for-background"
+                                               onChange="transform('fontSize', this.value)" value="3" max="7"
+                                               min="1"></input>
+                                        <button class="quick-file-editor-button" onClick="transform('bold', null)">
+                                            <i class="fas fa-bold"></i>
+                                        </button>
+                                        <button class="quick-file-editor-button" onClick="transform('italic', null)">
+                                            <i class="fas fa-italic"></i>
+                                        </button>
+                                        <button class="quick-file-editor-button"
+                                                onClick="transform('strikeThrough', null)">
+                                            <i class="fas fa-strikethrough"></i>
+                                        </button>
+                                        <button class="quick-file-editor-button" onClick="transform('underline', null)">
+                                            <i class="fas fa-underline"></i>
+                                        </button>
+                                        <div class="seperator"></div>
+                                        <button class="quick-file-editor-button"
+                                                onClick="transform('justifyLeft', null)">
+                                            <i class="fas fa-align-left"></i>
+                                        </button>
+                                        <button class="quick-file-editor-button"
+                                                onClick="transform('justifyCenter', null)">
+                                            <i class="fas fa-align-center"></i>
+                                        </button>
+                                        <button class="quick-file-editor-button"
+                                                onClick="transform('justifyRight', null)">
+                                            <i class="fas fa-align-right"></i>
+                                        </button>
+                                        <div class="seperator"></div>
+                                        <button class="quick-file-editor-button"
+                                                onClick="transform('insertOrderedList', null)">
+                                            <i class="fas fa-list-ol"></i>
+                                        </button>
+                                        <button class="quick-file-editor-button"
+                                                onClick="transform('insertUnorderedList', null)">
+                                            <i class="fas fa-list-ul"></i>
+                                        </button>
+                                        <div class="seperator"></div>
+                                        <select onChange="transform('fontName', this.value)">
+                                            <option disabled default>Font</option>
+                                            <option value="Times New Roman">Times</option>
+                                            <option value="Arial">Arial</option>
+                                            <option value="Courier New">Courier New</option>
+                                            <option value="Tahoma">Tahoma</option>
+                                            <option value="Arial">Verdana</option>
+                                        </select>
+                                        <div class="seperator"></div>
 
-									<div id="file-name"> </div>
-								</div>
-
-								<div class="wrapper all-ele-class-for-background">
-
-								  <input id="quick-file-title" class="all-ele-class-for-background" type="text" contenteditable="true" placeholder="Title"></input>
-								  <div class="options">
-									<input type="number" class="all-ele-class-for-background" onChange="transform('fontSize', this.value)" value="3" max="7" min="1"></input>
-									<button class="quick-file-editor-button" onClick="transform('bold', null)">
-									  <i class="fas fa-bold"></i>
-									</button>
-									<button class="quick-file-editor-button" onClick="transform('italic', null)">
-									  <i class="fas fa-italic"></i>
-									</button>
-									<button class="quick-file-editor-button" onClick="transform('strikeThrough', null)">
-									  <i class="fas fa-strikethrough"></i>
-									</button>
-									<button class="quick-file-editor-button" onClick="transform('underline', null)">
-									  <i class="fas fa-underline"></i>
-									</button>
-									<div class="seperator"></div>
-									<button class="quick-file-editor-button" onClick="transform('justifyLeft', null)">
-									  <i class="fas fa-align-left"></i>
-									</button>
-									<button class="quick-file-editor-button" onClick="transform('justifyCenter', null)">
-									  <i class="fas fa-align-center"></i>
-									</button>
-									<button class="quick-file-editor-button" onClick="transform('justifyRight', null)">
-									  <i class="fas fa-align-right"></i>
-									</button>
-									<div class="seperator"></div>
-									<button class="quick-file-editor-button" onClick="transform('insertOrderedList', null)">
-									  <i class="fas fa-list-ol"></i>
-									</button>
-									<button class="quick-file-editor-button" onClick="transform('insertUnorderedList', null)">
-									  <i class="fas fa-list-ul"></i>
-									</button>
-									<div class="seperator"></div>
-									<select onChange="transform('fontName', this.value)">
-									  <option disabled default>Font</option>
-									  <option value="Times New Roman">Times</option>
-									  <option value="Arial">Arial</option>
-									  <option value="Courier New">Courier New</option>
-									  <option value="Tahoma">Tahoma</option>
-									  <option value="Arial">Verdana</option>
-									</select>
-									<div class="seperator"></div>
-
-								  </div>
-								  <iframe name="editor" id="quick-file-editor"></iframe>
-									<script>
+                                    </div>
+                                    <iframe name="editor" id="quick-file-editor"></iframe>
+                                    <script>
 
 										function transform(option, argument) {
 										  editor.document.execCommand(option, false, argument);
 										}
-									</script>
-								</div>
 
 
-								<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
-
-																<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
-
+                                    </script>
+                                </div>
 
 
+                                <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"
+                                        integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0"
+                                        crossorigin="anonymous"></script>
+
+                                <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"
+                                        integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0"
+                                        crossorigin="anonymous"></script>
 
 
+                            </div>
+                        </div>
+                        <div class='corner'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id='individual-component-editor-section'></div>
+
+    <!--create-component dialog section -->
 
 
+    <!--password validation for drowssap file opening-->
+    <!--    <div id="password-validate-dialog" title="Title of dialog">-->
+    <!--        <div id='password-for-drowssap'>-->
+    <!--            <input id='password-content-for-drowssap' type='password' placeholder='password' style="color:black;"/>-->
+    <!--            <button class="button" id='password-validate'>check password</button>-->
+    <!--        </div>-->
+    <!--    </div>-->
 
 
-						</div>
-						</div>
-						<div class='corner'></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="context">
+        <div class="context-item both-file-and-folder">
+            <div class="inner-item">
+                Rename
+            </div>
+        </div>
+        <div class="context-item only-folder">
+            <div class="inner-item">
+                New File
+            </div>
 
-	<div id='individual-component-editor-section'></div>
+        </div>
+        <div class="context-item  only-folder">
+            <div class="inner-item">
+                New Folder
+            </div>
+        </div>
 
-<!--create-component dialog section -->
+        <div class="context-item  only-file">
+            <div class="inner-item">
+                Cut
+            </div>
+        </div>
+        <div class="context-item only-file">
+            <div class="inner-item">
+                Copy
+            </div>
+        </div>
 
+        <div class="context-item only-folder">
+            <div class="inner-item">
+                Paste
+            </div>
+        </div>
+        <div class="context-item only-trash">
+            <div class="inner-item">
+                Restore
+            </div>
+        </div>
+        <div class="context-item only-trash">
+            <div class="inner-item">
+                Delete from Trash
+            </div>
+        </div>
 
-
-
-
- <!--password validation for drowssap file opening-->
-	<div id="password-validate-dialog" title="Title of dialog">
-  		<div id='password-for-drowssap'>
-   			<input id='password-content-for-drowssap' type='password' placeholder='password' style="color:black;"/>
-  			<button class="button" id='password-validate'>check password</button>
-  		</div>
-	</div>
-
-
-<div class="context" >
-			  <div class="context-item both-file-and-folder">
-				<div class="inner-item">
-				  Rename
-				</div>
-			  </div>
-			  <div class="context-item only-folder">
-				<div class="inner-item">
-				  New File
-				</div>
-
-			  </div>
-			  <div class="context-item  only-folder">
-				<div class="inner-item">
-				  New Folder
-				</div>
-			  </div>
-
-			  <div class="context-item  only-file">
-				<div class="inner-item">
-				  Cut
-				</div>
-			  </div>
-			  <div class="context-item only-file">
-				<div class="inner-item">
-				  Copy
-				</div>
-			  </div>
-
-			  <div class="context-item only-folder">
-				<div class="inner-item">
-				  Paste
-				</div>
-			  </div>
-			  <div class="context-item only-trash">
-				<div class="inner-item">
-				  Restore
-				</div>
-			  </div>
-			  <div class="context-item only-trash">
-				<div class="inner-item">
-				  Delete from Trash
-				</div>
-			  </div>
-
-			  <div class="context-item both-file-and-folder">
-				<div class="inner-item">
-				  Move To Trash
-				</div>
-			  </div>
-			<div class="context-item only-trash both-file-and-folder">
-				<div class="inner-item">
-				  Details
-				</div>
-			  </div>
-			</div>
+        <div class="context-item both-file-and-folder">
+            <div class="inner-item">
+                Move To Trash
+            </div>
+        </div>
+        <div class="context-item only-trash both-file-and-folder">
+            <div class="inner-item">
+                Details
+            </div>
+        </div>
+    </div>
 
 
-<div id="main-section-wrapper">
+    <div id="main-section-wrapper">
 
 
+        <div class='main-section-wrapper-class' id="main-sections">
 
+            <div id='navigation-bar' class="split__left">
+                <a href="javascript:void(0)" id="closebtn">×</a>
+                <!--		<div id='sidenav-button-id' class='sidenav-button-class'>-->
+                <!--			<span class='sidenav-button-content-class'>>></span></span>-->
+                <!--		</div>-->
 
-	<div class='main-section-wrapper-class'id="main-sections" >
+                <div class="sidenav">
 
-		<div id='navigation-bar' class="split__left">
-		<a href="javascript:void(0)" id="closebtn">×</a>
-<!--		<div id='sidenav-button-id' class='sidenav-button-class'>-->
-<!--			<span class='sidenav-button-content-class'>>></span></span>-->
-<!--		</div>-->
+                    <!-- begining of semantic-UI tree-note-search box-->
+                    <link rel="stylesheet" href="https://semantic-ui.com/dist/semantic.min.css">
+                    <script src="https://semantic-ui.com/dist/semantic.min.js"></script>
 
-		<div class="sidenav" >
-
-		<!-- begining of semantic-UI tree-note-search box-->
-			<link rel="stylesheet" href="https://semantic-ui.com/dist/semantic.min.css">
-			<script src="https://semantic-ui.com/dist/semantic.min.js"></script>
-
-			<div class="ui container" style="
+                    <div class="ui container" style="
 				width: 112% !important;
 				background: #e9f3ed;
 				height: 50px !important;
@@ -709,196 +694,221 @@
 				margin-left: -5px !important;
 			">
 
-			<div class="ui segment">
-				<div id="searchInput" class="ui category search" style="
+                        <div class="ui segment">
+                            <div id="searchInput" class="ui category search" style="
 					width: 85%;
 				">
-			<div class="ui icon input">
-			<input class="prompt" type="text" style="background-color: #e9f3ed;" placeholder="Search Tree..." autocomplete="off">
-				<i class="search icon"></i>
-			</div>
-			<div class="results transition hidden"><div class="category"><div class="name">Category 1</div><div class="results transition hidden"><a class="result"><div class="content"><div class="title">result Title</div><div class="description">Optional Description</div></div></a><a class="result"><div class="content"><div class="title">result Title</div><div class="description">Optional Description</div></div></a></div></div><div class="category"><div class="name">Category 2</div><div class="results transition hidden"><a class="result"><div class="content"><div class="title">result Title</div><div class="description">Optional Description</div></div></a></div></div></div>
-			</div>
+                                <div class="ui icon input">
+                                    <input class="prompt" type="text" style="background-color: #e9f3ed;"
+                                           placeholder="Search Tree..." autocomplete="off">
+                                    <i class="search icon"></i>
+                                </div>
+                                <div class="results transition hidden">
+                                    <div class="category">
+                                        <div class="name">Category 1</div>
+                                        <div class="results transition hidden"><a class="result">
+                                            <div class="content">
+                                                <div class="title">result Title</div>
+                                                <div class="description">Optional Description</div>
+                                            </div>
+                                        </a><a class="result">
+                                            <div class="content">
+                                                <div class="title">result Title</div>
+                                                <div class="description">Optional Description</div>
+                                            </div>
+                                        </a></div>
+                                    </div>
+                                    <div class="category">
+                                        <div class="name">Category 2</div>
+                                        <div class="results transition hidden"><a class="result">
+                                            <div class="content">
+                                                <div class="title">result Title</div>
+                                                <div class="description">Optional Description</div>
+                                            </div>
+                                        </a></div>
+                                    </div>
+                                </div>
+                            </div>
 
 
-				</div>
-			</div>
+                        </div>
+                    </div>
 
 
+                    <div class="ui tabular menu">
+                        <div class="item" data-tab="tree">Tree</div>
+                        <div class="item" data-tab="trash">Trash</div>
+                        <div class="item" data-tab="starred">Starred</div>
+                    </div>
+                    <div class="ui tab" data-tab="tree">
+                        <!-- Tab Content !-->
+                        <ul id="myUL">
+                        </ul>
+                    </div>
+                    <div class="ui tab" data-tab="trash">
+                        <!-- Tab Content !-->
+                        <ul class="tree-trash-tab-class" style="margin-left: -30px;">
+                        </ul>
+                    </div>
+
+                    <div class="ui tab" data-tab="starred">
+                        <!-- Tab Content !-->
+                        <ul id="myUL">
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
 
 
-
-
-
-<div class="ui tabular menu">
-  <div class="item" data-tab="tree">Tree</div>
-  <div class="item" data-tab="trash">Trash</div>
-  <div class="item" data-tab="starred">Starred</div>
-</div>
-<div class="ui tab" data-tab="tree">
-  <!-- Tab Content !-->
-	<ul id="myUL">
-	</ul>
-</div>
-<div class="ui tab" data-tab="trash">
-  <!-- Tab Content !-->
-	<ul class="tree-trash-tab-class" style="margin-left: -30px;">
-	</ul>
-</div>
-
-<div class="ui tab" data-tab="starred">
-  <!-- Tab Content !-->
-	<ul id="myUL">
-	</ul>
-</div>
-
-			</div>
-		</div>
-
-
-
-
-		<div id="sidenav-button-id" class="sidenav-button-class split__bar">
-				<span class="sidenav-button-content-class"> < </span>
-		</div>
-		<div class="split__bar"></div>
-		<div id="parent-source-code-main-div">
-			<div class="tree-file-tracker" style="
+            <div id="sidenav-button-id" class="sidenav-button-class split__bar">
+                <span class="sidenav-button-content-class"> < </span>
+            </div>
+            <div class="split__bar"></div>
+            <div id="parent-source-code-main-div">
+                <div class="tree-file-tracker" style="
 				position: relative;
 				margin-left: 24px;
 				padding: 0px;
 				margin-top: 1px;
 			">
-<!--			<span>MY-ROOT </span>-->
-<!--			<span> &gt; </span>-->
-<!--			<span>My To Do List </span>-->
-<!--			<span> &gt;  </span>-->
-<!--			<span> Folder 1 </span>-->
-<!--			<span> &gt;  </span>-->
-<!--			<span> Folder 2  </span>-->
-				<div class="ui breadcrumb">
-				  <a class="section">Home</a>
-				  <div class="divider"> / </div>
-				  <a class="section">Store</a>
-				  <div class="divider"> / </div>
-				  <div class="active section">T-Shirt</div>
-				</div>
+                    <!--			<span>MY-ROOT </span>-->
+                    <!--			<span> &gt; </span>-->
+                    <!--			<span>My To Do List </span>-->
+                    <!--			<span> &gt;  </span>-->
+                    <!--			<span> Folder 1 </span>-->
+                    <!--			<span> &gt;  </span>-->
+                    <!--			<span> Folder 2  </span>-->
+                    <div class="ui mini breadcrumb">
+                        <a class="section">Home</a>
+                        <div class="divider"> /</div>
+                        <a class="section">Store</a>
+                        <div class="divider"> /</div>
+                        <div class="active section">T-Shirt</div>
+                    </div>
 
-			</div>
-
-
-			<div id='source-code-main-div' class="split__right">
+                </div>
 
 
+                <div id='source-code-main-div' class="split__right">
 
 
-		<div id='source-code-sub-divs'>
+                    <div id='source-code-sub-divs'>
 
-			<div id="create-new-project-note"  data-tooltip="Create a Blank Doc" data-position="top center">
-				<button id="add-new-file-in-project-notes" class="button" data-tooltip="Create a Blank Doc" data-position="top center">+</button>
+                        <div id="create-new-project-note" data-tooltip="Create a Blank Doc" data-position="top center">
+                            <button id="add-new-file-in-project-notes" class="button" data-tooltip="Create a Blank Doc"
+                                    data-position="top center">+
+                            </button>
 
-			</div>
-			<div id='tab-container'>
-			</div>
+                        </div>
+                        <div id='tab-container'>
+                        </div>
 
 
-			<div class="tab-container-setting ui dropdown" data-tooltip="Tab Settings" data-position="top center"
-				style="
-					      top: 50px;
-							z-index: 4;
-							width: 25px;
-							height: 32px;
-							padding: 5px;
-							position: fixed;
-							right: 7.5%;
-							transition-duration: 2s;
+                        <div class="tab-container-setting ui dropdown" data-tooltip="Tab Settings"
+                             data-position="top center"
+                             style="
+					         top: 15px;
+                            z-index: 1117;
+                            width: 25px;
+                            height: 32px;
+                            position: fixed;
+                            right: 24.5%;
+                            transition-duration: 2s;
+                            top: 8%;
 						">
-					<img style="
+                            <img style="
 						width: 30px;
 						height: 30px;
 						margin-top: -13px;
 					" width="256" alt="Apple Settings Icon" src="https://img.icons8.com/ios/452/settings.png">
-				  <div class="text">File</div>
-				  <i class="dropdown icon"></i>
-				  <div class="menu">
-						<div class="item">
-					  <i class="dropdown icon"></i>
-					  Close
-					  <div class="menu">
-						  <div class="item" close-type="close_the_current_tab">Current Tab</div>
-						  <div class="item" close-type="close_tabs_to_the_left">Tabs To the Left</div>
-						  <div class="item" close-type="close_tabs_to_the_right">Tabs To the Right</div>
-						<div class="item" close-type="close_all_except_the_current">All Tabs except the current</div>
-						<div class="item" close-type="all">All</div>
-					  </div>
-					</div>
-					<div class="item">
-						<i class="dropdown icon"></i>
-					  	Open
-					  <div id="project-notes-opened-list" class="menu">
-					  </div>
-					</div>
-					<div class="item">
+                            <div class="text">File</div>
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                                <div class="item">
+                                    <i class="dropdown icon"></i>
+                                    Close
+                                    <div class="menu">
+                                        <div class="item" close-type="close_the_current_tab">Current Tab</div>
+                                        <div class="item" close-type="close_tabs_to_the_left">Tabs To the Left</div>
+                                        <div class="item" close-type="close_tabs_to_the_right">Tabs To the Right</div>
+                                        <div class="item" close-type="close_all_except_the_current">All Tabs except the
+                                            current
+                                        </div>
+                                        <div class="item" close-type="all">All</div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <i class="dropdown icon"></i>
+                                    Open
+                                    <div id="project-notes-opened-list" class="menu">
+                                    </div>
+                                </div>
+                                <div class="item">
 						<span class="description">
-							<input id='tab-check' type="checkbox"   src="https://img.icons8.com/color/48/000000/suitcase.png" checked>
+							<input id='tab-check' type="checkbox"
+                                   src="https://img.icons8.com/color/48/000000/suitcase.png" checked>
 						</span>
-						Toggle multitab
-					</div>
-					<div class="item">
+                                    Toggle multitab
+                                </div>
+                                <div class="item">
 					  	<span class="description">
-							<input id='note-editor-toolbar-check' type="checkbox"   src="https://img.icons8.com/color/48/000000/suitcase.png" checked>
+							<input id='note-editor-toolbar-check' type="checkbox"
+                                   src="https://img.icons8.com/color/48/000000/suitcase.png" checked>
 						</span>
-						Toggle ToolBar
-					</div>
+                                    Toggle ToolBar
+                                </div>
 
-					<div class="item">
-					  <i class="folder icon"></i>
-					  Move to folder
-					</div>
-					<div class="item">
-					  <i class="trash icon"></i>
-					  Move to trash
-					</div>
-					<div class="divider"></div>
-					<div class="item">Download As...</div>
+                                <div class="item">
+                                    <i class="folder icon"></i>
+                                    Move to folder
+                                </div>
+                                <div class="item">
+                                    <i class="trash icon"></i>
+                                    Move to trash
+                                </div>
+                                <div class="divider"></div>
+                                <div class="item">Download As...</div>
 
-				  </div>
-			</div>
-	</div>
-<!--		<div id="tabs-container-button-section">-->
-<!--				<div id="move-tabs-left" class ='button dropbtn'>-->
-<!--					<span class="move-tabs">  &lt;</span>-->
-<!--				</div>-->
-<!--				<div id="move-tabs-right" class="button dropbtn">-->
-<!--					<span class="move-tabs">  >	</span>-->
-<!--				</div>-->
+                            </div>
+                        </div>
+                    </div>
+                    <!--		<div id="tabs-container-button-section">-->
+                    <!--				<div id="move-tabs-left" class ='button dropbtn'>-->
+                    <!--					<span class="move-tabs">  &lt;</span>-->
+                    <!--				</div>-->
+                    <!--				<div id="move-tabs-right" class="button dropbtn">-->
+                    <!--					<span class="move-tabs">  >	</span>-->
+                    <!--				</div>-->
 
-<!--				<div id='tabs-list-drop-down' class="dropdown">-->
-<!--					<button  class="three-vertical-dots button" style="    padding: 6px;-->
-<!--						background: none;-->
-<!--						outline:none;-->
-<!--					">>></button>-->
-<!--					<div id="myDropdown" class="dropdown-content">-->
-<!--					</div>-->
-<!--				</div>-->
-<!--		</div>-->
-
-
-		<!-- Summernote section for  Document editor starts -->
-
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<!--     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>-->
-<!--    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">-->
-<!--    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>-->
+                    <!--				<div id='tabs-list-drop-down' class="dropdown">-->
+                    <!--					<button  class="three-vertical-dots button" style="    padding: 6px;-->
+                    <!--						background: none;-->
+                    <!--						outline:none;-->
+                    <!--					">>></button>-->
+                    <!--					<div id="myDropdown" class="dropdown-content">-->
+                    <!--					</div>-->
+                    <!--				</div>-->
+                    <!--		</div>-->
 
 
+                    <!-- Summernote section for  Document editor starts -->
+
+                    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+                            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+                            crossorigin="anonymous"></script>
+                    <link rel="stylesheet"
+                          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+                          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+                          crossorigin="anonymous">
+                    <!--     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>-->
+                    <!--    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">-->
+                    <!--    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>-->
 
 
-
-
-<!--    	<div id="summer-note" style="display:none"> 	</div>-->
-			<iframe id="summer-note-iframe-id" src="http://localhost:5000/api/individual-component-fetch/summer_note" style="
+                    <!--    	<div id="summer-note" style="display:none"> 	</div>-->
+                    <iframe id="summer-note-iframe-id"
+                            src="http://localhost:5000/api/individual-component-fetch/summer_note" style="
 				position: absolute;
 				margin-top: 56px;
 				margin-left: 26px;
@@ -906,47 +916,42 @@
 				height: 85%;
 				border: none;
 			"></iframe>
-			<div id="display-tab-setting-message">
+                    <div id="display-tab-setting-message">
 
-			</div>
-			<div id="display-tab-setting-back-drop">
+                    </div>
+                    <div id="display-tab-setting-back-drop">
 
-			</div>
-
-
+                    </div>
 
 
+                    <!-- codemirror section for  code editpr starts -->
+                    <link rel='stylesheet'
+                          href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.css'>
+                    <link href='https://fonts.googleapis.com/css?family=Dosis|Candal' rel='stylesheet' type='text/css'>
+                    <link href='https://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.css'
+                          rel="stylesheet" type="text/css">
+
+                    <link rel='stylesheet'
+                          href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/theme/material.css'>
+                    <link rel='stylesheet'
+                          href='https://codemirror.net/lib/codemirror.css'>
 
 
-		<!-- codemirror section for  code editpr starts -->
-		<link rel='stylesheet'
-			href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.css'>
-		<link href='https://fonts.googleapis.com/css?family=Dosis|Candal' rel='stylesheet' type='text/css'>
-		<link href='https://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.css' rel="stylesheet" type="text/css">
-
-			<link rel='stylesheet'
-				href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/theme/material.css'>
-			<link rel='stylesheet'
-				href='https://codemirror.net/lib/codemirror.css'>
-
-
-
-
-				<div id='code-editor'>
+                    <div id='code-editor'>
 					<textarea id="js">
 					</textarea>
-				</div>
-				<script
-					src='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.js'></script>
-				<script
-					src='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/xml/xml.js'></script>
-				<script
-					src='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/css/css.js'></script>
-				<script
-					src='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/javascript/javascript.js'></script>
-				<script
-					src='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/htmlmixed/htmlmixed.js'></script>
-				<script id="rendered-js">
+                    </div>
+                    <script
+                            src='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.js'></script>
+                    <script
+                            src='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/xml/xml.js'></script>
+                    <script
+                            src='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/css/css.js'></script>
+                    <script
+                            src='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/javascript/javascript.js'></script>
+                    <script
+                            src='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/htmlmixed/htmlmixed.js'></script>
+                    <script id="rendered-js">
       /**
  *
  * In this pen:
@@ -980,288 +985,195 @@
 <!--});-->
 $('.CodeMirror').css('height','100%');
 
-    </script>
-	</div>
-		</div>
+
+
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <!--        <div class='main-section-wrapper-class' id="overlay">-->
+        <!--            <div id='hider-for-resize'></div>-->
+        <!--            <div id='result-iframe'>-->
+
+        <!--                &lt;!&ndash; tab-section with contents &ndash;&gt;-->
+
+        <!--                <div class="tabset">-->
+        <!--                    &lt;!&ndash; Tab 1 &ndash;&gt;-->
+        <!--                    <input type="radio" name="tabset" id="tab4" aria-controls="dunkles" checked>-->
+        <!--                    <label for="tab4">Video Stream</label>-->
+
+        <!--                    &lt;!&ndash; Tab 2 &ndash;&gt;-->
+        <!--                    <input type="radio" name="tabset" id="tab1" aria-controls="videos-tab-section">-->
+        <!--                    <label for="tab1">Download Youtube Videos</label>-->
+
+
+        <!--                    &lt;!&ndash; tab-pannels begins &ndash;&gt;-->
+        <!--                    <div class="tab-panels">-->
+
+        <!--                        <section id="dunkles" class="tab-panel">-->
+
+        <!--                            <div id="local-video-stream-section>" style="-->
+        <!--								margin-left: 30px;-->
+        <!--							">-->
+        <!--                                <input type="file" id='local-stream' class="button" accept="video/*"/>-->
+        <!--                                <label for="local-stream" class="button">stream local video</label>-->
+        <!--                                <div id="message"></div>-->
+        <!--                                <video id="local-stream-video-node" controls autoplay></video>-->
+
+
+        <!--                            </div>-->
+
+
+        <!--                            &lt;!&ndash;					<div id="right-side-section" style="&ndash;&gt;-->
+        <!--                            &lt;!&ndash;						    left: 450px;&ndash;&gt;-->
+        <!--                            &lt;!&ndash;							top: 273px;&ndash;&gt;-->
+        <!--                            &lt;!&ndash;							position: absolute;&ndash;&gt;-->
+        <!--                            &lt;!&ndash;											">&ndash;&gt;-->
+        <!--                            &lt;!&ndash;						<input type="text" id="youtube-video-link" title="Right click the youtube video and copy embed code and pate here" placeholder="Right click the youtube video and copy embed code and pate here" style="&ndash;&gt;-->
+        <!--                            &lt;!&ndash;														    padding: 4px 40px;&ndash;&gt;-->
+        <!--                            &lt;!&ndash;															margin: 7px 0;&ndash;&gt;-->
+        <!--                            &lt;!&ndash;															box-sizing: border-box;&ndash;&gt;-->
+        <!--                            &lt;!&ndash;															position: absolute;&ndash;&gt;-->
+        <!--                            &lt;!&ndash;															left: 187px;&ndash;&gt;-->
+        <!--                            &lt;!&ndash;															top: -174px;&ndash;&gt;-->
+        <!--                            &lt;!&ndash;												">&ndash;&gt;-->
+        <!--                            &lt;!&ndash;						<button id="stream-youtube-video" class="button" style="      position: absolute;&ndash;&gt;-->
+        <!--                            &lt;!&ndash;																					left: 445px;&ndash;&gt;-->
+        <!--                            &lt;!&ndash;																					top: -166px;">&ndash;&gt;-->
+        <!--                            &lt;!&ndash;							stream Youtube video</button>&ndash;&gt;-->
+
+        <!--                            &lt;!&ndash;					</div>&ndash;&gt;-->
+
+
+        <!--                        </section>-->
+
+        <!--                        <section id="videos-tab-section" class="tab-panel">-->
+        <!--                            <h2></h2>-->
+
+        <!--                            <div id="video-download-section>" style="-->
+        <!--								margin-left: 30px;-->
+        <!--							">-->
+        <!--                                <input type="text" id="video-link" placeholder="video-link" style="-->
+        <!--								padding: 4px 40px;-->
+        <!--								margin: 8px 0;-->
+        <!--								box-sizing: border-box;-->
+        <!--							">-->
+        <!--                                <input type="text" id="video-name" placeholder="video-name" style="-->
+        <!--								padding: 4px 40px;-->
+        <!--								margin: 8px 0;-->
+        <!--								box-sizing: border-box;-->
+        <!--							">-->
+        <!--                                <button id="download-video-button" class="button">download</button>-->
+        <!--                            </div>-->
+        <!--                            <div id='video-section'>-->
+        <!--                                <video width="400" controls>-->
+        <!--                                </video>-->
+        <!--                            </div>-->
+
+        <!--                        </section>-->
+
+
+        <!--                    </div>-->
+
+        <!--                </div>-->
+
+
+        <!--            </div>-->
+
+
+        <!--        </div>-->
+
+        <!--        <div class='main-section-wrapper-class' id="html-renderer-section">-->
+
+
+        <!--            <div id="component-tabs">-->
+        <!--                &lt;!&ndash;			<button class="create-component create-component button tab-options-button" title="calculator">&ndash;&gt;-->
+        <!--                &lt;!&ndash;				Calculator&ndash;&gt;-->
+        <!--                &lt;!&ndash;			</button>&ndash;&gt;-->
+        <!--                &lt;!&ndash;			<button class="create-component create-component button tab-options-button" title="slideshow">&ndash;&gt;-->
+        <!--                &lt;!&ndash;				slideshow&ndash;&gt;-->
+        <!--                &lt;!&ndash;			</button>&ndash;&gt;-->
+        <!--                &lt;!&ndash;			<button class="create-component create-component button tab-options-button" title="markup_editor">&ndash;&gt;-->
+        <!--                &lt;!&ndash;				markup_editor&ndash;&gt;-->
+        <!--                &lt;!&ndash;			</button>&ndash;&gt;-->
+
+        <!--            </div>-->
+
+        <!--            <div id="create-component-section">-->
+
+        <!--                <div id="create-component-form" style="display: none;">-->
+        <!--                    <input type="text" id="create-component-text-box" name="firstname" class="form-text-box"-->
+        <!--                           placeholder="Create Component">-->
+        <!--                    <button id="create-component-submit-btn" class="button">create</button>-->
+        <!--                    <button id="close-create-component-form" class="button" style="-->
+        <!--				"> X-->
+        <!--                    </button>-->
+        <!--                </div>-->
+
+        <!--                <div id="create-component-add-btn" class="dropdown_1">-->
+        <!--                    <button class="button dropbtn">+</button>-->
+        <!--                    <div id="myDropdown-add-component" class="dropdown-content">-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+
+
+        <!--        </div>-->
+
+
     </div>
 
-	<div class='main-section-wrapper-class' id="overlay">
-		<div id='hider-for-resize'></div>
-		<div id='result-iframe'>
 
-			<!-- tab-section with contents -->
-
-			<div class="tabset">
-				<!-- Tab 1 -->
-				<input type="radio" name="tabset" id="tab4" aria-controls="dunkles" checked>
-				<label for="tab4">Video Stream</label>
-
-				<!-- Tab 2 -->
-				<input type="radio" name="tabset" id="tab1" aria-controls="videos-tab-section">
-				<label for="tab1">Download Youtube Videos</label>
-
-
-
-
-				<!-- tab-pannels begins -->
-			  <div class="tab-panels">
-
-				<section id="dunkles" class="tab-panel">
-
-				   <div id="local-video-stream-section>" style="
-								margin-left: 30px;
-							">
-					   <input type="file"  id='local-stream'  class="button" accept="video/*"/>
-					   <label for="local-stream" class="button">stream local video</label>
-					   <div id="message"></div>
-					   <video id="local-stream-video-node" controls autoplay></video>
-
-
-				   </div>
-
-
-<!--					<div id="right-side-section" style="-->
-<!--						    left: 450px;-->
-<!--							top: 273px;-->
-<!--							position: absolute;-->
-<!--											">-->
-<!--						<input type="text" id="youtube-video-link" title="Right click the youtube video and copy embed code and pate here" placeholder="Right click the youtube video and copy embed code and pate here" style="-->
-<!--														    padding: 4px 40px;-->
-<!--															margin: 7px 0;-->
-<!--															box-sizing: border-box;-->
-<!--															position: absolute;-->
-<!--															left: 187px;-->
-<!--															top: -174px;-->
-<!--												">-->
-<!--						<button id="stream-youtube-video" class="button" style="      position: absolute;-->
-<!--																					left: 445px;-->
-<!--																					top: -166px;">-->
-<!--							stream Youtube video</button>-->
-
-<!--					</div>-->
-
-
-
-				</section>
-
-				  <section id="videos-tab-section" class="tab-panel">
-				  <h2></h2>
-
-							<div id="video-download-section>" style="
-								margin-left: 30px;
-							">
-							<input type="text" id="video-link" placeholder="video-link" style="
-								padding: 4px 40px;
-								margin: 8px 0;
-								box-sizing: border-box;
-							">
-							<input type="text" id="video-name" placeholder="video-name" style="
-								padding: 4px 40px;
-								margin: 8px 0;
-								box-sizing: border-box;
-							">
-							<button id="download-video-button" class="button">download</button>
-							</div>
-							<div id='video-section' >
-								<video width="400" controls>
-								</video>
-							</div>
-
-				</section>
-
-
-
-
-
-
-
-			  </div>
-
-			</div>
-
-
-		</div>
-
-
-
-
-	</div>
-
- 	<div class='main-section-wrapper-class'  id="html-renderer-section">
-
-
- 		<div id="component-tabs">
-<!--			<button class="create-component create-component button tab-options-button" title="calculator">-->
-<!--				Calculator-->
-<!--			</button>-->
-<!--			<button class="create-component create-component button tab-options-button" title="slideshow">-->
-<!--				slideshow-->
-<!--			</button>-->
-<!--			<button class="create-component create-component button tab-options-button" title="markup_editor">-->
-<!--				markup_editor-->
-<!--			</button>-->
-
-		</div>
-
-		<div id="create-component-section">
-
-			<div id="create-component-form" style="display: none;">
-				<input type="text" id="create-component-text-box" name="firstname" class="form-text-box" placeholder="Create Component">
-				<button id="create-component-submit-btn" class="button">create</button>
-				<button id="close-create-component-form" class="button" style="
-				"> X </button>
-			</div>
-
-		<div id="create-component-add-btn" class="dropdown_1">
-				<button class="button dropbtn">+</button>
-				<div id="myDropdown-add-component" class="dropdown-content">
-				</div>
-		</div>
-	</div>
-
-
- </div>
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="loading-backdrop" class="modal">
-</div>
-
-<!-- dialog content starts here-->
-<div id="modal-id" class="modal">
-  <!-- Modal content -->
-  <div class="modal-content">
-    <div class="modal-header">
-      <h2> </h2>
+    <div id="loading-backdrop" class="modal">
     </div>
-    <div class="modal-body">
 
-<!--		create new tree file dialog content-->
-		<div id='new-project-file-create-form' class="inner-item inner-item-form" >
-			<input id="new-project-note-name" type="text" />
-		</div>
+    <!-- dialog content starts here-->
+    <div id="modal-id" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2></h2>
+                <button type="button" class="close-modal close" style="outline: none;">×</button>
+            </div>
+            <div class="modal-body">
 
-<!--		create new quick file dialog content -->
-		<div id="create-new-quick-file-form" class="inner-item-form" >
-			<input type="text" id="create-file-text-box" class="form-text-box" placeholder="Create file">
-		</div>
+                <!--		create new tree file dialog content-->
+                <div id='new-project-file-create-form' class="inner-item inner-item-form">
+                    <input id="new-project-note-name" type="text"/>
+                </div>
 
-		<div id="folder-clone-section">
+                <!--		create new quick file dialog content -->
+                <div id="create-new-quick-file-form" class="inner-item-form">
+                    <input type="text" id="create-file-text-box" class="form-text-box" placeholder="Create file">
+                </div>
 
-		</div>
+                <div id="folder-clone-section">
 
-    </div>
-    <div class="modal-footer">
-<!--      <h3>Modal Footer</h3>-->
-		<button id="create-new-file-submit-btn" class="button">create</button>
-		<button class="button close-modal" style="
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <!--      <h3>Modal Footer</h3>-->
+                <button id="create-new-file-submit-btn" class="button">create</button>
+                <button class="button close-modal" style="
 			position: relative;
 			float: left;
-		">cancel</button>
+		">cancel
+                </button>
+            </div>
+        </div>
+
     </div>
-  </div>
-
-</div>
 
 
+    <!--notification dialog -->
+    <div id="notification">
 
-<!--notification dialog -->
-	<div id="notification" >
-
-	</div>
-
+    </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-	</body>
+</body>
 
 
 <script type="text/javascript" src="{{ url_for('static', filename='/js/CodeEditor.js') }}"></script>
@@ -1290,6 +1202,8 @@ $(document).ready(function(){
 
 
 });
+
+
 
 
 

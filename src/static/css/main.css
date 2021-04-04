@@ -807,13 +807,6 @@ content:"\f002";
     width: 100%;
     height: 100%;
 }
-.save-close-for-tab{
-    position: relative;
-    display: grid;
-    top: 1px;
-    margin-right: 0px;
-}
-
 .file-get-section{
     width: calc(135%);
     height: 100%;

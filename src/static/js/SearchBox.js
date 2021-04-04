@@ -62,6 +62,7 @@ export default class TreeClass{
                 else{
                     self.tsp.SourceCodeSection._highlight_in_tree(result.description);
                     self.tsp.SourceCodeSection.buildTab(result.title, 'document', result.description);
+                    self.tsp.TreeClass._build_breadcrumb(result.description);
                 }
             }
           });
@@ -77,8 +78,10 @@ export default class TreeClass{
           });
 
         $('.tab-container-setting')
-          .dropdown()
-        ;
+          .dropdown({
+            on :
+                "hover"
+          });
         $('.tab-container-setting').on('click', function(){
              self.tsp.DomActions._tabs_drop_down_click();
         });

@@ -185,7 +185,7 @@ export default class DomEvents{
         this._download_video_click_event();
         this._initialize_tool_tips();
         this._create_event_listeners_for_dragbar();
-        this._initialize_local_video_Stream();
+//        this._initialize_local_video_Stream();
         this._button_clicks();
         this.keyboard_events();
         return $.Deferred().resolve(this.tsp, label_map);

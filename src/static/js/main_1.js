@@ -9,7 +9,9 @@ import TreeCRUD from './TreeCRUD.js';
 import Header from './Header.js';
 import DeveloperComponents from './DeveloperComponents.js';
 import SearchBox from './SearchBox.js';
+import DetailsPanel from './DetailsPanel/DetailsPanel.js';
 //import IndexedDb from './lib/IndexedDb.js';
+
 
 class Tsp{
 	constructor(){}
@@ -19,7 +21,7 @@ function calculate_progress_bar(counter, factor){
     $("#pre-loader-bar").progress({
       percent: Number(factor * counter) // convert the value from the table to a number
     });
-    if(factor * counter === 100){
+    if(Math.floor(factor * counter)  === 100){
         setTimeout(function(){
             document.getElementById("destination-container").style.display = "block";
             document.getElementById("top-header").style.display = "block";
@@ -41,6 +43,7 @@ $(document).ready(function(){
         Header,
         DeveloperComponents,
         SearchBox,
+        DetailsPanel,
         DomEvents
         ];
 	let len = class_list.length;

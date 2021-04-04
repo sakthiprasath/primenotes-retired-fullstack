@@ -36,13 +36,22 @@ export default class Dialog{
             close_dialog : function(){
                 $('.close-modal').click(function(){
                     self.cache.modal.css("display", "none");
+                    if(self.tsp.TreeClass.cloned_folder_parent_in_tree !== null){
+                       let q1 = $('#folder-clone-section').children().get(0);
+                       let q2 = $('#folder-clone-section').children().get(1);
+                       $(self.tsp.TreeClass.cloned_folder_parent_in_tree).empty().append(q1);
+                       $(self.tsp.TreeClass.cloned_folder_parent_in_tree).append(q2);
+                       self.tsp.TreeClass._events();
+                       self.tsp.SourceCodeSection.events();
+                       self.tsp.TreeClass.cloned_folder_parent_in_tree = null;
+                    }
                 });
             }
         }
 
         /* initializing eventlistners by calling above event_map in a loop*/
         for (let key in event_map) {
-          console.log(event_map[key]);
+//          console.log(event_map[key]);
           event_map[key]();
         }
     }

@@ -349,7 +349,7 @@ export default class loadComponentsContainer {
 //                        }
 
                         for(let i in ret_json){
-                            console.log(ret_json[i].name);
+//                            console.log(ret_json[i].name);
                             temp_map[ret_json[i].uuid_file_name] = {
                                 'name' : ret_json[i].name,
                                 'content' : ret_json[i].content,
@@ -560,7 +560,7 @@ export default class loadComponentsContainer {
                 }
                 self.tsp.DomActions._create_file_in_backend_duplicate(temp_map).then(function(ret_json){
 
-                    console.log(ret_json);
+//                    console.log(ret_json);
 //                    let file_name_id =  //file_name.replaceAll('  ',' ').replaceAll(' ','-') ;
                     let html=`<div class='individual-search' id="${ret_json.uuid_file_name}" > <span class='search-result-item' >${ret_json.name}</span></div>`;
                     $('#file-middle-section').prepend($(html));

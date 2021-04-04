@@ -5,7 +5,12 @@
 
 export default class SourceCodeSection{
     code_mirror_editor='';
-
+    scroll_to_view(ele){
+        ele.scrollIntoView({
+            behaviour: "smooth",
+            block: "end"
+        });
+    }
     removeCurrentTab(ele) {
       let self = this;
       let curr_target = $(ele).parent().parent();//.remove();
@@ -95,6 +100,8 @@ export default class SourceCodeSection{
                 this._highlight_and_fetch(tab_elems[i]);
                 this.get_editor_file(tab_elems[i], type, 'false', file_path);
                 this.events();
+                self.scroll_to_view(tab_elems[i]);
+                self.scroll_to_view($(`.file-click[ file-path='${file_path}' ]`)[0]);
                 return;
             }
             else{
@@ -117,6 +124,7 @@ export default class SourceCodeSection{
             $('.tab').remove();
             $('#tab-container').append(curr);
         }
+        self.scroll_to_view($(curr)[0]);
         this.get_editor_file(curr.children()[0], type, false, file_path);
 
         this.events();
@@ -189,6 +197,7 @@ export default class SourceCodeSection{
                     });
                 }
         }
+
     events(){
         let self = this;
 
@@ -225,12 +234,12 @@ export default class SourceCodeSection{
                 self.multi_tab_flag = true;
             else{
                 self.multi_tab_flag = false;
-                var tab_list = $('.tab');
-                var tab_active_text = $($('.tab.tab-active').children()[0]).text();
+                var tab_list =  $('#tab-container > .tab');
+                var tab_active_text = $($('#tab-container > .tab-active').children()[0]).attr('file-path');
                 tab_list.map( x =>{
                      let cached_ele = $(tab_list[x]);
                     console.log($(cached_ele.children()[0]).text());
-                    if( $(cached_ele.children()[0]).text() != tab_active_text){
+                    if($(cached_ele.children()[0]).attr('file-path') != tab_active_text){
                         cached_ele.remove();
                     }
                 });
@@ -293,6 +302,7 @@ export default class SourceCodeSection{
         });
 
     }//end of events
+
     _removeCurrentTab(curr){
         let self = this;
         let ele_arr = $('.tab');
@@ -344,7 +354,7 @@ export default class SourceCodeSection{
             switch(close_type){
                 case 'close_tabs_to_the_left':
                 case 'close_all_except_the_current':{
-                    let ele_arr = $('.tab');
+                    let ele_arr = $('#tab-container > .tab');
                     for(let i= 0; i< ele_arr.length; i++){
                       let temp= ele_arr[i];
                       if($(temp).hasClass('tab-active')){
@@ -359,7 +369,7 @@ export default class SourceCodeSection{
                     break;
                 }
                 case 'close_tabs_to_the_right':{
-                    let ele_arr = $('.tab');
+                    let ele_arr = $('#tab-container > .tab');
                     for(let i= ele_arr.length - 1; i>= 0 ; i--){
                       let temp = ele_arr[i];
                       if($(temp).hasClass('tab-active'))
@@ -370,7 +380,7 @@ export default class SourceCodeSection{
                     break;
                 }
                 case 'close_the_current_tab':{
-                    let ele_arr = $('.tab');
+                    let ele_arr = $('#tab-container > .tab');
                     let prev = '';
                     for(let i= ele_arr.length - 1; i>= 0 ; i--){
                       let temp = ele_arr[i];
@@ -404,7 +414,7 @@ export default class SourceCodeSection{
                     break;
                 }
                 case 'all':{
-                    $('.tab').remove();
+                    $($('#tab-container > .tab')).remove();
                     display("No file opened");
                 }
             }

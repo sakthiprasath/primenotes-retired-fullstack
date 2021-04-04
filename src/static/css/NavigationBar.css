@@ -261,6 +261,18 @@ left:170px;
     background-color: #ffffff !important;
     border: 1px solid #c7dce7
     }
+
+.tab:hover > .save-close-for-tab{
+    display:block;
+}
+
+.save-close-for-tab{
+    position: relative;
+    display: none;
+    top: 1px;
+    margin-right: 0px;
+}
+
 .close-tab{
     position: absolute;
     width: 18px;
@@ -273,16 +285,16 @@ left:170px;
     transition-duration: 0.2s;
 }
 .close-tab:hover{
-    background: #e7c5c5;
-    color: #ffffff;
+    background: #3498db;
+    color: #e9f3ed;
     border-radius: 5px;
 }
 .close-tab-x{
-    margin-left: 5px;
-    margin-top: 0px;
+    margin-left: 5.3px;
+    margin-top: 1.4px;
     position: absolute;
-    font-size: 12px;
-    font-family: 'Lato';
+    font-size: 10px;
+    font-family: revert;
 }
 .close-tab-img{
    width:100%;
@@ -527,7 +539,10 @@ body ::-webkit-scrollbar {
 }
 .ui.tabular.menu{
     margin-left: 10px;
-    background: #e9f3ed !important
+    background: #e9f3ed !important;
+}
+.ui.tabular.menu > .item{
+    padding: .92857143em 0.828571em !important;
 }
 .ui.tabular.menu .active.item{
     background: #e9f3ed !important
