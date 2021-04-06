@@ -68,7 +68,7 @@ class SQLIndividualComponent():
             'content' : data['content']
         })
 
-        fp = open('../frontend_files/web-app/all_general_files/file_factory/' + self._add_json_extension(file_key), 'w')
+        fp = open(primenotes_data["root_file_factory"] + self._add_json_extension(file_key), 'w')
 
         fp.write(savable_data)
 
@@ -78,32 +78,32 @@ class SQLIndividualComponent():
         fp.write(file_data)
 
     def rename_quick_note_file(self, req_json):
-        fp = open('../frontend_files/web-app/all_general_files/file_factory/' + self._add_json_extension(req_json['file_key']), 'r')
+        fp = open(primenotes_data["root_file_factory"] + self._add_json_extension(req_json['file_key']), 'r')
         fp_content = json.loads(fp.read())
         fp_content['name'] = req_json['name']
         fp.close()
 
-        fp = open('../frontend_files/web-app/all_general_files/file_factory/' + self._add_json_extension(req_json['file_key']), 'w')
+        fp = open(primenotes_data["root_file_factory"] + self._add_json_extension(req_json['file_key']), 'w')
         fp.write(json.dumps(fp_content))
         fp.close()
 
     def rename_tree_note_file(self, req_json):
 
-        fp = open('../frontend_files/web-app/all_general_files/file_factory/' + self._add_json_extension(
+        fp = open(primenotes_data["root_file_factory"] + self._add_json_extension(
             req_json['file_key']), 'r')
         fp_content = json.loads(fp.read())
         old_path = req_json['old_path']
         new_path = req_json['new_path']
         fp.close()
 
-        fp = open('../frontend_files/web-app/all_general_files/file_factory/' + self._add_json_extension(
+        fp = open(primenotes_data["root_file_factory"] + self._add_json_extension(
             req_json['file_key']), 'w')
         fp.write(json.dumps(fp_content))
         fp.close()
 
     def delete_file(self, file_key):
 
-        file_path = '../frontend_files/web-app/all_general_files/file_factory/' + self._add_json_extension(file_key)
+        file_path = primenotes_data["root_file_factory"] + self._add_json_extension(file_key)
 
         os.remove(file_path)
 
