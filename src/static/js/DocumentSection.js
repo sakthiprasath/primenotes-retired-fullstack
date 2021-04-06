@@ -74,7 +74,7 @@ export default class SourceCodeSection{
                     $.ajax
                     ({
 //                        url: 'http://localhost:5000/api/individual-component-fetch/save-file?file_path=' + (file_path),
-                        url: 'http://localhost:5000/api/tree-note/save-file/' + file_uuid,
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/tree-note/save-file/" + file_uuid,
                         data: JSON.stringify(savable_data),
                         type : "POST",
                         contentType: 'application/json;charset=UTF-8',
@@ -174,7 +174,7 @@ export default class SourceCodeSection{
                 $.ajax
                 ({
                     //url:'http://localhost:5000/api/individual-component-fetch/general_files/separate_project?file_path='+ JSON.stringify(file_path),
-                    url:'http://localhost:5000/api/tree-note/get-file-data/' + file_uuid,
+                    url: self.tsp.PrimenotesCache.data.url_prefix + "/api/tree-note/get-file-data/" + file_uuid,
                     type : "GET",
                     contentType:'application/x-www-form-urlencoded',
                     success : function(response){

@@ -18,12 +18,12 @@ export default class DeveloperComponents{
     }
 
     _create_component_buttons_generation(file_type){
-
+        let self = this;
          var defObj=$.Deferred();
             var promise =
                 $.ajax
                 ({
-                    url:"http://localhost:5000/api/individual-component-fetch/get-all-files/" + file_type,
+                    url: self.tsp.PrimenotesCache.data.url_prefix + "/api/individual-component-fetch/get-all-files/" + file_type,
                     type : "GET",
                     contentType:'application/x-www-form-urlencoded',
                     success : function(response){

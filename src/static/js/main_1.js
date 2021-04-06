@@ -6,12 +6,12 @@ import loadComponentsContainer from './ComponentsContainer.js';
 import SourceCodeSection from './DocumentSection.js';
 import TreeClass from './TreeView.js';
 import TreeCRUD from './TreeCRUD.js';
-import Header from './header.js';
+import Header from './Header.js';
 import DeveloperComponents from './DeveloperComponents.js';
 import SearchBox from './SearchBox.js';
 import DetailsPanel from './DetailsPanel/DetailsPanel.js';
 //import IndexedDb from './lib/IndexedDb.js';
-
+import PrimenotesCache from './PrimenotesCache.js'
 
 class Tsp{
 	constructor(){}
@@ -33,6 +33,7 @@ function calculate_progress_bar(counter, factor){
 $(document).ready(function(){
     var tsp = new Tsp();
     let class_list = [
+        PrimenotesCache,
         Dialog,
         DomActions,
 //        IndexedDb,
@@ -41,7 +42,7 @@ $(document).ready(function(){
         TreeCRUD,
         SourceCodeSection,
         Header,
-        DeveloperComponents,
+//        DeveloperComponents,
         SearchBox,
         DetailsPanel,
         DomEvents

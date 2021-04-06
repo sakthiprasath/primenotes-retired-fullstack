@@ -34,7 +34,7 @@ export default class DomActions{
             var promise =
                 $.ajax
                 ({
-                    url:"http://localhost:5000/api/individual-component-fetch/get-all-videos",
+                    url: self.tsp.PrimenotesCache.data.url_prefix + "/api/individual-component-fetch/get-all-videos",
                     type : "GET",
                     contentType:'application/x-www-form-urlencoded',
                     success : function(response){
@@ -115,7 +115,7 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/individual-component-fetch/save-file/'+file_name,
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/individual-component-fetch/save-file/" + file_name,
                         data: JSON.stringify(savable_data),
                         type : "POST",
                         contentType: 'application/json;charset=UTF-8',
@@ -144,7 +144,7 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/individual-component-fetch/create-file/',
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/individual-component-fetch/create-file/",
                         data: JSON.stringify(data_map),
                         type : "POST",
                         contentType: 'application/json;charset=UTF-8',
@@ -166,7 +166,7 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/tree-note/create-folder',
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/tree-note/create-folder",
                         data: JSON.stringify(data_map),
                         type : "POST",
                         contentType: 'application/json;charset=UTF-8',
@@ -188,7 +188,7 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/tree-note/copy-paste-file',
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/tree-note/copy-paste-file",
                         data: JSON.stringify(data_map),
                         type : "POST",
                         contentType: 'application/json;charset=UTF-8',
@@ -209,7 +209,7 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/tree-note/cut-paste-file',
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/tree-note/cut-paste-file",
                         data: JSON.stringify(data_map),
                         type : "POST",
                         contentType: 'application/json;charset=UTF-8',
@@ -230,7 +230,7 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/individual-component-fetch/rename-file/'+ file_type,
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/individual-component-fetch/rename-file/"+ file_type,
                         type : "POST",
                         data: JSON.stringify(send_data),
                         contentType: 'application/json;charset=UTF-8',
@@ -250,7 +250,7 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/individual-component-fetch/rename-tree-note-file',
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/individual-component-fetch/rename-tree-note-file",
                         type : "POST",
                         data: JSON.stringify(send_data),
                         contentType: 'application/json;charset=UTF-8',
@@ -270,7 +270,7 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/tree-note/rename',
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/tree-note/rename",
                         type : "POST",
                         data: JSON.stringify(send_data),
                         contentType: 'application/json;charset=UTF-8',
@@ -289,7 +289,7 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/individual-component-fetch/delete-file/file-factory/' + file_key,
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/individual-component-fetch/delete-file/file-factory/" + file_key,
                         type : "DELETE",
                         contentType: 'application/json;charset=UTF-8',
                         success : function(response){
@@ -308,7 +308,7 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/tree-note/move-to-trash-tree-file-or-folder/'+uuid,
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/tree-note/move-to-trash-tree-file-or-folder/" +uuid,
                         type : "DELETE",
                         contentType: 'application/json;charset=UTF-8',
                         success : function(response){

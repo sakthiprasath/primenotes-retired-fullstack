@@ -334,7 +334,7 @@ export default class loadComponentsContainer {
             var promise =
                 $.ajax
                 ({
-                    url:"http://localhost:5000/api/individual-component-fetch/get-all-file-factory-contents",
+                    url: self.tsp.PrimenotesCache.data.url_prefix + "/api/individual-component-fetch/get-all-file-factory-contents",
                     type : "GET",
                     contentType:'application/x-www-form-urlencoded',
                     success : function(response){
@@ -375,7 +375,7 @@ export default class loadComponentsContainer {
                     var promise =
                         $.ajax
                         ({
-                            url: 'http://localhost:5000/api/individual-component-fetch/save-file-factory',
+                            url: self.tsp.PrimenotesCache.data.url_prefix + "/api/individual-component-fetch/save-file-factory",
                             data: JSON.stringify(savable_data),
                             type : "POST",
                             contentType: 'application/json;charset=UTF-8',
