@@ -6,7 +6,7 @@ import loadComponentsContainer from './ComponentsContainer.js';
 import SourceCodeSection from './DocumentSection.js';
 import TreeClass from './TreeView.js';
 import TreeCRUD from './TreeCRUD.js';
-import Header from './Header.js';
+import Header from './header.js';
 import DeveloperComponents from './DeveloperComponents.js';
 import SearchBox from './SearchBox.js';
 import DetailsPanel from './DetailsPanel/DetailsPanel.js';
