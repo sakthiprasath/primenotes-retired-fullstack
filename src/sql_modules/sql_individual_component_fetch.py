@@ -5,7 +5,7 @@ import os
 import pathlib
 import pathlib
 import uuid
-
+from src.utils import primenotes_data
 SQL_CODE_FETCH_QUERIES = {
     "get_all_configs": "select * from tenant_config"
 }
@@ -22,27 +22,6 @@ class SQLIndividualComponent():
         fp = open(file_path, 'r')
         fp_content = fp.read()
         return  fp_content
-
-    def get_all_configs(self,component_key):
-        read_file_contents = {}
-
-        file_path = '/home/sakthi/custom/sakthi/pro1000_backend/frontend_files/web-app/'+component_key+'/'
-        file_list = os.listdir(file_path)
-        if file_list is None:
-            return None
-
-        for file_name in file_list:
-            file_content = self._read_contents((file_path + file_name))
-            if file_name.endswith('.txt'):
-                read_file_contents['headerScriptsCode'] = file_content
-            elif file_name.endswith('.html'):
-                read_file_contents['htmlCode'] = file_content
-            elif file_name.endswith('.css'):
-                read_file_contents['cssCode'] = file_content
-            elif file_name.endswith('.js'):
-                read_file_contents['jsCode'] = file_content
-
-        return read_file_contents
 
     def create_file(self, data_map):
         file_type = data_map['file_type']
@@ -88,6 +67,7 @@ class SQLIndividualComponent():
             'name' : data['name'],
             'content' : data['content']
         })
+
         fp = open('../frontend_files/web-app/all_general_files/file_factory/' + self._add_json_extension(file_key), 'w')
 
         fp.write(savable_data)
@@ -160,7 +140,7 @@ class SQLIndividualComponent():
         return str(file_name) + '.json'
 
     def get_all_file_factory_contents(self):
-        path = '../frontend_files/web-app/all_general_files/file_factory'
+        path = primenotes_data["root_file_factory"] #'../frontend_files/web-app/all_general_files/file_factory'
         files = os.listdir(path)
         file_contents = []
         for filename in files:
