@@ -140,7 +140,7 @@ export default class SourceCodeSection{
 //            $('.note-editor').css('display', 'block');
 
 //            $(self.summer_note_ele).summernote('code', general_Text);
-            self.summer_note_ele = "";//document.getElementById('summer-note-iframe-id').contentWindow.document.getElementsByClassName('note-editable')[0];
+            self.summer_note_ele = document.getElementById('summer-note-iframe-id').contentWindow.document.getElementsByClassName('note-editable')[0];
             self.summer_note_ele.innerHTML = general_Text;
             return def_obj.resolve();
         }
@@ -431,7 +431,7 @@ export default class SourceCodeSection{
 //        this._initialise_summer_note();
         tsp.SourceCodeSection = this;
         this.tsp = tsp;
-        this.summer_note_ele = "";//document.getElementById('summer-note-iframe-id').contentWindow.document.getElementsByClassName('note-editable')[0];
+        this.summer_note_ele = document.getElementById('summer-note-iframe-id').contentWindow.document.getElementsByClassName('note-editable')[0];
         this.events(); //this might be called more than once ondemand
         this.multi_tab_flag = true;
 //        this._tabs_dropdown_click();
