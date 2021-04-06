@@ -21,13 +21,16 @@ export default class DetailsPanel{
         return html;
     }
 
-    close_details(){
+    close_details(curr){
             $('#destination-container').css('width','100%');
             $('#pane').css('width','99%');
+            $('#right-side-panel').css('z-index','0');
     }
-    open_details(){
+    open_details(curr){
          $('#destination-container').css('width','calc(100% - 315px)');
          $('#pane').css('width','78.6%');
+         $('#right-side-panel').css('z-index','1');
+
     }
 
     launch_details_data(path){
@@ -71,7 +74,7 @@ export default class DetailsPanel{
         let self = this;
         $('.details-close').off('click');
         $('.details-close').on('click', function(){
-            self.close_details();
+            self.close_details($(this));
         });
     }
     init(tsp, to_return_values){

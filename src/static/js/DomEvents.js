@@ -12,6 +12,7 @@ export default class DomEvents{
 
         /*initial clicks for file*/
             setTimeout( function(){
+            $($('.ui.tabular.menu').children().get(0)).click()
             $($('.folder-section')[0]).hide().click();
             ($('.file-click')[0]).click()
             $('#stream-youtube-video').click();

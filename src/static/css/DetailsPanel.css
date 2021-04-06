@@ -5,7 +5,7 @@
     position: absolute;
     top: 0px;
     right: 0px;
-    z-index: 0;
+    z-index: 1;
     }
     .details-section {
         margin-top: 10px;
