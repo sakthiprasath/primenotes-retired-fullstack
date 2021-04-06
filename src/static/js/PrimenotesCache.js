@@ -6,7 +6,7 @@ export default class PrimenotesCache {
         let self = this;
         self.data ={
             url_prefix : "https://primenotes.herokuapp.com"  //"http://localhost:5000"
-        }
+         }
     }
     init(tsp, to_return_values){
         tsp.PrimenotesCache = this;
