@@ -18,7 +18,7 @@
     "folder-uuid-14cb-4ec1-9fdc-0783951a365d": {
         "date_created": "",
         "last_updated": "",
-        "type": "code",
+        "type": "document",
         "path": "Some Root Folder",
         "name": "Some Root Folder",
         "language": "document",
@@ -27,11 +27,22 @@
     "file-uuid-14cb-4ec1-9fdc-0783951a365d": {
         "date_created": "",
         "last_updated": "",
-        "type": "code",
+        "type": "document",
         "path": "Some Root Folder/sample file",
         "name": "sample file",
         "language": "document",
         "folder_type": "file",
         "starred": "false"
+    },
+    "untitled-uuid-14cb-4ec1-9fdc-0783951a365d": {
+        "date_created": "",
+        "last_updated": "",
+        "type": "document",
+        "path": "Some Root Folder/untitled 1",
+        "name": "sample file",
+        "language": "document",
+        "folder_type": "file",
+        "starred": "false",
+        "untitled": true
     }
 }

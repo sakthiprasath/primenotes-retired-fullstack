@@ -1,1 +1,0 @@
-{"name":"","content":"\n\n\n<input class=\"my-check-box\" type=\"checkbox\" onclick=\"func(this);\" checked=\"true\">\n<input class=\"my-check-box\" type=\"checkbox\" onclick=\"func(this);\" checked=\"true\">\n\n\n<input class=\"my-check-box\" type=\"checkbox\" onclick=\"func(this);\" checked=\"false\">\n\n\n\n\n"}
