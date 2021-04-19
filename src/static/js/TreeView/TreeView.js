@@ -183,12 +183,13 @@ export default class TreeClass{
     }
 
     _get_tree_structure_metadata(){
+        let self  = this;
         let temp_map = {};
          var defObj=$.Deferred();
             var promise =
                 $.ajax
                 ({
-                    url:"http://localhost:5000/api/tree-note/get-tree-with-metadata",
+                    url: self.tsp.PrimenotesCache.data.url_prefix + '/api/tree-note//get-tree-with-metadata',
                     type : "GET",
                     contentType:'application/x-www-form-urlencoded',
                     success : function(response){

@@ -320,13 +320,14 @@ export default class DomActions{
         return delete_action(uuid);
     }
     _starr_tree_note_file_or_folder(uuid){
+        let self = this;
         function starr_action(uuid){
             var savable_data = '';
             var defObj=$.Deferred();
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/tree-note/starr-it/'+uuid,
+                        url: self.tsp.PrimenotesCache.data.url_prefix + '/api/tree-note/starr-it/'+uuid,
                         type : "PUT",
                         contentType: 'application/json;charset=UTF-8',
                         success : function(response){
