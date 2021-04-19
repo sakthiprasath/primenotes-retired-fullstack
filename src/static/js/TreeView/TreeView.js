@@ -1,9 +1,9 @@
-import SourceCodeSection from './DocumentSection.js';
+import SourceCodeSection from '../DocumentSection.js';
 
 
 export default class TreeClass{
     _get_tree_file_html(path, name, uuid){
-                let file_html = `<li class='file'>`
+                let file_html = `<li class="tree-file">`
                                     + `<a href="#" class='file-click' content-type="file" file-uuid='${uuid}' filename='${name}' title='${name}'`
                                     +    `file-type='document' file-path='${path}' >`
                                     +    `<div class="tree-note-file-name-div">`
@@ -18,7 +18,7 @@ export default class TreeClass{
     _get_tree_folder_html(path, name, uuid){
         let html = `<li><div class='folder-section' folder-name='${name}' folder-uuid='${uuid}' folder-path='${path}'>`
 			html +=				`<span class="folder">`
-			html +=				  `<span class='open-close-folder'> <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/folder-blue-512.png" style="width: 20px;height: 17px;"> </span>${name}`
+			html +=				  `<span class='open-close-folder'> <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/folder-blue-512.png" style="width: 15px;height: 12px;"> </span>${name}`
 			html +=				`</span>`
 			html +=				`<span class='three-dots'>...</span>`
 			html +=			`</div><ul class="nested"></ul></li>`;
@@ -31,7 +31,7 @@ export default class TreeClass{
         let path = '';
         for(let i in self.trash_list){
             path = self.trash_list[i];
-            let file_html = `<li class='file'>`
+            let file_html = `<li class='tree-file'>`
                                     + `<a href="#" class='file-click' content-type="file" file-uuid='${self.metadata_map[path].uuid}' filename='${self.metadata_map[path].name}' title='${self.metadata_map[path].name}'`
                                     +    `file-type='document' file-path='${path}' >`
                                     +    `<div class="tree-note-file-name-div">`
@@ -48,14 +48,39 @@ export default class TreeClass{
         $(tree_trash_section).remove();
         //append($(nested_section));
     }
-
+    _build_starred_section(){
+        let self = this;
+        let path = '';
+        for(let i in self.starred_list){
+            path = self.starred_list[i];
+            let file_html = `<li class='tree-file'>`
+                                    + `<a href="#" class='file-click' content-type="file" file-uuid='${self.metadata_map[path].uuid}' filename='${self.metadata_map[path].name}' title='${self.metadata_map[path].name}'`
+                                    +    `file-type='document' file-path='${path}' >`
+                                    +    `<div class="tree-note-file-name-div">`
+                                    +       `<span> * </span>`
+                                    +    `</div>`
+                                    +   `<span class="tree-note-file-name">${self.metadata_map[path].name}`
+                                    +   `</span>`
+                                    + `</a><span class='three-dots' content-type="file">...</span> </li>`;
+            let nested_section = $('.tree-starr-class').siblings().get(0);
+            $(nested_section).append($(file_html));
+        }
+        let tree_starr_section = $('.tree-starr-class').parent();
+        $('.tree-starr-tab-class').append($(tree_starr_section).clone());
+        $(tree_starr_section).remove();
+    }
     _build_files(file_arr){
         let file_html = '';
         let self = this;
         for(let index in file_arr){
+            if(self.untitled_map[file_arr[index]] != undefined)
+                continue;
             if(self.metadata_map[file_arr[index]].trash !== undefined){
                 self.trash_list.push(file_arr[index]);
                 continue;
+            }
+            else if (self.metadata_map[file_arr[index]].starred.toString().toLocaleLowerCase() == "true" ){
+                self.starred_list.push(file_arr[index]);
             }
             let temp_arr = file_arr[index].split('\\');
             let file_name = self.metadata_map[file_arr[index]].name;
@@ -67,7 +92,7 @@ export default class TreeClass{
                   description: file_arr[index]
                 });
 
-            file_html += `<li class='file'>`
+            file_html += `<li class='tree-file'>`
                             + `<a href="#" class='file-click' content-type="file" file-uuid='${file_uuid}' filename='${file_name}' title='${file_name}'`
                             +    `file-type='document' file-path='${file_arr[index]}' >`
                             +    `<div class="tree-note-file-name-div">`
@@ -89,7 +114,7 @@ export default class TreeClass{
             name = 'MY-ROOT';
         }
         else{
-//            console.log(folder_path);
+            console.log(folder_path);
             folder_uuid = self.metadata_map[folder_path].uuid;
             name = self.metadata_map[folder_path].name
             this.folder_list.push({
@@ -100,9 +125,12 @@ export default class TreeClass{
         if(folder_path === 'Trash'){
             class_list_str += ' tree-trash-class';
         }
+        else if(folder_path === 'Starred'){
+            class_list_str += ' tree-starr-class';
+        }
         let html = `<div class='folder-section ${class_list_str}' folder-name='${name}' folder-uuid='${folder_uuid}' folder-path='${folder_path}'>`
 			html +=				`<span class="folder">`
-			html +=				  `<span class='open-close-folder'> <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/folder-blue-512.png" style="width: 20px;height: 17px;"> </span>${name}`
+			html +=				  `<span class='open-close-folder'> <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/folder-blue-512.png" style="width: 15px;height: 12px;"> </span>${name}`
 			html +=				`</span>`
 			html +=				`<span class='three-dots'>...</span>`
 			html +=			`</div>`;
@@ -138,13 +166,12 @@ export default class TreeClass{
     }
 
     _get_tree_structure(){
-    let self = this;
         let temp_map = {};
          var defObj=$.Deferred();
             var promise =
                 $.ajax
                 ({
-                    url: self.tsp.PrimenotesCache.data.url_prefix + "/api/individual-component-fetch/tree",
+                    url:"http://localhost:5000/api/individual-component-fetch/tree",
                     type : "GET",
                     contentType:'application/x-www-form-urlencoded',
                     success : function(response){
@@ -156,13 +183,12 @@ export default class TreeClass{
     }
 
     _get_tree_structure_metadata(){
-        let self = this;
         let temp_map = {};
          var defObj=$.Deferred();
             var promise =
                 $.ajax
                 ({
-                    url: self.tsp.PrimenotesCache.data.url_prefix + "/api/tree-note/get-tree-with-metadata",
+                    url:"http://localhost:5000/api/tree-note/get-tree-with-metadata",
                     type : "GET",
                     contentType:'application/x-www-form-urlencoded',
                     success : function(response){
@@ -302,68 +328,47 @@ export default class TreeClass{
         $('#folder-clone-section').empty().append($(q2)).append($(q3));
         self._events();
         self.tsp.SourceCodeSection.events();
-        self.tsp.Dialog._create_new_project_file_form('folder-clone-section');
+        self.tsp.Dialog.launch_dialog('folder-clone-section');
         self.cloned_folder_parent_in_tree = q1;
     }
 
     action_functions(){
         let self = this;
         self.action_function_map = {
-        create_new_tree_note_submit : function(){
-                let project_note_name = $('#new-project-note-name').val();
+        create_new_tree_note_submit : function(project_note_name){
+                if(project_note_name == undefined)
+                    project_note_name = $('#new-project-note-name').val();
                 if (self.curr_active_folder.indexOf('MY-ROOT') >=0 ){
                         self.curr_active_folder = self.curr_active_folder.replace('MY-ROOT', '');
                 }
-                let path = '';
-//                if(self.create_type == 'folder'){
-//                    path = self.curr_active_folder + '/' + project_note_name;
-//                }
-//                else{
-                    path = self.curr_active_folder + '/' + project_note_name;
-//                }
-//                self.curr_active_folder + '/' + project_note_name;
+                let path = self.curr_active_folder + '/' + project_note_name;
                 let temp_map = {
-                    'folder_id' : '',
                     'folder_path' : path,
                     'file_name' : project_note_name,
                     'file_type' : 'document',
-                    'create_type': self.create_type
+                    'create_type': self.create_type,
                 }
-//                self.action_obj._initiate_loder();
-//                 self.tsp.DomActions._create_file_in_backend_duplicate(temp_map).
                  self.tsp.DomActions._create_file_in_backend_with_metadata(temp_map).then(function(ret_value){
                     self.tsp.TreeClass.metadata_map[path] = ret_value;
+
                     let new_file_html = '';
                     let file_name = '';
-                    //$(self.parent_folder).attr('folder-path').replace('MY-ROOT','')
+
                     let folder_path =  self.curr_active_folder + '/' + project_note_name ;
                     if(self.create_type == 'folder'){
                         new_file_html = self._get_tree_folder_html(folder_path, project_note_name, ret_value['uuid']);
-//                        new_file_html = `<li><div class="folder-section folder-down" folder-name='${project_note_name}' folder-path='${folder_path}'>`;
-//                        new_file_html += `<span class="folder"><span class="open-close-folder"> <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/folder-blue-512.png" style="width: 20px;height: 17px;">  </span>${project_note_name}</span>`;
-//                        new_file_html += `<span class="three-dots">...</span></div>`;
-//                        new_file_html += `<ul class="nested"></ul></li>`;
-//                          new_file_html = `<li>` + ret_html +`</li><ul class="nested"></ul></li>`;
                     }
                     else if(self.create_type == 'file'){
                         file_name = ('${self.curr_active_folder}').toString();
-                        new_file_html  = `<li class="file"><a href="#" class="file-click" filename="${project_note_name}" file-uuid="${ret_value.uuid}" title="${ret_value.name}" file-type="document" content-type="file" file-path="${path}">`;
-                        new_file_html +=    `<div class="tree-note-file-name-div"><span>  * </span>`;
-                        new_file_html +=     `</div>`;
-                        new_file_html +=     `<span class="tree-note-file-name">${project_note_name}`;
-                        new_file_html +=     `</span>`;
-                        new_file_html +=   `</div></a>`;
-                        new_file_html += `<span class="three-dots" content-type="file">...</span>`
-                        new_file_html += `</li>`;
-
+                       new_file_html = self._get_tree_file_html(path, ret_value.name, ret_value.uuid);
                     }
                     let nested_folder_sibling = $(self.parent_folder).siblings().get(0);
                     if(nested_folder_sibling === undefined){
-                        let q1 = $(self.parent).find('.nested');
-                        $(q1).append($(new_file_html));
+                        let q1 = $(self.parent_folder).find('.nested');
+                        $(q1).append($(new_file_html)).addClass('active');
                     }
                     else{
-                        $(nested_folder_sibling).prepend($(new_file_html));
+                        $(nested_folder_sibling).prepend($(new_file_html)).addClass('active');
                     }
 
                     /*initialising events for the created file in tree*/
@@ -371,7 +376,6 @@ export default class TreeClass{
                     if(self.create_type != 'folder'){
                         source_code_section_obj
                             .buildTab(project_note_name, 'document', path);
-//                        source_code_section_obj._initialise_summer_note();
                     }
                     self._events();
                     self.tsp.SourceCodeSection.events();
@@ -380,7 +384,7 @@ export default class TreeClass{
         },
 
         copy_paste_UI_update : function(project_note_name, path, uuid){
-                        let new_file_html  = `<li class="file"><a href="#" class="file-click" filename="${project_note_name}" content-type="file" file-type="document" file-uuid="${uuid}" title="${project_note_name}" file-path="${path}">`;
+                        let new_file_html  = `<li class="tree-file"><a href="#" class="file-click" filename="${project_note_name}" content-type="file" file-type="document" file-uuid="${uuid}" title="${project_note_name}" file-path="${path}">`;
                         new_file_html +=    `<div class="tree-note-file-name-div"><span> * </span>`;
                         new_file_html +=     `</div>`;
                         new_file_html +=     `<span class="tree-note-file-name">${project_note_name}`;
@@ -406,7 +410,7 @@ export default class TreeClass{
                             }
                         }
 
-                        let new_file_html  = `<li class="file"></li>`;
+                        let new_file_html  = `<li class="tree-file"></li>`;
                         temp_clone.attr('file-path', new_path);
                         let new_ele = $(new_file_html).append(temp_clone);
                         let nested_folder_sibling = $(self.parent_folder).siblings().get(0);
@@ -430,22 +434,53 @@ export default class TreeClass{
                                  break;
                             }
                         }
-                        let new_file_html  = `<li class="file"></li>`;
+                        let new_file_html  = `<li class="tree-file"></li>`;
                         temp_clone.attr('file-path', path);
-                        let new_ele = $(new_file_html).append(temp_clone);
+                        let new_ele = $(new_file_html).append(temp_clone).append($(`<span class="three-dots" content-type="file">...</span>`));
                         let nested_folder_sibling = $('.tree-trash-class').siblings().get(0);
                         $(nested_folder_sibling).prepend(new_ele);
+            },
+        starr_it_in_UI : function(path, uuid){
+                        let temp_file_list = $('.file-click');
+                        let len = temp_file_list.length;
+                        let temp_clone = '';
+
+                        for(let i=0;i < len; i++){
+                            if($(temp_file_list[i]).attr('file-uuid') === uuid){
+                                 temp_clone = $(temp_file_list[i]).clone();
+                                 break;
+                            }
+                        }
+                        let new_file_html  = `<li class="tree-file"></li>`;
+                        temp_clone.attr('file-path', path);
+                        let new_ele = $(new_file_html).append(temp_clone).append($(`<span class="three-dots" content-type="file">...</span>`));
+                        let nested_folder_sibling = $('.tree-starr-class').siblings().get(0);
+                        $(nested_folder_sibling).prepend(new_ele);
+            },
+        remove_from_starr_UI : function(path, uuid){
+
+            let temp_file_list = $('.tree-starr-tab-class .file-click');
+            let len = temp_file_list.length;
+            let temp_clone = '';
+
+            for(let i=0;i < len; i++){
+                if($(temp_file_list[i]).attr('file-uuid') === uuid){
+                    temp_clone = $(temp_file_list[i]).clone();
+                    $(temp_file_list[i]).parent().remove();
+                    break;
+                }
             }
+        }
         }
     }
 
     _events(){
         let self = this;
          let context_menu = function(event, curr){
-//             if($('.context').is(":visible")){
-//                    return;
-//                }
-                $('.context').hide();
+             if($('.context').is(":visible")){
+                    $('.context').hide();
+                    return;
+                }
 
                 if(event.target.getAttribute('content-type') === "file"){
                     self.parent_folder = $(curr).siblings().get(0);
@@ -505,15 +540,10 @@ export default class TreeClass{
                       left: event.pageX
                     });
          }
-         $('.three-dots').off("mouseover");
-         $('.three-dots').on("mouseover", function(event) {
+         $('.three-dots').off("click");
+         $('.three-dots').on("click", function(event) {
                context_menu(event, this);
                 });
-
-         $('.context').off('mouseleave');
-         $('.context').on('mouseleave', function(){
-               $('.context').hide();
-         });
 
 
          $('.folder-section').off('contextmenu');
@@ -522,8 +552,8 @@ export default class TreeClass{
             context_menu(e, this);
          });
 
-         $('.file').off('contextmenu');
-         $('.file').contextmenu(function(e){
+         $('.tree-file').off('contextmenu');
+         $('.tree-file').contextmenu(function(e){
             e.preventDefault();
             context_menu(e, this);
          });
@@ -534,6 +564,7 @@ export default class TreeClass{
             $('.folder-section').css('background','none');
             $(this).css('background', self.highlight_background_color);
             self.curr_active_folder = $(this).attr('folder-path');
+            self.parent_folder = $(this);
             self.curr_active_file = undefined;
             if($(e.target).hasClass('three-dots')){ return; }
             let curr = $(this);
@@ -545,16 +576,14 @@ export default class TreeClass{
 //            $(this).toggleClass('folder-down');
         });
 
-        $('.split__bar, #navigation-bar, .sidenav-button-class, #middle-section, file-factory-split-bar').off('mouseover');
-        $('.split__bar, #navigation-bar, .sidenav-button-class, #middle-section, file-factory-split-bar').mouseover(function(){
-//            $('.sidenav-button-class').show();
-            $('.split__bar').css('background','rgb(156 187 214)');
-        });
-        $('.split__bar, #navigation-bar #middle-section').off('mouseleave');
-        $('.split__bar, #navigation-bar #middle-section').mouseleave(function(){
-//            $('.sidenav-button-class').css('display','none');
-            $('.split__bar').css('background','#e5e9ec');
-        });
+//        $('.split__bar, #navigation-bar, .sidenav-button-class, #middle-section, file-factory-split-bar').off('mouseover');
+//        $('.split__bar, #navigation-bar, .sidenav-button-class, #middle-section, file-factory-split-bar').mouseover(function(){
+//            $('.split__bar').css('background','rgb(156 187 214)');
+//        });
+//        $('.split__bar, #navigation-bar #middle-section').off('mouseleave');
+//        $('.split__bar, #navigation-bar #middle-section').mouseleave(function(){
+//            $('.split__bar').css('background','#e5e9ec');
+//        });
 
     }
 
@@ -569,6 +598,13 @@ export default class TreeClass{
                 'new_name' : new_name
             }
             self.tsp.DomActions._rename_tree_note_files_with_metadata(send_data).then(function(response){
+
+                /*Updating Tabs section after cut paste*/
+                let target_tab = $(`#tab-container > .tab [file-path='${old_path}']`)[0];
+                $(target_tab).attr('file-path', new_path).text(new_name);
+
+                /*Update the Tree list if we do the file raname from within the Starred tab*/
+
                 return def.resolve(response);
             });
             return def.promise();
@@ -595,20 +631,23 @@ export default class TreeClass{
             let new_path = path_arr.join('/');
             new_path = new_path + new_name;
 
-            let html ='';
-            if(self.curr_active_folder !== undefined){
-                html = self._get_tree_folder_html(new_path, new_name, uuid);
-            }
-            else{
-                html = self._get_tree_file_html(new_path, new_name, uuid);
-            }
+
 			if(old_name !== new_name){
                 self.__internal_rename(uuid, old_path, new_path, new_name).then(function(response){
+                    let html = self._get_tree_file_html(new_path, new_name, uuid);
+
                     delete self.metadata_map[old_path];
                     self.metadata_map[new_path] = response;
+
                     let temp = $(qq).parent().parent();
                     temp.append($(html));
                     $(qq).parent().remove();
+
+                    let old_files = $(`.file-click[file-path='${old_path}']`)
+
+                    temp = $(old_files[0]).parent().parent();
+                    temp.append($(html));
+                    $(old_files[0]).parent().remove();
 
 			        self.tsp.SourceCodeSection.events();
 			        self._events();
@@ -622,7 +661,11 @@ export default class TreeClass{
 			}
         });
     }
-
+    starr_it(file_or_folder_path){
+        let self = this;
+        self.metadata_map[file_or_folder_path].starred = "True";
+        self.tsp.DomActions._starr_tree_note_file_or_folder(self.metadata_map[file_or_folder_path].uuid);
+    }
     _build_rename_field_and_call_backend(){
         let self = this;
         let q1 = self.parent_folder;
@@ -656,11 +699,11 @@ export default class TreeClass{
             });
 
             $('.inner-item').on('click',function(){
-                let option_name = $(this).text().trim();
+                let option_name = $(this).attr('data-option');
                 switch(option_name){
                     case "New File":{
                         self.create_type = 'file';
-                        self.tsp.Dialog._create_new_project_file_form('new-project-file-create-form')
+                        self.tsp.Dialog.launch_dialog('new-project-file-create-form')
                         break;
                     }
                     case "Move To Trash":{
@@ -680,15 +723,18 @@ export default class TreeClass{
 
                         self.tsp.DomActions._delete_project_note_file(uuid).then(function(){
                             self.metadata_map[path]['trash'] = true;
+                            self.metadata_map[path]['starred'] = false;
                             self.action_function_map.move_to_trash_in_UI(path, uuid);
+                            self.action_function_map.remove_from_starr_UI(path, uuid);
                             self._events();
+                            self.tsp.SourceCodeSection.events();
                             self.tsp.DomActions._notification_dialog(delete_type +' Moved To Trash');
                         });
                         break;
                     }
                     case "New Folder":{
                         self.create_type = 'folder';
-                        self.tsp.Dialog._create_new_project_file_form('new-project-file-create-form')
+                        self.tsp.Dialog.launch_dialog('new-project-file-create-form')
                         break;
                     }
                     case "Rename":{
@@ -728,6 +774,7 @@ export default class TreeClass{
                                 self.tsp.TreeClass.metadata_map[response.path] = response;
                                 self.action_function_map.copy_paste_UI_update(response.name, response.path, response.uuid);
                                 self._events();
+                                self.tsp.SourceCodeSection.events();
                                 self.file_list.pop({title:response.name, description: self.curr_copy_file});
                                 self.file_list.push({
                                           title: response.name,
@@ -757,7 +804,9 @@ export default class TreeClass{
                                 self.tsp.TreeClass.metadata_map[response.path] = response;
 
                                 self.action_function_map.cut_paste_UI_update(response.name, response.path, self.curr_copy_file, response.uuid);
+                                self.action_function_map.remove_from_starr_UI(self.curr_copy_file, response.uuid);
                                 self._events();
+                                self.tsp.SourceCodeSection.events();
                                 self.file_list.pop({title:response.name, description: self.curr_copy_file});
                                 self.file_list.push({
                                           title: response.name,
@@ -781,11 +830,27 @@ export default class TreeClass{
                     case "Details":{
                          if(self.curr_active_folder !== undefined){
                             self.tsp.DetailsPanel.launch_details_data(self.curr_active_folder);
+                            self.tsp.DetailsPanel.open_details();
                         }
                         else{
                             self.tsp.DetailsPanel.launch_details_data(self.curr_active_file);
+                            self.tsp.DetailsPanel.open_details();
                         }
                         break;
+                    }
+                    case "Starred":{
+                        let path = '';
+                        if(self.curr_active_folder !== undefined){
+                            path = self.curr_active_folder;
+                        }
+                        else{
+                            path = self.curr_active_file;
+                        }
+                        self.starr_it(path);
+                        self.action_function_map.starr_it_in_UI(path, self.metadata_map[path].uuid);
+                        self._events();
+                        self.tsp.SourceCodeSection.events();
+                        self.tsp.DomActions._notification_dialog('File Starred Successfully');
                     }
                 }
             });
@@ -826,7 +891,10 @@ export default class TreeClass{
 
         this.action_functions();
         this.metadata_map = {};
+        this.untitled_map = {};
         this.trash_list = [];
+        this.starred_list = [];
+
         this.highlight_background_color = '#cce2d6';
         this.cloned_folder_parent_in_tree = null;
         $('.tabular.menu .item').tab();
@@ -843,10 +911,12 @@ export default class TreeClass{
         ];
         this._get_tree_structure_metadata().then(function(res){
             self.metadata_map = res[1];
+            self.untitled_map = res[2];
             let tree_html = self._get_html(res[0], `../frontend_files/web-app/all_general_files/separate_project/MY-ROOT`);
             document.getElementById('myUL').innerHTML = tree_html;
             self._build_tree_and_close_sidenav();
             self._build_trash_section();
+            self._build_starred_section();
             self._context_menu_for_project_tree();
             self._events();
             return def.resolve(tsp, to_return_values);

@@ -5,7 +5,7 @@ export default class PrimenotesCache {
     cache_data(){
         let self = this;
         self.data ={
-            url_prefix : "https://primenotes.azurewebsites.net/" //"http://localhost:5000"
+            url_prefix :  "http://localhost:5000" //"https://primenotes.azurewebsites.net/"
          }
     }
     init(tsp, to_return_values){
