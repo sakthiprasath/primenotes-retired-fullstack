@@ -109,3 +109,13 @@ def move_to_tree_trash(type_uuid):
         return jsonify({"Success": "File moved to Trash"}), 200
     except Exception as e:
         return print(e)
+
+@tree_note_routes.route('starr-it/<type_uuid>', methods=['PUT', 'POSt'])
+def starr_it(type_uuid):
+    try:
+        obj = TreeNote()
+        ret_data = obj.starr_it(type_uuid)
+
+        return jsonify({"Success": "File Starred"}), 200
+    except Exception as e:
+        return print(e)

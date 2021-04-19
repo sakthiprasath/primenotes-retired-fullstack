@@ -8,7 +8,7 @@ export default class Dialog{
             modal_header : $('#modal-header')
         }
     }
-    _create_new_project_file_form(form_id){
+    launch_dialog(form_id){
          let self = this;
          self.current_dialog = form_id;
          self.cache.modal.css("display", "block");

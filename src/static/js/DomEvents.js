@@ -18,12 +18,7 @@ export default class DomEvents{
             $('#stream-youtube-video').click();
             $('.top-header-drag-bar').click();
             $('.top-header-drag-bar').off('click');
-
-            let url = self.tsp.PrimenotesCache.data.url_prefix + '/api/individual-component-fetch/summer_note'
-            $('#summer-note-iframe-id').attr('src', url);
         },1500);
-
-
         /*password validate for drowssap
             $('#password-validate-dialog').dialog({
                 autoOpen: false,
@@ -88,7 +83,7 @@ export default class DomEvents{
           let q2 =  parseInt(`${e.clientX}px`);
           if (!self.mouse_is_down || q2 >= (screenWidth/2) ) return;
           left_part.css('width', q2 - 53);
-          right_part.css('width',q1 - header_width);
+          right_part.css('width',q1 - header_width + 50); // +50 is for top-header
           right_part.css('left',q2 - header_width);
           bar.css('left',q2 - header_width - split_bar_width);
         })
@@ -161,6 +156,12 @@ export default class DomEvents{
                         self.tsp.loadComponentsContainer._delete_file_in_the_backend();
                     }
                     else if (e.keyCode === 27) {
+                        $('#modal-id').hide();
+                    }
+                    break;
+                }
+                case 2: {
+                    if (e.keyCode === 27) {
                         $('#modal-id').hide();
                     }
                     break;

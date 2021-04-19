@@ -4,14 +4,16 @@ import DomActions from './DomActions.js';
 import DomEvents from './DomEvents.js';
 import loadComponentsContainer from './ComponentsContainer.js';
 import SourceCodeSection from './DocumentSection.js';
-import TreeClass from './TreeView.js';
+import TreeClass from './TreeView/TreeView.js';
+import CreateEditIcons from './TreeView/CreateEditIcons.js';
+
 import TreeCRUD from './TreeCRUD.js';
 import Header from './Header.js';
 import DeveloperComponents from './DeveloperComponents.js';
 import SearchBox from './SearchBox.js';
 import DetailsPanel from './DetailsPanel/DetailsPanel.js';
 //import IndexedDb from './lib/IndexedDb.js';
-import PrimenotesCache from './PrimenotesCache.js'
+import PrimenotesCache from './PrimenotesCache.js';
 
 class Tsp{
 	constructor(){}
@@ -35,10 +37,12 @@ $(document).ready(function(){
     let class_list = [
         PrimenotesCache,
         Dialog,
+        PrimenotesCache,
         DomActions,
 //        IndexedDb,
         loadComponentsContainer,
         TreeClass,
+        CreateEditIcons,
         TreeCRUD,
         SourceCodeSection,
         Header,

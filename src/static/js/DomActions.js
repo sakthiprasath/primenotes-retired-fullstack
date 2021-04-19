@@ -302,7 +302,7 @@ export default class DomActions{
     }
 
     _delete_project_note_file(uuid){
-        function delete_action(file_type, file_name){
+        function delete_action(uuid){
             var savable_data = '';
             var defObj=$.Deferred();
                 var promise =
@@ -318,6 +318,24 @@ export default class DomActions{
                 return defObj.promise();
         }
         return delete_action(uuid);
+    }
+    _starr_tree_note_file_or_folder(uuid){
+        function starr_action(uuid){
+            var savable_data = '';
+            var defObj=$.Deferred();
+                var promise =
+                    $.ajax
+                    ({
+                        url: 'http://localhost:5000/api/tree-note/starr-it/'+uuid,
+                        type : "PUT",
+                        contentType: 'application/json;charset=UTF-8',
+                        success : function(response){
+                            return defObj.resolve(response);
+                        }
+                    });
+                return defObj.promise();
+        }
+        return starr_action(uuid);
     }
     _get_components_list(){
             let compo_names = [];

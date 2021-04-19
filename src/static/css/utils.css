@@ -83,20 +83,20 @@
 #notification{
     opacity: 0;
     display: block;
-    border: 1px solid red;
+    border: 1px solid #080807;
     transition: opacity 500ms;
-    background: #f1f7f9;
-    color: #0d1115;
+    background: #e9f3ed;
+    color: #474747;
     position: fixed;
     right: 10px;
     z-index: 100;
-    border-radius: 5px;
-    width: max-content;
+    border-radius: 2px;
+    width: 300px;
     height: max-content;
     margin: 5px;
     padding: 10px;
-    padding-right: 40px;
-    top: 85px;
+    bottom: 30px;
+    min-height: 60px;
 }
 
 .display-notification{
