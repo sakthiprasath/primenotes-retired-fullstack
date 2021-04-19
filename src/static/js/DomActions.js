@@ -533,13 +533,17 @@ export default class DomActions{
             $('#notification').toggleClass('display-notification');
         }, 2500);
     }
-
+    set_url_for_tree_note_iframe(){
+        let self = this;
+        let url = self.tsp.PrimenotesCache.data.url_prefix + '/api/individual-component-fetch/summer_note';
+        $('#summer-note-iframe-id').attr('src', url);
+    }
 
     init(tsp, to_return_values){
         tsp.DomActions = this;
         this.tsp = tsp;
-//        this._get_all_videos();
-
+        //        this._get_all_videos();
+        this.set_url_for_tree_note_iframe();
         return $.Deferred().resolve(this.tsp, to_return_values);
     }
 }

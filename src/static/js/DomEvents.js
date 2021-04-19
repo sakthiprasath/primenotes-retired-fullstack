@@ -18,7 +18,10 @@ export default class DomEvents{
             $('#stream-youtube-video').click();
             $('.top-header-drag-bar').click();
             $('.top-header-drag-bar').off('click');
+
+
         },1500);
+
         /*password validate for drowssap
             $('#password-validate-dialog').dialog({
                 autoOpen: false,

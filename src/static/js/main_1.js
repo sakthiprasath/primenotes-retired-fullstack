@@ -37,7 +37,6 @@ $(document).ready(function(){
     let class_list = [
         PrimenotesCache,
         Dialog,
-        PrimenotesCache,
         DomActions,
 //        IndexedDb,
         loadComponentsContainer,
