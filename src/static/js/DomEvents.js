@@ -8,17 +8,27 @@ export default class DomEvents{
 
        _button_clicks(){
 
-//        $('#add-new-file-in-project-notes').click();
 
         /*initial clicks for file*/
-            setTimeout( function(){
+        setTimeout( function(){
+
             $($('.ui.tabular.menu').children().get(0)).click()
             $($('.folder-section')[0]).hide().click();
-            ($('.file-click')[0]).click()
+//            ($('.file-click')[0]).click()
+            self.tsp.DetailsPanel.close_details();
             $('#stream-youtube-video').click();
             $('.top-header-drag-bar').click();
             $('.top-header-drag-bar').off('click');
+
+
+            self.tsp.PrimenotesCache
+            $('#summer-note-iframe-id').attr('src','')
+
         },1500);
+
+
+
+
         /*password validate for drowssap
             $('#password-validate-dialog').dialog({
                 autoOpen: false,
@@ -26,7 +36,7 @@ export default class DomEvents{
                 height:'700'
             });*/
         /*close File container*/
-//        $('#close-component-results-container').click();
+        //$('#close-component-results-container').click();
 
     }
     static _get_action_object(){
@@ -83,7 +93,7 @@ export default class DomEvents{
           let q2 =  parseInt(`${e.clientX}px`);
           if (!self.mouse_is_down || q2 >= (screenWidth/2) ) return;
           left_part.css('width', q2 - 53);
-          right_part.css('width',q1 - header_width);
+          right_part.css('width',q1 - header_width + 50); // +50 is for top-header
           right_part.css('left',q2 - header_width);
           bar.css('left',q2 - header_width - split_bar_width);
         })
@@ -156,6 +166,12 @@ export default class DomEvents{
                         self.tsp.loadComponentsContainer._delete_file_in_the_backend();
                     }
                     else if (e.keyCode === 27) {
+                        $('#modal-id').hide();
+                    }
+                    break;
+                }
+                case 2: {
+                    if (e.keyCode === 27) {
                         $('#modal-id').hide();
                     }
                     break;

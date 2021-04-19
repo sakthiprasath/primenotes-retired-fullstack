@@ -613,61 +613,83 @@
 
     <div class="context">
         <div class="context-item both-file-and-folder">
-            <div class="inner-item">
+            <div data-option="Rename" class="inner-item">
+                <i class="edit icon"></i>
                 Rename
             </div>
         </div>
         <div class="context-item only-folder">
-            <div class="inner-item">
+            <div data-option="New File" class="inner-item">
+               <i class="file outline icon" title="New File">
+                    <i class="plus circle icon"></i>
+                </i>
                 New File
             </div>
 
         </div>
         <div class="context-item  only-folder">
-            <div class="inner-item">
+            <div data-option="New Folder" class="inner-item">
+                <i class="folder outline icon" title="New Folder">
+                    <i class="plus circle icon"></i>
+                </i>
                 New Folder
             </div>
         </div>
 
         <div class="context-item  only-file">
-            <div class="inner-item">
+            <div data-option="Cut" class="inner-item">
+                <i class="cut icon"></i>
                 Cut
             </div>
         </div>
         <div class="context-item only-file">
-            <div class="inner-item">
+            <div data-option="Copy" class="inner-item">
+                <i class="copy icon"></i>
                 Copy
             </div>
         </div>
 
         <div class="context-item only-folder">
-            <div class="inner-item">
+            <div data-option="Paste" class="inner-item">
+                <i class="paste icon"></i>
                 Paste
             </div>
         </div>
         <div class="context-item only-trash">
-            <div class="inner-item">
+            <div  data-option="Restore" class="inner-item">
+                <i class="window restore icon"></i>
                 Restore
             </div>
         </div>
         <div class="context-item only-trash">
-            <div class="inner-item">
+            <div data-option="Delete from Trash" class="inner-item">
+                <i class="trash icon">
+                    <i class="minus circle icon"></i>
+                </i>
                 Delete from Trash
             </div>
         </div>
-
+        <div class="context-item only-file">
+            <div data-option="Starred" class="inner-item">
+                <i class="star icon"></i>
+                Starred
+            </div>
+        </div>
         <div class="context-item both-file-and-folder">
-            <div class="inner-item">
+            <div data-option="Move To Trash" class="inner-item">
+                <i class="trash icon"></i>
                 Move To Trash
             </div>
         </div>
         <div class="context-item both-file-and-folder">
-            <div class="inner-item">
+            <div data-option="Details" class="inner-item">
+                <i class="info circle icon"></i>
                 Details
             </div>
         </div>
         <div class="context-item only-trash">
-            <div class="inner-item">
+            <div data-option="Details" class="inner-item">
+                <i class="info circle icon"></i>
                 Details
             </div>
         </div>
@@ -675,8 +697,6 @@
 
 
     <div id="main-section-wrapper">
-
-
         <div class='main-section-wrapper-class' id="main-sections">
 
             <div id='navigation-bar' class="split__left">
@@ -691,77 +711,80 @@
                     <link rel="stylesheet" href="https://semantic-ui.com/dist/semantic.min.css">
                     <script src="https://semantic-ui.com/dist/semantic.min.js"></script>
 
-                    <div class="ui container" style="
-				width: 112% !important;
-				background: #e9f3ed;
-				height: 50px !important;
-				z-index: 1;
-				margin-left: -5px !important;
-			">
+                        <div class="ui container" style="
+                            width: 112% !important;
+                            background: #e9f3ed;
+                            height: 30px !important;
+                            z-index: 1;
+                            margin-left: -5px !important;
+                        ">
 
                         <div class="ui segment">
-                            <div id="searchInput" class="ui category search" style="
-					width: 85%;
-				">
-                                <div class="ui icon input">
-                                    <input class="prompt" type="text" style="background-color: #e9f3ed;"
-                                           placeholder="Search Tree..." autocomplete="off">
-                                    <i class="search icon"></i>
-                                </div>
-                                <div class="results transition hidden">
-                                    <div class="category">
-                                        <div class="name">Category 1</div>
-                                        <div class="results transition hidden"><a class="result">
-                                            <div class="content">
-                                                <div class="title">result Title</div>
-                                                <div class="description">Optional Description</div>
-                                            </div>
-                                        </a><a class="result">
-                                            <div class="content">
-                                                <div class="title">result Title</div>
-                                                <div class="description">Optional Description</div>
-                                            </div>
-                                        </a></div>
+                                <div id="searchInput" class="ui category search" style="
+                        width: 85%;
+                    ">
+                                    <div class="ui icon input">
+                                        <input class="prompt" type="text" style="background-color: #e9f3ed;"
+                                               placeholder="Search Tree..." autocomplete="off">
+                                        <i class="search icon"></i>
                                     </div>
-                                    <div class="category">
-                                        <div class="name">Category 2</div>
-                                        <div class="results transition hidden"><a class="result">
-                                            <div class="content">
-                                                <div class="title">result Title</div>
-                                                <div class="description">Optional Description</div>
-                                            </div>
-                                        </a></div>
+                                    <div class="results transition hidden">
+                                        <div class="category">
+                                            <div class="name">Category 1</div>
+                                            <div class="results transition hidden"><a class="result">
+                                                <div class="content">
+                                                    <div class="title">result Title</div>
+                                                    <div class="description">Optional Description</div>
+                                                </div>
+                                            </a><a class="result">
+                                                <div class="content">
+                                                    <div class="title">result Title</div>
+                                                    <div class="description">Optional Description</div>
+                                                </div>
+                                            </a></div>
+                                        </div>
+                                        <div class="category">
+                                            <div class="name">Category 2</div>
+                                            <div class="results transition hidden"><a class="result">
+                                                <div class="content">
+                                                    <div class="title">result Title</div>
+                                                    <div class="description">Optional Description</div>
+                                                </div>
+                                            </a></div>
+                                        </div>
                                     </div>
                                 </div>
+
+
                             </div>
+                    </div>
 
+                    <div class="action-on-file-folder">
+                    </div>
 
+                    <div id="tree-note-sidenav-tabs" style="position:relative;height:inherit;">
+                        <div class="ui tabular menu">
+                            <div class="item" data-tab="tree">Tree</div>
+                            <div class="item" data-tab="trash">Trash</div>
+                            <div class="item" data-tab="starred">Starred</div>
+                        </div>
+                        <div class="ui tab" data-tab="tree">
+                                <!-- Tab Content !-->
+                                <ul id="myUL">
+                                </ul>
+                            </div>
+                        <div class="ui tab" data-tab="trash">
+                                <!-- Tab Content !-->
+                                <ul class="tree-trash-tab-class" style="margin-left: -15px;">
+                                </ul>
+                        </div>
+
+                        <div class="ui tab" data-tab="starred">
+                                <!-- Tab Content !-->
+                                <ul class="tree-starr-tab-class" style="margin-left: -15px;">
+                                </ul>
                         </div>
                     </div>
-
-
-                    <div class="ui tabular menu">
-                        <div class="item" data-tab="tree">Tree</div>
-                        <div class="item" data-tab="trash">Trash</div>
-                        <div class="item" data-tab="starred">Starred</div>
-                    </div>
-                    <div class="ui tab" data-tab="tree">
-                        <!-- Tab Content !-->
-                        <ul id="myUL">
-                        </ul>
-                    </div>
-                    <div class="ui tab" data-tab="trash">
-                        <!-- Tab Content !-->
-                        <ul class="tree-trash-tab-class" style="margin-left: -30px;">
-                        </ul>
-                    </div>
-
-                    <div class="ui tab" data-tab="starred">
-                        <!-- Tab Content !-->
-                        <ul id="myUL">
-                        </ul>
-                    </div>
-
                 </div>
             </div>
 
@@ -772,18 +795,15 @@
             <div class="split__bar"></div>
             <div id="parent-source-code-main-div">
                 <div class="tree-file-tracker" style="
-				position: relative;
-				margin-left: 24px;
-				padding: 0px;
-				margin-top: 1px;
+				        margin-left: 1%;
+                        margin-top: 1px;
+                        display: flex;
+                        justify-content: space-between;
+                        width: 95%;
+                        border: 1px solid #ffffff;
+                        padding-left: 14px;
 			">
-                    <!--			<span>MY-ROOT </span>-->
-                    <!--			<span> &gt; </span>-->
-                    <!--			<span>My To Do List </span>-->
-                    <!--			<span> &gt;  </span>-->
-                    <!--			<span> Folder 1 </span>-->
-                    <!--			<span> &gt;  </span>-->
-                    <!--			<span> Folder 2  </span>-->
+
                     <div class="ui mini breadcrumb">
                         <a class="section">Home</a>
                         <div class="divider"> /</div>
@@ -791,36 +811,22 @@
                         <div class="divider"> /</div>
                         <div class="active section">T-Shirt</div>
                     </div>
-
-                </div>
-
-
-                <div id='source-code-main-div' class="split__right">
-
-
-                    <div id='source-code-sub-divs'>
-
-                        <div id="create-new-project-note" data-tooltip="Create a Blank Doc" data-position="top center">
-                            <button id="add-new-file-in-project-notes" class="button" data-tooltip="Create a Blank Doc"
-                                    data-position="top center">+
-                            </button>
-
-                        </div>
-                        <div id='tab-container'>
-                        </div>
-
+                    <div class="tree-main-icon-section" style="
+                            position: relative;
+                            right: 0px;
+                            margin-top: 0px;
+                            width: 100px;
+                            display: flex;
+                            flex-wrap: wrap;
+                            justify-content: space-evenly;
+                    ">
 
                         <div class="tab-container-setting ui dropdown" data-tooltip="Tab Settings"
-                             data-position="top center"
+                             data-position="right center"
                              style="
-					         top: 15px;
-                            z-index: 1117;
-                            width: 25px;
-                            height: 32px;
-                            position: fixed;
-                            right: 24.5%;
-                            transition-duration: 2s;
-                            top: 8%;
+                             width: 25px;
+                            top: 15px;
+                            z-index: 4;
 						">
                             <img style="
 						width: 30px;
@@ -829,11 +835,11 @@
 					" width="256" alt="Apple Settings Icon" src="https://img.icons8.com/ios/452/settings.png">
                             <div class="text">File</div>
                             <i class="dropdown icon"></i>
-                            <div class="menu">
-                                <div class="item">
+                            <div class="menu transition left">
+                                <div class="ui left pointing dropdown link item">
                                     <i class="dropdown icon"></i>
                                     Close
-                                    <div class="menu">
+                                    <div class="menu ui left pointing dropdown item">
                                         <div class="item" close-type="close_the_current_tab">Current Tab</div>
                                         <div class="item" close-type="close_tabs_to_the_left">Tabs To the Left</div>
                                         <div class="item" close-type="close_tabs_to_the_right">Tabs To the Right</div>
@@ -843,10 +849,10 @@
                                         <div class="item" close-type="all">All</div>
                                     </div>
                                 </div>
-                                <div class="item">
+                                <div class="ui left pointing dropdown link item">
                                     <i class="dropdown icon"></i>
                                     Open
-                                    <div id="project-notes-opened-list" class="menu">
+                                    <div id="project-notes-opened-list" class="menu left transition visible">
                                     </div>
                                 </div>
                                 <div class="item">
@@ -865,18 +871,66 @@
                                 </div>
 
                                 <div class="item">
-                                    <i class="folder icon"></i>
-                                    Move to folder
+                                    <i class="edit icon"></i>
+                                    Rename
                                 </div>
+
+                                <div class="item">
+                                    <i class="star icon"></i>
+                                    Starr It
+                                </div>
+
+                                <div class="item">
+                                    <i class="folder icon"></i>
+                                    Move to Folder
+                                </div>
+
+                                <div class="item">
+                                    <i class="folder icon"></i>
+                                    Copy to Folder
+                                </div>
+
                                 <div class="item">
                                     <i class="trash icon"></i>
                                     Move to trash
                                 </div>
                                 <div class="divider"></div>
-                                <div class="item">Download As...</div>
+                                <div class="item">
+                                    <i class="download icon"></i>
+                                    Download As...</div>
 
                             </div>
                         </div>
+                        <div class="tree-note-details-icon" style="top: 5px;
+                            position: inherit;
+                            ">
+                            <img src="https://cdn1.iconfinder.com/data/icons/basic-ui-elements-color/700/05_info-512.png"
+                                 alt="Info, information icon - Download on Iconfinder" style="
+                                width: 25px;
+                                height: 25px;
+                                cursor: pointer;
+                            "/>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id='source-code-main-div' class="split__right">
+
+
+                    <div id='source-code-sub-divs'>
+
+                        <div id="create-new-project-note" data-tooltip="Create a Blank Doc" data-position="top center">
+                            <button id="add-new-file-in-project-notes" class="button" data-tooltip="Create a Blank Doc"
+                                    data-position="top center">+
+                            </button>
+
+                        </div>
+                        <div id='tab-container'>
+                        </div>
+
+
+
                     </div>
                     <!--		<div id="tabs-container-button-section">-->
                     <!--				<div id="move-tabs-left" class ='button dropbtn'>-->
@@ -1130,7 +1184,12 @@ $('.CodeMirror').css('height','100%');
     </div>
 
 
-    <div id="loading-backdrop" class="modal">
+    <div id="loading-backdrop" class="modal" style="background:white;">
+        <img src="https://im.ezgif.com/tmp/ezgif-1-0a49778ae164.gif" style="    width: 300px;
+    height: 245px;
+    position: absolute;
+    left: 40%;
+    top: 30%;"/>
     </div>
 
     <!-- dialog content starts here-->
@@ -1183,10 +1242,10 @@ $('.CodeMirror').css('height','100%');
 
 <script type="text/javascript" src="{{ url_for('static', filename='/js/CodeEditor.js') }}"></script>
 <script type="module" src="{{ url_for('static', filename='/js/main_1.js') }}"></script>
-<!--<script type="module" src="{{ url_for('static', filename='/js/DocumentSection.js') }}"></script>-->
-<!--<script type="module" src="{{ url_for('static', filename='/js/TreeView.js') }}"></script>-->
-<!--<script type="module" src="{{ url_for('static', filename='/js/DomEvents.js') }}"></script>-->
-<!--<script type="module" src="{{ url_for('static', filename='/js/DomActions.js') }}"></script>-->
+<script type="module" src="{{ url_for('static', filename='/js/DocumentSection.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='/js/TreeView/TreeView.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='/js/DomEvents.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='/js/DomActions.js') }}"></script>
 
 <script type='text/javascript'>
 

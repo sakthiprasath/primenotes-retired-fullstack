@@ -1,174 +1,43 @@
 @charset "ISO-8859-1";
-/*!
- * dtree.css v1.0.0
- * mefe.net
- * 2014-08-21
 
-body
-{
-    font-family: "Verdana";
-    font-size: 11px;
-}
-
-ul, li
-{
-    margin:0px;
-    padding: 0px;
-    list-style-type: none;
-
-}
-
-a
-{
-    height: 18px;
-    display: inline-block;
-    padding-top: 0px;
-    color:#000;
-    text-decoration: none;
-}
-
-.text
-{
-    height: 18px;
-    display: inline-block;
-    float: left;
-    text-decoration: none;
-}
-
-
-li
-{
-    height: 18px;
-    display: block;
+.action-on-file-folder{
+    display: grid;
+    height: 40px;
+    color: #3498db;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    background: #e9f3ed;
+    min-width: 50px;
+    max-width: 350px;
+    border-radius: 20px;
+    border: 1px solid #e9f3ed;
+    margin-left: 15px;
     width: 300px;
-    line-height: 20px;
+    margin-top: 20px;
 }
-
-li.folder-group
-{
-    height: auto;
-
+.action-on-file-folder > i {
+    position: relative;
+    width: 20px !important;
+    height: 20px !important;
+    background: #e8f7ee;
+    font-size: 18px !important;
+    margin-left: 16px !important;
+    margin-top: 8px !important;
 }
-
-.folder-group ul
-{
-   padding-left: 20px;
-   display: none;
+.action-on-file-folder > img {
+    width: 25px;
+    height: 25px;
 }
-
-.folder
-{
-    background: url('../images/misc.png') 0px -39px no-repeat;
-    padding-left: 20px;
-     height: 18px;
-    display: inline-block;
-    float: left;
-    transition: all 0.5s ease-in-out;
-}
-
-.folder-open
-{
-    background: url('../images/misc.png') -21px -39px no-repeat;
-    padding-left: 20px;
-    height: 18px;
-    display: inline-block;
-    float: left;
-    transition: all 0.5s ease-in-out;
-}
-
-.main
-{
-    width: 18px;
-    height: 18px;
-    display: inline-block;
-    float: left;
-}
-
-.folder-group
-{
-    padding: 6px;
-    margin-top: 8px;
-}
-
-.folder-group.last
-{
-   background: none;
-}
-.open-close-folder{
+/*Create Editor Icons*/
+.plus.circle.icon, .minus.circle.icon{
     position: absolute;
-    left: 15px;
-    font-size: 22px;
-    font-family: cursive;
-    margin-left: -1px;
-    margin-top: -3px;
-    cursor: pointer;
-}
-.plus
-{
-    padding-left: 20px;
-    display: inline-block;
-    height: 18px;
-    float: left;
+    margin-left: -7px;
+    margin-top: 9px;
+    font-size: 12px;
 }
 
-.last .plus
-{
-    background: url('../images/misc.png') 0px -82px no-repeat;
-    padding-left: 20px;
-    display: inline-block;
-    height: 18px;
-    float: left;
+i.icon, i.icons {
+    color: #0075ff;
 }
-
-.folder-group.last .minus
-{
-    background: url('../images/misc.png') -18px -82px no-repeat;
-    padding-left: 20px;
-    display: inline-block;
-    height: 18px;
-    float: left;
-}
-
-.minus
-{
-    background: url('../images/misc.png') -18px -59px no-repeat;
-    padding-left: 20px;
-    display: inline-block;
-    height: 18px;
-    float: left;
-}
-
-.page
-{
-    background: url('../images/misc.png') no-repeat;
-    width: 18px;
-    height: 18px;
-    display: inline-block;
-    float: left;
-}
-
-.join
-{
-    background: url('../images/misc.png') 0 -20px no-repeat;
-    width: 18px;
-    height: 18px;
-    display: inline-block;
-    float: left;
-}
-
-.join-last .join
-{
-    background: url('../images/misc.png') -18px -20px no-repeat;
-    width: 18px;
-    height: 18px;
-    display: inline-block;
-    float: left;
-}
- */
-
-
-
-
 
 /*custome tree css*/
 
@@ -181,7 +50,7 @@ ul, #myUL {
     padding: 0;
     overflow: scroll;
     height: 86%;
-    width: 100%;
+    width: max-content;
     left: -10px;
     position: relative;
 }
@@ -191,7 +60,7 @@ ul, #myUL {
     width: 700px;
     margin-left: -10px;
 }
-.folder {
+#myUL .folder {
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -203,12 +72,12 @@ ul, #myUL {
     color: #362e77;
 }
 
-.folder::before {
+/*.folder::before {
   color: black;
   display: inline-block;
   margin-right: 6px;
   margin-top:10px;
-}
+}*/
 
 .three-dots{
     font-size: 24px;
@@ -217,13 +86,13 @@ ul, #myUL {
     cursor: pointer;
     right: 0px;
     display: none;
-    margin-left: 35px;
+    margin-left: 6px;
 }
 .three-dots:hover{
 	font-size: 26px;
     transition-duration:0.5s;
 }
-.file > .three-dots {
+.tree-file> .three-dots {
     margin-top: -10px;
 }
 .folder-section:hover  .three-dots{
@@ -234,7 +103,7 @@ ul, #myUL {
     color: #362e77;
 }
 
-.file:hover  .three-dots{
+.tree-file:hover  .three-dots{
 	display: block;
 }
 .folder-down::before {
@@ -251,16 +120,16 @@ ul, #myUL {
     top:1px;
     cursor: pointer;
 }
-.file{
+.tree-file{
     height: max-content;
     width: 80px;
     right: 11px;
     display: grid;
-    grid-template-columns: 0fr 0.5fr;
+    grid-template-columns: 2fr 0.5fr;
     width: max-content;
     padding-left: 5px;
 }
-li.file:hover {
+li.tree-file:hover {
     background: #d9ece2;
 }
 .nested {
@@ -270,10 +139,10 @@ li.file:hover {
     margin-top: -6px !important;
 }
 .nested > li {
-    width: 100%;
+    width: max-content;
     cursor: pointer;
     margin-top: 5px;
-    min-width: 210px;
+    min-width: max-content;
     max-width: 100%;
 }
 .active {
@@ -281,10 +150,10 @@ li.file:hover {
 }
 
 .project-file-active{
-           border-left: 3px solid #e9f3ed;
+    border-left: 3px solid #e9f3ed;
     padding-left: 30px;
     border-right: 0px solid #bcd2c5;
-    padding-right: 30px;
+    padding-right: 0px;
     border-top: 0.01px solid #e9f3ed;
     border-bottom: 0.01px solid #e9f3ed;
     margin-left: 1px;

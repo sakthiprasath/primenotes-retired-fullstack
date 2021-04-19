@@ -1,7 +1,7 @@
 import json
 import uuid
 from datetime import datetime
-from sql_modules.utils.utils import _remove_json_extension, _add_json_extension
+from src.sql_modules.utils.utils import _remove_json_extension, _add_json_extension
 data = {
     "folder-uuid-14cb-4ec1-9fdc-0783951a365d": {
         "date_created": "",
@@ -107,7 +107,8 @@ class TreeNote:
             "file_type": "code",
             "path": "f1/f6/f9",
             "language": "python",
-            "folder_type": "folder"
+            "folder_type": "folder",
+
         }
         return {
                 "date_created": now,
@@ -115,6 +116,7 @@ class TreeNote:
                 "path": parent_path,
                 "name": name,
                 "folder_type": "folder",
+                "starred": False
         }
         # "path": self.tree_note_root_path + '/' + 'actual_files' + '/
 
@@ -127,6 +129,7 @@ class TreeNote:
             "name": name,
             "type": type,
             "folder_type": "file",
+            "starred": False
         }
 
     def get_metadata(self):
@@ -161,7 +164,14 @@ class TreeNote:
     def move_to_tree_trash(self, type_uuid):
         metadata = self.get_metadata()
         metadata[type_uuid]['trash'] = True
+        metadata[type_uuid]['starred'] = False
         self.write_metadata(metadata)
+
+    def starr_it(self, type_uuid):
+        metadata = self.get_metadata()
+        metadata[type_uuid]['starred'] = True
+        self.write_metadata(metadata)
+
 
     def rename(self, folder_uuid, new_name, path):
         metadata = self.get_metadata()
@@ -173,6 +183,7 @@ class TreeNote:
             metadata[folder_uuid]['path'] = path
             f.write(json.dumps(metadata))
 
+        metadata[folder_uuid]['uuid'] = folder_uuid
         return metadata[folder_uuid]
 
     def create_folder(self, name, parent_path):
@@ -322,14 +333,22 @@ class TreeNote:
             tree[formed_folder] = {"files": []}
             return tree[formed_folder]
 
-    def get_path_uuid_dict(self):
-        metadata = self.get_metadata()
+    def get_path_uuid_dict(self, metadata):
         res_dict = {}
+        untitled_dict = {}
         for k, v in metadata.items():
-            res_dict[metadata[k]['path']] = {"uuid":   k}
-            res_dict[metadata[k]['path']].update(metadata[k])
+            if metadata[k].get('untitled'):
+                untitled_dict[metadata[k]['path']] = {"uuid": k}
+                untitled_dict[metadata[k]['path']].update(metadata[k])
+            else:
+                res_dict[metadata[k]['path']] = {"uuid":   k}
+                res_dict[metadata[k]['path']].update(metadata[k])
         print(res_dict)
-        return res_dict
+        return [res_dict, untitled_dict]
+
+    def get_untitled_list(metadata):
+
+        pass
 
     def main(self):
         tree = {}
@@ -340,9 +359,8 @@ class TreeNote:
             folder_arr = path.split('/')
             self.create_key_value(tree, folder_arr, type, len(folder_arr), False)
 
-        path_uuid_dict = self.get_path_uuid_dict()
-        print(tree)
-        return [tree, path_uuid_dict]
+        ret_list = self.get_path_uuid_dict(metadata)
+        return [tree, ret_list[0], ret_list[1]]
 
 # TreeNote().main()
 # get_path_uuid_dict()

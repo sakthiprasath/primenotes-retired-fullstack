@@ -5,8 +5,8 @@ export default class DetailsPanel{
 
     build_details_header_html(data_obj){
         let html  = `<div class="row11">`
-            html +=     `<span class="details-close">${data_obj['label']}</span>`;
             html +=     `<span class="details-name">${data_obj['data']}</span>`;
+            html +=     `<span class="details-close">${data_obj['label']}</span>`;
             html += `</div>`;
 
         return html;
@@ -21,21 +21,20 @@ export default class DetailsPanel{
         return html;
     }
 
-    close_details(curr){
-            $('#destination-container').css('width','100%');
-            $('#pane').css('width','99%');
+    close_details(){
+//            $('#destination-container').css('width','100%');
+//            $('#pane').css('width','99%');
             $('#right-side-panel').css('z-index','0');
     }
-    open_details(curr){
-         $('#destination-container').css('width','calc(100% - 315px)');
-         $('#pane').css('width','78.6%');
+    open_details(){
+//         $('#destination-container').css('width','calc(100% - 315px)');
+//         $('#pane').css('width','78.6%');
          $('#right-side-panel').css('z-index','1');
 
     }
 
     launch_details_data(path){
         let self = this;
-        self.open_details();
         let metadata = self.tsp.TreeClass.metadata_map[path];
 
         let html = self.build_details_header_html({
@@ -73,8 +72,8 @@ export default class DetailsPanel{
     events(){
         let self = this;
         $('.details-close').off('click');
-        $('.details-close').on('click', function(){
-            self.close_details($(this));
+        $('.details-close ').on('click', function(){
+            self.close_details();
         });
     }
     init(tsp, to_return_values){

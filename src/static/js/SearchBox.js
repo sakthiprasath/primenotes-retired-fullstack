@@ -80,7 +80,9 @@ export default class TreeClass{
         $('.tab-container-setting')
           .dropdown({
             on :
-                "hover"
+                "hover",
+            keepOnScreen: true,
+            context: window
           });
         $('.tab-container-setting').on('click', function(){
              self.tsp.DomActions._tabs_drop_down_click();

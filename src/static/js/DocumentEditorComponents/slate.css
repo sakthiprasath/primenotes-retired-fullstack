@@ -1,0 +1,434 @@
+@import url("https://fonts.googleapis.com/css?family=PT+Serif");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  transform: scale(0);
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 3;
+  transition: 0.2s linear;
+}
+
+.container {
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  font-family: "PT Serif";
+  width: 310px;
+}
+.container .settings {
+  display: none;
+  width: 150px;
+  position: absolute;
+  top: 44px;
+  right: 0;
+  background: white;
+  border: 0.4px solid #ccc;
+}
+.container .settings .opacity {
+  width: 100%;
+  position: relative;
+}
+.container .settings .opacity p {
+  text-indent: 26px;
+}
+.container .settings .opacity .opacity-content {
+  display: none;
+  background: #eeeded;
+  border: 1px solid #ccc;
+  position: absolute;
+  left: 148px;
+  width: 150px;
+  top: 0px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+.container .settings .opacity .opacity-content p {
+  width: 100%;
+  text-align: center;
+  padding: 8px;
+}
+.container .settings .opacity .opacity-content p:hover {
+  background: #ccc;
+}
+.container .settings .opacity:hover .opacity-content {
+  display: block;
+}
+.container .settings p {
+  width: 90%;
+  margin: auto;
+  padding: 10px 0px;
+  cursor: pointer;
+}
+.container .settings > p:first-child {
+  border-bottom: 1px solid #ccc;
+}
+.container .settings > P:first-child i,
+.container .settings > p:last-child i,
+.container .settings .color p i {
+  margin: 0px 15px 0px 0px;
+}
+.container .settings .color > p > i:nth-child(2) {
+  margin-left: 35px;
+}
+.container .settings > p:nth-child(4) {
+  text-indent: 26px;
+}
+.container .settings .color {
+  position: relative;
+}
+.container .settings .color .color-choice-container {
+  display: none;
+  grid-template-columns: auto auto auto auto auto auto;
+  padding: 3px;
+  position: absolute;
+  top: 0;
+  left: 148px;
+  background: white;
+  box-shadow: 1px 1px 8px #a5a5a5;
+}
+.container .settings .color .color-choice-container a:nth-child(1) {
+  display: inline-block;
+  background: yellow;
+  height: 50px;
+  width: 50px;
+  border: 1px solid white;
+}
+.container .settings .color .color-choice-container a:nth-child(2) {
+  display: inline-block;
+  background: yellow;
+  height: 50px;
+  width: 50px;
+  border: 1px solid white;
+}
+.container .settings .color .color-choice-container a:nth-child(3) {
+  display: inline-block;
+  background: yellow;
+  height: 50px;
+  width: 50px;
+  border: 1px solid white;
+}
+.container .settings .color .color-choice-container a:nth-child(4) {
+  display: inline-block;
+  background: yellow;
+  height: 50px;
+  width: 50px;
+  border: 1px solid white;
+}
+.container .settings .color .color-choice-container a:nth-child(5) {
+  display: inline-block;
+  background: yellow;
+  height: 50px;
+  width: 50px;
+  border: 1px solid white;
+}
+.container .settings .color .color-choice-container a:nth-child(6) {
+  display: inline-block;
+  background: yellow;
+  height: 50px;
+  width: 50px;
+  border: 1px solid white;
+}
+.container .settings .color .color-choice-container a:nth-child(7) {
+  display: inline-block;
+  background: yellow;
+  height: 50px;
+  width: 50px;
+  border: 1px solid white;
+}
+.container .settings .color .color-choice-container a:nth-child(8) {
+  display: inline-block;
+  background: yellow;
+  height: 50px;
+  width: 50px;
+  border: 1px solid white;
+}
+.container .settings .color .color-choice-container a:nth-child(9) {
+  display: inline-block;
+  background: yellow;
+  height: 50px;
+  width: 50px;
+  border: 1px solid white;
+}
+.container .settings .color .color-choice-container a:nth-child(10) {
+  display: inline-block;
+  background: yellow;
+  height: 50px;
+  width: 50px;
+  border: 1px solid white;
+}
+.container .settings .color .color-choice-container a:nth-child(11) {
+  display: inline-block;
+  background: yellow;
+  height: 50px;
+  width: 50px;
+  border: 1px solid white;
+}
+.container .settings .color .color-choice-container a:nth-child(12) {
+  display: inline-block;
+  background: yellow;
+  height: 50px;
+  width: 50px;
+  border: 1px solid white;
+}
+.container .settings .color .color-choice-container a:nth-child(13) {
+  display: inline-block;
+  background: yellow;
+  height: 50px;
+  width: 50px;
+  border: 1px solid white;
+}
+.container .settings .color .color-choice-container a:nth-child(14) {
+  display: inline-block;
+  background: yellow;
+  height: 50px;
+  width: 50px;
+  border: 1px solid white;
+}
+.container .settings .color .color-choice-container a:nth-child(15) {
+  display: inline-block;
+  background: yellow;
+  height: 50px;
+  width: 50px;
+  border: 1px solid white;
+}
+.container .settings .color .color-choice-container a:nth-child(16) {
+  display: inline-block;
+  background: yellow;
+  height: 50px;
+  width: 50px;
+  border: 1px solid white;
+}
+.container .settings .color .color-choice-container a:nth-child(17) {
+  display: inline-block;
+  background: yellow;
+  height: 50px;
+  width: 50px;
+  border: 1px solid white;
+}
+.container .settings .color .color-choice-container a:nth-child(18) {
+  display: inline-block;
+  background: yellow;
+  height: 50px;
+  width: 50px;
+  border: 1px solid white;
+}
+.container .settings .color .color-choice-container a:nth-child(19) {
+  display: inline-block;
+  background: yellow;
+  height: 50px;
+  width: 50px;
+  border: 1px solid white;
+}
+.container .settings .color .color-choice-container a:nth-child(20) {
+  display: inline-block;
+  background: yellow;
+  height: 50px;
+  width: 50px;
+  border: 1px solid white;
+}
+.container .settings .color .color-choice-container a.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  font-size: 29px;
+}
+.container .settings .color .color-choice-container a:hover {
+  box-shadow: 0px 0px 0px 2px #2e2d2d inset;
+}
+.container .settings .color .color-choice-container a:nth-child(1) {
+  background: #f00707;
+}
+.container .settings .color .color-choice-container a:nth-child(2) {
+  background: #ec8805;
+}
+.container .settings .color .color-choice-container a:nth-child(3) {
+  background: #056615;
+}
+.container .settings .color .color-choice-container a:nth-child(4) {
+  background: #1d1dfd;
+}
+.container .settings .color .color-choice-container a:nth-child(5) {
+  background: #a3115a;
+}
+.container .settings .color .color-choice-container a:nth-child(6) {
+  background: #4d1d99;
+}
+.container .settings .color .color-choice-container a:nth-child(7) {
+  background: #ffe600;
+}
+.container .settings .color .color-choice-container a:nth-child(8) {
+  background: #9022ac;
+}
+.container .settings .color .color-choice-container a:nth-child(9) {
+  background: #129696;
+}
+.container .settings .color .color-choice-container a:nth-child(10) {
+  background: #ced126;
+}
+.container .settings .color .color-choice-container a:nth-child(11) {
+  background: #24b411;
+}
+.container .settings .color .color-choice-container a:nth-child(12) {
+  background: #f5742a;
+}
+.container .settings .color .color-choice-container a:nth-child(13) {
+  background: #58ebcb;
+}
+.container .settings .color .color-choice-container a:nth-child(14) {
+  background: #5858f5;
+}
+.container .settings .color .color-choice-container a:nth-child(15) {
+  background: pink;
+}
+.container .settings .color .color-choice-container a:nth-child(16) {
+  background: #5cc461;
+}
+.container .settings .color .color-choice-container a:nth-child(17) {
+  background: #c95ddf;
+}
+.container .settings .color .color-choice-container a:nth-child(18) {
+  background: #f8c058;
+}
+.container .settings .color:hover .color-choice-container {
+  display: grid;
+}
+.container .sticky-header {
+  background: #ced126;
+  font-size: 19px;
+  padding: 10px;
+  width: 100%;
+  cursor: default;
+}
+.container .sticky-header span i {
+  float: right;
+  margin: 0px 10px;
+  cursor: pointer;
+}
+.container .sticky-header #title {
+  text-transform: capitalize;
+}
+.container .sticky-header #lock-icon i {
+  width: 40px;
+  margin: 0;
+  float: none;
+}
+.container .sticky-body textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 19px;
+  background: #ecef44;
+  resize: none;
+  border: none;
+}
+
+.edit-title-box {
+  position: absolute;
+  top: -700px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #e7e7e7;
+  width: 450px;
+  color: white;
+  z-index: 100;
+}
+.edit-title-box .edit-title-box-header {
+  background: blue;
+  font-size: 19px;
+  padding: 10px;
+}
+.edit-title-box input {
+  display: block;
+  width: 80%;
+  margin: 30px auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+.edit-title-box .button-content {
+  width: 80%;
+  margin: 14px auto;
+  text-align: right;
+}
+.edit-title-box .button-content button {
+  padding: 10px 20px;
+  border: none;
+  border: 1px solid #ccc;
+  margin: 0px 0px 0px 10px;
+  cursor: pointer;
+}
+.edit-title-box .button-content button:hover {
+  background: #a3a3a3;
+}
+
+.edit-title-box.show {
+  animation: editTitle 0.6s linear forwards;
+}
+
+@keyframes editTitle {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    top: 65%;
+  }
+  70% {
+    top: 65%;
+  }
+  100% {
+    top: 50%;
+  }
+}
+.delete-box {
+  position: absolute;
+  top: -700px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #e7e7e7;
+  width: 450px;
+  color: white;
+  z-index: 100;
+  font-size: 19px;
+  color: #000;
+}
+.delete-box .delete-box-header {
+  padding: 10px;
+  background: #f80808;
+  font-weight: 900;
+  color: white;
+}
+.delete-box .delete-box-header i {
+  margin: 0 10px 0 0;
+}
+.delete-box .delete-box-body {
+  padding: 20px;
+}
+.delete-box .delete-box-body p {
+  margin: 10px 0 20px;
+}
+.delete-box .delete-box-body .button-content {
+  text-align: center;
+}
+.delete-box .delete-box-body button {
+  padding: 10px 40px;
+  border: none;
+  border: 1px solid #ccc;
+  margin: 0px 0px 0px 10px;
+  cursor: pointer;
+}
+.delete-box .delete-box-body button:hover {
+  background: #a3a3a3;
+}
+
+.delete-box.show {
+  animation: editTitle 0.6s linear forwards;
+}

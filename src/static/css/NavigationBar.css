@@ -39,8 +39,7 @@
 }
 
 .sidenav-button-class{
-       display: block;
-    background-color: #3390de;
+    display: block;
     width: 30px !important;
     height: 30px !important;
     z-index: 6;
@@ -50,7 +49,7 @@
     border-radius: 50%;
     border: 1px solid #e9f3ed;
     color: #2b1616;
-    top: 45px;
+    bottom : 45px;
 }
 .sidenav-button-class:hover{
     cursor: pointer;
@@ -58,15 +57,13 @@
 span.sidenav-button-content-class:hover {
     font-weight: 100 !important;
 }
-.sidenav     {
+.sidenav {
 	position: absolute;
     height: 97%;
     width: inherit;
     overflow: hidden;
     transition: 0s;
     padding-top: 1px;
-    display: inline-block;
-    z-index: 3;
    }
 .sidenav:hover::-webkit-scrollbar-thumb {
     width : 6px;
@@ -458,7 +455,7 @@ left:170px;
       display: none;
     font-size: 1.1em;
     position: fixed;
-    width: 125px;
+    width: 180px;
     height: auto;
     padding: 5px 0px;
     border-radius: 5px;
@@ -476,20 +473,21 @@ left:170px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    &:hover {
+  }
+.context-item:hover {
       background-color: #ddd;
     }
-    .inner-item {
+.inner-item {
       margin: 0px 10px;
-      i {
-        margin: 0 5px 0 0;
-        font-weight: bold;
-      }
-    }
-  }
-
+}
+.inner-item i{
+    margin: 0 5px 0 0;
+    font-weight: bold;
+}
 .inner-item{
-    padding-left: 5px;
+   padding-left: 5px;
+   display: grid;
+   grid-template-columns: 2fr 5fr;
 }
 .inner-item:hover{
     background: #f1dbdb;
@@ -542,7 +540,7 @@ body ::-webkit-scrollbar {
     background: #e9f3ed !important;
 }
 .ui.tabular.menu > .item{
-    padding: .92857143em 0.828571em !important;
+    padding: .92857143em 1.828571em !important;
 }
 .ui.tabular.menu .active.item{
     background: #e9f3ed !important

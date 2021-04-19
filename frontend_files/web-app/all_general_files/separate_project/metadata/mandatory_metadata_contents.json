@@ -1,14 +1,21 @@
 {
-  "delete-folder-uuid-14cb-4ec1-9fdc-0783951a365d": {
-    "date_created": "",
-    "last_updated": "",
-    "type": "code",
-    "path": "Trash",
-    "name": "Trash",
-    "language": "document",
-    "folder_type": "folder"
-  },
-  "folder-uuid-14cb-4ec1-9fdc-0783951a365d": {
+    "delete-folder-uuid-14cb-4ec1-9fdc-0783951a365d": {
+        "date_created": "",
+        "last_updated": "",
+        "type": "code",
+        "path": "Trash",
+        "name": "Trash",
+        "folder_type": "folder"
+    },
+    "starred-folder-uuid-14cb-4ec1-9fdc-0783951a365d": {
+        "date_created": "",
+        "last_updated": "",
+        "type": "code",
+        "path": "Starred",
+        "name": "Starred",
+        "folder_type": "folder"
+    },
+    "folder-uuid-14cb-4ec1-9fdc-0783951a365d": {
         "date_created": "",
         "last_updated": "",
         "type": "code",
@@ -24,6 +31,17 @@
         "path": "Some Root Folder/sample file",
         "name": "sample file",
         "language": "document",
-        "folder_type": "file"
+        "folder_type": "file",
+        "starred": "false"
+    },
+    "test-untitled-uuid-14cb-4ec1-9fdc-0783951a365d": {
+        "date_created": "2021-04-17 08:50:03.080095",
+        "last_updated": "2021-04-17 08:50:03.080095",
+        "type": "document",
+        "path": "Some Root Folder/untitled 1",
+        "name": "untitled 1",
+        "folder_type": "file",
+        "starred": false,
+        "untitled": true
     }
 }

@@ -38,7 +38,7 @@ export default class Header{
 
                 $('#destination-container').css('top',0);
                 $('#destination-container').css('left',0);
-                $('#destination-container').css('width','calc(100% - 315px)');
+                $('#destination-container').css('width','100%');
             });
             $('#top-header-id').on('click',function(){
 
@@ -140,11 +140,11 @@ export default class Header{
             $('#top-header').width('50px');
             $('#destination-container').css({
                 'left':'50px',
-                'width':'calc(100% - 315px)'
+                'width':'100%'
             });
             $('#pane').css({
                 'left':'20px',
-                'width':'78.6%'
+                'width':'98.6%'
             });
 
             $('.logo-quotes').hide();

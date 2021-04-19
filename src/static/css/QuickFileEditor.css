@@ -18,7 +18,7 @@
 }
 input[type="text"] {
   height: 20pt;
-  width: 50%;
+  width: 150px;
   padding: 10px;
   border: 1px solid black;
   outline: none;
