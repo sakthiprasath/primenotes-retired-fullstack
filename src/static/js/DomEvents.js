@@ -18,7 +18,12 @@ export default class DomEvents{
             $('#stream-youtube-video').click();
             $('.top-header-drag-bar').click();
             $('.top-header-drag-bar').off('click');
+
+            let url = self.tsp.PrimenotesCache.data.url_prefix + '/api/individual-component-fetch/summer_note'
+            $('#summer-note-iframe-id').attr('src', url);
         },1500);
+
+
         /*password validate for drowssap
             $('#password-validate-dialog').dialog({
                 autoOpen: false,

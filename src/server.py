@@ -11,14 +11,12 @@ from src.rest.routes.tree_note_routes import tree_note_routes
 
 # Instantiate loggers
 flask_logger = logging.getLogger('werkzeug')
-# from flaskwebgui import FlaskUI #get the FlaskUI class
 
 app = Flask(__name__)
 
 
 app.config['OPENAPI_VERSION'] = '3.0.2'
 api = Api(app)
-# ui = FlaskUI(app=app, url_suffix='/api/individual-component-fetch/index')
 
 api.register_blueprint(individual_component_fetcher_routes)
 api.register_blueprint(tree_note_routes)
@@ -88,4 +86,3 @@ def handle_error(e):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',   port='5000')
-    # ui.run()
