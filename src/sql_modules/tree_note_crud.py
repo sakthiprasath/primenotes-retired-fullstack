@@ -1,7 +1,8 @@
 import json
 import uuid
 from datetime import datetime
-from sql_modules.utils.utils import _remove_json_extension, _add_json_extension
+from src.sql_modules.utils.utils import _remove_json_extension, _add_json_extension
+from src.utils import primenotes_data
 data = {
     "folder-uuid-14cb-4ec1-9fdc-0783951a365d": {
         "date_created": "",
@@ -95,7 +96,7 @@ data = {
 }
 class TreeNote:
     def __init__(self):
-        self.tree_note_root_path = '../frontend_files/web-app/all_general_files/separate_project'
+        self.tree_note_root_path = primenotes_data["tree_note_root_path"]
         self.actual_files = 'actual-files'
         self.metadata_file_path = 'metadata'
 
