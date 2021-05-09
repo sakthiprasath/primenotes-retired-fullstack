@@ -6,7 +6,7 @@ export default class DetailsPanel{
     build_details_header_html(data_obj){
         let html  = `<div class="row11">`
             html +=     `<span class="details-name">${data_obj['data']}</span>`;
-            html +=     `<span class="details-close">${data_obj['label']}</span>`;
+            html +=     `<span class="details-close" style="padding:  10px;"><i class="ui icon close"></i></span>`;
             html += `</div>`;
 
         return html;
@@ -15,7 +15,7 @@ export default class DetailsPanel{
     build_label_data_html(data_obj){
         let html  = `<div class="row1">`
             html +=     `<span class="details-label">${data_obj['label']}</span>`;
-            html +=     `<span>${data_obj['data']}</span>`;
+            html +=     `<span class="details-value">${data_obj['data']}</span>`;
             html += `</div>`;
 
         return html;
@@ -29,7 +29,7 @@ export default class DetailsPanel{
     open_details(){
 //         $('#destination-container').css('width','calc(100% - 315px)');
 //         $('#pane').css('width','78.6%');
-         $('#right-side-panel').css('z-index','1');
+         $('#right-side-panel').css({'z-index':'100', 'display':'block'});
 
     }
 
@@ -38,7 +38,6 @@ export default class DetailsPanel{
         let metadata = self.tsp.TreeClass.metadata_map[path];
 
         let html = self.build_details_header_html({
-            'label' :  'X',
             'data' :  metadata['name']
         });
         html += self.build_label_data_html({

@@ -15,14 +15,11 @@ export default class DomEvents{
             $($('.ui.tabular.menu').children().get(0)).click()
             $($('.folder-section')[0]).hide().click();
 //            ($('.file-click')[0]).click()
+            $($('.file-switch')[1]).dblclick();
             self.tsp.DetailsPanel.close_details();
             $('#stream-youtube-video').click();
             $('.top-header-drag-bar').click();
             $('.top-header-drag-bar').off('click');
-
-
-            self.tsp.PrimenotesCache
-            $('#summer-note-iframe-id').attr('src','')
 
         },1500);
 
@@ -79,7 +76,7 @@ export default class DomEvents{
         self.mouse_is_down = false;
         const split_bar_width = 3;
         bar.on('mousedown', function(e){
-          $('#display-tab-setting-back-drop').show()
+          $('#display-tab-setting-backdrop').show()
           $(this).css({
             'width': split_bar_width
           });
@@ -100,7 +97,7 @@ export default class DomEvents{
 
         document.addEventListener('mouseup', () => {
           self.mouse_is_down = false;
-          $('#display-tab-setting-back-drop').show()
+          $('#display-tab-setting-backdrop').show()
         })
     }
 

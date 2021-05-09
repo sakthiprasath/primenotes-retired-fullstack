@@ -26,8 +26,6 @@ export default class SourceCodeSection{
     }
     get_editor_file(curr, type, flag, file_path){
             let self = this;
-            $('#loading-backdrop').show();
-            console.log('showing load backdrop...')
             $('.file-get-section').parent().removeClass('tab-active');
                 if (flag == true){
                     if(this._highlight_and_fetch($(curr)) == false){
@@ -41,8 +39,8 @@ export default class SourceCodeSection{
                 this.getComponentHtmlFromServer(file_path).then(function(res){
                     let content = JSON.parse(res)["content"]
                     self._fill_test_area(content, type).then(function(){
-                        $('#loading-backdrop').hide();
-                        console.log('hiding load backdrop...')
+                    }).fail(function(){
+                        self.tsp.NotificationBar.launch_notification('Unable To Fetch The file');
                     });
                 });
 
@@ -92,7 +90,7 @@ export default class SourceCodeSection{
     buildTab(file_name, type, file_path){
         let self = this;
         $('#display-tab-setting-message').hide();
-        $(self.summer_note_ele).focus();
+//        $(self.summer_note_ele).focus();
         /*Build a tab on file-tree click*/
 
         /*find the to-build-tab filename is already present in tab container*/
@@ -148,8 +146,17 @@ export default class SourceCodeSection{
 //            $('.note-editor').css('display', 'block');
 
 //            $(self.summer_note_ele).summernote('code', general_Text);
+            document.getElementById('summer-note-iframe-id').contentWindow.document.getElementById('refresh-summer-note-editor').click();
             self.summer_note_ele = document.getElementById('summer-note-iframe-id').contentWindow.document.getElementsByClassName('note-editable')[0];
             self.summer_note_ele.innerHTML = general_Text;
+            $(self.summer_note_ele).off('blur');
+            $(self.summer_note_ele).on('blur',function(){
+                let active_file_path = $($('.tab-active').children()[0]).attr('file-path');
+                self.save_editor_file(active_file_path, 'document', false).then(function(){
+                    self.tsp.NotificationBar.launch_notification(`File saved`);
+                });
+            });
+
             return def_obj.resolve();
         }
 
@@ -299,18 +306,28 @@ export default class SourceCodeSection{
         $(self.summer_note_ele).on('blur',function(){
             let active_file_path = $($('.tab-active').children()[0]).attr('file-path');
             self.save_editor_file(active_file_path, 'document', false).then(function(){
-                self.tsp.DomActions._notification_dialog(`File saved`);
+                self.tsp.NotificationBar.launch_notification(`File saved`);
             });
         });
 
 //        $(document.getElementById('summer-note-iframe-id').contentWindow.document.getElementsByClassName('note-editor')[0]).on('blur', function(){
-//            $('#display-tab-setting-back-drop').show();
+//            $('#display-tab-setting-backdrop').show();
 //        });
 //
-        $('#display-tab-setting-back-drop').click(function(){
-            $(this).hide();
-            $(self.summer_note_ele).focus();
-        });
+
+            $('#display-tab-setting-backdrop').off('dblclick');
+            $('#display-tab-setting-backdrop').dblclick(function(){
+                $(this).hide();
+                $(self.summer_note_ele).focus();
+            });
+
+            $('#edit-tree-note').off('click');
+            $('#edit-tree-note').click(function(){
+                $('#display-tab-setting-backdrop').hide();
+                $(self.summer_note_ele).focus();
+            });
+
+
 
         $('#add-new-file-in-project-notes').off('click');
         $('#add-new-file-in-project-notes').on('click', function(){
@@ -323,7 +340,7 @@ export default class SourceCodeSection{
 
     _removeCurrentTab(curr){
         let self = this;
-        let ele_arr = $('.tab');
+        let ele_arr = $('#tab-container .tab');
                     let prev = '';
                     for(let i = ele_arr.length - 1; i>= 0 ; i--){
                       let temp = ele_arr[i];
@@ -339,7 +356,7 @@ export default class SourceCodeSection{
                                 break;
                             }
                             else{
-                                display("No Files Opened");
+                                self.display("No Files Opened");
                                 return;
                             }
                         }
@@ -356,6 +373,10 @@ export default class SourceCodeSection{
                         prev = temp;
                       }
                     }
+    }
+
+    display(display_message){
+        $('#display-tab-setting-message').empty().append(`<span class="tab-setting-message">${display_message}</span>`).show();
     }
 
     close_tabs_settings(curr){
@@ -414,7 +435,7 @@ export default class SourceCodeSection{
                                 break;
                             }
                             else{
-                                display("No Files Opened");
+                                self.display("No Files Opened");
                                 return;
                             }
                         }
@@ -433,7 +454,7 @@ export default class SourceCodeSection{
                 }
                 case 'all':{
                     $($('#tab-container > .tab')).remove();
-                    display("No file opened");
+                    self.display("No file opened");
                 }
             }
         }
@@ -444,6 +465,7 @@ export default class SourceCodeSection{
             self.close_tabs_settings(this);
         });
     }
+
     build_untitled_tabs(){
         let self = this;
         let untitled_map = self.tsp.TreeClass.untitled_map;

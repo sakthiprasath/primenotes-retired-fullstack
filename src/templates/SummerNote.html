@@ -93,17 +93,35 @@
   <div id="summer-note">
 </div>
 
+ <button id="refresh-summer-note-editor" style="
+    position: fixed;
+    top: 572px;
+    left: 100px;
+    z-index: 111;
+    width: 100px;
+    height: 30px;
+"> refresh </button>
   <script type="text/javascript">
 
-    $(document).ready(function() {
-
-        $('#summer-note').summernote({
+  function refresh_summer_note(){
+      let cloned_ele = $('#summer-note').clone();
+      $('#summer-note').remove();
+      $('.note-editor').remove()
+      $('body').append($(cloned_ele));
+      $('#summer-note').summernote({
                       height: 500,                 // set editor height
                       minHeight: null,             // set minimum height of editor
                       maxHeight: null,             // set maximum height of editor
-                      focus: true                  // set focus to editable area after initializing summernote
-
+                      focus: true,                  // set focus to editable area after initializing summernote
                 });
+  }
+    $(document).ready(function() {
+        refresh_summer_note();
+      });
+
+    $('#refresh-summer-note-editor').on('click', function(){
+      console.log('in summer_note_html');
+      refresh_summer_note();
     });
   </script>
 </body>

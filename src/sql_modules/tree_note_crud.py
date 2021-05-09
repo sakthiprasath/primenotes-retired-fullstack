@@ -1,7 +1,7 @@
 import json
 import uuid
 from datetime import datetime
-from src.sql_modules.utils.utils import _remove_json_extension, _add_json_extension
+from sql_modules.utils.utils import _remove_json_extension, _add_json_extension
 data = {
     "folder-uuid-14cb-4ec1-9fdc-0783951a365d": {
         "date_created": "",
@@ -164,27 +164,34 @@ class TreeNote:
     def move_to_tree_trash(self, type_uuid):
         metadata = self.get_metadata()
         metadata[type_uuid]['trash'] = True
-        metadata[type_uuid]['starred'] = False
+        metadata[type_uuid]['starred'] = "false"
         self.write_metadata(metadata)
+
+    def delete_from_tree_trash(self, type_uuid):
+        pass
+
 
     def starr_it(self, type_uuid):
         metadata = self.get_metadata()
-        metadata[type_uuid]['starred'] = True
+        if metadata[type_uuid]['starred'] == "true":
+            metadata[type_uuid]['starred'] = "false"
+        else:
+            metadata[type_uuid]['starred'] = "true"
         self.write_metadata(metadata)
 
 
-    def rename(self, folder_uuid, new_name, path):
+    def rename_file(self, uuid, new_name, path):
         metadata = self.get_metadata()
 
         file_name_predessor = self.tree_note_root_path + '/' + self.metadata_file_path
         metadata_path = file_name_predessor + '/' + 'metadata.json'
         with open(metadata_path, 'w') as f:
-            metadata[folder_uuid]['name'] = new_name
-            metadata[folder_uuid]['path'] = path
+            metadata[uuid]['name'] = new_name
+            metadata[uuid]['path'] = path
             f.write(json.dumps(metadata))
 
-        metadata[folder_uuid]['uuid'] = folder_uuid
-        return metadata[folder_uuid]
+        metadata[uuid]['uuid'] = uuid
+        return metadata[uuid]
 
     def create_folder(self, name, parent_path):
         file_name_predessor = self.tree_note_root_path + '/' + self.metadata_file_path
@@ -347,8 +354,22 @@ class TreeNote:
         return [res_dict, untitled_dict]
 
     def get_untitled_list(metadata):
-
         pass
+
+    def rename_folder(self, uuid, old_path, new_path, new_name):
+        metadata = self.get_metadata()
+        for k,v in metadata.items():
+            path = metadata[k].get('path')
+            splitted_arr = path.split(old_path, 1)
+            if len(splitted_arr) >= 2:
+                temp_new_path = new_path + splitted_arr[1]
+                metadata[k]['path'] = temp_new_path
+
+        metadata[uuid]['name'] = new_name
+        self.write_metadata(metadata)
+
+        metadata[uuid]['uuid'] = uuid
+        return metadata[uuid]
 
     def main(self):
         tree = {}

@@ -1,14 +1,11 @@
-.all-ele-class-for-background{
-    background: #ffff !important;
-}
+
 .wrapper {
-    margin-top: 6px;
+    margin-top: 5px;
     height: calc(100% - 36px);
     background-color: #fff;
     width: 100%;
     padding-left: 10pt;
     padding-right: 10pt;
-    border-radius: 10px;
 }
 #quick-file-title{
     margin: 0;
@@ -26,36 +23,39 @@ input[type="text"] {
   margin-top: 5pt;
 }
 .options {
-    width: 52px;
-    height: 90%
-    margin-top: 3pt;
-    border:1px solid #bde4f1;
-    padding: 3px;
-    border-top: 1px solid #bde4f1;
-    overflow: scroll;
+    z-index: 100;
+    width: 56%;
+    margin-top: 0px;
+    position: relative;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    padding-top: 6px;
     display: none;
+    height: 40px;
 }
 
 .quick-notes-top-section{
     display: flex;
-    padding: 10px;
-    padding-left: -1px;
-    column-gap: 10px;
+    padding-top: 7px;
+    column-gap: 30px;
+    justify-content: flex-end;
 }
 #quick-notes-setting{
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     top: 3px;
     position: relative;
 }
 
 #quick-file-editor {
-    border: 0;
-    width: calc(100% - 27px);
-    height: 93%;
-    top: 45px;
-    position: absolute;
-    margin-left: 16px;
+       background-color: #ffffff;
+    border: none;
+    top: -1px;
+    position: relative;
+    outline: none;
+    width: 95%;
+    height: inherit;
+    border: 1px solid white;
 }
 .seperator {
     border: 1px solid #d6b8b8;
@@ -64,7 +64,7 @@ input[type="text"] {
     margin-left: 6px;
   }
  .quick-file-editor-button {
-    margin: 0;
+       margin-top: 10;
     padding: 0;
     height: 30pt;
     width: 30pt;
@@ -72,6 +72,11 @@ input[type="text"] {
     border: none;
     cursor: pointer;
     color: #333;
+    display: inline;
+    position: relative;
+    top: -7px;
+    overflow-x: scroll;
+    overflow-y: noscroll;
 }
 .quick-file-editor-button:active {
   color: #333;

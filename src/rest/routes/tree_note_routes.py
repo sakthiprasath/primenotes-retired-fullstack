@@ -1,14 +1,14 @@
 from flask_rest_api import Blueprint
 import flask
 from flask import jsonify, after_this_request
-from src.sql_modules.tree_note_crud import TreeNote
+from sql_modules.tree_note_crud import TreeNote
 from flask import request
 
 tree_note_routes = Blueprint('tree_note', __name__, url_prefix='/api/tree-note')
 
 
-@tree_note_routes.route('rename', methods=['POST'])
-def rename_file_folder():
+@tree_note_routes.route('rename-file', methods=['POST'])
+def rename_file():
     @after_this_request
     def add_header(response):
         response.headers['Access-Control-Allow-Origin'] = '*'
@@ -20,7 +20,28 @@ def rename_file_folder():
         name = input_json['new_name']
         path = input_json['new_path']
 
-        ret_dict = obj.rename(file_uuid, name, path)
+        ret_dict = obj.rename_file(file_uuid, name, path)
+        return jsonify(ret_dict), 200
+    except Exception as e:
+        return jsonify(ret_dict), 200
+        return print(e)
+
+
+@tree_note_routes.route('rename-folder', methods=['POST'])
+def rename_folder():
+    @after_this_request
+    def add_header(response):
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
+    try:
+        input_json = request.get_json(force=True)
+        obj = TreeNote()
+        old_path = input_json['old_path']
+        new_path = input_json['new_path']
+        new_name = input_json['new_name']
+        uuid = input_json['uuid']
+
+        ret_dict = obj.rename_folder(uuid, old_path, new_path, new_name)
         return jsonify(ret_dict), 200
     except Exception as e:
         return print(e)

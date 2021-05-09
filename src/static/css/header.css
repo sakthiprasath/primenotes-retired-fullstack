@@ -192,7 +192,6 @@
     margin-top: 3.5px !important;
     }
 .top-header-highlighter{
-    border-radius: 50%;
-    border: 2.5px solid rgb(126 189 210);
-    background: rgb(255 255 255);
+    border-left: 6.5px solid rgb(180 160 206);
+    background: #dbece2;
 }

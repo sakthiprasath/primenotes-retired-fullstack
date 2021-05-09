@@ -1,14 +1,14 @@
 #right-side-panel{
-    background: #e9f3ed;
-    width: 20%;
+       background: #e9f3ed;
+    width: 245px;
     height: 100%;
     position: absolute;
     top: 0px;
-    right: 0px;
-    z-index: 1;
+    right: 50px;
     border-left: 2px solid #9cbbd6;
-    cursor: col-resize;
-    }
+    cursor: pointer;
+    display: none;
+}
     .details-section {
         display: flex;
         flex-direction: column;
@@ -20,25 +20,15 @@
         width: 100%;
         border: 1px solid #e9f3ed;
         background: #e2e5e8;
-        grid-template-columns: 5fr 1fr;
+        grid-template-columns: 6fr 1.5fr;
     }
 
     .details-close {
-            color: #4f4fb2;
-            font-size: 14px;
-            font-weight: 500;
-            text-align: center;
-            font-style: inherit;
-            background: #e9f3ed;
-            width: 30px;
-            cursor: pointer;
-            padding: 2px;
-            height: 30px;
-            margin: 7px;
+            padding: 10px ​!important;
     }
 
     .details-name {
-        color: blue;
+        color: #2185d0;
         font-size: 15px;
         font-weight: 600;
         text-align: center;
@@ -61,4 +51,8 @@
     .details-label {
         font-size: 15px;
         font-weight: 600;
+        color: #2a1756;
+    }
+    .details-value{
+        color: #43769c
     }

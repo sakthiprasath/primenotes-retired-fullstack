@@ -34,7 +34,7 @@ export default class DomActions{
             var promise =
                 $.ajax
                 ({
-                    url:"http://localhost:5000/api/individual-component-fetch/get-all-videos",
+                    url: self.tsp.PrimenotesCache.data.url_prefix + "/api/individual-component-fetch/get-all-videos",
                     type : "GET",
                     contentType:'application/x-www-form-urlencoded',
                     success : function(response){
@@ -115,7 +115,7 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/individual-component-fetch/save-file/'+file_name,
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/individual-component-fetch/save-file/" + file_name,
                         data: JSON.stringify(savable_data),
                         type : "POST",
                         contentType: 'application/json;charset=UTF-8',
@@ -144,7 +144,7 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/individual-component-fetch/create-file/',
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/individual-component-fetch/create-file/",
                         data: JSON.stringify(data_map),
                         type : "POST",
                         contentType: 'application/json;charset=UTF-8',
@@ -166,7 +166,7 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/tree-note/create-folder',
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/tree-note/create-folder",
                         data: JSON.stringify(data_map),
                         type : "POST",
                         contentType: 'application/json;charset=UTF-8',
@@ -188,7 +188,7 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/tree-note/copy-paste-file',
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/tree-note/copy-paste-file",
                         data: JSON.stringify(data_map),
                         type : "POST",
                         contentType: 'application/json;charset=UTF-8',
@@ -209,7 +209,7 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/tree-note/cut-paste-file',
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/tree-note/cut-paste-file",
                         data: JSON.stringify(data_map),
                         type : "POST",
                         contentType: 'application/json;charset=UTF-8',
@@ -230,7 +230,7 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/individual-component-fetch/rename-file/'+ file_type,
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/individual-component-fetch/rename-file/"+ file_type,
                         type : "POST",
                         data: JSON.stringify(send_data),
                         contentType: 'application/json;charset=UTF-8',
@@ -250,7 +250,7 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/individual-component-fetch/rename-tree-note-file',
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/individual-component-fetch/rename-tree-note-file",
                         type : "POST",
                         data: JSON.stringify(send_data),
                         contentType: 'application/json;charset=UTF-8',
@@ -270,7 +270,27 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/tree-note/rename',
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/tree-note/rename-file",
+                        type : "POST",
+                        data: JSON.stringify(send_data),
+                        contentType: 'application/json;charset=UTF-8',
+                        success : function(response){
+                            return defObj.resolve(response);
+                        }
+                    });
+                return defObj.promise();
+        }
+        return rename_action(send_data);
+    }
+     _rename_tree_note_folder_with_metadata(send_data){
+        let send_file_name = '';
+        function rename_action(send_data){
+            var savable_data = '';
+            var defObj=$.Deferred();
+                var promise =
+                    $.ajax
+                    ({
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/tree-note/rename-folder",
                         type : "POST",
                         data: JSON.stringify(send_data),
                         contentType: 'application/json;charset=UTF-8',
@@ -289,7 +309,7 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/individual-component-fetch/delete-file/file-factory/' + file_key,
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/individual-component-fetch/delete-file/file-factory/" + file_key,
                         type : "DELETE",
                         contentType: 'application/json;charset=UTF-8',
                         success : function(response){
@@ -308,7 +328,7 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/tree-note/move-to-trash-tree-file-or-folder/'+uuid,
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/tree-note/move-to-trash-tree-file-or-folder/" +uuid,
                         type : "DELETE",
                         contentType: 'application/json;charset=UTF-8',
                         success : function(response){
@@ -320,13 +340,14 @@ export default class DomActions{
         return delete_action(uuid);
     }
     _starr_tree_note_file_or_folder(uuid){
+        let self = this;
         function starr_action(uuid){
             var savable_data = '';
             var defObj=$.Deferred();
                 var promise =
                     $.ajax
                     ({
-                        url: 'http://localhost:5000/api/tree-note/starr-it/'+uuid,
+                        url: self.tsp.PrimenotesCache.data.url_prefix + '/api/tree-note/starr-it/'+uuid,
                         type : "PUT",
                         contentType: 'application/json;charset=UTF-8',
                         success : function(response){
@@ -501,7 +522,7 @@ export default class DomActions{
                   $("#right-side-components").addClass('right-side-components-split-screen');
                   $('#right-side-components-container').css({'width':'100%','height':'100%','display':'block'})
 
-                  $('.file-factory-split-bar').css('left' ,'250px' );
+                  $('.file-factory-split-bar').css('left' ,'350px' );
 
                   $('#video-stream-in-file-factory').css({'left':'0','width':'100%','height':'100%','display':'block'});
                   $('#video-stream-in-file-factory').empty();
@@ -533,13 +554,17 @@ export default class DomActions{
             $('#notification').toggleClass('display-notification');
         }, 2500);
     }
-
+    set_url_for_tree_note_iframe(){
+        let self = this;
+        let url = self.tsp.PrimenotesCache.data.url_prefix + '/api/individual-component-fetch/summer_note';
+        $('#summer-note-iframe-id').attr('src', url);
+    }
 
     init(tsp, to_return_values){
         tsp.DomActions = this;
         this.tsp = tsp;
-//        this._get_all_videos();
-
+        //        this._get_all_videos();
+        this.set_url_for_tree_note_iframe();
         return $.Deferred().resolve(this.tsp, to_return_values);
     }
 }

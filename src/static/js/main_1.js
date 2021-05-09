@@ -14,8 +14,7 @@ import SearchBox from './SearchBox.js';
 import DetailsPanel from './DetailsPanel/DetailsPanel.js';
 //import IndexedDb from './lib/IndexedDb.js';
 import PrimenotesCache from './PrimenotesCache.js';
-
-
+import NotificationBar from './NotificationBar.js';
 class Tsp{
 	constructor(){}
 }
@@ -28,7 +27,7 @@ function calculate_progress_bar(counter, factor){
         setTimeout(function(){
             document.getElementById("destination-container").style.display = "block";
             document.getElementById("top-header").style.display = "block";
-            document.getElementById("pre-loader-bar").style.display = "none";
+            document.getElementById("loading-container").style.display = "none";
         },2000);
     }
 }
@@ -36,25 +35,25 @@ function calculate_progress_bar(counter, factor){
 $(document).ready(function(){
     var tsp = new Tsp();
     let class_list = [
-        Dialog,
         PrimenotesCache,
+        Dialog,
         DomActions,
 //        IndexedDb,
+        Header,
         loadComponentsContainer,
         TreeClass,
         CreateEditIcons,
         TreeCRUD,
         SourceCodeSection,
-        Header,
-        DeveloperComponents,
+//        DeveloperComponents,
         SearchBox,
         DetailsPanel,
+        NotificationBar,
         DomEvents
         ];
 	let len = class_list.length;
 
-
-	 $("#pre-loader-bar").progress('increment');
+	$("#pre-loader-bar").progress('increment');
     let factor = 100/len ;
     document.getElementById("pre-loader-bar").style.display = "block";
     document.getElementById("destination-container").style.display = "none";

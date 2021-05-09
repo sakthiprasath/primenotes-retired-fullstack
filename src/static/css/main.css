@@ -159,7 +159,7 @@ color:white;
 }
 #left-and-middle-section{
     position: absolute;
-    width: 250px;
+    width: 350px;
     height: 100%;
     background: #f4f7f9;
     }
@@ -248,14 +248,14 @@ color:white;
 	
 }
 #add-new-file-in-file-factory{
-       border: 1px solid #bdd6e7;
-    font-size: 21px;
+       font-size: 21px;
     font-family: 'Lato';
-    background: #e0eef3;
-    outline: aliceblue;
-    height: 36px;
+    height: 37px;
     font-size: 22px;
-    border-radius: 3px;
+    color: #0075ff;
+    outline: none;
+    border: none;
+    background: #f4f7f9;
 }
 #add-new-file-in-file-factory:hover{
     color: #b1f50d;
@@ -316,7 +316,7 @@ box-shadow:10 2 2 2;
     width: calc(99.5% - 242px);
     top: 0px;
     left: 195px;
-    background-color: #fffff;
+    background-color: #ffffff;
     display: block;
     overflow:auto;
   }
@@ -350,8 +350,8 @@ bottom:0px;
 }
 .right-side-components-split-screen{
     display: block !important;
-    left:250px !important;
-    width: calc(100% - 250px) !important;
+    left: 350px !important;
+    width: calc(100% - 350px) !important;
 }
 .right-side-components-on-split-bar-move{
     display: block !important;
@@ -364,9 +364,10 @@ bottom:0px;
     padding-left: 25px;
     overflow-y: scroll;
     letter-spacing: 0px;
-    font-size: 15px;
+    font-size: 1rem;
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
     text-rendering: optimizeLegibility;
+    color: #3101a5;
     }
 .individual-search{
     width: 84%;
@@ -400,10 +401,6 @@ bottom:0px;
     margin-left: 2px;
     margin-top: 1px;
 }
-.quick-note-img{
-    width: inherit;
-    height: inherit;
-}
 .quick-note-file-icon{
     display: none;
     grid-template-columns: 1fr 1fr;
@@ -415,20 +412,6 @@ bottom:0px;
     height: 10px;
     width: 80px;
     right: 11px;
-}
-.file-factory-options{
-    position: relative;
-    display: flex;
-    justify-content: space-evenly;
-    width: 150px;
-    background: #f1f7f9;
-    padding: 3px;
-    cursor: pointer;
-    visibility: hidden;
-}
-.file-factory-option-icons {
-    width: 25px;
-    height: 25px;
 }
 
 #right-side-components-container {
@@ -474,7 +457,7 @@ bottom:0px;
 }
 .individual-component-iframe{
 	width:100%;
-	height:100%;	
+	height:100%;
 }
 #individual-component-editor-section{
 	height:100%;
@@ -729,17 +712,8 @@ footer {
 	font-family: cursive;
     font-variant-caps: all-petite-caps;
     color: #e8e2e2;
-    font-size: 18px;
-    height: 35px;
-    text-align: center;
-    top: 100px;
-    left: 100px;
-    background-color: #f4f7f9;
-    //: ;
-    image: linear-gradient(270deg, #206e83 5%, #54c39a 80%);
-    padding-right: 87px;
-    font-size: larger;
-    padding-top: 4px;
+    margin-left: 30px;
+    display: block !important;
  }
 #component-factory-title:hover{
 	cursor: -webkit-grab; cursor: grab;
@@ -765,14 +739,8 @@ position:absolute;
 	}
 
 
-
-
-
 .search-container{
     display: block;
-    left: 7px;
-    position: absolute;
-    top: 3px;
 }
 
 
@@ -921,6 +889,10 @@ body {
 
 /* search box css */
 
+#search-container-section{
+    margin-top: 10px;
+    height: 40px;
+}
 
 .search-box {
     padding: 0px 0px 7px 6px;
@@ -930,7 +902,6 @@ body {
 
 .search-box input[type=text], select {
     border: none;
-    border-bottom: 2px solid #f1e7e7;
     background-color: inherit;
     display: block;
     width: 100%;
@@ -966,11 +937,10 @@ body {
 }
 
 .button {
-   position: relative;
+    position: relative;
     border: none;
     padding: 5px;
     width: max-content;
-    height:30px !important;
     text-align: center;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
@@ -982,7 +952,6 @@ body {
     font-size: 14px;
     font-family: cursive;
     font-weight: 100;
-    background: #7ebdd2;
 }
 
 .button:after {
@@ -1006,15 +975,7 @@ body {
 }
 
 #file-name{
-    color: black;
-    font-size: 15px;
-    font-family: cursive;
-    background: #f1f7f9;
-    font-variant-caps: all-petite-caps;
-    cursor: pointer;
-    position: absolute;
-    right: 10px;
-    padding: 4px;
+
 }
 #html-renderer-section{
     position: absolute;
@@ -1246,7 +1207,7 @@ $gray: #C5C6B6;
     cursor: col-resize;
     position: absolute;
     z-index: 5;
-    left:240px;
+    left: 350px;
     top: 1px;
 }
 .file-factory-split-bar:hover{
