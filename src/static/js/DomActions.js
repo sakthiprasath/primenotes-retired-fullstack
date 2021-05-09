@@ -270,7 +270,27 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/tree-note/rename",
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/tree-note/rename-file",
+                        type : "POST",
+                        data: JSON.stringify(send_data),
+                        contentType: 'application/json;charset=UTF-8',
+                        success : function(response){
+                            return defObj.resolve(response);
+                        }
+                    });
+                return defObj.promise();
+        }
+        return rename_action(send_data);
+    }
+     _rename_tree_note_folder_with_metadata(send_data){
+        let send_file_name = '';
+        function rename_action(send_data){
+            var savable_data = '';
+            var defObj=$.Deferred();
+                var promise =
+                    $.ajax
+                    ({
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/tree-note/rename-folder",
                         type : "POST",
                         data: JSON.stringify(send_data),
                         contentType: 'application/json;charset=UTF-8',
@@ -302,7 +322,7 @@ export default class DomActions{
     }
 
     _delete_project_note_file(uuid){
-        function delete_action(file_type, file_name){
+        function delete_action(uuid){
             var savable_data = '';
             var defObj=$.Deferred();
                 var promise =
@@ -318,6 +338,25 @@ export default class DomActions{
                 return defObj.promise();
         }
         return delete_action(uuid);
+    }
+    _starr_tree_note_file_or_folder(uuid){
+        let self = this;
+        function starr_action(uuid){
+            var savable_data = '';
+            var defObj=$.Deferred();
+                var promise =
+                    $.ajax
+                    ({
+                        url: self.tsp.PrimenotesCache.data.url_prefix + '/api/tree-note/starr-it/'+uuid,
+                        type : "PUT",
+                        contentType: 'application/json;charset=UTF-8',
+                        success : function(response){
+                            return defObj.resolve(response);
+                        }
+                    });
+                return defObj.promise();
+        }
+        return starr_action(uuid);
     }
     _get_components_list(){
             let compo_names = [];
@@ -483,7 +522,7 @@ export default class DomActions{
                   $("#right-side-components").addClass('right-side-components-split-screen');
                   $('#right-side-components-container').css({'width':'100%','height':'100%','display':'block'})
 
-                  $('.file-factory-split-bar').css('left' ,'250px' );
+                  $('.file-factory-split-bar').css('left' ,'350px' );
 
                   $('#video-stream-in-file-factory').css({'left':'0','width':'100%','height':'100%','display':'block'});
                   $('#video-stream-in-file-factory').empty();
@@ -515,13 +554,17 @@ export default class DomActions{
             $('#notification').toggleClass('display-notification');
         }, 2500);
     }
-
+    set_url_for_tree_note_iframe(){
+        let self = this;
+        let url = self.tsp.PrimenotesCache.data.url_prefix + '/api/individual-component-fetch/summer_note';
+        $('#summer-note-iframe-id').attr('src', url);
+    }
 
     init(tsp, to_return_values){
         tsp.DomActions = this;
         this.tsp = tsp;
-//        this._get_all_videos();
-
+        //        this._get_all_videos();
+        this.set_url_for_tree_note_iframe();
         return $.Deferred().resolve(this.tsp, to_return_values);
     }
 }
