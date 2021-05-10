@@ -1,3 +1,6 @@
+
+
+
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
@@ -11,6 +14,18 @@ on:
   workflow_dispatch:
 
 jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Delete artifacts
+      if: github.event.action == 'delete_all_artifacts'
+      uses: christian-korneck/delete-run-artifacts-action@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        parent_runid: ${{ github.event.client_payload.parent_runid  }}
+        parent_repo: ${{ github.event.client_payload.parent_repo }}
+  
   build:
     runs-on: ubuntu-latest
 
