@@ -59,4 +59,4 @@ jobs:
         with:
           app-name: 'primenotes'
           slot-name: 'production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_e918bde6ca42492abac7d9648cc396b1 }}
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_3c1a28e2b2644632a0d6f66c8ce767f9 }}
