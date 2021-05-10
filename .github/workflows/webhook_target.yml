@@ -1,0 +1,30 @@
+name: delete calling job's artifacts
+on: repository_dispatch
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Delete artifacts
+      if: github.event.action == 'delete_all_artifacts'
+      uses: christian-korneck/delete-run-artifacts-action@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        parent_runid: ${{ github.event.client_payload.parent_runid  }}
+        parent_repo: ${{ github.event.client_payload.parent_repo }}
+        
+name: your workflow
+on: [push]
+  your_last_job:
+    (... add your stuff here ...)
+  cleanup_job:
+    needs: [your_last_job]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+    - name: call webhook to delete artifacts
+      env:
+        FOR_WEBHOOKS_SECRET: ${{ secrets.FOR_WEBHOOKS_SECRET }}
+      run: |
+        echo "::add-mask::$FOR_WEBHOOKS_SECRET"
+        curl --verbose --fail --show-error --location --request POST "https://api.github.com/repos/$GITHUB_REPOSITORY/dispatches" --header "Authorization: token $FOR_WEBHOOKS_SECRET" --header 'Content-Type: application/json' --header 'Accept: application/vnd.github.everest-preview+json' --data-raw "{ \"event_type\": \"delete_all_artifacts\", \"client_payload\": {\"parent_runid\": \"$GITHUB_RUN_ID\", \"parent_repo\": \"$GITHUB_REPOSITORY\"} }"
