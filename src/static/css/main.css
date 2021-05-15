@@ -4,7 +4,7 @@ color:white;
 }
 
 .resizable {
-  background: #f4f7f9;
+  background: white;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -19,7 +19,6 @@ color:white;
     height: 100%;
     border: 3px;
     box-sizing: border-box;
-    background-color: #f4f7f9;
 }
 
 .resizable .resizers .resizer{
@@ -132,7 +131,7 @@ color:white;
 #destination-container {
     position: fixed;
     top: 49px;
-    left: 0px;
+    left: 55px;
     width: 100%;
     height: 99%;
     display:none;
@@ -153,7 +152,7 @@ color:white;
 
 #components-search-container {
 	position: absolute;
-    height: calc(100% - 36px);
+    height: calc(100% - 0px);
     width: 100%;
     background: #f4f7f9;
 }
@@ -161,7 +160,7 @@ color:white;
     position: absolute;
     width: 350px;
     height: 100%;
-    background: #f4f7f9;
+    background: #ffffff;
     }
 #sidenav-button-id1{
     background: rgb(229, 233, 236);
@@ -209,27 +208,25 @@ color:white;
 #middle-section {
 	position: absolute;
     height: 100%;
-    width: calc(100% - 35px);
-    left: 35px;
-    background: #f4f7f9;
+    width: calc(100%);
+    background: #ffffff;
     color: #26162d;
     font-weight: 600;
 }
 .text-editor-in-middle-section{
     display: block;
-    left: 35px;
-    width: calc(100% - 35px) !important;
+    left: 0px;
 }
 .text-editor-in-right-side-components{
     display: block !important;
     left: 0px !important;
     width: 100% !important;
 }
-#quick-notes-in-file-factory{
+#quick-notes-in-file-factory{D
     position: absolute;
     width: inherit;
     overflow: hidden;
-    height: calc(100% - 0px) !important;
+    height: calc(100%) !important;
 }
 .search-input-box {
 	    position: relative;
@@ -255,7 +252,7 @@ color:white;
     color: #0075ff;
     outline: none;
     border: none;
-    background: #f4f7f9;
+    background: none;
 }
 #add-new-file-in-file-factory:hover{
     color: #b1f50d;
@@ -345,13 +342,13 @@ bottom:0px;
 }
 .right-side-components-full-screen{
     display: block !important;
-    left:35px !important;
-    width: calc(100% - 35px) !important;
+    left:0px !important;
+    width: calc(100% + 45px) !important;
 }
 .right-side-components-split-screen{
     display: block !important;
     left: 350px !important;
-    width: calc(100% - 350px) !important;
+    width: calc(100% - 305px) !important;
 }
 .right-side-components-on-split-bar-move{
     display: block !important;
@@ -367,10 +364,8 @@ bottom:0px;
     font-size: 1rem;
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
     text-rendering: optimizeLegibility;
-    color: #3101a5;
     }
 .individual-search{
-    width: 84%;
     padding: 20px;
     font-family: cursive;
     box-sizing: content-box;
@@ -701,7 +696,6 @@ footer {
 }
 .pane-full-screen{
     top: 0px !important;
-    left: 90px;
     height: 100% !important;
     width: calc(100% - 90px);
 }
@@ -975,7 +969,7 @@ body {
 }
 
 #file-name{
-
+    background-color: #1279c6 !important;
 }
 #html-renderer-section{
     position: absolute;
@@ -993,7 +987,7 @@ body {
     width: 100%;
     height: 101%;
     z-index: 4;
-    left: 1px;
+    left: 50px;
 }
 
 
@@ -1202,13 +1196,14 @@ $gray: #C5C6B6;
     background-color: #3390de;
 }
 .file-factory-split-bar{
-   width: 3px;
+   width: 2px;
     height: 100%;
     cursor: col-resize;
     position: absolute;
     z-index: 5;
     left: 350px;
     top: 1px;
+    background: rgb(233 230 236);
 }
 .file-factory-split-bar:hover{
     background-color: #3390de;
@@ -1228,7 +1223,7 @@ $gray: #C5C6B6;
     min-height: 96% !important;
     min-width: 104% !important;
     margin-top: -1px !important;
-    margin-left: -19px !important;
+    margin-left: -19px !important;quick
 }
 .main-section-wrapper-class{
 }
@@ -1285,4 +1280,29 @@ outline:none !important;
 }
 .ui-widget-header {
  background: #232b5d;
+}
+.youtube-stream{
+    position: absolute;
+    top: 50px;
+}
+
+#right-side-section{
+    position: relative;
+    display: flex;
+    z-index: 3;
+    width: inherit;
+    height: 50px;
+    gap: 5px;
+    justify-content: center;
+    background: #e9f3ed;
+    padding: 10px;
+}
+#youtube-video-link{
+    height: 31px;
+    margin-top: 1px;
+}
+#stream-youtube-video{
+    padding-left: 17px;
+    padding-top: 7px;
+    height: 30px;
 }

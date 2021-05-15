@@ -1,4 +1,3 @@
-
 import Dialog from './Dialog.js';
 import DomActions from './DomActions.js';
 import DomEvents from './DomEvents.js';
@@ -15,59 +14,61 @@ import DetailsPanel from './DetailsPanel/DetailsPanel.js';
 //import IndexedDb from './lib/IndexedDb.js';
 import PrimenotesCache from './PrimenotesCache.js';
 import NotificationBar from './NotificationBar.js';
-class Tsp{
-	constructor(){}
+import StreamYoutube from './StreamYoutube.js';
+
+class Tsp {
+    constructor() {}
 }
 
-function calculate_progress_bar(counter, factor){
+function calculate_progress_bar(counter, factor) {
     $("#pre-loader-bar").progress({
-      percent: Number(factor * counter) // convert the value from the table to a number
+        percent: Number(factor * counter) // convert the value from the table to a number
     });
-    if(Math.floor(factor * counter)  === 100){
-        setTimeout(function(){
+    if (Math.floor(factor * counter) === 100) {
+        setTimeout(function() {
             document.getElementById("destination-container").style.display = "block";
             document.getElementById("top-header").style.display = "block";
             document.getElementById("loading-container").style.display = "none";
-        },2000);
+        }, 2000);
     }
 }
 
-$(document).ready(function(){
+$(document).ready(function() {
     var tsp = new Tsp();
     let class_list = [
         PrimenotesCache,
         Dialog,
         DomActions,
-//        IndexedDb,
+        //        IndexedDb,
         Header,
         loadComponentsContainer,
         TreeClass,
         CreateEditIcons,
         TreeCRUD,
         SourceCodeSection,
-//        DeveloperComponents,
+        //        DeveloperComponents,
         SearchBox,
         DetailsPanel,
         NotificationBar,
+        //        StreamYoutube,
         DomEvents
-        ];
-	let len = class_list.length;
+    ];
+    let len = class_list.length;
 
-	$("#pre-loader-bar").progress('increment');
-    let factor = 100/len ;
-    document.getElementById("pre-loader-bar").style.display = "block";
+    $("#pre-loader-bar").progress('increment');
+    let factor = 100 / len;
+    document.getElementById("loading-container").style.display = "block";
     document.getElementById("destination-container").style.display = "none";
     document.getElementById("top-header").style.display = "none";
 
-    function recursive_dom_builder(index, tsp, ret_Values){
-        if(index >= len)
+    function recursive_dom_builder(index, tsp, ret_Values) {
+        if (index >= len)
             return null;
-        (new class_list[index]()).init(tsp, ret_Values).then(function(tsp, ret_values){
+        (new class_list[index]()).init(tsp, ret_Values).then(function(tsp, ret_values) {
             calculate_progress_bar(index + 1, factor);
-            return recursive_dom_builder(index+1, tsp, ret_values);
+            return recursive_dom_builder(index + 1, tsp, ret_values);
         });
     }
-recursive_dom_builder(0, tsp, '');
+    recursive_dom_builder(0, tsp, '');
 
 });
-

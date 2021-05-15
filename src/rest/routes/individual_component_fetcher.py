@@ -3,7 +3,7 @@ import  flask
 from flask import jsonify , after_this_request
 from flask import request
 import json
-from sql_modules.sql_individual_component_fetch import  SQLIndividualComponent
+from src.sql_modules.sql_individual_component_fetch import  SQLIndividualComponent
 # from src.utils.database_connection_manager import get_test_tenant_details
 
 

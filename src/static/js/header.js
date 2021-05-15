@@ -135,39 +135,39 @@ export default class Header{
     }
     _header_drag_bar_events(){
         var top_header_flag = 0;
-        $('.top-header-drag-bar').on('click',function(){
-           if(top_header_flag === 0 ){
-            $('#top-header').width('50px');
-            $('#destination-container').css({
-                'left':'50px',
-                'width':'100%'
-            });
-            $('#pane').css({
-                'left':'20px',
-                'width':'98.6%'
-            });
-
-            $('.logo-quotes').hide();
-            $('#prime-notes-logo').css('left','0px')
-            $('.open-close').hide();
-            top_header_flag = 1;
-        }
-        else{
-            $('#top-header').width('125px');
-            $('#destination-container').css({
-                'left':'125px',
-                'width':'calc(100% - 125px)'
-            });
-            $('#pane').css({
-                'left':'98px',
-                'width':'calc(100% - 90px)'
-            });
-            $('.logo-quotes').show();
-            $('#prime-notes-logo').css('left','40px')
-            $('.open-close').show();
-            top_header_flag = 0;
-        }
-      });
+//        $('.top-header-drag-bar').on('click',function(){
+//           if(top_header_flag === 0 ){
+//            $('#top-header').width('50px');
+//            $('#destination-container').css({
+//                'left':'50px',
+//                'width':'100%'
+//            });
+//            $('#pane').css({
+//                'left':'20px',
+//                'width':'98.6%'
+//            });
+//
+//            $('.logo-quotes').hide();
+//            $('#prime-notes-logo').css('left','0px')
+//            $('.open-close').hide();
+//            top_header_flag = 1;
+//        }
+//        else{
+//            $('#top-header').width('125px');
+//            $('#destination-container').css({
+//                'left':'125px',
+//                'width':'calc(100% - 125px)'
+//            });
+//            $('#pane').css({
+//                'left':'98px',
+//                'width':'calc(100% - 90px)'
+//            });
+//            $('.logo-quotes').show();
+//            $('#prime-notes-logo').css('left','40px')
+//            $('.open-close').show();
+//            top_header_flag = 0;
+//        }
+//      });
     }
     init(tsp, to_return_Values){
         tsp.Header = this;
@@ -176,7 +176,7 @@ export default class Header{
         this._header_orientation_events();
         this._open_close_main_section_wrapper();
         this._header_drag_bar_events()
-        this._header_left_orientation();
+//        this._header_left_orientation();
         return $.Deferred().resolve(tsp, to_return_Values);
     }
 }

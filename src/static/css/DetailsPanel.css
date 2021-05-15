@@ -1,11 +1,11 @@
 #right-side-panel{
-       background: #e9f3ed;
+    background: #f9f9f9;
     width: 245px;
     height: 100%;
     position: absolute;
     top: 0px;
-    right: 50px;
-    border-left: 2px solid #9cbbd6;
+    right: 0px;
+    border-left: 2px solid #94a9bf;
     cursor: pointer;
     display: none;
 }
@@ -19,7 +19,7 @@
         display: grid;
         width: 100%;
         border: 1px solid #e9f3ed;
-        background: #e2e5e8;
+        background: #ece7e7;
         grid-template-columns: 6fr 1.5fr;
     }
 
@@ -42,7 +42,6 @@
             display: grid;
             grid-template-rows: 0fr 0fr;
             max-height: max-content;
-            border: 1px solid #e9f3ed;
             min-height: 50px;
             row-gap: 7px;
             margin-left: 15px;

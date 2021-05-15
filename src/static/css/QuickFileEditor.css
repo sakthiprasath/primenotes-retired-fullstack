@@ -1,11 +1,12 @@
 
 .wrapper {
-    margin-top: 5px;
+      margin-top: 5px;
     height: calc(100% - 36px);
     background-color: #fff;
     width: 100%;
-    padding-left: 10pt;
-    padding-right: 10pt;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 30px;
 }
 #quick-file-title{
     margin: 0;
@@ -35,10 +36,12 @@ input[type="text"] {
 }
 
 .quick-notes-top-section{
-    display: flex;
+        display: flex;
     padding-top: 7px;
     column-gap: 30px;
-    justify-content: flex-end;
+    width: max-content;
+    position: absolute;
+    right: 25px;
 }
 #quick-notes-setting{
     width: 25px;
@@ -48,14 +51,13 @@ input[type="text"] {
 }
 
 #quick-file-editor {
-       background-color: #ffffff;
     border: none;
-    top: -1px;
     position: relative;
     outline: none;
     width: 95%;
-    height: inherit;
+    height: 90%;
     border: 1px solid white;
+    left: 25px;
 }
 .seperator {
     border: 1px solid #d6b8b8;

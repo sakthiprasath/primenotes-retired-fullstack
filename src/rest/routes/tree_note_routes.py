@@ -1,7 +1,7 @@
 from flask_rest_api import Blueprint
 import flask
 from flask import jsonify, after_this_request
-from sql_modules.tree_note_crud import TreeNote
+from src.sql_modules.tree_note_crud import TreeNote
 from flask import request
 
 tree_note_routes = Blueprint('tree_note', __name__, url_prefix='/api/tree-note')

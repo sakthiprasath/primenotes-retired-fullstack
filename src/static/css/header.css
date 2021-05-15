@@ -181,6 +181,7 @@
     background: rgb(233 243 237);
 }
 .button-with-icon-in-header{
+    padding: 4px;
 }
 
 .top-header-icons{
@@ -192,6 +193,5 @@
     margin-top: 3.5px !important;
     }
 .top-header-highlighter{
-    border-left: 6.5px solid rgb(180 160 206);
-    background: #dbece2;
+    background: #d3e1e6;
 }

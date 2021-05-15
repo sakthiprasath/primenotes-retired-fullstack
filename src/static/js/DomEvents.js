@@ -6,7 +6,7 @@ export default class DomEvents{
     components_list= [];
     active_component_dialog_elements = [];
 
-       _button_clicks(){
+    _button_clicks(){
 
 
         /*initial clicks for file*/
@@ -18,8 +18,8 @@ export default class DomEvents{
             $($('.file-switch')[1]).dblclick();
             self.tsp.DetailsPanel.close_details();
             $('#stream-youtube-video').click();
-            $('.top-header-drag-bar').click();
-            $('.top-header-drag-bar').off('click');
+//            $('.top-header-drag-bar').click();
+//            $('.top-header-drag-bar').off('click');
 
         },1500);
 
@@ -146,7 +146,7 @@ export default class DomEvents{
 //    _delete_file_in_the_backend()
 //    _mark_favourite_in_the_backend()
 
-      keyboard_events(){
+    keyboard_events(){
         let self = this;
         // When the user clicks anywhere outside of the modal, close it
 
@@ -189,6 +189,16 @@ export default class DomEvents{
         });
 
     }
+
+    prompt_before_refresh(){
+          window.addEventListener("beforeunload", function (e) {
+          var confirmationMessage = "\o/";
+
+          (e || window.event).returnValue = confirmationMessage; //Gecko + IE
+          return confirmationMessage;                            //Webkit, Safari, Chrome
+        });
+    }
+
     init(tsp, label_map){
         this.tsp = tsp;
         this.label_map = label_map;
@@ -202,6 +212,7 @@ export default class DomEvents{
 //        this._initialize_local_video_Stream();
         this._button_clicks();
         this.keyboard_events();
+        this.prompt_before_refresh();
         return $.Deferred().resolve(this.tsp, label_map);
     }
 
