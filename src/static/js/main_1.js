@@ -26,9 +26,13 @@ function calculate_progress_bar(counter, factor) {
     });
     if (Math.floor(factor * counter) === 100) {
         setTimeout(function() {
+
+            document.getElementById("loading-container").style.display = "none";
             document.getElementById("destination-container").style.display = "block";
             document.getElementById("top-header").style.display = "block";
-            document.getElementById("loading-container").style.display = "none";
+            document.getElementById("main-section-wrapper").style.display = "block";
+
+
         }, 2000);
     }
 }
@@ -59,6 +63,21 @@ $(document).ready(function() {
     let factor = 100 / len;
     document.getElementById("loading-container").style.display = "block";
     document.getElementById("destination-container").style.display = "none";
+    document.getElementById("top-header").style.display = "none";
+    document.getElementById("main-section-wrapper").style.display = "none";
+    document.getElementById("right-side-panel").style.display = "none";
+    document.getElementById("notification").style.display = "none";
+    document.getElementById("modal-id").style.display = "none";
+    document.getElementsByClassName("context")[0].style.display = "none";
+
+
+
+
+
+
+
+
+
     document.getElementById("top-header").style.display = "none";
 
     function recursive_dom_builder(index, tsp, ret_Values) {

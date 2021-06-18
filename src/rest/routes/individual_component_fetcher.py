@@ -133,6 +133,18 @@ def delete_file(file_key):
     except Exception as e:
         return print(e)
 
+@individual_component_fetcher_routes.route('starr/file-factory/<file_key>/', methods=['PATCH'])
+def quick_file_starr(file_key):
+    @after_this_request
+    def add_header(response):
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
+    try:
+        ret_data = SQLIndividualComponent().quick_file_starr(file_key)
+        return jsonify(ret_data)
+    except Exception as e:
+        return print(e)
+
 @individual_component_fetcher_routes.route('delete-project-file/<category>', methods=['DELETE'])
 def delete_project_file(category):
     @after_this_request

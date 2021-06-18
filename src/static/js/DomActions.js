@@ -320,7 +320,24 @@ export default class DomActions{
         }
         return delete_action(file_key);
     }
-
+    _make_quick_file_favourite(file_key){
+         function fav_action(file_key){
+            var savable_data = '';
+            var defObj=$.Deferred();
+                var promise =
+                    $.ajax
+                    ({
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/individual-component-fetch/starr/file-factory/" + file_key,
+                        type : "PATCH",
+                        contentType: 'application/json;charset=UTF-8',
+                        success : function(response){
+                            return defObj.resolve(response);
+                        }
+                    });
+                return defObj.promise();
+        }
+        return fav_action(file_key);
+    }
     _delete_project_note_file(uuid){
         function delete_action(uuid){
             var savable_data = '';

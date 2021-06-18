@@ -66,22 +66,21 @@
 
 
     <div id="loading-container" style="
-    display: block;
     width: 50%;
     left: 25%;
     height: 40%;
     position: absolute;
     top: 18%;
     display: grid;
-    grid-template-rows: 3fr 2fr;
+    grid-template-rows: 3fr 3fr;
     z-index: 1;
     ">
         <img id="logo-in-progressbar" src="/static/images/logo_with_quotes.PNG" alt="logo" style="
-    margin-left: 35%;
+    margin-left: calc(50% - 81px);
 ">
         <div style="
 		display: grid;
-		grid-template-rows: 1fr 1fr;
+		grid-template-rows: 4fr 10fr;
 		">
 
             <div style="color: #9279f5;" class="label">
@@ -413,8 +412,8 @@
 
                                         <img class="width-height-20px margin-5px quick-file-rename" alt="Rename icon" src="https://img.icons8.com/ios/452/rename.png" lazy="loaded">
                                         <img class="width-height-20px margin-5px quick-file-delete" alt="Delete Bin icon" src="https://image.flaticon.com/icons/png/512/61/61848.png" lazy="loaded">
-                                        <img class="width-height-20px margin-5px" src="https://img.icons8.com/ios/452/star--v1.png" alt="Star icon" loading="lazy">
-                                        <img class="width-height-20px margin-5px" src="https://img.icons8.com/pastel-glyph/344/info--v4.png" alt="Info icon" loading="lazy">
+                                        <img class="width-height-20px margin-5px quick-file-fav" src="https://img.icons8.com/ios/452/star--v1.png" alt="Star icon" loading="lazy">
+                                        <img class="width-height-20px margin-5px quick-file-detail" src="https://img.icons8.com/pastel-glyph/344/info--v4.png" alt="Info icon" loading="lazy">
 
                                     </div>
 
@@ -618,6 +617,16 @@
                         </div>
                         <div class="ui tab" data-tab="tree">
                             <!-- Tab Content !-->
+                            <div id="tree-create-root-folder" style="
+                                background: #4a97cc;
+                                padding-left: 45%;
+                                position: absolute;
+                                bottom: 30px;
+                                width: 100%;
+                                "><span style="
+                                font-size: 20px;
+                                color: white;
+                            "> + </span></div>
                             <ul id="myUL">
                             </ul>
                         </div>

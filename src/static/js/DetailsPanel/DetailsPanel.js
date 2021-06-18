@@ -24,7 +24,7 @@ export default class DetailsPanel{
     close_details(){
 //            $('#destination-container').css('width','100%');
 //            $('#pane').css('width','99%');
-            $('#right-side-panel').css('z-index','0');
+           $('#right-side-panel').css({'z-index':'0', 'display':'none'});
     }
     open_details(){
 //         $('#destination-container').css('width','calc(100% - 315px)');
@@ -58,6 +58,38 @@ export default class DetailsPanel{
         html += self.build_label_data_html({
             'label' :  'Link',
             'data' :  `<a href="#"> app.preimenotes.app/sakthi25/${metadata['uuid']}</a>`
+        });
+
+        html += self.build_label_data_html({
+            'label' :  'Starred',
+            'data' :  `<label class="switch"><input type="checkbox" checked="true"></label>`
+        });
+
+        $('.details-section').empty().html(html);
+        self.events();
+    }
+    launch_quick_file_details_data(file_key){
+        let self = this;
+        let metadata = self.tsp.loadComponentsContainer.label_map[file_key];
+
+        let html = self.build_details_header_html({
+            'data' :  metadata['name']
+        });
+        html += self.build_label_data_html({
+            'label' :  'Date Created',
+            'data' :  metadata['date_created']
+        });
+
+        html += self.build_label_data_html({
+            'label' :  'Last Updated',
+            'data' :  metadata['last_updated']
+        });
+
+
+
+        html += self.build_label_data_html({
+            'label' :  'Link',
+            'data' :  `<a href="#"> app.preimenotes.app/sakthi25/${file_key}</a>`
         });
 
         html += self.build_label_data_html({

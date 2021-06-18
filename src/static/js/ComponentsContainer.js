@@ -238,7 +238,7 @@ export default class loadComponentsContainer {
                 $("#right-side-components").css('left','350px');
                 $('#file-factory-split-bar').css('left','348px');
 //                $('.file-name').off('click');
-                self.fillRightSideComponents(self, $('.file-name').attr('file-key'));
+                self.fillRightSideComponents(self, $($('.individual-search')[0]).attr('id'));
                 self._build_file_factory_options();
                 self._open_settings();
              });
@@ -334,6 +334,9 @@ export default class loadComponentsContainer {
                             temp_map[ret_json[i].uuid_file_name] = {
                                 'name' : ret_json[i].name,
                                 'content' : ret_json[i].content,
+                                'date_created': ret_json[i].date_created,
+                                'last_updated': ret_json[i].last_updated,
+                                'starred': ret_json[i].starred
                             } ;
                         }
                         return defObj.resolve(temp_map);
@@ -438,6 +441,7 @@ export default class loadComponentsContainer {
 
          self.fillRightSideComponents(self, file_key);
 
+
         });
 
 //        $('#close-component-results-container').off('click');
@@ -483,6 +487,8 @@ export default class loadComponentsContainer {
                         });
                     });
         self.initialize_save_action_for_save_button(self);
+        self.starr_in_UI(file_key);
+        self.tsp.DetailsPanel.launch_quick_file_details_data(file_key);
     }
 
     _appendHtmlAndEventListner(mainClass, general_text_data){
@@ -575,7 +581,10 @@ export default class loadComponentsContainer {
                     $('.file-name').attr('file-key', ret_json.uuid_file_name);
                     self.label_map[ret_json.uuid_file_name] = {
                                                                     'name' : ret_json.name,
-                                                                    'content' : ''
+                                                                    'content' : ret_json.content,
+                                                                    'date_created': ret_json.date_created,
+                                                                    'last_updated': ret_json.last_updated,
+                                                                    'starred': ret_json.starred
                                                               };
 //                    document.getElementById('quick-file-editor').contentWindow.document.body.innerHTML = '';
                     $('#quick-file-editor').val();
@@ -718,12 +727,27 @@ export default class loadComponentsContainer {
 
         }
     }
+    starr_in_UI(file_key){
+        if(self.label_map[file_key].starred == "true"){
+                    $('.quick-file-fav').css('background-color', 'red');
+                    self.tsp.NotificationBar.launch_notification('File Starred ');
+                }
+                else{
+                    $('.quick-file-fav').css('background-color', 'white');
+                    self.tsp.NotificationBar.launch_notification('File UnStarred ');
+                }
+    }
     _mark_favourite_in_the_backend(){
-            alert(file_name)
+            let self = this;
+            let file_key = $('.file-name').attr('file-key');
+            self.tsp.DomActions._make_quick_file_favourite(file_key).then(function(res){
+                self.label_map[file_key] = res;
+                self.starr_in_UI(file_key);
+            });
     }
     _build_file_factory_options(){
         let self = this;
-        $('.quick-file-rename').off('click');
+//        $('.quick-file-rename').off('click');
         $('.quick-file-rename').on('click',function(){
             self._build_rename_field_and_call_backend();
         });
@@ -732,11 +756,17 @@ export default class loadComponentsContainer {
             self._delete_file_in_the_backend();
 
         });
-        $('.quick-file-favourite').off('click');
-        $('.quick-file-favourite').on('click',function(){
+        $('.quick-file-fav').off('click');
+        $('.quick-file-fav').on('click',function(){
             self._mark_favourite_in_the_backend();
-
         });
+
+        $('.quick-file-detail').off('click')
+        $('.quick-file-detail').on('click', function(){
+            let file_key = $('.file-name').attr('file-key');
+            self.tsp.DetailsPanel.launch_quick_file_details_data(file_key);
+            self.tsp.DetailsPanel.open_details();
+        })
 
 
 //        $('.individual-search').off('mouseleave');

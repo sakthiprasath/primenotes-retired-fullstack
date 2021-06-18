@@ -4,6 +4,7 @@ import os
 # from pytube import YouTube
 import pathlib
 import uuid
+from datetime import datetime
 from src.utils import primenotes_data
 SQL_CODE_FETCH_QUERIES = {
     "get_all_configs": "select * from tenant_config"
@@ -48,28 +49,39 @@ class SQLIndividualComponent():
                 os.makedirs(res_file_path)
         elif create_type == 'File':
             fp = open(res_file_path, 'w+')
+            now = str(datetime.now())
             fp.write(json.dumps({
                 "name": file_name,
-                "content": "the data goes here"
+                "content": "the data goes here",
+                "date_created": now,
+                "last_updated": now,
+                "starred": "false"
             }))
 
         return {
             "uuid_file_name" : uuid_file_name,
-            "name" : file_name,
-            "folder_path" : folder_path
+            "folder_path" : folder_path,
+            "name": file_name,
+            "content": "the data goes here",
+            "date_created": now,
+            "last_updated": now,
+            "starred": "false"
         }
 
 
     def save_file_factory(self, data):
-        file_key = data['file_key']
-        savable_data = json.dumps({
-            'name' : data['name'],
-            'content' : data['content']
-        })
+        file_path = primenotes_data["root_file_factory"] + self._add_json_extension(data['file_key'])
+        fp = open(file_path, 'r')
+        fp_content = json.loads(fp.read())
+        fp.close()
 
-        fp = open(primenotes_data["root_file_factory"] + self._add_json_extension(file_key), 'w')
+        fp = open(file_path, 'w')
+        fp_content['name'] = data['name']
+        fp_content['content'] = data['content']
+        fp_content['last_updated'] = str(datetime.now())
 
-        fp.write(savable_data)
+        fp.write(json.dumps(fp_content))
+        fp.close()
 
     def result_write(self, file_path, file_data):
 
@@ -105,6 +117,19 @@ class SQLIndividualComponent():
         file_path = primenotes_data["root_file_factory"] + self._add_json_extension(file_key)
 
         os.remove(file_path)
+
+    def quick_file_starr(self, file_key):
+        file_path = primenotes_data["root_file_factory"] + self._add_json_extension(file_key)
+        fp = open(file_path, 'r')
+        fp_content = json.loads(fp.read())
+        fp.close()
+
+        fp = open(file_path, 'w')
+        fp_content['starred'] = str( not (fp_content['starred'] == "true")).lower()
+        fp.write(json.dumps(fp_content))
+        fp.close()
+        return fp_content
+
 
     def delete_project_file(self, category, file_path):
         os.remove(file_path)
@@ -148,7 +173,10 @@ class SQLIndividualComponent():
             file_contents.append({
                 'uuid_file_name': self._remove_json_extension(filename),
                 'name': fp_content['name'],
-                'content': fp_content['content']
+                'content': fp_content['content'],
+                "date_created": fp_content['date_created'],
+                "last_updated": fp_content['last_updated'],
+                "starred":  fp_content['starred']
             })
             # print(file_contents)
             fp.close()
