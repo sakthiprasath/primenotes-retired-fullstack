@@ -1,45 +1,45 @@
 import SourceCodeSection from '../DocumentSection.js';
 
 
-export default class TreeClass{
-    _get_tree_file_html(path, name, uuid){
-                let file_html = `<li class="tree-file">`
-                                    + `<a href="#" class='file-click' content-type="file" file-uuid='${uuid}' filename='${name}' title='${name}'`
-                                    +    `file-type='document' file-path='${path}' >`
-                                    +    `<div class="tree-note-file-name-div">`
-                                    +       `<span> * </span>`
-                                    +    `</div>`
-                                    +   `<span class="tree-note-file-name">${name}`
-                                    +   `</span>`
-                                    + `</a><span class='three-dots' content-type="file">...</span> </li>`;
-                return file_html;
+export default class TreeClass {
+    _get_tree_file_html(path, name, uuid) {
+        let file_html = `<li class="tree-file">` +
+            `<a href="#" class='file-click' content-type="file" file-uuid='${uuid}' filename='${name}' title='${name}'` +
+            `file-type='document' file-path='${path}' >` +
+            `<div class="tree-note-file-name-div">` +
+            `<span> * </span>` +
+            `</div>` +
+            `<span class="tree-note-file-name">${name}` +
+            `</span>` +
+            `</a><span class='three-dots' content-type="file">...</span> </li>`;
+        return file_html;
     }
 
-    _get_tree_folder_html(path, name, uuid){
+    _get_tree_folder_html(path, name, uuid) {
         let html = `<li><div class='folder-section' folder-name='${name}' folder-uuid='${uuid}' folder-path='${path}'>`
-			html +=				`<span class="folder">`
-			html +=				  `<span class='open-close-folder'> <i class="ui icon folder black"></i> </span>${name}`
-			html +=				`</span>`
-			html +=				`<span class='three-dots'>...</span>`
-			html +=			`</div><ul class="nested"></ul></li>`;
+        html += `<span class="folder">`
+        html += `<span class='open-close-folder'> <i class="ui icon folder blue"></i> </span>${name}`
+        html += `</span>`
+        html += `<span class='three-dots'>...</span>`
+        html += `</div><ul class="nested"></ul></li>`;
 
-		return html;
+        return html;
     }
 
-    _build_trash_section(){
+    _build_trash_section() {
         let self = this;
         let path = '';
-        for(let i in self.trash_list){
+        for (let i in self.trash_list) {
             path = self.trash_list[i];
-            let file_html = `<li class='tree-file'>`
-                                    + `<a href="#" class='file-click' content-type="file" file-uuid='${self.metadata_map[path].uuid}' filename='${self.metadata_map[path].name}' title='${self.metadata_map[path].name}'`
-                                    +    `file-type='document' file-path='${path}' >`
-                                    +    `<div class="tree-note-file-name-div">`
-                                    +       `<span> * </span>`
-                                    +    `</div>`
-                                    +   `<span class="tree-note-file-name">${self.metadata_map[path].name}`
-                                    +   `</span>`
-                                    + `</a><span class='three-dots' content-type="file">...</span> </li>`;
+            let file_html = `<li class='tree-file'>` +
+                `<a href="#" class='file-click' content-type="file" file-uuid='${self.metadata_map[path].uuid}' filename='${self.metadata_map[path].name}' title='${self.metadata_map[path].name}'` +
+                `file-type='document' file-path='${path}' >` +
+                `<div class="tree-note-file-name-div">` +
+                `<span> * </span>` +
+                `</div>` +
+                `<span class="tree-note-file-name">${self.metadata_map[path].name}` +
+                `</span>` +
+                `</a><span class='three-dots' content-type="file">...</span> </li>`;
             let nested_section = $('.tree-trash-class').siblings().get(0);
             $(nested_section).append($(file_html));
         }
@@ -48,20 +48,20 @@ export default class TreeClass{
         $(tree_trash_section).remove();
         //append($(nested_section));
     }
-    _build_starred_section(){
+    _build_starred_section() {
         let self = this;
         let path = '';
-        for(let i in self.starred_list){
+        for (let i in self.starred_list) {
             path = self.starred_list[i];
-            let file_html = `<li class='tree-file'>`
-                                    + `<a href="#" class='file-click' content-type="file" file-uuid='${self.metadata_map[path].uuid}' filename='${self.metadata_map[path].name}' title='${self.metadata_map[path].name}'`
-                                    +    `file-type='document' file-path='${path}' >`
-                                    +    `<div class="tree-note-file-name-div">`
-                                    +       `<span> * </span>`
-                                    +    `</div>`
-                                    +   `<span class="tree-note-file-name">${self.metadata_map[path].name}`
-                                    +   `</span>`
-                                    + `</a><span class='three-dots' content-type="file">...</span> </li>`;
+            let file_html = `<li class='tree-file'>` +
+                `<a href="#" class='file-click' content-type="file" file-uuid='${self.metadata_map[path].uuid}' filename='${self.metadata_map[path].name}' title='${self.metadata_map[path].name}'` +
+                `file-type='document' file-path='${path}' >` +
+                `<div class="tree-note-file-name-div">` +
+                `<span> * </span>` +
+                `</div>` +
+                `<span class="tree-note-file-name">${self.metadata_map[path].name}` +
+                `</span>` +
+                `</a><span class='three-dots' content-type="file">...</span> </li>`;
             let nested_section = $('.tree-starr-class').siblings().get(0);
             $(nested_section).append($(file_html));
         }
@@ -69,17 +69,16 @@ export default class TreeClass{
         $('.tree-starr-tab-class').append($(tree_starr_section).clone());
         $(tree_starr_section).remove();
     }
-    _build_files(file_arr){
+    _build_files(file_arr) {
         let file_html = '';
         let self = this;
-        for(let index in file_arr){
-            if(self.untitled_map[file_arr[index]] != undefined)
+        for (let index in file_arr) {
+            if (self.untitled_map[file_arr[index]] != undefined)
                 continue;
-            if(self.metadata_map[file_arr[index]].trash !== undefined){
+            if (self.metadata_map[file_arr[index]].trash !== undefined) {
                 self.trash_list.push(file_arr[index]);
                 continue;
-            }
-            else if (self.metadata_map[file_arr[index]].starred.toString().toLocaleLowerCase() == "true" ){
+            } else if (self.metadata_map[file_arr[index]].starred.toString().toLocaleLowerCase() == "true") {
                 self.starred_list.push(file_arr[index]);
             }
             let temp_arr = file_arr[index].split('\\');
@@ -88,57 +87,55 @@ export default class TreeClass{
             let file_uuid = self.metadata_map[file_arr[index]].uuid;
 
             this.file_list.push({
-                  title: file_name,
-                  description: file_arr[index]
-                });
+                title: file_name,
+                description: file_arr[index]
+            });
 
-            file_html += `<li class='tree-file'>`
-                            + `<a href="#" class='file-click' content-type="file" file-uuid='${file_uuid}' filename='${file_name}' title='${file_name}'`
-                            +    `file-type='document' file-path='${file_arr[index]}' >`
-                            +    `<div class="tree-note-file-name-div">`
-                            +       `<span> * </span>`
-                            +    `</div>`
-                            +   `<span class="tree-note-file-name">${file_name}`
-                            +   `</span>`
-                            + `</a><span class='three-dots' content-type="file">...</span> </li>`;
+            file_html += `<li class='tree-file'>` +
+                `<a href="#" class='file-click' content-type="file" file-uuid='${file_uuid}' filename='${file_name}' title='${file_name}'` +
+                `file-type='document' file-path='${file_arr[index]}' >` +
+                `<div class="tree-note-file-name-div">` +
+                `<span> * </span>` +
+                `</div>` +
+                `<span class="tree-note-file-name">${file_name}` +
+                `</span>` +
+                `</a><span class='three-dots' content-type="file">...</span> </li>`;
         }
         return file_html;
     }
 
-    _get_folder_section(folder_path){
+    _get_folder_section(folder_path) {
         let self = this;
         let class_list_str = "";
         let name = '';
         let folder_uuid = '';
-        if( folder_path.indexOf('MY-ROOT') >=0){
+        if (folder_path.indexOf('MY-ROOT') >= 0) {
             name = 'MY-ROOT';
-        }
-        else{
+        } else {
             console.log(folder_path);
             folder_uuid = self.metadata_map[folder_path].uuid;
             name = self.metadata_map[folder_path].name
             this.folder_list.push({
-                      title: name,
-                      description: folder_path
-                    });
+                title: name,
+                description: folder_path
+            });
         }
-        if(folder_path === 'Trash'){
+        if (folder_path === 'Trash') {
             class_list_str += ' tree-trash-class';
-        }
-        else if(folder_path === 'Starred'){
+        } else if (folder_path === 'Starred') {
             class_list_str += ' tree-starr-class';
         }
         let html = `<div class='folder-section ${class_list_str}' folder-name='${name}' folder-uuid='${folder_uuid}' folder-path='${folder_path}'>`
-			html +=				`<span class="folder">`
-			html +=				  `<span class='open-close-folder'> <i class="ui icon folder blue"></i> </span>${name}`
-			html +=				`</span>`
-			html +=				`<span class='three-dots'>...</span>`
-			html +=			`</div>`;
-	    return html;
+        html += `<span class="folder">`
+        html += `<span class='open-close-folder'> <i class="ui icon folder blue"></i> </span>${name}`
+        html += `</span>`
+        html += `<span class='three-dots'>...</span>`
+        html += `</div>`;
+        return html;
     }
 
-    _get_html(m1, main_folder_name){
-        if (m1 == {} || m1 == undefined){
+    _get_html(m1, main_folder_name) {
+        if (m1 == {} || m1 == undefined) {
             return '';
         }
         let file_html = '';
@@ -146,15 +143,14 @@ export default class TreeClass{
         let nested_section = '';
         let folder_section = '';
         let overall_folder_html = '';
-        for(let key in m1){
-            if(key == 'files'){
+        for (let key in m1) {
+            if (key == 'files') {
                 file_html = this._build_files(m1['files']);
-            }
-            else if(key != '__proto__'){
+            } else if (key != '__proto__') {
                 folder_html.push(this._get_html(m1[key], key));
             }
         }
-        for(let index in folder_html){
+        for (let index in folder_html) {
             overall_folder_html += folder_html[index];
         }
         nested_section = `<ul class="nested">` + file_html + overall_folder_html + '</ul>';
@@ -165,221 +161,220 @@ export default class TreeClass{
         return res;
     }
 
-//    _get_tree_structure(){
-//        let temp_map = {};
-//         var defObj=$.Deferred();
-//            var promise =
-//                $.ajax
-//                ({
-//                    url:"http://localhost:5000/api/individual-component-fetch/tree",
-//                    type : "GET",
-//                    contentType:'application/x-www-form-urlencoded',
-//                    success : function(response){
-//
-//                        return defObj.resolve(response);
-//                    }
-//                });
-//            return defObj.promise();
-//    }
+    //    _get_tree_structure(){
+    //        let temp_map = {};
+    //         var defObj=$.Deferred();
+    //            var promise =
+    //                $.ajax
+    //                ({
+    //                    url:"http://localhost:5000/api/individual-component-fetch/tree",
+    //                    type : "GET",
+    //                    contentType:'application/x-www-form-urlencoded',
+    //                    success : function(response){
+    //
+    //                        return defObj.resolve(response);
+    //                    }
+    //                });
+    //            return defObj.promise();
+    //    }
 
-    set_active_folder_and_file(folder=undefined, file=undefined){
+    set_active_folder_and_file(folder = undefined, file = undefined) {
         let self = this;
         self.curr_active_folder = folder;
         self.curr_active_file = file;
     }
 
-    _get_tree_structure_metadata(){
-        let self  = this;
+    _get_tree_structure_metadata() {
+        let self = this;
         let temp_map = {};
-         var defObj=$.Deferred();
-            var promise =
-                $.ajax
-                ({
-                    url: self.tsp.PrimenotesCache.data.url_prefix + '/api/tree-note//get-tree-with-metadata',
-                    type : "GET",
-                    contentType:'application/x-www-form-urlencoded',
-                    success : function(response){
-                        return defObj.resolve(response);
-                    }
-                });
-            return defObj.promise();
+        var defObj = $.Deferred();
+        var promise =
+            $.ajax({
+                url: self.tsp.PrimenotesCache.data.url_prefix + '/api/tree-note//get-tree-with-metadata',
+                type: "GET",
+                contentType: 'application/x-www-form-urlencoded',
+                success: function(response) {
+                    return defObj.resolve(response);
+                }
+            });
+        return defObj.promise();
     }
 
-    _build_tree_and_close_sidenav(){
+    _build_tree_and_close_sidenav() {
 
         /*beginning of navigation  bar */
- 		let self = this;
- 		self.kojinFlag = 0;
+        let self = this;
+        self.kojinFlag = 0;
 
         //.sidenav-button-class ,
-        $('#closebtn').click( function(){
-			if(self.kojinFlag == 0){ //closing navigation-bar
-				var sideNavWidth = '40%';
-				var sideNavLeft = 0;
-				$('#navigation-bar').css('width','0px');
-				$('#parent-source-code-main-div').css({'left':'0px','width':'100%'});
-//                $('#sidenav-button-id').css('display','block');
-                $('.split__bar').css('left','-20px');
-				self.kojinFlag = 1;
-			}
-			else {//opening navigation-bar
-			    let screen_width = window.innerWidth;
+        $('#closebtn').click(function() {
+            if (self.kojinFlag == 0) { //closing navigation-bar
+                var sideNavWidth = '40%';
+                var sideNavLeft = 0;
+                $('#navigation-bar').css('width', '0px');
+                $('#parent-source-code-main-div').css({ 'left': '0px', 'width': '100%' });
+                //                $('#sidenav-button-id').css('display','block');
+                $('.split__bar').css('left', '-20px');
+                self.kojinFlag = 1;
+            } else { //opening navigation-bar
+                let screen_width = window.innerWidth;
                 let size_map = {};
-                switch(screen_width){
-                    case screen_width <= 500:{
-                        size_map['nav-bar-width'] = 100;
-                        size_map['split-bar-left'] = 100;
-                        size_map['source-code-left'] = 100;
-                        size_map['source-code-width'] = 0;
-                        break;
-                    }
-                    case screen_width > 500 && screen_width < 650 :{
-                        size_map['nav-bar-width'] = 50;
-                        size_map['split-bar-left'] = 50;
-                        size_map['source-code-left'] = 50;
-                        size_map['source-code-width'] = 50;
-                        break;
-                    }
-                    case screen_width > 650 && screen_width < 850 :{
-                        size_map['nav-bar-width'] = 40;
-                        size_map['split-bar-left'] = 40;
-                        size_map['source-code-left'] = 40;
-                        size_map['source-code-width'] = 60;
-                        break;
-                    }
-                    case screen_width > 850:{
-                        size_map['nav-bar-width'] = 25;
-                        size_map['split-bar-left'] = 25;
-                        size_map['source-code-left'] = 25;
-                        size_map['source-code-width'] = 75;
+                switch (screen_width) {
+                    case screen_width <= 500:
+                        {
+                            size_map['nav-bar-width'] = 100;
+                            size_map['split-bar-left'] = 100;
+                            size_map['source-code-left'] = 100;
+                            size_map['source-code-width'] = 0;
+                            break;
+                        }
+                    case screen_width > 500 && screen_width < 650:
+                        {
+                            size_map['nav-bar-width'] = 50;
+                            size_map['split-bar-left'] = 50;
+                            size_map['source-code-left'] = 50;
+                            size_map['source-code-width'] = 50;
+                            break;
+                        }
+                    case screen_width > 650 && screen_width < 850:
+                        {
+                            size_map['nav-bar-width'] = 40;
+                            size_map['split-bar-left'] = 40;
+                            size_map['source-code-left'] = 40;
+                            size_map['source-code-width'] = 60;
+                            break;
+                        }
+                    case screen_width > 850:
+                        {
+                            size_map['nav-bar-width'] = 25;
+                            size_map['split-bar-left'] = 25;
+                            size_map['source-code-left'] = 25;
+                            size_map['source-code-width'] = 75;
 
-                        break;
-                    }
+                            break;
+                        }
                 }
-                let percent = function(num){ return (num + "%");}
+                let percent = function(num) { return (num + "%"); }
 
-				$('#navigation-bar').css('width', percent(size_map['nav-bar-width']));
-		        $('.split__bar').css('left',percent( size_map['split-bar-left']));
-				$('#parent-source-code-main-div').css('left',percent(size_map['source-code-left']));
-				$('#parent-source-code-main-div').css('width',percent(size_map['source-code-width']));
+                $('#navigation-bar').css('width', percent(size_map['nav-bar-width']));
+                $('.split__bar').css('left', percent(size_map['split-bar-left']));
+                $('#parent-source-code-main-div').css('left', percent(size_map['source-code-left']));
+                $('#parent-source-code-main-div').css('width', percent(size_map['source-code-width']));
 
-//				$('#sidenav-button-id').css('display','none');
-				self.kojinFlag = 0;
-			}
-
-		});
-	/*end   navigation bar */
-
-
-        $('#sidenav-button-id, #main-section-button').on('click',function(){
-             if(self.tsp.current_window != 2 )
-                    return ;
-            let curr_ele = $(this);
-            if(self.kojinFlag == 1  ){
-//            	$('#parent-source-code-main-div').css({'left':'19%','width':'81%'});
-//				$('#parent-source-code-main-div').css('left','19%');
-//                curr_ele.css('display','none');
-//				$('#navigation-bar').css({'width':'19%' , 'left':'0%'});
-//				 $('.split__bar').css('left','19%');
-				 let screen_width = window.innerWidth;
-                let size_map = {};
-                    if (screen_width <= 500){
-                        size_map['nav-bar-width'] = 100;
-                        size_map['split-bar-left'] = 100;
-                        size_map['source-code-left'] = 100;
-                        size_map['source-code-width'] = 0;
-                    }
-                    else if (screen_width > 500 & screen_width < 650) {
-                        size_map['nav-bar-width'] = 50;
-                        size_map['split-bar-left'] = 50;
-                        size_map['source-code-left'] = 50;
-                        size_map['source-code-width'] = 50;
-                    }
-                    else if (screen_width > 650 & screen_width < 850) {
-                        size_map['nav-bar-width'] = 40;
-                        size_map['split-bar-left'] = 40;
-                        size_map['source-code-left'] = 40;
-                        size_map['source-code-width'] = 60;
-                    }
-                    else if (screen_width > 850){
-                        size_map['nav-bar-width'] = 20;
-                        size_map['split-bar-left'] = 20;
-                        size_map['source-code-left'] = 20;
-                        size_map['source-code-width'] = 80;
-                    }
-
-                let percent = function(num){ return (num + "%");}
-
-				$('#navigation-bar').css('width', percent(size_map['nav-bar-width']));
-		        $('.split__bar').css('left',percent( size_map['split-bar-left']));
-				$('#parent-source-code-main-div').css('left',percent(size_map['source-code-left']));
-				$('#parent-source-code-main-div').css('width',percent(size_map['source-code-width']));
+                //				$('#sidenav-button-id').css('display','none');
                 self.kojinFlag = 0;
             }
-            else{
-			    var sideNavWidth = '40%';
-				var sideNavLeft = 0;
-				$('#navigation-bar').css('width','0px');
-				$('#parent-source-code-main-div').css({'left':'0px','width':'100%'});
-//                $('#sidenav-button-id').css('display','block');
-                $('.split__bar').css('left','-20px');
-				self.kojinFlag = 1;
-			}
+
+        });
+        /*end   navigation bar */
+
+
+        $('#sidenav-button-id, #main-section-button').on('click', function() {
+            if (self.tsp.current_window != 2)
+                return;
+            let curr_ele = $(this);
+            if (self.kojinFlag == 1) {
+                //            	$('#parent-source-code-main-div').css({'left':'19%','width':'81%'});
+                //				$('#parent-source-code-main-div').css('left','19%');
+                //                curr_ele.css('display','none');
+                //				$('#navigation-bar').css({'width':'19%' , 'left':'0%'});
+                //				 $('.split__bar').css('left','19%');
+                let screen_width = window.innerWidth;
+                let size_map = {};
+                if (screen_width <= 500) {
+                    size_map['nav-bar-width'] = 100;
+                    size_map['split-bar-left'] = 100;
+                    size_map['source-code-left'] = 100;
+                    size_map['source-code-width'] = 0;
+                } else if (screen_width > 500 & screen_width < 650) {
+                    size_map['nav-bar-width'] = 50;
+                    size_map['split-bar-left'] = 50;
+                    size_map['source-code-left'] = 50;
+                    size_map['source-code-width'] = 50;
+                } else if (screen_width > 650 & screen_width < 850) {
+                    size_map['nav-bar-width'] = 40;
+                    size_map['split-bar-left'] = 40;
+                    size_map['source-code-left'] = 40;
+                    size_map['source-code-width'] = 60;
+                } else if (screen_width > 850) {
+                    size_map['nav-bar-width'] = 20;
+                    size_map['split-bar-left'] = 20;
+                    size_map['source-code-left'] = 20;
+                    size_map['source-code-width'] = 80;
+                }
+
+                let percent = function(num) { return (num + "%"); }
+
+                $('#navigation-bar').css('width', percent(size_map['nav-bar-width']));
+                $('.split__bar').css('left', percent(size_map['split-bar-left']));
+                $('#parent-source-code-main-div').css('left', percent(size_map['source-code-left']));
+                $('#parent-source-code-main-div').css('width', percent(size_map['source-code-width']));
+                self.kojinFlag = 0;
+            } else {
+                var sideNavWidth = '40%';
+                var sideNavLeft = 0;
+                $('#navigation-bar').css('width', '0px');
+                $('#parent-source-code-main-div').css({ 'left': '0px', 'width': '100%' });
+                //                $('#sidenav-button-id').css('display','block');
+                $('.split__bar').css('left', '-20px');
+                self.kojinFlag = 1;
+            }
         });
     }
 
-    clone_folder_into_dialog(folder_path){
+    clone_folder_into_dialog(folder_path) {
         let self = this;
         let uuid = self.metadata_map[folder_path]['uuid'];
         let q1 = ($(`.folder-section[folder-uuid=${uuid} ]`)).parent().get(0);
-        let q2 = $($(q1).children().get(0)).clone();// folder-section
-        let q3 = $($(q1).children().get(1)).clone();//nested section
+        let q2 = $($(q1).children().get(0)).clone(); // folder-section
+        let q3 = $($(q1).children().get(1)).clone(); //nested section
         $('#folder-clone-section').empty().append($(q2)).append($(q3));
         self.cloned_folder_parent_in_tree = q1;
     }
 
-    action_functions(){
+    action_functions() {
         let self = this;
         self.action_function_map = {
-        create_new_tree_note_submit : function(project_note_name){
-                if(project_note_name == undefined)
+            create_new_tree_note_submit: function(project_note_name) {
+                if (project_note_name == undefined)
                     project_note_name = $('#new-project-note-name').val();
-                if (self.curr_active_folder.indexOf('MY-ROOT') >=0 ){
-                        self.curr_active_folder = self.curr_active_folder.replace('MY-ROOT', '');
+                let path = "";
+                if (self.curr_active_folder.indexOf('MY-ROOT') >= 0) {
+                    self.curr_active_folder = self.curr_active_folder.replace('MY-ROOT', '');
+                    path = project_note_name;
+                } else {
+                    path = self.curr_active_folder + '/' + project_note_name;
                 }
-                let path = self.curr_active_folder + '/' + project_note_name;
                 let temp_map = {
-                    'folder_path' : path,
-                    'file_name' : project_note_name,
-                    'file_type' : 'document',
+                    'folder_path': path,
+                    'file_name': project_note_name,
+                    'file_type': 'document',
                     'create_type': self.create_type,
                 }
-                 self.tsp.DomActions._create_file_in_backend_with_metadata(temp_map).then(function(ret_value){
+                self.tsp.DomActions._create_file_in_backend_with_metadata(temp_map).then(function(ret_value) {
                     self.tsp.TreeClass.metadata_map[path] = ret_value;
 
                     let new_file_html = '';
                     let file_name = '';
 
-                    let folder_path =  self.curr_active_folder + '/' + project_note_name ;
-                    if(self.create_type == 'folder'){
-                        new_file_html = self._get_tree_folder_html(folder_path, project_note_name, ret_value['uuid']);
-                    }
-                    else if(self.create_type == 'file'){
+                    // let folder_path = self.curr_active_folder + '/' + project_note_name;
+                    if (self.create_type == 'folder') {
+                        new_file_html = self._get_tree_folder_html(path, project_note_name, ret_value['uuid']);
+                    } else if (self.create_type == 'file') {
                         file_name = ('${self.curr_active_folder}').toString();
-                       new_file_html = self._get_tree_file_html(path, ret_value.name, ret_value.uuid);
+                        new_file_html = self._get_tree_file_html(path, ret_value.name, ret_value.uuid);
                     }
                     let nested_folder_sibling = $(self.parent_folder).siblings().get(0);
-                    if(nested_folder_sibling === undefined){
+                    if (nested_folder_sibling === undefined) {
                         let q1 = $(self.parent_folder).find('.nested');
                         $(q1).append($(new_file_html)).addClass('active');
-                    }
-                    else{
+                    } else {
                         $(nested_folder_sibling).prepend($(new_file_html)).addClass('active');
                     }
 
                     /*initialising events for the created file in tree*/
                     let source_code_section_obj = self.tsp.SourceCodeSection;
-                    if(self.create_type != 'folder'){
+                    if (self.create_type != 'folder') {
                         source_code_section_obj
                             .buildTab(project_note_name, 'document', path);
                     }
@@ -387,318 +382,370 @@ export default class TreeClass{
                     self.tsp.SourceCodeSection.events();
                     self.tsp.NotificationBar.launch_notification(`${self.create_type} Creation Success`);
                 });
-        },
-
-        copy_paste_UI_update : function(project_note_name, path, uuid){
-                        let new_file_html  = `<li class="tree-file"><a href="#" class="file-click" filename="${project_note_name}" content-type="file" file-type="document" file-uuid="${uuid}" title="${project_note_name}" file-path="${path}">`;
-                        new_file_html +=    `<div class="tree-note-file-name-div"><span> * </span>`;
-                        new_file_html +=     `</div>`;
-                        new_file_html +=     `<span class="tree-note-file-name">${project_note_name}`;
-                        new_file_html +=     `</span>`;
-                        new_file_html +=   `</div></a>`;
-                        new_file_html += `<span class="three-dots" content-type="file">...</span>`
-                        new_file_html += `</li>`;
-                        let nested_folder_sibling = $(self.parent_folder).siblings().get(0);
-                        $(nested_folder_sibling).prepend($(new_file_html));
             },
 
-        cut_paste_UI_update : function(project_note_name, new_path, old_path, uuid){
-                        let temp_file_list = $(`.file-click[file-uuid=${uuid}]`);
-                        let len = temp_file_list.length;
-                        let temp_clone = '';
-                        for(let i=0;i < len; i++){
-                            let temp_ele =$(temp_file_list[i]);
-                            if(temp_ele.attr('file-uuid') === uuid ){
-                                 temp_clone = temp_ele.clone();
-                                 temp_ele.parent().remove();
-                                 console.log(temp_clone);
+            copy_paste_UI_update: function(project_note_name, path, uuid) {
+                let new_file_html = `<li class="tree-file"><a href="#" class="file-click" filename="${project_note_name}" content-type="file" file-type="document" file-uuid="${uuid}" title="${project_note_name}" file-path="${path}">`;
+                new_file_html += `<div class="tree-note-file-name-div"><span> * </span>`;
+                new_file_html += `</div>`;
+                new_file_html += `<span class="tree-note-file-name">${project_note_name}`;
+                new_file_html += `</span>`;
+                new_file_html += `</div></a>`;
+                new_file_html += `<span class="three-dots" content-type="file">...</span>`
+                new_file_html += `</li>`;
+                let nested_folder_sibling = $(self.parent_folder).siblings().get(0);
+                $(nested_folder_sibling).prepend($(new_file_html));
+            },
 
-                            }
-                        }
+            cut_paste_UI_update: function(project_note_name, new_path, old_path, uuid) {
+                let temp_file_list = $(`.file-click[file-uuid=${uuid}]`);
+                let len = temp_file_list.length;
+                let temp_clone = '';
+                for (let i = 0; i < len; i++) {
+                    let temp_ele = $(temp_file_list[i]);
+                    if (temp_ele.attr('file-uuid') === uuid) {
+                        temp_clone = temp_ele.clone();
+                        temp_ele.parent().remove();
+                        console.log(temp_clone);
 
-                        let new_file_html  = `<li class="tree-file"></li>`;
-                        temp_clone.attr('file-path', new_path);
-                        let new_ele = $(new_file_html).append(temp_clone);
-                        let nested_folder_sibling = $(self.parent_folder).siblings().get(0);
-                        $(nested_folder_sibling).prepend(new_ele);
+                    }
+                }
 
-                        /*Updating Tabs section after cut paste*/
-                        let target_tab = $(`#tab-container > .tab [file-path='${old_path}']`)[0];
-                        $(target_tab).attr('file-path', new_path);
+                let new_file_html = `<li class="tree-file"></li>`;
+                temp_clone.attr('file-path', new_path);
+                let new_ele = $(new_file_html).append(temp_clone);
+                let nested_folder_sibling = $(self.parent_folder).siblings().get(0);
+                $(nested_folder_sibling).prepend(new_ele);
+
+                /*Updating Tabs section after cut paste*/
+                let target_tab = $(`#tab-container > .tab [file-path='${old_path}']`)[0];
+                $(target_tab).attr('file-path', new_path);
 
             },
 
-        move_to_trash_in_UI : function(path, uuid){
-                        let temp_file_list = $('.file-click');
-                        let len = temp_file_list.length;
-                        let temp_clone = '';
+            move_to_trash_in_UI: function(path, uuid) {
+                let temp_file_list = $('.file-click');
+                let len = temp_file_list.length;
+                let temp_clone = '';
 
-                        for(let i=0;i < len; i++){
-                            if($(temp_file_list[i]).attr('file-uuid') === uuid){
-                                 temp_clone = $(temp_file_list[i]).clone();
-                                 $(temp_file_list[i]).parent().remove();
-                                 break;
-                            }
-                        }
-                        let new_file_html  = `<li class="tree-file"></li>`;
-                        temp_clone.attr('file-path', path);
-                        let new_ele = $(new_file_html).append(temp_clone).append($(`<span class="three-dots" content-type="file">...</span>`));
-                        let nested_folder_sibling = $('.tree-trash-class').siblings().get(0);
-                        $(nested_folder_sibling).prepend(new_ele);
+                for (let i = 0; i < len; i++) {
+                    if ($(temp_file_list[i]).attr('file-uuid') === uuid) {
+                        temp_clone = $(temp_file_list[i]).clone();
+                        $(temp_file_list[i]).parent().remove();
+                        break;
+                    }
+                }
+                let new_file_html = `<li class="tree-file"></li>`;
+                temp_clone.attr('file-path', path);
+                let new_ele = $(new_file_html).append(temp_clone).append($(`<span class="three-dots" content-type="file">...</span>`));
+                let nested_folder_sibling = $('.tree-trash-class').siblings().get(0);
+                $(nested_folder_sibling).prepend(new_ele);
             },
-        starr_it_in_UI : function(path){
-                        let temp_file_list = $(`.file-click[file-path='${path}']`);
-                        let len = temp_file_list.length;
-                        let temp_clone = '';
+            starr_it_in_UI: function(path) {
+                let temp_file_list = $(`.file-click[file-path='${path}']`);
+                let len = temp_file_list.length;
+                let temp_clone = '';
 
-                        for(let i=0;i < len; i++){
-                            if($(temp_file_list[i]).attr('file-uuid') === self.metadata_map[path].uuid){
-                                 temp_clone = $(temp_file_list[i]).clone();
-                                 break;
-                            }
-                        }
-                        let new_file_html  = `<li class="tree-file"></li>`;
-//                        temp_clone.attr('file-path', path);
-                        let new_ele = $(new_file_html).append(temp_clone).append($(`<span class="three-dots" content-type="file">...</span>`));
-                        let nested_folder_sibling = $('.tree-starr-class').siblings().get(0);
-                        $(nested_folder_sibling).prepend(new_ele);
+                for (let i = 0; i < len; i++) {
+                    if ($(temp_file_list[i]).attr('file-uuid') === self.metadata_map[path].uuid) {
+                        temp_clone = $(temp_file_list[i]).clone();
+                        break;
+                    }
+                }
+                let new_file_html = `<li class="tree-file"></li>`;
+                //                        temp_clone.attr('file-path', path);
+                let new_ele = $(new_file_html).append(temp_clone).append($(`<span class="three-dots" content-type="file">...</span>`));
+                let nested_folder_sibling = $('.tree-starr-class').siblings().get(0);
+                $(nested_folder_sibling).prepend(new_ele);
             },
-        remove_from_starr_UI : function(path){
-            let temp_file_list = $(`.tree-starr-tab-class  .file-click[file-path='${path}']`);
-            let len = temp_file_list.length;
-            let temp_clone = '';
+            remove_from_starr_UI: function(path) {
+                let temp_file_list = $(`.tree-starr-tab-class  .file-click[file-path='${path}']`);
+                let len = temp_file_list.length;
+                let temp_clone = '';
 
-            for(let i=0;i < len; i++){
-                if($(temp_file_list[i]).attr('file-uuid') === self.metadata_map[path].uuid){
-                    temp_clone = $(temp_file_list[i]).clone();
-                    $(temp_file_list[i]).parent().remove();
-                    break;
+                for (let i = 0; i < len; i++) {
+                    if ($(temp_file_list[i]).attr('file-uuid') === self.metadata_map[path].uuid) {
+                        temp_clone = $(temp_file_list[i]).clone();
+                        $(temp_file_list[i]).parent().remove();
+                        break;
+                    }
                 }
             }
         }
-        }
     }
-
-    _events(){
-         let self = this;
-         let context_menu = function(event, curr){
-                let path = '';
-                if($('.context').is(":visible")){
-                    $('.context').hide();
-                    return;
-                }
-
-                if(event.target.getAttribute('content-type') === "file"){
-                    self.parent_folder = $(curr).siblings().get(0);
-                    path = self.curr_active_file = $(self.parent_folder).attr('file-path');
-                    self.curr_active_folder = undefined;
-                    $('.only-folder').hide();
-                    if($('.item.active').attr('data-tab') === "trash"){
-                        $('.only-file').hide();
-                        $('.only-trash').show();
-                        $('.both-file-and-folder').hide();
+    move_all_to_trash() {
+        let self = this;
+        let metadata_map = self.metadata_map;
+        let metadata_keys = Object.keys(metadata_map);
+        let len = metadata_keys.length;
+        let def = $.Deferred();
+        let to_delete_uuid_list = [];
+        for (let i=0; i<len; i++) {
+            let curr_obj = metadata_map[metadata_keys[i]];
+            if (metadata_keys[i].startsWith(self.curr_active_folder)
+                    && (metadata_keys[i] !== self.curr_active_folder)
+                    && ( (curr_obj.trash + "") == "false" || (curr_obj.trash + "") == "undefined") )  {
+                to_delete_uuid_list.push(curr_obj.uuid);
+            }
+        }
+        self.tsp.DomActions._bulk_delete_project_note_file(to_delete_uuid_list).then(function() {
+            for (let i=0; i<len; i++) {
+                let curr_uuid = metadata_keys[i];
+                let curr_obj = metadata_map[curr_uuid];
+                if(curr_obj.path.startsWith(self.curr_active_folder)
+                    && (curr_obj.path !== self.curr_active_folder)
+                    && ( (curr_obj.trash + "") == "false" || (curr_obj.trash + "") == "undefined")){
+                    if(curr_obj.folder_type == "folder"){
+                        delete metadata_map[metadata_keys[i]];
                     }
-                    else{
-                        $('.only-file').show();
-                        $('.only-trash').hide();
-                        $('.both-file-and-folder').show();
-                    }
-                }
-                else if($(event.target).closest('a')[0] !== undefined && $(event.target).closest('a')[0].getAttribute('content-type') === "file"){
-                    self.parent_folder = $(event.target).closest('a')[0];
-                    path = self.curr_active_file = $(self.parent_folder).attr('file-path');
-                    self.curr_active_folder = undefined;
-                    $('.only-folder').hide();
-                    if($('.item.active').attr('data-tab') === "trash"){
-                        $('.only-file').hide();
-                        $('.only-trash').show();
-                        $('.both-file-and-folder').hide();
-                    }
-                    else{
-                        $('.only-file').show();
-                        $('.only-trash').hide();
-                        $('.both-file-and-folder').show();
+                    else if(curr_obj.folder_type == 'file') {
+                        console.log(metadata_map[curr_uuid].path);
+                        metadata_map[curr_uuid].trash = "true";
+                        metadata_map[curr_uuid].starred = "false";
+                        self.action_function_map.move_to_trash_in_UI(curr_obj.path, curr_obj.uuid);
+                        self.action_function_map.remove_from_starr_UI(curr_obj.path);
                     }
                 }
-                else{ //folder right click
-                    self.parent_folder = $(curr).parent().get(0);
-                    if($(self.parent_folder).attr('folder-path') === undefined)
-                        self.parent_folder = $(curr).get(0);
+            }
+            self.metadata_map = metadata_map;
+            let parent_ele = $(self.parent_folder);
+            let curr_nested = $(parent_ele).siblings()[0]
+            $(curr_nested).empty();
 
-                    path = self.curr_active_folder = $(self.parent_folder).attr('folder-path');
-                    self.curr_active_file = undefined;
+            self._events();
+            self.tsp.SourceCodeSection.events();
+            self.tsp.Dialog.close_dialog_action();
+            self.tsp.NotificationBar.launch_notification('Successfully moved all files To Trash ');
+            return def.resolve();
+        });
+
+        return def.promise();
+    }
+    _events() {
+        let self = this;
+        let context_menu = function(event, curr) {
+            let path = '';
+            if ($('.context').is(":visible")) {
+                $('.context').hide();
+                return;
+            }
+
+            if (event.target.getAttribute('content-type') === "file") {
+                self.parent_folder = $(curr).siblings().get(0);
+                path = self.curr_active_file = $(self.parent_folder).attr('file-path');
+                self.curr_active_folder = undefined;
+                $('.only-folder').hide();
+                if ($('.item.active').attr('data-tab') === "trash") {
                     $('.only-file').hide();
-                    if($('.item.active').attr('data-tab') === "trash"){
-                        $('.only-folder').hide();
-                        $('.only-trash').show();
-                        $('.both-file-and-folder').hide();
-                    }
-                    else{
-                        $('.only-folder').show();
-                        $('.only-trash').hide();
-                        $('.both-file-and-folder').show();
-                    }
+                    $('.only-trash').show();
+                    $('.both-file-and-folder').hide();
+                } else {
+                    $('.only-file').show();
+                    $('.only-trash').hide();
+                    $('.both-file-and-folder').show();
                 }
-                $('.tree-note-star-input').prop('checked', self.metadata_map[path].starred == "true");
-                event.preventDefault();
-                $(".context")
-                    .show()
-                    .css({
-                      top: event.pageY - 130,
-                      left: event.pageX
-                    });
-            };
+            } else if ($(event.target).closest('a')[0] !== undefined && $(event.target).closest('a')[0].getAttribute('content-type') === "file") {
+                self.parent_folder = $(event.target).closest('a')[0];
+                path = self.curr_active_file = $(self.parent_folder).attr('file-path');
+                self.curr_active_folder = undefined;
+                $('.only-folder').hide();
+                if ($('.item.active').attr('data-tab') === "trash") {
+                    $('.only-file').hide();
+                    $('.only-trash').show();
+                    $('.both-file-and-folder').hide();
+                } else {
+                    $('.only-file').show();
+                    $('.only-trash').hide();
+                    $('.both-file-and-folder').show();
+                }
+            } else { //folder right click
+                self.parent_folder = $(curr).parent().get(0);
+                if ($(self.parent_folder).attr('folder-path') === undefined)
+                    self.parent_folder = $(curr).get(0);
 
-         self.event_map ={
+                path = self.curr_active_folder = $(self.parent_folder).attr('folder-path');
+                self.curr_active_file = undefined;
+                $('.only-file').hide();
+                if ($('.item.active').attr('data-tab') === "trash") {
+                    $('.only-folder').hide();
+                    $('.only-trash').show();
+                    $('.both-file-and-folder').hide();
+                } else {
+                    $('.only-folder').show();
+                    $('.only-trash').hide();
+                    $('.both-file-and-folder').show();
+                }
+            }
+            $('.tree-note-star-input').prop('checked', self.metadata_map[path].starred == "true");
+            event.preventDefault();
+            $(".context")
+                .show()
+                .css({
+                    top: event.pageY - 130,
+                    left: event.pageX
+                });
+        };
 
-            three_dots : function(){
-                 $('.three-dots').off("click");
-                 $('.three-dots').on("click", function(event) {
-                       context_menu(event, this);
-                        });
+        self.event_map = {
+
+            three_dots: function() {
+                $('.three-dots').off("click");
+                $('.three-dots').on("click", function(event) {
+                    context_menu(event, this);
+                });
             },
-           folder_section_context_menu : function(){
-                 $('.folder-section').off('contextmenu');
-                 $('.folder-section').contextmenu(function(e){
+            folder_section_context_menu: function() {
+                $('.folder-section').off('contextmenu');
+                $('.folder-section').contextmenu(function(e) {
                     e.preventDefault();
                     context_menu(e, this);
-                 });
-           },
-           tree_file : function(){
-                 $('.tree-file').off('contextmenu');
-                 $('.tree-file').contextmenu(function(e){
+                });
+            },
+            tree_file: function() {
+                $('.tree-file').off('contextmenu');
+                $('.tree-file').contextmenu(function(e) {
                     e.preventDefault();
                     context_menu(e, this);
-                 });
-           },
-           folder_section : function(){
+                });
+            },
+            folder_section: function() {
                 /*events for tree*/
                 $('.folder-section').off('click');
-                $('.folder-section').on('click', function(e){
+                $('.folder-section').on('click', function(e) {
                     let q1 = $(this).children()[0];
                     let q2 = $(q1).find('.ui.icon.folder');
-                    if($(q2).hasClass('open')){
-                            $(q2).removeClass('open');
-                    }
-                    else{
+                    if ($(q2).hasClass('open')) {
+                        $(q2).removeClass('open');
+                    } else {
                         $(q2).addClass('open')
                     }
 
 
-                    $('.folder-section').css('background','none');
+                    $('.folder-section').css('background', 'none');
                     $(this).css('background', self.highlight_background_color);
                     self.curr_active_folder = $(this).attr('folder-path');
                     self.parent_folder = $(this);
                     self.curr_active_file = undefined;
-                    if($(e.target).hasClass('three-dots')){ return; }
+                    if ($(e.target).hasClass('three-dots')) { return; }
                     let curr = $(this);
                     let sibling_1_nested = $(curr).siblings().get(0);
                     $(sibling_1_nested).toggleClass('active');
                     $(curr).toggleClass('folder-down');
-        //            let sibling_1_nested = $(this).siblings().get(0);
-        //            $(sibling_1_nested).toggleClass('active');
-        //            $(this).toggleClass('folder-down');
+                    //            let sibling_1_nested = $(this).siblings().get(0);
+                    //            $(sibling_1_nested).toggleClass('active');
+                    //            $(this).toggleClass('folder-down');
+                    /*Nested section highlight */
+                    $('.nested').css('background', 'none');
+                    let sibling = $(this).siblings().get(0);
+                    console.log(sibling);
+                    $(sibling).css({
+                        'background': '#dae6e0',
+                        'left': '-10px'
+                    });
                 });
-           },
-           search_box_clear: function(){
+            },
+            search_box_clear: function() {
                 $('.ui.close.icon').off('click');
-                $('.ui.close.icon').on('click', function(){
+                $('.ui.close.icon').on('click', function() {
 
-                   switch(self.tsp.current_window){
-                       case 1:
-                       case 3: {
-                            $('.search-container  .prompt').val('').focus();
-                            self.tsp.loadComponentsContainer.callSearchResults();
-                            break;
-                       }
-                       case 2: {
-                            $('#searchInput  .prompt').val('').focus();
-                            //self.tsp.loadComponentsContainer.callSearchResults();
-                            break;
-                       }
-                   }
+                    switch (self.tsp.current_window) {
+                        case 1:
+                        case 3:
+                            {
+                                $('.search-container  .prompt').val('').focus();
+                                self.tsp.loadComponentsContainer.callSearchResults();
+                                break;
+                            }
+                        case 2:
+                            {
+                                $('#searchInput  .prompt').val('').focus();
+                                //self.tsp.loadComponentsContainer.callSearchResults();
+                                break;
+                            }
+                    }
                 });
-           },
-           tree_folder_icon_open_close: function(){
-//                $('.folder-section').off('click');
-//                $('.folder-section').on('click',function(){
-//
-//                });
-           }
+            },
+            tree_folder_icon_open_close: function() {
+                //                $('.folder-section').off('click');
+                //                $('.folder-section').on('click',function(){
+                //
+                //                });
+            }
 
         }
-         for (let key in self.event_map) {
-             self.event_map[key]();
+        for (let key in self.event_map) {
+            self.event_map[key]();
         }
         /*put this context_menu in to event map fpr global access*/
         self.event_map.context_menu = context_menu;
     }
-    __internal_folder_rename(uuid, old_path, new_path, new_name){
-            let self = this;
-            let def = $.Deferred();
-            let new_file_name = $('#tree-note-file-rename').val();
-//            self.label_map[file_key].name = new_file_name;
-            let send_data = {
-                'uuid': uuid,
-                'old_path': old_path,
-                'new_path' : new_path,
-                'new_name' : new_name
-            }
-            self.tsp.DomActions._rename_tree_note_folder_with_metadata(send_data).then(function(response){
-               /*Update the Tree list if we do the file raname from within the Starred tab*/
-
-                return def.resolve(response);
-            });
-            return def.promise();
+    __internal_folder_rename(uuid, old_path, new_path, new_name) {
+        let self = this;
+        let def = $.Deferred();
+        let new_file_name = $('#tree-note-file-rename').val();
+        //            self.label_map[file_key].name = new_file_name;
+        let send_data = {
+            'uuid': uuid,
+            'old_path': old_path,
+            'new_path': new_path,
+            'new_name': new_name
         }
-    __internal_file_rename(uuid, old_path, new_path, new_name){
-            let self = this;
-            let def = $.Deferred();
-            let new_file_name = $('#tree-note-file-rename').val();
-//            self.label_map[file_key].name = new_file_name;
-            let send_data = {
-                'uuid': uuid,
-                'new_path' : new_path,
-                'new_name' : new_name
-            }
-            self.tsp.DomActions._rename_tree_note_files_with_metadata(send_data).then(function(response){
+        self.tsp.DomActions._rename_tree_note_folder_with_metadata(send_data).then(function(response) {
+            /*Update the Tree list if we do the file raname from within the Starred tab*/
 
-                /*Updating Tabs section after cut paste*/
-                let target_tab = $(`#tab-container > .tab [file-path='${old_path}']`)[0];
-                $(target_tab).attr('file-path', new_path).text(new_name);
-
-                /*Update the Tree list if we do the file raname from within the Starred tab*/
-
-                return def.resolve(response);
-            });
-            return def.promise();
+            return def.resolve(response);
+        });
+        return def.promise();
+    }
+    __internal_file_rename(uuid, old_path, new_path, new_name) {
+        let self = this;
+        let def = $.Deferred();
+        let new_file_name = $('#tree-note-file-rename').val();
+        //            self.label_map[file_key].name = new_file_name;
+        let send_data = {
+            'uuid': uuid,
+            'new_path': new_path,
+            'new_name': new_name
         }
+        self.tsp.DomActions._rename_tree_note_files_with_metadata(send_data).then(function(response) {
 
-    _onfocusout_rename_field(){
+            /*Updating Tabs section after cut paste*/
+            let target_tab = $(`#tab-container > .tab [file-path='${old_path}']`)[0];
+            $(target_tab).attr('file-path', new_path).text(new_name);
+
+            /*Update the Tree list if we do the file raname from within the Starred tab*/
+
+            return def.resolve(response);
+        });
+        return def.promise();
+    }
+
+    _onfocusout_rename_field() {
         let self = this;
 
-        let private_rename =  function(new_name){
+        let private_rename = function(new_name) {
             let qq = self.parent_folder;
-            let old_path = '', old_name = '', uuid ='';
-            if(self.curr_active_folder !== undefined){
+            let old_path = '',
+                old_name = '',
+                uuid = '';
+            if (self.curr_active_folder !== undefined) {
                 old_path = $(qq).attr('folder-path');
                 old_name = $(qq).attr('title');
                 uuid = $(qq).attr('folder-uuid');
-            }
-            else{
+            } else {
                 old_path = $(qq).attr('file-path');
                 old_name = $(qq).attr('title');
                 uuid = $(qq).attr('file-uuid');
             }
-			let path_arr = old_path.split('/');
-            path_arr[path_arr["length"]-1]='';
+            let path_arr = old_path.split('/');
+            path_arr[path_arr["length"] - 1] = '';
             let new_path = path_arr.join('/');
             new_path = new_path + new_name;
 
 
-			if(old_name !== new_name){
-			    if(self.curr_active_folder !== undefined){
-                        self.__internal_folder_rename(uuid, old_path, new_path, new_name).then(function(response){
+            if (old_name !== new_name) {
+                if (self.curr_active_folder !== undefined) {
+                    self.__internal_folder_rename(uuid, old_path, new_path, new_name).then(function(response) {
 
                         delete self.metadata_map[old_path];
                         self.metadata_map[new_path] = response;
@@ -706,15 +753,14 @@ export default class TreeClass{
                         $(qq).attr('file-path', new_path);
                         $(qq).show()
                         $('#tree-note-file-rename').remove();
-                        self.build_tree('for-rename').then(function(){
+                        self.build_tree('for-rename').then(function() {
                             self.tsp.SourceCodeSection.events();
                             $($('.folder-section')[0]).hide().click();
                         });
                         self.tsp.NotificationBar.launch_notification('Rename Successful');
                     });
-                }
-                else{
-                        self.__internal_file_rename(uuid, old_path, new_path, new_name).then(function(response){
+                } else {
+                    self.__internal_file_rename(uuid, old_path, new_path, new_name).then(function(response) {
                         let html = self._get_tree_file_html(new_path, new_name, uuid);
 
                         delete self.metadata_map[old_path];
@@ -736,31 +782,29 @@ export default class TreeClass{
                     });
                 }
 
-			}
-			else{
-			    $(qq).show();
-			    $('#tree-note-file-rename').remove();
-			}
+            } else {
+                $(qq).show();
+                $('#tree-note-file-rename').remove();
+            }
         }
         $('#tree-note-file-rename').off('blur');
-        $('#tree-note-file-rename').on('blur',function(){
+        $('#tree-note-file-rename').on('blur', function() {
             private_rename($(this).val());
         });
-//        private_rename($('#rename-tree-file-text-box').val());
+        //        private_rename($('#rename-tree-file-text-box').val());
     }
-    starr_it(file_or_folder_path){
+    starr_it(file_or_folder_path) {
         let self = this;
-        if(self.metadata_map[file_or_folder_path].starred == "true"){
-            self.metadata_map[file_or_folder_path].starred =  "false";
+        if (self.metadata_map[file_or_folder_path].starred == "true") {
+            self.metadata_map[file_or_folder_path].starred = "false";
             self.action_function_map.remove_from_starr_UI(file_or_folder_path);
-        }
-        else{
-            self.metadata_map[file_or_folder_path].starred =  "true";
-             self.action_function_map.starr_it_in_UI(file_or_folder_path);
+        } else {
+            self.metadata_map[file_or_folder_path].starred = "true";
+            self.action_function_map.starr_it_in_UI(file_or_folder_path);
         }
         self.tsp.DomActions._starr_tree_note_file_or_folder(self.metadata_map[file_or_folder_path].uuid);
     }
-    _build_rename_field_and_call_backend(){
+    _build_rename_field_and_call_backend() {
         let self = this;
 
         let q1 = self.parent_folder;
@@ -768,254 +812,272 @@ export default class TreeClass{
         $(q1).before(q2);
         $(q1).hide();
         let q3_text = '';
-        if(self.curr_active_folder !== undefined){
+        if (self.curr_active_folder !== undefined) {
             q3_text = $(q1).attr('folder-name')
-        }
-        else{
+        } else {
             q3_text = $(q1).attr('filename')
         }
         $(q2).val(q3_text)
         $(q2).focus();
 
-        $('#tree-note-file-rename').keypress(function (e) {
-          if (e.which == 13) {
-            $(this).blur();
-          }
+        $('#tree-note-file-rename').keypress(function(e) {
+            if (e.which == 13) {
+                $(this).blur();
+            }
         });
         self._onfocusout_rename_field();
     }
-    paste_after_copy(){
+    paste_after_copy() {
         let self = this;
         let data_map = {
             'old_file_uuid': self.metadata_map[self.curr_copy_file].uuid,
             'new_path': self.curr_active_folder + '/' + self.metadata_map[self.curr_copy_file].name
         }
-        self.tsp.DomActions._copy_paste_file_in_backend_with_metadata(data_map).then(function(response){
-                                self.tsp.TreeClass.metadata_map[response.path] = response;
-                                self.action_function_map.copy_paste_UI_update(response.name, response.path, response.uuid);
-                                self._events();
-                                self.tsp.SourceCodeSection.events();
-                                self.file_list.pop({title:response.name, description: self.curr_copy_file});
-                                self.file_list.push({
-                                          title: response.name,
-                                          description: response.path
-                                     });
-                                     self.file_folder_list = [{
-                                      name: "File",
-                                      results:  self.file_list //this is list
+        self.tsp.DomActions._copy_paste_file_in_backend_with_metadata(data_map).then(function(response) {
+            self.tsp.TreeClass.metadata_map[response.path] = response;
+            self.action_function_map.copy_paste_UI_update(response.name, response.path, response.uuid);
+            self._events();
+            self.tsp.SourceCodeSection.events();
+            self.file_list.pop({ title: response.name, description: self.curr_copy_file });
+            self.file_list.push({
+                title: response.name,
+                description: response.path
+            });
+            self.file_folder_list = [{
+                    name: "File",
+                    results: self.file_list //this is list
 
-                                    },
-                                    {
-                                      name: "Folder",
-                                      results: self.folder_list //this is list
-                                    },
-                                ];
-                            });
+                },
+                {
+                    name: "Folder",
+                    results: self.folder_list //this is list
+                },
+            ];
+        });
         self.tsp.NotificationBar.launch_notification(`Copy Paste was Successful`);
     }
-    paste_after_cut(){
+    paste_after_cut() {
         let self = this;
         let data_map = {
             'file_uuid': self.metadata_map[self.curr_copy_file].uuid,
             'new_path': self.curr_active_folder + '/' + self.metadata_map[self.curr_copy_file].name
         }
-        self.tsp.DomActions._cut_paste_file_in_backend_with_metadata(data_map).then(function(response){
+        self.tsp.DomActions._cut_paste_file_in_backend_with_metadata(data_map).then(function(response) {
 
-                                self.action_function_map.cut_paste_UI_update(response.name, response.path, self.curr_copy_file, response.uuid);
-                                self.tsp.TreeClass.metadata_map[response.path] = response;
-                                if(response.starred == "true"){
-//                                    self.action_function_map.remove_from_starr_UI(self.curr_copy_file, response.uuid);
-                                    self.action_function_map.starr_it_in_UI(response.path);
-                                }
-                                delete self.tsp.TreeClass.metadata_map[self.curr_copy_file];
-                                self._build_breadcrumb(response.path);
-                                self._events();
-                                self.tsp.SourceCodeSection.events();
-                                self.file_list.pop({title:response.name, description: self.curr_copy_file});
-                                self.file_list.push({
-                                          title: response.name,
-                                          description: response.path
-                                     });
-                                     self.file_folder_list = [{
-                                          name: "File",
-                                          results:  self.file_list //this is list
-                                        },
-                                        {
-                                          name: "Folder",
-                                          results: self.folder_list //this is list
-                                        },
-                                      ];
-                            });
+            self.action_function_map.cut_paste_UI_update(response.name, response.path, self.curr_copy_file, response.uuid);
+            self.tsp.TreeClass.metadata_map[response.path] = response;
+            if (response.starred == "true") {
+                //                                    self.action_function_map.remove_from_starr_UI(self.curr_copy_file, response.uuid);
+                self.action_function_map.starr_it_in_UI(response.path);
+            }
+            delete self.tsp.TreeClass.metadata_map[self.curr_copy_file];
+            self._build_breadcrumb(response.path);
+            self._events();
+            self.tsp.SourceCodeSection.events();
+            self.file_list.pop({ title: response.name, description: self.curr_copy_file });
+            self.file_list.push({
+                title: response.name,
+                description: response.path
+            });
+            self.file_folder_list = [{
+                    name: "File",
+                    results: self.file_list //this is list
+                },
+                {
+                    name: "Folder",
+                    results: self.folder_list //this is list
+                },
+            ];
+        });
         self.tsp.NotificationBar.launch_notification(`Cut Paste was Successful`);
     }
-    _context_menu_for_project_tree(){
+    _context_menu_for_project_tree() {
 
-          /*Even its a events function this function need not be inside the events() function
-          since it is not needed the context menu is not refreshed every time the file/folder is created.
-          The same reason applies for file-menu in top right  */
-          let self = this;
-            $(document).click(function(e) {
-                if($(e.target).hasClass('three-dots') != true){
-                    $(".context").css('display', 'none');
-                }
-            });
-            $('.inner-item, .menu > .item ').off('click');
-            $('.inner-item, .menu > .item ').on('click',function(){
-                let option_name = $(this).attr('data-option');
-                switch(option_name){
-                    case "New File":{
+        /*Even its a events function this function need not be inside the events() function
+        since it is not needed the context menu is not refreshed every time the file/folder is created.
+        The same reason applies for file-menu in top right  */
+        let self = this;
+        $(document).click(function(e) {
+            if ($(e.target).hasClass('three-dots') != true) {
+                $(".context").css('display', 'none');
+            }
+        });
+        $('.inner-item, .menu > .item ').off('click');
+        $('.inner-item, .menu > .item, #tree-create-root-folder').on('click', function() {
+            let option_name = $(this).attr('data-option');
+            switch (option_name) {
+                case "New File":
+                    {
                         self.create_type = 'file';
                         self.tsp.Dialog.launch_dialog('new-project-file-create-form')
                         break;
                     }
-                    case "Move To Trash":{
+                case "Move To Trash":
+                    {
                         let uuid = '';
                         let delete_type = '';
                         let path = '';
-                        if(self.curr_active_folder !== undefined){
+                        if (self.curr_active_folder !== undefined) {
+                            self.tsp.Dialog.launch_dialog('confirm-delete-all-files-in-folder');
                             uuid = self.metadata_map[self.curr_active_folder].uuid;
                             path = self.curr_active_folder;
                             delete_type = 'folder';
-                        }
-                        else{
+                        } else {
                             uuid = self.metadata_map[self.curr_active_file].uuid;
                             path = self.curr_active_file;
                             delete_type = 'file';
+                            self.tsp.DomActions._delete_project_note_file(uuid).then(function() {
+                                self.metadata_map[path]['trash'] = true;
+                                self.metadata_map[path]['starred'] = false;
+                                self.action_function_map.move_to_trash_in_UI(path, uuid);
+                                self.action_function_map.remove_from_starr_UI(path);
+                                self._events();
+                                self.tsp.SourceCodeSection.events();
+                                self.tsp.NotificationBar.launch_notification(delete_type + ' Moved To Trash');
+                            });
                         }
 
-                        self.tsp.DomActions._delete_project_note_file(uuid).then(function(){
-                            self.metadata_map[path]['trash'] = true;
-                            self.metadata_map[path]['starred'] = false;
-                            self.action_function_map.move_to_trash_in_UI(path, uuid);
-                            self.action_function_map.remove_from_starr_UI(path);
-                            self._events();
-                            self.tsp.SourceCodeSection.events();
-                            self.tsp.NotificationBar.launch_notification(delete_type +' Moved To Trash');
-                        });
+
                         break;
                     }
-                    case "New Folder":{
+                case "New Folder":
+                    {
                         self.create_type = 'folder';
                         self.tsp.Dialog.launch_dialog('new-project-file-create-form')
                         break;
                     }
-                    case "Rename":{
-                        if($(this).hasClass('item')){
+                case "Create Root Folder":
+                    {
+                        let root_folder = $('.folder-section')[0];
+                        self.parent_folder = $(root_folder);
+                        self.curr_active_folder = $(root_folder).attr('folder-name'); //note here give folder-name not folder-path like create  "New Folder"
+                        self.create_type = 'folder';
+                        self.tsp.Dialog.launch_dialog('new-project-file-create-form')
+                        break;
+                    }
+
+                case "Rename":
+                    {
+                        if ($(this).hasClass('item')) {
                             self.tsp.Dialog.launch_dialog('rename-tree-file-form');
                             break;
                         }
                         self._build_rename_field_and_call_backend();
                         break;
                     }
-                    case "Copy":{
+                case "Copy":
+                    {
                         self.copy_flag = true;
                         self.cut_flag = false;
-//                        if(self.curr_active_folder !== undefined){
-//                            self.curr_copy_folder = self.curr_active_folder;
-//                        }
-                        if(self.curr_active_file !== undefined){
+                        //                        if(self.curr_active_folder !== undefined){
+                        //                            self.curr_copy_folder = self.curr_active_folder;
+                        //                        }
+                        if (self.curr_active_file !== undefined) {
                             self.curr_copy_file = self.curr_active_file;
                         }
                         break;
                     }
-                    case "Cut":{
+                case "Cut":
+                    {
                         self.copy_flag = false;
                         self.cut_flag = true;
-//                        if(self.curr_active_folder !== undefined){
-//                            self.curr_copy_folder = self.curr_active_folder;
-//                        }
-                         if(self.curr_active_file !== undefined){
+                        //                        if(self.curr_active_folder !== undefined){
+                        //                            self.curr_copy_folder = self.curr_active_folder;
+                        //                        }
+                        if (self.curr_active_file !== undefined) {
                             self.curr_copy_file = self.curr_active_file;
                         }
                         break;
                     }
-                    case "Paste":{
-                        if(self.copy_flag == true){
+                case "Paste":
+                    {
+                        if (self.copy_flag == true) {
                             self.paste_after_copy();
-                        }
-                        else{
+                        } else {
                             self.paste_after_cut();
                         }
                     }
 
-                    case "Details":{
-                         if(self.curr_active_folder !== undefined){
+                case "Details":
+                    {
+                        if (self.curr_active_folder !== undefined) {
                             self.tsp.DetailsPanel.launch_details_data(self.curr_active_folder);
                             self.tsp.DetailsPanel.open_details();
-                        }
-                        else{
+                        } else {
                             self.tsp.DetailsPanel.launch_details_data(self.curr_active_file);
                             self.tsp.DetailsPanel.open_details();
                         }
                         break;
                     }
-                    case "Starred":{
+                case "Starred":
+                    {
                         let path = '';
-//                        if(self.curr_active_folder !== undefined){
-//                            path = self.curr_active_folder;
-//                        }
-//                        else{
-                            path = self.curr_active_file;
-//                        }
+                        //                        if(self.curr_active_folder !== undefined){
+                        //                            path = self.curr_active_folder;
+                        //                        }
+                        //                        else{
+                        path = self.curr_active_file;
+                        //                        }
                         self.starr_it(path);
                         self._events();
                         self.tsp.SourceCodeSection.events();
                         self.tsp.NotificationBar.launch_notification('File Starred Successfully');
                         break;
                     }
-                    case "Move To Folder":{
+                case "Move To Folder":
+                    {
                         self.clone_folder_into_dialog($($('.folder-section')[1]).attr('folder-path'));
                         self.tsp.Dialog.launch_dialog('file-move');
                         self.event_map.folder_section();
                         break;
                     }
-                    case "Copy To Folder":{
+                case "Copy To Folder":
+                    {
                         self.clone_folder_into_dialog($($('.folder-section')[1]).attr('folder-path'));
                         self.tsp.Dialog.launch_dialog('file-copy');
                         self.event_map.folder_section();
                         break;
                     }
-                }
-            });
+            }
+        });
     }
-    _build_breadcrumb(path){
+    _build_breadcrumb(path) {
         let self = this;
         let path_arr = path.split('/');
         let html = "";
         let len = path_arr.length;
         for (let index = 0; index < path_arr.length; index++) {
 
-            if(index !== len-1){
+            if (index !== len - 1) {
                 html += `<a class='section' folder-path='${path_arr.slice(0,index+1).join("/")}'>${path_arr[index]} </a>`;
                 html += `<div class='divider'> / </div> `;
-            }
-            else{
+            } else {
                 html += `<a class='active section'>${path_arr[index]}</a>`;
             }
         }
-         $('.ui.breadcrumb').empty();
-         $('.ui.breadcrumb').append($(html));
+        $('.ui.breadcrumb').empty();
+        $('.ui.breadcrumb').append($(html));
 
-         $('.breadcrumb > .section').off('click');
-         $('.breadcrumb > .section').on('click', function(){
-               if($(this).attr('folder-path') !== undefined) {
-                    self.tsp.TreeClass.clone_folder_into_dialog( $(this).attr('folder-path'));
-                    self.tsp.Dialog.launch_dialog('folder-clone-section');
-                    self._events();
-                    self.tsp.SourceCodeSection.events();
+        $('.breadcrumb > .section').off('click');
+        $('.breadcrumb > .section').on('click', function() {
+            if ($(this).attr('folder-path') !== undefined) {
+                self.tsp.TreeClass.clone_folder_into_dialog($(this).attr('folder-path'));
+                self.tsp.Dialog.launch_dialog('folder-clone-section');
+                self._events();
+                self.tsp.SourceCodeSection.events();
 
-               }
-         });
+            }
+        });
     }
-    build_tree(reason_for_building){
+    build_tree(reason_for_building) {
         let self = this;
         let def_obj = $.Deferred();
-        if(reason_for_building == 'for-rename'){
+        if (reason_for_building == 'for-rename') {
             $('#myUL').empty();
             $('.tree-trash-tab-class').empty();
             $('.tree-starr-tab-class').empty();
         }
-        self._get_tree_structure_metadata().then(function(res){
+        self._get_tree_structure_metadata().then(function(res) {
             self.metadata_map = res[1];
             self.untitled_map = res[2];
             let tree_html = self._get_html(res[0], `../frontend_files/web-app/all_general_files/separate_project/MY-ROOT`);
@@ -1030,7 +1092,7 @@ export default class TreeClass{
         });
         return def_obj.promise();
     }
-    init(tsp, to_return_values){
+    init(tsp, to_return_values) {
         let def = $.Deferred();
         let self = this;
         tsp.TreeClass = this;
@@ -1052,17 +1114,17 @@ export default class TreeClass{
         this.cloned_folder_parent_in_tree = null;
 
         this.file_folder_list = [{
-              name: "File",
-              results:  this.file_list //this is list
+                name: "File",
+                results: this.file_list //this is list
 
             },
             {
-              name: "Folder",
-              results: this.folder_list //this is list
+                name: "Folder",
+                results: this.folder_list //this is list
 
             },
         ];
-        this.build_tree().then(function(){
+        this.build_tree().then(function() {
 
             return def.resolve(tsp, to_return_values);
         })

@@ -338,15 +338,16 @@ export default class DomActions{
         }
         return fav_action(file_key);
     }
-    _delete_project_note_file(uuid){
-        function delete_action(uuid){
+    _bulk_delete_project_note_file(to_delete_uuid_list){
+        function delete_action(to_delete_uuid_list){
             var savable_data = '';
             var defObj=$.Deferred();
                 var promise =
                     $.ajax
                     ({
-                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/tree-note/move-to-trash-tree-file-or-folder/" +uuid,
-                        type : "DELETE",
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/tree-note/bulk-move-to-trash-tree-file-or-folder",
+                        type : "POST",
+                        data: JSON.stringify(to_delete_uuid_list),
                         contentType: 'application/json;charset=UTF-8',
                         success : function(response){
                             return defObj.resolve(response);
@@ -354,7 +355,7 @@ export default class DomActions{
                     });
                 return defObj.promise();
         }
-        return delete_action(uuid);
+        return delete_action(to_delete_uuid_list);
     }
     _starr_tree_note_file_or_folder(uuid){
         let self = this;

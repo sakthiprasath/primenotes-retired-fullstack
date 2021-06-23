@@ -528,8 +528,8 @@
     </div>
 
 
-    <div id="main-section-wrapper">
-        <div class='main-section-wrapper-class' id="main-sections">
+    <div id="main-section-wrapper" style="overflow-y:hidden">
+        <div class='main-section-wrapper-class' id="main-sections" style="overflow-y:hidden">
 
             <div id='navigation-bar' class="split__left">
                 <a href="javascript:void(0)" id="closebtn">×</a>
@@ -617,7 +617,7 @@
                         </div>
                         <div class="ui tab" data-tab="tree">
                             <!-- Tab Content !-->
-                            <div id="tree-create-root-folder" style="
+                            <div id="tree-create-root-folder" data-option="Create Root Folder" style="
                                 background: #4a97cc;
                                 padding-left: 45%;
                                 position: absolute;
@@ -1044,6 +1044,10 @@
 
                 <div id="rename-tree-file-form" class="inner-item-form">
                     <input type="text" id="rename-tree-file-text-box" class="form-text-box" placeholder="Create file">
+                </div>
+
+                <div id="confirm-delete-all-files-in-folder" class="inner-item-form">
+                    <span> Proceed moving all the files in the current folder to Trash?</span>
                 </div>
 
                 <div id="folder-clone-section" class="folder-correction">

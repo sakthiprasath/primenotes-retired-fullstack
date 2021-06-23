@@ -168,6 +168,17 @@ class TreeNote:
         metadata[type_uuid]['starred'] = "false"
         self.write_metadata(metadata)
 
+    def bulk_move_to_tree_trash(self, uuid_list):
+        metadata = self.get_metadata()
+        for to_delete_uuid in uuid_list:
+            if metadata[to_delete_uuid]['folder_type'] == "folder":
+                del metadata[to_delete_uuid]
+            else:
+                #if its a file
+                metadata[to_delete_uuid]["trash"] = "true"
+                metadata[to_delete_uuid]["starred"] = "false"
+        self.write_metadata(metadata)
+
     def delete_from_tree_trash(self, type_uuid):
         pass
 

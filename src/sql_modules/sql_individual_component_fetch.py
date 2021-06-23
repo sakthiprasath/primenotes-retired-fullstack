@@ -5,7 +5,7 @@ import os
 import pathlib
 import uuid
 from datetime import datetime
-from src.utils import primenotes_data
+from utils import primenotes_data
 SQL_CODE_FETCH_QUERIES = {
     "get_all_configs": "select * from tenant_config"
 }

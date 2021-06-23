@@ -1,7 +1,7 @@
 from flask_rest_api import Blueprint
 import flask
 from flask import jsonify, after_this_request
-from src.sql_modules.tree_note_crud import TreeNote
+from sql_modules.tree_note_crud import TreeNote
 from flask import request
 
 tree_note_routes = Blueprint('tree_note', __name__, url_prefix='/api/tree-note')
@@ -131,6 +131,19 @@ def move_to_tree_trash(type_uuid):
     except Exception as e:
         return print(e)
 
+@tree_note_routes.route('bulk-move-to-trash-tree-file-or-folder', methods=['POST'])
+def bulk_move_to_tree_trash():
+    try:
+        in_json = request.get_json(force=True)
+        obj = TreeNote()
+
+        ret_data = obj.bulk_move_to_tree_trash(in_json)
+
+        return jsonify({"Success": "File moved to Trash"}), 200
+    except Exception as e:
+        return print(e)
+
+
 @tree_note_routes.route('starr-it/<type_uuid>', methods=['PUT', 'POSt'])
 def starr_it(type_uuid):
     try:
@@ -140,3 +153,5 @@ def starr_it(type_uuid):
         return jsonify({"Success": "File Starred"}), 200
     except Exception as e:
         return print(e)
+
+
