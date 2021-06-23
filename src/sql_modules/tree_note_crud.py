@@ -1,8 +1,8 @@
 import json
 import uuid
 from datetime import datetime
-from src.sql_modules.utils.utils import _remove_json_extension, _add_json_extension
-from src.utils import primenotes_data
+from sql_modules.utils.utils import _remove_json_extension, _add_json_extension
+from utils import primenotes_data
 data = {
     "folder-uuid-14cb-4ec1-9fdc-0783951a365d": {
         "date_created": "",
