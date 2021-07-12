@@ -5,22 +5,21 @@ import SourceCodeSection from './DocumentSection.js';
 export default class DomEvents{
     components_list= [];
     active_component_dialog_elements = [];
-
+    _triggerClick(selector){
+        $(selector).click();
+    }
     _button_clicks(){
-
-
         /*initial clicks for file*/
+        let self = this;
         setTimeout( function(){
 
             $($('.ui.tabular.menu').children().get(0)).click()
             $($('.folder-section')[0]).hide().click();
-//            ($('.file-click')[0]).click()
-            $($('.file-switch')[1]).dblclick();
+            $($('.individual-search')[2]).click();
+            ($('.file-click')[0]).click()
             self.tsp.DetailsPanel.close_details();
             $('#stream-youtube-video').click();
-//            $('.top-header-drag-bar').click();
-//            $('.top-header-drag-bar').off('click');
-
+            self.triggerClick('#main-section-button');
         },1500);
 
 
@@ -97,7 +96,7 @@ export default class DomEvents{
 
         document.addEventListener('mouseup', () => {
           self.mouse_is_down = false;
-          $('#display-tab-setting-backdrop').show()
+          $('#display-tab-setting-backdrop').hide()
         })
     }
 

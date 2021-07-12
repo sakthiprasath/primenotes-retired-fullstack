@@ -15,6 +15,7 @@ import DetailsPanel from './DetailsPanel/DetailsPanel.js';
 import PrimenotesCache from './PrimenotesCache.js';
 import NotificationBar from './NotificationBar.js';
 import StreamYoutube from './StreamYoutube.js';
+import GlobalConstants from './constants/constants.js';
 
 class Tsp {
     constructor() {}
@@ -40,6 +41,7 @@ function calculate_progress_bar(counter, factor) {
 $(document).ready(function() {
     var tsp = new Tsp();
     let class_list = [
+        GlobalConstants,
         PrimenotesCache,
         Dialog,
         DomActions,
@@ -54,7 +56,7 @@ $(document).ready(function() {
         SearchBox,
         DetailsPanel,
         NotificationBar,
-        //        StreamYoutube,
+        StreamYoutube,
         DomEvents
     ];
     let len = class_list.length;

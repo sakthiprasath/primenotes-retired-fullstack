@@ -1,3 +1,5 @@
+import constants from './constants/constants.js';
+
 export default class Dialog {
     cache_elems() {
         let self = this;
@@ -13,7 +15,6 @@ export default class Dialog {
             'file-copy': 'Copy Here',
             'confirm-delete-all-files-in-folder': 'Confirm'
         }
-
     }
     launch_dialog(form_id) {
         let self = this;
@@ -32,12 +33,17 @@ export default class Dialog {
                 }
             case 'file-move':
             case 'file-copy':
-            case 'folder-clone-section':
+            case 'video-notes-help-dialog':
                 {
-
-
+                    $('.' + form_id).html(`` +
+                        self.tsp.GlobalConstants.video_notes_help_dialog_content);
                     break;
                 }
+            case 'folder-clone-section':
+                {
+                    break;
+                }
+
         }
 
 
@@ -47,6 +53,8 @@ export default class Dialog {
     close_dialog_action() {
         let self = this;
         self.cache.modal.css("display", "none");
+
+        $('.modal-content').removeClass('model-content-on-tree-clone');
         if (self.tsp.TreeClass.cloned_folder_parent_in_tree !== null) {
             let q1 = $('#folder-clone-section').children().get(0);
             let q2 = $('#folder-clone-section').children().get(1);

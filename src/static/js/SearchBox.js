@@ -26,7 +26,7 @@ export default class TreeClass{
         let self = this;
         $('#searchInput').search({
 
-              apiSettings: {
+            apiSettings: {
                 'response': function (e) {
                     var searchTerm = e.urlData.query;
 
@@ -67,18 +67,10 @@ export default class TreeClass{
                     self.tsp.SourceCodeSection.buildTab(result.title, 'document', result.description);
                     self.tsp.TreeClass._build_breadcrumb(result.description);
                 }
-            }
+            },
+
           });
 
-
-          $('.prompt').on('focus',function(){
-
-            $('.sidenav').css('z-index',7);
-          });
-
-          $('.prompt').on('blur',function(){
-            $('.sidenav').css('z-index',5);
-          });
 
         $('.tab-container-setting').dropdown();
 

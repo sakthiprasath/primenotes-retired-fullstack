@@ -98,14 +98,18 @@ export default class Header{
 
             $('#pane').css({'display':'block'});
             $(this).addClass('top-header-highlighter');
-            self.tsp.current_window  = 1;
+            if(self.tsp.GlobalConstants.previous_window != 1){
+                self.tsp.GlobalConstants.previous_window = 2; //assign other number anything < than 3
+            }
+            self.tsp.GlobalConstants.current_window  = 1;
          });
 
         $('#main-section-button').on('click',function(){
             _hide_all_main_section_wrapper_class();
             $('#main-sections').css('display','block');
             $(this).addClass('top-header-highlighter');
-            self.tsp.current_window  = 2;
+            self.tsp.GlobalConstants.previous_window = 1;
+            self.tsp.GlobalConstants.current_window  = 2;
 //            if(tree_navigation_open_close === 0){
 //                $('#closebtn').click();
 //                tree_navigation_open_close = 1;
@@ -121,7 +125,8 @@ export default class Header{
             $('#pane').css({'display':'block'});
             $('#overlay').css('display','block');
             $(this).addClass('top-header-highlighter');
-            self.tsp.current_window  = 3;
+            self.tsp.GlobalConstants.previous_window = 2;
+             self.tsp.GlobalConstants.current_window  = 3;
         });
 
 
@@ -129,7 +134,7 @@ export default class Header{
             _hide_all_main_section_wrapper_class();
             $('#html-renderer-section').css('display','block');
             $(this).addClass('top-header-highlighter');
-            self.tsp.current_window  = 4;
+             self.tsp.GlobalConstants.current_window  = 4;
         });
 
     }

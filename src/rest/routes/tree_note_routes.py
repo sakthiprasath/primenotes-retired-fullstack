@@ -131,6 +131,16 @@ def move_to_tree_trash(type_uuid):
     except Exception as e:
         return print(e)
 
+@tree_note_routes.route('delete-permanently/<type_uuid>', methods=['DELETE'])
+def delete_permanently(type_uuid):
+    try:
+        obj = TreeNote()
+        ret_data = obj.delete_permanently(type_uuid)
+
+        return jsonify({"Success": "File deleted permanently"}), 200
+    except Exception as e:
+        return print(e)
+
 @tree_note_routes.route('bulk-move-to-trash-tree-file-or-folder', methods=['POST'])
 def bulk_move_to_tree_trash():
     try:
@@ -155,3 +165,13 @@ def starr_it(type_uuid):
         return print(e)
 
 
+
+@tree_note_routes.route('restore/<type_uuid>', methods=['PUT', 'POST'])
+def restore(type_uuid):
+    try:
+        obj = TreeNote()
+        ret_data = obj.restore(type_uuid)
+
+        return jsonify({"Success": "File retored"}), 200
+    except Exception as e:
+        return print(e)

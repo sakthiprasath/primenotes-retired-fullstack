@@ -6,6 +6,14 @@
     z-index: 3;
     background: #e9f3ed !important;
 }
+/*.sidenav-button-class-display:hover + .sidenav-button-class{
+    display:block;
+}
+.sidenav-button-class:hover{
+    display: block;
+    cursor:pointer;
+}
+*/
 
 @media only screen and (max-width:700px) {
     .sidenav-button-class {
@@ -41,27 +49,21 @@
     display: block;
     width: 30px !important;
     height: 30px !important;
-    z-index: 6;
-    position: absolute;
-    margin-left: -13px;
+    margin-left: -12px;
     z-index: 18;
-    border-radius: 50%;
+    border-radius: 34%;
     border: 1px solid #e9f3ed;
-    color: #2b1616;
     bottom: 45px;
-}
-
-.sidenav-button-class:hover {
+    background: rgb(74, 150, 203);
+    color: white;
+    position: absolute;
+    top: 20%;
     cursor: pointer;
 }
-
-span.sidenav-button-content-class:hover {
-    font-weight: 100 !important;
-}
-
 .sidenav {
     position: absolute;
-    height: 97%;
+    height: inherit;
+    height: inherit;
     width: inherit;
     overflow: hidden;
     transition: 0s;
@@ -111,10 +113,11 @@ div {
 .sidenav-button-content-class {
     position: absolute;
     font-family: sans-serif;
-    padding-left: 11px;
-    font-size: 18px;
+    padding-left: 6px;
+    font-size: 9px;
     font-family: cursive;
-    bottom: 2px;
+    bottom: 9px;
+    font-weight: bold;
 }
 
 .tabs {
@@ -542,7 +545,7 @@ div {
 }
 
 .ui.category.search .results {
-    width: max-content !important;
+    width: 18rem !important;
 }
 
 .ui.dropdown>.text {

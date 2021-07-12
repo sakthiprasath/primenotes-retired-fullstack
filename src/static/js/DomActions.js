@@ -136,7 +136,8 @@ export default class DomActions{
         create_action(send_file_name);
     }
      _create_file_in_backend_duplicate(data_map){
-    /*this funciton can also be used from indicidualComponentJS/main.js */
+        /*this funciton can also be used from indicidualComponentJS/main.js */
+        let self = this;
         let send_file_name = '';
         function create_action(data_map){
 
@@ -144,7 +145,7 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/individual-component-fetch/create-file/",
+                        url: self.url_prefix + "/api/individual-component-fetch/create-file/",
                         data: JSON.stringify(data_map),
                         type : "POST",
                         contentType: 'application/json;charset=UTF-8',
@@ -158,7 +159,8 @@ export default class DomActions{
         return create_action(data_map);
     }
      _create_file_in_backend_with_metadata(data_map){
-    /*this funciton can also be used from indicidualComponentJS/main.js */
+        /*this funciton can also be used from indicidualComponentJS/main.js */
+        let self = this;
         let send_file_name = '';
         function create_action(data_map){
 
@@ -166,7 +168,7 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/tree-note/create-folder",
+                        url: self.url_prefix + "/api/tree-note/create-folder",
                         data: JSON.stringify(data_map),
                         type : "POST",
                         contentType: 'application/json;charset=UTF-8',
@@ -181,6 +183,7 @@ export default class DomActions{
     }
     _copy_paste_file_in_backend_with_metadata(data_map){
     /*this funciton can also be used from indicidualComponentJS/main.js */
+        let self = this;
         let send_file_name = '';
         function create_action(data_map){
 
@@ -188,7 +191,7 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/tree-note/copy-paste-file",
+                        url: self.url_prefix + "/api/tree-note/copy-paste-file",
                         data: JSON.stringify(data_map),
                         type : "POST",
                         contentType: 'application/json;charset=UTF-8',
@@ -202,6 +205,7 @@ export default class DomActions{
     }
     _cut_paste_file_in_backend_with_metadata(data_map){
     /*this funciton can also be used from indicidualComponentJS/main.js */
+        let self = this;
         let send_file_name = '';
         function create_action(data_map){
 
@@ -209,7 +213,7 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/tree-note/cut-paste-file",
+                        url: self.url_prefix + "/api/tree-note/cut-paste-file",
                         data: JSON.stringify(data_map),
                         type : "POST",
                         contentType: 'application/json;charset=UTF-8',
@@ -223,6 +227,7 @@ export default class DomActions{
     }
 
     _rename_file_factory_files(file_type, send_data ){
+        let self = this;
         let send_file_name = '';
         function rename_action(file_type, send_data){
             var savable_data = '';
@@ -230,7 +235,7 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/individual-component-fetch/rename-file/"+ file_type,
+                        url: self.url_prefix + "/api/individual-component-fetch/rename-file/"+ file_type,
                         type : "POST",
                         data: JSON.stringify(send_data),
                         contentType: 'application/json;charset=UTF-8',
@@ -243,6 +248,7 @@ export default class DomActions{
         return rename_action(file_type, send_data);
     }
     _rename_tree_note_files(send_data){
+        let self = this;
         let send_file_name = '';
         function rename_action(file_type, send_data){
             var savable_data = '';
@@ -250,7 +256,7 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/individual-component-fetch/rename-tree-note-file",
+                        url: self.url_prefix + "/api/individual-component-fetch/rename-tree-note-file",
                         type : "POST",
                         data: JSON.stringify(send_data),
                         contentType: 'application/json;charset=UTF-8',
@@ -338,16 +344,16 @@ export default class DomActions{
         }
         return fav_action(file_key);
     }
-    _bulk_delete_project_note_file(to_delete_uuid_list){
-        function delete_action(to_delete_uuid_list){
+    _delete_project_note_file(uuid){
+        let self = this;
+        function delete_action(uuid){
             var savable_data = '';
             var defObj=$.Deferred();
-                var promise =
+            var promise =
                     $.ajax
                     ({
-                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/tree-note/bulk-move-to-trash-tree-file-or-folder",
-                        type : "POST",
-                        data: JSON.stringify(to_delete_uuid_list),
+                        url: self.url_prefix + "/api/tree-note/move-to-trash-tree-file-or-folder/" +uuid,
+                        type : "DELETE",
                         contentType: 'application/json;charset=UTF-8',
                         success : function(response){
                             return defObj.resolve(response);
@@ -355,7 +361,46 @@ export default class DomActions{
                     });
                 return defObj.promise();
         }
-        return delete_action(to_delete_uuid_list);
+        return delete_action(uuid);
+    }
+     _delete_project_note_permanently(uuid){
+        let self = this;
+        function delete_action(uuid){
+            var savable_data = '';
+            var defObj=$.Deferred();
+            var promise =
+                    $.ajax
+                    ({
+                        url: self.url_prefix + "/api/tree-note/delete-permanently/" +uuid,
+                        type : "DELETE",
+                        contentType: 'application/json;charset=UTF-8',
+                        success : function(response){
+                            return defObj.resolve(response);
+                        }
+                    });
+                return defObj.promise();
+        }
+        return delete_action(uuid);
+    }
+    _bulk_delete_project_note_file(in_map){
+        let self = this;
+        function delete_action(to_delete_uuid_list){
+            var savable_data = '';
+            var defObj=$.Deferred();
+                var promise =
+                    $.ajax
+                    ({
+                        url: self.url_prefix + "/api/tree-note/bulk-move-to-trash-tree-file-or-folder",
+                        type : "POST",
+                        data: JSON.stringify(in_map),
+                        contentType: 'application/json;charset=UTF-8',
+                        success : function(response){
+                            return defObj.resolve(response);
+                        }
+                    });
+                return defObj.promise();
+        }
+        return delete_action(in_map);
     }
     _starr_tree_note_file_or_folder(uuid){
         let self = this;
@@ -365,7 +410,7 @@ export default class DomActions{
                 var promise =
                     $.ajax
                     ({
-                        url: self.tsp.PrimenotesCache.data.url_prefix + '/api/tree-note/starr-it/'+uuid,
+                        url: self.url_prefix + '/api/tree-note/starr-it/'+uuid,
                         type : "PUT",
                         contentType: 'application/json;charset=UTF-8',
                         success : function(response){
@@ -375,6 +420,25 @@ export default class DomActions{
                 return defObj.promise();
         }
         return starr_action(uuid);
+    }
+    restore_tree_file(uuid){
+        let self = this;
+        function restore_action(uuid){
+            var savable_data = '';
+            var defObj=$.Deferred();
+                var promise =
+                    $.ajax
+                    ({
+                        url: self.url_prefix + '/api/tree-note/restore/'+uuid,
+                        type : "PUT",
+                        contentType: 'application/json;charset=UTF-8',
+                        success : function(response){
+                            return defObj.resolve(response);
+                        }
+                    });
+                return defObj.promise();
+        }
+        return restore_action(uuid);
     }
     _get_components_list(){
             let compo_names = [];
@@ -586,6 +650,7 @@ export default class DomActions{
         tsp.DomActions = this;
         this.tsp = tsp;
         //        this._get_all_videos();
+        this.url_prefix = tsp.PrimenotesCache.data.url_prefix;
         this.set_url_for_tree_note_iframe();
         return $.Deferred().resolve(this.tsp, to_return_values);
     }

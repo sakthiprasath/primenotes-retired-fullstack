@@ -3,6 +3,7 @@ import uuid
 from datetime import datetime
 from sql_modules.utils.utils import _remove_json_extension, _add_json_extension
 from utils import primenotes_data
+import os
 data = {
     "folder-uuid-14cb-4ec1-9fdc-0783951a365d": {
         "date_created": "",
@@ -162,10 +163,22 @@ class TreeNote:
         fp = open(file_path, 'w')
         fp.write(file_data)
 
+    def delete_file(self, file_uuid):
+        file_path = self.tree_note_root_path + '/' + self.actual_files + '/' + _add_json_extension(file_uuid)
+        os.remove(file_path)
+
+
     def move_to_tree_trash(self, type_uuid):
         metadata = self.get_metadata()
-        metadata[type_uuid]['trash'] = True
+        metadata[type_uuid]['trash'] = "true"
         metadata[type_uuid]['starred'] = "false"
+        metadata[type_uuid]['path'] = "Trash Restored" + '/' + metadata[type_uuid]['name']
+        self.write_metadata(metadata)
+
+    def delete_permanently(self, type_uuid):
+        metadata = self.get_metadata()
+        self.delete_file(type_uuid)
+        del metadata[type_uuid]
         self.write_metadata(metadata)
 
     def bulk_move_to_tree_trash(self, uuid_list):
@@ -177,6 +190,7 @@ class TreeNote:
                 #if its a file
                 metadata[to_delete_uuid]["trash"] = "true"
                 metadata[to_delete_uuid]["starred"] = "false"
+                metadata[to_delete_uuid]["path"] = "Trash Restored" + '/' + metadata[to_delete_uuid]["name"]
         self.write_metadata(metadata)
 
     def delete_from_tree_trash(self, type_uuid):
@@ -189,6 +203,12 @@ class TreeNote:
             metadata[type_uuid]['starred'] = "false"
         else:
             metadata[type_uuid]['starred'] = "true"
+        self.write_metadata(metadata)
+
+
+    def restore(self, type_uuid):
+        metadata = self.get_metadata()
+        metadata[type_uuid]['trash'] = "false"
         self.write_metadata(metadata)
 
 

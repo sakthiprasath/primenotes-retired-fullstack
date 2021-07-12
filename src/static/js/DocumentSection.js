@@ -67,10 +67,15 @@ export default class SourceCodeSection{
             savable_data = this.code_mirror_editor.getValue();
         }
         let file_uuid = '';
-        if( self.tsp.TreeClass.untitled_map[file_path] != undefined)
-            file_uuid = self.tsp.TreeClass.untitled_map[file_path]["uuid"]
-        else
-            file_uuid = self.tsp.TreeClass.metadata_map[file_path]["uuid"];
+        try{
+                let obj = self.tsp.TreeClass.metadata_map[file_path];
+                if(obj !==undefined){
+                        file_uuid = obj.uuid;
+                }
+        }
+        catch(err){
+            console.log(err);
+        }
         var defObj=$.Deferred();
                 var promise =
                     $.ajax
@@ -96,6 +101,7 @@ export default class SourceCodeSection{
         /*find the to-build-tab filename is already present in tab container*/
         let tab_elems =  $('#tab-container .file-get-section');
         let len =tab_elems.length;
+        self.tsp.TreeClass._build_breadcrumb(file_path);
         for(let i=0;i < len ;i++){
             let curr_tab_file_path = $(tab_elems[i]).attr('file-path');
             if(curr_tab_file_path === file_path){
@@ -229,7 +235,6 @@ export default class SourceCodeSection{
 //                self.get_editor_file(this, 'document', false,  file_path);
                 self.buildTab($(this).attr('title'), $(this).attr('file-type'), $(this).attr('file-path') );
                 self._highlight_in_tree(file_path);
-                self.tsp.TreeClass._build_breadcrumb(file_path);
             }
             else{
                 type = 'code'
@@ -287,7 +292,6 @@ export default class SourceCodeSection{
             else{
                     self.buildTab(file_name, type, file_path);
             }
-            self.tsp.TreeClass._build_breadcrumb(file_path);
         });
 
         $('.tree-note-details-icon').off('click');
@@ -315,17 +319,17 @@ export default class SourceCodeSection{
 //        });
 //
 
-            $('#display-tab-setting-backdrop').off('dblclick');
-            $('#display-tab-setting-backdrop').dblclick(function(){
-                $(this).hide();
-                $(self.summer_note_ele).focus();
-            });
+//            $('#display-tab-setting-backdrop').off('dblclick');
+//            $('#display-tab-setting-backdrop').dblclick(function(){
+//                $(this).hide();
+//                $(self.summer_note_ele).focus();
+//            });
 
-            $('#edit-tree-note').off('click');
-            $('#edit-tree-note').click(function(){
-                $('#display-tab-setting-backdrop').hide();
-                $(self.summer_note_ele).focus();
-            });
+//            $('#edit-tree-note').off('click');
+//            $('#edit-tree-note').click(function(){
+//                $('#display-tab-setting-backdrop').hide();
+//                $(self.summer_note_ele).focus();
+//            });
 
 
 

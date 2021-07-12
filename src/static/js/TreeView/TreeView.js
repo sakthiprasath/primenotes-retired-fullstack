@@ -2,6 +2,12 @@ import SourceCodeSection from '../DocumentSection.js';
 
 
 export default class TreeClass {
+    set_constants(){
+        return {
+            trash_restored : "Trash Restored",
+            slash : "/"
+        }
+    }
     _get_tree_file_html(path, name, uuid) {
         let file_html = `<li class="tree-file">` +
             `<a href="#" class='file-click' content-type="file" file-uuid='${uuid}' filename='${name}' title='${name}'` +
@@ -75,7 +81,7 @@ export default class TreeClass {
         for (let index in file_arr) {
             if (self.untitled_map[file_arr[index]] != undefined)
                 continue;
-            if (self.metadata_map[file_arr[index]].trash !== undefined) {
+            if (self.metadata_map[file_arr[index]].trash !== undefined && self.metadata_map[file_arr[index]].trash === "true") {
                 self.trash_list.push(file_arr[index]);
                 continue;
             } else if (self.metadata_map[file_arr[index]].starred.toString().toLocaleLowerCase() == "true") {
@@ -113,8 +119,18 @@ export default class TreeClass {
             name = 'MY-ROOT';
         } else {
             console.log(folder_path);
-            folder_uuid = self.metadata_map[folder_path].uuid;
-            name = self.metadata_map[folder_path].name
+            try{
+                let obj = self.metadata_map[folder_path];
+                if(obj !==undefined){
+                    folder_uuid = obj.uuid;
+                    name = self.metadata_map[folder_path].name;
+                }
+                else
+                    throw "folder path " + folder_path + "not found";
+            }
+            catch(err){
+                console.log(err);
+            }
             this.folder_list.push({
                 title: name,
                 description: folder_path
@@ -204,17 +220,20 @@ export default class TreeClass {
 
         /*beginning of navigation  bar */
         let self = this;
-        self.kojinFlag = 0;
+        self.kojinFlag = 2;
+        self.tsp.GlobalConstants.current_window = 2; //golbal declaration
+        $('#main-section-button').addClass('top-header-highlighter');
 
+//        $('#closebtn').off("click");
         //.sidenav-button-class ,
         $('#closebtn').click(function() {
             if (self.kojinFlag == 0) { //closing navigation-bar
                 var sideNavWidth = '40%';
                 var sideNavLeft = 0;
                 $('#navigation-bar').css('width', '0px');
-                $('#parent-source-code-main-div').css({ 'left': '0px', 'width': '100%' });
+                $('#parent-source-code-main-div').css({ 'left': '20px', 'width': '100%' });
                 //                $('#sidenav-button-id').css('display','block');
-                $('.split__bar').css('left', '-20px');
+                $('.split__bar').css('left', '20px');
                 self.kojinFlag = 1;
             } else { //opening navigation-bar
                 let screen_width = window.innerWidth;
@@ -268,10 +287,12 @@ export default class TreeClass {
         });
         /*end   navigation bar */
 
-
+//        $('#sidenav-button-id, #main-section-button').off('click');
         $('#sidenav-button-id, #main-section-button').on('click', function() {
-            if (self.tsp.current_window != 2)
+            if (self.tsp.GlobalConstants.previous_window == 1){
+                self.tsp.GlobalConstants.previous_window = 2;
                 return;
+            }
             let curr_ele = $(this);
             if (self.kojinFlag == 1) {
                 //            	$('#parent-source-code-main-div').css({'left':'19%','width':'81%'});
@@ -314,9 +335,9 @@ export default class TreeClass {
                 var sideNavWidth = '40%';
                 var sideNavLeft = 0;
                 $('#navigation-bar').css('width', '0px');
-                $('#parent-source-code-main-div').css({ 'left': '0px', 'width': '100%' });
+                $('#parent-source-code-main-div').css({ 'left': '20px', 'width': '100%' });
                 //                $('#sidenav-button-id').css('display','block');
-                $('.split__bar').css('left', '-20px');
+                $('.split__bar').css('left', '20px');
                 self.kojinFlag = 1;
             }
         });
@@ -324,12 +345,23 @@ export default class TreeClass {
 
     clone_folder_into_dialog(folder_path) {
         let self = this;
-        let uuid = self.metadata_map[folder_path]['uuid'];
-        let q1 = ($(`.folder-section[folder-uuid=${uuid} ]`)).parent().get(0);
-        let q2 = $($(q1).children().get(0)).clone(); // folder-section
-        let q3 = $($(q1).children().get(1)).clone(); //nested section
-        $('#folder-clone-section').empty().append($(q2)).append($(q3));
-        self.cloned_folder_parent_in_tree = q1;
+        $('.modal-content').addClass('model-content-on-tree-clone');
+        if(folder_path === self.root_name){
+            let q1 = $(`.folder-section[folder-path='${self.root_name}']`).parent().get(0);
+            let q2 = $($(q1).children().get(0)).clone(); // folder-section
+            let q3 = $($(q1).children().get(1)).clone(); //nested section
+            $('#folder-clone-section').empty().append($(q2)).append($(q3));
+            self.cloned_folder_parent_in_tree = q1;
+        }
+        else{
+            let uuid = self.metadata_map[folder_path]['uuid'];
+            let q1 = ($(`.folder-section[folder-uuid=${uuid} ]`)).parent().get(0);
+            let q2 = $($(q1).children().get(0)).clone(); // folder-section
+            let q3 = $($(q1).children().get(1)).clone(); //nested section
+            $('#folder-clone-section').empty().append($(q2)).append($(q3));
+            self.cloned_folder_parent_in_tree = q1;
+
+        }
     }
 
     action_functions() {
@@ -413,7 +445,7 @@ export default class TreeClass {
 
                 let new_file_html = `<li class="tree-file"></li>`;
                 temp_clone.attr('file-path', new_path);
-                let new_ele = $(new_file_html).append(temp_clone);
+                let new_ele = $(new_file_html).append(temp_clone).append(`<span class="three-dots" content-type="file">...</span>`);
                 let nested_folder_sibling = $(self.parent_folder).siblings().get(0);
                 $(nested_folder_sibling).prepend(new_ele);
 
@@ -440,6 +472,21 @@ export default class TreeClass {
                 let new_ele = $(new_file_html).append(temp_clone).append($(`<span class="three-dots" content-type="file">...</span>`));
                 let nested_folder_sibling = $('.tree-trash-class').siblings().get(0);
                 $(nested_folder_sibling).prepend(new_ele);
+            },
+            move_to_trash_restored_in_UI: function(path, uuid) {
+                let target_ele = $('.tree-trash-tab-class').find(`.file-click[file-uuid='${uuid}']`);
+                let temp_clone = $(target_ele).clone();
+                target_ele.remove();
+
+                let new_file_html = `<li class="tree-file"></li>`;
+                temp_clone.attr('file-path', path);
+                let new_ele = $(new_file_html).append(temp_clone).append($(`<span class="three-dots" content-type="file">...</span>`));
+                let nested_folder_sibling =  $(`.folder-section[folder-uuid='folder-uuid-14cb-4ec1-9fdc-0783951a365daxq']`).siblings().get(0)
+                $(nested_folder_sibling).prepend(new_ele);
+            },
+            deleted_file_permanently_in_UI: function(path, uuid) {
+                let target_ele = $('.tree-trash-tab-class').find(`.file-click[file-uuid='${uuid}']`);
+                target_ele.remove();
             },
             starr_it_in_UI: function(path) {
                 let temp_file_list = $(`.file-click[file-path='${path}']`);
@@ -480,6 +527,7 @@ export default class TreeClass {
         let len = metadata_keys.length;
         let def = $.Deferred();
         let to_delete_uuid_list = [];
+        to_delete_uuid_list.push(metadata_map[self.curr_active_folder].uuid);
         for (let i=0; i<len; i++) {
             let curr_obj = metadata_map[metadata_keys[i]];
             if (metadata_keys[i].startsWith(self.curr_active_folder)
@@ -488,6 +536,8 @@ export default class TreeClass {
                 to_delete_uuid_list.push(curr_obj.uuid);
             }
         }
+
+
         self.tsp.DomActions._bulk_delete_project_note_file(to_delete_uuid_list).then(function() {
             for (let i=0; i<len; i++) {
                 let curr_uuid = metadata_keys[i];
@@ -500,17 +550,19 @@ export default class TreeClass {
                     }
                     else if(curr_obj.folder_type == 'file') {
                         console.log(metadata_map[curr_uuid].path);
+                        metadata_map[curr_uuid].path = self.local_constants.trash_restored + self.local_constants.slash + metadata_map[curr_uuid].name;
                         metadata_map[curr_uuid].trash = "true";
                         metadata_map[curr_uuid].starred = "false";
                         self.action_function_map.move_to_trash_in_UI(curr_obj.path, curr_obj.uuid);
                         self.action_function_map.remove_from_starr_UI(curr_obj.path);
+                        self._events();
+                        self.tsp.SourceCodeSection.events();
+
                     }
                 }
             }
             self.metadata_map = metadata_map;
-            let parent_ele = $(self.parent_folder);
-            let curr_nested = $(parent_ele).siblings()[0]
-            $(curr_nested).empty();
+            $(self.parent_folder).parent().remove()
 
             self._events();
             self.tsp.SourceCodeSection.events();
@@ -640,7 +692,8 @@ export default class TreeClass {
                     console.log(sibling);
                     $(sibling).css({
                         'background': '#dae6e0',
-                        'left': '-10px'
+                        'left': '-10px',
+                        'width': 'calc( 100% + 10px)'
                     });
                 });
             },
@@ -648,7 +701,7 @@ export default class TreeClass {
                 $('.ui.close.icon').off('click');
                 $('.ui.close.icon').on('click', function() {
 
-                    switch (self.tsp.current_window) {
+                    switch (self.tsp.GlobalConstants.current_window) {
                         case 1:
                         case 3:
                             {
@@ -690,6 +743,7 @@ export default class TreeClass {
             'new_path': new_path,
             'new_name': new_name
         }
+
         self.tsp.DomActions._rename_tree_note_folder_with_metadata(send_data).then(function(response) {
             /*Update the Tree list if we do the file raname from within the Starred tab*/
 
@@ -754,6 +808,7 @@ export default class TreeClass {
                         $(qq).show()
                         $('#tree-note-file-rename').remove();
                         self.build_tree('for-rename').then(function() {
+
                             self.tsp.SourceCodeSection.events();
                             $($('.folder-section')[0]).hide().click();
                         });
@@ -791,9 +846,10 @@ export default class TreeClass {
         $('#tree-note-file-rename').on('blur', function() {
             private_rename($(this).val());
         });
-        //        private_rename($('#rename-tree-file-text-box').val());
+        private_rename($('#rename-tree-file-text-box').val());
     }
     starr_it(file_or_folder_path) {
+        /*star or unstar the tree file*/
         let self = this;
         if (self.metadata_map[file_or_folder_path].starred == "true") {
             self.metadata_map[file_or_folder_path].starred = "false";
@@ -803,6 +859,30 @@ export default class TreeClass {
             self.action_function_map.starr_it_in_UI(file_or_folder_path);
         }
         self.tsp.DomActions._starr_tree_note_file_or_folder(self.metadata_map[file_or_folder_path].uuid);
+    }
+    restore(){
+        /* Restore the deleted tree file to "Trash Restored" folder */
+        let self = this;
+        let uuid = self.metadata_map[self.curr_active_file].uuid;
+        let path = self.curr_active_file;
+        self.tsp.DomActions.restore_tree_file(uuid).then(function() {
+            self.metadata_map[path]['trash'] = false;
+            self.action_function_map.move_to_trash_restored_in_UI(path, uuid);
+            self._events();
+            self.tsp.SourceCodeSection.events();
+            self.tsp.NotificationBar.launch_notification( 'File Restored');
+        });
+    }
+    delete_file_permanently(){
+        /* Restore the deleted tree file to "Trash Restored" folder */
+        let self = this;
+        let uuid = self.metadata_map[self.curr_active_file].uuid;
+        let path = self.curr_active_file;
+        self.tsp.DomActions._delete_project_note_permanently(uuid).then(function() {
+            delete self.metadata_map[path];
+            self.action_function_map.deleted_file_permanently_in_UI(path, uuid);
+            self.tsp.NotificationBar.launch_notification( 'File Deleted From Trash');
+        });
     }
     _build_rename_field_and_call_backend() {
         let self = this;
@@ -827,6 +907,55 @@ export default class TreeClass {
         });
         self._onfocusout_rename_field();
     }
+    set_search_drop_down_list(tab="tree", file_list=null, folder_list=null){
+        let self = this;
+        let metadata_map = self.metadata_map;
+        let temp_file_list = [];
+
+        let set_search_map = (file_list=[], folder_list=[])=>{
+            self.file_folder_list = [{
+                            name: "File",
+                            results: file_list //this is list
+                        },
+                        {
+                            name: "Folder",
+                            results: folder_list //this is list
+                        },
+                    ];
+        }
+        if(tab == "tree"){
+            set_search_map(self.file_list, self.folder_list);
+        }else if(tab == "starred"){
+            for(let item in metadata_map){
+                         if( metadata_map[item].starred !== undefined
+                         && metadata_map[item].starred !==null
+                         && (metadata_map[item].starred).toString().toLowerCase() == "true"
+                         && metadata_map[item].folder_type === 'file'){
+                            console.log(metadata_map[item])
+                            temp_file_list.push({
+                                title: metadata_map[item].name,
+                                description: metadata_map[item].path
+                            });
+                        }
+                    }
+            set_search_map(temp_file_list, []);
+        }
+        else if(tab=="trash"){
+            for(let item in metadata_map){
+                         if( metadata_map[item].trash !== undefined
+                         && metadata_map[item].trash !==null
+                         && (metadata_map[item].trash).toString().toLowerCase() == "true"
+                         && metadata_map[item].folder_type === 'file'){
+                            console.log(metadata_map[item])
+                            temp_file_list.push({
+                                title: metadata_map[item].name,
+                                description: metadata_map[item].path
+                            });
+                        }
+                    }
+                set_search_map(temp_file_list, []);
+            }
+        }
     paste_after_copy() {
         let self = this;
         let data_map = {
@@ -843,16 +972,7 @@ export default class TreeClass {
                 title: response.name,
                 description: response.path
             });
-            self.file_folder_list = [{
-                    name: "File",
-                    results: self.file_list //this is list
-
-                },
-                {
-                    name: "Folder",
-                    results: self.folder_list //this is list
-                },
-            ];
+            self.set_search_drop_down_list("tree");
         });
         self.tsp.NotificationBar.launch_notification(`Copy Paste was Successful`);
     }
@@ -871,7 +991,6 @@ export default class TreeClass {
                 self.action_function_map.starr_it_in_UI(response.path);
             }
             delete self.tsp.TreeClass.metadata_map[self.curr_copy_file];
-            self._build_breadcrumb(response.path);
             self._events();
             self.tsp.SourceCodeSection.events();
             self.file_list.pop({ title: response.name, description: self.curr_copy_file });
@@ -879,15 +998,7 @@ export default class TreeClass {
                 title: response.name,
                 description: response.path
             });
-            self.file_folder_list = [{
-                    name: "File",
-                    results: self.file_list //this is list
-                },
-                {
-                    name: "Folder",
-                    results: self.folder_list //this is list
-                },
-            ];
+            self.set_search_drop_down_list("tree");
         });
         self.tsp.NotificationBar.launch_notification(`Cut Paste was Successful`);
     }
@@ -929,6 +1040,7 @@ export default class TreeClass {
                             self.tsp.DomActions._delete_project_note_file(uuid).then(function() {
                                 self.metadata_map[path]['trash'] = true;
                                 self.metadata_map[path]['starred'] = false;
+                                self.metadata_map[path]['path'] = self.local_constants.trash_restored + self.local_constants.slash  + self.metadata_map[path]['name'];
                                 self.action_function_map.move_to_trash_in_UI(path, uuid);
                                 self.action_function_map.remove_from_starr_UI(path);
                                 self._events();
@@ -936,8 +1048,6 @@ export default class TreeClass {
                                 self.tsp.NotificationBar.launch_notification(delete_type + ' Moved To Trash');
                             });
                         }
-
-
                         break;
                     }
                 case "New Folder":
@@ -1038,14 +1148,23 @@ export default class TreeClass {
                         self.event_map.folder_section();
                         break;
                     }
+                case "Restore":{
+                        self.restore();
+                        break;
+                    }
+                case "Delete from Trash":{
+                    self.delete_file_permanently();
+                    break;
+                }
             }
         });
     }
     _build_breadcrumb(path) {
         let self = this;
         let path_arr = path.split('/');
-        let html = "";
         let len = path_arr.length;
+        let html = `<a class='section' folder-path='${self.root_name}'> Home </a>`;
+        html += `<div class='divider'> / </div> `;
         for (let index = 0; index < path_arr.length; index++) {
 
             if (index !== len - 1) {
@@ -1080,14 +1199,20 @@ export default class TreeClass {
         self._get_tree_structure_metadata().then(function(res) {
             self.metadata_map = res[1];
             self.untitled_map = res[2];
-            let tree_html = self._get_html(res[0], `../frontend_files/web-app/all_general_files/separate_project/MY-ROOT`);
+            let tree_html = self._get_html(res[0], self.root_name);
             document.getElementById('myUL').innerHTML = tree_html;
-            self._build_tree_and_close_sidenav();
             self._build_trash_section();
             self._build_starred_section();
             self._context_menu_for_project_tree();
             self._events();
-            $('.tabular.menu .item').tab();
+            $('.tabular.menu .item').tab(
+                {'onVisible': function(){
+                    setTimeout(function(){
+                        let tab = $('.item.active').attr('data-tab');
+                        self.tsp.TreeClass.set_search_drop_down_list(tab);
+                    }, 1000)
+
+            }});
             return def_obj.resolve();
         });
         return def_obj.promise();
@@ -1100,34 +1225,28 @@ export default class TreeClass {
         this.event_map = {};
         this.file_list = [];
         this.folder_list = [];
+        this.file_folder_list = [];
         this.action_function_map = {};
         this.curr_copy_file = undefined;
         this.curr_copy_folder = undefined;
+        this.local_constants = this.set_constants();
 
         this.action_functions();
         this.metadata_map = {};
         this.untitled_map = {};
         this.trash_list = [];
         this.starred_list = [];
+        this.root_name = `../frontend_files/web-app/all_general_files/separate_project/MY-ROOT`
 
         this.highlight_background_color = '#cce2d6';
         this.cloned_folder_parent_in_tree = null;
 
-        this.file_folder_list = [{
-                name: "File",
-                results: this.file_list //this is list
-
-            },
-            {
-                name: "Folder",
-                results: this.folder_list //this is list
-
-            },
-        ];
+        this.set_search_drop_down_list("tree");
         this.build_tree().then(function() {
-
+            self._build_tree_and_close_sidenav();
             return def.resolve(tsp, to_return_values);
         })
+        self._build_breadcrumb('');
         return def.promise();
     }
 }

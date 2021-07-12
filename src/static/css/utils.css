@@ -69,7 +69,9 @@
     position: relative;
     padding: 1rem;
     overflow: scroll;
-    max-height: 400px;}
+    max-height: 400px;
+    width: 60%;
+    }
 
 .modal-footer {
   padding: 2px 16px;

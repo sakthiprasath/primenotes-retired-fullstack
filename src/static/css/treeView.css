@@ -57,7 +57,6 @@ ul,
     margin: 0px 0 0 5px;
     padding: 0;
     overflow: scroll;
-    height: 86%;
     width: max-content;
     left: -10px;
     position: relative;
@@ -102,7 +101,7 @@ ul,
 }
 
 .three-dots:hover {
-    font-size: 26px;
+    font-size: 26px !important;
     transition-duration: 0.5s;
 }
 
@@ -250,3 +249,13 @@ span.tree-note-file-name:hover {
     height: 20px;
     background: #e9f3ed;
 }
+/*modal size on tree clone*/
+
+.model-content-on-tree-clone{
+        width: 90% !important;
+    height: 90%;
+    margin-top: -55px;
+    position: absolute !important;
+    left: 6%;
+    padding: 50px;
+    }
