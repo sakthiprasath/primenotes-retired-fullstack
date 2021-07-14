@@ -33,7 +33,6 @@ function calculate_progress_bar(counter, factor) {
             document.getElementById("top-header").style.display = "block";
             document.getElementById("main-section-wrapper").style.display = "block";
 
-
         }, 2000);
     }
 }
@@ -56,7 +55,7 @@ $(document).ready(function() {
         SearchBox,
         DetailsPanel,
         NotificationBar,
-        StreamYoutube,
+        // StreamYoutube,
         DomEvents
     ];
     let len = class_list.length;

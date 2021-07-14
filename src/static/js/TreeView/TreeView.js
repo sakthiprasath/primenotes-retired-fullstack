@@ -2,10 +2,10 @@ import SourceCodeSection from '../DocumentSection.js';
 
 
 export default class TreeClass {
-    set_constants(){
+    set_constants() {
         return {
-            trash_restored : "Trash Restored",
-            slash : "/"
+            trash_restored: "Trash Restored",
+            slash: "/"
         }
     }
     _get_tree_file_html(path, name, uuid) {
@@ -119,16 +119,14 @@ export default class TreeClass {
             name = 'MY-ROOT';
         } else {
             console.log(folder_path);
-            try{
+            try {
                 let obj = self.metadata_map[folder_path];
-                if(obj !==undefined){
+                if (obj !== undefined) {
                     folder_uuid = obj.uuid;
                     name = self.metadata_map[folder_path].name;
-                }
-                else
+                } else
                     throw "folder path " + folder_path + "not found";
-            }
-            catch(err){
+            } catch (err) {
                 console.log(err);
             }
             this.folder_list.push({
@@ -224,7 +222,7 @@ export default class TreeClass {
         self.tsp.GlobalConstants.current_window = 2; //golbal declaration
         $('#main-section-button').addClass('top-header-highlighter');
 
-//        $('#closebtn').off("click");
+        //        $('#closebtn').off("click");
         //.sidenav-button-class ,
         $('#closebtn').click(function() {
             if (self.kojinFlag == 0) { //closing navigation-bar
@@ -232,7 +230,6 @@ export default class TreeClass {
                 var sideNavLeft = 0;
                 $('#navigation-bar').css('width', '0px');
                 $('#parent-source-code-main-div').css({ 'left': '20px', 'width': '100%' });
-                //                $('#sidenav-button-id').css('display','block');
                 $('.split__bar').css('left', '20px');
                 self.kojinFlag = 1;
             } else { //opening navigation-bar
@@ -287,9 +284,9 @@ export default class TreeClass {
         });
         /*end   navigation bar */
 
-//        $('#sidenav-button-id, #main-section-button').off('click');
+        //        $('#sidenav-button-id, #main-section-button').off('click');
         $('#sidenav-button-id, #main-section-button').on('click', function() {
-            if (self.tsp.GlobalConstants.previous_window == 1){
+            if (self.tsp.GlobalConstants.previous_window == 1) {
                 self.tsp.GlobalConstants.previous_window = 2;
                 return;
             }
@@ -346,14 +343,13 @@ export default class TreeClass {
     clone_folder_into_dialog(folder_path) {
         let self = this;
         $('.modal-content').addClass('model-content-on-tree-clone');
-        if(folder_path === self.root_name){
+        if (folder_path === self.root_name) {
             let q1 = $(`.folder-section[folder-path='${self.root_name}']`).parent().get(0);
             let q2 = $($(q1).children().get(0)).clone(); // folder-section
             let q3 = $($(q1).children().get(1)).clone(); //nested section
             $('#folder-clone-section').empty().append($(q2)).append($(q3));
             self.cloned_folder_parent_in_tree = q1;
-        }
-        else{
+        } else {
             let uuid = self.metadata_map[folder_path]['uuid'];
             let q1 = ($(`.folder-section[folder-uuid=${uuid} ]`)).parent().get(0);
             let q2 = $($(q1).children().get(0)).clone(); // folder-section
@@ -481,7 +477,7 @@ export default class TreeClass {
                 let new_file_html = `<li class="tree-file"></li>`;
                 temp_clone.attr('file-path', path);
                 let new_ele = $(new_file_html).append(temp_clone).append($(`<span class="three-dots" content-type="file">...</span>`));
-                let nested_folder_sibling =  $(`.folder-section[folder-uuid='folder-uuid-14cb-4ec1-9fdc-0783951a365daxq']`).siblings().get(0)
+                let nested_folder_sibling = $(`.folder-section[folder-uuid='folder-uuid-14cb-4ec1-9fdc-0783951a365daxq']`).siblings().get(0)
                 $(nested_folder_sibling).prepend(new_ele);
             },
             deleted_file_permanently_in_UI: function(path, uuid) {
@@ -528,27 +524,26 @@ export default class TreeClass {
         let def = $.Deferred();
         let to_delete_uuid_list = [];
         to_delete_uuid_list.push(metadata_map[self.curr_active_folder].uuid);
-        for (let i=0; i<len; i++) {
+        for (let i = 0; i < len; i++) {
             let curr_obj = metadata_map[metadata_keys[i]];
-            if (metadata_keys[i].startsWith(self.curr_active_folder)
-                    && (metadata_keys[i] !== self.curr_active_folder)
-                    && ( (curr_obj.trash + "") == "false" || (curr_obj.trash + "") == "undefined") )  {
+            if (metadata_keys[i].startsWith(self.curr_active_folder) &&
+                (metadata_keys[i] !== self.curr_active_folder) &&
+                ((curr_obj.trash + "") == "false" || (curr_obj.trash + "") == "undefined")) {
                 to_delete_uuid_list.push(curr_obj.uuid);
             }
         }
 
 
         self.tsp.DomActions._bulk_delete_project_note_file(to_delete_uuid_list).then(function() {
-            for (let i=0; i<len; i++) {
+            for (let i = 0; i < len; i++) {
                 let curr_uuid = metadata_keys[i];
                 let curr_obj = metadata_map[curr_uuid];
-                if(curr_obj.path.startsWith(self.curr_active_folder)
-                    && (curr_obj.path !== self.curr_active_folder)
-                    && ( (curr_obj.trash + "") == "false" || (curr_obj.trash + "") == "undefined")){
-                    if(curr_obj.folder_type == "folder"){
+                if (curr_obj.path.startsWith(self.curr_active_folder) &&
+                    (curr_obj.path !== self.curr_active_folder) &&
+                    ((curr_obj.trash + "") == "false" || (curr_obj.trash + "") == "undefined")) {
+                    if (curr_obj.folder_type == "folder") {
                         delete metadata_map[metadata_keys[i]];
-                    }
-                    else if(curr_obj.folder_type == 'file') {
+                    } else if (curr_obj.folder_type == 'file') {
                         console.log(metadata_map[curr_uuid].path);
                         metadata_map[curr_uuid].path = self.local_constants.trash_restored + self.local_constants.slash + metadata_map[curr_uuid].name;
                         metadata_map[curr_uuid].trash = "true";
@@ -860,7 +855,7 @@ export default class TreeClass {
         }
         self.tsp.DomActions._starr_tree_note_file_or_folder(self.metadata_map[file_or_folder_path].uuid);
     }
-    restore(){
+    restore() {
         /* Restore the deleted tree file to "Trash Restored" folder */
         let self = this;
         let uuid = self.metadata_map[self.curr_active_file].uuid;
@@ -870,10 +865,10 @@ export default class TreeClass {
             self.action_function_map.move_to_trash_restored_in_UI(path, uuid);
             self._events();
             self.tsp.SourceCodeSection.events();
-            self.tsp.NotificationBar.launch_notification( 'File Restored');
+            self.tsp.NotificationBar.launch_notification('File Restored');
         });
     }
-    delete_file_permanently(){
+    delete_file_permanently() {
         /* Restore the deleted tree file to "Trash Restored" folder */
         let self = this;
         let uuid = self.metadata_map[self.curr_active_file].uuid;
@@ -881,7 +876,7 @@ export default class TreeClass {
         self.tsp.DomActions._delete_project_note_permanently(uuid).then(function() {
             delete self.metadata_map[path];
             self.action_function_map.deleted_file_permanently_in_UI(path, uuid);
-            self.tsp.NotificationBar.launch_notification( 'File Deleted From Trash');
+            self.tsp.NotificationBar.launch_notification('File Deleted From Trash');
         });
     }
     _build_rename_field_and_call_backend() {
@@ -907,55 +902,54 @@ export default class TreeClass {
         });
         self._onfocusout_rename_field();
     }
-    set_search_drop_down_list(tab="tree", file_list=null, folder_list=null){
+    set_search_drop_down_list(tab = "tree", file_list = null, folder_list = null) {
         let self = this;
         let metadata_map = self.metadata_map;
         let temp_file_list = [];
 
-        let set_search_map = (file_list=[], folder_list=[])=>{
+        let set_search_map = (file_list = [], folder_list = []) => {
             self.file_folder_list = [{
-                            name: "File",
-                            results: file_list //this is list
-                        },
-                        {
-                            name: "Folder",
-                            results: folder_list //this is list
-                        },
-                    ];
+                    name: "File",
+                    results: file_list //this is list
+                },
+                {
+                    name: "Folder",
+                    results: folder_list //this is list
+                },
+            ];
         }
-        if(tab == "tree"){
+        if (tab == "tree") {
             set_search_map(self.file_list, self.folder_list);
-        }else if(tab == "starred"){
-            for(let item in metadata_map){
-                         if( metadata_map[item].starred !== undefined
-                         && metadata_map[item].starred !==null
-                         && (metadata_map[item].starred).toString().toLowerCase() == "true"
-                         && metadata_map[item].folder_type === 'file'){
-                            console.log(metadata_map[item])
-                            temp_file_list.push({
-                                title: metadata_map[item].name,
-                                description: metadata_map[item].path
-                            });
-                        }
-                    }
+        } else if (tab == "starred") {
+            for (let item in metadata_map) {
+                if (metadata_map[item].starred !== undefined &&
+                    metadata_map[item].starred !== null &&
+                    (metadata_map[item].starred).toString().toLowerCase() == "true" &&
+                    metadata_map[item].folder_type === 'file') {
+                    console.log(metadata_map[item])
+                    temp_file_list.push({
+                        title: metadata_map[item].name,
+                        description: metadata_map[item].path
+                    });
+                }
+            }
+            set_search_map(temp_file_list, []);
+        } else if (tab == "trash") {
+            for (let item in metadata_map) {
+                if (metadata_map[item].trash !== undefined &&
+                    metadata_map[item].trash !== null &&
+                    (metadata_map[item].trash).toString().toLowerCase() == "true" &&
+                    metadata_map[item].folder_type === 'file') {
+                    console.log(metadata_map[item])
+                    temp_file_list.push({
+                        title: metadata_map[item].name,
+                        description: metadata_map[item].path
+                    });
+                }
+            }
             set_search_map(temp_file_list, []);
         }
-        else if(tab=="trash"){
-            for(let item in metadata_map){
-                         if( metadata_map[item].trash !== undefined
-                         && metadata_map[item].trash !==null
-                         && (metadata_map[item].trash).toString().toLowerCase() == "true"
-                         && metadata_map[item].folder_type === 'file'){
-                            console.log(metadata_map[item])
-                            temp_file_list.push({
-                                title: metadata_map[item].name,
-                                description: metadata_map[item].path
-                            });
-                        }
-                    }
-                set_search_map(temp_file_list, []);
-            }
-        }
+    }
     paste_after_copy() {
         let self = this;
         let data_map = {
@@ -1040,7 +1034,7 @@ export default class TreeClass {
                             self.tsp.DomActions._delete_project_note_file(uuid).then(function() {
                                 self.metadata_map[path]['trash'] = true;
                                 self.metadata_map[path]['starred'] = false;
-                                self.metadata_map[path]['path'] = self.local_constants.trash_restored + self.local_constants.slash  + self.metadata_map[path]['name'];
+                                self.metadata_map[path]['path'] = self.local_constants.trash_restored + self.local_constants.slash + self.metadata_map[path]['name'];
                                 self.action_function_map.move_to_trash_in_UI(path, uuid);
                                 self.action_function_map.remove_from_starr_UI(path);
                                 self._events();
@@ -1148,14 +1142,16 @@ export default class TreeClass {
                         self.event_map.folder_section();
                         break;
                     }
-                case "Restore":{
+                case "Restore":
+                    {
                         self.restore();
                         break;
                     }
-                case "Delete from Trash":{
-                    self.delete_file_permanently();
-                    break;
-                }
+                case "Delete from Trash":
+                    {
+                        self.delete_file_permanently();
+                        break;
+                    }
             }
         });
     }
@@ -1205,14 +1201,15 @@ export default class TreeClass {
             self._build_starred_section();
             self._context_menu_for_project_tree();
             self._events();
-            $('.tabular.menu .item').tab(
-                {'onVisible': function(){
-                    setTimeout(function(){
+            $('.tabular.menu .item').tab({
+                'onVisible': function() {
+                    setTimeout(function() {
                         let tab = $('.item.active').attr('data-tab');
                         self.tsp.TreeClass.set_search_drop_down_list(tab);
                     }, 1000)
 
-            }});
+                }
+            });
             return def_obj.resolve();
         });
         return def_obj.promise();

@@ -4,23 +4,22 @@ import DomEvents from './DomEvents.js';
 export default class loadComponentsContainer {
     file_factory_path = "";
 
-    split_and_full_screen_UI(){
+    split_and_full_screen_UI() {
         let self = this;
-         let classList = $("#right-side-components").attr('class');
+        let classList = $("#right-side-components").attr('class');
 
-                if (classList.indexOf('right-side-components-full-screen') >= 0) {
-                    $("#right-side-components").removeClass('right-side-components-full-screen');
-                    $("#right-side-components").addClass('right-side-components-split-screen');
-                    $('.file-factory-split-bar').css('left', '350px');
-                    $('#left-and-middle-section').css('width', '350px');
-                    $('#left-and-middle-section').show();
-                }
-                else {
-                    $("#right-side-components").removeClass('right-side-components-split-screen');
-                    $("#right-side-components").addClass('right-side-components-full-screen');
-                    $('.file-factory-split-bar').css('left', '20px');
-                    $('#left-and-middle-section').hide();
-                }
+        if (classList.indexOf('right-side-components-full-screen') >= 0) {
+            $("#right-side-components").removeClass('right-side-components-full-screen');
+            $("#right-side-components").addClass('right-side-components-split-screen');
+            $('.file-factory-split-bar').css('left', '350px');
+            $('#left-and-middle-section').css('width', '350px');
+            $('#left-and-middle-section').show();
+        } else {
+            $("#right-side-components").removeClass('right-side-components-split-screen');
+            $("#right-side-components").addClass('right-side-components-full-screen');
+            $('.file-factory-split-bar').css('left', '20px');
+            $('#left-and-middle-section').hide();
+        }
     }
 
     _initialize_file_chat_switches_events() { //component container left-corner
@@ -30,10 +29,10 @@ export default class loadComponentsContainer {
         $('#group-chat').css('display', 'none');
         $("#right-side-components").css('left', '250px');
 
-        $('.file-switch, #sidenav-button-id1, .file-name').on('click', function() {
+        $('.file-switch, #sidenav-button-id1').on('click', function() {
 
             if (self.tsp.GlobalConstants.current_window === 3) {
-                if(this.id == "sidenav-button-id1")
+                if (this.id == "sidenav-button-id1")
                     self.split_and_full_screen_UI();
                 return;
             }
@@ -41,9 +40,6 @@ export default class loadComponentsContainer {
             self.active_switch = "file-switch";
 
 
-            //             $('#components-search-container').css({'top':'0',
-            //                                                    'height':'100%'
-            //                                                  });
             $('#component-factory-title').hide();
             $('#right-side-section').hide();
             let component_factory_icon_elems = $('.component-factory-left-icons');
@@ -62,7 +58,7 @@ export default class loadComponentsContainer {
             $("#right-side-components").css('left', '350px');
             $('#file-factory-split-bar').css('left', '348px');
             self._build_file_factory_options();
-            self._open_settings();
+            // self._open_settings();
 
 
 
@@ -71,9 +67,9 @@ export default class loadComponentsContainer {
 
 
 
-            if (self.tsp.GlobalConstants.previous_window != 1){
+            if (self.tsp.GlobalConstants.previous_window != 1) {
                 self.tsp.GlobalConstants.previous_window = 1;
-            }else{
+            } else {
                 self.split_and_full_screen_UI();
             }
         });
@@ -84,9 +80,9 @@ export default class loadComponentsContainer {
 
         $('.video-stream-switch').on('click', function() {
 
-            if (self.tsp.GlobalConstants.previous_window != 3){
+            if (self.tsp.GlobalConstants.previous_window != 3) {
                 self.tsp.GlobalConstants.previous_window = 3;
-            }else{
+            } else {
                 self.split_and_full_screen_UI();
             }
             $('.quick-notes-top-section').hide();
@@ -120,7 +116,7 @@ export default class loadComponentsContainer {
             //                self.fillRightSideComponents(self, $('.file-name').text().trim() + '.txt');
             self.events_map['individual-search']();
             self._build_file_factory_options();
-            self._open_settings();
+            // self._open_settings();
 
 
 
@@ -243,7 +239,7 @@ export default class loadComponentsContainer {
                  * create event listeners for search results*/
                 $('.individual-search').off('click');
                 $('.individual-search').on('click', function() {
-                    
+
                     $('#quick-notes-in-file-factory').show();
                     $('.individual-search').removeClass('individual-search-background');
                     $(this).addClass('individual-search-background');
@@ -410,7 +406,7 @@ export default class loadComponentsContainer {
         self.file_factory_mouse_is_down = false;
 
         bar.on('mousedown', function(e) {
-            if(parseInt( $(this).css('left') ) == 20)
+            if (parseInt($(this).css('left')) == 20)
                 return;
             self.file_factory_mouse_is_down = true;
             $('#quick-notes-backdrop').show();
@@ -474,8 +470,8 @@ export default class loadComponentsContainer {
             let new_span = `<span class="search-result-item">${new_file_name}</span>`
             let parent_ele = $(rename_field).parent();
             parent_ele.attr('id', file_key).empty();
-            if( self.label_map[file_key].starred.toString().toLowerCase() == "true")
-                new_span = new_span +  `<i class='icon star' ></i>`;
+            if (self.label_map[file_key].starred.toString().toLowerCase() == "true")
+                new_span = new_span + `<i class='icon star' ></i>`;
             parent_ele.append($(new_span));
             $('.file-name').text(new_file_name)
             self.tsp.NotificationBar.launch_notification('File Renamed');
@@ -538,8 +534,7 @@ export default class loadComponentsContainer {
                 html = html + star_icon_html;
                 html = html + `</div>`;
                 $('#file-middle-section').prepend($(html));
-            }
-            else{
+            } else {
                 html = html + `</div>`;
                 $('#file-middle-section').append($(html));
             }
@@ -576,56 +571,56 @@ export default class loadComponentsContainer {
         });
     }
     _build_file_factory_options() {
-        let self = this;
-        //        $('.quick-file-rename').off('click');
-        $('.quick-file-rename').on('click', function() {
-            self._build_rename_field_and_call_backend();
-        });
-        $('.quick-file-delete').off('click');
-        $('.quick-file-delete').on('click', function() {
-            self._delete_file_in_the_backend();
+            let self = this;
+            //        $('.quick-file-rename').off('click');
+            $('.quick-file-rename').on('click', function() {
+                self._build_rename_field_and_call_backend();
+            });
+            $('.quick-file-delete').off('click');
+            $('.quick-file-delete').on('click', function() {
+                self._delete_file_in_the_backend();
 
-        });
+            });
 
-        $('.quick-file-fav').on('click', function() {
-            self._mark_favourite_in_the_backend($('.file-name').attr('file-key'));
-        });
+            $('.quick-file-fav').on('click', function() {
+                self._mark_favourite_in_the_backend($('.file-name').attr('file-key'));
+            });
 
-        $('.quick-file-detail').off('click')
-        $('.quick-file-detail').on('click', function() {
-            let file_key = $('.file-name').attr('file-key');
-            self.tsp.DetailsPanel.launch_quick_file_details_data(file_key);
-            self.tsp.DetailsPanel.open_details();
-        })
+            $('.quick-file-detail').off('click')
+            $('.quick-file-detail').on('click', function() {
+                let file_key = $('.file-name').attr('file-key');
+                self.tsp.DetailsPanel.launch_quick_file_details_data(file_key);
+                self.tsp.DetailsPanel.open_details();
+            })
 
 
-        //        $('.individual-search').off('mouseleave');
-        //        $('.individual-search').on('mouseleave', function(){
-        //            let curr_this =  $(this);
-        //            let file_icons = curr_this.find('.file');
-        //            file_icons.remove();
-        //            flag = 0;
-        //        });
+            //        $('.individual-search').off('mouseleave');
+            //        $('.individual-search').on('mouseleave', function(){
+            //            let curr_this =  $(this);
+            //            let file_icons = curr_this.find('.file');
+            //            file_icons.remove();
+            //            flag = 0;
+            //        });
 
-    }
-    _open_settings() {
-        let self = this;
-        $('#quick-notes-setting').off('click');
-        $('#quick-notes-setting').on('click', function() {
-            if (self.open_setting_flag === 0) {
-                $('.options').css({ 'display': 'flex' });
-                $('.file-factory-options').css('visibility', 'visible');
-                //                $('#quick-file-editor').css('left','55px');
-                self.open_setting_flag = 1;
-            } else {
-                $('.options').css({ 'display': 'none' });
-                $('.file-factory-options').css('visibility', 'hidden');
-                //                $('#quick-file-editor').css('left','15px');
-                self.open_setting_flag = 0;
-            }
-        });
+        }
+        // _open_settings() {
+        //     let self = this;
+        //     $('#quick-notes-setting').off('click');
+        //     $('#quick-notes-setting').on('click', function() {
+        //         if (self.open_setting_flag === 0) {
+        //             $('.options').css({ 'display': 'flex' });
+        //             $('.file-factory-options').css('visibility', 'visible');
+        //             //                $('#quick-file-editor').css('left','55px');
+        //             self.open_setting_flag = 1;
+        //         } else {
+        //             $('.options').css({ 'display': 'none' });
+        //             $('.file-factory-options').css('visibility', 'hidden');
+        //             //                $('#quick-file-editor').css('left','15px');
+        //             self.open_setting_flag = 0;
+        //         }
+        //     });
 
-    }
+    // }
     _make_resize() {
         $('#make-resize').on('click', function() {
             $('.resize-icon').show();
@@ -647,7 +642,7 @@ export default class loadComponentsContainer {
         this._create_event_listeners_for_file_factory_dragbar();
         this._initialize_youtube_stream();
         this._make_resize();
-        this._open_settings();
+        // this._open_settings();
         this._build_file_factory_options();
         this.events();
         var screenWidth = parseInt(screen.width);
