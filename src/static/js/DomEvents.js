@@ -20,6 +20,11 @@ export default class DomEvents {
             self.tsp.DetailsPanel.close_details();
             $('#sidenav-button-id1').click();
             self.tsp.loadComponentsContainer.split_and_full_screen_UI();
+            self.tsp.GlobalConstants.current_window = 1; //golbal declaration
+            $('#close-editor-button').addClass('top-header-highlighter').click();
+            setTimeout(function(){
+                $('#close-editor-button').click();
+            },100)
             $('#stream-youtube-video').click();
             self._triggerClick('#main-section-button');
         }, 1500);

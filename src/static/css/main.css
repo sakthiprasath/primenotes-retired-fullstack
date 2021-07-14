@@ -341,7 +341,7 @@ bottom:0px;
 .right-side-components-full-screen{
     display: block !important;
     left:20px !important;
-    width: calc(100% + 45px) !important;
+    width: calc(100% + 25px) !important;
 }
 .right-side-components-split-screen{
     display: block !important;

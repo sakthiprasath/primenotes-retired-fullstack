@@ -219,8 +219,7 @@ export default class TreeClass {
         /*beginning of navigation  bar */
         let self = this;
         self.kojinFlag = 2;
-        self.tsp.GlobalConstants.current_window = 2; //golbal declaration
-        $('#main-section-button').addClass('top-header-highlighter');
+        //$('#main-section-button').addClass('top-header-highlighter');
 
         //        $('#closebtn').off("click");
         //.sidenav-button-class ,

@@ -21,25 +21,17 @@ export default class loadComponentsContainer {
             $('#left-and-middle-section').hide();
         }
     }
-
-    _initialize_file_chat_switches_events() { //component container left-corner
-        let self = this;
-        $('#chat-middle-section').css('display', 'none');
-        $('#single-chat').css('display', 'none');
-        $('#group-chat').css('display', 'none');
-        $("#right-side-components").css('left', '250px');
-
-        $('.file-switch, #sidenav-button-id1').on('click', function() {
-
+    _file_switch_action_function(target){
+            let self = this;
             if (self.tsp.GlobalConstants.current_window === 3) {
-                if (this.id == "sidenav-button-id1")
+                if (target.id == "sidenav-button-id1")
                     self.split_and_full_screen_UI();
                 return;
             }
             $('.quick-notes-top-section').show();
             self.active_switch = "file-switch";
 
-
+            $('.video-stream-back-to-file-list').hide();
             $('#component-factory-title').hide();
             $('#right-side-section').hide();
             let component_factory_icon_elems = $('.component-factory-left-icons');
@@ -53,10 +45,11 @@ export default class loadComponentsContainer {
             $('#quick-notes-in-file-factory').remove();
             $('#video-stream-in-file-factory').hide();
 
+            $('#left-and-middle-section').css({'width':'350px'});
             let file_editor_obj = $(file_editor).removeClass('text-editor-in-middle-section').addClass('text-editor-in-right-side-components');
             $('#right-side-components-container').append(file_editor_obj);
-            $("#right-side-components").css('left', '350px');
-            $('#file-factory-split-bar').css('left', '348px');
+            $("#right-side-components").css({'left':'350px', 'width':'calc(100% - 300px)'});
+            $('.file-factory-split-bar').css('left', '348px');
             self._build_file_factory_options();
             // self._open_settings();
 
@@ -72,19 +65,17 @@ export default class loadComponentsContainer {
             } else {
                 self.split_and_full_screen_UI();
             }
-        });
 
+    }
 
-
-
-
-        $('.video-stream-switch').on('click', function() {
-
+    _video_switch_action_function(){
+            let self = this;
             if (self.tsp.GlobalConstants.previous_window != 3) {
                 self.tsp.GlobalConstants.previous_window = 3;
             } else {
                 self.split_and_full_screen_UI();
             }
+            $('.video-stream-back-to-file-list').show();
             $('.quick-notes-top-section').hide();
             //                $('#components-search-container').css({'top':'35px',
             //                                                    'height':' calc( 100% - 36px)'
@@ -118,9 +109,21 @@ export default class loadComponentsContainer {
             self._build_file_factory_options();
             // self._open_settings();
 
+    }
 
+    _initialize_file_chat_switches_events() { //component container left-corner
+        let self = this;
+        $('#chat-middle-section').css('display', 'none');
+        $('#single-chat').css('display', 'none');
+        $('#group-chat').css('display', 'none');
+        $("#right-side-components").css('left', '250px');
 
+        $('.file-switch, #sidenav-button-id1').on('click', function() {
+            self._file_switch_action_function(this);
+        });
 
+        $('.video-stream-switch').on('click', function() {
+            self._video_switch_action_function();
         });
     }
 
@@ -270,6 +273,13 @@ export default class loadComponentsContainer {
                         $('.file-factory-split-bar').css('left', (pane_width / 2));
                         $('#right-side-components').css('left', (pane_width / 2));
                         $('#right-side-components').css('width', (pane_width / 2) + 45);
+
+
+                        $('.video-stream-back-to-file-list').on('click', function(){
+                           self.tsp.GlobalConstants.previous_window = 2;
+                           self.tsp.GlobalConstants.current_window = 3;
+                           self._video_switch_action_function();
+                        });
 
                     } else if (self.active_switch == "file-switch") {
                         $('#video-stream-in-file-factory').hide();
