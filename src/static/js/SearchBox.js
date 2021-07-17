@@ -71,7 +71,6 @@ export default class TreeClass{
 
           });
 
-
         $('.tab-container-setting').dropdown();
 
         $('.tab-container-setting').on('click', function(){
@@ -85,8 +84,6 @@ export default class TreeClass{
              $('.tree-note-star-input').prop('checked', tree_class_obj.metadata_map[tree_class_obj.curr_active_file].starred == "true");
 
         });
-
-
 
 
     }

@@ -54,7 +54,26 @@ export default class DomEvents {
         //       $('[data-toggle="tooltip"]').tooltip();
     }
 
+    search_box_clear() {
+                $('.ui.close.icon').on('click', function() {
 
+                    switch (self.tsp.GlobalConstants.current_window) {
+                        case 1:
+                        case 3:
+                            {
+                                $('.search-container  .prompt').val('').focus();
+                                self.tsp.loadComponentsContainer.callSearchResults("");
+                                break;
+                            }
+                        case 2:
+                            {
+                                $('#searchInput  .prompt').val('').focus();
+                                //self.tsp.loadComponentsContainer.callSearchResults();
+                                break;
+                            }
+                    }
+                });
+    }
 
 
     _download_video_click_event() {
@@ -219,6 +238,7 @@ export default class DomEvents {
         this._button_clicks();
         this.keyboard_events();
         this.prompt_before_refresh();
+        this.search_box_clear();
         return $.Deferred().resolve(this.tsp, label_map);
     }
 

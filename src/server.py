@@ -3,8 +3,8 @@ import logging
 from flask import Flask
 
 from flask_rest_api import Api
-from src.rest.routes.individual_component_fetcher import individual_component_fetcher_routes
-from src.rest.routes.tree_note_routes import tree_note_routes
+from rest.routes.individual_component_fetcher import individual_component_fetcher_routes
+from rest.routes.tree_note_routes import tree_note_routes
 
 
 flask_logger = logging.getLogger('werkzeug')

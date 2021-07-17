@@ -3,7 +3,16 @@ import DomEvents from './DomEvents.js';
 
 export default class loadComponentsContainer {
     file_factory_path = "";
-
+    cache_elements(){
+        let self = this;
+        self.close_results_icon = $('.search-box-icons > .close.icon');
+    }
+    _get_file_html(uuid){
+        let self = this;
+        let html =`<div class='individual-search' id='${uuid}'>`;
+        html +=`<span class='search-result-item' >${self.label_map[uuid].name}</span></div>`;
+        return html;
+    }
     split_and_full_screen_UI() {
         let self = this;
         let classList = $("#right-side-components").attr('class');
@@ -20,6 +29,33 @@ export default class loadComponentsContainer {
             $('.file-factory-split-bar').css('left', '20px');
             $('#left-and-middle-section').hide();
         }
+    }
+
+    sort_files_by_name_and_update_UI(){
+        let self = this;
+        let file_elems = $('.individual-search')
+
+        let uuid_arr = Object.keys(self.label_map);
+        uuid_arr.sort(function(a, b) {
+            var textA = self.label_map[a].name.toLowerCase();
+            var textB = self.label_map[b].name.toLowerCase();
+            return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+        });
+        $('#file-middle-section').empty();
+//        for(let uuid in self.label_map){
+//            console.log(uuid)
+//            $('#file-middle-section').append($(file_elems[i]));
+//        }
+        for(let i=0; i < uuid_arr.length; i++){
+            let uuid = uuid_arr[i];
+            console.log(self.label_map[uuid].name )
+//            $($(file_elems[i]).get(0)).find('.icon.star').remove();
+            let html = self._get_file_html(uuid);
+            $('#file-middle-section').append($(html));
+            self.update_starred_files_with_icon(uuid);
+        }
+
+        self.events_map['individual-search']();
     }
     _file_switch_action_function(target){
             let self = this;
@@ -48,8 +84,10 @@ export default class loadComponentsContainer {
             $('#left-and-middle-section').css({'width':'350px'});
             let file_editor_obj = $(file_editor).removeClass('text-editor-in-middle-section').addClass('text-editor-in-right-side-components');
             $('#right-side-components-container').append(file_editor_obj);
-            $("#right-side-components").css({'left':'350px', 'width':'calc(100% - 300px)'});
-            $('.file-factory-split-bar').css('left', '348px');
+            if( ! $('#right-side-components').hasClass('right-side-components-full-screen') ){
+                $("#right-side-components").css({'left':'350px', 'width':'calc(100% - 300px)'});
+                $('.file-factory-split-bar').css('left', '348px');
+            }
             self._build_file_factory_options();
             // self._open_settings();
 
@@ -133,9 +171,8 @@ export default class loadComponentsContainer {
 
         let def = $.Deferred();
         for (let key in labelMap) {
-            if (searchContent === undefined || labelMap[key].content.includes(searchContent.toLowerCase().trim()) || labelMap[key].name.includes(searchContent.toLowerCase().trim())) {
-                //                html +=`<div class='individual-search' id='${key}'>`;
-                //                html +=`<span class='search-result-item' >${labelMap[key].name}</span></div>`;
+            if (searchContent === undefined || labelMap[key].content.toLocaleLowerCase().includes(searchContent.toLocaleLowerCase().trim()) || labelMap[key].name.toLocaleLowerCase().includes(searchContent.toLocaleLowerCase().trim())) {
+
                 self.update_starred_files_with_icon(key);
             }
         }
@@ -200,7 +237,7 @@ export default class loadComponentsContainer {
                     contentType: 'application/json;charset=UTF-8',
                     success: function(response) {
                         self.label_map[file_key].content = file_data;
-                        self.tsp.NotificationBar.launch_notification('file saved');
+                        self.tsp.NotificationBar.launch_notification(self.tsp.GlobalConstants.file_saved);
                         return defObj.resolve(response);
                     }
                 });
@@ -209,11 +246,17 @@ export default class loadComponentsContainer {
     }
     callSearchResults(searchContent) {
         let self = this;
+        if(searchContent == ""){
+            self.close_results_icon.hide();
+            self.sort_files_by_name_and_update_UI();
+            return;
+        }
+        self.close_results_icon.show();
         $('#file-middle-section').empty();
         var defSecond = $.Deferred();
         $.Deferred().resolve().then(function() {
             self.searchResults(self, self.label_map, searchContent).then(function(backHtml) {
-                $('#file-middle-section').append(backHtml);
+//                $('#file-middle-section').append(backHtml);
                 self.events_map['individual-search']();
                 defSecond.resolve();
             });
@@ -242,7 +285,6 @@ export default class loadComponentsContainer {
                  * create event listeners for search results*/
                 $('.individual-search').off('click');
                 $('.individual-search').on('click', function() {
-
                     $('#quick-notes-in-file-factory').show();
                     $('.individual-search').removeClass('individual-search-background');
                     $(this).addClass('individual-search-background');
@@ -250,6 +292,7 @@ export default class loadComponentsContainer {
                     $('#right-side-components-container').css('display', 'block');
                     //            $('.file-name').text(this.textContent.trim())
                     let file_key = $(this).attr('id');
+                    self.curr_file_uuid = file_key;
 
 
                     let component_factory_icon = $('.active').prop('id');
@@ -304,7 +347,6 @@ export default class loadComponentsContainer {
     fillRightSideComponents(self, file_key) {
         if (file_key === undefined || file_key === '')
             return;
-        //console.log(currId);
         $('.file-name').text(self.label_map[file_key].name);
         $('.file-name').attr('file-key', file_key)
             //            document.getElementById('quick-file-editor').contentWindow.document.body.innerHTML = '';
@@ -357,8 +399,15 @@ export default class loadComponentsContainer {
             },
             create_new_file_submit_btn: function() {
                 let file_name = $('#create-file-text-box').val();
-                if (file_name == '' || self.label_map[file_name + '.txt'] != undefined) {
-                    alert('File exists with the same name ');
+                [1,2,3].includes(4)
+                for(let item in self.label_map){
+                    if(self.label_map[item].name == file_name){
+                        alert(self.tsp.GlobalConstants.duplicate_quick_file);
+                        return;
+                    }
+                }
+                if (file_name == '') {
+                    alert('No name entered');
                     return;
                 }
                 let temp_map = {
@@ -374,7 +423,6 @@ export default class loadComponentsContainer {
                     //                    let file_name_id =  //file_name.replaceAll('  ',' ').replaceAll(' ','-') ;
                     let html = `<div class='individual-search' id="${ret_json.uuid_file_name}" > <span class='search-result-item' >${ret_json.name}</span></div>`;
                     $('#file-middle-section').prepend($(html));
-                    self.events_map['individual-search']();
                     $('.file-name').text(ret_json.name);
                     $('.file-name').attr('file-key', ret_json.uuid_file_name);
                     self.label_map[ret_json.uuid_file_name] = {
@@ -386,8 +434,10 @@ export default class loadComponentsContainer {
                     };
                     //                    document.getElementById('quick-file-editor').contentWindow.document.body.innerHTML = '';
                     $('#quick-file-editor').val();
-                    self.tsp.NotificationBar.launch_notification('File Creation Success');
+                    self.tsp.NotificationBar.launch_notification(self.tsp.GlobalConstants.new_quick_file);
                     $('#modal-id').hide();
+                    self.curr_file_uuid = ret_json.uuid_file_name;
+                    self.sort_files_by_name_and_update_UI();
                 });
             }
         }
@@ -519,7 +569,10 @@ export default class loadComponentsContainer {
                 let curr_file_ele = $('#' + file_key);
                 $(curr_file_ele).remove();
                 delete self.label_map[file_key];
-                self.fillRightSideComponents(self, Object.keys(self.label_map)[0]);
+                let file_uuid_key = Object.keys(self.label_map)[0];
+                self.fillRightSideComponents(self, file_uuid_key);
+                $('.individual-search').removeClass('individual-search-background');
+                $(`.individual-search[id=${file_uuid_key}]`).addClass('individual-search-background');;
 
                 self.tsp.NotificationBar.launch_notification('File Deleted');
             }).fail(function() {
@@ -531,6 +584,12 @@ export default class loadComponentsContainer {
     update_starred_files_with_icon(file_uuid) {
         let self = this;
         let star_icon_html = `<i class='icon star'></i>`;
+        let add_bgC= function(file_uuid, cloned_ele){
+            if(self.curr_file_uuid == file_uuid)
+                cloned_ele.addClass('individual-search-background');
+            else
+                cloned_ele.removeClass('individual-search-background');
+        }
         //        let star_icon_html_outline = `<i class='star outline icon quick-file-fav' file_uuid='${file_uuid}'></i>`;
         let cloned;
 
@@ -548,11 +607,13 @@ export default class loadComponentsContainer {
                 html = html + `</div>`;
                 $('#file-middle-section').append($(html));
             }
+             add_bgC(file_uuid, $(html));
         } else {
             if (self.label_map[file_uuid].starred == "false") {
                 $(ele).find('.icon.star').remove();
                 cloned = $(ele).clone();
                 $(ele).remove();
+
                 $('#file-middle-section').append($(cloned));
             } else {
                 $(ele).append($(star_icon_html));
@@ -560,6 +621,7 @@ export default class loadComponentsContainer {
                 $(ele).remove();
                 $('#file-middle-section').prepend($(cloned));
             }
+            add_bgC(file_uuid, $(cloned));
         }
     }
     starr_in_UI(file_key) {
@@ -576,8 +638,7 @@ export default class loadComponentsContainer {
         self.tsp.DomActions._make_quick_file_favourite(file_key).then(function(res) {
             self.label_map[file_key] = res;
             self.starr_in_UI(file_key);
-            self.update_starred_files_with_icon(file_key);
-            self.events_map['individual-search']();
+            self.sort_files_by_name_and_update_UI();
         });
     }
     _build_file_factory_options() {
@@ -644,8 +705,10 @@ export default class loadComponentsContainer {
         this.tsp = tsp;
         let self = this;
         self.open_setting_flag = 0;
+        this.curr_file_uuid = "";
         this.file_factory_path = '../frontend_files/web-app/all_general_files/file_factory';
         this.active_switch = 'video-stream-switch';
+        this.cache_elements();
         this.action_functions();
         this._create_new_file_factory_form();
         this._initialize_file_chat_switches_events();
@@ -655,6 +718,7 @@ export default class loadComponentsContainer {
         // this._open_settings();
         this._build_file_factory_options();
         this.events();
+        this.close_results_icon.hide();
         var screenWidth = parseInt(screen.width);
         var screenHeight = parseInt(screen.height);
 
@@ -722,9 +786,7 @@ export default class loadComponentsContainer {
         self._get_file_factory_list().then(function(label_map) {
             self.label_map = label_map;
             self.searchResults(self, label_map).then(function(backHtml) {
-
-                $('#file-middle-section').append(backHtml);
-                self.events_map['individual-search']();
+                self.sort_files_by_name_and_update_UI();
                 defStart.resolve();
                 return init_deferred.resolve(tsp, self.label_map);
 

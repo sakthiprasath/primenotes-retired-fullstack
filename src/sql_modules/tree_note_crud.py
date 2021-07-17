@@ -219,7 +219,7 @@ class TreeNote:
         metadata_path = file_name_predessor + '/' + 'metadata.json'
         with open(metadata_path, 'w') as f:
             metadata[uuid]['name'] = new_name
-            metadata[uuid]['path'] = path
+            metadata[uuid]['path'] = patseh
             f.write(json.dumps(metadata))
 
         metadata[uuid]['uuid'] = uuid

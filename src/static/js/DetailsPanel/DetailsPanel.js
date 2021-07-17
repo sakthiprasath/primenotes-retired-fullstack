@@ -87,15 +87,15 @@ export default class DetailsPanel{
 
 
 
-        html += self.build_label_data_html({
-            'label' :  'Link',
-            'data' :  `<a href="#"> app.preimenotes.app/sakthi25/${file_key}</a>`
-        });
-
-        html += self.build_label_data_html({
-            'label' :  'Starred',
-            'data' :  `<label class="switch"><input type="checkbox" checked="true"></label>`
-        });
+//        html += self.build_label_data_html({
+//            'label' :  'Link',
+//            'data' :  `<a href="#"> app.preimenotes.app/sakthi25/${file_key}</a>`
+//        });
+//
+//        html += self.build_label_data_html({
+//            'label' :  'Starred',
+//            'data' :  `<label class="switch"><input type="checkbox" checked="true"></label>`
+//        });
 
         $('.details-section').empty().html(html);
         self.events();

@@ -691,27 +691,7 @@ export default class TreeClass {
                     });
                 });
             },
-            search_box_clear: function() {
-                $('.ui.close.icon').off('click');
-                $('.ui.close.icon').on('click', function() {
 
-                    switch (self.tsp.GlobalConstants.current_window) {
-                        case 1:
-                        case 3:
-                            {
-                                $('.search-container  .prompt').val('').focus();
-                                self.tsp.loadComponentsContainer.callSearchResults();
-                                break;
-                            }
-                        case 2:
-                            {
-                                $('#searchInput  .prompt').val('').focus();
-                                //self.tsp.loadComponentsContainer.callSearchResults();
-                                break;
-                            }
-                    }
-                });
-            },
             tree_folder_icon_open_close: function() {
                 //                $('.folder-section').off('click');
                 //                $('.folder-section').on('click',function(){
