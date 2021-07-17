@@ -627,9 +627,9 @@ export default class loadComponentsContainer {
     starr_in_UI(file_key) {
         let self = this;
         if (self.label_map[file_key].starred == "true") {
-            self.tsp.NotificationBar.launch_notification('File Starred ');
+            self.tsp.NotificationBar.launch_notification(self.tsp.GlobalConstants.quick_file_starred);
         } else {
-            self.tsp.NotificationBar.launch_notification('File UnStarred ');
+            self.tsp.NotificationBar.launch_notification(self.tsp.GlobalConstants.quick_file_unstarred);
         }
     }
     _mark_favourite_in_the_backend(file_key) {

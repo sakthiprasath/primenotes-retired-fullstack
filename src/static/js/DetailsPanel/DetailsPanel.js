@@ -87,15 +87,17 @@ export default class DetailsPanel{
 
 
 
-//        html += self.build_label_data_html({
-//            'label' :  'Link',
-//            'data' :  `<a href="#"> app.preimenotes.app/sakthi25/${file_key}</a>`
-//        });
-//
-//        html += self.build_label_data_html({
-//            'label' :  'Starred',
-//            'data' :  `<label class="switch"><input type="checkbox" checked="true"></label>`
-//        });
+        let lines = metadata.content.split("\n").length;
+        html += self.build_label_data_html({
+            'label' :  'Total No of lines : ',
+            'data' :  `${lines}`
+        });
+
+        let word_count = metadata.content.split(" ").length;
+        html += self.build_label_data_html({
+            'label' :  'Word Count',
+            'data' :  `${word_count}`
+        });
 
         $('.details-section').empty().html(html);
         self.events();
