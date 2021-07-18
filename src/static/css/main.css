@@ -160,7 +160,6 @@ color:white;
     position: absolute;
     width: 350px;
     height: 100%;
-    background: #ffffff;
     }
 #sidenav-button-id1{
     display:block;
@@ -305,6 +304,17 @@ box-shadow:10 2 2 2;
     overflow-x: hidden;
 }
 
+.modal-body:hover::-webkit-scrollbar-thumb {
+    width : 6px;
+    display :block !important;
+    overflow-x: hidden;
+}
+#quick-file-editor:hover::-webkit-scrollbar-thumb {
+    width : 6px;
+    display :block !important;
+    overflow-x: hidden;
+}
+
 #right-side-components {    
 	position: absolute;
     height: 100%;
@@ -383,18 +393,13 @@ bottom:0px;
     font-weight: 700;
     zoom: 0;
 }
-.individual-search:hover + .star.outline.icon{
+.individual-search > .star.icon{
     display: block;
-}
-.search-star-item{
-    width: 15px;
-    height: 15px;
-    margin-left: 5px;
-    margin-top: 3px;
+    font-size: 11px !important;
 }
 .video-notes-help{
     margin-left: 3px !important;
-    margin-top: 4px !important;
+    margin-top: 1px !important;
     font-size: 15px !important;
 }
 .quick-note-file-icon{
@@ -1308,6 +1313,7 @@ outline:none !important;
 #youtube-video-link{
     height: 31px;
     margin-top: 1px;
+    border-right-color: rgba(34,36,38,.15) !important;
 }
 #stream-youtube-video{
     padding-left: 17px;

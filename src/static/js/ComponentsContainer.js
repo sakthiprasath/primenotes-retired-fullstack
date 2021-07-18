@@ -267,18 +267,18 @@ export default class loadComponentsContainer {
     events() {
         let self = this;
         self.events_map = {
+            "video-link-copy-button": () =>{
+                $(".video-link-copy-button").on('click', function(){
+                    $('#youtube-video-link').select()
+                    document.execCommand('copy')
+                });
+            },
             "search-box": function() {
                 $('#search-box').off('keyup');
                 $('#search-box').on('keyup', function() {
                     self.callSearchResults($(this).val());
                 });
 
-            },
-            "video-notes-help": () => {
-                // $('.video-notes-help').off('click');
-                $('.video-notes-help').on('click', function() {
-                    self.tsp.Dialog.launch_dialog('video-notes-help-dialog');
-                });
             },
             "individual-search": () => {
                 /*after buliding the search results in middle section
@@ -394,12 +394,12 @@ export default class loadComponentsContainer {
         this.action_function_map = {};
         this.action_function_map = {
             create_new_file: function() {
+                 $('#create-file-text-box').val("");
                 self.tsp.Dialog.launch_dialog('create-new-quick-file-form')
                 $('#create-file-text-box').focus();
             },
             create_new_file_submit_btn: function() {
-                let file_name = $('#create-file-text-box').val();
-                [1,2,3].includes(4)
+                let file_name = $('#create-file-text-box').val().trim();
                 for(let item in self.label_map){
                     if(self.label_map[item].name == file_name){
                         alert(self.tsp.GlobalConstants.duplicate_quick_file);
@@ -432,8 +432,9 @@ export default class loadComponentsContainer {
                         'last_updated': ret_json.last_updated,
                         'starred': ret_json.starred
                     };
+                    self.curr_file_uuid = ret_json.uuid_file_name;
                     //                    document.getElementById('quick-file-editor').contentWindow.document.body.innerHTML = '';
-                    $('#quick-file-editor').val();
+                    $('#quick-file-editor').val('');
                     self.tsp.NotificationBar.launch_notification(self.tsp.GlobalConstants.new_quick_file);
                     $('#modal-id').hide();
                     self.curr_file_uuid = ret_json.uuid_file_name;
@@ -570,6 +571,7 @@ export default class loadComponentsContainer {
                 $(curr_file_ele).remove();
                 delete self.label_map[file_key];
                 let file_uuid_key = Object.keys(self.label_map)[0];
+                self.curr_file_uuid = file_uuid_key;
                 self.fillRightSideComponents(self, file_uuid_key);
                 $('.individual-search').removeClass('individual-search-background');
                 $(`.individual-search[id=${file_uuid_key}]`).addClass('individual-search-background');;
@@ -632,8 +634,9 @@ export default class loadComponentsContainer {
             self.tsp.NotificationBar.launch_notification(self.tsp.GlobalConstants.quick_file_unstarred);
         }
     }
-    _mark_favourite_in_the_backend(file_key) {
+    _mark_favourite_in_the_backend() {
         let self = this;
+        let file_key = self.curr_file_uuid;
         //            let file_key = $('.file-name').attr('file-key');
         self.tsp.DomActions._make_quick_file_favourite(file_key).then(function(res) {
             self.label_map[file_key] = res;
@@ -643,10 +646,16 @@ export default class loadComponentsContainer {
     }
     _build_file_factory_options() {
             let self = this;
-            //        $('.quick-file-rename').off('click');
+            $('.quick-file-rename').off('click');
             $('.quick-file-rename').on('click', function() {
                 self._build_rename_field_and_call_backend();
             });
+
+            $('#video-notes-help').off('click');
+            $('#video-notes-help').on('click', function() {
+                self.tsp.Dialog.launch_dialog('video-notes-help-dialog');
+            });
+
             $('.quick-file-delete').off('click');
             $('.quick-file-delete').on('click', function() {
                 self._delete_file_in_the_backend();
@@ -654,13 +663,12 @@ export default class loadComponentsContainer {
             });
 
             $('.quick-file-fav').on('click', function() {
-                self._mark_favourite_in_the_backend($('.file-name').attr('file-key'));
+                self._mark_favourite_in_the_backend();
             });
 
             $('.quick-file-detail').off('click')
             $('.quick-file-detail').on('click', function() {
-                let file_key = $('.file-name').attr('file-key');
-                self.tsp.DetailsPanel.launch_quick_file_details_data(file_key);
+                self.tsp.DetailsPanel.launch_quick_file_details_data(self.curr_file_uuid);
                 self.tsp.DetailsPanel.open_details();
             })
 

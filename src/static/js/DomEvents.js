@@ -25,6 +25,9 @@ export default class DomEvents {
             setTimeout(function(){
                 $('#close-editor-button').click();
             },100)
+            setTimeout(function(){
+                $('#close-editor-button').click();
+            },200)
             $('#stream-youtube-video').click();
             self._triggerClick('#main-section-button');
         }, 1500);
@@ -175,20 +178,43 @@ export default class DomEvents {
         let self = this;
         // When the user clicks anywhere outside of the modal, close it
 
-        $(document).on('keyup', function(e) {
+        $(document).on('keypress keydown', function(e) {
             if (self.tsp.current_window === undefined)
                 self.tsp.current_window = 1;
             switch (self.tsp.current_window) {
                 case 1:
                 case 3:
                     {
-                        if (e.keyCode === 187) { // shift + '+'
-                            self.tsp.loadComponentsContainer.action_function_map.create_new_file();
-                        } else if (e.keyCode === 46) {
-                            self.tsp.loadComponentsContainer._delete_file_in_the_backend();
-                        } else if (e.keyCode === 27) {
+
+                        if (e.keyCode === 27) { //ESC
                             $('#modal-id').hide();
                         }
+                        else if(!e.shiftKey || e.ctrlKey)
+                            return;
+                        if (e.keyCode === 78 || e.keyCode === 187) { // shift + N
+                            self.tsp.loadComponentsContainer.action_function_map.create_new_file();
+                        } else if (e.keyCode === 46) { //shift + DELETE
+                            self.tsp.loadComponentsContainer._delete_file_in_the_backend();
+                        }else if(e.keyCode === 82){ //shift + R
+                            self.tsp.loadComponentsContainer._build_rename_field_and_call_backend();
+                        }else if(e.keyCode === 70){ //shift + F
+                            e.preventDefault();
+                            self.tsp.loadComponentsContainer._mark_favourite_in_the_backend();
+                        }else if(e.keyCode === 72){ //shift + H
+                            e.preventDefault();
+                            self.tsp.Dialog.launch_dialog('video-notes-help-dialog');
+                        }
+                        else if(e.keyCode === 73){ //shift + I
+                            e.preventDefault();
+                            if($('#right-side-panel').is(':visible'))
+                                self.tsp.DetailsPanel.close_details();
+                            else{
+                                self.tsp.DetailsPanel.launch_quick_file_details_data(self.tsp.loadComponentsContainer.curr_file_uuid);
+                                self.tsp.DetailsPanel.open_details();
+                            }
+                        }
+
+
                         break;
                     }
                 case 2:

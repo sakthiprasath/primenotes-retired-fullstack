@@ -1,12 +1,15 @@
 #right-side-panel{
-    background: #ffffff;
+       background: #ffffff;
     width: 245px;
-    height: 100%;
+    height: 55%;
     border-left: 2px solid #94a9bf;
     cursor: pointer;
     display: none;
     position: fixed;
-    right: 0px;
+    right: 3px;
+    border: 2px solid #94a9bf;
+    border-radius: 3%;
+    margin-top: 2px;
 }
     .details-section {
         display: flex;
@@ -15,10 +18,10 @@
     }
 
     .row11 {
-        display: grid;
+       display: grid;
         width: 100%;
-        border: 1px solid #e9f3ed;
-        background: #ece7e7;
+        border: 1px solid #1279c6;
+        background: #1279c6;
         grid-template-columns: 6fr 1.5fr;
     }
 
@@ -27,8 +30,8 @@
     }
 
     .details-name {
-        color: #2185d0;
-        font-size: 15px;
+        color: white;
+        font-size: 13px;
         font-weight: 600;
         text-align: center;
         position: relative;

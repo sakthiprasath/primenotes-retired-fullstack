@@ -5,7 +5,8 @@ export default class Dialog {
         let self = this;
         self.cache = {
             modal: $("#modal-id"),
-            modal_header: $('#modal-header')
+            modal_header: $('#modal-header'),
+            dialog_button: $('.dialog-button')
         }
         self.button_map = {
             'new-project-file-create-form': 'Create',
@@ -23,6 +24,7 @@ export default class Dialog {
         $('.inner-item-form').hide();
         $('#' + form_id).show();
         self.cache.modal_header.empty().append('<h2>New File</h2>');
+        self.cache.dialog_button.show();
         switch (self.current_dialog) {
             /*if the dialog is for renaming file, then fill the dialog text box with current file name */
             case 'rename-tree-file-form':
@@ -37,6 +39,7 @@ export default class Dialog {
                 {
                     $('.' + form_id).html(`` +
                         self.tsp.GlobalConstants.video_notes_help_dialog_content);
+                        self.cache.dialog_button.hide();
                     break;
                 }
             case 'folder-clone-section':
@@ -69,6 +72,7 @@ export default class Dialog {
         let self = this;
         let event_map = {
             boot_tree_note_dialog: function() {
+                self.cache.dialog_button.hide();
                 $('.dialog-button').click(function() {
                     switch (self.current_dialog) {
                         case 'new-project-file-create-form':
