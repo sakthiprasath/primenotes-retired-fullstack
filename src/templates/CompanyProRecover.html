@@ -15,9 +15,9 @@
     <script src="{{ url_for('static', filename='js/lib/jquery.min.js') }}">
     </script>
     <script src="//cdn.gaic.com/cdn/ui-bootstrap/0.58.0/js/lib/ckeditor/ckeditor.js"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='/js/lib/jquery-ui/jquery-latest.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='/js/lib/jquery-ui/jquery-ui-latest.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='/js/lib/jquery-ui/jquery-ui-latest.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/lib/jquery-ui/jquery-latest.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/lib/jquery-ui/jquery-ui-latest.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/lib/jquery-ui/jquery-ui-latest.js') }}"></script>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js">
         /
@@ -125,15 +125,15 @@
                         Notes</span>
                 </div>
 
-<!--                <div id="main-section-button" class="button-with-icon-in-header" data-tooltip="Tree notes" data-position="right center" style="display: grid; grid-template-columns: 2fr 4fr; height: 45px;">-->
-<!--                    <img class="top-header-icons" src="https://img.icons8.com/color/48/000000/folder-tree.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto">-->
-<!--                    <span class="open-close tab-option-buttons-right-in-margin" title="" style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: none;">-->
-<!--                        <span style="padding:3px">Tree Notes</span>-->
-<!--                    </span>-->
-<!--                </div>-->
+                                <div id="main-section-button" class="button-with-icon-in-header" data-tooltip="Tree notes" data-position="right center" style="display: grid; grid-template-columns: 2fr 4fr; height: 45px;">
+                                    <img class="top-header-icons" src="https://img.icons8.com/color/48/000000/folder-tree.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto">
+                                    <span class="open-close tab-option-buttons-right-in-margin" title="" style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: none;">
+                                        <span style="padding:3px">Tree Notes</span>
+                                    </span>
+                                </div>
 
                 <div id="open-close-overlay" class="video-stream-switch button-with-icon-in-header" data-tooltip="Video Notes" data-position="right center" style="display: grid; grid-template-columns: 2fr 4fr; height: 45px;">
-                    <img class="top-header-icons" src="https://www.flaticon.com/svg/static/icons/svg/1412/1412629.svg" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto">
+                    <img class="top-header-icons" src="https://cdn2.iconfinder.com/data/icons/favorite-and-like/512/favorite-like-button-21-512.png" alt="Bolt, fast, flash, instant, lightning, quick, thunder icon - Download on Iconfinder" class="d-block mx-auto">
                     <span class="open-close tab-option-buttons-right-in-margin" style="background: rgb(45, 87, 121); color: rgb(241, 247, 249); display: none;">
                         <span style="padding:3px">Video Notes</span>
                     </span>
@@ -270,7 +270,9 @@
 
                         </div>
                         <div id="sidenav-button-id1" class="sidenav-button-class  file-factory-split-bar">
-                            <span class="sidenav-button-content-class"> < > </span>
+                            <span class="sidenav-button-content-class">
+                                <>
+                            </span>
                         </div>
                         <div id='right-side-components' class="right-side-components-split-screen all-ele-class-for-background">
                             <div id='right-side-components-container'>
@@ -324,7 +326,7 @@
                                          ">
 
 
-                                            <i class="arrow alternate circle left icon middle" style="
+                                        <i class="arrow alternate circle left icon middle" style="
                                             display: block;
                                         "></i>
                                     </div>
@@ -548,7 +550,7 @@
     </div>
 
 
-    <div id="main-section-wrapper" style="overflow-y:hidden;display:none">
+    <div id="main-section-wrapper" style="overflow-y:hidden;display:block">
         <div class='main-section-wrapper-class' id="main-sections" style="overflow-y:hidden">
 
             <div id='navigation-bar' class="split__left sidenav-button-class-display">
@@ -669,7 +671,8 @@
 
             <div id="sidenav-button-id" class="sidenav-button-class split__bar">
                 <span class="sidenav-button-content-class">
-                    < ></span>
+                    <>
+                </span>
             </div>
             <div class="split__bar"></div>
             <div id="parent-source-code-main-div">
@@ -714,7 +717,7 @@
                                 color: #1360bb;
                                 font-size: 28px;
                             ">...</i>
-                            <div class="menu transition left">
+                            <div class="menu transition left project-note-settings-list">
                                 <div class="ui left pointing dropdown link item">
                                     <i class="dropdown icon"></i> Close
                                     <div class="menu ui left pointing dropdown item">
@@ -863,63 +866,7 @@
                     <link href='https://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.css' rel="stylesheet" type="text/css">
 
                     <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/theme/material.css'>
-                    <link rel='stylesheet' href='https://codemirror.net/lib/codemirror.css'>
 
-
-                    <!--                    <div id='code-editor'>-->
-                    <!--                        <textarea id="js">-->
-                    <!--                        </textarea>-->
-                    <!--                        </textarea>-->
-                    <!--                    </div>-->
-                    <script src='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.js'></script>
-                    <script src='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/xml/xml.js'></script>
-                    <script src='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/css/css.js'></script>
-                    <script src='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/javascript/javascript.js'></script>
-                    <script src='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/htmlmixed/htmlmixed.js'></script>
-                    <script id="rendered-js">
-                        /**
-                         *
-                         * In this pen:
-                         * added scripts with CDN:
-                         *   -  //cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.js
-                         *   -  //cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/xml/xml.js
-                         *   -  //cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/css/css.js
-                         *   -  //cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/javascript/javascript.js
-                         *   -  //cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/htmlmixed/htmlmixed.js
-                         *
-                         */
-
-
-                        // var htmlEditor = CodeMirror.fromTextArea(document.getElementById("html"), {
-                        // 	lineNumbers: true,
-                        // 	mode: 'htmlmixed',
-                        // 	theme: 'material',
-                        // });
-
-                        // var cssEditor = CodeMirror.fromTextArea(document.getElementById("css"), {
-                        // 	lineNumbers: true,
-                        // 	mode: 'css',
-                        // 	theme: 'material',
-                        // });
-
-                        <!--
-                        var jsEditor = CodeMirror.fromTextArea(document.getElementById('js'), {-- >
-                            <
-                            !--lineNumbers: true,
-                            -- >
-                            <
-                            !--mode: 'javascript',
-                            -- >
-                            <
-                            !--theme: 'material',
-                            -- >
-
-                            <
-                            !--
-                        });
-                        -- >
-                        $('.CodeMirror').css('height', '100%');
-                    </script>
                 </div>
             </div>
         </div>
@@ -1148,12 +1095,7 @@
 </body>
 
 
-<script type="text/javascript" src="{{ url_for('static', filename='/js/CodeEditor.js') }}"></script>
-<script type="module" src="{{ url_for('static', filename='/js/main_1.js') }}"></script>
-<script type="module" src="{{ url_for('static', filename='/js/DocumentSection.js') }}"></script>
-<script type="module" src="{{ url_for('static', filename='/js/TreeView/TreeView.js') }}"></script>
-<script type="module" src="{{ url_for('static', filename='/js/DomEvents.js') }}"></script>
-<script type="module" src="{{ url_for('static', filename='/js/DomActions.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='js/main_1.js') }}"></script>
 
 <script type='text/javascript'>
     $(document).ready(function() {

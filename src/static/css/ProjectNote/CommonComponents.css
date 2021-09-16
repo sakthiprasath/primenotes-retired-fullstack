@@ -1,0 +1,46 @@
+.input-width{
+    min-width: 100px;
+    max-width: 250px;
+}
+.common-min-height{
+    min-height: 100px;
+}
+
+.properties{
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+}
+.properties-divider{
+    width: 10px;
+}
+
+.remove-transform-rotation{
+    transform: rotate(0deg) !important;
+}
+
+.container {
+  background: white;
+  flex: auto;
+     position: absolute;
+      left: 10%;
+      right: 10%;
+      top: 10%;
+      bottom: 10%;
+
+}
+.outer-resize{
+    max-width: 80%;
+    width: 500px;
+    min-width: 100px;
+}
+.icon.setting{
+  display: none;
+  cursor: pointer;
+}
+.outer-resize:hover  .icon.setting{
+  display: block;
+}
+.parent-dependent-maker{
+    width: 100%
+    height: 100%;
+}

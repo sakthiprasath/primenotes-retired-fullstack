@@ -2,7 +2,7 @@ import SourceCodeSection from './DocumentSection.js';
 
 
 
-export default class TreeClass{
+export default class SearchBox{
 
     _build_searchbox(){
     // Add your javascript here
@@ -21,6 +21,17 @@ export default class TreeClass{
                 }
               ]
             }];
+    }
+    project_note_tab_settings(e){
+        let self = this;
+         let tree_class_obj = self.tsp.TreeClass;
+
+             self.tsp.DomActions._tabs_drop_down_click();
+             tree_class_obj.curr_active_file = $('#tab-container .tab-active .file-get-section').attr('file-path');
+             tree_class_obj.set_active_folder_and_file(undefined, tree_class_obj.curr_active_file);
+
+             /*check or unceck starred checkbox*/
+             $('.tree-note-star-input').prop('checked', tree_class_obj.metadata_map[tree_class_obj.curr_active_file].starred == "true");
     }
     _events(){
         let self = this;
@@ -74,15 +85,7 @@ export default class TreeClass{
         $('.tab-container-setting').dropdown();
 
         $('.tab-container-setting').on('click', function(){
-             let tree_class_obj = self.tsp.TreeClass;
-
-             self.tsp.DomActions._tabs_drop_down_click();
-             tree_class_obj.curr_active_file = $('#tab-container .tab-active .file-get-section').attr('file-path');
-             tree_class_obj.set_active_folder_and_file(undefined, tree_class_obj.curr_active_file);
-
-             /*check or unceck starred checkbox*/
-             $('.tree-note-star-input').prop('checked', tree_class_obj.metadata_map[tree_class_obj.curr_active_file].starred == "true");
-
+            self.project_note_tab_settings();
         });
 
 

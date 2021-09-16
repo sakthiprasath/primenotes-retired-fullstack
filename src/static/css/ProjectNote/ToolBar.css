@@ -1,0 +1,11 @@
+.note-toolbar{
+    position: relative;
+}
+.note-editor{
+    position: relative;
+    left: 70px;
+    transition-duration: 0.3s;
+}
+.note-editor-moved-left{
+    left: 260px;
+}

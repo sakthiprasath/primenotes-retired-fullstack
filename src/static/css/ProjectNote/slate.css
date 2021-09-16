@@ -1,0 +1,82 @@
+
+
+.content {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  margin: 2em 0;
+  text-align: center;
+  flex: none;
+}
+
+h1 {
+  color: #0ca;
+  margin: 0;
+  margin-bottom: 0.5em;
+}
+
+
+.container.dragging {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+}
+
+.card {
+  align-items: center;
+  color: black;
+  display: flex;
+  flex: none;
+  height: 6em;
+  justify-content: center;
+  position: absolute;
+  top: 1em;
+  width: 8em;
+}
+.card.blue {
+  background: blue;
+  left: 1em;
+}
+.card.purple {
+  background: purple;
+  left: 10em;
+}
+.card.orange {
+  background: orange;
+  left: 19em;
+}
+.card.pink {
+  background: pink;
+  left: 28em;
+}
+.card.gray {
+  background: gray;
+  left: 37em;
+}
+.card.teal {
+  background: teal;
+  left: 46em;
+}
+.card:hover {
+  cursor: move;
+  cursor: grab;
+  cursor: -webkit-grab;
+}
+.card.dragging {
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+.card.dropped {
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.container.dragging .card:hover {
+  outline: dashed 2px black;
+  outline-offset: 4px;
+}
+
+
+

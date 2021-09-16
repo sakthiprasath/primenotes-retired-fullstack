@@ -1,0 +1,22 @@
+.image.content{
+    height: inherit;
+}
+.ui.modal{
+    top: 10%;
+    left: 15%;
+    height: 75%;
+}
+
+.ui.modal>.close {
+    position: absolute;
+    top: 10px !important;
+    right: 10px !important;
+    opacity: .8;
+    font-size: 1.25em;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: .625rem 0 0 0;
+    display: block;
+    z-index: 1 !important;
+    color: #efe4e4 !important;
+}

@@ -152,7 +152,7 @@ export default class SourceCodeSection{
 //            $('.note-editor').css('display', 'block');
 
 //            $(self.summer_note_ele).summernote('code', general_Text);
-            document.getElementById('summer-note-iframe-id').contentWindow.document.getElementById('refresh-summer-note-editor').click();
+//            document.getElementById('summer-note-iframe-id').contentWindow.document.getElementById('refresh-summer-note-editor').click();
             self.summer_note_ele = document.getElementById('summer-note-iframe-id').contentWindow.document.getElementsByClassName('note-editable')[0];
             self.summer_note_ele.innerHTML = general_Text;
             $(self.summer_note_ele).off('blur');
@@ -242,6 +242,16 @@ export default class SourceCodeSection{
                 self.get_editor_file(this, 'code', false,  $(this).attr('file-path'));
             }
         });
+
+//         $('.file-get-section').off("contextmenu");
+//        $('.file-get-section').contextmenu((e)=>{
+//            let menu = self.tsp.GlobalConstants.project_note_setting_drop_down;
+//            let menu_ele = $(menu);
+//            $('.tab .tab-active').append(menu_ele)
+//            menu_ele.show();
+//            self.tsp.SearchBox.project_note_tab_settings(e);
+//        });
+
 
         $('#note-editor-toolbar-check').off('change');
         $('#note-editor-toolbar-check').change(function(){

@@ -183,28 +183,28 @@ class SQLIndividualComponent():
 
         return file_contents
 
-    def all_files(self, file_type):
-        file_path_and_files_dict = {}
-        path = '../frontend_files/web-app/all_general_files/' + file_type
-        files = os.listdir(path)
-
-        # file_list =  [file[:-(len('.txt'))]  for file in files ]
-        file_path_and_files_dict['file_path'] = path
-        file_path_and_files_dict['files'] = files
-        return file_path_and_files_dict
-
-    def list_dirs(self, path):
-        temp_map = {}
-        temp_map['files'] = []
-        # print(path)
-        for p in pathlib.Path(path).iterdir():
-            if p.is_file():
-                temp_map['files'].append(p.__str__())
-            if p.is_dir():
-                temp_map[p.__str__()] = self.list_dirs(p.__str__())
-        return temp_map
-
-    def get_tree(self):
-        path = '../frontend_files/web-app/all_general_files/separate_project'
-        data = self.list_dirs(path)
-        return data
+    # def all_files(self, file_type):
+    #     file_path_and_files_dict = {}
+    #     path = '../frontend_files/web-app/all_general_files/' + file_type
+    #     files = os.listdir(path)
+    #
+    #     # file_list =  [file[:-(len('.txt'))]  for file in files ]
+    #     file_path_and_files_dict['file_path'] = path
+    #     file_path_and_files_dict['files'] = files
+    #     return file_path_and_files_dict
+    #
+    # def list_dirs(self, path):
+    #     temp_map = {}
+    #     temp_map['files'] = []
+    #     # print(path)
+    #     for p in pathlib.Path(path).iterdir():
+    #         if p.is_file():
+    #             temp_map['files'].append(p.__str__())
+    #         if p.is_dir():
+    #             temp_map[p.__str__()] = self.list_dirs(p.__str__())
+    #     return temp_map
+    #
+    # def get_tree(self):
+    #     path = '../frontend_files/web-app/all_general_files/separate_project'
+    #     data = self.list_dirs(path)
+    #     return data

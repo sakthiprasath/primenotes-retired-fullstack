@@ -27,7 +27,6 @@ function calculate_progress_bar(counter, factor) {
     });
     if (Math.floor(factor * counter) === 100) {
         setTimeout(function() {
-
             document.getElementById("loading-container").style.display = "none";
             document.getElementById("destination-container").style.display = "block";
             document.getElementById("top-header").style.display = "block";
@@ -47,12 +46,12 @@ $(document).ready(function() {
         //        IndexedDb,
         Header,
         loadComponentsContainer,
-//        TreeClass,
-        CreateEditIcons,
-//        TreeCRUD,
-//        SourceCodeSection,
-        //        DeveloperComponents,
-//        SearchBox,
+                TreeClass,
+            CreateEditIcons,
+                TreeCRUD,
+                SourceCodeSection,
+//                DeveloperComponents,
+                SearchBox,
         DetailsPanel,
         NotificationBar,
         // StreamYoutube,

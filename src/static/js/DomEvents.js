@@ -189,8 +189,9 @@ export default class DomEvents {
                         if (e.keyCode === 27) { //ESC
                             $('#modal-id').hide();
                         }
-                        else if(!e.shiftKey || e.ctrlKey)
+                        else if(!e.ctrlKey || e.shiftKey)
                             return;
+                        e.preventDefault();
                         if (e.keyCode === 78 || e.keyCode === 187) { // shift + N
                             self.tsp.loadComponentsContainer.action_function_map.create_new_file();
                         } else if (e.keyCode === 46) { //shift + DELETE

@@ -2,7 +2,6 @@ import DomEvents from './DomEvents.js';
 
 
 export default class loadComponentsContainer {
-    file_factory_path = "";
     cache_elements(){
         let self = this;
         self.close_results_icon = $('.search-box-icons > .close.icon');
@@ -194,12 +193,6 @@ export default class loadComponentsContainer {
                     let files = {};
                     let ret_json = {};
                     ret_json = response;
-                    //                        self.file_factory_path = ret_json['file_path'];
-
-                    //                        for(let i in files_map){
-                    //                            let file = files[i];
-                    //                            temp_map [file] = [file];
-                    //                        }
 
                     for (let i in ret_json) {
                         //                            console.log(ret_json[i].name);
@@ -216,34 +209,7 @@ export default class loadComponentsContainer {
             });
         return defObj.promise();
     }
-    initialize_save_action_for_save_button(self) {
-        //        let iframe_obj = document.getElementById('quick-file-editor');
-        $('#quick-file-editor').off('blur');
-        $('#quick-file-editor').on('blur', function() {
-            var file_key = $('.file-name').attr('file-key')
-            let file_data = $('#quick-file-editor').val(); //document.getElementById('quick-file-editor').contentWindow.document.body.innerHTML;
-            var savable_data = {
-                'file_key': file_key,
-                'name': self.label_map[file_key].name,
-                'content': file_data
-            }
 
-            var defObj = $.Deferred();
-            var promise =
-                $.ajax({
-                    url: self.tsp.PrimenotesCache.data.url_prefix + "/api/individual-component-fetch/save-file-factory",
-                    data: JSON.stringify(savable_data),
-                    type: "POST",
-                    contentType: 'application/json;charset=UTF-8',
-                    success: function(response) {
-                        self.label_map[file_key].content = file_data;
-                        self.tsp.NotificationBar.launch_notification(self.tsp.GlobalConstants.file_saved);
-                        return defObj.resolve(response);
-                    }
-                });
-            return defObj.promise();
-        });
-    }
     callSearchResults(searchContent) {
         let self = this;
         if(searchContent == ""){
@@ -330,7 +296,12 @@ export default class loadComponentsContainer {
                         $('#middle-section').show();
 
                     }
-                    self.fillRightSideComponents(self, file_key);
+                    self.fillRightSideComponents(file_key);
+                });
+            },
+            "save_file_if_blured": () => {
+                $('#quick-file-editor').on('blur', function() {
+                    self.action_function_map['save_file_if_changed']();
                 });
             }
         }
@@ -344,7 +315,8 @@ export default class loadComponentsContainer {
 
     };
 
-    fillRightSideComponents(self, file_key) {
+    fillRightSideComponents(file_key) {
+        let self = this;
         if (file_key === undefined || file_key === '')
             return;
         $('.file-name').text(self.label_map[file_key].name);
@@ -354,11 +326,8 @@ export default class loadComponentsContainer {
         var html = '';
         var componentClassName = '';
         $.Deferred().resolve().then(function() {
-            $.when(self.get_file_from_server(file_key)).done(function(res) {
-                self._appendHtmlAndEventListner(file_key, res);
-            });
+            self._appendHtmlAndEventListner(file_key, self.label_map[file_key].content);
         });
-        self.initialize_save_action_for_save_button(self);
         self.tsp.DetailsPanel.launch_quick_file_details_data(file_key);
     }
 
@@ -374,24 +343,13 @@ export default class loadComponentsContainer {
 
 
     get_file_from_server(file_key) {
-        //        file_name = this.file_factory_path + '/' + file_name;
         var defObj = $.Deferred();
-        //            var promise =
-        //                $.ajax
-        //                ({
-        //                    url:'http://localhost:5000/api/individual-component-fetch/general_files/file_factory?file_path='+JSON.stringify(file_name),
-        //                    type : "GET",
-        //                    contentType:'application/x-www-form-urlencoded',
-        //                    success : function(response){
-        //                        return defObj.resolve(response);
-        //                    }
-        //                });
+
         return defObj.resolve(this.label_map[file_key].content);
     }
 
     action_functions() {
         let self = this;
-        this.action_function_map = {};
         this.action_function_map = {
             create_new_file: function() {
                  $('#create-file-text-box').val("");
@@ -440,6 +398,32 @@ export default class loadComponentsContainer {
                     self.curr_file_uuid = ret_json.uuid_file_name;
                     self.sort_files_by_name_and_update_UI();
                 });
+            },
+            save_file_if_changed: function(){
+                var file_key = self.curr_file_uuid;
+                let editor_content = $('#quick-file-editor').val();
+                if(self.label_map[file_key].content === editor_content)
+                    return;
+                let file_data = $('#quick-file-editor').val(); //document.getElementById('quick-file-editor').contentWindow.document.body.innerHTML;
+                var savable_data = {
+                    'file_key': file_key,
+                    'name': self.label_map[file_key].name,
+                    'content': file_data
+                }
+                var defObj = $.Deferred();
+                var promise =
+                    $.ajax({
+                        url: self.tsp.PrimenotesCache.data.url_prefix + "/api/individual-component-fetch/save-file-factory",
+                        data: JSON.stringify(savable_data),
+                        type: "POST",
+                        contentType: 'application/json;charset=UTF-8',
+                        success: function(response) {
+                            self.label_map[file_key].content = file_data;
+                            self.tsp.NotificationBar.launch_notification(self.tsp.GlobalConstants.file_saved);
+                            return defObj.resolve(response);
+                        }
+                    });
+                return defObj.promise();
             }
         }
     }
@@ -572,7 +556,7 @@ export default class loadComponentsContainer {
                 delete self.label_map[file_key];
                 let file_uuid_key = Object.keys(self.label_map)[0];
                 self.curr_file_uuid = file_uuid_key;
-                self.fillRightSideComponents(self, file_uuid_key);
+                self.fillRightSideComponents(file_uuid_key);
                 $('.individual-search').removeClass('individual-search-background');
                 $(`.individual-search[id=${file_uuid_key}]`).addClass('individual-search-background');;
 
@@ -651,6 +635,8 @@ export default class loadComponentsContainer {
                 self._build_rename_field_and_call_backend();
             });
 
+            self.events_map['save_file_if_blured']();
+
             $('#video-notes-help').off('click');
             $('#video-notes-help').on('click', function() {
                 self.tsp.Dialog.launch_dialog('video-notes-help-dialog');
@@ -714,8 +700,9 @@ export default class loadComponentsContainer {
         let self = this;
         self.open_setting_flag = 0;
         this.curr_file_uuid = "";
-        this.file_factory_path = '../frontend_files/web-app/all_general_files/file_factory';
         this.active_switch = 'video-stream-switch';
+        this.action_function_map = {};
+        this.events_map = {};
         this.cache_elements();
         this.action_functions();
         this._create_new_file_factory_form();
@@ -724,8 +711,8 @@ export default class loadComponentsContainer {
         this._initialize_youtube_stream();
         this._make_resize();
         // this._open_settings();
-        this._build_file_factory_options();
         this.events();
+        this._build_file_factory_options();
         this.close_results_icon.hide();
         var screenWidth = parseInt(screen.width);
         var screenHeight = parseInt(screen.height);
@@ -788,8 +775,6 @@ export default class loadComponentsContainer {
                 initialize_Search_Results_Close_Button_Binder();
             });
         };
-
-        self.initialize_save_action_for_save_button(self);
 
         self._get_file_factory_list().then(function(label_map) {
             self.label_map = label_map;
