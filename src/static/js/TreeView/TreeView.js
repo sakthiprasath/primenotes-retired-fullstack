@@ -900,31 +900,49 @@ export default class TreeClass {
         if (tab == "tree") {
             set_search_map(self.file_list, self.folder_list);
         } else if (tab == "starred") {
+            let is_starred_list_empty = true;
             for (let item in metadata_map) {
                 if (metadata_map[item].starred !== undefined &&
                     metadata_map[item].starred !== null &&
                     (metadata_map[item].starred).toString().toLowerCase() == "true" &&
                     metadata_map[item].folder_type === 'file') {
-                    console.log(metadata_map[item])
+                    is_starred_list_empty = false;
                     temp_file_list.push({
                         title: metadata_map[item].name,
                         description: metadata_map[item].path
                     });
                 }
             }
+            if(is_starred_list_empty == true){
+                $('.tree-starr-tab-class').hide()
+                $('#no-file-in-starr').show();
+            }
+            else{
+                $('.tree-starr-tab-class').show()
+                $('#no-file-in-starr').hide();
+            }
             set_search_map(temp_file_list, []);
         } else if (tab == "trash") {
+            let is_trash_list_empty = true;
             for (let item in metadata_map) {
                 if (metadata_map[item].trash !== undefined &&
                     metadata_map[item].trash !== null &&
                     (metadata_map[item].trash).toString().toLowerCase() == "true" &&
                     metadata_map[item].folder_type === 'file') {
-                    console.log(metadata_map[item])
+                    is_trash_list_empty = false;
                     temp_file_list.push({
                         title: metadata_map[item].name,
                         description: metadata_map[item].path
                     });
                 }
+            }
+            if(is_trash_list_empty == true){
+                $('.tree-trash-tab-class').hide()
+                $('#no-file-in-trash').show();
+            }
+            else{
+                $('.tree-trash-tab-class').show()
+                $('#no-file-in-trash').hide();
             }
             set_search_map(temp_file_list, []);
         }

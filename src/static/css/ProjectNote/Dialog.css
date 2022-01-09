@@ -1,13 +1,17 @@
-.image.content{
+.modal .content{
     height: inherit;
 }
 .ui.modal{
     top: 10%;
     left: 15%;
     height: 75%;
+    transition: all 0.3s ease 0s !important;
 }
-
-.ui.modal>.close {
+.ui.modal > .plus.icon{
+    right: 50px !important;
+    position: absolute !important;
+}
+.ui.modal>.close, .plus {
     position: absolute;
     top: 10px !important;
     right: 10px !important;
@@ -19,4 +23,23 @@
     display: block;
     z-index: 1 !important;
     color: #efe4e4 !important;
+}
+.ui.dimmer{
+    background: none !important;
+}
+.ui.modal>.actions{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 3;
+}
+.modal-full-screen{
+    position: fixed !important;
+    width: 100% !important;
+    height: 95% !important;
+    top: 0px !important;
+    left: 0px !important;
+    opacity: 1;
+    transition: all 0.3s ease 0s;
 }

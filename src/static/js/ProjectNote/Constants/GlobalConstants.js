@@ -23,6 +23,9 @@ export default class GlobalConstants {
             accordion: "accordion"
         };
         self.settings = "settings";
+        self.edit_content_text = "Edit Content";
+        self.plus_button_text = "+";
+        self.parent_ele_selector = '.note-editable';
 
 
     }

@@ -54,12 +54,15 @@ ul,
 }
 
 #myUL {
-    margin: 0px 0 0 5px;
+    margin: 0px 0 0 0px;
     padding: 0;
     overflow: scroll;
     width: max-content;
     left: -10px;
     position: relative;
+    height: 79%;
+    width: 100%;
+    border: 1px solid #e9f3ed;
 }
 
 .folder-section {

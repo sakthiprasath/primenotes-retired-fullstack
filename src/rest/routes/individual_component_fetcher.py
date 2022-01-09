@@ -28,6 +28,8 @@ def return_index_html(html_name):
             return flask.render_template('FileManagerPro.html')
         elif html_name == "summer_note":
             return flask.render_template('SummerNote.html')
+        elif html_name == "summer_note_poc":
+            return flask.render_template('SummerNote_POC.html')
 
     except Exception as e:
         return print(e)

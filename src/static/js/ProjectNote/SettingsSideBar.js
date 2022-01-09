@@ -2,8 +2,14 @@
 
 export default class SettingsSideBar{
     constructor(){
+        let self = this;
         this.action_map = {};
-        this.event_map = {};
+        self.event_map ={
+            "init_settings_event": ()=>{
+
+            },
+
+        }
     }
     cache_elems(){
         let self = this;
@@ -45,11 +51,7 @@ export default class SettingsSideBar{
     }
     events(){
         let self = this;
-        self.event_map ={
-            "init_settings_event": ()=>{
 
-            }
-        }
 
         /* initializing eventlistners by calling above event_map in a loop*/
         for (let key in self.event_map) {

@@ -1,5 +1,9 @@
 .note-toolbar{
     position: relative;
+    display: block;
+}
+#component-text-editor .note-toolbar{
+    display: block;
 }
 .note-editor{
     position: relative;
@@ -8,4 +12,8 @@
 }
 .note-editor-moved-left{
     left: 260px;
+}
+.note-editing-area{
+    overflow: scroll !important;
+    width: 99%
 }

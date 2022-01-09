@@ -1,80 +1,100 @@
 
-
-export default class Dialog{
-    constructor(){
-        this.action_map = {};
-        this.event_map = {};
-    }
-    build_dependent_css(){
+export default class Dialog {
+    cache_elems() {
         let self = this;
-        let css_urls=  [`https://semantic-ui.com/dist/semantic.min.css`,
-                        `https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css`
-        ];
-        self.tsp.HtmlTagBuilder.build_tags(css_urls);
+        self.cache = {
+            modal_ele: $("#modal-id"),
+            modal_header_ele: $('.modal .header'),
+            dialog_button: $('.dialog-button')
+        }
+        self.button_map = {
+            'component-text-editor': 'Ok',
+            'create-new-quick-file-form': 'Create',
+        }
     }
-    build_outer_part(){
+    launch_dialog(form_id, header, id, html) {
         let self = this;
-        let html = `
-                <div class="ui modal">
-                  <i class="close icon"></i>
-                  <div class="header">
-                    Profile Picture
-                  </div>
-                  <div class="image content">
-                    <div class="ui medium image">
-                      <img src="https://semantic-ui.com/images/avatar2/large/rachel.png">
-                    </div>
-                    <div class="description">
-                      <div class="ui header">We've auto-chosen a profile image for you.</div>
-                      <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
-                      <p>Is it okay to use this photo?</p>
-                    </div>
-                  </div>
-                  <div class="actions">
-                    <div class="ui black deny button">
-                      Nope
-                    </div>
-                    <div class="ui positive right labeled icon button">
-                      Yep, that's me
-                      <i class="checkmark icon"></i>
-                    </div>
-                  </div>
-                </div>
-        `;
-        $("body").append($(html));
-
+        self.current_dialog = form_id;
+        self.current_ele_id = id;
+        $('#modal-id').modal('show');
+        $('.inner-item-form').hide();
+        $('#' + form_id).show();
+        if(header !== undefined)
+            self.cache.modal_header_ele.empty().append(`<h2>${header}</h2>`);
+        self.cache.dialog_button.show();
+        switch (self.current_dialog) {
+            /*if the dialog is for renaming file, then fill the dialog text box with current file name */
+            case 'component-text-editor':
+                {
+                    $('#component-text-editor-textarea').summernote('code', html);
+                    break;
+                }
+            case 'add-image-for-card':
+                {
+                    break;
+                }
+        }
+        $('.dialog-button').text(self.button_map[self.current_dialog]);
     }
-
-    events(){
+    close_dialog_action() {
         let self = this;
-        let event_map ={
-            "init_modal_properties": ()=>{
-                $(".ui.modal").modal({ closable: true });
+        self.cache.modal_ele.css("display", "none");
+
+        $('.modal-content').removeClass('model-content-on-tree-clone');
+    }
+    events() {
+        let self = this;
+        let event_map = {
+            boot_tree_note_dialog: function() {
+                self.cache.dialog_button.hide();
+                $('.dialog-button').click(function() { // on OK
+                    switch (self.current_dialog) {
+                        case 'component-text-editor':
+                            {
+                                let modified_html = $('#component-text-editor-textarea').summernote('code');
+                                self.tsp.Accordion.action_map.on_component_text_edit_dialog_ok(self.current_ele_id, modified_html);
+                                break;
+                            }
+                        case 'add-image-for-card':{
+                                let url = $("#add-image-for-card-input").val();
+                                self.tsp.Slate.action_map.on_add_image_with_url_dialog_ok(url, self.current_ele_id);
+                                break;
+                        }
+                    }
+                });
+            },
+            full_screen: () => {
+                $('.ui.modal > .plus.icon').click(()=>{
+                    self.cache.modal_ele.toggleClass('modal-full-screen');
+                });
+            },
+            close_dialog: function() {
+                $('.close-modal').click(function() {
+                    self.close_dialog_action();
+                });
             }
         }
 
         /* initializing eventlistners by calling above event_map in a loop*/
         for (let key in event_map) {
-          event_map[key]();
+            //          console.log(event_map[key]);
+            event_map[key]();
         }
     }
     actions(){
+        //default on load action 1:
         let self = this;
-        self.action_map = {
-            "load_dialog": () => {
-                $('.ui.modal').modal('show');
-            },
-        }
+         self.cache.modal_ele.modal({ closable: true });
     }
-
-    init(tsp){
+    init(tsp, to_return_Values) {
         tsp.Dialog = this;
         this.tsp = tsp;
-        this.build_dependent_css()
-        this.actions();
-        this.build_outer_part();
+        this.event_map = {};
+        this.current_dialog = undefined;
+        this.cache_elems();
         this.events();
-        return $.Deferred().resolve(tsp);
+        this.actions();
+        return $.Deferred().resolve(tsp, to_return_Values);
     }
 
 }

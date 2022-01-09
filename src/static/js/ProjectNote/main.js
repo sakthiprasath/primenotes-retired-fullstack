@@ -21,10 +21,12 @@ $(document).ready(function() {
         SettingsSideBar,
         SideComponentsSection,
         Dialog,
-        ComponentBuilder,
-
         Slate,
         Accordion,
+        ComponentBuilder,
+
+
+
     ];
     let len = class_list.length;
 

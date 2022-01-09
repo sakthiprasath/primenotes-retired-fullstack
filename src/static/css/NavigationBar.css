@@ -538,10 +538,12 @@ div {
 }
 
 .ui.input>input {
-    background: #e9f3ed !important;
     height: 29px !important;
     border-radius: 4px !important;
     width: inherit;
+
+    background-color: #f1f1f1 !important;
+    border: none;
 }
 
 .ui.category.search .results {
@@ -595,7 +597,7 @@ body ::-webkit-scrollbar {
 }
 
 .ui.tabular.menu .active.item {
-    background: #e9f3ed !important;
+    background: #cce2d6 !important;
     border-bottom: 2px solid #4a97cc !important;
 }
 

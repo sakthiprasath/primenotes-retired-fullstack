@@ -5,8 +5,10 @@ export default class Accordion{
         this.event_map = {};
         this.action_map = {};
     }
+
     cache_elems(){
         let self = this;
+        self.component_elems_map = {};
     }
     build_dependent_css(){
         let self = this;
@@ -15,45 +17,47 @@ export default class Accordion{
              "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"];
         self.tsp.HtmlTagBuilder.build_tags(urls);
     }
-    build_outer_part(args){
-        let html = `<div class="outer-resize drag remove-transform-rotation" id="${args['uuid']}">
+
+    build_outer_part(uuid, component_data){
+        let self = this;
+        let content_data = component_data['content'];
+        let inner_html = "";
+        self.build_accordion_header_part = (uuid, title)=>{
+            return   `  <dt>
+                            <a href="#accordion1" aria-expanded="false" aria-controls="accordion1"
+                                class="accordion-title accordionTitle js-accordionTrigger">${title} </a>
+                        </dt>`;
+         }
+        self.build_accordion_content_part = (uuid, content)=>{
+            return `
+                     <dd class="accordion-content accordionItem is-collapsed" id=${uuid} aria-hidden="true">
+                        <div class="input-width common-min-height">
+                            <a class="ui teal label edit-content-button" data-value='${uuid}'>
+                                <i class="edit icon"></i>
+                                ${self.tsp.GlobalConstants.edit_content_text}
+                            </a>
+                            <div class="current-edit-area">
+                                ${content}
+                            </div>
+                        </div>
+                     </dd>
+                    `
+        }
+        for(let uuid in content_data){
+            inner_html += `
+                                ${self.build_accordion_header_part(uuid, content_data[uuid].title)}
+                                ${self.build_accordion_content_part(uuid, content_data[uuid].content)}
+                             `;
+        }
+        let html = `<div class="outer-resize drag remove-transform-rotation" id="${uuid}">
                 <div class="setting">
-                    <i class="icon setting component" data-value="${args['uuid']}" component-name="${args['component_name']}"></i>
+                    <i class="icon setting component common-icon" data-value="${uuid}" component-name="${component_data['type']}"></i>
                 </div>
                 <div class="accordion parent-dependent-maker">
                     <dl>
-                      <!-- description list -->
 
-                      <dt>
-                          <!-- accordion tab 1 - Delivery and Pickup Options -->
-                          <a href="#accordion1" aria-expanded="false" aria-controls="accordion1" class="accordion-title accordionTitle js-accordionTrigger">Delivery and Pickup Options</a>
-                        </dt>
-                      <dd class="accordion-content accordionItem is-collapsed" id="accordion1" aria-hidden="true">
-                        <p>One can insert a div here and add the product image and the description of the product. Quantity, Cost.</p>
-                      </dd>
-                      <!--end accordion tab 1 -->
-
-                      <dt>
-                          <!-- accordion tab 2 - Shipping Info -->
-                          <a href="#accordion2" aria-expanded="false" aria-controls="accordion2" class="accordion-title accordionTitle js-accordionTrigger">Shipping Information</a>
-                        </dt>
-                      <dd class="accordion-content accordionItem is-collapsed" id="accordion2" aria-hidden="true">
-                           <div class="input-width common-min-height level-2">
-                             <button class="ui positive right labeled icon button"> Add Content</button>
-                           </div>
-                      </dd>
-                      <!-- end accordion tab 2 -->
-
-                      <dt>
-                          <!-- accordion tab 3 - Payment Info -->
-                          <a href="#accordion3" aria-expanded="false" aria-controls="accordion3" class="accordion-title accordionTitle js-accordionTrigger">Payment Information</a>
-                        </dt>
-                      <dd class="accordion-content accordionItem is-collapsed" id="accordion3" aria-hidden="true">
-                         <div class="input-width common-min-height">
-                            <div class="align-top"> Add Content</div>
-                         </div>
-                      </dd>
-                      <!-- end accordion tab 3 -->
+                        ${inner_html}
+                        <div class="accordion-add-button" data-value="${uuid}"> ${self.tsp.GlobalConstants.plus_button_text} </div>
 
                     </dl>
                     <!-- end description list -->
@@ -61,7 +65,8 @@ export default class Accordion{
                  </div>`;
         return $(html);
     }
-     get_settings_html(){
+
+    get_settings_html(){
         let self = this;
         let setting_str = self.tsp.GlobalConstants.component_names.accordion + " " + self.tsp.GlobalConstants.settings;
         let html = `
@@ -70,21 +75,19 @@ export default class Accordion{
                         <i class="close icon">
                         </i>
                     </div>
-                    <a class="item">
-                      ${self.tsp.GlobalConstants.component_names.accordion}
-                    </a>
                     <a class="item setting-miny-width">
-                      3
+                      Mini
                     </a>
                     <a class="item setting-medium-width">
-                      3
+                      Small
                     </a>
                     <a class="item setting-max-width" >
-                        Max Width
+                      Max Width
                     </a>
                     `;
         return html;
     }
+
     settings_events(){
         let self = this;
         self.settings_event_map = {
@@ -116,72 +119,55 @@ export default class Accordion{
     events(){
         let self = this;
         self.event_map ={
-                "settings_bar_open": () => {
-                    $('.setting.component').click(()=>{
-                        let settings_html = self.get_settings_html();
-                        self.tsp.SettingsSideBar.load_settings(settings_html);
-                        self.settings_events();
-                    });
+                "init_accordion_events": () => {
+                     var d = document,
+                        accordionToggles = d.querySelectorAll('.js-accordionTrigger'),
+                        setAria,
+                        setAccordionAria,
+                        switchAccordion,
+                        touchSupported = ('ontouchstart' in window),
+                        pointerSupported = ('pointerdown' in window);
 
-                }
-            }
-        /* initializing eventlistners by calling above event_map in a loop*/
-        for (let key in self.event_map) {
-          self.event_map[key]();
-        }
-    }
-    actions(){
-        let self = this;
-        self.accordion_data = `index, such as the Standard & Poor's 500 Index (S&P 500). An index mutual fund is said to provide broad market exposure, low operating expenses, and low portfolio turnover. These funds follow their benchmark index regardless of the state of the markets. `;
+                      var skipClickDelay = function(e) {
+                        e.preventDefault();
+                        e.target.click();
+                      }
 
-        var d = document,
-            accordionToggles = d.querySelectorAll('.js-accordionTrigger'),
-            setAria,
-            setAccordionAria,
-            switchAccordion,
-            touchSupported = ('ontouchstart' in window),
-            pointerSupported = ('pointerdown' in window);
+                      var setAriaAttr = function(el, ariaType, newProperty) {
+                        el.setAttribute(ariaType, newProperty);
+                      };
+                      setAccordionAria = function(el1, el2, expanded) {
+                        switch (expanded) {
+                          case "true":
+                            setAriaAttr(el1, 'aria-expanded', 'true');
+                            setAriaAttr(el2, 'aria-hidden', 'false');
+                            break;
+                          case "false":
+                            setAriaAttr(el1, 'aria-expanded', 'false');
+                            setAriaAttr(el2, 'aria-hidden', 'true');
+                            break;
+                          default:
+                            break;
+                        }
+                      };
+                      //function
+                      switchAccordion = function(e) {
+                        e.preventDefault();
+                        var thisAnswer = e.target.parentNode.nextElementSibling;
+                        var thisQuestion = e.target;
+                        if (thisAnswer.classList.contains('is-collapsed')) {
+                          setAccordionAria(thisQuestion, thisAnswer, 'true');
+                        } else {
+                          setAccordionAria(thisQuestion, thisAnswer, 'false');
+                        }
+                        thisQuestion.classList.toggle('is-collapsed');
+                        thisQuestion.classList.toggle('is-expanded');
+                        thisAnswer.classList.toggle('is-collapsed');
+                        thisAnswer.classList.toggle('is-expanded');
 
-          var skipClickDelay = function(e) {
-            e.preventDefault();
-            e.target.click();
-          }
-
-          var setAriaAttr = function(el, ariaType, newProperty) {
-            el.setAttribute(ariaType, newProperty);
-          };
-          setAccordionAria = function(el1, el2, expanded) {
-            switch (expanded) {
-              case "true":
-                setAriaAttr(el1, 'aria-expanded', 'true');
-                setAriaAttr(el2, 'aria-hidden', 'false');
-                break;
-              case "false":
-                setAriaAttr(el1, 'aria-expanded', 'false');
-                setAriaAttr(el2, 'aria-hidden', 'true');
-                break;
-              default:
-                break;
-            }
-          };
-          //function
-          switchAccordion = function(e) {
-            e.preventDefault();
-            var thisAnswer = e.target.parentNode.nextElementSibling;
-            var thisQuestion = e.target;
-            if (thisAnswer.classList.contains('is-collapsed')) {
-              setAccordionAria(thisQuestion, thisAnswer, 'true');
-            } else {
-              setAccordionAria(thisQuestion, thisAnswer, 'false');
-            }
-            thisQuestion.classList.toggle('is-collapsed');
-            thisQuestion.classList.toggle('is-expanded');
-            thisAnswer.classList.toggle('is-collapsed');
-            thisAnswer.classList.toggle('is-expanded');
-
-            thisAnswer.classList.toggle('animateIn');
-          };
-          for (var i = 0, len = accordionToggles.length; i < len; i++) {
+                        thisAnswer.classList.toggle('animateIn');
+                      };
+                      for (var i = 0, len = accordionToggles.length; i < len; i++) {
             if (touchSupported) {
               accordionToggles[i].addEventListener('touchstart', skipClickDelay, false);
             }
@@ -191,37 +177,78 @@ export default class Accordion{
             }
             accordionToggles[i].addEventListener('click', switchAccordion, false);
           }
+                },
+                "settings_bar_open": () => {
+                    $('.setting.component').click(()=>{
+                        let settings_html = self.get_settings_html();
+                        self.tsp.SettingsSideBar.load_settings(settings_html);
+                        self.settings_events();
+                    });
+                },
+                "init_edit_content_event": () => {
+                     $('.teal.label').click((e)=>{
+                            let id = e.target.getAttribute('data-value');
+                            let edit_area_ele = $('#' + id).find('.current-edit-area');
+                            let editor_html   = $(edit_area_ele).html();
+                            self.tsp.Dialog.launch_dialog('component-text-editor', "Header Text", id, editor_html);
+                      });
+                },
+                "add_new_accordion_level": ()=> {
+                    $('.accordion-add-button').click((e)=>{
+                        let accordion_id = e.target.getAttribute('data-value');
+                        let selector = '#'+accordion_id + " " + ".parent-dependent-maker dl .accordion-add-button";
+                        let uuid = self.tsp.GlobalConstants.generate_UUID();
+                        self.component_data['content'][uuid] = {
+                             "level": 3,
+                             "title": "new level title",
+                             "content": `<h1 style="text-align: left; ">level - new</h1>`
+                        }
+                        let new_accordion_level_html = self.build_accordion_header_part(uuid, "Title") ;
+                        new_accordion_level_html += self.build_accordion_content_part(uuid,  self.component_data['content'][uuid].content);
+
+                        $(selector).before($(new_accordion_level_html));
+                        self.event_map['init_accordion_events']();
+                        self.event_map['init_edit_content_event']();
+                    });
+                }
+            }
+        /* initializing eventlistners by calling above event_map in a loop*/
+        for (let key in self.event_map) {
+          self.event_map[key]();
+        }
+    }
+    actions(){
+        let self = this;
+        self.action_map = {
+            "on_component_text_edit_dialog_ok": (id, modified_html)=>{
+                    alert("worked");
+
+                    /*updating view*/
+                    let content_html_area = $('#' + id).find('.current-edit-area')
+                    $(content_html_area).html(modified_html);
+
+                    /*Updating model*/
+                    self.component_data['content'][id].content = modified_html; //after db is setup call backend
+
+                }
+        }
 
          //custom event
-          $('.positive.button').click((e)=>{
-//                 let q1 = $(e.currentTarget).parent();
-//                 let html = $(q1).html();
-//                 console.log(html);
-                 self.tsp.Dialog.action_map.load_dialog();
-                 $('.content > .description').summernote('code',  self.accordion_data['level-2']);
-          });
 
 
-        $('.icon-setting.component').click(()=>{
-            let uuid = $(this).attr('data-value');
-            let component_name = $(this).attr('component-name');
-            let component_settings = self.fixed_component_data[component_name]["settings"];
 
-        });
 
     }
 
-    build_component(parent_component_ele, component_name){
+    build_component(parent_component_ele, uuid, component_data){
         let self = this;
-        self.id = self.tsp.GlobalConstants.generate_UUID();
-        let accordion_ele = self.build_outer_part({
-            "uuid": self.id,
-            "component_name": self.tsp.GlobalConstants.component_names.accordion
-        });
+        self.id = uuid;
+        self.component_data = component_data;
+        let accordion_ele = self.build_outer_part(uuid, component_data);
         parent_component_ele.append(accordion_ele);
         self.actions();
         self.events();
-        self.tsp.Slate.actions();
+        self.tsp.Slate.actions(); //this is for drag and drop
     }
     init(tsp){
         tsp.Accordion = this;

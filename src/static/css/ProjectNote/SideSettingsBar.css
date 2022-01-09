@@ -1,14 +1,17 @@
 .dimmable.pushable{
     background: none !important;
 }
+.ui.sidebar > .item{
+    color: gray !important;
+}
 .ui.sidebar.inverted.right.vertical.menu{
     z-index: 5;
     display: none;
+    background: #f1f1f1 !important;
 }
 .ui.left.visible.sidebar, .ui.right.visible.sidebar{
     display: block !important;
 }
-
 .pusher.dimmed{
     display:none;
 }
@@ -18,7 +21,11 @@ body.pushable>.pusher{
 }
 .setting {
     position: absolute;
-    top: -15px;
     width: 50px;
     height: 50px;
+    left: -10px;
+}
+.icon.setting{
+  display: none;
+  cursor: pointer;
 }

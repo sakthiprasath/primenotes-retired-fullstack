@@ -571,16 +571,18 @@
                             height: 30px !important;
                             z-index: 1;
                             margin-left: -5px !important;
+                            padding: 0px;
                         ">
 
                         <div class="ui segment">
                             <div id="searchInput" class="ui category search" style="
                         width: 85%;
                     ">
-                                <div class="ui icon input">
+                                <div class="ui icon input" style="
+                                                            width: 100%;">
 
 
-                                    <input class="prompt" type="text" style="background-color: #e9f3ed;" placeholder="Search Tree..." autocomplete="off">
+                                    <input class="prompt" type="text" style="border:none;" placeholder="Search Tree..." autocomplete="off">
                                     <div class="search-box-icons" style="    position: absolute;
                                             display: grid;
                                             grid-template-columns: 1fr 1fr;
@@ -657,12 +659,15 @@
                             <!-- Tab Content !-->
                             <ul class="tree-trash-tab-class folder-correction" style="margin-left: -15px;">
                             </ul>
+                            <img id="no-file-in-trash" src="/static/images/no_file_found.png" alt="logo" style="display:none">
                         </div>
 
                         <div class="ui tab" data-tab="starred">
                             <!-- Tab Content !-->
                             <ul class="tree-starr-tab-class folder-correction" style="margin-left: -15px;">
                             </ul>
+
+                                <img id="no-file-in-starr" src="/static/images/no_file_found.png" alt="logo" style="display:none">
                         </div>
                     </div>
                 </div>

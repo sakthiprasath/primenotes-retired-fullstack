@@ -31,13 +31,6 @@ export default class SideComponentsSection{
                                 <li class="menu-item">
                                     <i class="fa fa-home"></i>
                                     <div class="menu-click-item">
-                                        <span class="menu-content-text"> Property </span>
-                                        <i class="fa fa-plus" data-value="properties"></i>
-                                    </div>
-                                </li>
-                                <li class="menu-item">
-                                    <i class="fa fa-home"></i>
-                                    <div class="menu-click-item">
                                         <span class="menu-content-text"> Accordion </span>
                                         <i class="fa fa-plus" data-value="accordion"></i>
                                     </div>
@@ -45,8 +38,8 @@ export default class SideComponentsSection{
                                 <li class="menu-item">
                                     <i class="fa fa-home"></i>
                                     <div class="menu-click-item">
-                                        <span class="menu-content-text"> Boot Dialog </span>
-                                        <i class="fa fa-plus" data-value="boot_dialog"></i>
+                                        <span class="menu-content-text">Multi level checkbox group </span>
+                                        <i class="fa fa-plus" data-value="multi_level_checkbox_group"></i>
                                     </div>
                                 </li>
                             </section>
@@ -79,20 +72,38 @@ export default class SideComponentsSection{
                     let component_name = $(e.currentTarget).attr('data-value');
                     if(component_name === "cards"){
                         let uuid = self.generate_UUID();
-                        self.tsp.Slate.build_outer_part({"name": "new slate", "uuid": uuid, "component_name": "cards"});
-                        }
-                    else if(component_name === "properties"){
-                        let uuid = self.generate_UUID();
-                        self.tsp.Slate.build_outer_part({"name": "new property", "uuid": uuid, "component_name": "properties"});
-                        }
-                    else if(component_name === "accordion"){
-                        let uuid = self.generate_UUID();
-//                        self.tsp.Slate.build_outer_part({"name": "new accordion", "uuid": uuid, "component_name": "accordion"});
-                        self.tsp.ComponentBuilder.build_component(component_name);
-                        }
-                    else if(component_name === "boot_dialog"){
-                        self.tsp.Dialog.action_map.load_dialog();
+                        let file_component_data = {
+                            uuid: {
+                                "type": "cards",
+                                "uuid": uuid,
+                                "content":
+                                     `<h1 style="text-align: left; ">content</h1>`
+                            }
+                        };
+                        self.tsp.ComponentBuilder.build_component(uuid, file_component_data.uuid);
                     }
+                    else if(component_name === "accordion"){
+                         let uuid = self.generate_UUID();
+//                        self.tsp.Slate.build_outer_part({"name": "new accordion", "uuid": uuid, "component_name": "accordion"});
+                          let file_component_data = {
+                            uuid: {
+                                "type": "accordion",
+                                "content": {
+                                    "uuid_1": {
+                                        "level": 1,
+                                        "title": "First level title",
+                                        "content": `<h1 style="text-align: left; ">level - 1</h1>`
+                                    },
+                                    "uuid_2": {
+                                        "level": 2,
+                                        "title": "Second level title",
+                                        "content": `<h1 style="text-align: left; ">level - 2</h1>`
+                                    },
+                                }
+                            }
+                        };
+                        self.tsp.ComponentBuilder.build_component(uuid, file_component_data.uuid);
+                        }
 
                     });
             }
