@@ -50,19 +50,17 @@ export default class Accordion{
                              `;
         }
         let html = `<div class="outer-resize drag remove-transform-rotation" id="${uuid}">
-                <div class="setting">
-                    <i class="icon setting component common-icon" data-value="${uuid}" component-name="${component_data['type']}"></i>
-                </div>
-                <div class="accordion parent-dependent-maker">
-                    <dl>
-
-                        ${inner_html}
-                        <div class="accordion-add-button" data-value="${uuid}"> ${self.tsp.GlobalConstants.plus_button_text} </div>
-
-                    </dl>
-                    <!-- end description list -->
-                    </div>
-                 </div>`;
+                        <div class="setting">
+                            <i class="icon setting component common-icon" data-value="${uuid}" component-name="${component_data['type']}"></i>
+                        </div>
+                        <div class="accordion parent-dependent-maker">
+                            <dl>
+                                ${inner_html}
+                                    <!--div class="accordion-add-button" data-value="${uuid}"> ${self.tsp.GlobalConstants.plus_button_text} </div -->
+                            </dl>
+                            <!-- end description list -->
+                        </div>
+                    </div>`;
         return $(html);
     }
 
