@@ -32,11 +32,11 @@ export default class ComponentBuilder{
                         "title": "First level title",
                         "content": `<h1 style="text-align: left; ">level - 1</h1>`
                     },
-                    "uuid_2": {
-                        "level": 2,
-                        "title": "Second level title",
-                        "content": `<h1 style="text-align: left; ">level - 2</h1>`
-                    },
+//                    "uuid_2": {
+//                        "level": 2,
+//                        "title": "Second level title",
+//                        "content": `<h1 style="text-align: left; ">level - 2</h1>`
+//                    },
                 }
             }
 
